@@ -1,0 +1,122 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "Endeavour CIM Interop API documentation and test site.",
+        "version": "0.1",
+        "title": "Endeavour CIM Interop 2015 API",
+        "termsOfService": "http://helloreverb.com/terms/",
+        "contact": {
+            "email": "support@endeavour.com"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        }
+    },
+    "host": "endeavour-cim.cloudapp.net",
+    "basePath": "/CIM_war/v0.1",
+    "tags": [
+        {
+            "name": "Patient",
+            "description": "Operations on patients"
+        }
+    ],
+    "paths": {
+        "/service/{serviceId}/patient/{patientId}": {
+            "get": {
+                "tags": [
+                    "Patient"
+                ],
+                "description": "Retrieve a patient",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "api_key",
+                        "in": "header",
+                        "description": "Client API key",
+                        "type": "string",
+                        "enum": [
+                            "swagger"
+                        ]
+                    },
+                    {
+                        "name": "hash",
+                        "in": "header",
+                        "description": "Message hash value",
+                        "type": "string",
+                        "enum": [
+                            "z4FZ7w8+vpdgnTvG9vIwJxJhnvzICLtiIvVofOJiPiw="
+                        ]
+                    },
+                    {
+                        "name": "serviceId",
+                        "in": "path",
+                        "description": "Service identifier",
+                        "type": "string"
+                    },
+                    {
+                        "name": "patientId",
+                        "in": "path",
+                        "description": "Patient unique identifier",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A Patient."
+                    }
+                }
+            }
+        },
+        "/service/{serviceId}/patient?nhsNo={nhsNo}": {
+            "get": {
+                "tags": [
+                    "Patient"
+                ],
+                "description": "Retrieve a patient",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "api_key",
+                        "in": "header",
+                        "description": "Client API key",
+                        "type": "string",
+                        "enum": [
+                            "swagger"
+                        ]
+                    },
+                    {
+                        "name": "hash",
+                        "in": "header",
+                        "description": "Message hash value",
+                        "type": "string",
+                        "enum": [
+                            "Vb82Z3D59sIm9UX2/0CsO+yEbcvQFyxoWRT2j4HK95Q="
+                        ]
+                    },
+                    {
+                        "name": "serviceId",
+                        "in": "path",
+                        "description": "Service identifier",
+                        "type": "string"
+                    },
+                    {
+                        "name": "nhsNo",
+                        "in": "path",
+                        "description": "Patient NHS Number",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A Patient."
+                    }
+                }
+            }
+        }
+    }
+}
