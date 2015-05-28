@@ -5,9 +5,13 @@ import org.endeavourhealth.cim.common.IDataAdapter;
 import java.util.UUID;
 
 public class PyrusiumDataAdapter implements IDataAdapter {
-    public String getPatient(UUID patientId) {
+    public String getPatientByPatientId(UUID patientId) {
         // System-specific call to their provider api
 
         return "[..... PATIENT DATA PYRUS .....]";
+    }
+
+    public String getPatientByNHSNumber(String nhsNumber) {
+        return null;
     }
 }

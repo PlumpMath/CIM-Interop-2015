@@ -15,7 +15,7 @@ public class GetPatientByPatientId implements org.apache.camel.Processor {
 
         // Get patientApi data (native format) using adapter
         IDataAdapter dataAdapter = AdapterFactory.getDataAdapterForService(serviceId);
-        String patientData = dataAdapter.getPatient(UUID.fromString(patientId));
+        String patientData = dataAdapter.getPatientByPatientId(UUID.fromString(patientId));
 
         // Get patientApi data transformer for service (native format -> FHIR)
         ITransformer transformer = TransformerFactory.getTransformerForService(serviceId);

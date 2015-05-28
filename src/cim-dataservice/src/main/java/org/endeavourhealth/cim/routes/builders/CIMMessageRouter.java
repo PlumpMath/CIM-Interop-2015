@@ -9,7 +9,7 @@ public class CIMMessageRouter extends CIMRouteBuilder {
 
         from("direct:CIMMessageRouter")
             .routeId("CIMMessageRouter")
-            .recipientList(header("MessageRouterRecipient"))
+            .recipientList(header("MessageRouterCallback"))
             .to("direct:CIMMessageRouterResult");
     }
 }
