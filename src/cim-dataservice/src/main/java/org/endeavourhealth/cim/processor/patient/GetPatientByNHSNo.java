@@ -4,9 +4,7 @@ import org.apache.camel.Exchange;
 import org.endeavourhealth.cim.adapter.AdapterFactory;
 import org.endeavourhealth.cim.common.IDataAdapter;
 import org.endeavourhealth.cim.common.ITransformer;
-import org.endeavourhealth.cim.transformer.TransformerFactory;
-
-import java.util.UUID;
+import org.endeavourhealth.cim.transform.TransformerFactory;
 
 public class GetPatientByNHSNo implements org.apache.camel.Processor {
     public void process(Exchange exchange) throws Exception {
@@ -24,6 +22,6 @@ public class GetPatientByNHSNo implements org.apache.camel.Processor {
         ITransformer transformer = TransformerFactory.getTransformerForService(serviceId);
 
         // Set the message body to the transformed (FHIR) version of the data
-        exchange.getIn().setBody(transformer.toFHIR(patientDataInNativeFormat));
+        exchange.getIn().setBody(transformer.toCareRecordFHIR(patientDataInNativeFormat));
     }
 }

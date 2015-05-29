@@ -1,16 +1,8 @@
 package org.endeavourhealth.cim.processor.subscription;
 
 import org.apache.camel.Exchange;
-import org.apache.camel.Route;
-import org.apache.camel.builder.RouteBuilder;
-import org.endeavourhealth.cim.Registry;
 import org.endeavourhealth.cim.adapter.AdapterFactory;
-import org.endeavourhealth.cim.common.CIMRouteBuilder;
 import org.endeavourhealth.cim.common.IDataAdapter;
-import org.endeavourhealth.cim.common.ITransformer;
-import org.endeavourhealth.cim.transformer.TransformerFactory;
-
-import java.util.UUID;
 
 public class AddSubscription implements org.apache.camel.Processor {
     public void process(Exchange exchange) throws Exception {

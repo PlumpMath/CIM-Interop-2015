@@ -14,4 +14,8 @@ public class PyrusiumDataAdapter implements IDataAdapter {
     public String getPatientByNHSNumber(String nhsNumber) {
         return null;
     }
+
+    public String createObservation(String request) {
+        return null;
+    }
 }

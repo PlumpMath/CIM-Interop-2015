@@ -1,5 +1,8 @@
 package org.endeavourhealth.cim.common;
 
 public interface ITransformer {
-    String toFHIR(String data);
+    String toCareRecordFHIR(String data);
+
+    String fromObservationFHIR(Object body);
+    String toObservationFHIR(String response);
 }

@@ -3,7 +3,7 @@ package org.endeavourhealth.cim.adapter;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.impl.client.HttpClientBuilder;
 import org.endeavourhealth.cim.common.IDataAdapter;
 
 import java.io.*;
@@ -27,7 +27,7 @@ public class MockDataAdapter implements IDataAdapter {
     }
 
     public String getPatientByNHSNumber(String nhsNumber) {
-        HttpClient client = new DefaultHttpClient();
+        HttpClient client = HttpClientBuilder.create().build();
         HttpGet request = new HttpGet("http://localhost:8081/GetEMISPatientByNhsNumber/");
 
         try {
@@ -45,5 +45,9 @@ public class MockDataAdapter implements IDataAdapter {
             e.printStackTrace();
             return null;
         }
+    }
+
+    public String createObservation(String request) {
+        return null;
     }
 }

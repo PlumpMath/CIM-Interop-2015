@@ -1,4 +1,4 @@
-package org.endeavourhealth.cim.transformer;
+package org.endeavourhealth.cim.transform;
 
 import org.endeavourhealth.cim.Registry;
 import org.endeavourhealth.cim.common.ITransformer;

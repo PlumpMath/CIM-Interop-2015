@@ -4,7 +4,7 @@ import org.apache.camel.Exchange;
 import org.endeavourhealth.cim.adapter.AdapterFactory;
 import org.endeavourhealth.cim.common.IDataAdapter;
 import org.endeavourhealth.cim.common.ITransformer;
-import org.endeavourhealth.cim.transformer.TransformerFactory;
+import org.endeavourhealth.cim.transform.TransformerFactory;
 
 import java.util.UUID;
 
@@ -24,7 +24,7 @@ public class GetPatientByPatientId implements org.apache.camel.Processor {
             return;
 
         // Transform from native format to FHIR
-        String fhirPatientData = transformer.toFHIR(patientData);
+        String fhirPatientData = transformer.toCareRecordFHIR(patientData);
 
         String body = (String) exchange.getIn().getBody();
         if (body == null)
