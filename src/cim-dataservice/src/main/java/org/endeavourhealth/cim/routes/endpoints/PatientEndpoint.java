@@ -16,7 +16,6 @@ public class PatientEndpoint extends RouteBuilder {
             .route()
             .routeId("GetServicePatientByQuery")
             .description("Query based call")
-            .process(new GetPatientByNHSNo())
             .setHeader("MessageRouterCallback", constant("direct:GetPatientByNHSNo"))
             .to("direct:CIMCore")
         .endRest()
