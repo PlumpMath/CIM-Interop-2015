@@ -12,11 +12,11 @@ public class AddObservation implements org.apache.camel.Processor {
         int serviceId = Integer.parseInt((String) exchange.getIn().getHeader("serviceId"));
 
         ITransformer transformer = TransformerFactory.getTransformerForService(serviceId);
-        String request = transformer.fromObservationFHIR(exchange.getIn().getBody());
+        String request = transformer.fromFHIRObservation((String)exchange.getIn().getBody());
 
         IDataAdapter dataAdapter = AdapterFactory.getDataAdapterForService(serviceId);
         String response = dataAdapter.createObservation(request);
 
-        exchange.getIn().setBody(transformer.toObservationFHIR(response));
+        exchange.getIn().setBody(transformer.toFHIRObservation(response));
     }
 }

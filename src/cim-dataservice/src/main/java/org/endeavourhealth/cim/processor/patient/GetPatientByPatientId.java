@@ -24,7 +24,7 @@ public class GetPatientByPatientId implements org.apache.camel.Processor {
             return;
 
         // Transform from native format to FHIR
-        String fhirPatientData = transformer.toCareRecordFHIR(patientData);
+        String fhirPatientData = transformer.toFHIRCareRecord(patientData);
 
         String body = (String) exchange.getIn().getBody();
         if (body == null)

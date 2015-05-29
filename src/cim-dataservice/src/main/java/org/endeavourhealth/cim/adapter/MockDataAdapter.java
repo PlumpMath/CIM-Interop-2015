@@ -28,6 +28,7 @@ public class MockDataAdapter implements IDataAdapter {
 
     public String getPatientByNHSNumber(String nhsNumber) {
         HttpClient client = HttpClientBuilder.create().build();
+        // TODO: Implement correct comms to mock CMS
         HttpGet request = new HttpGet("http://localhost:8081/GetEMISPatientByNhsNumber/");
 
         try {
