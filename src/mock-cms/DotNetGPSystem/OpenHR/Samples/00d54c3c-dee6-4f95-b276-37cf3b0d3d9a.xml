@@ -1,0 +1,2804 @@
+<?xml version="1.0"?>
+<openHealthRecord xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" schemaVersion="1.3.0" xmlns="http://www.e-mis.com/emisopen">
+  <id>00d54c3c-dee6-4f95-b276-37cf3b0d3d9a</id>
+  <creationTime>2010-05-09T00:00:00+01:00</creationTime>
+  <author>
+    <system>
+      <systemType>EMISWEB</systemType>
+    </system>
+    <organisation>4A3EA1CF-7F01-4F61-9654-B07DD51A34F8</organisation>
+  </author>
+  <contentSpecification>
+    <specification>37241000000102</specification>
+  </contentSpecification>
+  <adminDomain>
+    <person updateMode="add">
+      <id>00d54c3c-dee6-4f95-b276-37cf3b0d3d9a</id>
+      <birthDate>2007-07-09</birthDate>
+      <sex>M</sex>
+      <forenames>Frederick</forenames>
+      <callingName>Frederick</callingName>
+      <surname>O'Connor</surname>
+      <previousSurname>Blake</previousSurname>
+      <title>Master</title>
+      <address updateMode="add">
+        <id>51e3c177-a12c-427b-b909-b8d6125ac419</id>
+        <postCode>BD14</postCode>
+        <houseNameFlat />
+        <street>5 Chester Road</street>
+        <village>The Holes</village>
+        <town>West Hardwick</town>
+        <county>West Yorkshire</county>
+      </address>
+      <contact updateMode="add">
+        <id>f5ed144f-e977-d6f7-847d-d280571ea423</id>
+        <contactType>H</contactType>
+        <value>01670096937</value>
+      </contact>
+    </person>
+    <person updateMode="add">
+      <id>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</id>
+      <sex>U</sex>
+      <forenames>Robert</forenames>
+      <surname>Burns</surname>
+      <title>Dr</title>
+    </person>
+    <person updateMode="add">
+      <id>316d34eb-f495-4c91-b814-364c69b1a541</id>
+      <sex>U</sex>
+      <forenames>Sharon</forenames>
+      <surname>Cook</surname>
+      <title>Mrs</title>
+    </person>
+    <person updateMode="add">
+      <id>756ce7b3-6e45-4693-b147-65ae05936534</id>
+      <sex>U</sex>
+      <forenames>Carol</forenames>
+      <surname>Fitzgerald</surname>
+      <title>Mrs</title>
+    </person>
+    <person updateMode="add">
+      <id>6cf19e3c-fbc4-4430-be96-5b98a94e12ab</id>
+      <sex>U</sex>
+      <forenames>Kathleen</forenames>
+      <surname>Bray</surname>
+      <title>Mrs</title>
+    </person>
+    <person updateMode="add">
+      <id>a21d7adb-b000-49fb-b2b3-5ec9c9d2ed49</id>
+      <sex>U</sex>
+      <forenames>Anonymous</forenames>
+      <surname>User</surname>
+      <title>Mr</title>
+    </person>
+    <patient updateMode="add">
+      <id>00d54c3c-dee6-4f95-b276-37cf3b0d3d9a</id>
+      <patientIdentifier updateMode="add">
+        <identifierType>NHS</identifierType>
+        <value>5464288799</value>
+      </patientIdentifier>
+      <patientPerson>00d54c3c-dee6-4f95-b276-37cf3b0d3d9a</patientPerson>
+      <registeredGPUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</registeredGPUserInRole>
+      <usualGPUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</usualGPUserInRole>
+      <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
+      <caseloadPatient updateMode="add">
+        <id>00d54c3c-dee6-4f95-b276-37cf3b0d3d9a</id>
+        <organisation>4a3ea1cf-7f01-4f61-9654-b07dd51a34f8</organisation>
+        <dateRecorded>2007-12-17T00:00:00</dateRecorded>
+        <patientStatus>
+          <status>6</status>
+          <caseloadStatus>REG</caseloadStatus>
+        </patientStatus>
+        <patientType dummy="false" userDefined="false">REG</patientType>
+        <property updateMode="add">
+          <name>FM</name>
+          <value>0</value>
+        </property>
+        <property updateMode="add">
+          <name>FZ</name>
+          <value>0</value>
+        </property>
+        <property updateMode="add">
+          <name>WM</name>
+          <value>0</value>
+        </property>
+        <emisPatientNumber>5267</emisPatientNumber>
+      </caseloadPatient>
+      <caseloadPatientHistory updateMode="add">
+        <id>ba8756d4-8ae3-4b60-8c66-66afb24383ed</id>
+        <organisation>4a3ea1cf-7f01-4f61-9654-b07dd51a34f8</organisation>
+        <dateRecorded>2007-12-10T00:00:00</dateRecorded>
+        <patientStatus>
+          <status>5</status>
+          <caseloadStatus>REG</caseloadStatus>
+        </patientStatus>
+        <patientType dummy="false" userDefined="false">REG</patientType>
+        <property updateMode="add">
+          <name>FM</name>
+          <value>0</value>
+        </property>
+        <property updateMode="add">
+          <name>FZ</name>
+          <value>0</value>
+        </property>
+        <property updateMode="add">
+          <name>WM</name>
+          <value>0</value>
+        </property>
+      </caseloadPatientHistory>
+      <caseloadPatientHistory updateMode="add">
+        <id>bc4a9350-2eea-46d5-8221-e5630f61ea17</id>
+        <organisation>4a3ea1cf-7f01-4f61-9654-b07dd51a34f8</organisation>
+        <dateRecorded>2007-12-05T00:00:00</dateRecorded>
+        <patientStatus>
+          <status>4</status>
+          <caseloadStatus>REG</caseloadStatus>
+        </patientStatus>
+        <patientType dummy="false" userDefined="false">REG</patientType>
+        <property updateMode="add">
+          <name>FM</name>
+          <value>0</value>
+        </property>
+        <property updateMode="add">
+          <name>FZ</name>
+          <value>0</value>
+        </property>
+        <property updateMode="add">
+          <name>WM</name>
+          <value>0</value>
+        </property>
+      </caseloadPatientHistory>
+      <caseloadPatientHistory updateMode="add">
+        <id>d66f8a22-9017-46c7-a78a-630c48c615c9</id>
+        <organisation>4a3ea1cf-7f01-4f61-9654-b07dd51a34f8</organisation>
+        <dateRecorded>2007-12-04T00:00:00</dateRecorded>
+        <patientStatus>
+          <status>3</status>
+          <caseloadStatus>REG</caseloadStatus>
+        </patientStatus>
+        <patientType dummy="false" userDefined="false">REG</patientType>
+        <property updateMode="add">
+          <name>FM</name>
+          <value>0</value>
+        </property>
+        <property updateMode="add">
+          <name>FZ</name>
+          <value>0</value>
+        </property>
+        <property updateMode="add">
+          <name>WM</name>
+          <value>0</value>
+        </property>
+      </caseloadPatientHistory>
+    </patient>
+    <organisation updateMode="add">
+      <id>decd2779-b54b-4a38-8630-0257c7d3e03a</id>
+      <name>National Health Service</name>
+      <organisationType codeSystem="2.16.840.1.113883.2.1.6.2" displayName="National Health Service" code="" />
+      <parentOrganisation>f4d020c6-eaff-4528-83ba-e81a1cfd30dc</parentOrganisation>
+      <openDate>2006-01-01T00:00:00</openDate>
+    </organisation>
+    <organisation updateMode="add">
+      <id>3371c8e3-1984-409b-b61a-920a0b992c1e</id>
+      <name>Hyde Park Hospital</name>
+      <organisationType codeSystem="2.16.840.1.113883.2.1.6.2" displayName="Hospital" code="" />
+      <speciality codeSystem="2.16.840.1.113883.2.1.6.2" displayName="General Medicine" code="" />
+      <nationalPracticeCode>V81999</nationalPracticeCode>
+      <mainLocation>3371c8e3-1984-409b-b61a-920a0b992c1e</mainLocation>
+      <locations updateMode="add">
+        <location>3371c8e3-1984-409b-b61a-920a0b992c1e</location>
+      </locations>
+      <parentOrganisation>f4d020c6-eaff-4528-83ba-e81a1cfd30dc</parentOrganisation>
+      <openDate>2008-10-22T17:51:43</openDate>
+    </organisation>
+    <organisation updateMode="add">
+      <id>269b539e-0043-45f5-8ec5-92b8d6021e4f</id>
+      <name>Leeds PCT</name>
+      <organisationType codeSystem="2.16.840.1.113883.2.1.6.2" displayName="Primary Care Trust" code="" />
+      <cdb>50006</cdb>
+      <nationalPracticeCode>5N1</nationalPracticeCode>
+      <parentOrganisation>a1c838e9-b485-49b6-a6f8-4ad0d3c6b294</parentOrganisation>
+      <openDate>2006-10-01T00:00:00</openDate>
+    </organisation>
+    <organisation updateMode="add">
+      <id>4a3ea1cf-7f01-4f61-9654-b07dd51a34f8</id>
+      <name>EMIS PCS Test Surgery 2</name>
+      <organisationType codeSystem="2.16.840.1.113883.2.1.6.2" displayName="General Practice" code="" />
+      <speciality codeSystem="2.16.840.1.113883.2.1.6.2" displayName="General Medical Practice" code="" />
+      <cdb>50003</cdb>
+      <nationalPracticeCode>T00003</nationalPracticeCode>
+      <mainLocation>187011f3-aa9d-4419-89b7-d461953f9eb0</mainLocation>
+      <locations updateMode="add">
+        <location>187011f3-aa9d-4419-89b7-d461953f9eb0</location>
+      </locations>
+      <parentOrganisation>a091aefc-7548-469d-8abc-129516e99795</parentOrganisation>
+      <openDate>2008-10-22T17:10:38.013</openDate>
+    </organisation>
+    <organisation updateMode="add">
+      <id>ed5b90df-2766-4c27-a840-cc440a51517f</id>
+      <name>Yorkshire and The Humber Strategic Health Authority</name>
+      <organisationType codeSystem="2.16.840.1.113883.2.1.6.2" displayName="Strategic Health Authority" code="" />
+      <nationalPracticeCode>Q32</nationalPracticeCode>
+      <mainLocation>8c7a32ed-5db3-49c5-ae54-482b4d26b0e2</mainLocation>
+      <locations updateMode="add">
+        <location>8c7a32ed-5db3-49c5-ae54-482b4d26b0e2</location>
+      </locations>
+      <parentOrganisation>decd2779-b54b-4a38-8630-0257c7d3e03a</parentOrganisation>
+      <openDate>2006-07-01T00:00:00</openDate>
+    </organisation>
+    <organisation updateMode="add">
+      <id>f4d020c6-eaff-4528-83ba-e81a1cfd30dc</id>
+      <name>National</name>
+      <organisationType codeSystem="2.16.840.1.113883.2.1.6.2" displayName="EMIS" code="" />
+      <cdb>-2000</cdb>
+      <openDate>2006-10-11T00:00:00</openDate>
+    </organisation>
+    <location updateMode="add">
+      <id>8c7a32ed-5db3-49c5-ae54-482b4d26b0e2</id>
+      <name>Yorkshire and The Humber Strategic Health Authority</name>
+      <locationType codeSystem="2.16.840.1.113883.2.1.6.2" displayName="Strategic Health Authority" code="" />
+      <notes />
+      <openDate>2006-07-01T00:00:00</openDate>
+      <address>
+        <id>95735a6d-c4fe-458d-8814-3074706ab899</id>
+        <postCode>S10 3TG</postCode>
+        <houseNameFlat>Fulwood House</houseNameFlat>
+        <street>5 Old Fulwood Road</street>
+        <village />
+        <town>Sheffield</town>
+        <county>South Yorkshire</county>
+      </address>
+    </location>
+    <location updateMode="add">
+      <id>3371c8e3-1984-409b-b61a-920a0b992c1e</id>
+      <name>Hyde Park Hospital</name>
+      <locationType codeSystem="2.16.840.1.113883.2.1.6.2" displayName="Hospital" code="" />
+      <notes />
+      <openDate>1899-01-01T00:00:00</openDate>
+      <contact updateMode="add">
+        <id>3371c8e3-1984-409b-b61a-920a0b992c1e</id>
+        <contactType>W</contactType>
+        <value>0161 428 3656</value>
+      </contact>
+    </location>
+    <location updateMode="add">
+      <id>187011f3-aa9d-4419-89b7-d461953f9eb0</id>
+      <name>EMIS PCS Test Surgery 2</name>
+      <locationType codeSystem="2.16.840.1.113883.2.1.6.2" displayName="Main Surgery" code="" />
+      <notes />
+      <openDate>2009-02-16T15:54:57.88</openDate>
+      <address>
+        <id>8992586b-ad29-44a4-a2eb-bb6db29cc9fa</id>
+        <postCode>LS19 6BA</postCode>
+        <houseNameFlat>Fulford Grange, Micklefield Lane</houseNameFlat>
+        <street>Rawdon</street>
+        <village>Rawdon</village>
+        <town>LEEDS</town>
+        <county>Yorkshire</county>
+      </address>
+      <contact updateMode="add">
+        <id>187011f3-aa9d-4419-89b7-d461953f9eb0</id>
+        <contactType>W</contactType>
+        <value>01133800000</value>
+      </contact>
+    </location>
+    <user updateMode="add">
+      <id>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</id>
+      <userPerson>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</userPerson>
+      <mnemonic>15103</mnemonic>
+      <loginName>BDCC660329193-a8f2-4</loginName>
+      <active>false</active>
+    </user>
+    <user updateMode="add">
+      <id>316d34eb-f495-4c91-b814-364c69b1a541</id>
+      <userPerson>316d34eb-f495-4c91-b814-364c69b1a541</userPerson>
+      <mnemonic>D7A97</mnemonic>
+      <loginName>DE80637589703-94ad-4</loginName>
+      <active>true</active>
+    </user>
+    <user updateMode="add">
+      <id>6cf19e3c-fbc4-4430-be96-5b98a94e12ab</id>
+      <userPerson>6cf19e3c-fbc4-4430-be96-5b98a94e12ab</userPerson>
+      <mnemonic>E7484</mnemonic>
+      <loginName>B69EEc0f40024-5d46-4</loginName>
+      <active>false</active>
+    </user>
+    <user updateMode="add">
+      <id>a21d7adb-b000-49fb-b2b3-5ec9c9d2ed49</id>
+      <userPerson>a21d7adb-b000-49fb-b2b3-5ec9c9d2ed49</userPerson>
+      <mnemonic>ANON</mnemonic>
+      <loginName>ANONda4fc305-a8d7-48</loginName>
+      <active>true</active>
+    </user>
+    <user updateMode="add">
+      <id>756ce7b3-6e45-4693-b147-65ae05936534</id>
+      <userPerson>756ce7b3-6e45-4693-b147-65ae05936534</userPerson>
+      <mnemonic>7DD8B</mnemonic>
+      <loginName>5A44Edba095c0-4cc8-4</loginName>
+      <active>true</active>
+    </user>
+    <role updateMode="add">
+      <id>ea801c6a-425c-083f-6b9e-83123fcb829c</id>
+      <name>Receptionist Al-shifa</name>
+      <userCategory codeSystem="2.16.840.1.113883.2.1.6.2" displayName="Includes 'Administrative Assistant'. 'Ward Clerk' (an NCRS type role) is also available." code="" />
+      <organisation>4a3ea1cf-7f01-4f61-9654-b07dd51a34f8</organisation>
+      <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
+    </role>
+    <role updateMode="add">
+      <id>9039c901-2d2b-4ca3-b125-b7773e1b8555</id>
+      <name>Other</name>
+      <userCategory codeSystem="2.16.840.1.113883.2.1.6.2" displayName="Includes 'Nursing Auxiliaries'. Support staff without formal NVQ or local HCA training should be classed as Healthcare Support Worker. (Staff acting as helpers or assistants to therapists, scientists and technical staff should be classed as 'Assistant/Technician'.)" code="" />
+      <organisation>3371c8e3-1984-409b-b61a-920a0b992c1e</organisation>
+      <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
+    </role>
+    <role updateMode="add">
+      <id>63115222-7fad-9016-12ed-1091def75a50</id>
+      <name>Principal</name>
+      <userCategory codeSystem="2.16.840.1.113883.2.1.6.2" displayName="General Medical Practitioner" code="" />
+      <organisation>4a3ea1cf-7f01-4f61-9654-b07dd51a34f8</organisation>
+      <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
+    </role>
+    <userInRole updateMode="add">
+      <id>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</id>
+      <user>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</user>
+      <role>63115222-7fad-9016-12ed-1091def75a50</role>
+      <contractualRelationship>E</contractualRelationship>
+      <contractStart>2003-12-13</contractStart>
+      <filingConfidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</filingConfidentialityPolicy>
+      <userIdentifier updateMode="add">
+        <identifierType>GP</identifierType>
+        <value>3312182</value>
+      </userIdentifier>
+      <userIdentifier updateMode="add">
+        <identifierType>PRES</identifierType>
+        <value>464471</value>
+      </userIdentifier>
+      <userIdentifier updateMode="add">
+        <identifierType>NAT</identifierType>
+        <value>G4499052</value>
+      </userIdentifier>
+    </userInRole>
+    <userInRole updateMode="add">
+      <id>316d34eb-f495-4c91-b814-364c69b1a541</id>
+      <user>316d34eb-f495-4c91-b814-364c69b1a541</user>
+      <role>ea801c6a-425c-083f-6b9e-83123fcb829c</role>
+      <contractualRelationship>E</contractualRelationship>
+      <contractStart>2003-12-18</contractStart>
+      <filingConfidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</filingConfidentialityPolicy>
+      <userIdentifier updateMode="add">
+        <identifierType>NAT</identifierType>
+        <value>G7950234</value>
+      </userIdentifier>
+    </userInRole>
+    <userInRole updateMode="add">
+      <id>6cf19e3c-fbc4-4430-be96-5b98a94e12ab</id>
+      <user>6cf19e3c-fbc4-4430-be96-5b98a94e12ab</user>
+      <role>ea801c6a-425c-083f-6b9e-83123fcb829c</role>
+      <contractualRelationship>E</contractualRelationship>
+      <contractStart>2005-12-30</contractStart>
+      <filingConfidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</filingConfidentialityPolicy>
+      <userIdentifier updateMode="add">
+        <identifierType>NAT</identifierType>
+        <value>G8199005</value>
+      </userIdentifier>
+    </userInRole>
+    <userInRole updateMode="add">
+      <id>a21d7adb-b000-49fb-b2b3-5ec9c9d2ed49</id>
+      <user>a21d7adb-b000-49fb-b2b3-5ec9c9d2ed49</user>
+      <role>9039c901-2d2b-4ca3-b125-b7773e1b8555</role>
+      <contractualRelationship>E</contractualRelationship>
+      <contractStart>1899-01-01</contractStart>
+      <filingConfidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</filingConfidentialityPolicy>
+    </userInRole>
+    <userInRole updateMode="add">
+      <id>756ce7b3-6e45-4693-b147-65ae05936534</id>
+      <user>756ce7b3-6e45-4693-b147-65ae05936534</user>
+      <role>ea801c6a-425c-083f-6b9e-83123fcb829c</role>
+      <contractualRelationship>E</contractualRelationship>
+      <contractStart>2005-11-21</contractStart>
+      <filingConfidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</filingConfidentialityPolicy>
+      <userIdentifier updateMode="add">
+        <identifierType>NAT</identifierType>
+        <value>G2481571</value>
+      </userIdentifier>
+    </userInRole>
+    <confidentialityPolicy updateMode="add">
+      <id>d713d67d-571d-47c4-bacc-0e1d40310326</id>
+      <name>Unrestricted</name>
+      <notificationType>NO</notificationType>
+      <showHiddenRecordIndicator>false</showHiddenRecordIndicator>
+      <organisation>f4d020c6-eaff-4528-83ba-e81a1cfd30dc</organisation>
+      <restrictToOrganisation>false</restrictToOrganisation>
+    </confidentialityPolicy>
+  </adminDomain>
+  <healthDomain>
+    <encounter updateMode="add">
+      <id>ce85632f-cb8e-4cf7-b4ea-97acb983f946</id>
+      <patient>00d54c3c-dee6-4f95-b276-37cf3b0d3d9a</patient>
+      <effectiveTime datepart="YMD" value="2007-06-16T00:00:00" />
+      <availabilityTimeStamp>2007-12-04T00:00:00</availabilityTimeStamp>
+      <authorisingUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</authorisingUserInRole>
+      <enteredByUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</enteredByUserInRole>
+      <organisation>4a3ea1cf-7f01-4f61-9654-b07dd51a34f8</organisation>
+      <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
+      <consultationType>GP</consultationType>
+      <locationType codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Main Surgery" code="1503371000006105" />
+      <duration unit="D" value="0" />
+      <travelTime unit="D" value="0" />
+      <component updateMode="add">
+        <event>7e261c0a-9790-4652-a57d-a7daa63ae66c</event>
+        <problemPage>0</problemPage>
+        <heading codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Problem" code="" />
+      </component>
+      <component updateMode="add">
+        <event>5751c233-062b-4f50-a5a8-cb7f18228b2c</event>
+        <problemPage>0</problemPage>
+        <heading codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Comment" code="37331000000100" />
+      </component>
+    </encounter>
+    <encounter updateMode="add">
+      <id>2495e602-ff2a-462a-a2c1-490216dfd6ed</id>
+      <patient>00d54c3c-dee6-4f95-b276-37cf3b0d3d9a</patient>
+      <effectiveTime datepart="YMD" value="2007-07-06T00:00:00" />
+      <availabilityTimeStamp>2007-12-24T00:00:00</availabilityTimeStamp>
+      <authorisingUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</authorisingUserInRole>
+      <enteredByUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</enteredByUserInRole>
+      <organisation>4a3ea1cf-7f01-4f61-9654-b07dd51a34f8</organisation>
+      <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
+      <consultationType>GP</consultationType>
+      <locationType codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Main Surgery" code="1503371000006105" />
+      <duration unit="D" value="0" />
+      <travelTime unit="D" value="0" />
+      <component updateMode="add">
+        <event>b75eaff2-59a0-4881-a61d-6c1ff0fffd19</event>
+        <problemPage>0</problemPage>
+        <heading codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Problem" code="" />
+      </component>
+      <component updateMode="add">
+        <event>54961c46-0939-4560-873c-d491f43c24b6</event>
+        <problemPage>0</problemPage>
+        <heading codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Comment" code="37331000000100" />
+      </component>
+    </encounter>
+    <encounter updateMode="add">
+      <id>5741ef38-e6cd-48ea-b570-59fdaf76924a</id>
+      <patient>00d54c3c-dee6-4f95-b276-37cf3b0d3d9a</patient>
+      <effectiveTime datepart="YMD" value="2007-07-22T00:00:00" />
+      <availabilityTimeStamp>2008-01-09T00:00:00</availabilityTimeStamp>
+      <authorisingUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</authorisingUserInRole>
+      <enteredByUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</enteredByUserInRole>
+      <organisation>4a3ea1cf-7f01-4f61-9654-b07dd51a34f8</organisation>
+      <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
+      <consultationType>GP</consultationType>
+      <locationType codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Main Surgery" code="1503371000006105" />
+      <duration unit="D" value="0" />
+      <travelTime unit="D" value="0" />
+      <component updateMode="add">
+        <event>33e3f166-5bea-4087-b5dd-1723baf21d70</event>
+        <problemPage>0</problemPage>
+        <heading codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Examination" code="394831002" />
+      </component>
+      <component updateMode="add">
+        <event>4e305178-a359-4f4b-a10a-3b93d5c4322a</event>
+        <problemPage>0</problemPage>
+        <heading codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Examination" code="394831002" />
+      </component>
+      <component updateMode="add">
+        <event>ee39c6ee-3940-4c2e-a429-710707e9e7aa</event>
+        <problemPage>0</problemPage>
+        <heading codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Comment" code="37331000000100" />
+      </component>
+      <component updateMode="add">
+        <event>6f0b881b-8937-4582-9fbd-aa5d1ee6273b</event>
+        <problemPage>0</problemPage>
+        <heading codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Examination" code="394831002" />
+      </component>
+      <component updateMode="add">
+        <event>c46721ac-3c52-4598-8191-e84e2486a30f</event>
+        <problemPage>0</problemPage>
+        <heading codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Examination" code="394831002" />
+      </component>
+      <component updateMode="add">
+        <event>a7301241-bb3e-48cb-b921-9e365458f465</event>
+        <problemPage>0</problemPage>
+        <heading codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Examination" code="394831002" />
+      </component>
+      <component updateMode="add">
+        <event>1e04082b-eac6-4ee7-aacd-1c0adcb17488</event>
+        <problemPage>0</problemPage>
+        <heading codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Social" code="" />
+      </component>
+      <component updateMode="add">
+        <event>ae2d2dcd-0a5c-4b82-a3a1-4214b9c5ef5f</event>
+        <problemPage>0</problemPage>
+        <heading codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Examination" code="394831002" />
+      </component>
+      <component updateMode="add">
+        <event>d7a3b8a7-e0e2-4c76-8fa6-6467303913ee</event>
+        <problemPage>0</problemPage>
+        <heading codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Comment" code="37331000000100" />
+      </component>
+      <component updateMode="add">
+        <event>9ab73020-ac90-4a5b-8dc4-ad94d96c2ba2</event>
+        <problemPage>0</problemPage>
+        <heading codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Examination" code="394831002" />
+      </component>
+      <component updateMode="add">
+        <event>268986eb-34a9-4f70-b74f-0f3183590434</event>
+        <problemPage>0</problemPage>
+        <heading codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Examination" code="394831002" />
+      </component>
+      <component updateMode="add">
+        <event>7a9eb195-e99e-42a4-b646-92d9e779f176</event>
+        <problemPage>0</problemPage>
+        <heading codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Examination" code="394831002" />
+      </component>
+      <component updateMode="add">
+        <event>2a49d553-6dc3-4a34-a7ab-460d6f835005</event>
+        <problemPage>0</problemPage>
+        <heading codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Additional" code="394830001" />
+      </component>
+      <component updateMode="add">
+        <event>e05a7013-b5dd-47fe-be26-1293345df805</event>
+        <problemPage>0</problemPage>
+        <heading codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Examination" code="394831002" />
+      </component>
+      <component updateMode="add">
+        <event>fe787ece-2701-43b8-9d36-41567bea090d</event>
+        <problemPage>0</problemPage>
+        <heading codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Examination" code="394831002" />
+      </component>
+      <component updateMode="add">
+        <event>7fb880c9-8402-45fe-b86f-732f512c0e0c</event>
+        <problemPage>0</problemPage>
+        <heading codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Examination" code="394831002" />
+      </component>
+      <component updateMode="add">
+        <event>38008e6a-339d-450a-91cb-69a4c8e0c247</event>
+        <problemPage>0</problemPage>
+        <heading codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Examination" code="394831002" />
+      </component>
+      <component updateMode="add">
+        <event>c5b83ab8-2b79-4f78-836e-340386fb1f25</event>
+        <problemPage>0</problemPage>
+        <heading codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Examination" code="394831002" />
+      </component>
+      <component updateMode="add">
+        <event>c4843856-7736-4395-9f8d-ba36bca77b42</event>
+        <problemPage>0</problemPage>
+        <heading codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Examination" code="394831002" />
+      </component>
+      <component updateMode="add">
+        <event>12151864-b3a8-44ff-bdad-edd9e1431451</event>
+        <problemPage>0</problemPage>
+        <heading codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Examination" code="394831002" />
+      </component>
+      <component updateMode="add">
+        <event>3eb8b296-c953-476d-b826-ce4a85a0c2ab</event>
+        <problemPage>0</problemPage>
+        <heading codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Examination" code="394831002" />
+      </component>
+      <component updateMode="add">
+        <event>7a266e6f-2ead-405c-9b1c-b35804f34352</event>
+        <problemPage>0</problemPage>
+        <heading codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Examination" code="394831002" />
+      </component>
+    </encounter>
+    <encounter updateMode="add">
+      <id>a79e0758-55bf-43e8-932a-1053ee7610df</id>
+      <patient>00d54c3c-dee6-4f95-b276-37cf3b0d3d9a</patient>
+      <effectiveTime datepart="YMD" value="2007-07-29T00:00:00" />
+      <availabilityTimeStamp>2008-01-16T00:00:00</availabilityTimeStamp>
+      <authorisingUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</authorisingUserInRole>
+      <enteredByUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</enteredByUserInRole>
+      <organisation>4a3ea1cf-7f01-4f61-9654-b07dd51a34f8</organisation>
+      <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
+      <consultationType>GP</consultationType>
+      <locationType codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Main Surgery" code="1503371000006105" />
+      <duration unit="D" value="0" />
+      <travelTime unit="D" value="0" />
+      <component updateMode="add">
+        <event>db614c12-57a4-4ced-8a17-3c7f51f169ab</event>
+        <problemPage>0</problemPage>
+        <heading codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Medication" code="" />
+      </component>
+      <component updateMode="add">
+        <event>96f3072b-545a-439e-a2e2-713b0f356f4b</event>
+        <problemPage>0</problemPage>
+        <heading codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Examination" code="394831002" />
+      </component>
+      <component updateMode="add">
+        <event>4279efbe-10d3-4bd4-887f-a31015687f3b</event>
+        <problemPage>0</problemPage>
+        <heading codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="History" code="15621000000105" />
+      </component>
+      <component updateMode="add">
+        <event>97b1ae85-2816-4ab3-a593-271831af1d64</event>
+        <problemPage>0</problemPage>
+        <heading codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Medication" code="" />
+      </component>
+    </encounter>
+    <encounter updateMode="add">
+      <id>622b1bd2-5d11-47fa-bc84-e00a9e7bd5a8</id>
+      <patient>00d54c3c-dee6-4f95-b276-37cf3b0d3d9a</patient>
+      <effectiveTime datepart="YMD" value="2007-08-26T00:00:00" />
+      <availabilityTimeStamp>2008-02-14T00:00:00</availabilityTimeStamp>
+      <authorisingUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</authorisingUserInRole>
+      <enteredByUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</enteredByUserInRole>
+      <organisation>4a3ea1cf-7f01-4f61-9654-b07dd51a34f8</organisation>
+      <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
+      <consultationType>GP</consultationType>
+      <locationType codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Main Surgery" code="1503371000006105" />
+      <duration unit="D" value="0" />
+      <travelTime unit="D" value="0" />
+      <component updateMode="add">
+        <event>6d1c5c69-e81e-408d-b734-bb41f10d2b05</event>
+        <problemPage>0</problemPage>
+        <heading codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Comment" code="37331000000100" />
+      </component>
+      <component updateMode="add">
+        <event>ffcea1f8-f59a-4194-99f4-ccc4cf298d3c</event>
+        <problemPage>0</problemPage>
+        <heading codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Comment" code="37331000000100" />
+      </component>
+    </encounter>
+    <encounter updateMode="add">
+      <id>18a011f3-4fe0-44a3-bc3e-1bc343ae5db5</id>
+      <patient>00d54c3c-dee6-4f95-b276-37cf3b0d3d9a</patient>
+      <effectiveTime datepart="YMD" value="2007-09-14T00:00:00" />
+      <availabilityTimeStamp>2008-03-03T00:00:00</availabilityTimeStamp>
+      <authorisingUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</authorisingUserInRole>
+      <enteredByUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</enteredByUserInRole>
+      <organisation>4a3ea1cf-7f01-4f61-9654-b07dd51a34f8</organisation>
+      <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
+      <consultationType>GP</consultationType>
+      <locationType codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Main Surgery" code="1503371000006105" />
+      <duration unit="D" value="0" />
+      <travelTime unit="D" value="0" />
+      <component updateMode="add">
+        <event>9f148d46-53b2-4d90-bac9-405f204a0a63</event>
+        <problemPage>0</problemPage>
+        <heading codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Problem" code="" />
+      </component>
+      <component updateMode="add">
+        <event>d7d1bdc4-945a-4707-8b4a-2e173e4871c4</event>
+        <problemPage>0</problemPage>
+        <heading codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Medication" code="" />
+      </component>
+    </encounter>
+    <encounter updateMode="add">
+      <id>4fdd0f9c-a9e5-40ed-8027-43efb82d8b0d</id>
+      <patient>00d54c3c-dee6-4f95-b276-37cf3b0d3d9a</patient>
+      <effectiveTime datepart="YMD" value="2007-09-30T00:00:00" />
+      <availabilityTimeStamp>2008-03-19T00:00:00</availabilityTimeStamp>
+      <authorisingUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</authorisingUserInRole>
+      <enteredByUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</enteredByUserInRole>
+      <organisation>4a3ea1cf-7f01-4f61-9654-b07dd51a34f8</organisation>
+      <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
+      <consultationType>GP</consultationType>
+      <locationType codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Main Surgery" code="1503371000006105" />
+      <duration unit="D" value="0" />
+      <travelTime unit="D" value="0" />
+      <component updateMode="add">
+        <event>00849d1c-26dd-4f9e-91ab-5ea4c0de319a</event>
+        <problemPage>0</problemPage>
+        <heading codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Comment" code="37331000000100" />
+      </component>
+      <component updateMode="add">
+        <event>b5b27b3a-0fd3-4fb0-b1a5-c1143dd9b29b</event>
+        <problemPage>0</problemPage>
+        <heading codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Comment" code="37331000000100" />
+      </component>
+      <component updateMode="add">
+        <event>f32bdb63-87a2-4acd-98b8-139c3cb034d0</event>
+        <problemPage>0</problemPage>
+        <heading codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Comment" code="37331000000100" />
+      </component>
+    </encounter>
+    <encounter updateMode="add">
+      <id>bf0af545-53c7-4ced-81a9-83b0f01cc82e</id>
+      <patient>00d54c3c-dee6-4f95-b276-37cf3b0d3d9a</patient>
+      <effectiveTime datepart="YMD" value="2007-10-12T00:00:00" />
+      <availabilityTimeStamp>2008-03-31T00:00:00</availabilityTimeStamp>
+      <authorisingUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</authorisingUserInRole>
+      <enteredByUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</enteredByUserInRole>
+      <organisation>4a3ea1cf-7f01-4f61-9654-b07dd51a34f8</organisation>
+      <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
+      <consultationType>GP</consultationType>
+      <locationType codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Main Surgery" code="1503371000006105" />
+      <duration unit="D" value="0" />
+      <travelTime unit="D" value="0" />
+      <component updateMode="add">
+        <event>731ccac7-9582-42fe-98fe-f876957fa53d</event>
+        <problemPage>0</problemPage>
+        <heading codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Examination" code="394831002" />
+      </component>
+      <component updateMode="add">
+        <event>7bad33bb-6c35-47c1-a71c-3c19e9490d45</event>
+        <problemPage>0</problemPage>
+        <heading codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="History" code="15621000000105" />
+      </component>
+      <component updateMode="add">
+        <event>89b75be8-5af6-4d0b-87a8-9bac4ec4f6ca</event>
+        <problemPage>0</problemPage>
+        <heading codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Medication" code="" />
+      </component>
+      <component updateMode="add">
+        <event>4563c49b-4a97-415f-b9f7-e771de1e5a54</event>
+        <problemPage>0</problemPage>
+        <heading codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Problem" code="" />
+      </component>
+    </encounter>
+    <encounter updateMode="add">
+      <id>088c5653-087c-4b6e-bb7b-ce96e3ce1dc9</id>
+      <patient>00d54c3c-dee6-4f95-b276-37cf3b0d3d9a</patient>
+      <effectiveTime datepart="YMD" value="2007-10-27T00:00:00" />
+      <availabilityTimeStamp>2008-04-15T00:00:00</availabilityTimeStamp>
+      <authorisingUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</authorisingUserInRole>
+      <enteredByUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</enteredByUserInRole>
+      <organisation>4a3ea1cf-7f01-4f61-9654-b07dd51a34f8</organisation>
+      <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
+      <consultationType>GP</consultationType>
+      <locationType codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Main Surgery" code="1503371000006105" />
+      <duration unit="D" value="0" />
+      <travelTime unit="D" value="0" />
+      <component updateMode="add">
+        <event>b132242e-59ba-4743-9946-cdf2c3470cc1</event>
+        <problemPage>0</problemPage>
+        <heading codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Medication" code="" />
+      </component>
+      <component updateMode="add">
+        <event>93b9fd28-09bf-4d04-9e71-e06af283ef2a</event>
+        <problemPage>0</problemPage>
+        <heading codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Problem" code="" />
+      </component>
+    </encounter>
+    <encounter updateMode="add">
+      <id>38700d26-2d40-4e6a-ac65-07280f080708</id>
+      <patient>00d54c3c-dee6-4f95-b276-37cf3b0d3d9a</patient>
+      <effectiveTime datepart="YMD" value="2007-12-21T00:00:00" />
+      <availabilityTimeStamp>2008-06-09T00:00:00</availabilityTimeStamp>
+      <authorisingUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</authorisingUserInRole>
+      <enteredByUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</enteredByUserInRole>
+      <organisation>4a3ea1cf-7f01-4f61-9654-b07dd51a34f8</organisation>
+      <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
+      <consultationType>GP</consultationType>
+      <locationType codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Main Surgery" code="1503371000006105" />
+      <duration unit="D" value="0" />
+      <travelTime unit="D" value="0" />
+      <component updateMode="add">
+        <event>68a5a8b6-c1a5-4f6c-8219-470823fc1fdb</event>
+        <problemPage>0</problemPage>
+        <heading codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Medication" code="" />
+      </component>
+      <component updateMode="add">
+        <event>6b04c39f-42cb-43cb-b2bf-6b9cd3eebce5</event>
+        <problemPage>0</problemPage>
+        <heading codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Medication" code="" />
+      </component>
+      <component updateMode="add">
+        <event>e3e75caf-5b16-453e-afda-33512ff48fba</event>
+        <problemPage>0</problemPage>
+        <heading codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Problem" code="" />
+      </component>
+    </encounter>
+    <encounter updateMode="add">
+      <id>ac2887dc-efee-4c4b-9434-38451bdc9a25</id>
+      <patient>00d54c3c-dee6-4f95-b276-37cf3b0d3d9a</patient>
+      <effectiveTime datepart="YMD" value="2008-01-13T00:00:00" />
+      <availabilityTimeStamp>2008-07-15T00:00:00</availabilityTimeStamp>
+      <authorisingUserInRole>316d34eb-f495-4c91-b814-364c69b1a541</authorisingUserInRole>
+      <enteredByUserInRole>316d34eb-f495-4c91-b814-364c69b1a541</enteredByUserInRole>
+      <organisation>4a3ea1cf-7f01-4f61-9654-b07dd51a34f8</organisation>
+      <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
+      <consultationType>GP</consultationType>
+      <locationType codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Externally Entered" code="37291000000107" />
+      <duration unit="D" value="0" />
+      <travelTime unit="D" value="0" />
+      <component updateMode="add">
+        <event>153d2449-80f4-44d5-9e08-635cd0d08a64</event>
+        <problemPage>1</problemPage>
+        <heading codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Additional" code="394830001" />
+      </component>
+    </encounter>
+    <encounter updateMode="add">
+      <id>ba3a67fd-0ab5-4692-b981-9110b85b4e02</id>
+      <patient>00d54c3c-dee6-4f95-b276-37cf3b0d3d9a</patient>
+      <effectiveTime datepart="YMD" value="2008-01-19T00:00:00" />
+      <availabilityTimeStamp>2008-07-08T00:00:00</availabilityTimeStamp>
+      <authorisingUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</authorisingUserInRole>
+      <enteredByUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</enteredByUserInRole>
+      <organisation>4a3ea1cf-7f01-4f61-9654-b07dd51a34f8</organisation>
+      <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
+      <consultationType>GP</consultationType>
+      <locationType codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Main Surgery" code="1503371000006105" />
+      <duration unit="D" value="0" />
+      <travelTime unit="D" value="0" />
+      <component updateMode="add">
+        <event>07845d5a-7e78-400a-a3cb-53b8c3a6722e</event>
+        <problemPage>0</problemPage>
+        <heading codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Problem" code="" />
+      </component>
+      <component updateMode="add">
+        <event>9777256c-f2e7-4d84-9ae8-372bcda3440e</event>
+        <problemPage>0</problemPage>
+        <heading codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="History" code="15621000000105" />
+      </component>
+      <component updateMode="add">
+        <event>20ad98eb-5c49-4224-a0fc-31f31a82a9c5</event>
+        <problemPage>0</problemPage>
+        <heading codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Medication" code="" />
+      </component>
+      <component updateMode="add">
+        <event>7a4b282d-eea1-4e13-82f9-82e07cfecdf2</event>
+        <problemPage>0</problemPage>
+        <heading codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Examination" code="394831002" />
+      </component>
+    </encounter>
+    <encounter updateMode="add">
+      <id>874dc854-538a-4a44-ad2b-964771912162</id>
+      <patient>00d54c3c-dee6-4f95-b276-37cf3b0d3d9a</patient>
+      <effectiveTime datepart="YMD" value="2008-04-18T00:00:00" />
+      <availabilityTimeStamp>2008-10-06T00:00:00</availabilityTimeStamp>
+      <authorisingUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</authorisingUserInRole>
+      <enteredByUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</enteredByUserInRole>
+      <organisation>4a3ea1cf-7f01-4f61-9654-b07dd51a34f8</organisation>
+      <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
+      <consultationType>GP</consultationType>
+      <locationType codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Main Surgery" code="1503371000006105" />
+      <duration unit="D" value="0" />
+      <travelTime unit="D" value="0" />
+      <component updateMode="add">
+        <event>f6cff181-526c-44a2-947b-2b92eb20c223</event>
+        <problemPage>0</problemPage>
+        <heading codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Examination" code="394831002" />
+      </component>
+      <component updateMode="add">
+        <event>1e8e51b9-35eb-4b85-b57e-f5cc14478e51</event>
+        <problemPage>0</problemPage>
+        <heading codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Additional" code="394830001" />
+      </component>
+      <component updateMode="add">
+        <event>5ec62cf1-8fec-4098-bce3-e639786c8da8</event>
+        <problemPage>0</problemPage>
+        <heading codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Medication" code="" />
+      </component>
+      <component updateMode="add">
+        <event>802c2ff4-91fa-413e-b775-6044f1d8215e</event>
+        <problemPage>0</problemPage>
+        <heading codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="History" code="15621000000105" />
+      </component>
+      <component updateMode="add">
+        <event>e968c42b-af46-4bba-9ad5-ab89a49cb3d7</event>
+        <problemPage>0</problemPage>
+        <heading codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Medication" code="" />
+      </component>
+      <component updateMode="add">
+        <event>e3803a70-f08a-448e-b065-d2614f57ef77</event>
+        <problemPage>0</problemPage>
+        <heading codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Problem" code="" />
+      </component>
+    </encounter>
+    <event updateMode="add">
+      <id>7e261c0a-9790-4652-a57d-a7daa63ae66c</id>
+      <patient>00d54c3c-dee6-4f95-b276-37cf3b0d3d9a</patient>
+      <eventType>ALL</eventType>
+      <effectiveTime datepart="YMD" value="2007-06-16T00:00:00" />
+      <availabilityTimeStamp>2007-12-04T00:00:00</availabilityTimeStamp>
+      <authorisingUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</authorisingUserInRole>
+      <enteredByUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</enteredByUserInRole>
+      <code codeSystem="2.16.840.1.113883.2.1.6.2" displayName="Nappy rash" code="M110-3">
+        <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Nappy rash" code="91487003" />
+      </code>
+      <displayTerm>Nappy rash</displayTerm>
+      <organisation>4a3ea1cf-7f01-4f61-9654-b07dd51a34f8</organisation>
+      <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
+      <observation>
+        <episodicity>FIRST</episodicity>
+      </observation>
+    </event>
+    <event updateMode="add">
+      <id>5751c233-062b-4f50-a5a8-cb7f18228b2c</id>
+      <patient>00d54c3c-dee6-4f95-b276-37cf3b0d3d9a</patient>
+      <eventType>OBS</eventType>
+      <effectiveTime datepart="YMD" value="2007-06-16T00:00:00" />
+      <availabilityTimeStamp>2007-12-04T00:00:00</availabilityTimeStamp>
+      <authorisingUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</authorisingUserInRole>
+      <enteredByUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</enteredByUserInRole>
+      <displayTerm />
+      <associatedText associatedTextType="POST">
+        <value> Generalised non-specific abdominal tenderness</value>
+      </associatedText>
+      <organisation>4a3ea1cf-7f01-4f61-9654-b07dd51a34f8</organisation>
+      <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
+      <observation />
+    </event>
+    <event updateMode="add">
+      <id>6afc0415-c864-4f89-aa04-ddd903977469</id>
+      <patient>00d54c3c-dee6-4f95-b276-37cf3b0d3d9a</patient>
+      <eventType>OBS</eventType>
+      <effectiveTime datepart="YMD" value="2007-06-16T00:00:00" />
+      <availabilityTimeStamp>1899-12-30T00:00:00</availabilityTimeStamp>
+      <authorisingUserInRole>316d34eb-f495-4c91-b814-364c69b1a541</authorisingUserInRole>
+      <enteredByUserInRole>a21d7adb-b000-49fb-b2b3-5ec9c9d2ed49</enteredByUserInRole>
+      <code codeSystem="2.16.840.1.113883.2.1.6.2" displayName="Bangladeshi or British Bangladeshi - ethn categ 2001 census" code="9i9">
+        <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Bangladeshi or British Bangladeshi - ethn categ 2001 census" code="92471000000103" />
+      </code>
+      <displayTerm>Bangladeshi or British Bangladeshi - ethn categ 2001 census</displayTerm>
+      <organisation>4a3ea1cf-7f01-4f61-9654-b07dd51a34f8</organisation>
+      <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
+      <observation />
+    </event>
+    <event updateMode="add">
+      <id>b75eaff2-59a0-4881-a61d-6c1ff0fffd19</id>
+      <patient>00d54c3c-dee6-4f95-b276-37cf3b0d3d9a</patient>
+      <eventType>OBS</eventType>
+      <effectiveTime datepart="YMD" value="2007-07-06T00:00:00" />
+      <availabilityTimeStamp>2007-12-24T00:00:00</availabilityTimeStamp>
+      <authorisingUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</authorisingUserInRole>
+      <enteredByUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</enteredByUserInRole>
+      <code codeSystem="2.16.840.1.113883.2.1.6.2" displayName="Umbilical hernia" code="J32">
+        <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Umbilical hernia" code="396347007" />
+      </code>
+      <displayTerm>Umbilical hernia</displayTerm>
+      <associatedText associatedTextType="POST">
+        <value> Needs bloods etc</value>
+      </associatedText>
+      <organisation>4a3ea1cf-7f01-4f61-9654-b07dd51a34f8</organisation>
+      <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
+      <observation>
+        <episodicity>FIRST</episodicity>
+      </observation>
+    </event>
+    <event updateMode="add">
+      <id>54961c46-0939-4560-873c-d491f43c24b6</id>
+      <patient>00d54c3c-dee6-4f95-b276-37cf3b0d3d9a</patient>
+      <eventType>OBS</eventType>
+      <effectiveTime datepart="YMD" value="2007-07-06T00:00:00" />
+      <availabilityTimeStamp>2007-12-24T00:00:00</availabilityTimeStamp>
+      <authorisingUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</authorisingUserInRole>
+      <enteredByUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</enteredByUserInRole>
+      <displayTerm />
+      <associatedText associatedTextType="POST">
+        <value> To come in 1 week time</value>
+      </associatedText>
+      <organisation>4a3ea1cf-7f01-4f61-9654-b07dd51a34f8</organisation>
+      <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
+      <observation />
+    </event>
+    <event updateMode="add">
+      <id>262a9129-5e59-4bf7-ba2d-132a8cd4cf68</id>
+      <patient>00d54c3c-dee6-4f95-b276-37cf3b0d3d9a</patient>
+      <eventType>OBS</eventType>
+      <effectiveTime datepart="YMD" value="2007-07-10T00:00:00" />
+      <availabilityTimeStamp>2007-12-28T00:00:00</availabilityTimeStamp>
+      <authorisingUserInRole>756ce7b3-6e45-4693-b147-65ae05936534</authorisingUserInRole>
+      <enteredByUserInRole>756ce7b3-6e45-4693-b147-65ae05936534</enteredByUserInRole>
+      <code codeSystem="2.16.840.1.113883.2.1.6.2" displayName="Notes summary on computer" code="9344">
+        <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Notes summary on computer" code="184229000" />
+      </code>
+      <displayTerm>Notes summary on computer</displayTerm>
+      <associatedText associatedTextType="POST">
+        <value> Could do with ENT examination</value>
+      </associatedText>
+      <organisation>4a3ea1cf-7f01-4f61-9654-b07dd51a34f8</organisation>
+      <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
+      <observation />
+    </event>
+    <event updateMode="add">
+      <id>268986eb-34a9-4f70-b74f-0f3183590434</id>
+      <patient>00d54c3c-dee6-4f95-b276-37cf3b0d3d9a</patient>
+      <eventType>OBS</eventType>
+      <effectiveTime datepart="YMD" value="2007-07-22T00:00:00" />
+      <availabilityTimeStamp>2008-01-09T00:00:00</availabilityTimeStamp>
+      <authorisingUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</authorisingUserInRole>
+      <enteredByUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</enteredByUserInRole>
+      <code codeSystem="2.16.840.1.113883.2.1.6.2" displayName="Child exam.: ears" code="64M4">
+        <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Child exam.: ears" code="170197002" />
+      </code>
+      <displayTerm>Child exam.: ears</displayTerm>
+      <organisation>4a3ea1cf-7f01-4f61-9654-b07dd51a34f8</organisation>
+      <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
+      <observation />
+    </event>
+    <event updateMode="add">
+      <id>e05a7013-b5dd-47fe-be26-1293345df805</id>
+      <patient>00d54c3c-dee6-4f95-b276-37cf3b0d3d9a</patient>
+      <eventType>OBS</eventType>
+      <effectiveTime datepart="YMD" value="2007-07-22T00:00:00" />
+      <availabilityTimeStamp>2008-01-09T00:00:00</availabilityTimeStamp>
+      <authorisingUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</authorisingUserInRole>
+      <enteredByUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</enteredByUserInRole>
+      <code codeSystem="2.16.840.1.113883.2.1.6.2" displayName="Child exam - hips NAD" code="EMISHGT95">
+        <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Child exam - hips NAD" code="512081000006101" />
+      </code>
+      <displayTerm>Child exam - hips NAD</displayTerm>
+      <organisation>4a3ea1cf-7f01-4f61-9654-b07dd51a34f8</organisation>
+      <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
+      <observation />
+    </event>
+    <event updateMode="add">
+      <id>33e3f166-5bea-4087-b5dd-1723baf21d70</id>
+      <patient>00d54c3c-dee6-4f95-b276-37cf3b0d3d9a</patient>
+      <eventType>OBS</eventType>
+      <effectiveTime datepart="YMD" value="2007-07-22T00:00:00" />
+      <availabilityTimeStamp>2008-01-09T00:00:00</availabilityTimeStamp>
+      <authorisingUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</authorisingUserInRole>
+      <enteredByUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</enteredByUserInRole>
+      <code codeSystem="2.16.840.1.113883.2.1.6.2" displayName="O/E - breath sounds" code="23B">
+        <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="O/E - breath sounds" code="162949006" />
+      </code>
+      <displayTerm>O/E - breath sounds</displayTerm>
+      <organisation>4a3ea1cf-7f01-4f61-9654-b07dd51a34f8</organisation>
+      <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
+      <observation />
+    </event>
+    <event updateMode="add">
+      <id>1e04082b-eac6-4ee7-aacd-1c0adcb17488</id>
+      <patient>00d54c3c-dee6-4f95-b276-37cf3b0d3d9a</patient>
+      <eventType>OBS</eventType>
+      <effectiveTime datepart="YMD" value="2007-07-22T00:00:00" />
+      <availabilityTimeStamp>2008-01-09T00:00:00</availabilityTimeStamp>
+      <authorisingUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</authorisingUserInRole>
+      <enteredByUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</enteredByUserInRole>
+      <code codeSystem="2.16.840.1.113883.2.1.6.2" displayName="Breast fed at birth" code="EMISBR1">
+        <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Breast fed at birth" code="128661000006103" />
+      </code>
+      <displayTerm>Breast fed at birth</displayTerm>
+      <organisation>4a3ea1cf-7f01-4f61-9654-b07dd51a34f8</organisation>
+      <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
+      <observation />
+    </event>
+    <event updateMode="add">
+      <id>c5b83ab8-2b79-4f78-836e-340386fb1f25</id>
+      <patient>00d54c3c-dee6-4f95-b276-37cf3b0d3d9a</patient>
+      <eventType>OBS</eventType>
+      <effectiveTime datepart="YMD" value="2007-07-22T00:00:00" />
+      <availabilityTimeStamp>2008-01-09T00:00:00</availabilityTimeStamp>
+      <authorisingUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</authorisingUserInRole>
+      <enteredByUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</enteredByUserInRole>
+      <code codeSystem="2.16.840.1.113883.2.1.6.2" displayName="[SO]Anus" code="7N321">
+        <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="[SO]Anus" code="181262009" />
+      </code>
+      <displayTerm>[SO]Anus</displayTerm>
+      <associatedText associatedTextType="POST">
+        <value> GUTS test given and explained</value>
+      </associatedText>
+      <organisation>4a3ea1cf-7f01-4f61-9654-b07dd51a34f8</organisation>
+      <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
+      <observation />
+    </event>
+    <event updateMode="add">
+      <id>4e305178-a359-4f4b-a10a-3b93d5c4322a</id>
+      <patient>00d54c3c-dee6-4f95-b276-37cf3b0d3d9a</patient>
+      <eventType>OBS</eventType>
+      <effectiveTime datepart="YMD" value="2007-07-22T00:00:00" />
+      <availabilityTimeStamp>2008-01-09T00:00:00</availabilityTimeStamp>
+      <authorisingUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</authorisingUserInRole>
+      <enteredByUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</enteredByUserInRole>
+      <code codeSystem="2.16.840.1.113883.2.1.6.2" displayName="Child exam.: motor tone" code="64O3">
+        <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Child exam.: motor tone" code="170215000" />
+      </code>
+      <displayTerm>Child exam.: motor tone</displayTerm>
+      <organisation>4a3ea1cf-7f01-4f61-9654-b07dd51a34f8</organisation>
+      <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
+      <observation />
+    </event>
+    <event updateMode="add">
+      <id>fe787ece-2701-43b8-9d36-41567bea090d</id>
+      <patient>00d54c3c-dee6-4f95-b276-37cf3b0d3d9a</patient>
+      <eventType>OBS</eventType>
+      <effectiveTime datepart="YMD" value="2007-07-22T00:00:00" />
+      <availabilityTimeStamp>2008-01-09T00:00:00</availabilityTimeStamp>
+      <authorisingUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</authorisingUserInRole>
+      <enteredByUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</enteredByUserInRole>
+      <code codeSystem="2.16.840.1.113883.2.1.6.2" displayName="Child exam.: feet" code="64N5">
+        <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Child exam.: feet" code="170207003" />
+      </code>
+      <displayTerm>Child exam.: feet</displayTerm>
+      <organisation>4a3ea1cf-7f01-4f61-9654-b07dd51a34f8</organisation>
+      <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
+      <observation />
+    </event>
+    <event updateMode="add">
+      <id>ae2d2dcd-0a5c-4b82-a3a1-4214b9c5ef5f</id>
+      <patient>00d54c3c-dee6-4f95-b276-37cf3b0d3d9a</patient>
+      <eventType>OBS</eventType>
+      <effectiveTime datepart="YMD" value="2007-07-22T00:00:00" />
+      <availabilityTimeStamp>2008-01-09T00:00:00</availabilityTimeStamp>
+      <authorisingUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</authorisingUserInRole>
+      <enteredByUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</enteredByUserInRole>
+      <code codeSystem="2.16.840.1.113883.2.1.6.2" displayName="Child exam.: spine" code="64N4">
+        <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Child exam.: spine" code="170206007" />
+      </code>
+      <displayTerm>Child exam.: spine</displayTerm>
+      <organisation>4a3ea1cf-7f01-4f61-9654-b07dd51a34f8</organisation>
+      <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
+      <observation />
+    </event>
+    <event updateMode="add">
+      <id>2a49d553-6dc3-4a34-a7ab-460d6f835005</id>
+      <patient>00d54c3c-dee6-4f95-b276-37cf3b0d3d9a</patient>
+      <eventType>OBS</eventType>
+      <effectiveTime datepart="YMD" value="2007-07-22T00:00:00" />
+      <availabilityTimeStamp>2008-01-09T00:00:00</availabilityTimeStamp>
+      <authorisingUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</authorisingUserInRole>
+      <enteredByUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</enteredByUserInRole>
+      <code codeSystem="2.16.840.1.113883.2.1.6.2" displayName="Child exam. - birth" code="64B">
+        <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Child exam. - birth" code="170099002" />
+      </code>
+      <displayTerm>Child exam. - birth</displayTerm>
+      <organisation>4a3ea1cf-7f01-4f61-9654-b07dd51a34f8</organisation>
+      <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
+      <observation />
+    </event>
+    <event updateMode="add">
+      <id>d7a3b8a7-e0e2-4c76-8fa6-6467303913ee</id>
+      <patient>00d54c3c-dee6-4f95-b276-37cf3b0d3d9a</patient>
+      <eventType>IMM</eventType>
+      <effectiveTime datepart="YMD" value="2007-07-22T00:00:00" />
+      <availabilityTimeStamp>2008-01-09T00:00:00</availabilityTimeStamp>
+      <authorisingUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</authorisingUserInRole>
+      <enteredByUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</enteredByUserInRole>
+      <code codeSystem="2.16.840.1.113883.2.1.6.2" displayName="1st dipht tet acell pertus, haem influ b, inactiv polio vacc" code="65a0">
+        <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="1st dipht tet acell pertus, haem influ b, inactiv polio vacc" code="414259000" />
+      </code>
+      <displayTerm>1st dipht tet acell pertus, haem influ b, inactiv polio vacc</displayTerm>
+      <associatedText associatedTextType="POST">
+        <value> Tired generally. Needs to have bloods etc</value>
+      </associatedText>
+      <organisation>4a3ea1cf-7f01-4f61-9654-b07dd51a34f8</organisation>
+      <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
+      <observation />
+    </event>
+    <event updateMode="add">
+      <id>38008e6a-339d-450a-91cb-69a4c8e0c247</id>
+      <patient>00d54c3c-dee6-4f95-b276-37cf3b0d3d9a</patient>
+      <eventType>OBS</eventType>
+      <effectiveTime datepart="YMD" value="2007-07-22T00:00:00" />
+      <availabilityTimeStamp>2008-01-09T00:00:00</availabilityTimeStamp>
+      <authorisingUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</authorisingUserInRole>
+      <enteredByUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</enteredByUserInRole>
+      <code codeSystem="2.16.840.1.113883.2.1.6.2" displayName="Child exam.: skin" code="64L3">
+        <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Child exam.: skin" code="170189009" />
+      </code>
+      <displayTerm>Child exam.: skin</displayTerm>
+      <organisation>4a3ea1cf-7f01-4f61-9654-b07dd51a34f8</organisation>
+      <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
+      <observation />
+    </event>
+    <event updateMode="add">
+      <id>ee39c6ee-3940-4c2e-a429-710707e9e7aa</id>
+      <patient>00d54c3c-dee6-4f95-b276-37cf3b0d3d9a</patient>
+      <eventType>IMM</eventType>
+      <effectiveTime datepart="YMD" value="2007-07-22T00:00:00" />
+      <availabilityTimeStamp>2008-01-09T00:00:00</availabilityTimeStamp>
+      <authorisingUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</authorisingUserInRole>
+      <enteredByUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</enteredByUserInRole>
+      <code codeSystem="2.16.840.1.113883.2.1.6.2" displayName="First pneumococcal conjugated vaccination" code="657L">
+        <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="First pneumococcal conjugated vaccination" code="247631000000101" />
+      </code>
+      <displayTerm>First pneumococcal conjugated vaccination</displayTerm>
+      <associatedText associatedTextType="POST">
+        <value> Still creps but much less now</value>
+      </associatedText>
+      <organisation>4a3ea1cf-7f01-4f61-9654-b07dd51a34f8</organisation>
+      <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
+      <observation />
+    </event>
+    <event updateMode="add">
+      <id>7fb880c9-8402-45fe-b86f-732f512c0e0c</id>
+      <patient>00d54c3c-dee6-4f95-b276-37cf3b0d3d9a</patient>
+      <eventType>OBS</eventType>
+      <effectiveTime datepart="YMD" value="2007-07-22T00:00:00" />
+      <availabilityTimeStamp>2008-01-09T00:00:00</availabilityTimeStamp>
+      <authorisingUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</authorisingUserInRole>
+      <enteredByUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</enteredByUserInRole>
+      <code codeSystem="2.16.840.1.113883.2.1.6.2" displayName="O/E - testes descended" code="26560">
+        <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="O/E - testes descended" code="163381000" />
+      </code>
+      <displayTerm>O/E - testes descended</displayTerm>
+      <organisation>4a3ea1cf-7f01-4f61-9654-b07dd51a34f8</organisation>
+      <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
+      <observation />
+    </event>
+    <event updateMode="add">
+      <id>7a9eb195-e99e-42a4-b646-92d9e779f176</id>
+      <patient>00d54c3c-dee6-4f95-b276-37cf3b0d3d9a</patient>
+      <eventType>OBS</eventType>
+      <effectiveTime datepart="YMD" value="2007-07-22T00:00:00" />
+      <availabilityTimeStamp>2008-01-09T00:00:00</availabilityTimeStamp>
+      <authorisingUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</authorisingUserInRole>
+      <enteredByUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</enteredByUserInRole>
+      <code codeSystem="2.16.840.1.113883.2.1.6.2" displayName="Child exam.: fontanelle" code="64L4">
+        <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Child exam.: fontanelle" code="170190000" />
+      </code>
+      <displayTerm>Child exam.: fontanelle</displayTerm>
+      <organisation>4a3ea1cf-7f01-4f61-9654-b07dd51a34f8</organisation>
+      <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
+      <observation />
+    </event>
+    <event updateMode="add">
+      <id>a7301241-bb3e-48cb-b921-9e365458f465</id>
+      <patient>00d54c3c-dee6-4f95-b276-37cf3b0d3d9a</patient>
+      <eventType>OBS</eventType>
+      <effectiveTime datepart="YMD" value="2007-07-22T00:00:00" />
+      <availabilityTimeStamp>2008-01-09T00:00:00</availabilityTimeStamp>
+      <authorisingUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</authorisingUserInRole>
+      <enteredByUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</enteredByUserInRole>
+      <code codeSystem="2.16.840.1.113883.2.1.6.2" displayName="Child exam.: femoral arteries" code="64N2">
+        <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Child exam.: femoral arteries" code="170204005" />
+      </code>
+      <displayTerm>Child exam.: femoral arteries</displayTerm>
+      <organisation>4a3ea1cf-7f01-4f61-9654-b07dd51a34f8</organisation>
+      <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
+      <observation />
+    </event>
+    <event updateMode="add">
+      <id>6f0b881b-8937-4582-9fbd-aa5d1ee6273b</id>
+      <patient>00d54c3c-dee6-4f95-b276-37cf3b0d3d9a</patient>
+      <eventType>VAL</eventType>
+      <effectiveTime datepart="YMD" value="2007-07-22T00:00:00" />
+      <availabilityTimeStamp>2008-01-09T00:00:00</availabilityTimeStamp>
+      <authorisingUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</authorisingUserInRole>
+      <enteredByUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</enteredByUserInRole>
+      <code codeSystem="2.16.840.1.113883.2.1.6.2" displayName="Birthweight of baby" code="636">
+        <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Birthweight of baby" code="47340003" />
+      </code>
+      <displayTerm>Birthweight of baby</displayTerm>
+      <organisation>4a3ea1cf-7f01-4f61-9654-b07dd51a34f8</organisation>
+      <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
+      <observation>
+        <value>
+          <numeric>
+            <value>2.72</value>
+            <units>Kg</units>
+          </numeric>
+        </value>
+      </observation>
+    </event>
+    <event updateMode="add">
+      <id>9ab73020-ac90-4a5b-8dc4-ad94d96c2ba2</id>
+      <patient>00d54c3c-dee6-4f95-b276-37cf3b0d3d9a</patient>
+      <eventType>OBS</eventType>
+      <effectiveTime datepart="YMD" value="2007-07-22T00:00:00" />
+      <availabilityTimeStamp>2008-01-09T00:00:00</availabilityTimeStamp>
+      <authorisingUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</authorisingUserInRole>
+      <enteredByUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</enteredByUserInRole>
+      <code codeSystem="2.16.840.1.113883.2.1.6.2" displayName="Child exam.: heart" code="64N1">
+        <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Child exam.: heart" code="170203004" />
+      </code>
+      <displayTerm>Child exam.: heart</displayTerm>
+      <organisation>4a3ea1cf-7f01-4f61-9654-b07dd51a34f8</organisation>
+      <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
+      <observation />
+    </event>
+    <event updateMode="add">
+      <id>7a266e6f-2ead-405c-9b1c-b35804f34352</id>
+      <patient>00d54c3c-dee6-4f95-b276-37cf3b0d3d9a</patient>
+      <eventType>OBS</eventType>
+      <effectiveTime datepart="YMD" value="2007-07-22T00:00:00" />
+      <availabilityTimeStamp>2008-01-09T00:00:00</availabilityTimeStamp>
+      <authorisingUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</authorisingUserInRole>
+      <enteredByUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</enteredByUserInRole>
+      <code codeSystem="2.16.840.1.113883.2.1.6.2" displayName="Child exam.: palate" code="64L5">
+        <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Child exam.: palate" code="170191001" />
+      </code>
+      <displayTerm>Child exam.: palate</displayTerm>
+      <organisation>4a3ea1cf-7f01-4f61-9654-b07dd51a34f8</organisation>
+      <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
+      <observation />
+    </event>
+    <event updateMode="add">
+      <id>c4843856-7736-4395-9f8d-ba36bca77b42</id>
+      <patient>00d54c3c-dee6-4f95-b276-37cf3b0d3d9a</patient>
+      <eventType>OBS</eventType>
+      <effectiveTime datepart="YMD" value="2007-07-22T00:00:00" />
+      <availabilityTimeStamp>2008-01-09T00:00:00</availabilityTimeStamp>
+      <authorisingUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</authorisingUserInRole>
+      <enteredByUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</enteredByUserInRole>
+      <code codeSystem="2.16.840.1.113883.2.1.6.2" displayName="Child exam.: eyes" code="64M2">
+        <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Child exam.: eyes" code="170195005" />
+      </code>
+      <displayTerm>Child exam.: eyes</displayTerm>
+      <organisation>4a3ea1cf-7f01-4f61-9654-b07dd51a34f8</organisation>
+      <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
+      <observation />
+    </event>
+    <event updateMode="add">
+      <id>3eb8b296-c953-476d-b826-ce4a85a0c2ab</id>
+      <patient>00d54c3c-dee6-4f95-b276-37cf3b0d3d9a</patient>
+      <eventType>OBS</eventType>
+      <effectiveTime datepart="YMD" value="2007-07-22T00:00:00" />
+      <availabilityTimeStamp>2008-01-09T00:00:00</availabilityTimeStamp>
+      <authorisingUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</authorisingUserInRole>
+      <enteredByUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</enteredByUserInRole>
+      <code codeSystem="2.16.840.1.113883.2.1.6.2" displayName="Abdomen examined - NAD" code="2516">
+        <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Abdomen examined - NAD" code="163133003" />
+      </code>
+      <displayTerm>Abdomen examined - NAD</displayTerm>
+      <organisation>4a3ea1cf-7f01-4f61-9654-b07dd51a34f8</organisation>
+      <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
+      <observation />
+    </event>
+    <event updateMode="add">
+      <id>c46721ac-3c52-4598-8191-e84e2486a30f</id>
+      <patient>00d54c3c-dee6-4f95-b276-37cf3b0d3d9a</patient>
+      <eventType>OBS</eventType>
+      <effectiveTime datepart="YMD" value="2007-07-22T00:00:00" />
+      <availabilityTimeStamp>2008-01-09T00:00:00</availabilityTimeStamp>
+      <authorisingUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</authorisingUserInRole>
+      <enteredByUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</enteredByUserInRole>
+      <code codeSystem="2.16.840.1.113883.2.1.6.2" displayName="Child exam.: genitalia" code="64N8">
+        <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Child exam.: genitalia" code="170210005" />
+      </code>
+      <displayTerm>Child exam.: genitalia</displayTerm>
+      <organisation>4a3ea1cf-7f01-4f61-9654-b07dd51a34f8</organisation>
+      <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
+      <observation />
+    </event>
+    <event updateMode="add">
+      <id>12151864-b3a8-44ff-bdad-edd9e1431451</id>
+      <patient>00d54c3c-dee6-4f95-b276-37cf3b0d3d9a</patient>
+      <eventType>OBS</eventType>
+      <effectiveTime datepart="YMD" value="2007-07-22T00:00:00" />
+      <availabilityTimeStamp>2008-01-09T00:00:00</availabilityTimeStamp>
+      <authorisingUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</authorisingUserInRole>
+      <enteredByUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</enteredByUserInRole>
+      <code codeSystem="2.16.840.1.113883.2.1.6.2" displayName="O/E - hands" code="2G2">
+        <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="O/E - hands" code="164449004" />
+      </code>
+      <displayTerm>O/E - hands</displayTerm>
+      <organisation>4a3ea1cf-7f01-4f61-9654-b07dd51a34f8</organisation>
+      <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
+      <observation />
+    </event>
+    <event updateMode="add">
+      <id>97b1ae85-2816-4ab3-a593-271831af1d64</id>
+      <patient>00d54c3c-dee6-4f95-b276-37cf3b0d3d9a</patient>
+      <eventType>OBS</eventType>
+      <effectiveTime datepart="YMD" value="2007-07-29T00:00:00" />
+      <availabilityTimeStamp>2008-01-16T00:00:00</availabilityTimeStamp>
+      <authorisingUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</authorisingUserInRole>
+      <enteredByUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</enteredByUserInRole>
+      <displayTerm />
+      <associatedText associatedTextType="POST">
+        <value>Simple  Linctus paediatric, sugar free   100 ml(s) 5MLS TDS</value>
+      </associatedText>
+      <organisation>4a3ea1cf-7f01-4f61-9654-b07dd51a34f8</organisation>
+      <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
+      <observation />
+    </event>
+    <event updateMode="add">
+      <id>db614c12-57a4-4ced-8a17-3c7f51f169ab</id>
+      <patient>00d54c3c-dee6-4f95-b276-37cf3b0d3d9a</patient>
+      <eventType>OBS</eventType>
+      <effectiveTime datepart="YMD" value="2007-07-29T00:00:00" />
+      <availabilityTimeStamp>2008-01-16T00:00:00</availabilityTimeStamp>
+      <authorisingUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</authorisingUserInRole>
+      <enteredByUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</enteredByUserInRole>
+      <displayTerm />
+      <associatedText associatedTextType="POST">
+        <value>Paracetamol  Sugar free suspension  120 mg/5 ml 150 ml 5MLS QDS PRN</value>
+      </associatedText>
+      <organisation>4a3ea1cf-7f01-4f61-9654-b07dd51a34f8</organisation>
+      <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
+      <observation />
+    </event>
+    <event updateMode="add">
+      <id>96f3072b-545a-439e-a2e2-713b0f356f4b</id>
+      <patient>00d54c3c-dee6-4f95-b276-37cf3b0d3d9a</patient>
+      <eventType>OBS</eventType>
+      <effectiveTime datepart="YMD" value="2007-07-29T00:00:00" />
+      <availabilityTimeStamp>2008-01-16T00:00:00</availabilityTimeStamp>
+      <authorisingUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</authorisingUserInRole>
+      <enteredByUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</enteredByUserInRole>
+      <displayTerm />
+      <associatedText associatedTextType="POST">
+        <value> In pain</value>
+      </associatedText>
+      <organisation>4a3ea1cf-7f01-4f61-9654-b07dd51a34f8</organisation>
+      <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
+      <observation />
+    </event>
+    <event updateMode="add">
+      <id>4279efbe-10d3-4bd4-887f-a31015687f3b</id>
+      <patient>00d54c3c-dee6-4f95-b276-37cf3b0d3d9a</patient>
+      <eventType>OBS</eventType>
+      <effectiveTime datepart="YMD" value="2007-07-29T00:00:00" />
+      <availabilityTimeStamp>2008-01-16T00:00:00</availabilityTimeStamp>
+      <authorisingUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</authorisingUserInRole>
+      <enteredByUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</enteredByUserInRole>
+      <displayTerm />
+      <associatedText associatedTextType="POST">
+        <value> Check U&amp;amp;E today please</value>
+      </associatedText>
+      <organisation>4a3ea1cf-7f01-4f61-9654-b07dd51a34f8</organisation>
+      <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
+      <observation />
+    </event>
+    <event updateMode="add">
+      <id>c3cd087a-d087-44f1-b970-66b4f1ab6c61</id>
+      <patient>00d54c3c-dee6-4f95-b276-37cf3b0d3d9a</patient>
+      <eventType>IMM</eventType>
+      <effectiveTime datepart="YMD" value="2007-08-12T00:00:00" />
+      <availabilityTimeStamp>2008-02-20T00:00:00</availabilityTimeStamp>
+      <authorisingUserInRole>6cf19e3c-fbc4-4430-be96-5b98a94e12ab</authorisingUserInRole>
+      <enteredByUserInRole>6cf19e3c-fbc4-4430-be96-5b98a94e12ab</enteredByUserInRole>
+      <code codeSystem="2.16.840.1.113883.2.1.6.2" displayName="Tuberculosis (BCG) vaccination" code="653">
+        <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Tuberculosis (BCG) vaccination" code="42284007" />
+      </code>
+      <displayTerm>Tuberculosis (BCG) vaccination</displayTerm>
+      <associatedText associatedTextType="POST">
+        <value> Refer to specialist</value>
+      </associatedText>
+      <organisation>4a3ea1cf-7f01-4f61-9654-b07dd51a34f8</organisation>
+      <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
+      <observation />
+    </event>
+    <event updateMode="add">
+      <id>6d1c5c69-e81e-408d-b734-bb41f10d2b05</id>
+      <patient>00d54c3c-dee6-4f95-b276-37cf3b0d3d9a</patient>
+      <eventType>IMM</eventType>
+      <effectiveTime datepart="YMD" value="2007-08-26T00:00:00" />
+      <availabilityTimeStamp>2008-02-14T00:00:00</availabilityTimeStamp>
+      <authorisingUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</authorisingUserInRole>
+      <enteredByUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</enteredByUserInRole>
+      <code codeSystem="2.16.840.1.113883.2.1.6.2" displayName="2nd dipht tet acell pertus, haem influ b, inactiv polio vacc" code="65a1">
+        <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="2nd dipht tet acell pertus, haem influ b, inactiv polio vacc" code="415507003" />
+      </code>
+      <displayTerm>2nd dipht tet acell pertus, haem influ b, inactiv polio vacc</displayTerm>
+      <associatedText associatedTextType="POST">
+        <value> Prednisolone E/C Tablets 5 mg 6 od 42 tablet(s)</value>
+      </associatedText>
+      <organisation>4a3ea1cf-7f01-4f61-9654-b07dd51a34f8</organisation>
+      <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
+      <observation />
+    </event>
+    <event updateMode="add">
+      <id>ffcea1f8-f59a-4194-99f4-ccc4cf298d3c</id>
+      <patient>00d54c3c-dee6-4f95-b276-37cf3b0d3d9a</patient>
+      <eventType>IMM</eventType>
+      <effectiveTime datepart="YMD" value="2007-08-26T00:00:00" />
+      <availabilityTimeStamp>2008-02-14T00:00:00</availabilityTimeStamp>
+      <authorisingUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</authorisingUserInRole>
+      <enteredByUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</enteredByUserInRole>
+      <code codeSystem="2.16.840.1.113883.2.1.6.2" displayName="First meningitis C vaccination" code="657E">
+        <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="First meningitis C vaccination" code="314414007" />
+      </code>
+      <displayTerm>First meningitis C vaccination</displayTerm>
+      <associatedText associatedTextType="POST">
+        <value> Diarrhoea on and off for 3 weeks with abdo cramps.No blood and no recent travel</value>
+      </associatedText>
+      <organisation>4a3ea1cf-7f01-4f61-9654-b07dd51a34f8</organisation>
+      <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
+      <observation />
+    </event>
+    <event updateMode="add">
+      <id>d7d1bdc4-945a-4707-8b4a-2e173e4871c4</id>
+      <patient>00d54c3c-dee6-4f95-b276-37cf3b0d3d9a</patient>
+      <eventType>OBS</eventType>
+      <effectiveTime datepart="YMD" value="2007-09-14T00:00:00" />
+      <availabilityTimeStamp>2008-03-03T00:00:00</availabilityTimeStamp>
+      <authorisingUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</authorisingUserInRole>
+      <enteredByUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</enteredByUserInRole>
+      <displayTerm />
+      <associatedText associatedTextType="POST">
+        <value>Nystaform-Hc  Ointment   30 gram(s) APPLY TWICE A DAY</value>
+      </associatedText>
+      <organisation>4a3ea1cf-7f01-4f61-9654-b07dd51a34f8</organisation>
+      <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
+      <observation />
+    </event>
+    <event updateMode="add">
+      <id>9f148d46-53b2-4d90-bac9-405f204a0a63</id>
+      <patient>00d54c3c-dee6-4f95-b276-37cf3b0d3d9a</patient>
+      <eventType>OBS</eventType>
+      <effectiveTime datepart="YMD" value="2007-09-14T00:00:00" />
+      <availabilityTimeStamp>2008-03-03T00:00:00</availabilityTimeStamp>
+      <authorisingUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</authorisingUserInRole>
+      <enteredByUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</enteredByUserInRole>
+      <code codeSystem="2.16.840.1.113883.2.1.6.2" displayName="Fungal infection of skin" code="AB0-1">
+        <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Fungal infection of skin" code="14560005" />
+      </code>
+      <displayTerm>Fungal infection of skin</displayTerm>
+      <organisation>4a3ea1cf-7f01-4f61-9654-b07dd51a34f8</organisation>
+      <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
+      <observation>
+        <episodicity>FIRST</episodicity>
+      </observation>
+    </event>
+    <event updateMode="add">
+      <id>f32bdb63-87a2-4acd-98b8-139c3cb034d0</id>
+      <patient>00d54c3c-dee6-4f95-b276-37cf3b0d3d9a</patient>
+      <eventType>IMM</eventType>
+      <effectiveTime datepart="YMD" value="2007-09-30T00:00:00" />
+      <availabilityTimeStamp>2008-03-19T00:00:00</availabilityTimeStamp>
+      <authorisingUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</authorisingUserInRole>
+      <enteredByUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</enteredByUserInRole>
+      <code codeSystem="2.16.840.1.113883.2.1.6.2" displayName="Second pneumococcal conjugated vaccination" code="657M">
+        <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Second pneumococcal conjugated vaccination" code="247641000000105" />
+      </code>
+      <displayTerm>Second pneumococcal conjugated vaccination</displayTerm>
+      <associatedText associatedTextType="POST">
+        <value> Bad night last night, SOB, productive of white frowthy sputum, worse on lying flat</value>
+      </associatedText>
+      <organisation>4a3ea1cf-7f01-4f61-9654-b07dd51a34f8</organisation>
+      <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
+      <observation />
+    </event>
+    <event updateMode="add">
+      <id>00849d1c-26dd-4f9e-91ab-5ea4c0de319a</id>
+      <patient>00d54c3c-dee6-4f95-b276-37cf3b0d3d9a</patient>
+      <eventType>IMM</eventType>
+      <effectiveTime datepart="YMD" value="2007-09-30T00:00:00" />
+      <availabilityTimeStamp>2008-03-19T00:00:00</availabilityTimeStamp>
+      <authorisingUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</authorisingUserInRole>
+      <enteredByUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</enteredByUserInRole>
+      <code codeSystem="2.16.840.1.113883.2.1.6.2" displayName="3rd dipht tet acell pertus, haem influ b, inactiv polio vacc" code="65a2">
+        <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="3rd dipht tet acell pertus, haem influ b, inactiv polio vacc" code="415712004" />
+      </code>
+      <displayTerm>3rd dipht tet acell pertus, haem influ b, inactiv polio vacc</displayTerm>
+      <associatedText associatedTextType="POST">
+        <value> Could do with ENT examination</value>
+      </associatedText>
+      <organisation>4a3ea1cf-7f01-4f61-9654-b07dd51a34f8</organisation>
+      <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
+      <observation />
+    </event>
+    <event updateMode="add">
+      <id>b5b27b3a-0fd3-4fb0-b1a5-c1143dd9b29b</id>
+      <patient>00d54c3c-dee6-4f95-b276-37cf3b0d3d9a</patient>
+      <eventType>IMM</eventType>
+      <effectiveTime datepart="YMD" value="2007-09-30T00:00:00" />
+      <availabilityTimeStamp>2008-03-19T00:00:00</availabilityTimeStamp>
+      <authorisingUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</authorisingUserInRole>
+      <enteredByUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</enteredByUserInRole>
+      <code codeSystem="2.16.840.1.113883.2.1.6.2" displayName="Second meningitis C vaccination" code="657F">
+        <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Second meningitis C vaccination" code="314415008" />
+      </code>
+      <displayTerm>Second meningitis C vaccination</displayTerm>
+      <associatedText associatedTextType="POST">
+        <value> Tired generally. Needs to have bloods etc</value>
+      </associatedText>
+      <organisation>4a3ea1cf-7f01-4f61-9654-b07dd51a34f8</organisation>
+      <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
+      <observation />
+    </event>
+    <event updateMode="add">
+      <id>7bad33bb-6c35-47c1-a71c-3c19e9490d45</id>
+      <patient>00d54c3c-dee6-4f95-b276-37cf3b0d3d9a</patient>
+      <eventType>OBS</eventType>
+      <effectiveTime datepart="YMD" value="2007-10-12T00:00:00" />
+      <availabilityTimeStamp>2008-03-31T00:00:00</availabilityTimeStamp>
+      <authorisingUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</authorisingUserInRole>
+      <enteredByUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</enteredByUserInRole>
+      <displayTerm />
+      <associatedText associatedTextType="POST">
+        <value> Tired generally. Needs to have bloods etc</value>
+      </associatedText>
+      <organisation>4a3ea1cf-7f01-4f61-9654-b07dd51a34f8</organisation>
+      <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
+      <observation />
+    </event>
+    <event updateMode="add">
+      <id>89b75be8-5af6-4d0b-87a8-9bac4ec4f6ca</id>
+      <patient>00d54c3c-dee6-4f95-b276-37cf3b0d3d9a</patient>
+      <eventType>OBS</eventType>
+      <effectiveTime datepart="YMD" value="2007-10-12T00:00:00" />
+      <availabilityTimeStamp>2008-03-31T00:00:00</availabilityTimeStamp>
+      <authorisingUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</authorisingUserInRole>
+      <enteredByUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</enteredByUserInRole>
+      <displayTerm />
+      <associatedText associatedTextType="POST">
+        <value>Xylometazoline Hydrochloride  Paediatric nose drops  0.05 % 10 ml 1DROP TDS</value>
+      </associatedText>
+      <organisation>4a3ea1cf-7f01-4f61-9654-b07dd51a34f8</organisation>
+      <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
+      <observation />
+    </event>
+    <event updateMode="add">
+      <id>4563c49b-4a97-415f-b9f7-e771de1e5a54</id>
+      <patient>00d54c3c-dee6-4f95-b276-37cf3b0d3d9a</patient>
+      <eventType>OBS</eventType>
+      <effectiveTime datepart="YMD" value="2007-10-12T00:00:00" />
+      <availabilityTimeStamp>2008-03-31T00:00:00</availabilityTimeStamp>
+      <authorisingUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</authorisingUserInRole>
+      <enteredByUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</enteredByUserInRole>
+      <code codeSystem="2.16.840.1.113883.2.1.6.2" displayName="Blocked nose" code="1C86">
+        <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Blocked nose" code="68235000" />
+      </code>
+      <displayTerm>Blocked nose</displayTerm>
+      <organisation>4a3ea1cf-7f01-4f61-9654-b07dd51a34f8</organisation>
+      <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
+      <observation>
+        <episodicity>FIRST</episodicity>
+      </observation>
+    </event>
+    <event updateMode="add">
+      <id>731ccac7-9582-42fe-98fe-f876957fa53d</id>
+      <patient>00d54c3c-dee6-4f95-b276-37cf3b0d3d9a</patient>
+      <eventType>OBS</eventType>
+      <effectiveTime datepart="YMD" value="2007-10-12T00:00:00" />
+      <availabilityTimeStamp>2008-03-31T00:00:00</availabilityTimeStamp>
+      <authorisingUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</authorisingUserInRole>
+      <enteredByUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</enteredByUserInRole>
+      <displayTerm />
+      <associatedText associatedTextType="POST">
+        <value> Scanty coase creps</value>
+      </associatedText>
+      <organisation>4a3ea1cf-7f01-4f61-9654-b07dd51a34f8</organisation>
+      <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
+      <observation />
+    </event>
+    <event updateMode="add">
+      <id>b132242e-59ba-4743-9946-cdf2c3470cc1</id>
+      <patient>00d54c3c-dee6-4f95-b276-37cf3b0d3d9a</patient>
+      <eventType>OBS</eventType>
+      <effectiveTime datepart="YMD" value="2007-10-27T00:00:00" />
+      <availabilityTimeStamp>2008-04-15T00:00:00</availabilityTimeStamp>
+      <authorisingUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</authorisingUserInRole>
+      <enteredByUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</enteredByUserInRole>
+      <displayTerm />
+      <associatedText associatedTextType="POST">
+        <value>Efcortelan  Cream  0.5 % 30 gram APPLY TWICE DAILY</value>
+      </associatedText>
+      <organisation>4a3ea1cf-7f01-4f61-9654-b07dd51a34f8</organisation>
+      <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
+      <observation />
+    </event>
+    <event updateMode="add">
+      <id>93b9fd28-09bf-4d04-9e71-e06af283ef2a</id>
+      <patient>00d54c3c-dee6-4f95-b276-37cf3b0d3d9a</patient>
+      <eventType>OBS</eventType>
+      <effectiveTime datepart="YMD" value="2007-10-27T00:00:00" />
+      <availabilityTimeStamp>2008-04-15T00:00:00</availabilityTimeStamp>
+      <authorisingUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</authorisingUserInRole>
+      <enteredByUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</enteredByUserInRole>
+      <code codeSystem="2.16.840.1.113883.2.1.6.2" displayName="Eczema NOS" code="M12z1">
+        <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Eczema NOS" code="684861000000105" />
+      </code>
+      <displayTerm>Eczema NOS</displayTerm>
+      <organisation>4a3ea1cf-7f01-4f61-9654-b07dd51a34f8</organisation>
+      <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
+      <observation>
+        <episodicity>FIRST</episodicity>
+      </observation>
+    </event>
+    <event updateMode="add">
+      <id>e3e75caf-5b16-453e-afda-33512ff48fba</id>
+      <patient>00d54c3c-dee6-4f95-b276-37cf3b0d3d9a</patient>
+      <eventType>OBS</eventType>
+      <effectiveTime datepart="YMD" value="2007-12-21T00:00:00" />
+      <availabilityTimeStamp>2008-06-09T00:00:00</availabilityTimeStamp>
+      <authorisingUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</authorisingUserInRole>
+      <enteredByUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</enteredByUserInRole>
+      <code codeSystem="2.16.840.1.113883.2.1.6.2" displayName="Teething syndrome" code="J007">
+        <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Teething syndrome" code="8004003" />
+      </code>
+      <displayTerm>Teething syndrome</displayTerm>
+      <organisation>4a3ea1cf-7f01-4f61-9654-b07dd51a34f8</organisation>
+      <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
+      <observation>
+        <episodicity>FIRST</episodicity>
+      </observation>
+    </event>
+    <event updateMode="add">
+      <id>68a5a8b6-c1a5-4f6c-8219-470823fc1fdb</id>
+      <patient>00d54c3c-dee6-4f95-b276-37cf3b0d3d9a</patient>
+      <eventType>OBS</eventType>
+      <effectiveTime datepart="YMD" value="2007-12-21T00:00:00" />
+      <availabilityTimeStamp>2008-06-09T00:00:00</availabilityTimeStamp>
+      <authorisingUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</authorisingUserInRole>
+      <enteredByUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</enteredByUserInRole>
+      <displayTerm />
+      <associatedText associatedTextType="POST">
+        <value>Paracetamol  Paediatric suspension  120 mg/5 ml 100 ml 5MLS QDS</value>
+      </associatedText>
+      <organisation>4a3ea1cf-7f01-4f61-9654-b07dd51a34f8</organisation>
+      <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
+      <observation />
+    </event>
+    <event updateMode="add">
+      <id>6b04c39f-42cb-43cb-b2bf-6b9cd3eebce5</id>
+      <patient>00d54c3c-dee6-4f95-b276-37cf3b0d3d9a</patient>
+      <eventType>OBS</eventType>
+      <effectiveTime datepart="YMD" value="2007-12-21T00:00:00" />
+      <availabilityTimeStamp>2008-06-09T00:00:00</availabilityTimeStamp>
+      <authorisingUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</authorisingUserInRole>
+      <enteredByUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</enteredByUserInRole>
+      <displayTerm />
+      <associatedText associatedTextType="POST">
+        <value>Choline Salicylate  Oral gel  8.7 % 15 gram USE THREE TIMES A DAY</value>
+      </associatedText>
+      <organisation>4a3ea1cf-7f01-4f61-9654-b07dd51a34f8</organisation>
+      <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
+      <observation />
+    </event>
+    <event updateMode="add">
+      <id>5978e29c-8a0b-4fad-84e4-56cc5c04898b</id>
+      <patient>00d54c3c-dee6-4f95-b276-37cf3b0d3d9a</patient>
+      <eventType>OBS</eventType>
+      <effectiveTime datepart="YMD" value="2007-12-25T00:00:00" />
+      <availabilityTimeStamp>2008-06-13T00:00:00</availabilityTimeStamp>
+      <authorisingUserInRole>756ce7b3-6e45-4693-b147-65ae05936534</authorisingUserInRole>
+      <enteredByUserInRole>756ce7b3-6e45-4693-b147-65ae05936534</enteredByUserInRole>
+      <code codeSystem="2.16.840.1.113883.2.1.6.2" displayName="Appt cancelled by patient" code="9N47">
+        <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Appt cancelled by patient" code="185332005" />
+      </code>
+      <displayTerm>Appt cancelled by patient</displayTerm>
+      <associatedText associatedTextType="POST">
+        <value> Still creps but much less now</value>
+      </associatedText>
+      <organisation>4a3ea1cf-7f01-4f61-9654-b07dd51a34f8</organisation>
+      <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
+      <observation />
+    </event>
+    <event updateMode="add">
+      <id>153d2449-80f4-44d5-9e08-635cd0d08a64</id>
+      <patient>00d54c3c-dee6-4f95-b276-37cf3b0d3d9a</patient>
+      <eventType>ATT</eventType>
+      <effectiveTime datepart="YMD" value="2008-01-13T00:00:00" />
+      <availabilityTimeStamp>2008-07-15T00:00:00</availabilityTimeStamp>
+      <authorisingUserInRole>316d34eb-f495-4c91-b814-364c69b1a541</authorisingUserInRole>
+      <enteredByUserInRole>316d34eb-f495-4c91-b814-364c69b1a541</enteredByUserInRole>
+      <code codeSystem="2.16.840.1.113883.2.1.6.2" displayName="[V]Ritual circumcision" code="ZV502-1">
+        <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="[V]Ritual circumcision" code="400241000000102" />
+      </code>
+      <displayTerm>Letter to Patient</displayTerm>
+      <organisation>4a3ea1cf-7f01-4f61-9654-b07dd51a34f8</organisation>
+      <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
+      <observation>
+        <referenceDocument>b51e4f5c-aaec-49c0-86a8-746985c1e9c1</referenceDocument>
+      </observation>
+    </event>
+    <event updateMode="add">
+      <id>20ad98eb-5c49-4224-a0fc-31f31a82a9c5</id>
+      <patient>00d54c3c-dee6-4f95-b276-37cf3b0d3d9a</patient>
+      <eventType>OBS</eventType>
+      <effectiveTime datepart="YMD" value="2008-01-19T00:00:00" />
+      <availabilityTimeStamp>2008-07-08T00:00:00</availabilityTimeStamp>
+      <authorisingUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</authorisingUserInRole>
+      <enteredByUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</enteredByUserInRole>
+      <displayTerm />
+      <associatedText associatedTextType="POST">
+        <value>Erythromycin Ethyl Succinate  Sugar-free suspension  125 mg/5 ml 100 ml 5MLS QDS</value>
+      </associatedText>
+      <organisation>4a3ea1cf-7f01-4f61-9654-b07dd51a34f8</organisation>
+      <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
+      <observation />
+    </event>
+    <event updateMode="add">
+      <id>9777256c-f2e7-4d84-9ae8-372bcda3440e</id>
+      <patient>00d54c3c-dee6-4f95-b276-37cf3b0d3d9a</patient>
+      <eventType>OBS</eventType>
+      <effectiveTime datepart="YMD" value="2008-01-19T00:00:00" />
+      <availabilityTimeStamp>2008-07-08T00:00:00</availabilityTimeStamp>
+      <authorisingUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</authorisingUserInRole>
+      <enteredByUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</enteredByUserInRole>
+      <displayTerm />
+      <associatedText associatedTextType="POST">
+        <value> Erythrocyte sedimentation rate, No action</value>
+      </associatedText>
+      <organisation>4a3ea1cf-7f01-4f61-9654-b07dd51a34f8</organisation>
+      <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
+      <observation />
+    </event>
+    <event updateMode="add">
+      <id>07845d5a-7e78-400a-a3cb-53b8c3a6722e</id>
+      <patient>00d54c3c-dee6-4f95-b276-37cf3b0d3d9a</patient>
+      <eventType>OBS</eventType>
+      <effectiveTime datepart="YMD" value="2008-01-19T00:00:00" />
+      <availabilityTimeStamp>2008-07-08T00:00:00</availabilityTimeStamp>
+      <authorisingUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</authorisingUserInRole>
+      <enteredByUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</enteredByUserInRole>
+      <displayTerm />
+      <associatedText associatedTextType="POST">
+        <value> Still feels like thick mucous from chest - causing choking</value>
+      </associatedText>
+      <organisation>4a3ea1cf-7f01-4f61-9654-b07dd51a34f8</organisation>
+      <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
+      <observation />
+    </event>
+    <event updateMode="add">
+      <id>7a4b282d-eea1-4e13-82f9-82e07cfecdf2</id>
+      <patient>00d54c3c-dee6-4f95-b276-37cf3b0d3d9a</patient>
+      <eventType>OBS</eventType>
+      <effectiveTime datepart="YMD" value="2008-01-19T00:00:00" />
+      <availabilityTimeStamp>2008-07-08T00:00:00</availabilityTimeStamp>
+      <authorisingUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</authorisingUserInRole>
+      <enteredByUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</enteredByUserInRole>
+      <displayTerm />
+      <associatedText associatedTextType="POST">
+        <value> See 18 days and review</value>
+      </associatedText>
+      <organisation>4a3ea1cf-7f01-4f61-9654-b07dd51a34f8</organisation>
+      <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
+      <observation />
+    </event>
+    <event updateMode="add">
+      <id>f6cff181-526c-44a2-947b-2b92eb20c223</id>
+      <patient>00d54c3c-dee6-4f95-b276-37cf3b0d3d9a</patient>
+      <eventType>OBS</eventType>
+      <effectiveTime datepart="YMD" value="2008-04-18T00:00:00" />
+      <availabilityTimeStamp>2008-10-06T00:00:00</availabilityTimeStamp>
+      <authorisingUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</authorisingUserInRole>
+      <enteredByUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</enteredByUserInRole>
+      <displayTerm />
+      <associatedText associatedTextType="POST">
+        <value> Scanty coase creps</value>
+      </associatedText>
+      <organisation>4a3ea1cf-7f01-4f61-9654-b07dd51a34f8</organisation>
+      <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
+      <observation />
+    </event>
+    <event updateMode="add">
+      <id>802c2ff4-91fa-413e-b775-6044f1d8215e</id>
+      <patient>00d54c3c-dee6-4f95-b276-37cf3b0d3d9a</patient>
+      <eventType>OBS</eventType>
+      <effectiveTime datepart="YMD" value="2008-04-18T00:00:00" />
+      <availabilityTimeStamp>2008-10-06T00:00:00</availabilityTimeStamp>
+      <authorisingUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</authorisingUserInRole>
+      <enteredByUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</enteredByUserInRole>
+      <displayTerm />
+      <associatedText associatedTextType="POST">
+        <value> Generally OK, remains SOB</value>
+      </associatedText>
+      <organisation>4a3ea1cf-7f01-4f61-9654-b07dd51a34f8</organisation>
+      <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
+      <observation />
+    </event>
+    <event updateMode="add">
+      <id>e968c42b-af46-4bba-9ad5-ab89a49cb3d7</id>
+      <patient>00d54c3c-dee6-4f95-b276-37cf3b0d3d9a</patient>
+      <eventType>OBS</eventType>
+      <effectiveTime datepart="YMD" value="2008-04-18T00:00:00" />
+      <availabilityTimeStamp>2008-10-06T00:00:00</availabilityTimeStamp>
+      <authorisingUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</authorisingUserInRole>
+      <enteredByUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</enteredByUserInRole>
+      <displayTerm />
+      <associatedText associatedTextType="POST">
+        <value>Simple  Linctus paediatric, sugar free   100 ml(s) 5MLS TDS</value>
+      </associatedText>
+      <organisation>4a3ea1cf-7f01-4f61-9654-b07dd51a34f8</organisation>
+      <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
+      <observation />
+    </event>
+    <event updateMode="add">
+      <id>e3803a70-f08a-448e-b065-d2614f57ef77</id>
+      <patient>00d54c3c-dee6-4f95-b276-37cf3b0d3d9a</patient>
+      <eventType>OBS</eventType>
+      <effectiveTime datepart="YMD" value="2008-04-18T00:00:00" />
+      <availabilityTimeStamp>2008-10-06T00:00:00</availabilityTimeStamp>
+      <authorisingUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</authorisingUserInRole>
+      <enteredByUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</enteredByUserInRole>
+      <code codeSystem="2.16.840.1.113883.2.1.6.2" displayName="Coryza - acute" code="H00-2">
+        <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Coryza - acute" code="82272006" />
+      </code>
+      <displayTerm>Coryza - acute</displayTerm>
+      <organisation>4a3ea1cf-7f01-4f61-9654-b07dd51a34f8</organisation>
+      <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
+      <observation>
+        <episodicity>FIRST</episodicity>
+      </observation>
+    </event>
+    <event updateMode="add">
+      <id>5ec62cf1-8fec-4098-bce3-e639786c8da8</id>
+      <patient>00d54c3c-dee6-4f95-b276-37cf3b0d3d9a</patient>
+      <eventType>OBS</eventType>
+      <effectiveTime datepart="YMD" value="2008-04-18T00:00:00" />
+      <availabilityTimeStamp>2008-10-06T00:00:00</availabilityTimeStamp>
+      <authorisingUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</authorisingUserInRole>
+      <enteredByUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</enteredByUserInRole>
+      <displayTerm />
+      <associatedText associatedTextType="POST">
+        <value>Ibuprofen  Syrup  100 mg/5 ml 100 ml(s) 5MLS TDS</value>
+      </associatedText>
+      <organisation>4a3ea1cf-7f01-4f61-9654-b07dd51a34f8</organisation>
+      <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
+      <observation />
+    </event>
+    <event updateMode="add">
+      <id>1e8e51b9-35eb-4b85-b57e-f5cc14478e51</id>
+      <patient>00d54c3c-dee6-4f95-b276-37cf3b0d3d9a</patient>
+      <eventType>OBS</eventType>
+      <effectiveTime datepart="YMD" value="2008-04-18T00:00:00" />
+      <availabilityTimeStamp>2008-10-06T00:00:00</availabilityTimeStamp>
+      <authorisingUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</authorisingUserInRole>
+      <enteredByUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</enteredByUserInRole>
+      <code codeSystem="2.16.840.1.113883.2.1.6.2" displayName="Medication review with patient" code="8B3x">
+        <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Medication review with patient" code="88551000000109" />
+      </code>
+      <displayTerm>Medication review with patient</displayTerm>
+      <organisation>4a3ea1cf-7f01-4f61-9654-b07dd51a34f8</organisation>
+      <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
+      <observation />
+    </event>
+    <event updateMode="add">
+      <id>6b261bf3-2983-486d-9f79-e873cd6110ef</id>
+      <patient>00d54c3c-dee6-4f95-b276-37cf3b0d3d9a</patient>
+      <eventType>DRY</eventType>
+      <effectiveTime datepart="YMD" value="2007-10-28T00:00:00" />
+      <availabilityTimeStamp>2008-03-19T00:00:00</availabilityTimeStamp>
+      <authorisingUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</authorisingUserInRole>
+      <enteredByUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</enteredByUserInRole>
+      <code codeSystem="2.16.840.1.113883.2.1.6.2" displayName="Third meningitis C vaccination" code="657G">
+        <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Third meningitis C vaccination" code="314416009" />
+      </code>
+      <displayTerm>Third meningitis C vaccination</displayTerm>
+      <organisation>4a3ea1cf-7f01-4f61-9654-b07dd51a34f8</organisation>
+      <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
+      <diary>
+        <locationType codeSystem="2.16.840.1.113883.2.1.6.2" displayName="" code="" />
+      </diary>
+    </event>
+    <event updateMode="add">
+      <id>c83732b5-201a-439e-94c9-a1a11a67f396</id>
+      <patient>00d54c3c-dee6-4f95-b276-37cf3b0d3d9a</patient>
+      <eventType>DRY</eventType>
+      <effectiveTime datepart="YMD" value="2009-04-18T00:00:00" />
+      <availabilityTimeStamp>2008-10-06T00:00:00</availabilityTimeStamp>
+      <authorisingUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</authorisingUserInRole>
+      <enteredByUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</enteredByUserInRole>
+      <code codeSystem="2.16.840.1.113883.2.1.6.2" displayName="Medication review" code="8B314">
+        <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Medication review" code="182836005" />
+      </code>
+      <displayTerm>Medication review</displayTerm>
+      <organisation>4a3ea1cf-7f01-4f61-9654-b07dd51a34f8</organisation>
+      <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
+      <diary>
+        <locationType codeSystem="2.16.840.1.113883.2.1.6.2" displayName="" code="" />
+      </diary>
+    </event>
+    <event updateMode="add">
+      <id>7b3bca6c-251c-489f-aeb3-b0783e37cc6a</id>
+      <patient>00d54c3c-dee6-4f95-b276-37cf3b0d3d9a</patient>
+      <eventType>DRY</eventType>
+      <effectiveTime datepart="YMD" value="2037-05-18T12:00:00" />
+      <availabilityTimeStamp>2007-12-04T00:00:00</availabilityTimeStamp>
+      <authorisingUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</authorisingUserInRole>
+      <enteredByUserInRole>316d34eb-f495-4c91-b814-364c69b1a541</enteredByUserInRole>
+      <code codeSystem="2.16.840.1.113883.2.1.6.2" displayName="MMR pre-school booster vaccination" code="65MB">
+        <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="MMR pre-school booster vaccination" code="170432003" />
+      </code>
+      <displayTerm>MMR pre-school booster vaccination</displayTerm>
+      <organisation>4a3ea1cf-7f01-4f61-9654-b07dd51a34f8</organisation>
+      <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
+      <diary>
+        <locationType codeSystem="2.16.840.1.113883.2.1.6.2" displayName="" code="" />
+      </diary>
+    </event>
+    <event updateMode="add">
+      <id>66cb1896-ca2d-415e-90fa-3c66fe94fbe3</id>
+      <patient>00d54c3c-dee6-4f95-b276-37cf3b0d3d9a</patient>
+      <eventType>MED</eventType>
+      <effectiveTime datepart="YMD" value="2007-06-16T00:00:00" />
+      <availabilityTimeStamp>2007-06-16T00:00:00</availabilityTimeStamp>
+      <authorisingUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</authorisingUserInRole>
+      <enteredByUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</enteredByUserInRole>
+      <code codeSystem="EMISPREPARATION" displayName="Tetracaine 1% cream" code="TECR17503NEMIS">
+        <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Tetracaine 1% cream" code="331628004" />
+      </code>
+      <displayTerm>Tetracaine 1% cream</displayTerm>
+      <organisation>4a3ea1cf-7f01-4f61-9654-b07dd51a34f8</organisation>
+      <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
+      <medication>
+        <expiryDate>2007-07-14</expiryDate>
+        <dosage>APPLY TWICE DAILY</dosage>
+        <quantity>25</quantity>
+        <quantityUnit>gram(s)</quantityUnit>
+        <quantityRepresentation>25 gram(s)</quantityRepresentation>
+        <durationOfIssue>28</durationOfIssue>
+        <prescriptionType>A</prescriptionType>
+        <drugStatus>C</drugStatus>
+        <private>false</private>
+        <firstIssueDate>2007-06-16</firstIssueDate>
+        <mostRecentIssueDate>2007-06-16</mostRecentIssueDate>
+        <numberOfIssues>0</numberOfIssues>
+        <averageCompliance>0</averageCompliance>
+        <mostRecentIssueMethod>P</mostRecentIssueMethod>
+        <prescribedAsContraceptive>false</prescribedAsContraceptive>
+      </medication>
+    </event>
+    <event updateMode="add">
+      <id>9d2a26b0-6869-4d1d-a989-a07bee8a1426</id>
+      <patient>00d54c3c-dee6-4f95-b276-37cf3b0d3d9a</patient>
+      <eventType>MED</eventType>
+      <effectiveTime datepart="YMD" value="2007-07-29T00:00:00" />
+      <availabilityTimeStamp>2007-07-29T00:00:00</availabilityTimeStamp>
+      <authorisingUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</authorisingUserInRole>
+      <enteredByUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</enteredByUserInRole>
+      <code codeSystem="EMISPREPARATION" displayName="Simple linctus paediatric sugar free" code="SILI5312NEMIS">
+        <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Simple linctus paediatric sugar free" code="320996008" />
+      </code>
+      <displayTerm>Simple linctus paediatric sugar free</displayTerm>
+      <organisation>4a3ea1cf-7f01-4f61-9654-b07dd51a34f8</organisation>
+      <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
+      <medication>
+        <expiryDate>2007-08-26</expiryDate>
+        <dosage>5MLS TDS</dosage>
+        <quantity>100</quantity>
+        <quantityUnit>ml(s)</quantityUnit>
+        <quantityRepresentation>100 ml(s)</quantityRepresentation>
+        <durationOfIssue>28</durationOfIssue>
+        <prescriptionType>A</prescriptionType>
+        <drugStatus>C</drugStatus>
+        <private>false</private>
+        <firstIssueDate>2007-07-29</firstIssueDate>
+        <mostRecentIssueDate>2007-07-29</mostRecentIssueDate>
+        <numberOfIssues>0</numberOfIssues>
+        <averageCompliance>0</averageCompliance>
+        <mostRecentIssueMethod>P</mostRecentIssueMethod>
+        <prescribedAsContraceptive>false</prescribedAsContraceptive>
+      </medication>
+    </event>
+    <event updateMode="add">
+      <id>7b742126-f0f9-4b3d-bfca-ca1a3eae1945</id>
+      <patient>00d54c3c-dee6-4f95-b276-37cf3b0d3d9a</patient>
+      <eventType>MED</eventType>
+      <effectiveTime datepart="YMD" value="2007-07-29T00:00:00" />
+      <availabilityTimeStamp>2007-07-29T00:00:00</availabilityTimeStamp>
+      <authorisingUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</authorisingUserInRole>
+      <enteredByUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</enteredByUserInRole>
+      <code codeSystem="EMISPREPARATION" displayName="Paracetamol 120mg/5ml oral suspension paediatric sugar free" code="PASU10264BRIDL">
+        <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Paracetamol 120mg/5ml oral suspension paediatric sugar free" code="322282001" />
+      </code>
+      <displayTerm>Paracetamol 120mg/5ml oral suspension paediatric sugar free</displayTerm>
+      <organisation>4a3ea1cf-7f01-4f61-9654-b07dd51a34f8</organisation>
+      <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
+      <medication>
+        <expiryDate>2007-08-26</expiryDate>
+        <dosage>5MLS QDS PRN</dosage>
+        <quantity>150</quantity>
+        <quantityUnit>ml</quantityUnit>
+        <quantityRepresentation>150 ml</quantityRepresentation>
+        <durationOfIssue>28</durationOfIssue>
+        <prescriptionType>A</prescriptionType>
+        <drugStatus>C</drugStatus>
+        <private>false</private>
+        <firstIssueDate>2007-07-29</firstIssueDate>
+        <mostRecentIssueDate>2007-07-29</mostRecentIssueDate>
+        <numberOfIssues>0</numberOfIssues>
+        <averageCompliance>0</averageCompliance>
+        <mostRecentIssueMethod>P</mostRecentIssueMethod>
+        <prescribedAsContraceptive>false</prescribedAsContraceptive>
+      </medication>
+    </event>
+    <event updateMode="add">
+      <id>b2f3e8ba-8c95-4304-99b7-746c0c7df286</id>
+      <patient>00d54c3c-dee6-4f95-b276-37cf3b0d3d9a</patient>
+      <eventType>MED</eventType>
+      <effectiveTime datepart="YMD" value="2007-09-14T00:00:00" />
+      <availabilityTimeStamp>2007-09-14T00:00:00</availabilityTimeStamp>
+      <authorisingUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</authorisingUserInRole>
+      <enteredByUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</enteredByUserInRole>
+      <code codeSystem="EMISPREPARATION" displayName="Nystaform HC ointment (Typharm Ltd)" code="NYOI2048">
+        <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Nystaform HC ointment (Typharm Ltd)" code="3692511000001106" />
+      </code>
+      <displayTerm>Nystaform HC ointment (Typharm Ltd)</displayTerm>
+      <organisation>4a3ea1cf-7f01-4f61-9654-b07dd51a34f8</organisation>
+      <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
+      <medication>
+        <expiryDate>2007-10-12</expiryDate>
+        <dosage>APPLY TWICE A DAY</dosage>
+        <quantity>30</quantity>
+        <quantityUnit>gram(s)</quantityUnit>
+        <quantityRepresentation>30 gram(s)</quantityRepresentation>
+        <durationOfIssue>28</durationOfIssue>
+        <prescriptionType>A</prescriptionType>
+        <drugStatus>C</drugStatus>
+        <private>false</private>
+        <firstIssueDate>2007-09-14</firstIssueDate>
+        <mostRecentIssueDate>2007-09-14</mostRecentIssueDate>
+        <numberOfIssues>0</numberOfIssues>
+        <averageCompliance>0</averageCompliance>
+        <mostRecentIssueMethod>P</mostRecentIssueMethod>
+        <prescribedAsContraceptive>false</prescribedAsContraceptive>
+      </medication>
+    </event>
+    <event updateMode="add">
+      <id>b8c5f417-4b56-4071-b915-fb649e595036</id>
+      <patient>00d54c3c-dee6-4f95-b276-37cf3b0d3d9a</patient>
+      <eventType>MED</eventType>
+      <effectiveTime datepart="YMD" value="2007-10-12T00:00:00" />
+      <availabilityTimeStamp>2007-10-12T00:00:00</availabilityTimeStamp>
+      <authorisingUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</authorisingUserInRole>
+      <enteredByUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</enteredByUserInRole>
+      <code codeSystem="EMISPREPARATION" displayName="Xylometazoline Hydrochloride  Paediatric nose drops  0.05 %" code="XYPA8951EGTON" />
+      <displayTerm>Xylometazoline Hydrochloride  Paediatric nose drops  0.05 %</displayTerm>
+      <organisation>4a3ea1cf-7f01-4f61-9654-b07dd51a34f8</organisation>
+      <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
+      <medication>
+        <expiryDate>2007-11-09</expiryDate>
+        <dosage>1DROP TDS</dosage>
+        <quantity>10</quantity>
+        <quantityUnit>ml</quantityUnit>
+        <quantityRepresentation>10 ml</quantityRepresentation>
+        <durationOfIssue>28</durationOfIssue>
+        <prescriptionType>A</prescriptionType>
+        <drugStatus>C</drugStatus>
+        <private>false</private>
+        <firstIssueDate>2007-10-12</firstIssueDate>
+        <mostRecentIssueDate>2007-10-12</mostRecentIssueDate>
+        <numberOfIssues>0</numberOfIssues>
+        <averageCompliance>0</averageCompliance>
+        <mostRecentIssueMethod>P</mostRecentIssueMethod>
+        <prescribedAsContraceptive>false</prescribedAsContraceptive>
+      </medication>
+    </event>
+    <event updateMode="add">
+      <id>950eb9c6-61d0-428b-a7af-35f427beb2d5</id>
+      <patient>00d54c3c-dee6-4f95-b276-37cf3b0d3d9a</patient>
+      <eventType>MED</eventType>
+      <effectiveTime datepart="YMD" value="2007-10-27T00:00:00" />
+      <availabilityTimeStamp>2007-10-27T00:00:00</availabilityTimeStamp>
+      <authorisingUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</authorisingUserInRole>
+      <enteredByUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</enteredByUserInRole>
+      <code codeSystem="EMISPREPARATION" displayName="Efcortelan 0.5% cream (Chemidex Pharma Ltd)" code="EFCR1023">
+        <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Efcortelan 0.5% cream (Chemidex Pharma Ltd)" code="151811000001101" />
+      </code>
+      <displayTerm>Efcortelan 0.5% cream (Chemidex Pharma Ltd)</displayTerm>
+      <organisation>4a3ea1cf-7f01-4f61-9654-b07dd51a34f8</organisation>
+      <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
+      <medication>
+        <expiryDate>2007-11-24</expiryDate>
+        <dosage>APPLY TWICE DAILY</dosage>
+        <quantity>30</quantity>
+        <quantityUnit>gram</quantityUnit>
+        <quantityRepresentation>30 gram</quantityRepresentation>
+        <durationOfIssue>28</durationOfIssue>
+        <prescriptionType>A</prescriptionType>
+        <drugStatus>C</drugStatus>
+        <private>false</private>
+        <firstIssueDate>2007-10-27</firstIssueDate>
+        <mostRecentIssueDate>2007-10-27</mostRecentIssueDate>
+        <numberOfIssues>0</numberOfIssues>
+        <averageCompliance>0</averageCompliance>
+        <mostRecentIssueMethod>P</mostRecentIssueMethod>
+        <prescribedAsContraceptive>false</prescribedAsContraceptive>
+      </medication>
+    </event>
+    <event updateMode="add">
+      <id>332ef323-b0ad-46e1-9709-2115a078d3f1</id>
+      <patient>00d54c3c-dee6-4f95-b276-37cf3b0d3d9a</patient>
+      <eventType>MED</eventType>
+      <effectiveTime datepart="YMD" value="2007-12-21T00:00:00" />
+      <availabilityTimeStamp>2007-12-21T00:00:00</availabilityTimeStamp>
+      <authorisingUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</authorisingUserInRole>
+      <enteredByUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</enteredByUserInRole>
+      <code codeSystem="EMISPREPARATION" displayName="Paracetamol 120mg/5ml oral suspension paediatric" code="PAPA5245">
+        <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Paracetamol 120mg/5ml oral suspension paediatric" code="322277008" />
+      </code>
+      <displayTerm>Paracetamol 120mg/5ml oral suspension paediatric</displayTerm>
+      <organisation>4a3ea1cf-7f01-4f61-9654-b07dd51a34f8</organisation>
+      <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
+      <medication>
+        <reviewDate>2008-04-12</reviewDate>
+        <expiryDate>2008-02-18</expiryDate>
+        <dosage>5MLS QDS</dosage>
+        <quantity>100</quantity>
+        <quantityUnit>ml</quantityUnit>
+        <quantityRepresentation>100 ml</quantityRepresentation>
+        <durationOfIssue>30</durationOfIssue>
+        <prescriptionType>R</prescriptionType>
+        <drugStatus>A</drugStatus>
+        <private>false</private>
+        <firstIssueDate>2007-12-21</firstIssueDate>
+        <mostRecentIssueDate>2008-01-19</mostRecentIssueDate>
+        <numberOfIssues>1</numberOfIssues>
+        <averageCompliance>0</averageCompliance>
+        <mostRecentIssueMethod>P</mostRecentIssueMethod>
+        <prescribedAsContraceptive>false</prescribedAsContraceptive>
+      </medication>
+    </event>
+    <event updateMode="add">
+      <id>5c7dd0d5-1b01-4ad9-9cfd-55781c1367f5</id>
+      <patient>00d54c3c-dee6-4f95-b276-37cf3b0d3d9a</patient>
+      <eventType>MED</eventType>
+      <effectiveTime datepart="YMD" value="2007-12-21T00:00:00" />
+      <availabilityTimeStamp>2007-12-21T00:00:00</availabilityTimeStamp>
+      <authorisingUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</authorisingUserInRole>
+      <enteredByUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</enteredByUserInRole>
+      <code codeSystem="EMISPREPARATION" displayName="Choline salicylate 8.7% oromucosal gel sugar free" code="CHOR7089">
+        <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Choline salicylate 8.7% oromucosal gel sugar free" code="331177008" />
+      </code>
+      <displayTerm>Choline salicylate 8.7% oromucosal gel sugar free</displayTerm>
+      <organisation>4a3ea1cf-7f01-4f61-9654-b07dd51a34f8</organisation>
+      <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
+      <medication>
+        <expiryDate>2008-02-01</expiryDate>
+        <dosage>USE THREE TIMES A DAY</dosage>
+        <quantity>15</quantity>
+        <quantityUnit>gram</quantityUnit>
+        <quantityRepresentation>15 gram</quantityRepresentation>
+        <durationOfIssue>42</durationOfIssue>
+        <prescriptionType>A</prescriptionType>
+        <drugStatus>C</drugStatus>
+        <private>false</private>
+        <firstIssueDate>2007-12-21</firstIssueDate>
+        <mostRecentIssueDate>2007-12-21</mostRecentIssueDate>
+        <numberOfIssues>0</numberOfIssues>
+        <averageCompliance>0</averageCompliance>
+        <mostRecentIssueMethod>P</mostRecentIssueMethod>
+        <prescribedAsContraceptive>false</prescribedAsContraceptive>
+      </medication>
+    </event>
+    <event updateMode="add">
+      <id>cc5293de-57b3-44c5-a8a0-f168adfbc71a</id>
+      <patient>00d54c3c-dee6-4f95-b276-37cf3b0d3d9a</patient>
+      <eventType>MED</eventType>
+      <effectiveTime datepart="YMD" value="2008-01-19T00:00:00" />
+      <availabilityTimeStamp>2008-01-19T00:00:00</availabilityTimeStamp>
+      <authorisingUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</authorisingUserInRole>
+      <enteredByUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</enteredByUserInRole>
+      <code codeSystem="EMISPREPARATION" displayName="Erythromycin ethyl succinate 125mg/5ml oral suspension sugar free" code="ERSU25264EMIS">
+        <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Erythromycin ethyl succinate 125mg/5ml oral suspension sugar free" code="324191005" />
+      </code>
+      <displayTerm>Erythromycin ethyl succinate 125mg/5ml oral suspension sugar free</displayTerm>
+      <organisation>4a3ea1cf-7f01-4f61-9654-b07dd51a34f8</organisation>
+      <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
+      <medication>
+        <expiryDate>2008-03-01</expiryDate>
+        <dosage>5MLS QDS</dosage>
+        <quantity>100</quantity>
+        <quantityUnit>ml</quantityUnit>
+        <quantityRepresentation>100 ml</quantityRepresentation>
+        <durationOfIssue>42</durationOfIssue>
+        <prescriptionType>A</prescriptionType>
+        <drugStatus>C</drugStatus>
+        <private>false</private>
+        <firstIssueDate>2008-01-19</firstIssueDate>
+        <mostRecentIssueDate>2008-01-19</mostRecentIssueDate>
+        <numberOfIssues>0</numberOfIssues>
+        <averageCompliance>0</averageCompliance>
+        <mostRecentIssueMethod>P</mostRecentIssueMethod>
+        <prescribedAsContraceptive>false</prescribedAsContraceptive>
+      </medication>
+    </event>
+    <event updateMode="add">
+      <id>ca6fc4c8-d472-426d-95d5-7e667f565487</id>
+      <patient>00d54c3c-dee6-4f95-b276-37cf3b0d3d9a</patient>
+      <eventType>MED</eventType>
+      <effectiveTime datepart="YMD" value="2008-04-18T00:00:00" />
+      <availabilityTimeStamp>2008-04-18T00:00:00</availabilityTimeStamp>
+      <authorisingUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</authorisingUserInRole>
+      <enteredByUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</enteredByUserInRole>
+      <code codeSystem="EMISPREPARATION" displayName="Simple linctus paediatric sugar free" code="SILI5312NEMIS">
+        <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Simple linctus paediatric sugar free" code="320996008" />
+      </code>
+      <displayTerm>Simple linctus paediatric sugar free</displayTerm>
+      <organisation>4a3ea1cf-7f01-4f61-9654-b07dd51a34f8</organisation>
+      <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
+      <medication>
+        <expiryDate>2008-05-30</expiryDate>
+        <dosage>5MLS TDS</dosage>
+        <quantity>100</quantity>
+        <quantityUnit>ml(s)</quantityUnit>
+        <quantityRepresentation>100 ml(s)</quantityRepresentation>
+        <durationOfIssue>42</durationOfIssue>
+        <prescriptionType>A</prescriptionType>
+        <drugStatus>C</drugStatus>
+        <private>false</private>
+        <firstIssueDate>2008-04-18</firstIssueDate>
+        <mostRecentIssueDate>2008-04-18</mostRecentIssueDate>
+        <numberOfIssues>0</numberOfIssues>
+        <averageCompliance>0</averageCompliance>
+        <mostRecentIssueMethod>P</mostRecentIssueMethod>
+        <prescribedAsContraceptive>false</prescribedAsContraceptive>
+      </medication>
+    </event>
+    <event updateMode="add">
+      <id>f2d79f36-0bf8-42e4-9ac8-d1750820380d</id>
+      <patient>00d54c3c-dee6-4f95-b276-37cf3b0d3d9a</patient>
+      <eventType>MED</eventType>
+      <effectiveTime datepart="YMD" value="2008-04-18T00:00:00" />
+      <availabilityTimeStamp>2008-04-18T00:00:00</availabilityTimeStamp>
+      <authorisingUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</authorisingUserInRole>
+      <enteredByUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</enteredByUserInRole>
+      <code codeSystem="EMISPREPARATION" displayName="Ibuprofen  Syrup  100 mg/5 ml" code="IBSY1428" />
+      <displayTerm>Ibuprofen  Syrup  100 mg/5 ml</displayTerm>
+      <organisation>4a3ea1cf-7f01-4f61-9654-b07dd51a34f8</organisation>
+      <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
+      <medication>
+        <expiryDate>2008-05-30</expiryDate>
+        <dosage>5MLS TDS</dosage>
+        <quantity>100</quantity>
+        <quantityUnit>ml(s)</quantityUnit>
+        <quantityRepresentation>100 ml(s)</quantityRepresentation>
+        <durationOfIssue>42</durationOfIssue>
+        <prescriptionType>A</prescriptionType>
+        <drugStatus>C</drugStatus>
+        <private>false</private>
+        <firstIssueDate>2008-04-18</firstIssueDate>
+        <mostRecentIssueDate>2008-04-18</mostRecentIssueDate>
+        <numberOfIssues>0</numberOfIssues>
+        <averageCompliance>0</averageCompliance>
+        <mostRecentIssueMethod>P</mostRecentIssueMethod>
+        <prescribedAsContraceptive>false</prescribedAsContraceptive>
+      </medication>
+    </event>
+    <event updateMode="add">
+      <id>7fc04783-8526-4bf5-9b58-465961b4aa56</id>
+      <patient>00d54c3c-dee6-4f95-b276-37cf3b0d3d9a</patient>
+      <eventType>ISS</eventType>
+      <effectiveTime datepart="YMD" value="2007-06-16T00:00:00" />
+      <availabilityTimeStamp>2007-06-16T00:00:00</availabilityTimeStamp>
+      <authorisingUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</authorisingUserInRole>
+      <enteredByUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</enteredByUserInRole>
+      <code codeSystem="EMISPREPARATION" displayName="Tetracaine 1% cream" code="TECR17503NEMIS">
+        <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Tetracaine 1% cream" code="331628004" />
+      </code>
+      <displayTerm>Tetracaine  Cream  1 %</displayTerm>
+      <organisation>4a3ea1cf-7f01-4f61-9654-b07dd51a34f8</organisation>
+      <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
+      <medicationIssue>
+        <medication>66cb1896-ca2d-415e-90fa-3c66fe94fbe3</medication>
+        <dosage>APPLY TWICE DAILY</dosage>
+        <quantity>25</quantity>
+        <quantityUnit>gram(s)</quantityUnit>
+        <quantityRepresentation>25 gram(s)</quantityRepresentation>
+        <durationOfIssue>0</durationOfIssue>
+        <prescriptionType>A</prescriptionType>
+        <estimatedNHSCost>2.43</estimatedNHSCost>
+        <issueMethod>P</issueMethod>
+        <private>false</private>
+        <cancelled>false</cancelled>
+        <prescribedAsContraceptive>false</prescribedAsContraceptive>
+      </medicationIssue>
+    </event>
+    <event updateMode="add">
+      <id>98982321-f53e-48bc-b390-b8387c390ff4</id>
+      <patient>00d54c3c-dee6-4f95-b276-37cf3b0d3d9a</patient>
+      <eventType>ISS</eventType>
+      <effectiveTime datepart="YMD" value="2007-07-29T00:00:00" />
+      <availabilityTimeStamp>2007-07-29T00:00:00</availabilityTimeStamp>
+      <authorisingUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</authorisingUserInRole>
+      <enteredByUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</enteredByUserInRole>
+      <code codeSystem="EMISPREPARATION" displayName="Paracetamol 120mg/5ml oral suspension paediatric sugar free" code="PASU10264BRIDL">
+        <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Paracetamol 120mg/5ml oral suspension paediatric sugar free" code="322282001" />
+      </code>
+      <displayTerm>Paracetamol  Sugar free suspension  120 mg/5 ml</displayTerm>
+      <organisation>4a3ea1cf-7f01-4f61-9654-b07dd51a34f8</organisation>
+      <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
+      <medicationIssue>
+        <medication>7b742126-f0f9-4b3d-bfca-ca1a3eae1945</medication>
+        <dosage>5MLS QDS PRN</dosage>
+        <quantity>150</quantity>
+        <quantityUnit>ml</quantityUnit>
+        <quantityRepresentation>150 ml</quantityRepresentation>
+        <durationOfIssue>0</durationOfIssue>
+        <prescriptionType>A</prescriptionType>
+        <estimatedNHSCost>0</estimatedNHSCost>
+        <issueMethod>P</issueMethod>
+        <private>false</private>
+        <cancelled>false</cancelled>
+        <prescribedAsContraceptive>false</prescribedAsContraceptive>
+      </medicationIssue>
+    </event>
+    <event updateMode="add">
+      <id>78e6d70b-ede2-46c8-8ffd-d042bb21fe7d</id>
+      <patient>00d54c3c-dee6-4f95-b276-37cf3b0d3d9a</patient>
+      <eventType>ISS</eventType>
+      <effectiveTime datepart="YMD" value="2007-07-29T00:00:00" />
+      <availabilityTimeStamp>2007-07-29T00:00:00</availabilityTimeStamp>
+      <authorisingUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</authorisingUserInRole>
+      <enteredByUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</enteredByUserInRole>
+      <code codeSystem="EMISPREPARATION" displayName="Simple linctus paediatric sugar free" code="SILI5312NEMIS">
+        <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Simple linctus paediatric sugar free" code="320996008" />
+      </code>
+      <displayTerm>Simple  Linctus paediatric, sugar free  </displayTerm>
+      <organisation>4a3ea1cf-7f01-4f61-9654-b07dd51a34f8</organisation>
+      <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
+      <medicationIssue>
+        <medication>9d2a26b0-6869-4d1d-a989-a07bee8a1426</medication>
+        <dosage>5MLS TDS</dosage>
+        <quantity>100</quantity>
+        <quantityUnit>ml(s)</quantityUnit>
+        <quantityRepresentation>100 ml(s)</quantityRepresentation>
+        <durationOfIssue>0</durationOfIssue>
+        <prescriptionType>A</prescriptionType>
+        <estimatedNHSCost>0.17</estimatedNHSCost>
+        <issueMethod>P</issueMethod>
+        <private>false</private>
+        <cancelled>false</cancelled>
+        <prescribedAsContraceptive>false</prescribedAsContraceptive>
+      </medicationIssue>
+    </event>
+    <event updateMode="add">
+      <id>7f71fd40-b394-456f-b2ba-380cad9b92cc</id>
+      <patient>00d54c3c-dee6-4f95-b276-37cf3b0d3d9a</patient>
+      <eventType>ISS</eventType>
+      <effectiveTime datepart="YMD" value="2007-09-14T00:00:00" />
+      <availabilityTimeStamp>2007-09-14T00:00:00</availabilityTimeStamp>
+      <authorisingUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</authorisingUserInRole>
+      <enteredByUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</enteredByUserInRole>
+      <code codeSystem="EMISPREPARATION" displayName="Nystaform HC ointment (Typharm Ltd)" code="NYOI2048">
+        <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Nystaform HC ointment (Typharm Ltd)" code="3692511000001106" />
+      </code>
+      <displayTerm>Nystaform-Hc  Ointment  </displayTerm>
+      <organisation>4a3ea1cf-7f01-4f61-9654-b07dd51a34f8</organisation>
+      <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
+      <medicationIssue>
+        <medication>b2f3e8ba-8c95-4304-99b7-746c0c7df286</medication>
+        <dosage>APPLY TWICE A DAY</dosage>
+        <quantity>30</quantity>
+        <quantityUnit>gram(s)</quantityUnit>
+        <quantityRepresentation>30 gram(s)</quantityRepresentation>
+        <durationOfIssue>0</durationOfIssue>
+        <prescriptionType>A</prescriptionType>
+        <estimatedNHSCost>2.66</estimatedNHSCost>
+        <issueMethod>P</issueMethod>
+        <private>false</private>
+        <cancelled>false</cancelled>
+        <prescribedAsContraceptive>false</prescribedAsContraceptive>
+      </medicationIssue>
+    </event>
+    <event updateMode="add">
+      <id>5512ba24-c94e-46df-af7f-b9925ef6209c</id>
+      <patient>00d54c3c-dee6-4f95-b276-37cf3b0d3d9a</patient>
+      <eventType>ISS</eventType>
+      <effectiveTime datepart="YMD" value="2007-10-12T00:00:00" />
+      <availabilityTimeStamp>2007-10-12T00:00:00</availabilityTimeStamp>
+      <authorisingUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</authorisingUserInRole>
+      <enteredByUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</enteredByUserInRole>
+      <code codeSystem="EMISPREPARATION" displayName="Xylometazoline Hydrochloride  Paediatric nose drops  0.05 %" code="XYPA8951EGTON" />
+      <displayTerm>Xylometazoline Hydrochloride  Paediatric nose drops  0.05 %</displayTerm>
+      <organisation>4a3ea1cf-7f01-4f61-9654-b07dd51a34f8</organisation>
+      <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
+      <medicationIssue>
+        <medication>b8c5f417-4b56-4071-b915-fb649e595036</medication>
+        <dosage>1DROP TDS</dosage>
+        <quantity>10</quantity>
+        <quantityUnit>ml</quantityUnit>
+        <quantityRepresentation>10 ml</quantityRepresentation>
+        <durationOfIssue>0</durationOfIssue>
+        <prescriptionType>A</prescriptionType>
+        <estimatedNHSCost>1.59</estimatedNHSCost>
+        <issueMethod>P</issueMethod>
+        <private>false</private>
+        <cancelled>false</cancelled>
+        <prescribedAsContraceptive>false</prescribedAsContraceptive>
+      </medicationIssue>
+    </event>
+    <event updateMode="add">
+      <id>ce1fb10b-9eb3-430d-9398-23160b448bb8</id>
+      <patient>00d54c3c-dee6-4f95-b276-37cf3b0d3d9a</patient>
+      <eventType>ISS</eventType>
+      <effectiveTime datepart="YMD" value="2007-10-27T00:00:00" />
+      <availabilityTimeStamp>2007-10-27T00:00:00</availabilityTimeStamp>
+      <authorisingUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</authorisingUserInRole>
+      <enteredByUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</enteredByUserInRole>
+      <code codeSystem="EMISPREPARATION" displayName="Efcortelan 0.5% cream (Chemidex Pharma Ltd)" code="EFCR1023">
+        <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Efcortelan 0.5% cream (Chemidex Pharma Ltd)" code="151811000001101" />
+      </code>
+      <displayTerm>Efcortelan  Cream  0.5 %</displayTerm>
+      <organisation>4a3ea1cf-7f01-4f61-9654-b07dd51a34f8</organisation>
+      <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
+      <medicationIssue>
+        <medication>950eb9c6-61d0-428b-a7af-35f427beb2d5</medication>
+        <dosage>APPLY TWICE DAILY</dosage>
+        <quantity>30</quantity>
+        <quantityUnit>gram</quantityUnit>
+        <quantityRepresentation>30 gram</quantityRepresentation>
+        <durationOfIssue>0</durationOfIssue>
+        <prescriptionType>A</prescriptionType>
+        <estimatedNHSCost>0.6</estimatedNHSCost>
+        <issueMethod>P</issueMethod>
+        <private>false</private>
+        <cancelled>false</cancelled>
+        <prescribedAsContraceptive>false</prescribedAsContraceptive>
+      </medicationIssue>
+    </event>
+    <event updateMode="add">
+      <id>5ae8ee7b-589c-4472-ac28-0dec9a20346e</id>
+      <patient>00d54c3c-dee6-4f95-b276-37cf3b0d3d9a</patient>
+      <eventType>ISS</eventType>
+      <effectiveTime datepart="YMD" value="2007-12-21T00:00:00" />
+      <availabilityTimeStamp>2007-12-21T00:00:00</availabilityTimeStamp>
+      <authorisingUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</authorisingUserInRole>
+      <enteredByUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</enteredByUserInRole>
+      <code codeSystem="EMISPREPARATION" displayName="Choline salicylate 8.7% oromucosal gel sugar free" code="CHOR7089">
+        <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Choline salicylate 8.7% oromucosal gel sugar free" code="331177008" />
+      </code>
+      <displayTerm>Choline Salicylate  Oral gel  8.7 %</displayTerm>
+      <organisation>4a3ea1cf-7f01-4f61-9654-b07dd51a34f8</organisation>
+      <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
+      <medicationIssue>
+        <medication>5c7dd0d5-1b01-4ad9-9cfd-55781c1367f5</medication>
+        <dosage>USE THREE TIMES A DAY</dosage>
+        <quantity>15</quantity>
+        <quantityUnit>gram</quantityUnit>
+        <quantityRepresentation>15 gram</quantityRepresentation>
+        <durationOfIssue>0</durationOfIssue>
+        <prescriptionType>A</prescriptionType>
+        <estimatedNHSCost>1.8</estimatedNHSCost>
+        <issueMethod>P</issueMethod>
+        <private>false</private>
+        <cancelled>false</cancelled>
+        <prescribedAsContraceptive>false</prescribedAsContraceptive>
+      </medicationIssue>
+    </event>
+    <event updateMode="add">
+      <id>bd0a212e-277d-4c27-8920-8a64738d7589</id>
+      <patient>00d54c3c-dee6-4f95-b276-37cf3b0d3d9a</patient>
+      <eventType>ISS</eventType>
+      <effectiveTime datepart="YMD" value="2007-12-21T00:00:00" />
+      <availabilityTimeStamp>2007-12-21T00:00:00</availabilityTimeStamp>
+      <authorisingUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</authorisingUserInRole>
+      <enteredByUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</enteredByUserInRole>
+      <code codeSystem="EMISPREPARATION" displayName="Paracetamol 120mg/5ml oral suspension paediatric" code="PAPA5245">
+        <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Paracetamol 120mg/5ml oral suspension paediatric" code="322277008" />
+      </code>
+      <displayTerm>Paracetamol  Paediatric suspension  120 mg/5 ml</displayTerm>
+      <organisation>4a3ea1cf-7f01-4f61-9654-b07dd51a34f8</organisation>
+      <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
+      <medicationIssue>
+        <medication>332ef323-b0ad-46e1-9709-2115a078d3f1</medication>
+        <dosage>5MLS QDS</dosage>
+        <quantity>100</quantity>
+        <quantityUnit>ml</quantityUnit>
+        <quantityRepresentation>100 ml</quantityRepresentation>
+        <durationOfIssue>0</durationOfIssue>
+        <prescriptionType>A</prescriptionType>
+        <estimatedNHSCost>0.39</estimatedNHSCost>
+        <issueMethod>P</issueMethod>
+        <private>false</private>
+        <cancelled>false</cancelled>
+        <prescribedAsContraceptive>false</prescribedAsContraceptive>
+      </medicationIssue>
+    </event>
+    <event updateMode="add">
+      <id>569eb0dd-f7c1-4924-b837-0c3ddb538e15</id>
+      <patient>00d54c3c-dee6-4f95-b276-37cf3b0d3d9a</patient>
+      <eventType>ISS</eventType>
+      <effectiveTime datepart="YMD" value="2008-01-19T00:00:00" />
+      <availabilityTimeStamp>2008-01-19T00:00:00</availabilityTimeStamp>
+      <authorisingUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</authorisingUserInRole>
+      <enteredByUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</enteredByUserInRole>
+      <code codeSystem="EMISPREPARATION" displayName="Paracetamol 120mg/5ml oral suspension paediatric" code="PAPA5245">
+        <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Paracetamol 120mg/5ml oral suspension paediatric" code="322277008" />
+      </code>
+      <displayTerm>Paracetamol  Paediatric suspension  120 mg/5 ml</displayTerm>
+      <organisation>4a3ea1cf-7f01-4f61-9654-b07dd51a34f8</organisation>
+      <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
+      <medicationIssue>
+        <medication>332ef323-b0ad-46e1-9709-2115a078d3f1</medication>
+        <dosage>5MLS QDS</dosage>
+        <quantity>100</quantity>
+        <quantityUnit>ml</quantityUnit>
+        <quantityRepresentation>100 ml</quantityRepresentation>
+        <durationOfIssue>30</durationOfIssue>
+        <prescriptionType>R</prescriptionType>
+        <estimatedNHSCost>0.39</estimatedNHSCost>
+        <issueMethod>P</issueMethod>
+        <private>false</private>
+        <cancelled>false</cancelled>
+        <prescribedAsContraceptive>false</prescribedAsContraceptive>
+      </medicationIssue>
+    </event>
+    <event updateMode="add">
+      <id>3538a6e2-91c7-4aaf-b7a6-4a86cd3cd62a</id>
+      <patient>00d54c3c-dee6-4f95-b276-37cf3b0d3d9a</patient>
+      <eventType>ISS</eventType>
+      <effectiveTime datepart="YMD" value="2008-01-19T00:00:00" />
+      <availabilityTimeStamp>2008-01-19T00:00:00</availabilityTimeStamp>
+      <authorisingUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</authorisingUserInRole>
+      <enteredByUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</enteredByUserInRole>
+      <code codeSystem="EMISPREPARATION" displayName="Erythromycin ethyl succinate 125mg/5ml oral suspension sugar free" code="ERSU25264EMIS">
+        <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Erythromycin ethyl succinate 125mg/5ml oral suspension sugar free" code="324191005" />
+      </code>
+      <displayTerm>Erythromycin Ethyl Succinate  Sugar-free suspension  125 mg/5 ml</displayTerm>
+      <organisation>4a3ea1cf-7f01-4f61-9654-b07dd51a34f8</organisation>
+      <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
+      <medicationIssue>
+        <medication>cc5293de-57b3-44c5-a8a0-f168adfbc71a</medication>
+        <dosage>5MLS QDS</dosage>
+        <quantity>100</quantity>
+        <quantityUnit>ml</quantityUnit>
+        <quantityRepresentation>100 ml</quantityRepresentation>
+        <durationOfIssue>0</durationOfIssue>
+        <prescriptionType>A</prescriptionType>
+        <estimatedNHSCost>2</estimatedNHSCost>
+        <issueMethod>P</issueMethod>
+        <private>false</private>
+        <cancelled>false</cancelled>
+        <prescribedAsContraceptive>false</prescribedAsContraceptive>
+      </medicationIssue>
+    </event>
+    <event updateMode="add">
+      <id>6e6fa475-f52b-41dc-b5c7-8a8d3b6f83d5</id>
+      <patient>00d54c3c-dee6-4f95-b276-37cf3b0d3d9a</patient>
+      <eventType>ISS</eventType>
+      <effectiveTime datepart="YMD" value="2008-04-18T00:00:00" />
+      <availabilityTimeStamp>2008-04-18T00:00:00</availabilityTimeStamp>
+      <authorisingUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</authorisingUserInRole>
+      <enteredByUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</enteredByUserInRole>
+      <code codeSystem="EMISPREPARATION" displayName="Simple linctus paediatric sugar free" code="SILI5312NEMIS">
+        <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Simple linctus paediatric sugar free" code="320996008" />
+      </code>
+      <displayTerm>Simple  Linctus paediatric, sugar free  </displayTerm>
+      <organisation>4a3ea1cf-7f01-4f61-9654-b07dd51a34f8</organisation>
+      <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
+      <medicationIssue>
+        <medication>ca6fc4c8-d472-426d-95d5-7e667f565487</medication>
+        <dosage>5MLS TDS</dosage>
+        <quantity>100</quantity>
+        <quantityUnit>ml(s)</quantityUnit>
+        <quantityRepresentation>100 ml(s)</quantityRepresentation>
+        <durationOfIssue>0</durationOfIssue>
+        <prescriptionType>A</prescriptionType>
+        <estimatedNHSCost>0.17</estimatedNHSCost>
+        <issueMethod>P</issueMethod>
+        <private>false</private>
+        <cancelled>false</cancelled>
+        <prescribedAsContraceptive>false</prescribedAsContraceptive>
+      </medicationIssue>
+    </event>
+    <event updateMode="add">
+      <id>7d2eb791-4e17-41d7-ac63-b4e44192e680</id>
+      <patient>00d54c3c-dee6-4f95-b276-37cf3b0d3d9a</patient>
+      <eventType>ISS</eventType>
+      <effectiveTime datepart="YMD" value="2008-04-18T00:00:00" />
+      <availabilityTimeStamp>2008-04-18T00:00:00</availabilityTimeStamp>
+      <authorisingUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</authorisingUserInRole>
+      <enteredByUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</enteredByUserInRole>
+      <code codeSystem="EMISPREPARATION" displayName="Ibuprofen  Syrup  100 mg/5 ml" code="IBSY1428" />
+      <displayTerm>Ibuprofen  Syrup  100 mg/5 ml</displayTerm>
+      <organisation>4a3ea1cf-7f01-4f61-9654-b07dd51a34f8</organisation>
+      <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
+      <medicationIssue>
+        <medication>f2d79f36-0bf8-42e4-9ac8-d1750820380d</medication>
+        <dosage>5MLS TDS</dosage>
+        <quantity>100</quantity>
+        <quantityUnit>ml(s)</quantityUnit>
+        <quantityRepresentation>100 ml(s)</quantityRepresentation>
+        <durationOfIssue>0</durationOfIssue>
+        <prescriptionType>A</prescriptionType>
+        <estimatedNHSCost>1.69</estimatedNHSCost>
+        <issueMethod>P</issueMethod>
+        <private>false</private>
+        <cancelled>false</cancelled>
+        <prescribedAsContraceptive>false</prescribedAsContraceptive>
+      </medicationIssue>
+    </event>
+    <problem updateMode="add">
+      <id>7e261c0a-9790-4652-a57d-a7daa63ae66c</id>
+      <status>I</status>
+      <significance>M</significance>
+      <expectedDuration unit="D" value="28" />
+      <endTime datepart="YMD" value="2008-01-01T00:00:00" />
+      <eventLink updateMode="add">
+        <id>5751c233-062b-4f50-a5a8-cb7f18228b2c</id>
+        <eventType>OBS</eventType>
+        <eventLinkType>ASS</eventLinkType>
+      </eventLink>
+    </problem>
+    <problem updateMode="add">
+      <id>b75eaff2-59a0-4881-a61d-6c1ff0fffd19</id>
+      <status>I</status>
+      <significance>M</significance>
+      <expectedDuration unit="D" value="28" />
+      <endTime datepart="YMD" value="2008-01-21T00:00:00" />
+      <eventLink updateMode="add">
+        <id>54961c46-0939-4560-873c-d491f43c24b6</id>
+        <eventType>OBS</eventType>
+        <eventLinkType>ASS</eventLinkType>
+      </eventLink>
+    </problem>
+    <problem updateMode="add">
+      <id>9f148d46-53b2-4d90-bac9-405f204a0a63</id>
+      <status>I</status>
+      <significance>M</significance>
+      <expectedDuration unit="D" value="28" />
+      <endTime datepart="YMD" value="2008-03-31T00:00:00" />
+      <eventLink updateMode="add">
+        <id>d7d1bdc4-945a-4707-8b4a-2e173e4871c4</id>
+        <eventType>OBS</eventType>
+        <eventLinkType>ASS</eventLinkType>
+      </eventLink>
+      <eventLink updateMode="add">
+        <id>b2f3e8ba-8c95-4304-99b7-746c0c7df286</id>
+        <eventType>MED</eventType>
+      </eventLink>
+    </problem>
+    <problem updateMode="add">
+      <id>4563c49b-4a97-415f-b9f7-e771de1e5a54</id>
+      <status>I</status>
+      <significance>M</significance>
+      <expectedDuration unit="D" value="28" />
+      <endTime datepart="YMD" value="2008-04-28T00:00:00" />
+      <eventLink updateMode="add">
+        <id>89b75be8-5af6-4d0b-87a8-9bac4ec4f6ca</id>
+        <eventType>OBS</eventType>
+        <eventLinkType>ASS</eventLinkType>
+      </eventLink>
+      <eventLink updateMode="add">
+        <id>b8c5f417-4b56-4071-b915-fb649e595036</id>
+        <eventType>MED</eventType>
+      </eventLink>
+    </problem>
+    <problem updateMode="add">
+      <id>93b9fd28-09bf-4d04-9e71-e06af283ef2a</id>
+      <status>I</status>
+      <significance>M</significance>
+      <expectedDuration unit="D" value="28" />
+      <endTime datepart="YMD" value="2008-05-13T00:00:00" />
+      <eventLink updateMode="add">
+        <id>950eb9c6-61d0-428b-a7af-35f427beb2d5</id>
+        <eventType>MED</eventType>
+      </eventLink>
+      <eventLink updateMode="add">
+        <id>b132242e-59ba-4743-9946-cdf2c3470cc1</id>
+        <eventType>OBS</eventType>
+        <eventLinkType>ASS</eventLinkType>
+      </eventLink>
+    </problem>
+    <problem updateMode="add">
+      <id>e3e75caf-5b16-453e-afda-33512ff48fba</id>
+      <status>I</status>
+      <significance>M</significance>
+      <expectedDuration unit="D" value="28" />
+      <endTime datepart="YMD" value="2008-07-07T00:00:00" />
+      <eventLink updateMode="add">
+        <id>569eb0dd-f7c1-4924-b837-0c3ddb538e15</id>
+        <eventType>ISS</eventType>
+      </eventLink>
+      <eventLink updateMode="add">
+        <id>332ef323-b0ad-46e1-9709-2115a078d3f1</id>
+        <eventType>MED</eventType>
+      </eventLink>
+      <eventLink updateMode="add">
+        <id>68a5a8b6-c1a5-4f6c-8219-470823fc1fdb</id>
+        <eventType>OBS</eventType>
+        <eventLinkType>ASS</eventLinkType>
+      </eventLink>
+      <eventLink updateMode="add">
+        <id>5c7dd0d5-1b01-4ad9-9cfd-55781c1367f5</id>
+        <eventType>MED</eventType>
+      </eventLink>
+      <eventLink updateMode="add">
+        <id>6b04c39f-42cb-43cb-b2bf-6b9cd3eebce5</id>
+        <eventType>OBS</eventType>
+        <eventLinkType>ASS</eventLinkType>
+      </eventLink>
+    </problem>
+    <problem updateMode="add">
+      <id>e3803a70-f08a-448e-b065-d2614f57ef77</id>
+      <status>I</status>
+      <significance>M</significance>
+      <expectedDuration unit="D" value="28" />
+      <endTime datepart="YMD" value="2008-11-03T00:00:00" />
+      <eventLink updateMode="add">
+        <id>ca6fc4c8-d472-426d-95d5-7e667f565487</id>
+        <eventType>MED</eventType>
+      </eventLink>
+      <eventLink updateMode="add">
+        <id>e968c42b-af46-4bba-9ad5-ab89a49cb3d7</id>
+        <eventType>OBS</eventType>
+        <eventLinkType>ASS</eventLinkType>
+      </eventLink>
+      <eventLink updateMode="add">
+        <id>f2d79f36-0bf8-42e4-9ac8-d1750820380d</id>
+        <eventType>MED</eventType>
+      </eventLink>
+      <eventLink updateMode="add">
+        <id>5ec62cf1-8fec-4098-bce3-e639786c8da8</id>
+        <eventType>OBS</eventType>
+        <eventLinkType>ASS</eventLinkType>
+      </eventLink>
+      <eventLink updateMode="add">
+        <id>1e8e51b9-35eb-4b85-b57e-f5cc14478e51</id>
+        <eventType>OBS</eventType>
+        <eventLinkType>ASS</eventLinkType>
+      </eventLink>
+    </problem>
+    <document updateMode="add">
+      <id>b51e4f5c-aaec-49c0-86a8-746985c1e9c1</id>
+      <name>C:\Program Files\Emis PCS\Save150708165258.tif</name>
+      <uploadUserInRole>316d34eb-f495-4c91-b814-364c69b1a541</uploadUserInRole>
+      <producedTime>2008-01-13T00:00:00</producedTime>
+      <deleted>false</deleted>
+      <locator>LOCAL</locator>
+    </document>
+  </healthDomain>
+</openHealthRecord>

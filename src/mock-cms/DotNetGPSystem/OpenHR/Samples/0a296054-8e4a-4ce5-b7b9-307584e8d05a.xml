@@ -1,0 +1,196 @@
+<?xml version="1.0"?>
+<openHealthRecord xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" schemaVersion="1.3.0" xmlns="http://www.e-mis.com/emisopen">
+  <id>0a296054-8e4a-4ce5-b7b9-307584e8d05a</id>
+  <creationTime>2010-05-09T00:00:00+01:00</creationTime>
+  <author>
+    <system>
+      <systemType>EMISWEB</systemType>
+    </system>
+    <organisation>4A3EA1CF-7F01-4F61-9654-B07DD51A34F8</organisation>
+  </author>
+  <contentSpecification>
+    <specification>37241000000102</specification>
+  </contentSpecification>
+  <adminDomain>
+    <person updateMode="add">
+      <id>0a296054-8e4a-4ce5-b7b9-307584e8d05a</id>
+      <birthDate>1966-10-27</birthDate>
+      <sex>M</sex>
+      <forenames>Daniel</forenames>
+      <callingName>Daniel</callingName>
+      <surname>Lambert</surname>
+      <title>Mr</title>
+      <address updateMode="add">
+        <id>f26c9fd3-4da2-4d9b-bdd7-a9618d8d6a76</id>
+        <postCode>LS28</postCode>
+        <houseNameFlat />
+        <street>76 The Crescent</street>
+        <village>Storth</village>
+        <town>West Hardwick</town>
+        <county>West Yorkshire</county>
+      </address>
+    </person>
+    <person updateMode="add">
+      <id>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</id>
+      <sex>U</sex>
+      <forenames>Robert</forenames>
+      <surname>Burns</surname>
+      <title>Dr</title>
+    </person>
+    <patient updateMode="add">
+      <id>0a296054-8e4a-4ce5-b7b9-307584e8d05a</id>
+      <patientIdentifier updateMode="add">
+        <identifierType>NHS</identifierType>
+        <value>8847127975</value>
+      </patientIdentifier>
+      <patientPerson>0a296054-8e4a-4ce5-b7b9-307584e8d05a</patientPerson>
+      <registeredGPUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</registeredGPUserInRole>
+      <usualGPUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</usualGPUserInRole>
+      <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
+      <caseloadPatient updateMode="add">
+        <id>0a296054-8e4a-4ce5-b7b9-307584e8d05a</id>
+        <organisation>4a3ea1cf-7f01-4f61-9654-b07dd51a34f8</organisation>
+        <dateRecorded>1999-10-19T00:00:00</dateRecorded>
+        <patientStatus>
+          <status>6</status>
+          <caseloadStatus>REG</caseloadStatus>
+        </patientStatus>
+        <patientType dummy="false" userDefined="false">REG</patientType>
+        <property updateMode="add">
+          <name>FZ</name>
+          <value>0</value>
+        </property>
+        <emisPatientNumber>1319</emisPatientNumber>
+      </caseloadPatient>
+    </patient>
+    <organisation updateMode="add">
+      <id>decd2779-b54b-4a38-8630-0257c7d3e03a</id>
+      <name>National Health Service</name>
+      <organisationType codeSystem="2.16.840.1.113883.2.1.6.2" displayName="National Health Service" code="" />
+      <parentOrganisation>f4d020c6-eaff-4528-83ba-e81a1cfd30dc</parentOrganisation>
+      <openDate>2006-01-01T00:00:00</openDate>
+    </organisation>
+    <organisation updateMode="add">
+      <id>269b539e-0043-45f5-8ec5-92b8d6021e4f</id>
+      <name>Leeds PCT</name>
+      <organisationType codeSystem="2.16.840.1.113883.2.1.6.2" displayName="Primary Care Trust" code="" />
+      <cdb>50006</cdb>
+      <nationalPracticeCode>5N1</nationalPracticeCode>
+      <parentOrganisation>a1c838e9-b485-49b6-a6f8-4ad0d3c6b294</parentOrganisation>
+      <openDate>2006-10-01T00:00:00</openDate>
+    </organisation>
+    <organisation updateMode="add">
+      <id>4a3ea1cf-7f01-4f61-9654-b07dd51a34f8</id>
+      <name>EMIS PCS Test Surgery 2</name>
+      <organisationType codeSystem="2.16.840.1.113883.2.1.6.2" displayName="General Practice" code="" />
+      <speciality codeSystem="2.16.840.1.113883.2.1.6.2" displayName="General Medical Practice" code="" />
+      <cdb>50003</cdb>
+      <nationalPracticeCode>T00003</nationalPracticeCode>
+      <mainLocation>187011f3-aa9d-4419-89b7-d461953f9eb0</mainLocation>
+      <locations updateMode="add">
+        <location>187011f3-aa9d-4419-89b7-d461953f9eb0</location>
+      </locations>
+      <parentOrganisation>a091aefc-7548-469d-8abc-129516e99795</parentOrganisation>
+      <openDate>2008-10-22T17:10:38.013</openDate>
+    </organisation>
+    <organisation updateMode="add">
+      <id>ed5b90df-2766-4c27-a840-cc440a51517f</id>
+      <name>Yorkshire and The Humber Strategic Health Authority</name>
+      <organisationType codeSystem="2.16.840.1.113883.2.1.6.2" displayName="Strategic Health Authority" code="" />
+      <nationalPracticeCode>Q32</nationalPracticeCode>
+      <mainLocation>8c7a32ed-5db3-49c5-ae54-482b4d26b0e2</mainLocation>
+      <locations updateMode="add">
+        <location>8c7a32ed-5db3-49c5-ae54-482b4d26b0e2</location>
+      </locations>
+      <parentOrganisation>decd2779-b54b-4a38-8630-0257c7d3e03a</parentOrganisation>
+      <openDate>2006-07-01T00:00:00</openDate>
+    </organisation>
+    <organisation updateMode="add">
+      <id>f4d020c6-eaff-4528-83ba-e81a1cfd30dc</id>
+      <name>National</name>
+      <organisationType codeSystem="2.16.840.1.113883.2.1.6.2" displayName="EMIS" code="" />
+      <cdb>-2000</cdb>
+      <openDate>2006-10-11T00:00:00</openDate>
+    </organisation>
+    <location updateMode="add">
+      <id>8c7a32ed-5db3-49c5-ae54-482b4d26b0e2</id>
+      <name>Yorkshire and The Humber Strategic Health Authority</name>
+      <locationType codeSystem="2.16.840.1.113883.2.1.6.2" displayName="Strategic Health Authority" code="" />
+      <notes />
+      <openDate>2006-07-01T00:00:00</openDate>
+      <address>
+        <id>95735a6d-c4fe-458d-8814-3074706ab899</id>
+        <postCode>S10 3TG</postCode>
+        <houseNameFlat>Fulwood House</houseNameFlat>
+        <street>5 Old Fulwood Road</street>
+        <village />
+        <town>Sheffield</town>
+        <county>South Yorkshire</county>
+      </address>
+    </location>
+    <location updateMode="add">
+      <id>187011f3-aa9d-4419-89b7-d461953f9eb0</id>
+      <name>EMIS PCS Test Surgery 2</name>
+      <locationType codeSystem="2.16.840.1.113883.2.1.6.2" displayName="Main Surgery" code="" />
+      <notes />
+      <openDate>2009-02-16T15:54:57.88</openDate>
+      <address>
+        <id>8992586b-ad29-44a4-a2eb-bb6db29cc9fa</id>
+        <postCode>LS19 6BA</postCode>
+        <houseNameFlat>Fulford Grange, Micklefield Lane</houseNameFlat>
+        <street>Rawdon</street>
+        <village>Rawdon</village>
+        <town>LEEDS</town>
+        <county>Yorkshire</county>
+      </address>
+      <contact updateMode="add">
+        <id>187011f3-aa9d-4419-89b7-d461953f9eb0</id>
+        <contactType>W</contactType>
+        <value>01133800000</value>
+      </contact>
+    </location>
+    <user updateMode="add">
+      <id>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</id>
+      <userPerson>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</userPerson>
+      <mnemonic>15103</mnemonic>
+      <loginName>BDCC660329193-a8f2-4</loginName>
+      <active>false</active>
+    </user>
+    <role updateMode="add">
+      <id>63115222-7fad-9016-12ed-1091def75a50</id>
+      <name>Principal</name>
+      <userCategory codeSystem="2.16.840.1.113883.2.1.6.2" displayName="General Medical Practitioner" code="" />
+      <organisation>4a3ea1cf-7f01-4f61-9654-b07dd51a34f8</organisation>
+      <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
+    </role>
+    <userInRole updateMode="add">
+      <id>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</id>
+      <user>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</user>
+      <role>63115222-7fad-9016-12ed-1091def75a50</role>
+      <contractualRelationship>E</contractualRelationship>
+      <contractStart>2003-12-13</contractStart>
+      <filingConfidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</filingConfidentialityPolicy>
+      <userIdentifier updateMode="add">
+        <identifierType>GP</identifierType>
+        <value>3312182</value>
+      </userIdentifier>
+      <userIdentifier updateMode="add">
+        <identifierType>PRES</identifierType>
+        <value>464471</value>
+      </userIdentifier>
+      <userIdentifier updateMode="add">
+        <identifierType>NAT</identifierType>
+        <value>G4499052</value>
+      </userIdentifier>
+    </userInRole>
+    <confidentialityPolicy updateMode="add">
+      <id>d713d67d-571d-47c4-bacc-0e1d40310326</id>
+      <name>Unrestricted</name>
+      <notificationType>NO</notificationType>
+      <showHiddenRecordIndicator>false</showHiddenRecordIndicator>
+      <organisation>f4d020c6-eaff-4528-83ba-e81a1cfd30dc</organisation>
+      <restrictToOrganisation>false</restrictToOrganisation>
+    </confidentialityPolicy>
+  </adminDomain>
+  <healthDomain />
+</openHealthRecord>

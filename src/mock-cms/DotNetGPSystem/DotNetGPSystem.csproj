@@ -1,0 +1,177 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{489C1F62-4ACC-450D-B0D1-3A6E83A241A7}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DotNetGPSystem</RootNamespace>
+    <AssemblyName>DotNetGPSystem</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Controls\DemographicsPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\DemographicsPage.Designer.cs">
+      <DependentUpon>DemographicsPage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\OpenHRPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\OpenHRPage.Designer.cs">
+      <DependentUpon>OpenHRPage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\PatientControlToolStripRenderer.cs" />
+    <Compile Include="DataLayer.cs" />
+    <Compile Include="GPSystemForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GPSystemForm.Designer.cs">
+      <DependentUpon>GPSystemForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OpenHR\OpenHRPatient.cs" />
+    <Compile Include="OpenHR\Schema\OpenHR001.cs">
+      <DependentUpon>OpenHR001.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="OpenHR\OpenHRExtensionMethods.cs" />
+    <Compile Include="Controls\PatientControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\PatientControl.Designer.cs">
+      <DependentUpon>PatientControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PatientFindForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PatientFindForm.Designer.cs">
+      <DependentUpon>PatientFindForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\PatientTabPage.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\PatientTabPage.Designer.cs">
+      <DependentUpon>PatientTabPage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utilities.cs" />
+    <EmbeddedResource Include="Controls\DemographicsPage.resx">
+      <DependentUpon>DemographicsPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\OpenHRPage.resx">
+      <DependentUpon>OpenHRPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GPSystemForm.resx">
+      <DependentUpon>GPSystemForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\PatientControl.resx">
+      <DependentUpon>PatientControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PatientFindForm.resx">
+      <DependentUpon>PatientFindForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="OpenHR\Schema\datatypes.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OpenHR\Schema\OpenHR001.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OpenHR\Schema\vocabulary.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Endeavour Logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\user.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="OpenHR\Samples\00ab10e6-6414-400d-ab3d-ac18a6b7481a.xml" />
+    <EmbeddedResource Include="OpenHR\Samples\00abde7f-3ed6-4db6-97d6-0c7f71b8ed15.xml" />
+    <EmbeddedResource Include="OpenHR\Samples\00b87973-f3a3-4db6-a4d9-a559db2660e7.xml" />
+    <EmbeddedResource Include="OpenHR\Samples\00d0b7ae-a867-4906-9dc2-d8cab42eb69a.xml" />
+    <EmbeddedResource Include="OpenHR\Samples\00d54c3c-dee6-4f95-b276-37cf3b0d3d9a.xml" />
+    <EmbeddedResource Include="OpenHR\Samples\00e6a475-6ad5-42c8-aa42-55b5905e93c4.xml" />
+    <EmbeddedResource Include="OpenHR\Samples\00f31b7f-424d-4478-a07c-3ec60b898916.xml" />
+    <EmbeddedResource Include="OpenHR\Samples\0a296054-8e4a-4ce5-b7b9-307584e8d05a.xml" />
+    <EmbeddedResource Include="OpenHR\Samples\0a4a4c71-81c6-45cb-a17d-86acabc350bb.xml" />
+    <EmbeddedResource Include="OpenHR\Samples\0a4f555a-4eb5-4beb-8caf-7191315c9389.xml" />
+    <EmbeddedResource Include="OpenHR\Samples\0a509047-66ee-4cc2-ab84-f7068784dd89.xml" />
+    <EmbeddedResource Include="OpenHR\Samples\0a5970e4-397d-48ad-b637-566ce5029373.xml" />
+    <EmbeddedResource Include="OpenHR\Samples\0a6d3e55-83a0-426f-8b94-38f6b394f572.xml" />
+    <EmbeddedResource Include="OpenHR\Samples\0a76bbcd-309f-4d42-967f-143b06abc0b9.xml" />
+    <EmbeddedResource Include="OpenHR\Samples\0a87c6ef-c597-477f-b68d-04849f2dcdcd.xml" />
+    <EmbeddedResource Include="OpenHR\Samples\0a8dec0f-c714-41dd-a83c-1678a374c9f6.xml" />
+    <EmbeddedResource Include="OpenHR\Samples\0abf46e8-e0ed-48f0-9176-313d36f0833c.xml" />
+    <EmbeddedResource Include="OpenHR\Samples\0addafc9-ed1a-438d-b5aa-866bfd2c72fb.xml" />
+    <EmbeddedResource Include="OpenHR\Samples\0b0c2d6a-39cb-412a-9efd-382ecbf26745.xml" />
+    <EmbeddedResource Include="OpenHR\Samples\0b6ff8de-117e-4994-bbe8-64a628eeda7d.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pencil.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

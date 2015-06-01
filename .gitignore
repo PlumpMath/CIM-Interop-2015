@@ -57,3 +57,7 @@ findbugs-idea.xml
 
 # Maven files
 Maven__*.xml
+/src/mock-cms/DotNetGPSystem/bin
+/src/mock-cms/DotNetGPSystem/obj
+/src/mock-cms/DotNetGPSystem/*.user
+/src/mock-cms/*.suo

@@ -1,0 +1,1148 @@
+<?xml version="1.0"?>
+<openHealthRecord xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" schemaVersion="1.3.0" xmlns="http://www.e-mis.com/emisopen">
+  <id>00abde7f-3ed6-4db6-97d6-0c7f71b8ed15</id>
+  <creationTime>2010-05-09T00:00:00+01:00</creationTime>
+  <author>
+    <system>
+      <systemType>EMISWEB</systemType>
+    </system>
+    <organisation>4A3EA1CF-7F01-4F61-9654-B07DD51A34F8</organisation>
+  </author>
+  <contentSpecification>
+    <specification>37241000000102</specification>
+  </contentSpecification>
+  <adminDomain>
+    <person updateMode="add">
+      <id>00abde7f-3ed6-4db6-97d6-0c7f71b8ed15</id>
+      <birthDate>1973-02-10</birthDate>
+      <sex>M</sex>
+      <forenames>Alan</forenames>
+      <callingName>Alan</callingName>
+      <surname>Cooke</surname>
+      <title>Mr</title>
+      <address updateMode="add">
+        <id>1289222c-5a88-4a75-8f0d-4792b27ff026</id>
+        <postCode>BD11</postCode>
+        <houseNameFlat />
+        <street>27 Park Lane</street>
+        <village>Burley in Wharfdale</village>
+        <town>Ripponden</town>
+        <county>West Yorkshire</county>
+      </address>
+    </person>
+    <person updateMode="add">
+      <id>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</id>
+      <sex>U</sex>
+      <forenames>Robert</forenames>
+      <surname>Burns</surname>
+      <title>Dr</title>
+    </person>
+    <person updateMode="add">
+      <id>316d34eb-f495-4c91-b814-364c69b1a541</id>
+      <sex>U</sex>
+      <forenames>Sharon</forenames>
+      <surname>Cook</surname>
+      <title>Mrs</title>
+    </person>
+    <person updateMode="add">
+      <id>756ce7b3-6e45-4693-b147-65ae05936534</id>
+      <sex>U</sex>
+      <forenames>Carol</forenames>
+      <surname>Fitzgerald</surname>
+      <title>Mrs</title>
+    </person>
+    <person updateMode="add">
+      <id>893001d7-07fa-42d8-a303-c61fd99c874b</id>
+      <sex>U</sex>
+      <forenames>Adam</forenames>
+      <surname>Walton</surname>
+      <title>Dr</title>
+    </person>
+    <person updateMode="add">
+      <id>0e9fec8f-c287-4f48-aece-c0c6433eb5e8</id>
+      <sex>U</sex>
+      <forenames>Philip</forenames>
+      <surname>Oliver</surname>
+      <title>Mr</title>
+    </person>
+    <person updateMode="add">
+      <id>7235b5fe-a01f-4cfe-b7fa-b8cbe0c2725c</id>
+      <sex>U</sex>
+      <forenames>Mary</forenames>
+      <surname>Cunningham</surname>
+      <title />
+    </person>
+    <patient updateMode="add">
+      <id>00abde7f-3ed6-4db6-97d6-0c7f71b8ed15</id>
+      <patientIdentifier updateMode="add">
+        <identifierType>NHS</identifierType>
+        <value>2742068923</value>
+      </patientIdentifier>
+      <patientPerson>00abde7f-3ed6-4db6-97d6-0c7f71b8ed15</patientPerson>
+      <registeredGPUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</registeredGPUserInRole>
+      <usualGPUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</usualGPUserInRole>
+      <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
+      <caseloadPatient updateMode="add">
+        <id>00abde7f-3ed6-4db6-97d6-0c7f71b8ed15</id>
+        <organisation>4a3ea1cf-7f01-4f61-9654-b07dd51a34f8</organisation>
+        <dateRecorded>1903-07-25T00:00:00</dateRecorded>
+        <patientStatus>
+          <status>6</status>
+          <caseloadStatus>REG</caseloadStatus>
+        </patientStatus>
+        <patientType dummy="false" userDefined="false">REG</patientType>
+        <property updateMode="add">
+          <name>FZ</name>
+          <value>0</value>
+        </property>
+        <emisPatientNumber>2322</emisPatientNumber>
+      </caseloadPatient>
+    </patient>
+    <organisation updateMode="add">
+      <id>decd2779-b54b-4a38-8630-0257c7d3e03a</id>
+      <name>National Health Service</name>
+      <organisationType codeSystem="2.16.840.1.113883.2.1.6.2" displayName="National Health Service" code="" />
+      <parentOrganisation>f4d020c6-eaff-4528-83ba-e81a1cfd30dc</parentOrganisation>
+      <openDate>2006-01-01T00:00:00</openDate>
+    </organisation>
+    <organisation updateMode="add">
+      <id>6b776524-f038-4beb-9ca7-0f354026ea34</id>
+      <name>Girlington Hospital</name>
+      <organisationType codeSystem="2.16.840.1.113883.2.1.6.2" displayName="Hospital" code="" />
+      <speciality codeSystem="2.16.840.1.113883.2.1.6.2" displayName="General Medicine" code="" />
+      <nationalPracticeCode>V81999</nationalPracticeCode>
+      <mainLocation>6b776524-f038-4beb-9ca7-0f354026ea34</mainLocation>
+      <locations updateMode="add">
+        <location>6b776524-f038-4beb-9ca7-0f354026ea34</location>
+      </locations>
+      <parentOrganisation>f4d020c6-eaff-4528-83ba-e81a1cfd30dc</parentOrganisation>
+      <openDate>2008-10-22T17:51:14.673</openDate>
+    </organisation>
+    <organisation updateMode="add">
+      <id>269b539e-0043-45f5-8ec5-92b8d6021e4f</id>
+      <name>Leeds PCT</name>
+      <organisationType codeSystem="2.16.840.1.113883.2.1.6.2" displayName="Primary Care Trust" code="" />
+      <cdb>50006</cdb>
+      <nationalPracticeCode>5N1</nationalPracticeCode>
+      <parentOrganisation>a1c838e9-b485-49b6-a6f8-4ad0d3c6b294</parentOrganisation>
+      <openDate>2006-10-01T00:00:00</openDate>
+    </organisation>
+    <organisation updateMode="add">
+      <id>4a3ea1cf-7f01-4f61-9654-b07dd51a34f8</id>
+      <name>EMIS PCS Test Surgery 2</name>
+      <organisationType codeSystem="2.16.840.1.113883.2.1.6.2" displayName="General Practice" code="" />
+      <speciality codeSystem="2.16.840.1.113883.2.1.6.2" displayName="General Medical Practice" code="" />
+      <cdb>50003</cdb>
+      <nationalPracticeCode>T00003</nationalPracticeCode>
+      <mainLocation>187011f3-aa9d-4419-89b7-d461953f9eb0</mainLocation>
+      <locations updateMode="add">
+        <location>187011f3-aa9d-4419-89b7-d461953f9eb0</location>
+      </locations>
+      <parentOrganisation>a091aefc-7548-469d-8abc-129516e99795</parentOrganisation>
+      <openDate>2008-10-22T17:10:38.013</openDate>
+    </organisation>
+    <organisation updateMode="add">
+      <id>ed5b90df-2766-4c27-a840-cc440a51517f</id>
+      <name>Yorkshire and The Humber Strategic Health Authority</name>
+      <organisationType codeSystem="2.16.840.1.113883.2.1.6.2" displayName="Strategic Health Authority" code="" />
+      <nationalPracticeCode>Q32</nationalPracticeCode>
+      <mainLocation>8c7a32ed-5db3-49c5-ae54-482b4d26b0e2</mainLocation>
+      <locations updateMode="add">
+        <location>8c7a32ed-5db3-49c5-ae54-482b4d26b0e2</location>
+      </locations>
+      <parentOrganisation>decd2779-b54b-4a38-8630-0257c7d3e03a</parentOrganisation>
+      <openDate>2006-07-01T00:00:00</openDate>
+    </organisation>
+    <organisation updateMode="add">
+      <id>f4d020c6-eaff-4528-83ba-e81a1cfd30dc</id>
+      <name>National</name>
+      <organisationType codeSystem="2.16.840.1.113883.2.1.6.2" displayName="EMIS" code="" />
+      <cdb>-2000</cdb>
+      <openDate>2006-10-11T00:00:00</openDate>
+    </organisation>
+    <location updateMode="add">
+      <id>8c7a32ed-5db3-49c5-ae54-482b4d26b0e2</id>
+      <name>Yorkshire and The Humber Strategic Health Authority</name>
+      <locationType codeSystem="2.16.840.1.113883.2.1.6.2" displayName="Strategic Health Authority" code="" />
+      <notes />
+      <openDate>2006-07-01T00:00:00</openDate>
+      <address>
+        <id>95735a6d-c4fe-458d-8814-3074706ab899</id>
+        <postCode>S10 3TG</postCode>
+        <houseNameFlat>Fulwood House</houseNameFlat>
+        <street>5 Old Fulwood Road</street>
+        <village />
+        <town>Sheffield</town>
+        <county>South Yorkshire</county>
+      </address>
+    </location>
+    <location updateMode="add">
+      <id>6b776524-f038-4beb-9ca7-0f354026ea34</id>
+      <name>Girlington Hospital</name>
+      <locationType codeSystem="2.16.840.1.113883.2.1.6.2" displayName="Hospital" code="" />
+      <notes />
+      <openDate>1899-01-01T00:00:00</openDate>
+      <contact updateMode="add">
+        <id>6b776524-f038-4beb-9ca7-0f354026ea34</id>
+        <contactType>W</contactType>
+        <value>0161 434 5555</value>
+      </contact>
+      <contact updateMode="add">
+        <id>6b776524-f038-4beb-9ca7-0f354026ea34</id>
+        <contactType>EM</contactType>
+        <value>www.suthmanchesterpct.nhs.uk</value>
+      </contact>
+    </location>
+    <location updateMode="add">
+      <id>187011f3-aa9d-4419-89b7-d461953f9eb0</id>
+      <name>EMIS PCS Test Surgery 2</name>
+      <locationType codeSystem="2.16.840.1.113883.2.1.6.2" displayName="Main Surgery" code="" />
+      <notes />
+      <openDate>2009-02-16T15:54:57.88</openDate>
+      <address>
+        <id>8992586b-ad29-44a4-a2eb-bb6db29cc9fa</id>
+        <postCode>LS19 6BA</postCode>
+        <houseNameFlat>Fulford Grange, Micklefield Lane</houseNameFlat>
+        <street>Rawdon</street>
+        <village>Rawdon</village>
+        <town>LEEDS</town>
+        <county>Yorkshire</county>
+      </address>
+      <contact updateMode="add">
+        <id>187011f3-aa9d-4419-89b7-d461953f9eb0</id>
+        <contactType>W</contactType>
+        <value>01133800000</value>
+      </contact>
+    </location>
+    <user updateMode="add">
+      <id>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</id>
+      <userPerson>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</userPerson>
+      <mnemonic>15103</mnemonic>
+      <loginName>BDCC660329193-a8f2-4</loginName>
+      <active>false</active>
+    </user>
+    <user updateMode="add">
+      <id>316d34eb-f495-4c91-b814-364c69b1a541</id>
+      <userPerson>316d34eb-f495-4c91-b814-364c69b1a541</userPerson>
+      <mnemonic>D7A97</mnemonic>
+      <loginName>DE80637589703-94ad-4</loginName>
+      <active>true</active>
+    </user>
+    <user updateMode="add">
+      <id>756ce7b3-6e45-4693-b147-65ae05936534</id>
+      <userPerson>756ce7b3-6e45-4693-b147-65ae05936534</userPerson>
+      <mnemonic>7DD8B</mnemonic>
+      <loginName>5A44Edba095c0-4cc8-4</loginName>
+      <active>true</active>
+    </user>
+    <user updateMode="add">
+      <id>7235b5fe-a01f-4cfe-b7fa-b8cbe0c2725c</id>
+      <userPerson>7235b5fe-a01f-4cfe-b7fa-b8cbe0c2725c</userPerson>
+      <mnemonic>CF191</mnemonic>
+      <loginName>BC8E488905158-ce49-4</loginName>
+      <active>true</active>
+    </user>
+    <user updateMode="add">
+      <id>0e9fec8f-c287-4f48-aece-c0c6433eb5e8</id>
+      <userPerson>0e9fec8f-c287-4f48-aece-c0c6433eb5e8</userPerson>
+      <mnemonic>A593B</mnemonic>
+      <loginName>30760e91ecff8-e5ab-4</loginName>
+      <active>false</active>
+    </user>
+    <user updateMode="add">
+      <id>893001d7-07fa-42d8-a303-c61fd99c874b</id>
+      <userPerson>893001d7-07fa-42d8-a303-c61fd99c874b</userPerson>
+      <mnemonic>441F9</mnemonic>
+      <loginName>02432d3ecbc29-6480-4</loginName>
+      <active>false</active>
+    </user>
+    <role updateMode="add">
+      <id>ea801c6a-425c-083f-6b9e-83123fcb829c</id>
+      <name>Receptionist Al-shifa</name>
+      <userCategory codeSystem="2.16.840.1.113883.2.1.6.2" displayName="Includes 'Administrative Assistant'. 'Ward Clerk' (an NCRS type role) is also available." code="" />
+      <organisation>4a3ea1cf-7f01-4f61-9654-b07dd51a34f8</organisation>
+      <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
+    </role>
+    <role updateMode="add">
+      <id>9039c901-2d2b-4ca3-b125-b7773e1b8555</id>
+      <name>Admin Staff</name>
+      <userCategory codeSystem="2.16.840.1.113883.2.1.6.2" displayName="Includes 'Nursing Auxiliaries'. Support staff without formal NVQ or local HCA training should be classed as Healthcare Support Worker. (Staff acting as helpers or assistants to therapists, scientists and technical staff should be classed as 'Assistant/Technician'.)" code="" />
+      <organisation>4a3ea1cf-7f01-4f61-9654-b07dd51a34f8</organisation>
+      <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
+    </role>
+    <role updateMode="add">
+      <id>9039c901-2d2b-4ca3-b125-b7773e1b8555</id>
+      <name>Unknown</name>
+      <userCategory codeSystem="2.16.840.1.113883.2.1.6.2" displayName="Includes 'Nursing Auxiliaries'. Support staff without formal NVQ or local HCA training should be classed as Healthcare Support Worker. (Staff acting as helpers or assistants to therapists, scientists and technical staff should be classed as 'Assistant/Technician'.)" code="" />
+      <organisation>6b776524-f038-4beb-9ca7-0f354026ea34</organisation>
+      <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
+    </role>
+    <role updateMode="add">
+      <id>63115222-7fad-9016-12ed-1091def75a50</id>
+      <name>Locum</name>
+      <userCategory codeSystem="2.16.840.1.113883.2.1.6.2" displayName="General Medical Practitioner" code="" />
+      <organisation>4a3ea1cf-7f01-4f61-9654-b07dd51a34f8</organisation>
+      <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
+    </role>
+    <role updateMode="add">
+      <id>63115222-7fad-9016-12ed-1091def75a50</id>
+      <name>Principal</name>
+      <userCategory codeSystem="2.16.840.1.113883.2.1.6.2" displayName="General Medical Practitioner" code="" />
+      <organisation>4a3ea1cf-7f01-4f61-9654-b07dd51a34f8</organisation>
+      <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
+    </role>
+    <userInRole updateMode="add">
+      <id>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</id>
+      <user>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</user>
+      <role>63115222-7fad-9016-12ed-1091def75a50</role>
+      <contractualRelationship>E</contractualRelationship>
+      <contractStart>2003-12-13</contractStart>
+      <filingConfidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</filingConfidentialityPolicy>
+      <userIdentifier updateMode="add">
+        <identifierType>GP</identifierType>
+        <value>3312182</value>
+      </userIdentifier>
+      <userIdentifier updateMode="add">
+        <identifierType>PRES</identifierType>
+        <value>464471</value>
+      </userIdentifier>
+      <userIdentifier updateMode="add">
+        <identifierType>NAT</identifierType>
+        <value>G4499052</value>
+      </userIdentifier>
+    </userInRole>
+    <userInRole updateMode="add">
+      <id>316d34eb-f495-4c91-b814-364c69b1a541</id>
+      <user>316d34eb-f495-4c91-b814-364c69b1a541</user>
+      <role>ea801c6a-425c-083f-6b9e-83123fcb829c</role>
+      <contractualRelationship>E</contractualRelationship>
+      <contractStart>2003-12-18</contractStart>
+      <filingConfidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</filingConfidentialityPolicy>
+      <userIdentifier updateMode="add">
+        <identifierType>NAT</identifierType>
+        <value>G7950234</value>
+      </userIdentifier>
+    </userInRole>
+    <userInRole updateMode="add">
+      <id>756ce7b3-6e45-4693-b147-65ae05936534</id>
+      <user>756ce7b3-6e45-4693-b147-65ae05936534</user>
+      <role>ea801c6a-425c-083f-6b9e-83123fcb829c</role>
+      <contractualRelationship>E</contractualRelationship>
+      <contractStart>2005-11-21</contractStart>
+      <filingConfidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</filingConfidentialityPolicy>
+      <userIdentifier updateMode="add">
+        <identifierType>NAT</identifierType>
+        <value>G2481571</value>
+      </userIdentifier>
+    </userInRole>
+    <userInRole updateMode="add">
+      <id>7235b5fe-a01f-4cfe-b7fa-b8cbe0c2725c</id>
+      <user>7235b5fe-a01f-4cfe-b7fa-b8cbe0c2725c</user>
+      <role>9039c901-2d2b-4ca3-b125-b7773e1b8555</role>
+      <contractualRelationship>E</contractualRelationship>
+      <contractStart>1899-12-31</contractStart>
+      <filingConfidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</filingConfidentialityPolicy>
+      <userIdentifier updateMode="add">
+        <identifierType>GP</identifierType>
+        <value>2048317</value>
+      </userIdentifier>
+      <userIdentifier updateMode="add">
+        <identifierType>NAT</identifierType>
+        <value>G8982367</value>
+      </userIdentifier>
+    </userInRole>
+    <userInRole updateMode="add">
+      <id>0e9fec8f-c287-4f48-aece-c0c6433eb5e8</id>
+      <user>0e9fec8f-c287-4f48-aece-c0c6433eb5e8</user>
+      <role>9039c901-2d2b-4ca3-b125-b7773e1b8555</role>
+      <contractualRelationship>E</contractualRelationship>
+      <contractStart>2004-02-26</contractStart>
+      <filingConfidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</filingConfidentialityPolicy>
+      <userIdentifier updateMode="add">
+        <identifierType>NAT</identifierType>
+        <value>G4605178</value>
+      </userIdentifier>
+    </userInRole>
+    <userInRole updateMode="add">
+      <id>893001d7-07fa-42d8-a303-c61fd99c874b</id>
+      <user>893001d7-07fa-42d8-a303-c61fd99c874b</user>
+      <role>63115222-7fad-9016-12ed-1091def75a50</role>
+      <contractualRelationship>E</contractualRelationship>
+      <contractStart>2004-10-29</contractStart>
+      <filingConfidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</filingConfidentialityPolicy>
+      <userIdentifier updateMode="add">
+        <identifierType>NAT</identifierType>
+        <value>G1410431</value>
+      </userIdentifier>
+    </userInRole>
+    <confidentialityPolicy updateMode="add">
+      <id>d713d67d-571d-47c4-bacc-0e1d40310326</id>
+      <name>Unrestricted</name>
+      <notificationType>NO</notificationType>
+      <showHiddenRecordIndicator>false</showHiddenRecordIndicator>
+      <organisation>f4d020c6-eaff-4528-83ba-e81a1cfd30dc</organisation>
+      <restrictToOrganisation>false</restrictToOrganisation>
+    </confidentialityPolicy>
+  </adminDomain>
+  <healthDomain>
+    <encounter updateMode="add">
+      <id>cc21424c-28d8-4348-aa48-ace19db58bb9</id>
+      <patient>00abde7f-3ed6-4db6-97d6-0c7f71b8ed15</patient>
+      <effectiveTime datepart="YMD" value="2004-09-07T00:00:00" />
+      <availabilityTimeStamp>2008-02-15T00:00:00</availabilityTimeStamp>
+      <authorisingUserInRole>893001d7-07fa-42d8-a303-c61fd99c874b</authorisingUserInRole>
+      <enteredByUserInRole>893001d7-07fa-42d8-a303-c61fd99c874b</enteredByUserInRole>
+      <organisation>4a3ea1cf-7f01-4f61-9654-b07dd51a34f8</organisation>
+      <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
+      <consultationType>GP</consultationType>
+      <locationType codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Main Surgery" code="1503371000006105" />
+      <duration unit="D" value="0" />
+      <travelTime unit="D" value="0" />
+      <component updateMode="add">
+        <event>bd3c378c-92a2-43f8-a74e-f35212afa0c9</event>
+        <problemPage>0</problemPage>
+        <heading codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Comment" code="37331000000100" />
+      </component>
+      <component updateMode="add">
+        <event>27eec505-5e60-41ce-a40b-a19327448989</event>
+        <problemPage>0</problemPage>
+        <heading codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Problem" code="" />
+      </component>
+      <component updateMode="add">
+        <event>f77c4a0d-6230-4a69-ba8b-937552bf48bd</event>
+        <problemPage>1</problemPage>
+        <heading codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="History" code="15621000000105" />
+      </component>
+      <component updateMode="add">
+        <event>bb71b773-6dea-4387-a111-4603a9ed3efb</event>
+        <problemPage>0</problemPage>
+        <heading codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="History" code="15621000000105" />
+      </component>
+      <component updateMode="add">
+        <event>5233a233-4e3c-4ab7-b5e0-e56692cbaac9</event>
+        <problemPage>1</problemPage>
+        <heading codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Problem" code="" />
+      </component>
+      <component updateMode="add">
+        <event>2d30c6a2-b922-40ba-8985-d78a0f7194fd</event>
+        <problemPage>1</problemPage>
+        <heading codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Comment" code="37331000000100" />
+      </component>
+    </encounter>
+    <encounter updateMode="add">
+      <id>aa8415d5-d4bb-4bbb-85e1-848511a14c93</id>
+      <patient>00abde7f-3ed6-4db6-97d6-0c7f71b8ed15</patient>
+      <effectiveTime datepart="YMD" value="2004-11-01T00:00:00" />
+      <availabilityTimeStamp>2008-05-15T00:00:00</availabilityTimeStamp>
+      <authorisingUserInRole>756ce7b3-6e45-4693-b147-65ae05936534</authorisingUserInRole>
+      <enteredByUserInRole>756ce7b3-6e45-4693-b147-65ae05936534</enteredByUserInRole>
+      <organisation>4a3ea1cf-7f01-4f61-9654-b07dd51a34f8</organisation>
+      <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
+      <consultationType>GP</consultationType>
+      <locationType codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Externally Entered" code="37291000000107" />
+      <duration unit="D" value="0" />
+      <travelTime unit="D" value="0" />
+      <component updateMode="add">
+        <event>11d9ab68-5d53-4cc7-aa3f-ccec798ec5c0</event>
+        <problemPage>1</problemPage>
+        <heading codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Additional" code="394830001" />
+      </component>
+    </encounter>
+    <encounter updateMode="add">
+      <id>b1f8d22b-1bc0-46ad-9f43-251af0d9b338</id>
+      <patient>00abde7f-3ed6-4db6-97d6-0c7f71b8ed15</patient>
+      <effectiveTime datepart="YMD" value="2004-11-02T00:00:00" />
+      <availabilityTimeStamp>2008-05-14T00:00:00</availabilityTimeStamp>
+      <authorisingUserInRole>316d34eb-f495-4c91-b814-364c69b1a541</authorisingUserInRole>
+      <enteredByUserInRole>316d34eb-f495-4c91-b814-364c69b1a541</enteredByUserInRole>
+      <organisation>4a3ea1cf-7f01-4f61-9654-b07dd51a34f8</organisation>
+      <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
+      <consultationType>GP</consultationType>
+      <locationType codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Externally Entered" code="37291000000107" />
+      <duration unit="D" value="0" />
+      <travelTime unit="D" value="0" />
+      <component updateMode="add">
+        <event>36d8f6eb-efd0-4e21-95af-dcfdb8538d24</event>
+        <problemPage>1</problemPage>
+        <heading codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Additional" code="394830001" />
+      </component>
+    </encounter>
+    <encounter updateMode="add">
+      <id>39e63a98-297d-4ca6-8d7b-c59adf9a690a</id>
+      <patient>00abde7f-3ed6-4db6-97d6-0c7f71b8ed15</patient>
+      <effectiveTime datepart="YMD" value="2004-11-15T00:00:00" />
+      <availabilityTimeStamp>2008-06-09T00:00:00</availabilityTimeStamp>
+      <authorisingUserInRole>316d34eb-f495-4c91-b814-364c69b1a541</authorisingUserInRole>
+      <enteredByUserInRole>316d34eb-f495-4c91-b814-364c69b1a541</enteredByUserInRole>
+      <organisation>4a3ea1cf-7f01-4f61-9654-b07dd51a34f8</organisation>
+      <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
+      <consultationType>GP</consultationType>
+      <locationType codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Externally Entered" code="37291000000107" />
+      <duration unit="D" value="0" />
+      <travelTime unit="D" value="0" />
+      <component updateMode="add">
+        <event>6f9b88fc-6821-4432-997c-53ab370cc9eb</event>
+        <problemPage>1</problemPage>
+        <heading codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Additional" code="394830001" />
+      </component>
+    </encounter>
+    <encounter updateMode="add">
+      <id>41622be1-0d30-4180-a1da-0ff72ccae74e</id>
+      <patient>00abde7f-3ed6-4db6-97d6-0c7f71b8ed15</patient>
+      <effectiveTime datepart="YMD" value="2004-12-06T00:00:00" />
+      <availabilityTimeStamp>2008-05-15T00:00:00</availabilityTimeStamp>
+      <authorisingUserInRole>756ce7b3-6e45-4693-b147-65ae05936534</authorisingUserInRole>
+      <enteredByUserInRole>756ce7b3-6e45-4693-b147-65ae05936534</enteredByUserInRole>
+      <organisation>4a3ea1cf-7f01-4f61-9654-b07dd51a34f8</organisation>
+      <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
+      <consultationType>GP</consultationType>
+      <locationType codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Externally Entered" code="37291000000107" />
+      <duration unit="D" value="0" />
+      <travelTime unit="D" value="0" />
+    </encounter>
+    <event updateMode="add">
+      <id>ab326d79-653b-42a0-9271-03091aec3598</id>
+      <patient>00abde7f-3ed6-4db6-97d6-0c7f71b8ed15</patient>
+      <eventType>VAL</eventType>
+      <effectiveTime datepart="YMD" value="1997-03-04T00:00:00" />
+      <availabilityTimeStamp>2005-01-28T00:00:00</availabilityTimeStamp>
+      <authorisingUserInRole>0e9fec8f-c287-4f48-aece-c0c6433eb5e8</authorisingUserInRole>
+      <enteredByUserInRole>0e9fec8f-c287-4f48-aece-c0c6433eb5e8</enteredByUserInRole>
+      <code codeSystem="2.16.840.1.113883.2.1.6.2" displayName="O/E - height" code="229">
+        <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="O/E - height" code="162755006" />
+      </code>
+      <displayTerm>O/E - height</displayTerm>
+      <organisation>4a3ea1cf-7f01-4f61-9654-b07dd51a34f8</organisation>
+      <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
+      <observation>
+        <value>
+          <numeric>
+            <value>179</value>
+            <units>cm</units>
+          </numeric>
+        </value>
+      </observation>
+    </event>
+    <event updateMode="add">
+      <id>29c3e869-5b0c-4f8e-b7ca-1c6fd6db0f41</id>
+      <patient>00abde7f-3ed6-4db6-97d6-0c7f71b8ed15</patient>
+      <eventType>OBS</eventType>
+      <effectiveTime datepart="YMD" value="1997-03-04T00:00:00" />
+      <availabilityTimeStamp>2005-01-28T00:00:00</availabilityTimeStamp>
+      <authorisingUserInRole>0e9fec8f-c287-4f48-aece-c0c6433eb5e8</authorisingUserInRole>
+      <enteredByUserInRole>0e9fec8f-c287-4f48-aece-c0c6433eb5e8</enteredByUserInRole>
+      <code codeSystem="2.16.840.1.113883.2.1.6.2" displayName="Takes inadequate exercise" code="138O">
+        <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Takes inadequate exercise" code="160652009" />
+      </code>
+      <displayTerm>Takes inadequate exercise</displayTerm>
+      <organisation>4a3ea1cf-7f01-4f61-9654-b07dd51a34f8</organisation>
+      <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
+      <observation />
+    </event>
+    <event updateMode="add">
+      <id>77da76ce-ac16-08ee-2465-5270aff28cbd</id>
+      <patient>00abde7f-3ed6-4db6-97d6-0c7f71b8ed15</patient>
+      <eventType>INV</eventType>
+      <effectiveTime datepart="YMD" value="1997-03-04T00:00:00" />
+      <availabilityTimeStamp>2009-05-12T17:13:50.507</availabilityTimeStamp>
+      <authorisingUserInRole>0e9fec8f-c287-4f48-aece-c0c6433eb5e8</authorisingUserInRole>
+      <enteredByUserInRole>0e9fec8f-c287-4f48-aece-c0c6433eb5e8</enteredByUserInRole>
+      <code codeSystem="2.16.840.1.113883.2.1.6.2" displayName="O/E - blood pressure reading" code="246">
+        <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="O/E - blood pressure reading" code="163020007" />
+      </code>
+      <displayTerm>O/E Blood Pressure Reading</displayTerm>
+      <organisation>4a3ea1cf-7f01-4f61-9654-b07dd51a34f8</organisation>
+      <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
+      <observation>
+        <complexObservation>
+          <childLink>85577581-e71a-4589-8964-b6e2df7721aa</childLink>
+          <childLink>f0f212f6-ad08-494d-bf65-bd6da4209628</childLink>
+        </complexObservation>
+      </observation>
+    </event>
+    <event updateMode="add">
+      <id>62d79aa1-bafd-4c04-811f-58a619ff6fc1</id>
+      <patient>00abde7f-3ed6-4db6-97d6-0c7f71b8ed15</patient>
+      <eventType>OBS</eventType>
+      <effectiveTime datepart="YMD" value="1997-03-04T00:00:00" />
+      <availabilityTimeStamp>2005-01-28T00:00:00</availabilityTimeStamp>
+      <authorisingUserInRole>0e9fec8f-c287-4f48-aece-c0c6433eb5e8</authorisingUserInRole>
+      <enteredByUserInRole>0e9fec8f-c287-4f48-aece-c0c6433eb5e8</enteredByUserInRole>
+      <code codeSystem="2.16.840.1.113883.2.1.6.2" displayName="Never smoked tobacco" code="1371">
+        <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Never smoked tobacco" code="266919005" />
+      </code>
+      <displayTerm>Never smoked tobacco</displayTerm>
+      <organisation>4a3ea1cf-7f01-4f61-9654-b07dd51a34f8</organisation>
+      <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
+      <observation />
+    </event>
+    <event updateMode="add">
+      <id>921c2aeb-932a-425f-bed4-917567d5a305</id>
+      <patient>00abde7f-3ed6-4db6-97d6-0c7f71b8ed15</patient>
+      <eventType>OBS</eventType>
+      <effectiveTime datepart="YMD" value="1997-03-04T00:00:00" />
+      <availabilityTimeStamp>2005-01-28T00:00:00</availabilityTimeStamp>
+      <authorisingUserInRole>0e9fec8f-c287-4f48-aece-c0c6433eb5e8</authorisingUserInRole>
+      <enteredByUserInRole>0e9fec8f-c287-4f48-aece-c0c6433eb5e8</enteredByUserInRole>
+      <code codeSystem="2.16.840.1.113883.2.1.6.2" displayName="Health ed. - diet" code="6799">
+        <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Health ed. - diet" code="11816003" />
+      </code>
+      <displayTerm>Health ed. - diet</displayTerm>
+      <organisation>4a3ea1cf-7f01-4f61-9654-b07dd51a34f8</organisation>
+      <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
+      <observation />
+    </event>
+    <event updateMode="add">
+      <id>da2f3f11-1528-43b9-ab50-94e2917c4302</id>
+      <patient>00abde7f-3ed6-4db6-97d6-0c7f71b8ed15</patient>
+      <eventType>VAL</eventType>
+      <effectiveTime datepart="YMD" value="1997-03-04T00:00:00" />
+      <availabilityTimeStamp>2005-01-28T00:00:00</availabilityTimeStamp>
+      <authorisingUserInRole>0e9fec8f-c287-4f48-aece-c0c6433eb5e8</authorisingUserInRole>
+      <enteredByUserInRole>0e9fec8f-c287-4f48-aece-c0c6433eb5e8</enteredByUserInRole>
+      <code codeSystem="2.16.840.1.113883.2.1.6.2" displayName="O/E - weight" code="22A">
+        <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="O/E - weight" code="162763007" />
+      </code>
+      <displayTerm>O/E - weight</displayTerm>
+      <organisation>4a3ea1cf-7f01-4f61-9654-b07dd51a34f8</organisation>
+      <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
+      <observation>
+        <value>
+          <numeric>
+            <value>66.65</value>
+            <units>Kg</units>
+          </numeric>
+        </value>
+      </observation>
+    </event>
+    <event updateMode="add">
+      <id>7c072570-b1c5-4dfe-8bd6-9725b642cc21</id>
+      <patient>00abde7f-3ed6-4db6-97d6-0c7f71b8ed15</patient>
+      <eventType>VAL</eventType>
+      <effectiveTime datepart="YMD" value="1997-03-04T00:00:00" />
+      <availabilityTimeStamp>2005-01-28T00:00:00</availabilityTimeStamp>
+      <authorisingUserInRole>0e9fec8f-c287-4f48-aece-c0c6433eb5e8</authorisingUserInRole>
+      <enteredByUserInRole>0e9fec8f-c287-4f48-aece-c0c6433eb5e8</enteredByUserInRole>
+      <code codeSystem="2.16.840.1.113883.2.1.6.2" displayName="Urine glucose test negative" code="4662">
+        <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Urine glucose test negative" code="167261002" />
+      </code>
+      <displayTerm>Urine glucose test negative</displayTerm>
+      <organisation>4a3ea1cf-7f01-4f61-9654-b07dd51a34f8</organisation>
+      <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
+      <observation />
+    </event>
+    <event updateMode="add">
+      <id>8911ecff-5e3e-411d-99f8-986f709851bb</id>
+      <patient>00abde7f-3ed6-4db6-97d6-0c7f71b8ed15</patient>
+      <eventType>VAL</eventType>
+      <effectiveTime datepart="YMD" value="1997-03-04T00:00:00" />
+      <availabilityTimeStamp>2005-01-28T00:00:00</availabilityTimeStamp>
+      <authorisingUserInRole>0e9fec8f-c287-4f48-aece-c0c6433eb5e8</authorisingUserInRole>
+      <enteredByUserInRole>0e9fec8f-c287-4f48-aece-c0c6433eb5e8</enteredByUserInRole>
+      <code codeSystem="2.16.840.1.113883.2.1.6.2" displayName="Ideal weight" code="66CB">
+        <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Ideal weight" code="170804003" />
+      </code>
+      <displayTerm>Ideal Weight, 73.69 Kg</displayTerm>
+      <organisation>4a3ea1cf-7f01-4f61-9654-b07dd51a34f8</organisation>
+      <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
+      <observation>
+        <value>
+          <numeric>
+            <value>73.69</value>
+            <units>Kg</units>
+          </numeric>
+        </value>
+      </observation>
+    </event>
+    <event updateMode="add">
+      <id>413ee085-8df3-4979-94ca-98f1707c9dad</id>
+      <patient>00abde7f-3ed6-4db6-97d6-0c7f71b8ed15</patient>
+      <eventType>VAL</eventType>
+      <effectiveTime datepart="YMD" value="1997-03-04T00:00:00" />
+      <availabilityTimeStamp>2005-01-28T00:00:00</availabilityTimeStamp>
+      <authorisingUserInRole>0e9fec8f-c287-4f48-aece-c0c6433eb5e8</authorisingUserInRole>
+      <enteredByUserInRole>0e9fec8f-c287-4f48-aece-c0c6433eb5e8</enteredByUserInRole>
+      <code codeSystem="2.16.840.1.113883.2.1.6.2" displayName="Urine protein test negative" code="4672">
+        <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Urine protein test negative" code="167273002" />
+      </code>
+      <displayTerm>Urine protein test negative</displayTerm>
+      <organisation>4a3ea1cf-7f01-4f61-9654-b07dd51a34f8</organisation>
+      <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
+      <observation />
+    </event>
+    <event updateMode="add">
+      <id>85577581-e71a-4589-8964-b6e2df7721aa</id>
+      <patient>00abde7f-3ed6-4db6-97d6-0c7f71b8ed15</patient>
+      <eventType>VAL</eventType>
+      <effectiveTime datepart="YMD" value="1997-03-04T00:00:00" />
+      <availabilityTimeStamp>2005-01-28T00:00:00</availabilityTimeStamp>
+      <authorisingUserInRole>0e9fec8f-c287-4f48-aece-c0c6433eb5e8</authorisingUserInRole>
+      <enteredByUserInRole>0e9fec8f-c287-4f48-aece-c0c6433eb5e8</enteredByUserInRole>
+      <code codeSystem="2.16.840.1.113883.2.1.6.2" displayName="Systolic blood pressure" code="2469">
+        <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Systolic blood pressure" code="163030003" />
+      </code>
+      <displayTerm>O/E - Systolic BP reading, 120 mm Hg</displayTerm>
+      <organisation>4a3ea1cf-7f01-4f61-9654-b07dd51a34f8</organisation>
+      <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
+      <observation>
+        <value>
+          <numeric>
+            <value>120</value>
+            <units>mm Hg</units>
+          </numeric>
+        </value>
+      </observation>
+    </event>
+    <event updateMode="add">
+      <id>40afd1fd-c8f5-40a8-aa49-b6e78195e38c</id>
+      <patient>00abde7f-3ed6-4db6-97d6-0c7f71b8ed15</patient>
+      <eventType>VAL</eventType>
+      <effectiveTime datepart="YMD" value="1997-03-04T00:00:00" />
+      <availabilityTimeStamp>2005-01-28T00:00:00</availabilityTimeStamp>
+      <authorisingUserInRole>0e9fec8f-c287-4f48-aece-c0c6433eb5e8</authorisingUserInRole>
+      <enteredByUserInRole>0e9fec8f-c287-4f48-aece-c0c6433eb5e8</enteredByUserInRole>
+      <code codeSystem="2.16.840.1.113883.2.1.6.2" displayName="Body mass index" code="22K">
+        <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Body mass index" code="60621009" />
+      </code>
+      <displayTerm>Body Mass Index</displayTerm>
+      <organisation>4a3ea1cf-7f01-4f61-9654-b07dd51a34f8</organisation>
+      <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
+      <observation>
+        <value>
+          <numeric>
+            <value>20.8</value>
+          </numeric>
+        </value>
+      </observation>
+    </event>
+    <event updateMode="add">
+      <id>f0f212f6-ad08-494d-bf65-bd6da4209628</id>
+      <patient>00abde7f-3ed6-4db6-97d6-0c7f71b8ed15</patient>
+      <eventType>VAL</eventType>
+      <effectiveTime datepart="YMD" value="1997-03-04T00:00:00" />
+      <availabilityTimeStamp>2005-01-28T00:00:00</availabilityTimeStamp>
+      <authorisingUserInRole>0e9fec8f-c287-4f48-aece-c0c6433eb5e8</authorisingUserInRole>
+      <enteredByUserInRole>0e9fec8f-c287-4f48-aece-c0c6433eb5e8</enteredByUserInRole>
+      <code codeSystem="2.16.840.1.113883.2.1.6.2" displayName="Diastolic blood pressure" code="246A">
+        <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Diastolic blood pressure" code="163031004" />
+      </code>
+      <displayTerm>O/E - Diastolic BP reading, 90 mm Hg</displayTerm>
+      <organisation>4a3ea1cf-7f01-4f61-9654-b07dd51a34f8</organisation>
+      <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
+      <observation>
+        <value>
+          <numeric>
+            <value>90</value>
+            <units>mm Hg</units>
+          </numeric>
+        </value>
+      </observation>
+    </event>
+    <event updateMode="add">
+      <id>8e9eab1e-a024-4fa7-ad17-e91360ef8d97</id>
+      <patient>00abde7f-3ed6-4db6-97d6-0c7f71b8ed15</patient>
+      <eventType>VAL</eventType>
+      <effectiveTime datepart="YMD" value="1997-03-04T00:00:00" />
+      <availabilityTimeStamp>2005-01-28T00:00:00</availabilityTimeStamp>
+      <authorisingUserInRole>0e9fec8f-c287-4f48-aece-c0c6433eb5e8</authorisingUserInRole>
+      <enteredByUserInRole>0e9fec8f-c287-4f48-aece-c0c6433eb5e8</enteredByUserInRole>
+      <code codeSystem="2.16.840.1.113883.2.1.6.2" displayName="Alcohol consumption" code="136">
+        <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Alcohol consumption" code="160573003" />
+      </code>
+      <displayTerm>Alcohol consumption</displayTerm>
+      <organisation>4a3ea1cf-7f01-4f61-9654-b07dd51a34f8</organisation>
+      <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
+      <observation>
+        <value>
+          <numeric>
+            <value>0</value>
+            <units>units/week</units>
+          </numeric>
+        </value>
+      </observation>
+    </event>
+    <event updateMode="add">
+      <id>2bd48387-73e9-4fdc-a0a6-52e4851c9737</id>
+      <patient>00abde7f-3ed6-4db6-97d6-0c7f71b8ed15</patient>
+      <eventType>OBS</eventType>
+      <effectiveTime datepart="YMD" value="2000-03-03T00:00:00" />
+      <availabilityTimeStamp>2005-01-28T00:00:00</availabilityTimeStamp>
+      <authorisingUserInRole>0e9fec8f-c287-4f48-aece-c0c6433eb5e8</authorisingUserInRole>
+      <enteredByUserInRole>0e9fec8f-c287-4f48-aece-c0c6433eb5e8</enteredByUserInRole>
+      <code codeSystem="2.16.840.1.113883.2.1.6.2" displayName="Health ed. - smoking" code="6791">
+        <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Health ed. - smoking" code="225324006" />
+      </code>
+      <displayTerm>Health ed. - smoking</displayTerm>
+      <organisation>4a3ea1cf-7f01-4f61-9654-b07dd51a34f8</organisation>
+      <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
+      <observation />
+    </event>
+    <event updateMode="add">
+      <id>15d49d28-0a41-45a6-b077-878de8ca58d7</id>
+      <patient>00abde7f-3ed6-4db6-97d6-0c7f71b8ed15</patient>
+      <eventType>OBS</eventType>
+      <effectiveTime datepart="YMD" value="2000-03-03T00:00:00" />
+      <availabilityTimeStamp>2005-01-28T00:00:00</availabilityTimeStamp>
+      <authorisingUserInRole>0e9fec8f-c287-4f48-aece-c0c6433eb5e8</authorisingUserInRole>
+      <enteredByUserInRole>0e9fec8f-c287-4f48-aece-c0c6433eb5e8</enteredByUserInRole>
+      <code codeSystem="2.16.840.1.113883.2.1.6.2" displayName="Health ed. - alcohol" code="6792">
+        <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Health ed. - alcohol" code="408947007" />
+      </code>
+      <displayTerm>Health ed. - alcohol</displayTerm>
+      <organisation>4a3ea1cf-7f01-4f61-9654-b07dd51a34f8</organisation>
+      <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
+      <observation />
+    </event>
+    <event updateMode="add">
+      <id>f6d77b54-ae19-4074-a35b-c4fd1ac8e34f</id>
+      <patient>00abde7f-3ed6-4db6-97d6-0c7f71b8ed15</patient>
+      <eventType>OBS</eventType>
+      <effectiveTime datepart="YMD" value="2000-03-03T00:00:00" />
+      <availabilityTimeStamp>2005-01-28T00:00:00</availabilityTimeStamp>
+      <authorisingUserInRole>0e9fec8f-c287-4f48-aece-c0c6433eb5e8</authorisingUserInRole>
+      <enteredByUserInRole>0e9fec8f-c287-4f48-aece-c0c6433eb5e8</enteredByUserInRole>
+      <code codeSystem="2.16.840.1.113883.2.1.6.2" displayName="Health ed. - exercise" code="6798">
+        <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Health ed. - exercise" code="304507003" />
+      </code>
+      <displayTerm>Health ed. - exercise</displayTerm>
+      <organisation>4a3ea1cf-7f01-4f61-9654-b07dd51a34f8</organisation>
+      <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
+      <observation />
+    </event>
+    <event updateMode="add">
+      <id>bb71b773-6dea-4387-a111-4603a9ed3efb</id>
+      <patient>00abde7f-3ed6-4db6-97d6-0c7f71b8ed15</patient>
+      <eventType>OBS</eventType>
+      <effectiveTime datepart="YMD" value="2004-09-07T00:00:00" />
+      <availabilityTimeStamp>2008-02-15T00:00:00</availabilityTimeStamp>
+      <authorisingUserInRole>893001d7-07fa-42d8-a303-c61fd99c874b</authorisingUserInRole>
+      <enteredByUserInRole>893001d7-07fa-42d8-a303-c61fd99c874b</enteredByUserInRole>
+      <displayTerm />
+      <associatedText associatedTextType="POST">
+        <value> No extension and not much other movement</value>
+      </associatedText>
+      <organisation>4a3ea1cf-7f01-4f61-9654-b07dd51a34f8</organisation>
+      <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
+      <observation />
+    </event>
+    <event updateMode="add">
+      <id>f77c4a0d-6230-4a69-ba8b-937552bf48bd</id>
+      <patient>00abde7f-3ed6-4db6-97d6-0c7f71b8ed15</patient>
+      <eventType>OBS</eventType>
+      <effectiveTime datepart="YMD" value="2004-09-07T00:00:00" />
+      <availabilityTimeStamp>2008-02-15T00:00:00</availabilityTimeStamp>
+      <authorisingUserInRole>893001d7-07fa-42d8-a303-c61fd99c874b</authorisingUserInRole>
+      <enteredByUserInRole>893001d7-07fa-42d8-a303-c61fd99c874b</enteredByUserInRole>
+      <displayTerm />
+      <associatedText associatedTextType="POST">
+        <value> Chest clear</value>
+      </associatedText>
+      <organisation>4a3ea1cf-7f01-4f61-9654-b07dd51a34f8</organisation>
+      <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
+      <observation />
+    </event>
+    <event updateMode="add">
+      <id>27eec505-5e60-41ce-a40b-a19327448989</id>
+      <patient>00abde7f-3ed6-4db6-97d6-0c7f71b8ed15</patient>
+      <eventType>OBS</eventType>
+      <effectiveTime datepart="YMD" value="2004-09-07T00:00:00" />
+      <availabilityTimeStamp>2008-02-15T00:00:00</availabilityTimeStamp>
+      <authorisingUserInRole>893001d7-07fa-42d8-a303-c61fd99c874b</authorisingUserInRole>
+      <enteredByUserInRole>893001d7-07fa-42d8-a303-c61fd99c874b</enteredByUserInRole>
+      <displayTerm />
+      <associatedText associatedTextType="POST">
+        <value> Slime and diarrhoea continue</value>
+      </associatedText>
+      <organisation>4a3ea1cf-7f01-4f61-9654-b07dd51a34f8</organisation>
+      <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
+      <observation />
+    </event>
+    <event updateMode="add">
+      <id>2d30c6a2-b922-40ba-8985-d78a0f7194fd</id>
+      <patient>00abde7f-3ed6-4db6-97d6-0c7f71b8ed15</patient>
+      <eventType>OBS</eventType>
+      <effectiveTime datepart="YMD" value="2004-09-07T00:00:00" />
+      <availabilityTimeStamp>2008-02-15T00:00:00</availabilityTimeStamp>
+      <authorisingUserInRole>893001d7-07fa-42d8-a303-c61fd99c874b</authorisingUserInRole>
+      <enteredByUserInRole>893001d7-07fa-42d8-a303-c61fd99c874b</enteredByUserInRole>
+      <code codeSystem="2.16.840.1.113883.2.1.6.2" displayName="Dermatological referral" code="8H43">
+        <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Dermatological referral" code="183518005" />
+      </code>
+      <displayTerm>Dermatological referral</displayTerm>
+      <organisation>4a3ea1cf-7f01-4f61-9654-b07dd51a34f8</organisation>
+      <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
+      <observation />
+    </event>
+    <event updateMode="add">
+      <id>5233a233-4e3c-4ab7-b5e0-e56692cbaac9</id>
+      <patient>00abde7f-3ed6-4db6-97d6-0c7f71b8ed15</patient>
+      <eventType>OBS</eventType>
+      <effectiveTime datepart="YMD" value="2004-09-07T00:00:00" />
+      <availabilityTimeStamp>2008-02-15T00:00:00</availabilityTimeStamp>
+      <authorisingUserInRole>893001d7-07fa-42d8-a303-c61fd99c874b</authorisingUserInRole>
+      <enteredByUserInRole>893001d7-07fa-42d8-a303-c61fd99c874b</enteredByUserInRole>
+      <code codeSystem="2.16.840.1.113883.2.1.6.2" displayName="Filiform wart" code="A7815">
+        <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Filiform wart" code="240536007" />
+      </code>
+      <displayTerm>Filiform wart</displayTerm>
+      <organisation>4a3ea1cf-7f01-4f61-9654-b07dd51a34f8</organisation>
+      <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
+      <observation>
+        <episodicity>FIRST</episodicity>
+      </observation>
+    </event>
+    <event updateMode="add">
+      <id>bd3c378c-92a2-43f8-a74e-f35212afa0c9</id>
+      <patient>00abde7f-3ed6-4db6-97d6-0c7f71b8ed15</patient>
+      <eventType>OBS</eventType>
+      <effectiveTime datepart="YMD" value="2004-09-07T00:00:00" />
+      <availabilityTimeStamp>2008-02-15T00:00:00</availabilityTimeStamp>
+      <authorisingUserInRole>893001d7-07fa-42d8-a303-c61fd99c874b</authorisingUserInRole>
+      <enteredByUserInRole>893001d7-07fa-42d8-a303-c61fd99c874b</enteredByUserInRole>
+      <code codeSystem="2.16.840.1.113883.2.1.6.2" displayName="Ophthalmological referral" code="8H52">
+        <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Ophthalmological referral" code="183543004" />
+      </code>
+      <displayTerm>Ophthalmological referral</displayTerm>
+      <associatedText associatedTextType="POST">
+        <value> SOB in the morning, somewhat lightheaded</value>
+      </associatedText>
+      <organisation>4a3ea1cf-7f01-4f61-9654-b07dd51a34f8</organisation>
+      <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
+      <observation />
+    </event>
+    <event updateMode="add">
+      <id>458c5179-f8c8-4c10-879f-22f38ba8d73b</id>
+      <patient>00abde7f-3ed6-4db6-97d6-0c7f71b8ed15</patient>
+      <eventType>ATT</eventType>
+      <effectiveTime datepart="YMD" value="2004-09-13T00:00:00" />
+      <availabilityTimeStamp>2008-02-21T00:00:00</availabilityTimeStamp>
+      <authorisingUserInRole>316d34eb-f495-4c91-b814-364c69b1a541</authorisingUserInRole>
+      <enteredByUserInRole>316d34eb-f495-4c91-b814-364c69b1a541</enteredByUserInRole>
+      <code codeSystem="2.16.840.1.113883.2.1.6.2" displayName="Attachment" code="EMISATTACHMENT">
+        <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Attachment" code="3261000006107" />
+      </code>
+      <displayTerm>Legal &amp;amp; General GPR</displayTerm>
+      <associatedText associatedTextType="POST">
+        <value> Food regurgitation discomfort</value>
+      </associatedText>
+      <organisation>4a3ea1cf-7f01-4f61-9654-b07dd51a34f8</organisation>
+      <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
+      <observation>
+        <referenceDocument>1767165a-f2e1-4084-88ff-512c6355f92a</referenceDocument>
+      </observation>
+    </event>
+    <event updateMode="add">
+      <id>032e1b42-00be-49fb-a9c3-da72f884a802</id>
+      <patient>00abde7f-3ed6-4db6-97d6-0c7f71b8ed15</patient>
+      <eventType>ATT</eventType>
+      <effectiveTime datepart="YMD" value="2004-09-13T00:00:00" />
+      <availabilityTimeStamp>2008-02-21T00:00:00</availabilityTimeStamp>
+      <authorisingUserInRole>316d34eb-f495-4c91-b814-364c69b1a541</authorisingUserInRole>
+      <enteredByUserInRole>316d34eb-f495-4c91-b814-364c69b1a541</enteredByUserInRole>
+      <code codeSystem="2.16.840.1.113883.2.1.6.2" displayName="Attachment" code="EMISATTACHMENT">
+        <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Attachment" code="3261000006107" />
+      </code>
+      <displayTerm>Domiciliary Physio</displayTerm>
+      <associatedText associatedTextType="POST">
+        <value> GUTS test given and explained</value>
+      </associatedText>
+      <organisation>4a3ea1cf-7f01-4f61-9654-b07dd51a34f8</organisation>
+      <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
+      <observation>
+        <referenceDocument>fde48d18-27c0-4989-b9b6-2100b49664b7</referenceDocument>
+      </observation>
+    </event>
+    <event updateMode="add">
+      <id>70c4aba8-cc30-40e2-8063-e3d226641b29</id>
+      <patient>00abde7f-3ed6-4db6-97d6-0c7f71b8ed15</patient>
+      <eventType>OBS</eventType>
+      <effectiveTime datepart="YMD" value="2004-09-13T10:36:00" />
+      <availabilityTimeStamp>2008-02-21T00:00:00</availabilityTimeStamp>
+      <authorisingUserInRole>316d34eb-f495-4c91-b814-364c69b1a541</authorisingUserInRole>
+      <enteredByUserInRole>316d34eb-f495-4c91-b814-364c69b1a541</enteredByUserInRole>
+      <code codeSystem="2.16.840.1.113883.2.1.6.2" displayName="Choose and Book electronic referral letter sent" code="EMISNQCH3">
+        <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Choose and Book electronic referral letter sent" code="824041000006107" />
+      </code>
+      <displayTerm>Choose and Book electronic referral letter sent</displayTerm>
+      <associatedText associatedTextType="POST">
+        <value> In pain</value>
+      </associatedText>
+      <organisation>4a3ea1cf-7f01-4f61-9654-b07dd51a34f8</organisation>
+      <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
+      <observation />
+    </event>
+    <event updateMode="add">
+      <id>11d9ab68-5d53-4cc7-aa3f-ccec798ec5c0</id>
+      <patient>00abde7f-3ed6-4db6-97d6-0c7f71b8ed15</patient>
+      <eventType>ATT</eventType>
+      <effectiveTime datepart="YMD" value="2004-11-01T00:00:00" />
+      <availabilityTimeStamp>2008-05-15T00:00:00</availabilityTimeStamp>
+      <authorisingUserInRole>756ce7b3-6e45-4693-b147-65ae05936534</authorisingUserInRole>
+      <enteredByUserInRole>756ce7b3-6e45-4693-b147-65ae05936534</enteredByUserInRole>
+      <code codeSystem="2.16.840.1.113883.2.1.6.2" displayName="Seen in dermatology clinic" code="9N1S">
+        <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Seen in dermatology clinic" code="270422009" />
+      </code>
+      <displayTerm>Dietician Letter - Group Session</displayTerm>
+      <associatedText associatedTextType="POST">
+        <value> Feeling weak</value>
+      </associatedText>
+      <organisation>4a3ea1cf-7f01-4f61-9654-b07dd51a34f8</organisation>
+      <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
+      <observation>
+        <referenceDocument>457ad7f5-d7c6-4a70-9b6a-708bd1e73daa</referenceDocument>
+      </observation>
+    </event>
+    <event updateMode="add">
+      <id>36d8f6eb-efd0-4e21-95af-dcfdb8538d24</id>
+      <patient>00abde7f-3ed6-4db6-97d6-0c7f71b8ed15</patient>
+      <eventType>ATT</eventType>
+      <effectiveTime datepart="YMD" value="2004-11-02T00:00:00" />
+      <availabilityTimeStamp>2008-05-14T00:00:00</availabilityTimeStamp>
+      <authorisingUserInRole>316d34eb-f495-4c91-b814-364c69b1a541</authorisingUserInRole>
+      <enteredByUserInRole>316d34eb-f495-4c91-b814-364c69b1a541</enteredByUserInRole>
+      <code codeSystem="2.16.840.1.113883.2.1.6.2" displayName="Seen in ophthalmology clinic" code="9N1K">
+        <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Seen in ophthalmology clinic" code="185222001" />
+      </code>
+      <displayTerm>Asthma Clinic Appts</displayTerm>
+      <associatedText associatedTextType="POST">
+        <value> Please repeat ENT exam in view of blood</value>
+      </associatedText>
+      <organisation>4a3ea1cf-7f01-4f61-9654-b07dd51a34f8</organisation>
+      <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
+      <observation>
+        <referenceDocument>03cbf006-3daf-4ec8-af7f-9a16c71ee80c</referenceDocument>
+      </observation>
+    </event>
+    <event updateMode="add">
+      <id>6f9b88fc-6821-4432-997c-53ab370cc9eb</id>
+      <patient>00abde7f-3ed6-4db6-97d6-0c7f71b8ed15</patient>
+      <eventType>ATT</eventType>
+      <effectiveTime datepart="YMD" value="2004-11-15T00:00:00" />
+      <availabilityTimeStamp>2008-06-09T00:00:00</availabilityTimeStamp>
+      <authorisingUserInRole>316d34eb-f495-4c91-b814-364c69b1a541</authorisingUserInRole>
+      <enteredByUserInRole>316d34eb-f495-4c91-b814-364c69b1a541</enteredByUserInRole>
+      <code codeSystem="2.16.840.1.113883.2.1.6.2" displayName="Excision of lesion of skin NOS" code="7G05z">
+        <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Excision of lesion of skin NOS" code="569191000000101" />
+      </code>
+      <displayTerm>Letter from Miss Gilvarry</displayTerm>
+      <associatedText associatedTextType="POST">
+        <value> Slime and diarrhoea continue</value>
+      </associatedText>
+      <organisation>4a3ea1cf-7f01-4f61-9654-b07dd51a34f8</organisation>
+      <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
+      <observation>
+        <referenceDocument>0a97eec9-0835-40a0-917b-1419be9866d8</referenceDocument>
+      </observation>
+    </event>
+    <event updateMode="add">
+      <id>6c323564-4de9-477e-9f2c-681b2a2d29e1</id>
+      <patient>00abde7f-3ed6-4db6-97d6-0c7f71b8ed15</patient>
+      <eventType>REF</eventType>
+      <effectiveTime datepart="YMD" value="2004-09-13T10:21:00" />
+      <availabilityTimeStamp>2008-02-21T00:00:00</availabilityTimeStamp>
+      <authorisingUserInRole>893001d7-07fa-42d8-a303-c61fd99c874b</authorisingUserInRole>
+      <enteredByUserInRole>316d34eb-f495-4c91-b814-364c69b1a541</enteredByUserInRole>
+      <code codeSystem="2.16.840.1.113883.2.1.6.2" displayName="Ophthalmological referral" code="8H52">
+        <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Ophthalmological referral" code="183543004" />
+      </code>
+      <displayTerm>Ophthalmological referral</displayTerm>
+      <organisation>4a3ea1cf-7f01-4f61-9654-b07dd51a34f8</organisation>
+      <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
+      <referral>
+        <targetOrganisation>f4d020c6-eaff-4528-83ba-e81a1cfd30dc</targetOrganisation>
+        <requestType>OUT</requestType>
+        <urgency>R</urgency>
+        <NHS>true</NHS>
+        <transport>N</transport>
+        <direction>OUT</direction>
+        <sourceOrganisation>4a3ea1cf-7f01-4f61-9654-b07dd51a34f8</sourceOrganisation>
+        <referralMode>W</referralMode>
+      </referral>
+    </event>
+    <event updateMode="add">
+      <id>e1eb8284-ad09-4a7f-a770-d77f483ca6ac</id>
+      <patient>00abde7f-3ed6-4db6-97d6-0c7f71b8ed15</patient>
+      <eventType>REF</eventType>
+      <effectiveTime datepart="YMD" value="2004-09-13T10:27:00" />
+      <availabilityTimeStamp>2008-02-21T00:00:00</availabilityTimeStamp>
+      <authorisingUserInRole>893001d7-07fa-42d8-a303-c61fd99c874b</authorisingUserInRole>
+      <enteredByUserInRole>316d34eb-f495-4c91-b814-364c69b1a541</enteredByUserInRole>
+      <code codeSystem="2.16.840.1.113883.2.1.6.2" displayName="Dermatological referral" code="8H43">
+        <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Dermatological referral" code="183518005" />
+      </code>
+      <displayTerm>Dermatological referral</displayTerm>
+      <organisation>4a3ea1cf-7f01-4f61-9654-b07dd51a34f8</organisation>
+      <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
+      <referral>
+        <targetUserInRole>7235b5fe-a01f-4cfe-b7fa-b8cbe0c2725c</targetUserInRole>
+        <targetOrganisation>6b776524-f038-4beb-9ca7-0f354026ea34</targetOrganisation>
+        <requestType>OUT</requestType>
+        <urgency>R</urgency>
+        <NHS>true</NHS>
+        <transport>N</transport>
+        <direction>OUT</direction>
+        <sourceOrganisation>4a3ea1cf-7f01-4f61-9654-b07dd51a34f8</sourceOrganisation>
+        <referralMode>W</referralMode>
+        <UBRN>000099853752</UBRN>
+        <referralActivity>70c4aba8-cc30-40e2-8063-e3d226641b29</referralActivity>
+      </referral>
+    </event>
+    <problem updateMode="add">
+      <id>5233a233-4e3c-4ab7-b5e0-e56692cbaac9</id>
+      <status>I</status>
+      <significance>M</significance>
+      <expectedDuration unit="D" value="28" />
+      <endTime datepart="YMD" value="2008-03-14T00:00:00" />
+      <eventLink updateMode="add">
+        <id>f77c4a0d-6230-4a69-ba8b-937552bf48bd</id>
+        <eventType>OBS</eventType>
+        <eventLinkType>ASS</eventLinkType>
+      </eventLink>
+      <eventLink updateMode="add">
+        <id>2d30c6a2-b922-40ba-8985-d78a0f7194fd</id>
+        <eventType>OBS</eventType>
+        <eventLinkType>ASS</eventLinkType>
+      </eventLink>
+    </problem>
+    <document updateMode="add">
+      <id>fde48d18-27c0-4989-b9b6-2100b49664b7</id>
+      <name>C:\Program Files\Emis PCS\ddscache\2322\dermatology.doc</name>
+      <uploadUserInRole>316d34eb-f495-4c91-b814-364c69b1a541</uploadUserInRole>
+      <producedTime>2004-09-13T00:00:00</producedTime>
+      <deleted>false</deleted>
+      <locator>LOCAL</locator>
+    </document>
+    <document updateMode="add">
+      <id>1767165a-f2e1-4084-88ff-512c6355f92a</id>
+      <name>C:\Program Files\Emis PCS\ddscache\2322\Document1.doc</name>
+      <uploadUserInRole>316d34eb-f495-4c91-b814-364c69b1a541</uploadUserInRole>
+      <producedTime>2004-09-13T00:00:00</producedTime>
+      <deleted>false</deleted>
+      <locator>LOCAL</locator>
+    </document>
+    <document updateMode="add">
+      <id>457ad7f5-d7c6-4a70-9b6a-708bd1e73daa</id>
+      <name>C:\Program Files\Emis PCS\Save150508170749.tif</name>
+      <uploadUserInRole>756ce7b3-6e45-4693-b147-65ae05936534</uploadUserInRole>
+      <producedTime>2004-11-01T00:00:00</producedTime>
+      <deleted>false</deleted>
+      <locator>LOCAL</locator>
+    </document>
+    <document updateMode="add">
+      <id>03cbf006-3daf-4ec8-af7f-9a16c71ee80c</id>
+      <name>C:\Program Files\Emis PCS\Save140508104039.tif</name>
+      <uploadUserInRole>316d34eb-f495-4c91-b814-364c69b1a541</uploadUserInRole>
+      <producedTime>2004-11-02T00:00:00</producedTime>
+      <deleted>false</deleted>
+      <locator>LOCAL</locator>
+    </document>
+    <document updateMode="add">
+      <id>0a97eec9-0835-40a0-917b-1419be9866d8</id>
+      <name>C:\Program Files\Emis PCS\Save090608154946.tif</name>
+      <uploadUserInRole>316d34eb-f495-4c91-b814-364c69b1a541</uploadUserInRole>
+      <producedTime>2004-11-15T00:00:00</producedTime>
+      <deleted>false</deleted>
+      <locator>LOCAL</locator>
+    </document>
+  </healthDomain>
+</openHealthRecord>
