@@ -28,9 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GPSystemForm));
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.label3 = new System.Windows.Forms.Label();
+            this.lblServiceStatus = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.llServiceStatus = new System.Windows.Forms.LinkLabel();
             this.label2 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -41,8 +47,10 @@
             this.btnOpenPatientRecord = new System.Windows.Forms.ToolStripButton();
             this.btnViewTasks = new System.Windows.Forms.ToolStripButton();
             this.tcTabControl = new System.Windows.Forms.TabControl();
+            this.timer = new System.Windows.Forms.Timer(this.components);
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel3.SuspendLayout();
             this.toolStrip1.SuspendLayout();
@@ -62,6 +70,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Controls.Add(this.panel4);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Controls.Add(this.label1);
@@ -71,6 +80,61 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1637, 80);
             this.panel1.TabIndex = 1;
+            // 
+            // panel4
+            // 
+            this.panel4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel4.Controls.Add(this.label3);
+            this.panel4.Controls.Add(this.lblServiceStatus);
+            this.panel4.Controls.Add(this.label4);
+            this.panel4.Controls.Add(this.llServiceStatus);
+            this.panel4.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.panel4.Location = new System.Drawing.Point(1271, 10);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(354, 65);
+            this.panel4.TabIndex = 11;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(12, 13);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(100, 15);
+            this.label3.TabIndex = 5;
+            this.label3.Text = "API Service Status";
+            // 
+            // lblServiceStatus
+            // 
+            this.lblServiceStatus.AutoSize = true;
+            this.lblServiceStatus.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblServiceStatus.Location = new System.Drawing.Point(118, 13);
+            this.lblServiceStatus.Name = "lblServiceStatus";
+            this.lblServiceStatus.Size = new System.Drawing.Size(75, 15);
+            this.lblServiceStatus.TabIndex = 10;
+            this.lblServiceStatus.Text = "STARTING...";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(63, 38);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(49, 15);
+            this.label4.TabIndex = 8;
+            this.label4.Text = "API URL";
+            // 
+            // llServiceStatus
+            // 
+            this.llServiceStatus.AutoSize = true;
+            this.llServiceStatus.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.llServiceStatus.Location = new System.Drawing.Point(118, 37);
+            this.llServiceStatus.Name = "llServiceStatus";
+            this.llServiceStatus.Size = new System.Drawing.Size(192, 15);
+            this.llServiceStatus.TabIndex = 9;
+            this.llServiceStatus.TabStop = true;
+            this.llServiceStatus.Text = "http://localhost:9001/GPApiService";
+            this.llServiceStatus.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llServiceStatus_LinkClicked);
             // 
             // label2
             // 
@@ -131,7 +195,7 @@
             // toolStripLabel1
             // 
             this.toolStripLabel1.Name = "toolStripLabel1";
-            this.toolStripLabel1.Size = new System.Drawing.Size(68, 34);
+            this.toolStripLabel1.Size = new System.Drawing.Size(59, 34);
             this.toolStripLabel1.Text = "Functions";
             // 
             // toolStripSeparator1
@@ -153,7 +217,7 @@
             this.btnViewTasks.Image = ((System.Drawing.Image)(resources.GetObject("btnViewTasks.Image")));
             this.btnViewTasks.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnViewTasks.Name = "btnViewTasks";
-            this.btnViewTasks.Size = new System.Drawing.Size(95, 34);
+            this.btnViewTasks.Size = new System.Drawing.Size(84, 34);
             this.btnViewTasks.Text = "View Tasks";
             this.btnViewTasks.Click += new System.EventHandler(this.btnViewTasks_Click);
             // 
@@ -165,6 +229,12 @@
             this.tcTabControl.SelectedIndex = 0;
             this.tcTabControl.Size = new System.Drawing.Size(1637, 866);
             this.tcTabControl.TabIndex = 5;
+            // 
+            // timer
+            // 
+            this.timer.Enabled = true;
+            this.timer.Interval = 1000;
+            this.timer.Tick += new System.EventHandler(this.timer_Tick);
             // 
             // GPSystemForm
             // 
@@ -183,6 +253,8 @@
             this.panel2.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel3.ResumeLayout(false);
             this.toolStrip1.ResumeLayout(false);
@@ -206,6 +278,12 @@
         private System.Windows.Forms.ToolStripButton btnOpenPatientRecord;
         private System.Windows.Forms.ToolStripButton btnViewTasks;
         private System.Windows.Forms.TabControl tcTabControl;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Label lblServiceStatus;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.LinkLabel llServiceStatus;
+        private System.Windows.Forms.Timer timer;
 
     }
 }

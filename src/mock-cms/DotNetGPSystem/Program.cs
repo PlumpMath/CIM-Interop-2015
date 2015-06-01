@@ -22,12 +22,15 @@ namespace DotNetGPSystem
 
         static void Application_ThreadException(object sender, System.Threading.ThreadExceptionEventArgs e)
         {
-            MessageBox.Show("Exception:  " + e.Exception.GetType().FullName + Environment.NewLine
+            System.Windows.Forms.MessageBox.Show("Exception:  " + e.Exception.GetType().FullName + Environment.NewLine
                 + Environment.NewLine
                 + "Message:  " + e.Exception.Message + Environment.NewLine
                 + Environment.NewLine
                 + "Stack trace:  " + Environment.NewLine
-                + e.Exception.StackTrace);
+                + e.Exception.StackTrace, 
+                "Exception",
+                MessageBoxButtons.OK, 
+                MessageBoxIcon.Warning);
         }
     }
 }
