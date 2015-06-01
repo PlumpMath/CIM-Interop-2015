@@ -10,7 +10,7 @@ public class GetPatientByNHSNo implements org.apache.camel.Processor {
     public void process(Exchange exchange) throws Exception {
         // Get data from exchange
         String nhsNumber = (String)exchange.getIn().getHeader("nhsNo");
-        int serviceId = Integer.parseInt((String) exchange.getIn().getHeader("serviceId"));
+        String serviceId = (String) exchange.getIn().getHeader("serviceId");
 
         // Get the relevant data adapter from the factory
         IDataAdapter dataAdapter = AdapterFactory.getDataAdapterForService(serviceId);

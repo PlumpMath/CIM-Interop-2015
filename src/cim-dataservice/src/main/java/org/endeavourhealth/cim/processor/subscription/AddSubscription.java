@@ -7,7 +7,7 @@ import org.endeavourhealth.cim.common.IDataAdapter;
 public class AddSubscription implements org.apache.camel.Processor {
     public void process(Exchange exchange) throws Exception {
         String subscriptionId = (String)exchange.getIn().getHeader("SubscriptionId");
-        int serviceId = Integer.parseInt((String) exchange.getIn().getHeader("serviceId"));
+        String serviceId = (String) exchange.getIn().getHeader("serviceId");
 
         String subscriptionRequestJSON = (String)exchange.getIn().getBody();
 //        CIMSubscription cimSubscription = FromJSON(subscriptionRequestJSON);

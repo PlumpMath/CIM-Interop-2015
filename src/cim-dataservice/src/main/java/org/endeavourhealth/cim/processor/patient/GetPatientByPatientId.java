@@ -11,7 +11,7 @@ import java.util.UUID;
 public class GetPatientByPatientId implements org.apache.camel.Processor {
     public void process(Exchange exchange) throws Exception {
         String patientId = (String)exchange.getIn().getHeader("patientId");
-        int serviceId = Integer.parseInt((String) exchange.getIn().getHeader("serviceId"));
+        String serviceId = (String) exchange.getIn().getHeader("serviceId");
 
         // Get patientApi data (native format) using adapter
         IDataAdapter dataAdapter = AdapterFactory.getDataAdapterForService(serviceId);

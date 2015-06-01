@@ -9,7 +9,7 @@ import org.endeavourhealth.cim.transform.TransformerFactory;
 public class AddCondition implements org.apache.camel.Processor {
     @Override
     public void process(Exchange exchange) throws Exception {
-        int serviceId = Integer.parseInt((String) exchange.getIn().getHeader("serviceId"));
+        String serviceId =(String) exchange.getIn().getHeader("serviceId");
 
         TransformerBase transformer = TransformerFactory.getTransformerForService(serviceId);
         String request = transformer.fromFHIRCondition((String) exchange.getIn().getBody());

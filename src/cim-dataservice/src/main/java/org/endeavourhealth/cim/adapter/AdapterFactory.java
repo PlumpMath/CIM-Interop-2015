@@ -4,7 +4,7 @@ import org.endeavourhealth.cim.Registry;
 import org.endeavourhealth.cim.common.IDataAdapter;
 
 public class AdapterFactory {
-    public static IDataAdapter getDataAdapterForService(int serviceId) throws Exception {
+    public static IDataAdapter getDataAdapterForService(String serviceId) throws Exception {
         String serviceAdapterTypeName = Registry.getDataAdapterTypeNameForService(serviceId);
 
         try {

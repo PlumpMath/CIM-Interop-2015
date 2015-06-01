@@ -3,6 +3,7 @@ package org.endeavourhealth.cim.routes.builders;
 import org.apache.commons.httpclient.HttpStatus;
 import org.endeavourhealth.cim.common.CIMRouteBuilder;
 import org.endeavourhealth.cim.processor.core.CIMError;
+import org.endeavourhealth.cim.processor.core.HeaderValidationProcessor;
 
 public class CIMHeaderValidation extends CIMRouteBuilder {
     @Override
@@ -12,10 +13,10 @@ public class CIMHeaderValidation extends CIMRouteBuilder {
         from("direct:CIMHeaderValidation")
             .routeId("CIMHeaderValidation")
             .doTry()
-//                .to("validator:headerSchema.xsd")
+                .process(new HeaderValidationProcessor())
                 .to("direct:CIMHeaderValidationResult")
-            .doCatch(org.apache.camel.ValidationException.class)
-                .process(new CIMError(HttpStatus.SC_BAD_REQUEST, "Invalid header"))
+            .doCatch(Exception.class)
+                .process(new CIMError(HttpStatus.SC_BAD_REQUEST, simple("Invalid header : ${exception.message}")))
                 .stop()
             .end();
     }
