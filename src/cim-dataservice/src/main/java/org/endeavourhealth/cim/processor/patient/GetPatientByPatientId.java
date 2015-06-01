@@ -3,7 +3,7 @@ package org.endeavourhealth.cim.processor.patient;
 import org.apache.camel.Exchange;
 import org.endeavourhealth.cim.adapter.AdapterFactory;
 import org.endeavourhealth.cim.common.IDataAdapter;
-import org.endeavourhealth.cim.common.ITransformer;
+import org.endeavourhealth.cim.transform.TransformerBase;
 import org.endeavourhealth.cim.transform.TransformerFactory;
 
 import java.util.UUID;
@@ -18,7 +18,7 @@ public class GetPatientByPatientId implements org.apache.camel.Processor {
         String patientData = dataAdapter.getPatientByPatientId(UUID.fromString(patientId));
 
         // Get patientApi data transformer for service (native format -> FHIR)
-        ITransformer transformer = TransformerFactory.getTransformerForService(serviceId);
+        TransformerBase transformer = TransformerFactory.getTransformerForService(serviceId);
 
         if (transformer == null)    // No transformation required
             return;

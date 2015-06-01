@@ -5,5 +5,5 @@ import java.util.UUID;
 public interface IDataAdapter {
     String getPatientByPatientId(UUID patientId);
     String getPatientByNHSNumber(String nhsNumber);
-    String createObservation(String request);
+    String createCondition(String request);
 }
