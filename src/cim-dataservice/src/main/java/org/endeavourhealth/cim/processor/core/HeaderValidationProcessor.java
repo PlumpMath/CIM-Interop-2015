@@ -9,9 +9,8 @@ public class HeaderValidationProcessor implements org.apache.camel.Processor {
 
     public HeaderValidationProcessor() {
         _legitimateRelationships = new HashMap<>();
-        _legitimateRelationships.put("swagger", Arrays.asList("Z99999", "A99999"));
-        _legitimateRelationships.put("subsidiary", Arrays.asList("Z99999", "A99999"));
-        _legitimateRelationships.put("noLR", Arrays.asList("X00000"));
+        _legitimateRelationships.put("swagger", Arrays.asList("A99999", "B99999"));
+        _legitimateRelationships.put("subsidiary", Arrays.asList("Y99999", "Z99999"));
     }
 
     @Override
