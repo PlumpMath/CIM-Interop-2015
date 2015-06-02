@@ -17,6 +17,6 @@ namespace DotNetGPSystem
         string[] GetChangedRecords(DateTime sinceDateTime);
 
         [OperationContract]
-        void AddCondition(string nhsNumber, string conditionOpenHRXml);
+        void UpdateCareRecord(string openHRXml);
     }       
 }

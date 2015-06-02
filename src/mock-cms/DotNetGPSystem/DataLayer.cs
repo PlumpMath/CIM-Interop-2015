@@ -20,7 +20,20 @@ namespace DotNetGPSystem
             _schemaPrefix + ".vocabulary.xsd"
         };
 
-        public static OpenHRPatient[] LoadOpenHRPatients()
+        private static OpenHRPatient[] _openHRPatients = null;
+
+        public static OpenHRPatient[] OpenHRPatients
+        {
+            get
+            {
+                if (_openHRPatients == null)
+                    _openHRPatients = LoadOpenHRPatients();
+
+                return _openHRPatients;
+            }
+        }
+
+        private static OpenHRPatient[] LoadOpenHRPatients()
         {
             OpenHR001OpenHealthRecord[] openHealthRecords = GetOpenHRFiles()
                 .Select(t => Utilities.Deserialize<OpenHR001OpenHealthRecord>(t))

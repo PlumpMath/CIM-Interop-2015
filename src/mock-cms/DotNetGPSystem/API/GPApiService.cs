@@ -10,18 +10,26 @@ namespace DotNetGPSystem
     {
         public string GetCareRecord(string nhsNumber)
         {
-            return "<openHR></openHR>";
+            OpenHRPatient[] patients = DataLayer
+                .OpenHRPatients
+                .Where(t => t.Patient.patientIdentifier.GetNhsNumber() == nhsNumber)
+                .ToArray();
+
+            if (patients.Length == 0)
+                return string.Empty;
+
+            if (patients.Length > 1)
+                throw new Exception("More than one patient found matching that NHS number.");
+
+            return patients.Single().OpenHRXml;
         }
 
         public string[] GetChangedRecords(DateTime sinceDateTime)
         {
-            return new string[]
-            {
-                "1111111111"
-            };
+            return new string[] { };
         }
 
-        public void AddCondition(string nhsNumber, string conditionOpenHRXml)
+        public void UpdateCareRecord(string openHRXml)
         {
 
         }

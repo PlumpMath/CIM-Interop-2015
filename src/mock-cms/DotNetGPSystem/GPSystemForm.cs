@@ -20,23 +20,11 @@ namespace DotNetGPSystem
 {
     internal partial class GPSystemForm : Form
     {
-        private OpenHRPatient[] _patientRecords;
         private TabPage _tasksTabPage;
 
         public GPSystemForm()
         {
             InitializeComponent();
-        }
-
-        internal OpenHRPatient[] PatientRecords
-        {
-            get
-            {
-                if (_patientRecords == null)
-                    _patientRecords = DataLayer.LoadOpenHRPatients();
-
-                return _patientRecords;
-            }
         }
 
         private void btnOpenPatientRecord_Click(object sender, EventArgs e)
@@ -61,7 +49,7 @@ namespace DotNetGPSystem
 
         private void OpenPatientRecord()
         {
-            using (PatientFindForm patientFindForm = new PatientFindForm(PatientRecords))
+            using (PatientFindForm patientFindForm = new PatientFindForm(DataLayer.OpenHRPatients))
             {
                 if (patientFindForm.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
@@ -110,20 +98,8 @@ namespace DotNetGPSystem
         {
             try
             {
-                ServiceHost svcHost = new ServiceHost(typeof(GPApiService), new Uri("http://localhost:9001/GPApiService"));
-                svcHost.AddServiceEndpoint(typeof(IGPApiService), new BasicHttpBinding(), "Soap");
-
-                ServiceMetadataBehavior smb = svcHost.Description.Behaviors.Find<ServiceMetadataBehavior>();
-                
-                if (smb == null)
-                    smb = new ServiceMetadataBehavior();
-
-                smb.HttpGetEnabled = true;
-
-                svcHost.Description.Behaviors.Add(smb);
-                svcHost.AddServiceEndpoint(ServiceMetadataBehavior.MexContractName, MetadataExchangeBindings.CreateMexHttpBinding(), "mex");
-
-                svcHost.Open(); 
+                GPApiServiceHost gpApiServiceHost = new GPApiServiceHost();
+                gpApiServiceHost.StartService();
 
                 lblServiceStatus.Text = "RUNNING";
                 lblServiceStatus.ForeColor = Color.Green;

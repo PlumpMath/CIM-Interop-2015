@@ -78,7 +78,7 @@ namespace DotNetGPSystem
             return string.Join(" ", new string[] { homePhone, workPhone, mobilePhone }.Where(t => !string.IsNullOrEmpty(t)).ToArray());
         }
 
-        public static string GetFormattedNhsNumber(this dtPatientIdentifier[] identifiers)
+        public static string GetNhsNumber(this dtPatientIdentifier[] identifiers)
         {
             if (identifiers == null)
                 return string.Empty;
@@ -88,7 +88,12 @@ namespace DotNetGPSystem
             if (nhsNumber == null)
                 return string.Empty;
 
-            return FormatNhsNumber(nhsNumber.value);
+            return nhsNumber.value;
+        }
+
+        public static string GetFormattedNhsNumber(this dtPatientIdentifier[] identifiers)
+        {
+            return FormatNhsNumber(GetNhsNumber(identifiers));
         }
 
         public static string FormatNhsNumber(this string nhsNumber)
