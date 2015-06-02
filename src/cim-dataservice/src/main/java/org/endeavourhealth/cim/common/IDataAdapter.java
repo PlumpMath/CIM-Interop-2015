@@ -1,6 +1,5 @@
 package org.endeavourhealth.cim.common;
 
-import javax.xml.soap.SOAPException;
 import java.util.UUID;
 
 public interface IDataAdapter {
