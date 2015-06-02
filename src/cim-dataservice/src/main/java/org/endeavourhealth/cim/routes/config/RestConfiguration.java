@@ -11,7 +11,7 @@ public class RestConfiguration extends RouteBuilder {
         getContext().setTracing(true);
 
         restConfiguration().component("servlet")
-                .bindingMode(RestBindingMode.auto)
+                .bindingMode(RestBindingMode.off)
                 .dataFormatProperty("prettyPrint", "true");
     }
 }

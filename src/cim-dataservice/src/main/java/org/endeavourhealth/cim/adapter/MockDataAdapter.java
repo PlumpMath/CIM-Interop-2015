@@ -31,7 +31,7 @@ public class MockDataAdapter implements IDataAdapter {
                 SOAPConnectionFactory soapConnectionFactory = SOAPConnectionFactory.newInstance();
                 soapConnection = soapConnectionFactory.createConnection();
 
-                // Send SOAP Message to SOAP Server
+                // Create basic message
                 SOAPMessage requestMessage = createSOAPRequest("GetCareRecord");
 
                 // SOAP Body
@@ -40,6 +40,7 @@ public class MockDataAdapter implements IDataAdapter {
                 soapMethodParamElement1.addTextNode(nhsNumber);
                 requestMessage.saveChanges();
 
+                // Send SOAP Message to SOAP Server
                 SOAPMessage soapResponse = soapConnection.call(requestMessage, _soapUri + "/GetCareRecord");
                 return soapResponse.getSOAPBody().getElementsByTagName("GetCareRecordResult").item(0).getTextContent();
             } finally {
@@ -60,13 +61,22 @@ public class MockDataAdapter implements IDataAdapter {
                 SOAPConnectionFactory soapConnectionFactory = SOAPConnectionFactory.newInstance();
                 soapConnection = soapConnectionFactory.createConnection();
 
-                // Send SOAP Message to SOAP Server
-                SOAPMessage requestMessage = createSOAPRequest("CreateCondition");
-                SOAPMessage soapResponse = soapConnection.call(requestMessage, _soapUri);
+                // Create basic message
+                SOAPMessage requestMessage = createSOAPRequest("UpdateCareRecord");
 
-                // print SOAP Response
-                System.out.print("Response SOAP Message:");
-                return soapResponse.getSOAPBody().toString();
+                // SOAP Body
+                SOAPElement soapMethodElement = requestMessage.getSOAPBody().addChildElement("UpdateCareRecord", "", "http://tempuri.org/");
+                SOAPElement soapMethodParamElement1 = soapMethodElement.addChildElement("nhsNumber");
+                soapMethodParamElement1.addTextNode(requestData);
+                requestMessage.saveChanges();
+
+                // Send SOAP Message to SOAP Server
+                SOAPMessage soapResponse = soapConnection.call(requestMessage, _soapUri + "/UpdateCareRecord");
+
+                soapResponse.writeTo(System.out);
+
+                return soapResponse.getSOAPBody().getElementsByTagName("GetCareRecordResult").item(0).getTextContent();
+
             } finally {
                 if (soapConnection != null)
                     soapConnection.close();
