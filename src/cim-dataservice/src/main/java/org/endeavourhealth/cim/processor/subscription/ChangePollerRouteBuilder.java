@@ -1,7 +1,7 @@
 package org.endeavourhealth.cim.processor.subscription;
 
 import org.apache.camel.builder.RouteBuilder;
-import org.endeavourhealth.cim.common.IDataAdapter;
+import org.endeavourhealth.cim.adapter.IDataAdapter;
 
 public class ChangePollerRouteBuilder extends RouteBuilder {
     private final IDataAdapter _dataAdapter;

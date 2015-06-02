@@ -2,7 +2,7 @@ package org.endeavourhealth.cim.processor.subscription;
 
 import org.apache.camel.Exchange;
 import org.endeavourhealth.cim.adapter.AdapterFactory;
-import org.endeavourhealth.cim.common.IDataAdapter;
+import org.endeavourhealth.cim.adapter.IDataAdapter;
 
 public class AddSubscription implements org.apache.camel.Processor {
     public void process(Exchange exchange) throws Exception {

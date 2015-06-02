@@ -1,24 +1,19 @@
 package org.endeavourhealth.cim.adapter;
 
-import org.apache.http.HttpEntity;
-import org.apache.http.HttpResponse;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.entity.ByteArrayEntity;
-import org.apache.http.impl.client.HttpClientBuilder;
-import org.endeavourhealth.cim.common.IDataAdapter;
-
+import javax.xml.soap.*;
 import java.io.*;
 import java.util.UUID;
 
 public class MockDataAdapter implements IDataAdapter {
+    private final String _soapUri = "http://localhost:9001/GPApiService/Soap";
+    private final String _actionUri = "http://tempuri.org/IGPApiService";
+
     public String getPatientByPatientId(UUID patientId) {
         StringBuilder sb = new StringBuilder();
         try {
-        InputStream is = getClass().getClassLoader().getResourceAsStream("GetPatientResponse.json");
-        BufferedReader br = new BufferedReader(new InputStreamReader(is, "UTF-8"));
-        String line = null;
+            InputStream is = getClass().getClassLoader().getResourceAsStream("GetPatientResponse.json");
+            BufferedReader br = new BufferedReader(new InputStreamReader(is, "UTF-8"));
+            String line = null;
             while ((line = br.readLine()) != null) {
                 sb.append(line);
             }
@@ -30,20 +25,27 @@ public class MockDataAdapter implements IDataAdapter {
     }
 
     public String getPatientByNHSNumber(String nhsNumber) {
+        SOAPConnection soapConnection = null;
         try {
-            HttpClient client = HttpClientBuilder.create().build();
-            // TODO: Implement correct comms to mock CMS
-            HttpGet request = new HttpGet("http://localhost:8081/GetEMISPatientByNhsNumber/");
+            try {
+                SOAPConnectionFactory soapConnectionFactory = SOAPConnectionFactory.newInstance();
+                soapConnection = soapConnectionFactory.createConnection();
 
-            HttpResponse response = client.execute(request);
+                // Send SOAP Message to SOAP Server
+                SOAPMessage requestMessage = createSOAPRequest("GetCareRecord");
 
-            StringBuilder responseData = new StringBuilder();
-            BufferedReader rd = new BufferedReader(new InputStreamReader(response.getEntity().getContent()));
-            String line;
-            while ((line = rd.readLine()) != null) {
-                responseData.append(line);
+                // SOAP Body
+                SOAPElement soapMethodElement = requestMessage.getSOAPBody().addChildElement("GetCareRecord", "", "http://tempuri.org/");
+                SOAPElement soapMethodParamElement1 = soapMethodElement.addChildElement("nhsNumber");
+                soapMethodParamElement1.addTextNode(nhsNumber);
+                requestMessage.saveChanges();
+
+                SOAPMessage soapResponse = soapConnection.call(requestMessage, _soapUri + "/GetCareRecord");
+                return soapResponse.getSOAPBody().getElementsByTagName("GetCareRecordResult").item(0).getTextContent();
+            } finally {
+                if (soapConnection != null)
+                    soapConnection.close();
             }
-            return responseData.toString();
         }
         catch (Exception e) {
             e.printStackTrace();
@@ -52,26 +54,36 @@ public class MockDataAdapter implements IDataAdapter {
     }
 
     public String createCondition(String requestData) {
+        SOAPConnection soapConnection = null;
         try {
-            HttpClient client = HttpClientBuilder.create().build();
-            // TODO: Implement correct comms to mock CMS
-            HttpPost request = new HttpPost("http://localhost:8081/AddEMISProblem/");
-            HttpEntity entity = new ByteArrayEntity(requestData.getBytes("UTF-8"));
-            request.setEntity(entity);
+            try {
+                SOAPConnectionFactory soapConnectionFactory = SOAPConnectionFactory.newInstance();
+                soapConnection = soapConnectionFactory.createConnection();
 
-            HttpResponse response = client.execute(request);
+                // Send SOAP Message to SOAP Server
+                SOAPMessage requestMessage = createSOAPRequest("CreateCondition");
+                SOAPMessage soapResponse = soapConnection.call(requestMessage, _soapUri);
 
-            StringBuilder responseData = new StringBuilder();
-            BufferedReader rd = new BufferedReader(new InputStreamReader(response.getEntity().getContent()));
-            String line;
-            while ((line = rd.readLine()) != null) {
-                responseData.append(line);
+                // print SOAP Response
+                System.out.print("Response SOAP Message:");
+                return soapResponse.getSOAPBody().toString();
+            } finally {
+                if (soapConnection != null)
+                    soapConnection.close();
             }
-            return responseData.toString();
         }
         catch (Exception e) {
-            e.printStackTrace();
             return null;
         }
+    }
+
+    private SOAPMessage createSOAPRequest(String methodCall) throws Exception {
+        MessageFactory messageFactory = MessageFactory.newInstance();
+        SOAPMessage soapMessage = messageFactory.createMessage();
+
+        MimeHeaders headers = soapMessage.getMimeHeaders();
+        headers.addHeader("SOAPAction", _actionUri + "/" + methodCall);
+
+        return soapMessage;
     }
 }

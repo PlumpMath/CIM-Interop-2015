@@ -1,4 +1,4 @@
-package org.endeavourhealth.cim.common;
+package org.endeavourhealth.cim.adapter;
 
 import java.util.UUID;
 

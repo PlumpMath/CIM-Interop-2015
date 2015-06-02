@@ -2,7 +2,7 @@ package org.endeavourhealth.cim.processor.observation;
 
 import org.apache.camel.Exchange;
 import org.endeavourhealth.cim.adapter.AdapterFactory;
-import org.endeavourhealth.cim.common.IDataAdapter;
+import org.endeavourhealth.cim.adapter.IDataAdapter;
 import org.endeavourhealth.cim.transform.TransformerBase;
 import org.endeavourhealth.cim.transform.TransformerFactory;
 
