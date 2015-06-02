@@ -15,9 +15,16 @@ namespace DotNetGPSystem
         private OpenHRPage()
         {
             InitializeComponent();
+
+            this.Dock = DockStyle.Fill;
         }
 
         public OpenHRPage(OpenHRPatient patient) : this()
+        {
+            PopulatePatient(patient);
+        }
+
+        public void PopulatePatient(OpenHRPatient patient)
         {
             this.textBox1.Text = Utilities.Serialize<OpenHR001OpenHealthRecord>(patient.OpenHealthRecord);
         }

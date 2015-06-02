@@ -49,7 +49,7 @@ namespace DotNetGPSystem
                 
                 row.SetValues(string.Empty, 
                     patientPerson.Person.GetCuiDisplayName(), 
-                    patientPerson.Person.address.GetHomeAddress().GetSingleLineAddress(), 
+                    patientPerson.Person.address.GetHomeAddress().GetAddressAsSingleLineString(), 
                     patientPerson.Person.contact.GetSingleLineContacts(), 
                     patientPerson.Patient.patientIdentifier.GetFormattedNhsNumber());
 

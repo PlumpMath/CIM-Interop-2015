@@ -22,11 +22,17 @@ namespace DotNetGPSystem
 
         public PatientTabPage(OpenHRPatient patient) : this()
         {
-            _patient = patient;
-            this.Text = "Patient - " + patient.Person.GetCuiDisplayName();
+            SetPatient(patient);
 
-            _patientControl = new PatientControl(patient);
+            _patientControl = new PatientControl(patient, SetPatient);
             _patientControl.Parent = this;
+        }
+
+        private void SetPatient(OpenHRPatient patient)
+        {
+            _patient = patient;
+
+            this.Text = "Patient - " + _patient.Person.GetCuiDisplayName();
         }
 
         public OpenHRPatient Patient

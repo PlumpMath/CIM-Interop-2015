@@ -12,7 +12,7 @@ namespace DotNetGPSystem
     {
         public string GetCareRecord(string nhsNumber)
         {
-            OpenHRPatient[] patients = DataLayer
+            OpenHRPatient[] patients = DataStore
                 .OpenHRPatients
                 .Where(t => t.Patient.patientIdentifier.GetNhsNumber() == nhsNumber)
                 .ToArray();
@@ -28,7 +28,13 @@ namespace DotNetGPSystem
 
         public string[] GetChangedRecords(DateTime sinceDateTime)
         {
-            return new string[] { };
+            return DataStore
+                .PatientChangeList
+                .Where(t => t.Key >= sinceDateTime)
+                .OrderBy(t => t.Key)
+                .Select(t => t.Value.Patient.patientIdentifier.GetNhsNumber())
+                .Distinct()
+                .ToArray();
         }
 
         public void UpdateCareRecord(string openHRXml)

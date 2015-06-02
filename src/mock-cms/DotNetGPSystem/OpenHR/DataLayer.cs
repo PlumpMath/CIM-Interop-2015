@@ -8,7 +8,7 @@ using System.Xml.Schema;
 
 namespace DotNetGPSystem
 {
-    internal static class DataLayer
+    internal static class DataStore
     {
         private const string _samplesPrefix = "DotNetGPSystem.OpenHR.Samples";
         private const string _schemaPrefix = "DotNetGPSystem.OpenHR.Schema";
@@ -21,6 +21,7 @@ namespace DotNetGPSystem
         };
 
         private static OpenHRPatient[] _openHRPatients = null;
+        private static List<KeyValuePair<DateTime, OpenHRPatient>> _changeList = new List<KeyValuePair<DateTime, OpenHRPatient>>();
 
         public static OpenHRPatient[] OpenHRPatients
         {
@@ -31,6 +32,19 @@ namespace DotNetGPSystem
 
                 return _openHRPatients;
             }
+        }
+
+        public static KeyValuePair<DateTime, OpenHRPatient>[] PatientChangeList
+        {
+            get
+            {
+                return _changeList.ToArray();
+            }
+        }
+
+        public static void SaveOpenHRPatient(OpenHRPatient patient)
+        {
+            _changeList.Add(new KeyValuePair<DateTime, OpenHRPatient>(DateTime.Now, patient));
         }
 
         private static OpenHRPatient[] LoadOpenHRPatients()
@@ -66,7 +80,7 @@ namespace DotNetGPSystem
             return openHRFiles.ToArray();
         }
 
-        public static void ValidateOpenHR()
+        private static void ValidateOpenHR()
         {
             XmlSchemaSet schemas = Utilities.LoadSchemaResources(_schemaNames);
 

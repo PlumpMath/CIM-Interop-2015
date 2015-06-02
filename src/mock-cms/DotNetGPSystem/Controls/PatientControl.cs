@@ -14,37 +14,48 @@ namespace DotNetGPSystem
     {
         private DemographicsPage _demographicsPage;
         private OpenHRPage _openHRPage;
+        private Action<OpenHRPatient> _demographicsUpdatedCallback;
         
         private PatientControl()
         {
             InitializeComponent();
         }
 
-        public PatientControl(OpenHRPatient patient) : this()
+        public PatientControl(OpenHRPatient patient, Action<OpenHRPatient> demographicsUpdatedCallback) : this()
         {
             this.Dock = DockStyle.Fill;
             toolStrip1.Renderer = new PatientControlToolStripRenderer();
+            _demographicsUpdatedCallback = demographicsUpdatedCallback;
 
             PopulatePrecis(patient);
             CreatePages(patient);
-            
         }
 
         private void PopulatePrecis(OpenHRPatient patient)
         {
             this.lblPrecisSurname.Text = patient.Person.GetCuiDisplayName();
-            this.lblPrecisDateOfBirth.Text = patient.Person.GetCuiDobString();
+            this.lblPrecisDateOfBirth.Text = patient.Person.GetCuiDobStringWithAge();
             this.lblPrecisGender.Text = patient.Person.sex.GetSexString();
             this.lblPrecisNhsNumber.Text = patient.Patient.patientIdentifier.GetFormattedNhsNumber();
         }
 
         private void CreatePages(OpenHRPatient patient)
         {
-            _demographicsPage = new DemographicsPage(patient);
+            _demographicsPage = new DemographicsPage(patient, RefreshDemographicsOnUpdateEvent);
             _demographicsPage.Parent = pnlContent;
 
             _openHRPage = new OpenHRPage(patient);
             _openHRPage.Parent = pnlContent;
+        }
+
+        private void RefreshDemographicsOnUpdateEvent(OpenHRPatient patient)
+        {
+            PopulatePrecis(patient);
+
+            _openHRPage.PopulatePatient(patient);
+            
+            if (_demographicsUpdatedCallback != null)
+                _demographicsUpdatedCallback(patient);
         }
 
         private void btnDemographics_Click(object sender, EventArgs e)
