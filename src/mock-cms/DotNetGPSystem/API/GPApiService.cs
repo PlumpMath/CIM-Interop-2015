@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace DotNetGPSystem
 {
+    [ServiceBehavior(AddressFilterMode = AddressFilterMode.Any)] 
     internal class GPApiService : IGPApiService
     {
         public string GetCareRecord(string nhsNumber)
