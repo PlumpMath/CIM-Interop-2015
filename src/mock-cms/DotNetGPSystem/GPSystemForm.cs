@@ -25,16 +25,9 @@ namespace DotNetGPSystem
         public GPSystemForm()
         {
             InitializeComponent();
-        }
 
-        private void btnOpenPatientRecord_Click(object sender, EventArgs e)
-        {
-            OpenPatientRecord();
-        }
-
-        private void btnViewTasks_Click(object sender, EventArgs e)
-        {
-            OpenTasks();
+            btnOpenPatientRecord.Click += (sender, e) => OpenPatientRecord();
+            btnViewTasks.Click += (sender, e) => OpenTasks();
         }
 
         private void GPSystemForm_KeyDown(object sender, KeyEventArgs e)
@@ -49,7 +42,7 @@ namespace DotNetGPSystem
 
         private void OpenPatientRecord()
         {
-            using (PatientFindForm patientFindForm = new PatientFindForm(DataLayer.OpenHRPatients))
+            using (PatientFindForm patientFindForm = new PatientFindForm(DataStore.OpenHRPatients))
             {
                 if (patientFindForm.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
@@ -61,7 +54,7 @@ namespace DotNetGPSystem
                             .TabPages
                             .Cast<TabPage>()
                             .Where(t => t is PatientTabPage)
-                            .SingleOrDefault(t => (t as PatientTabPage).Patient.Patient.id == patient.Patient.id);
+                            .SingleOrDefault(t => (t as PatientTabPage).Patient == patient);
 
                         if (existingPatientTabPage != null)
                         {
@@ -81,10 +74,10 @@ namespace DotNetGPSystem
         private void OpenTasks()
         {
             if (_tasksTabPage == null)
+            {
                 _tasksTabPage = new TabPage("Tasks");
-
-            if (!tcTabControl.TabPages.Contains(_tasksTabPage))
                 tcTabControl.TabPages.Add(_tasksTabPage);
+            }
 
             tcTabControl.SelectedTab = _tasksTabPage;
         }

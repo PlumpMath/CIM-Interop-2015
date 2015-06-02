@@ -210,7 +210,6 @@
             this.btnOpenPatientRecord.Name = "btnOpenPatientRecord";
             this.btnOpenPatientRecord.Size = new System.Drawing.Size(136, 34);
             this.btnOpenPatientRecord.Text = "Open Patient Record";
-            this.btnOpenPatientRecord.Click += new System.EventHandler(this.btnOpenPatientRecord_Click);
             // 
             // btnViewTasks
             // 
@@ -219,7 +218,6 @@
             this.btnViewTasks.Name = "btnViewTasks";
             this.btnViewTasks.Size = new System.Drawing.Size(84, 34);
             this.btnViewTasks.Text = "View Tasks";
-            this.btnViewTasks.Click += new System.EventHandler(this.btnViewTasks_Click);
             // 
             // tcTabControl
             // 

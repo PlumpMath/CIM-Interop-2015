@@ -63,7 +63,7 @@
       <DependentUpon>OpenHRPage.cs</DependentUpon>
     </Compile>
     <Compile Include="Controls\PatientControlToolStripRenderer.cs" />
-    <Compile Include="DataLayer.cs" />
+    <Compile Include="OpenHR\DataLayer.cs" />
     <Compile Include="GPSystemForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -170,7 +170,8 @@
     <EmbeddedResource Include="OpenHR\Samples\0b6ff8de-117e-4994-bbe8-64a628eeda7d.xml" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\pencil.png" />
+    <Content Include="Resources\computer.ico" />
+    <Content Include="Resources\pencil.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
