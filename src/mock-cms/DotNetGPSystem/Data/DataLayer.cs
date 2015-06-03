@@ -10,8 +10,8 @@ namespace DotNetGPSystem
 {
     internal static class DataStore
     {
-        private const string _samplesPrefix = "DotNetGPSystem.OpenHR.Samples";
-        private const string _schemaPrefix = "DotNetGPSystem.OpenHR.Schema";
+        private const string _samplesPrefix = "DotNetGPSystem.Data.Samples";
+        private const string _schemaPrefix = "DotNetGPSystem.Data.Schema";
 
         private static readonly string[] _schemaNames = new string[]
         {

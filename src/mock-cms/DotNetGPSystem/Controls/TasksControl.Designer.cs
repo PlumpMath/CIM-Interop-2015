@@ -1,6 +1,6 @@
 ﻿namespace DotNetGPSystem
 {
-    partial class PatientTabPage
+    partial class TasksControl
     {
         /// <summary> 
         /// Required designer variable.
@@ -28,7 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
+            this.SuspendLayout();
+            // 
+            // TasksControl
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Name = "TasksControl";
+            this.Size = new System.Drawing.Size(1166, 659);
+            this.ResumeLayout(false);
+
         }
 
         #endregion

@@ -12,8 +12,8 @@ namespace DotNetGPSystem
 {
     internal partial class PatientControl : UserControl
     {
-        private DemographicsPage _demographicsPage;
-        private OpenHRPage _openHRPage;
+        private DemographicsControl _demographicsPage;
+        private OpenHRControl _openHRPage;
         private Action<OpenHRPatient> _demographicsUpdatedCallback;
         
         private PatientControl()
@@ -41,10 +41,10 @@ namespace DotNetGPSystem
 
         private void CreatePages(OpenHRPatient patient)
         {
-            _demographicsPage = new DemographicsPage(patient, RefreshDemographicsOnUpdateEvent);
+            _demographicsPage = new DemographicsControl(patient, RefreshDemographicsOnUpdateEvent);
             _demographicsPage.Parent = pnlContent;
 
-            _openHRPage = new OpenHRPage(patient);
+            _openHRPage = new OpenHRControl(patient);
             _openHRPage.Parent = pnlContent;
         }
 

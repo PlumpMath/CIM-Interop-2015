@@ -46,6 +46,7 @@
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.btnOpenPatientRecord = new System.Windows.Forms.ToolStripButton();
             this.btnViewTasks = new System.Windows.Forms.ToolStripButton();
+            this.btnViewApiLog = new System.Windows.Forms.ToolStripButton();
             this.tcTabControl = new System.Windows.Forms.TabControl();
             this.timer = new System.Windows.Forms.Timer(this.components);
             this.panel2.SuspendLayout();
@@ -185,7 +186,8 @@
             this.toolStripLabel1,
             this.toolStripSeparator1,
             this.btnOpenPatientRecord,
-            this.btnViewTasks});
+            this.btnViewTasks,
+            this.btnViewApiLog});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(1637, 37);
@@ -218,6 +220,14 @@
             this.btnViewTasks.Name = "btnViewTasks";
             this.btnViewTasks.Size = new System.Drawing.Size(84, 34);
             this.btnViewTasks.Text = "View Tasks";
+            // 
+            // btnViewApiLog
+            // 
+            this.btnViewApiLog.Image = ((System.Drawing.Image)(resources.GetObject("btnViewApiLog.Image")));
+            this.btnViewApiLog.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnViewApiLog.Name = "btnViewApiLog";
+            this.btnViewApiLog.Size = new System.Drawing.Size(96, 34);
+            this.btnViewApiLog.Text = "View API Log";
             // 
             // tcTabControl
             // 
@@ -282,6 +292,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.LinkLabel llServiceStatus;
         private System.Windows.Forms.Timer timer;
+        private System.Windows.Forms.ToolStripButton btnViewApiLog;
 
     }
 }

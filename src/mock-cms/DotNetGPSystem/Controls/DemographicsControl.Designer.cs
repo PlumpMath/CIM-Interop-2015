@@ -1,6 +1,6 @@
 ﻿namespace DotNetGPSystem
 {
-    partial class DemographicsPage
+    partial class DemographicsControl
     {
         /// <summary> 
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DemographicsPage));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DemographicsControl));
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.tbWorkPhone = new System.Windows.Forms.TextBox();
@@ -77,7 +77,7 @@
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(1787, 1002);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(1787, 982);
             this.tableLayoutPanel2.TabIndex = 6;
             // 
             // tableLayoutPanel3
@@ -112,7 +112,7 @@
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(467, 994);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(467, 974);
             this.tableLayoutPanel3.TabIndex = 7;
             // 
             // tbWorkPhone
@@ -237,7 +237,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(494, 994);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(494, 974);
             this.tableLayoutPanel1.TabIndex = 6;
             // 
             // tbTitle
@@ -453,7 +453,7 @@
             this.llEditDemographics.Text = "       Edit demographics";
             this.llEditDemographics.UseCompatibleTextRendering = true;
             // 
-            // DemographicsPage
+            // DemographicsControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -461,8 +461,8 @@
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.Name = "DemographicsPage";
-            this.Padding = new System.Windows.Forms.Padding(20, 20, 20, 0);
+            this.Name = "DemographicsControl";
+            this.Padding = new System.Windows.Forms.Padding(20);
             this.Size = new System.Drawing.Size(1827, 1053);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel3.ResumeLayout(false);

@@ -1,6 +1,6 @@
 ﻿namespace DotNetGPSystem
 {
-    partial class OpenHRPage
+    partial class OpenHRControl
     {
         /// <summary> 
         /// Required designer variable.
@@ -57,12 +57,12 @@
             this.textBox1.TabIndex = 1;
             this.textBox1.WordWrap = false;
             // 
-            // OpenHRPage
+            // OpenHRControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.panel1);
-            this.Name = "OpenHRPage";
+            this.Name = "OpenHRControl";
             this.Padding = new System.Windows.Forms.Padding(10);
             this.Size = new System.Drawing.Size(1629, 923);
             this.panel1.ResumeLayout(false);

@@ -20,7 +20,8 @@ namespace DotNetGPSystem
 {
     internal partial class GPSystemForm : Form
     {
-        private TabPage _tasksTabPage;
+        private TabPage _tasksTabPage = new TasksTabPage();
+        private ApiLogTabPage _apiLogTabPage = new ApiLogTabPage();
 
         public GPSystemForm()
         {
@@ -28,6 +29,7 @@ namespace DotNetGPSystem
 
             btnOpenPatientRecord.Click += (sender, e) => OpenPatientRecord();
             btnViewTasks.Click += (sender, e) => OpenTasks();
+            btnViewApiLog.Click += (sender, e) => OpenApiMessageLog();
         }
 
         private void GPSystemForm_KeyDown(object sender, KeyEventArgs e)
@@ -36,6 +38,7 @@ namespace DotNetGPSystem
             {
                 case Keys.F5: btnOpenPatientRecord.PerformClick(); e.Handled = true; break;
                 case Keys.F6: btnViewTasks.PerformClick(); e.Handled = true; break;
+                case Keys.F7: btnViewApiLog.PerformClick(); e.Handled = true; break;
                 default: break;
             }
         }
@@ -73,13 +76,18 @@ namespace DotNetGPSystem
 
         private void OpenTasks()
         {
-            if (_tasksTabPage == null)
-            {
-                _tasksTabPage = new TabPage("Tasks");
+            if (!tcTabControl.TabPages.Contains(_tasksTabPage))
                 tcTabControl.TabPages.Add(_tasksTabPage);
-            }
 
             tcTabControl.SelectedTab = _tasksTabPage;
+        }
+
+        private void OpenApiMessageLog()
+        {
+            if (!tcTabControl.TabPages.Contains(_apiLogTabPage))
+                tcTabControl.TabPages.Add(_apiLogTabPage);
+
+            tcTabControl.SelectedTab = _apiLogTabPage;
         }
 
         private void llServiceStatus_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -92,7 +100,7 @@ namespace DotNetGPSystem
             try
             {
                 GPApiServiceHost gpApiServiceHost = new GPApiServiceHost();
-                gpApiServiceHost.StartService();
+                gpApiServiceHost.StartService(_apiLogTabPage.LogMessage);
 
                 lblServiceStatus.Text = "RUNNING";
                 lblServiceStatus.ForeColor = Color.Green;

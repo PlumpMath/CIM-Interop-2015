@@ -10,12 +10,12 @@ using System.Windows.Forms;
 
 namespace DotNetGPSystem
 {
-    internal partial class DemographicsPage : UserControl
+    internal partial class DemographicsControl : UserControl
     {
         private OpenHRPatient _patient;
         private Action<OpenHRPatient> _demographicsUpdatedCallback;
 
-        private DemographicsPage()
+        private DemographicsControl()
         {
             InitializeComponent();
 
@@ -25,7 +25,7 @@ namespace DotNetGPSystem
             this.linkLabel1.LinkClicked += (sender, e) => CancelEdit();
         }
 
-        public DemographicsPage(OpenHRPatient patient, Action<OpenHRPatient> demographicsUpdatedCallback) : this()
+        public DemographicsControl(OpenHRPatient patient, Action<OpenHRPatient> demographicsUpdatedCallback) : this()
         {
             _patient = patient;
             _demographicsUpdatedCallback = demographicsUpdatedCallback;

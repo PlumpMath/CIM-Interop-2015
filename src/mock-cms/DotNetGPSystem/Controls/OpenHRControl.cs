@@ -10,16 +10,16 @@ using System.Windows.Forms;
 
 namespace DotNetGPSystem
 {
-    internal partial class OpenHRPage : UserControl
+    internal partial class OpenHRControl : UserControl
     {
-        private OpenHRPage()
+        private OpenHRControl()
         {
             InitializeComponent();
 
             this.Dock = DockStyle.Fill;
         }
 
-        public OpenHRPage(OpenHRPatient patient) : this()
+        public OpenHRControl(OpenHRPatient patient) : this()
         {
             PopulatePatient(patient);
         }

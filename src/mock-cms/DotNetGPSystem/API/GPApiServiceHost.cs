@@ -10,7 +10,7 @@ namespace DotNetGPSystem
 {
     internal class GPApiServiceHost
     {
-        public void StartService()
+        public void StartService(LogMessage logMessage)
         {
             ServiceHost svcHost = new ServiceHost(typeof(GPApiService), new Uri("http://localhost:9001/GPApiService"));
             svcHost.AddServiceEndpoint(typeof(IGPApiService), new BasicHttpBinding(), "Soap");
@@ -21,8 +21,10 @@ namespace DotNetGPSystem
                 smb = new ServiceMetadataBehavior();
 
             smb.HttpGetEnabled = true;
-
             svcHost.Description.Behaviors.Add(smb);
+
+            svcHost.Description.Behaviors.Add(new GPApiServiceLogger(logMessage));
+
             svcHost.AddServiceEndpoint(ServiceMetadataBehavior.MexContractName, MetadataExchangeBindings.CreateMexHttpBinding(), "mex");
 
             svcHost.Open();

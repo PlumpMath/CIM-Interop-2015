@@ -17,7 +17,6 @@ namespace DotNetGPSystem
         
         private PatientTabPage()
         {
-            InitializeComponent();
         }
 
         public PatientTabPage(OpenHRPatient patient) : this()
