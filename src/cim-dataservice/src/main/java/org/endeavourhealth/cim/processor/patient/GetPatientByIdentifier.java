@@ -6,17 +6,18 @@ import org.endeavourhealth.cim.adapter.IDataAdapter;
 import org.endeavourhealth.cim.transform.TransformerBase;
 import org.endeavourhealth.cim.transform.TransformerFactory;
 
-public class GetPatientByNHSNo implements org.apache.camel.Processor {
+public class GetPatientByIdentifier implements org.apache.camel.Processor {
     public void process(Exchange exchange) throws Exception {
         // Get data from exchange
-        String nhsNumber = (String)exchange.getIn().getHeader("nhsNo");
+        String nhsNumber = (String)exchange.getIn().getHeader("identifier");
+        nhsNumber = nhsNumber.substring(4);
         String serviceId = (String) exchange.getIn().getHeader("serviceId");
 
         // Get the relevant data adapter from the factory
         IDataAdapter dataAdapter = AdapterFactory.getDataAdapterForService(serviceId);
 
         // Get patient data by NHS Number
-        String patientDataInNativeFormat = dataAdapter.getPatientByNHSNumber(nhsNumber);
+        String patientDataInNativeFormat = dataAdapter.getPatientDemographicsByNHSNumber(nhsNumber);
 
         // Get the relevant transformer from the factory
         TransformerBase transformer = TransformerFactory.getTransformerForService(serviceId);

@@ -7,7 +7,7 @@ public class ConditionEndpoint extends RouteBuilder {
     @Override
     public void configure() throws Exception {
         // Endpoint root URI
-        rest("/service/{serviceId}/condition")
+        rest("/{serviceId}/condition")
             .description("Condition rest service")
 
         // Endpoint definitions (GET, PUT, etc)

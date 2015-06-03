@@ -6,7 +6,7 @@ import org.endeavourhealth.cim.processor.subscription.AddSubscription;
 public class SubscriptionEndpoint extends RouteBuilder {
     @Override
     public void configure() throws Exception {
-        rest("/service/{serviceId}/subscription")
+        rest("/{serviceId}/subscription")
             .description("Change subscription service")
 
         .put("/{subscriptionId}")

@@ -8,14 +8,14 @@ import org.endeavourhealth.cim.transform.TransformerFactory;
 
 import java.util.UUID;
 
-public class GetPatientByPatientId implements org.apache.camel.Processor {
+public class GetPatientRecordByPatientId implements org.apache.camel.Processor {
     public void process(Exchange exchange) throws Exception {
         String patientId = (String)exchange.getIn().getHeader("patientId");
         String serviceId = (String) exchange.getIn().getHeader("serviceId");
 
         // Get patientApi data (native format) using adapter
         IDataAdapter dataAdapter = AdapterFactory.getDataAdapterForService(serviceId);
-        String patientData = dataAdapter.getPatientByPatientId(UUID.fromString(patientId));
+        String patientData = dataAdapter.getPatientRecordByPatientId(UUID.fromString(patientId));
 
         // Get patientApi data transformer for service (native format -> FHIR)
         TransformerBase transformer = TransformerFactory.getTransformerForService(serviceId);
