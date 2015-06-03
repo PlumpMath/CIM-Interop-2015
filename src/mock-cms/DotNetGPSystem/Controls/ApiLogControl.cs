@@ -22,7 +22,7 @@ namespace DotNetGPSystem
             DataGridViewRow row = (DataGridViewRow)dataGridView.RowTemplate.Clone();
             row.CreateCells(dataGridView);
 
-            row.SetValues(string.Empty, message.DateStamp.ToString("yyyy-MMM-dd HH:mm:ss"));
+            row.SetValues(message.DateStamp.ToString("yyyy-MMM-dd HH:mm:ss"), message.HttpMethodAndPath);
 
             row.Tag = message;
 
