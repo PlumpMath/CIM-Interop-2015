@@ -22,6 +22,7 @@ namespace DotNetGPSystem
     {
         private TabPage _tasksTabPage = new TasksTabPage();
         private ApiLogTabPage _apiLogTabPage = new ApiLogTabPage();
+        private PatientTabPage _patientTabPage = null;
 
         public GPSystemForm()
         {
@@ -51,24 +52,12 @@ namespace DotNetGPSystem
                 {
                     if (patientFindForm.SelectedPatient != null)
                     {
-                        OpenHRPatient patient = patientFindForm.SelectedPatient;
-
-                        TabPage existingPatientTabPage = tcTabControl
-                            .TabPages
-                            .Cast<TabPage>()
-                            .Where(t => t is PatientTabPage)
-                            .SingleOrDefault(t => (t as PatientTabPage).Patient == patient);
-
-                        if (existingPatientTabPage != null)
-                        {
-                            tcTabControl.SelectedTab = existingPatientTabPage;
-                        }
-                        else
-                        {
-                            PatientTabPage patientTabPage = new PatientTabPage(patient);
-                            tcTabControl.TabPages.Add(patientTabPage);
-                            tcTabControl.SelectedTab = patientTabPage;
-                        }
+                        if (_patientTabPage != null)
+                            tcTabControl.TabPages.Remove(_patientTabPage);
+                        
+                        _patientTabPage = new PatientTabPage(patientFindForm.SelectedPatient);
+                        tcTabControl.TabPages.Insert(0, _patientTabPage);
+                        tcTabControl.SelectedTab = _patientTabPage;
                     }
                 }
             }

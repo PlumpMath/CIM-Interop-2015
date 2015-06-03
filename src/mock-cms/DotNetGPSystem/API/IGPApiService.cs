@@ -11,12 +11,15 @@ namespace DotNetGPSystem
     public interface IGPApiService       
     {
         [OperationContract]
-        string GetCareRecord(string nhsNumber);
+        string GetPatientDemographics(string nhsNumber);
+        
+        [OperationContract]
+        string GetPatient(Guid patientGuid);
 
         [OperationContract]
-        string[] GetChangedRecords(DateTime sinceDateTime);
+        Guid[] GetChangedPatients(DateTime sinceDateTime);
 
         [OperationContract]
-        void UpdateCareRecord(string openHRXml);
+        void UpdatePatient(string openHRXml);
     }       
 }

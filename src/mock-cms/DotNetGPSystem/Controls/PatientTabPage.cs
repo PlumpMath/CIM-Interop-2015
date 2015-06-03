@@ -31,7 +31,7 @@ namespace DotNetGPSystem
         {
             _patient = patient;
 
-            this.Text = "Patient - " + _patient.Person.GetCuiDisplayName();
+            this.Text = "Patient Record";
         }
 
         public OpenHRPatient Patient

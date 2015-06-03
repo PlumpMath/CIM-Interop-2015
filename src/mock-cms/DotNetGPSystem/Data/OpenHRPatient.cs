@@ -26,5 +26,17 @@ namespace DotNetGPSystem
                 return Utilities.Serialize<OpenHR001OpenHealthRecord>(OpenHealthRecord);
             }
         }
+
+        public string OpenHRExcludingHealthDomainXml
+        {
+            get
+            {
+                OpenHR001OpenHealthRecord openHRCopy = Utilities.Deserialize<OpenHR001OpenHealthRecord>(OpenHRXml);
+                openHRCopy.healthDomain = null;
+
+                return Utilities.Serialize<OpenHR001OpenHealthRecord>(openHRCopy);
+
+            }
+        }
     }
 }

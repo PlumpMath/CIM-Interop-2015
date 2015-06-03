@@ -21,7 +21,8 @@ namespace DotNetGPSystem
         };
 
         private static OpenHRPatient[] _openHRPatients = null;
-        private static List<KeyValuePair<DateTime, OpenHRPatient>> _changeList = new List<KeyValuePair<DateTime, OpenHRPatient>>();
+        private static List<KeyValuePair<DateTime, OpenHRPatient>> _patientChangeList = new List<KeyValuePair<DateTime, OpenHRPatient>>();
+        private static List<KeyValuePair<DateTime, string>> _inboundCareRecordUpdateList = new List<KeyValuePair<DateTime, string>>();
 
         public static OpenHRPatient[] OpenHRPatients
         {
@@ -38,13 +39,18 @@ namespace DotNetGPSystem
         {
             get
             {
-                return _changeList.ToArray();
+                return _patientChangeList.ToArray();
             }
         }
 
         public static void SaveOpenHRPatient(OpenHRPatient patient)
         {
-            _changeList.Add(new KeyValuePair<DateTime, OpenHRPatient>(DateTime.Now, patient));
+            _patientChangeList.Add(new KeyValuePair<DateTime, OpenHRPatient>(DateTime.Now, patient));
+        }
+
+        public static void ProcessInboundCareRecordUpdate(string update)
+        {
+            //_inboundCareRecordUpdateList.Add(new KeyValuePair<DateTime,string>(DateTime.Now, update)
         }
 
         private static OpenHRPatient[] LoadOpenHRPatients()

@@ -10,7 +10,7 @@ namespace DotNetGPSystem
     [ServiceBehavior(AddressFilterMode = AddressFilterMode.Any)] 
     internal class GPApiService : IGPApiService
     {
-        public string GetCareRecord(string nhsNumber)
+        public string GetPatientDemographics(string nhsNumber)
         {
             OpenHRPatient[] patients = DataStore
                 .OpenHRPatients
@@ -20,26 +20,38 @@ namespace DotNetGPSystem
             if (patients.Length == 0)
                 return string.Empty;
 
-            if (patients.Length > 1)
-                throw new Exception("More than one patient found matching that NHS number.");
-
-            return patients.Single().OpenHRXml;
+            return patients.FirstOrDefault().OpenHRExcludingHealthDomainXml;
+                
         }
 
-        public string[] GetChangedRecords(DateTime sinceDateTime)
+        public string GetPatient(Guid patientGuid)
+        {
+            OpenHRPatient[] patients = DataStore
+                .OpenHRPatients
+                .Where(t => new Guid(t.Patient.id) == patientGuid)
+                .ToArray();
+
+            if (patients.Length == 0)
+                return string.Empty;
+
+            return patients.FirstOrDefault().OpenHRXml;
+
+        }
+
+        public Guid[] GetChangedPatients(DateTime sinceDateTime)
         {
             return DataStore
                 .PatientChangeList
                 .Where(t => t.Key >= sinceDateTime)
                 .OrderBy(t => t.Key)
-                .Select(t => t.Value.Patient.patientIdentifier.GetNhsNumber())
+                .Select(t => new Guid(t.Value.Patient.id))
                 .Distinct()
                 .ToArray();
         }
 
-        public void UpdateCareRecord(string openHRXml)
+        public void UpdatePatient(string openHRXml)
         {
-
+            
         }
     }
 }
