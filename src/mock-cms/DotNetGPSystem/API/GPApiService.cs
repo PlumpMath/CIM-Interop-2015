@@ -51,7 +51,7 @@ namespace DotNetGPSystem
 
         public void UpdatePatient(string openHRXml)
         {
-            
+            DataStore.ProcessExternalUpdate(openHRXml);
         }
     }
 }

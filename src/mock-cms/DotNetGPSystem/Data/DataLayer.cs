@@ -8,6 +8,8 @@ using System.Xml.Schema;
 
 namespace DotNetGPSystem
 {
+    public delegate void ExternalUpdateReceivedHandler(DateTime dateStamp, string openHRXml);
+
     internal static class DataStore
     {
         private const string _samplesPrefix = "DotNetGPSystem.Data.Samples";
@@ -22,8 +24,10 @@ namespace DotNetGPSystem
 
         private static OpenHRPatient[] _openHRPatients = null;
         private static List<KeyValuePair<DateTime, OpenHRPatient>> _patientChangeList = new List<KeyValuePair<DateTime, OpenHRPatient>>();
-        private static List<KeyValuePair<DateTime, string>> _inboundCareRecordUpdateList = new List<KeyValuePair<DateTime, string>>();
+        private static List<KeyValuePair<DateTime, string>> _externalUpdateList = new List<KeyValuePair<DateTime, string>>();
 
+        public static event ExternalUpdateReceivedHandler ExternalUpdateReceived;
+        
         public static OpenHRPatient[] OpenHRPatients
         {
             get
@@ -48,30 +52,26 @@ namespace DotNetGPSystem
             _patientChangeList.Add(new KeyValuePair<DateTime, OpenHRPatient>(DateTime.Now, patient));
         }
 
-        public static void ProcessInboundCareRecordUpdate(string update)
+        public static void ProcessExternalUpdate(string openHRXml)
         {
-            //_inboundCareRecordUpdateList.Add(new KeyValuePair<DateTime,string>(DateTime.Now, update)
+            DateTime dateStamp = DateTime.Now;
+            
+            _externalUpdateList.Add(new KeyValuePair<DateTime, string>(dateStamp, openHRXml));
+
+            OnExternalUpdateReceived(dateStamp, openHRXml);
+        }
+
+        private static void OnExternalUpdateReceived(DateTime dateStamp, string openHRXml)
+        {
+            if (ExternalUpdateReceived != null)
+                ExternalUpdateReceived(dateStamp, openHRXml);
         }
 
         private static OpenHRPatient[] LoadOpenHRPatients()
         {
-            OpenHR001OpenHealthRecord[] openHealthRecords = GetOpenHRFiles()
-                .Select(t => Utilities.Deserialize<OpenHR001OpenHealthRecord>(t))
+            return GetOpenHRFiles()
+                .Select(t => new OpenHRPatient(t))
                 .ToArray();
-
-            List<OpenHRPatient> openHRPatients = new List<OpenHRPatient>();
-
-            foreach (OpenHR001OpenHealthRecord openHealthRecord in openHealthRecords)
-            {
-                OpenHRPatient openHRPatient = new OpenHRPatient(
-                    openHealthRecord: openHealthRecord,
-                    patient: openHealthRecord.adminDomain.patient.Single(),
-                    person: openHealthRecord.adminDomain.person.Single(t => t.id == openHealthRecord.adminDomain.patient.Single().patientPerson));
-
-                openHRPatients.Add(openHRPatient);
-            }
-
-            return openHRPatients.ToArray();
         }
 
         private static string[] GetOpenHRFiles()

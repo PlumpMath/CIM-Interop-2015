@@ -30,11 +30,11 @@
         {
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.dataGridView = new System.Windows.Forms.DataGridView();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.colImage = new System.Windows.Forms.DataGridViewImageColumn();
             this.colEmpty = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colPatient = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -85,15 +85,7 @@
             this.dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView.Size = new System.Drawing.Size(1360, 380);
             this.dataGridView.TabIndex = 8;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox1.Location = new System.Drawing.Point(0, 0);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(1360, 376);
-            this.textBox1.TabIndex = 0;
+            this.dataGridView.SelectionChanged += new System.EventHandler(this.dataGridView_SelectionChanged);
             // 
             // colImage
             // 
@@ -128,6 +120,18 @@
             this.colDate.HeaderText = "Task";
             this.colDate.Name = "colDate";
             this.colDate.ReadOnly = true;
+            // 
+            // textBox1
+            // 
+            this.textBox1.BackColor = System.Drawing.Color.White;
+            this.textBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBox1.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox1.Location = new System.Drawing.Point(0, 0);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
+            this.textBox1.Size = new System.Drawing.Size(1360, 376);
+            this.textBox1.TabIndex = 0;
             // 
             // TasksControl
             // 
