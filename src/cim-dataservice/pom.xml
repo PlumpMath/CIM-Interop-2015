@@ -34,10 +34,11 @@
             <version>${camel_version}</version>
         </dependency>
         <dependency>
-            <groupId>com.github.oscerd</groupId>
-            <artifactId>camel-cassandra</artifactId>
-            <version>1.1.0</version>
+            <groupId>org.apache.camel</groupId>
+            <artifactId>camel-cassandraql</artifactId>
+            <version>${camel_version}</version>
         </dependency>
+
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-simple</artifactId>
