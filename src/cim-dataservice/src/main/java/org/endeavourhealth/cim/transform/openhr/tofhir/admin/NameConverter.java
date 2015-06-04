@@ -45,7 +45,7 @@ class NameConverter {
         List<HumanName> list = new ArrayList<>();
 
         //scope to ensure that the usualName variable is not accidentally reused during any copy and paste
-        list.add(createName(HumanName.NameUse.USUAL, title, forenames, surname));
+        list.add(createName(HumanName.NameUse.OFFICIAL, title, forenames, surname));
 
         if (birthSurname != null && !birthSurname.equalsIgnoreCase(surname))
         {
@@ -59,7 +59,7 @@ class NameConverter {
 
         if (callingName != null && !callingName.equalsIgnoreCase(forenames))
         {
-            list.add(createName(HumanName.NameUse.NICKNAME, title, callingName, surname));
+            list.add(createName(HumanName.NameUse.USUAL, title, callingName, surname));
         }
 
         return list;

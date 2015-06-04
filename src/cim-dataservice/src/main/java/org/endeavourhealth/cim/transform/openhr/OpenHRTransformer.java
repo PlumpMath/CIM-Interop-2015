@@ -3,6 +3,7 @@ package org.endeavourhealth.cim.transform.openhr;
 import org.endeavourhealth.cim.transform.SerializationException;
 import org.endeavourhealth.cim.transform.TransformException;
 import org.endeavourhealth.cim.transform.Transformer;
+import org.endeavourhealth.cim.transform.openhr.fromfhir.FromFHIRTransformer;
 import org.endeavourhealth.cim.transform.openhr.tofhir.ToFHIRTransformer;
 import org.endeavourhealth.cim.transform.schemas.openhr.ObjectFactory;
 import org.endeavourhealth.cim.transform.schemas.openhr.OpenHR001OpenHealthRecord;
@@ -10,11 +11,9 @@ import org.hl7.fhir.instance.model.Bundle;
 import org.hl7.fhir.instance.model.Condition;
 import org.hl7.fhir.instance.model.Patient;
 
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBElement;
-import javax.xml.bind.JAXBException;
-import javax.xml.bind.Unmarshaller;
+import javax.xml.bind.*;
 import java.io.StringReader;
+import java.io.StringWriter;
 
 public class OpenHRTransformer implements Transformer {
     public Bundle toFHIRBundle(String sourceData) throws TransformException {
@@ -35,6 +34,9 @@ public class OpenHRTransformer implements Transformer {
 
     public String fromFHIRCondition(Condition condition) throws TransformException {
         return null;
+//        FromFHIRTransformer transformer = new FromFHIRTransformer();
+//        OpenHR001OpenHealthRecord openHR = transformer.transformFromCondition(condition);
+//        return serializeOpenHR(openHR);
     }
 
     private OpenHR001OpenHealthRecord deserializeOpenHR(String openHRAsString) throws TransformException {
@@ -44,6 +46,18 @@ public class OpenHRTransformer implements Transformer {
             Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
             JAXBElement<OpenHR001OpenHealthRecord> jaxbElement = (JAXBElement<OpenHR001OpenHealthRecord>)jaxbUnmarshaller.unmarshal(reader);
             return jaxbElement.getValue();
+        } catch (JAXBException e) {
+            throw new SerializationException("Error deserialising OpenHR", e);
+        }
+    }
+
+    private String serializeOpenHR(OpenHR001OpenHealthRecord openHR) throws TransformException {
+        try {
+            StringWriter writer = new StringWriter();
+            JAXBContext context = JAXBContext.newInstance(ObjectFactory.class);
+            Marshaller jaxbMarshaller = context.createMarshaller();
+            jaxbMarshaller.marshal(openHR, writer);
+            return writer.toString();
         } catch (JAXBException e) {
             throw new SerializationException("Error deserialising OpenHR", e);
         }

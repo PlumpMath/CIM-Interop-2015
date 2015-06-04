@@ -10,7 +10,7 @@ public class ToFHIRTransformer {
 
     public Bundle transformToBundle(OpenHR001OpenHealthRecord openHR) throws TransformException {
         FHIRContainer container = transform(openHR);
-        return createBundleFromResults(openHR, container);
+        return createBundleFromContainer(openHR, container);
     }
 
     public Patient transformToPatient(OpenHR001OpenHealthRecord openHR) throws TransformException {
@@ -24,7 +24,7 @@ public class ToFHIRTransformer {
         return container;
     }
 
-    private Bundle createBundleFromResults(OpenHR001OpenHealthRecord openHR, FHIRContainer container) {
+    private Bundle createBundleFromContainer(OpenHR001OpenHealthRecord openHR, FHIRContainer container) {
         Bundle bundle = new Bundle()
                 .setType(Bundle.BundleType.SEARCHSET);
         bundle.setId(openHR.getId());

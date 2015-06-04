@@ -10,6 +10,7 @@ import org.endeavourhealth.cim.transform.openhr.tofhir.ToFHIRHelper;
 import org.endeavourhealth.cim.transform.schemas.openhr.*;
 import org.hl7.fhir.instance.model.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 class PatientTransformer {
@@ -18,6 +19,13 @@ class PatientTransformer {
         OpenHR001Person sourcePerson = getPerson(adminDomain.getPerson(), sourcePatient.getId());
 
         Patient targetPatient = new Patient();
+
+        targetPatient.setId(sourcePatient.getId());
+
+        List<Identifier> identifiers = convertIdentifiers(sourcePatient.getPatientIdentifier());
+        if (identifiers != null) {
+            identifiers.forEach(targetPatient::addIdentifier);
+        }
 
         List<HumanName> names = NameConverter.convert(
                 sourcePerson.getTitle(),
@@ -105,4 +113,33 @@ class PatientTransformer {
         return person;
     }
 
+    private static List<Identifier> convertIdentifiers(List<DtPatientIdentifier> sourceIdentifiers) throws TransformFeatureNotSupportedException {
+        if (sourceIdentifiers == null || sourceIdentifiers.isEmpty())
+            return null;
+
+        List<Identifier> targetIdentifiers = new ArrayList<>();
+
+        for (DtPatientIdentifier source: sourceIdentifiers) {
+            targetIdentifiers.add(new Identifier()
+                    .setSystem(convertIdentifierType(source.getIdentifierType()))
+                    .setValue(source.getValue()));
+        }
+
+        return targetIdentifiers;
+    }
+
+    private static String convertIdentifierType(VocPatientIdentifierType openHRType) throws TransformFeatureNotSupportedException {
+        switch (openHRType)
+        {
+            case NHS:
+                return "http://fhir.endeavourhealth.org/identifier#nhsnumber";
+            case CHI:
+                return "http://fhir.endeavourhealth.org/identifier#chinumber";
+            case HOSP:
+                return "http://fhir.endeavourhealth.org/identifier#hospitalnumber";
+            default:
+                throw new TransformFeatureNotSupportedException("VocPatientIdentifierType not supported: " + openHRType.toString());
+        }
+
+    }
 }
