@@ -3,8 +3,12 @@ package org.endeavourhealth.cim.processor.patient;
 import org.apache.camel.Exchange;
 import org.endeavourhealth.cim.adapter.AdapterFactory;
 import org.endeavourhealth.cim.adapter.IDataAdapter;
+import org.endeavourhealth.cim.transform.Transformer;
 import org.endeavourhealth.cim.transform.TransformerBase;
 import org.endeavourhealth.cim.transform.TransformerFactory;
+import org.hl7.fhir.instance.formats.JsonParser;
+import org.hl7.fhir.instance.model.Bundle;
+import org.hl7.fhir.instance.model.Condition;
 
 import java.util.UUID;
 
@@ -18,18 +22,10 @@ public class GetPatientRecordByPatientId implements org.apache.camel.Processor {
         String patientData = dataAdapter.getPatientRecordByPatientId(UUID.fromString(patientId));
 
         // Get patientApi data transformer for service (native format -> FHIR)
-        TransformerBase transformer = TransformerFactory.getTransformerForService(odsCode);
+        Transformer transformer = TransformerFactory.getTransformerForService(odsCode);
+        Bundle bundle = transformer.toFHIRBundle(patientData);
+        String body = new JsonParser().composeString(bundle);
 
-        if (transformer == null)    // No transformation required
-            return;
-
-        // Transform from native format to FHIR
-        String fhirPatientData = transformer.toFHIRCareRecord(patientData);
-
-        String body = (String) exchange.getIn().getBody();
-        if (body == null)
-            body = "";
-
-        exchange.getIn().setBody(body + String.format("Patient data for patient {%s}%n%s", patientId, fhirPatientData));
+        exchange.getIn().setBody(body);
     }
 }

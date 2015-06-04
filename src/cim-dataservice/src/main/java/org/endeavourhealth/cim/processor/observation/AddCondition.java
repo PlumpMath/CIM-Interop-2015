@@ -4,8 +4,12 @@ import org.apache.camel.Exchange;
 import org.apache.commons.io.IOUtils;
 import org.endeavourhealth.cim.adapter.AdapterFactory;
 import org.endeavourhealth.cim.adapter.IDataAdapter;
+import org.endeavourhealth.cim.transform.Transformer;
 import org.endeavourhealth.cim.transform.TransformerBase;
 import org.endeavourhealth.cim.transform.TransformerFactory;
+import org.hl7.fhir.instance.formats.JsonParser;
+import org.hl7.fhir.instance.model.Condition;
+import org.hl7.fhir.instance.model.Resource;
 
 import java.io.InputStream;
 
@@ -14,14 +18,16 @@ public class AddCondition implements org.apache.camel.Processor {
     public void process(Exchange exchange) throws Exception {
         String odsCode =(String) exchange.getIn().getHeader("odsCode");
 
-        TransformerBase transformer = TransformerFactory.getTransformerForService(odsCode);
+        Transformer transformer = TransformerFactory.getTransformerForService(odsCode);
         String messageBody = IOUtils.toString((InputStream) exchange.getIn().getBody());
 
-        String request = transformer.fromFHIRCondition(messageBody);
+        Condition condition = (Condition)new JsonParser().parse(messageBody);
+
+        String request = transformer.fromFHIRCondition(condition);
 
         IDataAdapter dataAdapter = AdapterFactory.getDataAdapterForService(odsCode);
         String response = dataAdapter.createCondition(request);
 
-        exchange.getIn().setBody(transformer.toFHIRCondition(response));
+        //exchange.getIn().setBody(transformer.toFHIRCondition(response));
     }
 }

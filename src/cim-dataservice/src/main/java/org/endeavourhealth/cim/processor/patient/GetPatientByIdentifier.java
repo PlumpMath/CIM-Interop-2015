@@ -3,8 +3,12 @@ package org.endeavourhealth.cim.processor.patient;
 import org.apache.camel.Exchange;
 import org.endeavourhealth.cim.adapter.AdapterFactory;
 import org.endeavourhealth.cim.adapter.IDataAdapter;
+import org.endeavourhealth.cim.transform.Transformer;
 import org.endeavourhealth.cim.transform.TransformerBase;
 import org.endeavourhealth.cim.transform.TransformerFactory;
+import org.hl7.fhir.instance.formats.JsonParser;
+import org.hl7.fhir.instance.model.Bundle;
+import org.hl7.fhir.instance.model.Patient;
 
 public class GetPatientByIdentifier implements org.apache.camel.Processor {
     public void process(Exchange exchange) throws Exception {
@@ -19,10 +23,11 @@ public class GetPatientByIdentifier implements org.apache.camel.Processor {
         // Get patient data by NHS Number
         String patientDataInNativeFormat = dataAdapter.getPatientDemographicsByNHSNumber(nhsNumber);
 
-        // Get the relevant transformer from the factory
-        TransformerBase transformer = TransformerFactory.getTransformerForService(odsCode);
+        // Get patientApi data transformer for service (native format -> FHIR)
+        Transformer transformer = TransformerFactory.getTransformerForService(odsCode);
+        Patient patient = transformer.toFHIRPatient(patientDataInNativeFormat);
+        String body = new JsonParser().composeString(patient);
 
-        // Set the message body to the transformed (FHIR) version of the data
-        exchange.getIn().setBody(transformer.toFHIRCareRecord(patientDataInNativeFormat));
+        exchange.getIn().setBody(body);
     }
 }

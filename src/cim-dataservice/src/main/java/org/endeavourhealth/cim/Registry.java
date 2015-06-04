@@ -11,7 +11,7 @@ public class Registry {
     }
 
     public static String getTransformerTypeNameForService(String odsCode) {
-        return "org.endeavourhealth.cim.transform.OpenHRTransformer";
+        return "org.endeavourhealth.cim.transform.openhr.OpenHRTransformer";
     }
 
     public static Boolean validateMessage(String publicKey, String method, String body, String inboundHash) {
