@@ -6,7 +6,7 @@ import org.endeavourhealth.cim.transform.TransformHelper;
 import org.endeavourhealth.cim.transform.SourceDocumentInvalidException;
 import org.endeavourhealth.cim.transform.TransformException;
 import org.endeavourhealth.cim.transform.TransformFeatureNotSupportedException;
-import org.endeavourhealth.cim.transform.openhr.tofhir.Results;
+import org.endeavourhealth.cim.transform.openhr.tofhir.FHIRContainer;
 import org.endeavourhealth.cim.transform.openhr.tofhir.ToFHIRHelper;
 import org.endeavourhealth.cim.transform.schemas.openhr.*;
 import org.hl7.fhir.instance.model.*;
@@ -14,9 +14,9 @@ import org.hl7.fhir.instance.model.*;
 import java.util.List;
 
 class OrganisationTransformer {
-    public static void transform(Results results, OpenHR001AdminDomain adminDomain) throws TransformException {
+    public static void transform(FHIRContainer container, OpenHR001AdminDomain adminDomain) throws TransformException {
         for (OpenHR001Organisation source: adminDomain.getOrganisation()) {
-            addOrganisationToResults(results, createOrganisation(adminDomain, source));
+            addOrganisationToResults(container, createOrganisation(adminDomain, source));
         }
     }
 
@@ -72,8 +72,8 @@ class OrganisationTransformer {
         return target;
     }
 
-    private static void addOrganisationToResults(Results results, Organization organisation) throws SourceDocumentInvalidException {
-        results.getOrganisations().put(organisation.getId(), organisation);
+    private static void addOrganisationToResults(FHIRContainer container, Organization organisation) throws SourceDocumentInvalidException {
+        container.getOrganisations().put(organisation.getId(), organisation);
     }
 
     private static OpenHR001Location getLocation(List<OpenHR001Location> locationList, String locationId) throws SourceDocumentInvalidException {

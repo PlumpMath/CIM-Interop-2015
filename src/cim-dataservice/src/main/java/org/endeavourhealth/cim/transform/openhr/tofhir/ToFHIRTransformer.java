@@ -9,35 +9,35 @@ import org.hl7.fhir.instance.model.*;
 public class ToFHIRTransformer {
 
     public Bundle transformToBundle(OpenHR001OpenHealthRecord openHR) throws TransformException {
-        Results results = transform(openHR);
-        return createBundleFromResults(openHR, results);
+        FHIRContainer container = transform(openHR);
+        return createBundleFromResults(openHR, container);
     }
 
     public Patient transformToPatient(OpenHR001OpenHealthRecord openHR) throws TransformException {
-        Results results = transform(openHR);
-        return results.getPatient();
+        FHIRContainer container = transform(openHR);
+        return container.getPatient();
     }
 
-    private Results transform(OpenHR001OpenHealthRecord openHR) throws TransformException {
-        Results results = new Results();
-        AdminDomainTransformer.transform(results, openHR);
-        return results;
+    private FHIRContainer transform(OpenHR001OpenHealthRecord openHR) throws TransformException {
+        FHIRContainer container = new FHIRContainer();
+        AdminDomainTransformer.transform(container, openHR);
+        return container;
     }
 
-    private Bundle createBundleFromResults(OpenHR001OpenHealthRecord openHR, Results results) {
+    private Bundle createBundleFromResults(OpenHR001OpenHealthRecord openHR, FHIRContainer container) {
         Bundle bundle = new Bundle()
                 .setType(Bundle.BundleType.SEARCHSET);
         bundle.setId(openHR.getId());
         bundle.setBase("http://www.e-mis.com/emisopen");
         bundle.setMeta(new Meta().setLastUpdated(TransformHelper.toDate(openHR.getCreationTime())));
 
-        for (Organization organisation: results.getOrganisations().values())
+        for (Organization organisation: container.getOrganisations().values())
             bundle.addEntry(new Bundle.BundleEntryComponent().setResource(organisation));
 
-        for (Practitioner practitioner: results.getPractitioners().values())
+        for (Practitioner practitioner: container.getPractitioners().values())
             bundle.addEntry(new Bundle.BundleEntryComponent().setResource(practitioner));
 
-        bundle.addEntry(new Bundle.BundleEntryComponent().setResource(results.getPatient()));
+        bundle.addEntry(new Bundle.BundleEntryComponent().setResource(container.getPatient()));
 
         return bundle;
     }
