@@ -125,9 +125,6 @@ public class MockDataAdapter implements IDataAdapter {
 
                 // Send SOAP Message to SOAP Server
                 SOAPMessage soapResponse = soapConnection.call(requestMessage, _soapUri + "/GetChangedPatients");
-
-                soapResponse.writeTo(System.out);
-
                 String responseText = soapResponse.getSOAPBody().getElementsByTagName("GetChangedPatientsResult").item(0).getTextContent();
 
                 ArrayList<UUID> uuids = new ArrayList<>();
