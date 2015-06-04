@@ -4,10 +4,8 @@ import org.apache.camel.Exchange;
 import org.endeavourhealth.cim.adapter.AdapterFactory;
 import org.endeavourhealth.cim.adapter.IDataAdapter;
 import org.endeavourhealth.cim.transform.Transformer;
-import org.endeavourhealth.cim.transform.TransformerBase;
 import org.endeavourhealth.cim.transform.TransformerFactory;
 import org.hl7.fhir.instance.formats.JsonParser;
-import org.hl7.fhir.instance.model.Bundle;
 import org.hl7.fhir.instance.model.Patient;
 
 public class GetPatientByIdentifier implements org.apache.camel.Processor {
