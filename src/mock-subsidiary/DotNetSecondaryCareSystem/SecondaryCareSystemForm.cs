@@ -27,10 +27,12 @@ namespace DotNetSecondaryCareSystem
             string odsCode = this.tbGetDemographicsOdsCode.Text;
             string nhsNumber = this.tbNhsNumber.Text;
 
-            this.tbGetDemographicsResult.Text = Utilities.MakeWebRequest(
+            WebResponse response = Utilities.MakeWebRequest(
                 baseUrl: tbBaseUrl.Text,
                 relativeUrl: Utilities.FormatRestPath(restPath, odsCode, nhsNumber),
                 hash: Utilities.GenerateHash(this.lblGetDemographicsFhirUrl.Text, null));
+
+            this.tbGetDemographicsResult.Text = FormatWebRequestResponse(response);
         }
 
         private void btnGetFullRecord_Click(object sender, EventArgs e)
@@ -40,10 +42,20 @@ namespace DotNetSecondaryCareSystem
             string odsCode = this.tbFullRecordOdsCode.Text;
             string patientGuid = this.tbPatientGuid.Text;
 
-            this.tbGetFullRecordResponse.Text = Utilities.MakeWebRequest(
+            WebResponse response = Utilities.MakeWebRequest(
                baseUrl: baseUrl,
                relativeUrl: Utilities.FormatRestPath(restPath, odsCode, patientGuid),
                hash: Utilities.GenerateHash(restPath, string.Empty));
+
+            this.tbGetFullRecordResponse.Text = FormatWebRequestResponse(response);
+        }
+
+        private static string FormatWebRequestResponse(WebResponse webResponse)
+        {
+            if (webResponse.StatusCode == HttpStatusCode.OK)
+                return Utilities.FormatJson(webResponse.Response);
+
+            return webResponse.Response;
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -11,7 +12,7 @@ namespace DotNetSecondaryCareSystem
 {
     internal static class Utilities
     {
-        public static string MakeWebRequest(string baseUrl, string relativeUrl, string hash)
+        public static WebResponse MakeWebRequest(string baseUrl, string relativeUrl, string hash)
         {
             string url = baseUrl + relativeUrl;
 
@@ -20,10 +21,30 @@ namespace DotNetSecondaryCareSystem
             webRequest.Headers.Add("api_key", "swagger");
             webRequest.Headers.Add("hash", hash);
 
-            using (HttpWebResponse webResponse = (HttpWebResponse)webRequest.GetResponse())
-                using (Stream stream = webResponse.GetResponseStream())
-                    using (StreamReader reader = new StreamReader(stream))
-                        return reader.ReadToEnd();
+            HttpStatusCode statusCode = HttpStatusCode.NotFound;
+            string response;
+
+            try
+            {
+                using (HttpWebResponse webResponse = (HttpWebResponse)webRequest.GetResponse())
+                {
+                    statusCode = webResponse.StatusCode;
+
+                    using (Stream stream = webResponse.GetResponseStream())
+                    {
+                        using (StreamReader reader = new StreamReader(stream))
+                        {
+                            response = reader.ReadToEnd();
+                        }
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                response = e.Message;
+            }
+
+            return new WebResponse(response, statusCode);
         }
 
         public static string GenerateHash(string restPath, string body)
@@ -89,6 +110,24 @@ namespace DotNetSecondaryCareSystem
             }
 
             return result;
+        }
+
+        public static string FormatJson(string json)
+        {
+            using (StringReader stringReader = new StringReader(json))
+            {
+                using (StringWriter stringWriter = new StringWriter())
+                {
+                    using (JsonTextReader jsonReader = new JsonTextReader(stringReader))
+                    {
+                        using (JsonTextWriter jsonWriter = new JsonTextWriter(stringWriter) { Formatting = Formatting.Indented })
+                        {
+                            jsonWriter.WriteToken(jsonReader);
+                            return stringWriter.ToString();
+                        }
+                    }
+                }
+            }
         }
     }
 }
