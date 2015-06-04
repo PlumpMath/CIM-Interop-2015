@@ -21,16 +21,15 @@ public class PollerProcessor implements org.apache.camel.Processor {
 
     private ArrayList<String> _services = new ArrayList<>();
     private HashMap<UUID, PollingSubscription> _subscriptions = new HashMap<>();
-    private Date _lastCheck = new Date();
 
     @Override
     public void process(Exchange exchange) throws Exception {
-        for (String odsCode : _services) {
-            IDataAdapter dataAdapter = AdapterFactory.getDataAdapterForService(odsCode);
-            Date _thisCheck = new Date();
-            ArrayList<UUID> changedPatientIds = dataAdapter.getChangedPatients(_lastCheck);
-            _lastCheck = _thisCheck;
-        }
+        ArrayList<String> subscriberCallbacks = new ArrayList<>();
+        subscriberCallbacks.add("log:SubscriberCallback1");
+        subscriberCallbacks.add("log:SubscriberCallback2");
+        subscriberCallbacks.add("log:SubscriberCallback3");
+
+        exchange.getIn().setHeader("Callbacks", subscriberCallbacks);
     }
 
     public void addSubscription(UUID subscriptionId, String odsCode, String message) {
