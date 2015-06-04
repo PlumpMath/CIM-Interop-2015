@@ -12,8 +12,8 @@
             "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
         }
     },
-    "host": "endeavour-cim.cloudapp.net",
-    "basePath": "/CIM_war/v0.1",
+    "host": "localhost:8080",
+    "basePath": "/v0.1",
     "tags": [
         {
             "name": "demographics",
@@ -108,7 +108,7 @@
                         "description": "Message hash value",
                         "type": "string",
                         "enum": [
-                            "Vb82Z3D59sIm9UX2/0CsO+yEbcvQFyxoWRT2j4HK95Q="
+                            "GalgzDhYBRT0GmsWFtEUEU4dRyL+x0YKmt92i/uyESc="
                         ]
                     },
                     {
@@ -373,7 +373,7 @@
                         "description": "Message hash value",
                         "type": "string",
                         "enum": [
-                            "Vb82Z3D59sIm9UX2/0CsO+yEbcvQFyxoWRT2j4HK95Q="
+                            "RPuOVmDlyaVoBPVWFLBpeyVORZYR6rhAxyeEVbmjWgc="
                         ]
                     },
                     {
@@ -545,7 +545,7 @@
                         "description": "Message hash value",
                         "type": "string",
                         "enum": [
-                            "Vb82Z3D59sIm9UX2/0CsO+yEbcvQFyxoWRT2j4HK95Q="
+                            "mwyMqZZ+aMU1IlJSOUfAl/5fITUazu1fEFSLuoA8wP4="
                         ]
                     },
                     {
@@ -604,7 +604,7 @@
                         "description": "Message hash value",
                         "type": "string",
                         "enum": [
-                            "Vb82Z3D59sIm9UX2/0CsO+yEbcvQFyxoWRT2j4HK95Q="
+                            "mwyMqZZ+aMU1IlJSOUfAl/5fITUazu1fEFSLuoA8wP4="
                         ]
                     },
                     {

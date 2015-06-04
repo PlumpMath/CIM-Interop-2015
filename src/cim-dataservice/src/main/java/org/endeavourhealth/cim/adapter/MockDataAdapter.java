@@ -75,20 +75,20 @@ public class MockDataAdapter implements IDataAdapter {
                 soapConnection = soapConnectionFactory.createConnection();
 
                 // Create basic message
-                SOAPMessage requestMessage = createSOAPRequest("UpdateCareRecord");
+                SOAPMessage requestMessage = createSOAPRequest("UpdatePatient");
 
                 // SOAP Body
-                SOAPElement soapMethodElement = requestMessage.getSOAPBody().addChildElement("UpdateCareRecord", "", "http://tempuri.org/");
+                SOAPElement soapMethodElement = requestMessage.getSOAPBody().addChildElement("UpdatePatient", "", "http://tempuri.org/");
                 SOAPElement soapMethodParamElement1 = soapMethodElement.addChildElement("nhsNumber");
                 soapMethodParamElement1.addTextNode(requestData);
                 requestMessage.saveChanges();
 
                 // Send SOAP Message to SOAP Server
-                SOAPMessage soapResponse = soapConnection.call(requestMessage, _soapUri + "/UpdateCareRecord");
+                SOAPMessage soapResponse = soapConnection.call(requestMessage, _soapUri + "/UpdatePatient");
 
                 soapResponse.writeTo(System.out);
 
-                return soapResponse.getSOAPBody().getElementsByTagName("GetCareRecordResult").item(0).getTextContent();
+                return soapResponse.getSOAPBody().getElementsByTagName("UpdatePatientResult").item(0).getTextContent();
 
             } finally {
                 if (soapConnection != null)
