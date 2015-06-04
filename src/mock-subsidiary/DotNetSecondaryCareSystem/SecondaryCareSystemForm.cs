@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Net;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -16,26 +18,6 @@ namespace DotNetSecondaryCareSystem
         public SecondaryCareSystemForm()
         {
             InitializeComponent();
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            tbCimUrl.Text + 
-
-            var webRequest = (HttpWebRequest)WebRequest.Create("http://endeavour-cim.cloudapp.net/CIM_war/v0.1/service/21/patient/5ec13d3e-cd1c-42b0-9203-fac7d7440c70");
-            webRequest.Method = "GET";
-            webRequest.Headers.Add("api_key", "swagger");
-            webRequest.Headers.Add("hash", generateHash("/service/{serviceId}/patient/{patientId}", null));
-
-            var webResponse = (HttpWebResponse)webRequest.GetResponse();
-
-            Stream responseStream = webResponse.GetResponseStream();
-            String response;
-            using (StreamReader reader = new StreamReader(responseStream))
-            {
-                response = reader.ReadToEnd();
-            }
-            Debug.WriteLine(response);
         }
 
         private static String generateHash(String method, String body)
@@ -54,6 +36,35 @@ namespace DotNetSecondaryCareSystem
             byte[] digest = mac.ComputeHash(encoder.GetBytes(data));
             String hash = Convert.ToBase64String(digest);
             return hash;
+        }
+
+        private void btnGetDemographics_Click(object sender, EventArgs e)
+        {
+            this.tbGetDemographicsResult.Text = MakeWebRequest(
+                relativeUrl: string.Format(this.lblGetDemographicsFhirUrl.Text, this.tbNhsNumber.Text),
+                hash: "GalgzDhYBRT0GmsWFtEUEU4dRyL+x0YKmt92i/uyESc=");
+        }
+
+        private void btnGetFullRecord_Click(object sender, EventArgs e)
+        {
+            this.tbGetFullRecordResponse.Text = MakeWebRequest(
+               relativeUrl: string.Format(this.lblGetFullRecordFhirUrl.Text, this.tbPatientGuid.Text),
+               hash: "RPuOVmDlyaVoBPVWFLBpeyVORZYR6rhAxyeEVbmjWgc=");
+        }
+
+        private string MakeWebRequest(string relativeUrl, string hash)
+        {
+            string url = tbCimUrl.Text + relativeUrl;
+
+            HttpWebRequest webRequest = (HttpWebRequest)WebRequest.Create(url);
+            webRequest.Method = "GET";
+            webRequest.Headers.Add("api_key", "swagger");
+            webRequest.Headers.Add("hash", hash);
+
+            using (HttpWebResponse webResponse = (HttpWebResponse)webRequest.GetResponse())
+                using (Stream stream = webResponse.GetResponseStream())
+                    using (StreamReader reader = new StreamReader(stream))
+                        return reader.ReadToEnd();
         }
     }
 }
