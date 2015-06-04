@@ -5,7 +5,7 @@ import org.endeavourhealth.cim.transform.TransformHelper;
 import org.endeavourhealth.cim.transform.SourceDocumentInvalidException;
 import org.endeavourhealth.cim.transform.TransformException;
 import org.endeavourhealth.cim.transform.TransformFeatureNotSupportedException;
-import org.endeavourhealth.cim.transform.openhr.tofhir.Results;
+import org.endeavourhealth.cim.transform.openhr.tofhir.FHIRContainer;
 import org.endeavourhealth.cim.transform.openhr.tofhir.ToFHIRHelper;
 import org.endeavourhealth.cim.transform.schemas.openhr.*;
 import org.hl7.fhir.instance.model.*;
@@ -13,7 +13,7 @@ import org.hl7.fhir.instance.model.*;
 import java.util.List;
 
 class PatientTransformer {
-    public static void transform(Results results, OpenHR001AdminDomain adminDomain) throws TransformException {
+    public static void transform(FHIRContainer container, OpenHR001AdminDomain adminDomain) throws TransformException {
         OpenHR001Patient sourcePatient = getPatient(adminDomain);
         OpenHR001Person sourcePerson = getPerson(adminDomain.getPerson(), sourcePatient.getId());
 
@@ -40,7 +40,7 @@ class PatientTransformer {
         List<Address> addressList = AddressConverter.convertFromPersonAddress(sourcePerson.getAddress());
         if (addressList != null) addressList.forEach(targetPatient::addAddress);
 
-        results.setPatient(targetPatient);
+        container.setPatient(targetPatient);
     }
 
     private static Patient.AdministrativeGender convertSex(VocSex sex) throws TransformFeatureNotSupportedException {

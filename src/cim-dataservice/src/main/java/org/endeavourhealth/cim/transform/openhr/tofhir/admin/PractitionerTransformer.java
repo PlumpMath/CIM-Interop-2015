@@ -5,7 +5,7 @@ import org.endeavourhealth.cim.transform.TransformHelper;
 import org.endeavourhealth.cim.transform.SourceDocumentInvalidException;
 import org.endeavourhealth.cim.transform.TransformException;
 import org.endeavourhealth.cim.transform.TransformFeatureNotSupportedException;
-import org.endeavourhealth.cim.transform.openhr.tofhir.Results;
+import org.endeavourhealth.cim.transform.openhr.tofhir.FHIRContainer;
 import org.endeavourhealth.cim.transform.openhr.tofhir.ToFHIRHelper;
 import org.endeavourhealth.cim.transform.schemas.openhr.*;
 import org.hl7.fhir.instance.model.*;
@@ -14,10 +14,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 class PractitionerTransformer {
-    public static void transform(Results results, OpenHR001AdminDomain adminDomain) throws TransformException {
+    public static void transform(FHIRContainer container, OpenHR001AdminDomain adminDomain) throws TransformException {
         for (OpenHR001UserInRole userInRole: adminDomain.getUserInRole()) {
             Practitioner practitioner = createPractitioner(adminDomain, userInRole);
-            addPractitionerToResults(results, practitioner);
+            addPractitionerToResults(container, practitioner);
         }
     }
 
@@ -65,8 +65,8 @@ class PractitionerTransformer {
         return practitioner;
     }
 
-    private static void addPractitionerToResults(Results results, Practitioner practitioner) throws SourceDocumentInvalidException {
-        results.getPractitioners().put(practitioner.getId(), practitioner);
+    private static void addPractitionerToResults(FHIRContainer container, Practitioner practitioner) throws SourceDocumentInvalidException {
+        container.getPractitioners().put(practitioner.getId(), practitioner);
     }
 
 

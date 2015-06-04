@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
-public class Results {
+public class FHIRContainer {
     private Patient patient;
     private Map<String, Organization> organisations;
     private Map<String, Practitioner> practitioners;
