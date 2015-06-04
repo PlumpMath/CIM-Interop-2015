@@ -6,11 +6,11 @@ import javax.crypto.Mac;
 import javax.crypto.spec.SecretKeySpec;
 
 public class Registry {
-    public static String getDataAdapterTypeNameForService(String serviceId) {
+    public static String getDataAdapterTypeNameForService(String odsCode) {
         return "org.endeavourhealth.cim.adapter.MockDataAdapter";
     }
 
-    public static String getTransformerTypeNameForService(String serviceId) {
+    public static String getTransformerTypeNameForService(String odsCode) {
         return "org.endeavourhealth.cim.transform.OpenHRTransformer";
     }
 

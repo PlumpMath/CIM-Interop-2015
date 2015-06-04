@@ -11,16 +11,16 @@ public class GetPatientByIdentifier implements org.apache.camel.Processor {
         // Get data from exchange
         String nhsNumber = (String)exchange.getIn().getHeader("identifier");
         nhsNumber = nhsNumber.substring(4);
-        String serviceId = (String) exchange.getIn().getHeader("serviceId");
+        String odsCode = (String) exchange.getIn().getHeader("odsCode");
 
         // Get the relevant data adapter from the factory
-        IDataAdapter dataAdapter = AdapterFactory.getDataAdapterForService(serviceId);
+        IDataAdapter dataAdapter = AdapterFactory.getDataAdapterForService(odsCode);
 
         // Get patient data by NHS Number
         String patientDataInNativeFormat = dataAdapter.getPatientDemographicsByNHSNumber(nhsNumber);
 
         // Get the relevant transformer from the factory
-        TransformerBase transformer = TransformerFactory.getTransformerForService(serviceId);
+        TransformerBase transformer = TransformerFactory.getTransformerForService(odsCode);
 
         // Set the message body to the transformed (FHIR) version of the data
         exchange.getIn().setBody(transformer.toFHIRCareRecord(patientDataInNativeFormat));

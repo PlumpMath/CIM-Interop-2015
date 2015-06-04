@@ -3,8 +3,8 @@ package org.endeavourhealth.cim.transform;
 import org.endeavourhealth.cim.Registry;
 
 public class TransformerFactory {
-    public static TransformerBase getTransformerForService(String serviceId) throws Exception {
-        String serviceTransformerTypeName = Registry.getTransformerTypeNameForService(serviceId);
+    public static TransformerBase getTransformerForService(String odsCode) throws Exception {
+        String serviceTransformerTypeName = Registry.getTransformerTypeNameForService(odsCode);
 
         if (serviceTransformerTypeName == null)
             return null;

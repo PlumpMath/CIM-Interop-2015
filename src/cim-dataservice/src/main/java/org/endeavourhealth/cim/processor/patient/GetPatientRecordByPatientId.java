@@ -10,15 +10,15 @@ import java.util.UUID;
 
 public class GetPatientRecordByPatientId implements org.apache.camel.Processor {
     public void process(Exchange exchange) throws Exception {
-        String patientId = (String)exchange.getIn().getHeader("patientId");
-        String serviceId = (String) exchange.getIn().getHeader("serviceId");
+        String patientId = (String)exchange.getIn().getHeader("id");
+        String odsCode = (String) exchange.getIn().getHeader("odsCode");
 
         // Get patientApi data (native format) using adapter
-        IDataAdapter dataAdapter = AdapterFactory.getDataAdapterForService(serviceId);
+        IDataAdapter dataAdapter = AdapterFactory.getDataAdapterForService(odsCode);
         String patientData = dataAdapter.getPatientRecordByPatientId(UUID.fromString(patientId));
 
         // Get patientApi data transformer for service (native format -> FHIR)
-        TransformerBase transformer = TransformerFactory.getTransformerForService(serviceId);
+        TransformerBase transformer = TransformerFactory.getTransformerForService(odsCode);
 
         if (transformer == null)    // No transformation required
             return;

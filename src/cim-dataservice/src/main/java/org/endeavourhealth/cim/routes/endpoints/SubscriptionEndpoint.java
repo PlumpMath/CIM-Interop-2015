@@ -6,14 +6,14 @@ import org.endeavourhealth.cim.processor.subscription.AddSubscription;
 public class SubscriptionEndpoint extends RouteBuilder {
     @Override
     public void configure() throws Exception {
-        rest("/{serviceId}/subscription")
+        rest("/{odsCode}/Subscription")
             .description("Change subscription service")
 
-        .put("/{subscriptionId}")
+        .put("/{id}")
             .route()
             .routeId("AddSubscriptionToServicePatient")
             .description("Add subscription to patient changes")
-            .setHeader("MessageRouterRecipient", constant("direct:AddSubscription"))
+            .setHeader("MessageRouterCallback", constant("direct:AddSubscription"))
             .to("direct:CIMCore")
         .endRest();
 

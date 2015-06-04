@@ -3,8 +3,8 @@ package org.endeavourhealth.cim.adapter;
 import org.endeavourhealth.cim.Registry;
 
 public class AdapterFactory {
-    public static IDataAdapter getDataAdapterForService(String serviceId) throws Exception {
-        String serviceAdapterTypeName = Registry.getDataAdapterTypeNameForService(serviceId);
+    public static IDataAdapter getDataAdapterForService(String odsCode) throws Exception {
+        String serviceAdapterTypeName = Registry.getDataAdapterTypeNameForService(odsCode);
 
         try {
             return (IDataAdapter)Class.forName(serviceAdapterTypeName).newInstance();

@@ -1,5 +1,6 @@
 package org.endeavourhealth.cim.routes.builders;
 
+import org.apache.camel.LoggingLevel;
 import org.endeavourhealth.cim.common.CIMRouteBuilder;
 
 public class CIMCore extends CIMRouteBuilder {
@@ -9,7 +10,12 @@ public class CIMCore extends CIMRouteBuilder {
 
         from("direct:CIMCore")
             .routeId("CIMCore")
-            .to("direct:CIMHeaderValidation");
+            .choice()
+                .when(simple("${header.MessageRouterCallback} == null"))
+                    .log(LoggingLevel.ERROR, "No destination for message route")
+                    .stop()
+                .otherwise()
+                    .to("direct:CIMHeaderValidation");
 
         from("direct:CIMHeaderValidationResult")
             .routeId("CIMHeaderValidationResult")
@@ -32,9 +38,9 @@ public class CIMCore extends CIMRouteBuilder {
 
         from("direct:CIMDataAggregatorResult")
             .routeId("CIMDataAggregatorResult")
-            .wireTap("direct:CIMAudit")
+                .wireTap("direct:CIMAudit")
                 .newExchangeHeader("TapLocation", constant("Outbound"))
             .end()
-            .to("direct:CIMResponse");
+                .to("direct:CIMResponse");
     }
 }

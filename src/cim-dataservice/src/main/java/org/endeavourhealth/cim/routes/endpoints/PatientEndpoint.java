@@ -9,11 +9,11 @@ public class PatientEndpoint extends RouteBuilder {
     @Override
     public void configure() throws Exception {
         // Endpoint root URI
-        rest("/{serviceId}/Patient")
+        rest("/{odsCode}/Patient")
             .description("Patient rest service")
 
         // Endpoint definitions (GET, PUT, etc)
-        .get("?identifier={identifier}&_lastUpdated=>{dateUpdated}")
+        .get("?identifier={identifier}&_lastUpdated=>{dateUpdated}&active={active}")
             .route()
             .routeId("GetServicePatientByQuery")
             .description("Query based call")
@@ -21,7 +21,7 @@ public class PatientEndpoint extends RouteBuilder {
             .to("direct:CIMCore")
         .endRest()
 
-        .get("/{patientId}/$everythingnobinary")
+        .get("/{id}/$everythingnobinary")
                 .route()
                 .routeId("GetServicePatientRecordById")
                 .description("Direct (patient id) call")
@@ -35,7 +35,7 @@ public class PatientEndpoint extends RouteBuilder {
                 .when(simple("${header.identifier} != null"))
                     .routeId("GetPatientByIdentifier")
                     .process(new GetPatientByIdentifier())
-                .when(simple("${header.dateUpdated} != null"))
+                .when(simple("${header._lastUpdated} != null"))
                     .routeId("GetChangedPatients")
                     .process(new GetChangedPatients())
             .end();

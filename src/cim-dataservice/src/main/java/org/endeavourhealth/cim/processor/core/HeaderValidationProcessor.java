@@ -16,14 +16,14 @@ public class HeaderValidationProcessor implements org.apache.camel.Processor {
     @Override
     public void process(Exchange exchange) throws Exception {
         String api_key = (String)exchange.getIn().getHeader("api_key");
-        String serviceId = (String)exchange.getIn().getHeader("serviceId");
+        String odsCode = (String)exchange.getIn().getHeader("odsCode");
 
         List<String> validOrganisations = _legitimateRelationships.get(api_key);
 
         if (validOrganisations == null)
             throw new Exception("No legitimate relationships configured for this subsidiary system");
 
-        if (validOrganisations.contains(serviceId) == false)
+        if (validOrganisations.contains(odsCode) == false)
             throw new Exception("Subsidiary system has no legitimate relationship with this organisation");
     }
 }

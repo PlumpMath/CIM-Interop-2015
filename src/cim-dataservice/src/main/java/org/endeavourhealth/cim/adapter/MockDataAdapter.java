@@ -1,6 +1,11 @@
 package org.endeavourhealth.cim.adapter;
 
 import javax.xml.soap.*;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Date;
 import java.util.UUID;
 
 public class MockDataAdapter implements IDataAdapter {
@@ -96,6 +101,48 @@ public class MockDataAdapter implements IDataAdapter {
             }
         }
         catch (Exception e) {
+            return null;
+        }
+    }
+
+    @Override
+    public ArrayList<UUID> getChangedPatients(Date date) {
+        SOAPConnection soapConnection = null;
+        try {
+            try {
+                SOAPConnectionFactory soapConnectionFactory = SOAPConnectionFactory.newInstance();
+                soapConnection = soapConnectionFactory.createConnection();
+
+                // Create basic message
+                SOAPMessage requestMessage = createSOAPRequest("GetChangedPatients");
+
+                // SOAP Body
+                SOAPElement soapMethodElement = requestMessage.getSOAPBody().addChildElement("GetChangedPatients", "", "http://tempuri.org/");
+                SOAPElement soapMethodParamElement1 = soapMethodElement.addChildElement("sinceDateTime");
+                SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'hh:mm:ss'Z'");
+                soapMethodParamElement1.addTextNode(dateFormat.format(date));
+                requestMessage.saveChanges();
+
+                // Send SOAP Message to SOAP Server
+                SOAPMessage soapResponse = soapConnection.call(requestMessage, _soapUri + "/GetChangedPatients");
+
+                soapResponse.writeTo(System.out);
+
+                String responseText = soapResponse.getSOAPBody().getElementsByTagName("GetChangedPatientsResult").item(0).getTextContent();
+
+                ArrayList<UUID> uuids = new ArrayList<>();
+                for (String uuidString : responseText.split("(?<=\\G.{36})"))
+                    uuids.add(UUID.fromString(uuidString));
+
+                return uuids;
+
+            } finally {
+                if (soapConnection != null)
+                    soapConnection.close();
+            }
+        }
+        catch (Exception e) {
+            e.printStackTrace();
             return null;
         }
     }

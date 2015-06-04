@@ -1,6 +1,6 @@
 {
   "resourceType": "Subscription",
-  "id": " 917c53fd-058a-4e8b-8a64-344b3fcc00b9",
+  "id": "917c53fd-058a-4e8b-8a64-344b3fcc00b9",
   "criteria": "/Patient? ?identifier=NHS|6980086397 ",
   "reason": "Monitor new neonatal function",
   "status": "requested",
