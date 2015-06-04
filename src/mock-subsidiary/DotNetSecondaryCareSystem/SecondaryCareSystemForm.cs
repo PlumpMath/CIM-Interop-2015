@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Net;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -18,42 +20,30 @@ namespace DotNetSecondaryCareSystem
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnGetDemographics_Click(object sender, EventArgs e)
         {
-            tbCimUrl.Text + 
+            string baseUrl = this.tbBaseUrl.Text;
+            string restPath = this.lblGetDemographicsFhirUrl.Text;
+            string odsCode = this.tbGetDemographicsOdsCode.Text;
+            string nhsNumber = this.tbNhsNumber.Text;
 
-            var webRequest = (HttpWebRequest)WebRequest.Create("http://endeavour-cim.cloudapp.net/CIM_war/v0.1/service/21/patient/5ec13d3e-cd1c-42b0-9203-fac7d7440c70");
-            webRequest.Method = "GET";
-            webRequest.Headers.Add("api_key", "swagger");
-            webRequest.Headers.Add("hash", generateHash("/service/{serviceId}/patient/{patientId}", null));
-
-            var webResponse = (HttpWebResponse)webRequest.GetResponse();
-
-            Stream responseStream = webResponse.GetResponseStream();
-            String response;
-            using (StreamReader reader = new StreamReader(responseStream))
-            {
-                response = reader.ReadToEnd();
-            }
-            Debug.WriteLine(response);
+            this.tbGetDemographicsResult.Text = Utilities.MakeWebRequest(
+                baseUrl: tbBaseUrl.Text,
+                relativeUrl: Utilities.FormatRestPath(restPath, odsCode, nhsNumber),
+                hash: Utilities.GenerateHash(this.lblGetDemographicsFhirUrl.Text, null));
         }
 
-        private static String generateHash(String method, String body)
+        private void btnGetFullRecord_Click(object sender, EventArgs e)
         {
-            ASCIIEncoding encoder = new ASCIIEncoding();
+            string baseUrl = this.tbBaseUrl.Text;
+            string restPath = this.lblGetFullRecordFhirUrl.Text;
+            string odsCode = this.tbFullRecordOdsCode.Text;
+            string patientGuid = this.tbPatientGuid.Text;
 
-            String privateKey = "privateKey";
-
-            String data = method;
-            if (data != null)
-                data += body;
-
-            HMAC mac = HMAC.Create("HmacSHA256");
-            mac.Key = encoder.GetBytes(privateKey);
-            mac.Initialize();
-            byte[] digest = mac.ComputeHash(encoder.GetBytes(data));
-            String hash = Convert.ToBase64String(digest);
-            return hash;
+            this.tbGetFullRecordResponse.Text = Utilities.MakeWebRequest(
+               baseUrl: baseUrl,
+               relativeUrl: Utilities.FormatRestPath(restPath, odsCode, patientGuid),
+               hash: Utilities.GenerateHash(restPath, string.Empty));
         }
     }
 }
