@@ -119,7 +119,7 @@ public class MockDataAdapter implements IDataAdapter {
                 // SOAP Body
                 SOAPElement soapMethodElement = requestMessage.getSOAPBody().addChildElement("GetChangedPatients", "", "http://tempuri.org/");
                 SOAPElement soapMethodParamElement1 = soapMethodElement.addChildElement("sinceDateTime");
-                SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'hh:mm:ss'Z'");
+                SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
                 soapMethodParamElement1.addTextNode(dateFormat.format(date));
                 requestMessage.saveChanges();
 
@@ -131,8 +131,9 @@ public class MockDataAdapter implements IDataAdapter {
                 String responseText = soapResponse.getSOAPBody().getElementsByTagName("GetChangedPatientsResult").item(0).getTextContent();
 
                 ArrayList<UUID> uuids = new ArrayList<>();
-                for (String uuidString : responseText.split("(?<=\\G.{36})"))
-                    uuids.add(UUID.fromString(uuidString));
+                if (responseText.isEmpty() == false)
+                    for (String uuidString : responseText.split("(?<=\\G.{36})"))
+                        uuids.add(UUID.fromString(uuidString));
 
                 return uuids;
 
