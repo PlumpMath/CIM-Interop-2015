@@ -12,21 +12,22 @@ public class OpenHRTransformer extends TransformerBase {
     }
 
     public String fromFHIRCondition(String fhirData) {
-        try {
-            // Deserialize JSON to fhir condition
-            Object fhirCondition = this.fromJSON(fhirData);
-
-            // DO conversion to OpenHR
-            Object openHRCondition = null;
-
-            // Serialize to xml and return
-            return this.toXML(openHRCondition);
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        return null;
+        return fhirData;
+//        try {
+//            // Deserialize JSON to fhir condition
+//            Object fhirCondition = this.fromJSON(fhirData);
+//
+//            // DO conversion to OpenHR
+//            Object openHRCondition = null;
+//
+//            // Serialize to xml and return
+//            return this.toXML(openHRCondition);
+//
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//
+//        return null;
     }
 
     public String toFHIRCondition(String nativeData) {
