@@ -32,34 +32,46 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
-            this.tbCimUrl = new System.Windows.Forms.TextBox();
+            this.tbBaseUrl = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.label4 = new System.Windows.Forms.Label();
             this.tbGetDemographicsResult = new System.Windows.Forms.TextBox();
+            this.panel3 = new System.Windows.Forms.Panel();
             this.tbNhsNumber = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
             this.btnGetDemographics = new System.Windows.Forms.Button();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.lblGetDemographicsFhirUrl = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.label5 = new System.Windows.Forms.Label();
             this.tbGetFullRecordResponse = new System.Windows.Forms.TextBox();
+            this.panel4 = new System.Windows.Forms.Panel();
             this.tbPatientGuid = new System.Windows.Forms.TextBox();
             this.btnGetFullRecord = new System.Windows.Forms.Button();
-            this.lblGetDemographicsFhirUrl = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             this.lblGetFullRecordFhirUrl = new System.Windows.Forms.Label();
+            this.tbGetDemographicsOdsCode = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.tbFullRecordOdsCode = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            this.panel3.SuspendLayout();
             this.tabPage2.SuspendLayout();
+            this.panel4.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
+            this.tableLayoutPanel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel2
@@ -77,7 +89,7 @@
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
             this.panel1.Controls.Add(this.label3);
-            this.panel1.Controls.Add(this.tbCimUrl);
+            this.panel1.Controls.Add(this.tbBaseUrl);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Controls.Add(this.label1);
@@ -92,19 +104,19 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(1252, 54);
+            this.label3.Location = new System.Drawing.Point(1225, 39);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(53, 15);
+            this.label3.Size = new System.Drawing.Size(80, 15);
             this.label3.TabIndex = 6;
-            this.label3.Text = "CIM URL";
+            this.label3.Text = "CIM base URL";
             // 
             // tbCimUrl
             // 
-            this.tbCimUrl.Location = new System.Drawing.Point(1322, 51);
-            this.tbCimUrl.Name = "tbCimUrl";
-            this.tbCimUrl.Size = new System.Drawing.Size(260, 23);
-            this.tbCimUrl.TabIndex = 6;
-            this.tbCimUrl.Text = "http://localhost:8080/";
+            this.tbBaseUrl.Location = new System.Drawing.Point(1323, 36);
+            this.tbBaseUrl.Name = "tbCimUrl";
+            this.tbBaseUrl.Size = new System.Drawing.Size(260, 23);
+            this.tbBaseUrl.TabIndex = 6;
+            this.tbBaseUrl.Text = "http://localhost:8080/v0.1/";
             // 
             // label2
             // 
@@ -157,13 +169,8 @@
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.label8);
-            this.tabPage1.Controls.Add(this.label7);
-            this.tabPage1.Controls.Add(this.lblGetDemographicsFhirUrl);
-            this.tabPage1.Controls.Add(this.label4);
             this.tabPage1.Controls.Add(this.tbGetDemographicsResult);
-            this.tabPage1.Controls.Add(this.tbNhsNumber);
-            this.tabPage1.Controls.Add(this.btnGetDemographics);
+            this.tabPage1.Controls.Add(this.panel3);
             this.tabPage1.Location = new System.Drawing.Point(4, 24);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
@@ -172,52 +179,85 @@
             this.tabPage1.Text = "Get demographics by NHS number";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(17, 16);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(76, 15);
-            this.label4.TabIndex = 7;
-            this.label4.Text = "NHS number";
-            // 
             // tbGetDemographicsResult
             // 
+            this.tbGetDemographicsResult.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tbGetDemographicsResult.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbGetDemographicsResult.Location = new System.Drawing.Point(20, 102);
+            this.tbGetDemographicsResult.Location = new System.Drawing.Point(3, 134);
             this.tbGetDemographicsResult.Multiline = true;
             this.tbGetDemographicsResult.Name = "tbGetDemographicsResult";
             this.tbGetDemographicsResult.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.tbGetDemographicsResult.Size = new System.Drawing.Size(806, 422);
-            this.tbGetDemographicsResult.TabIndex = 6;
+            this.tbGetDemographicsResult.Size = new System.Drawing.Size(1603, 577);
+            this.tbGetDemographicsResult.TabIndex = 12;
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.tableLayoutPanel1);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel3.Location = new System.Drawing.Point(3, 3);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(1603, 131);
+            this.panel3.TabIndex = 11;
             // 
             // tbNhsNumber
             // 
-            this.tbNhsNumber.Location = new System.Drawing.Point(110, 13);
+            this.tbNhsNumber.Location = new System.Drawing.Point(113, 73);
             this.tbNhsNumber.Name = "tbNhsNumber";
             this.tbNhsNumber.Size = new System.Drawing.Size(383, 23);
             this.tbNhsNumber.TabIndex = 3;
             this.tbNhsNumber.Text = "6936548122";
             // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(13, 100);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(57, 15);
+            this.label8.TabIndex = 10;
+            this.label8.Text = "Response";
+            // 
             // btnGetDemographics
             // 
-            this.btnGetDemographics.Location = new System.Drawing.Point(514, 10);
+            this.btnGetDemographics.Location = new System.Drawing.Point(513, 73);
             this.btnGetDemographics.Name = "btnGetDemographics";
-            this.btnGetDemographics.Size = new System.Drawing.Size(132, 27);
+            this.btnGetDemographics.Size = new System.Drawing.Size(132, 24);
             this.btnGetDemographics.TabIndex = 4;
             this.btnGetDemographics.Text = "Get demographics";
             this.btnGetDemographics.UseVisualStyleBackColor = true;
             this.btnGetDemographics.Click += new System.EventHandler(this.btnGetDemographics_Click);
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(13, 10);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(56, 15);
+            this.label7.TabIndex = 9;
+            this.label7.Text = "FHIR URL";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(13, 70);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(76, 15);
+            this.label4.TabIndex = 7;
+            this.label4.Text = "NHS number";
+            // 
+            // lblGetDemographicsFhirUrl
+            // 
+            this.lblGetDemographicsFhirUrl.AutoSize = true;
+            this.lblGetDemographicsFhirUrl.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblGetDemographicsFhirUrl.Location = new System.Drawing.Point(113, 10);
+            this.lblGetDemographicsFhirUrl.Name = "lblGetDemographicsFhirUrl";
+            this.lblGetDemographicsFhirUrl.Size = new System.Drawing.Size(308, 14);
+            this.lblGetDemographicsFhirUrl.TabIndex = 8;
+            this.lblGetDemographicsFhirUrl.Text = "/{serviceId}/Patient?identifier=NHS|{nhsNo}";
+            // 
             // tabPage2
             // 
-            this.tabPage2.Controls.Add(this.label6);
-            this.tabPage2.Controls.Add(this.label9);
-            this.tabPage2.Controls.Add(this.lblGetFullRecordFhirUrl);
-            this.tabPage2.Controls.Add(this.label5);
             this.tabPage2.Controls.Add(this.tbGetFullRecordResponse);
-            this.tabPage2.Controls.Add(this.tbPatientGuid);
-            this.tabPage2.Controls.Add(this.btnGetFullRecord);
+            this.tabPage2.Controls.Add(this.panel4);
             this.tabPage2.Location = new System.Drawing.Point(4, 24);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
@@ -226,28 +266,29 @@
             this.tabPage2.Text = "Get full record by Patient GUID";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(17, 16);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(74, 15);
-            this.label5.TabIndex = 11;
-            this.label5.Text = "Patient GUID";
-            // 
             // tbGetFullRecordResponse
             // 
+            this.tbGetFullRecordResponse.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tbGetFullRecordResponse.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbGetFullRecordResponse.Location = new System.Drawing.Point(20, 102);
+            this.tbGetFullRecordResponse.Location = new System.Drawing.Point(3, 134);
             this.tbGetFullRecordResponse.Multiline = true;
             this.tbGetFullRecordResponse.Name = "tbGetFullRecordResponse";
             this.tbGetFullRecordResponse.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.tbGetFullRecordResponse.Size = new System.Drawing.Size(806, 422);
-            this.tbGetFullRecordResponse.TabIndex = 10;
+            this.tbGetFullRecordResponse.Size = new System.Drawing.Size(1603, 577);
+            this.tbGetFullRecordResponse.TabIndex = 20;
+            // 
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.tableLayoutPanel2);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel4.Location = new System.Drawing.Point(3, 3);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(1603, 131);
+            this.panel4.TabIndex = 19;
             // 
             // tbPatientGuid
             // 
-            this.tbPatientGuid.Location = new System.Drawing.Point(110, 13);
+            this.tbPatientGuid.Location = new System.Drawing.Point(113, 73);
             this.tbPatientGuid.Name = "tbPatientGuid";
             this.tbPatientGuid.Size = new System.Drawing.Size(383, 23);
             this.tbPatientGuid.TabIndex = 8;
@@ -255,69 +296,136 @@
             // 
             // btnGetFullRecord
             // 
-            this.btnGetFullRecord.Location = new System.Drawing.Point(514, 10);
+            this.btnGetFullRecord.Location = new System.Drawing.Point(513, 73);
             this.btnGetFullRecord.Name = "btnGetFullRecord";
-            this.btnGetFullRecord.Size = new System.Drawing.Size(132, 27);
+            this.btnGetFullRecord.Size = new System.Drawing.Size(132, 24);
             this.btnGetFullRecord.TabIndex = 9;
             this.btnGetFullRecord.Text = "Get full record";
             this.btnGetFullRecord.UseVisualStyleBackColor = true;
             this.btnGetFullRecord.Click += new System.EventHandler(this.btnGetFullRecord_Click);
             // 
-            // lblGetDemographicsFhirUrl
+            // label5
             // 
-            this.lblGetDemographicsFhirUrl.AutoSize = true;
-            this.lblGetDemographicsFhirUrl.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblGetDemographicsFhirUrl.Location = new System.Drawing.Point(107, 44);
-            this.lblGetDemographicsFhirUrl.Name = "lblGetDemographicsFhirUrl";
-            this.lblGetDemographicsFhirUrl.Size = new System.Drawing.Size(273, 14);
-            this.lblGetDemographicsFhirUrl.TabIndex = 8;
-            this.lblGetDemographicsFhirUrl.Text = "v0.1/A99999/Patient?identifier=NHS|{0}";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(17, 44);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(56, 15);
-            this.label7.TabIndex = 9;
-            this.label7.Text = "FHIR URL";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(17, 84);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(57, 15);
-            this.label8.TabIndex = 10;
-            this.label8.Text = "Response";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(17, 84);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(57, 15);
-            this.label6.TabIndex = 18;
-            this.label6.Text = "Response";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(17, 44);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(56, 15);
-            this.label9.TabIndex = 17;
-            this.label9.Text = "FHIR URL";
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(13, 70);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(74, 15);
+            this.label5.TabIndex = 11;
+            this.label5.Text = "Patient GUID";
             // 
             // lblGetFullRecordFhirUrl
             // 
             this.lblGetFullRecordFhirUrl.AutoSize = true;
             this.lblGetFullRecordFhirUrl.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblGetFullRecordFhirUrl.Location = new System.Drawing.Point(107, 44);
+            this.lblGetFullRecordFhirUrl.Location = new System.Drawing.Point(113, 10);
             this.lblGetFullRecordFhirUrl.Name = "lblGetFullRecordFhirUrl";
-            this.lblGetFullRecordFhirUrl.Size = new System.Drawing.Size(308, 14);
+            this.lblGetFullRecordFhirUrl.Size = new System.Drawing.Size(371, 14);
             this.lblGetFullRecordFhirUrl.TabIndex = 16;
-            this.lblGetFullRecordFhirUrl.Text = "v0.1/A99999/Patient/{0}/$everythingnobinary";
+            this.lblGetFullRecordFhirUrl.Text = "/{serviceId}/Patient/{patientId}/$everythingnobinary";
+            // 
+            // tbGetDemographicsOdsCode
+            // 
+            this.tbGetDemographicsOdsCode.Location = new System.Drawing.Point(113, 43);
+            this.tbGetDemographicsOdsCode.Name = "tbGetDemographicsOdsCode";
+            this.tbGetDemographicsOdsCode.Size = new System.Drawing.Size(383, 23);
+            this.tbGetDemographicsOdsCode.TabIndex = 11;
+            this.tbGetDemographicsOdsCode.Text = "A99999";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(13, 40);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(59, 15);
+            this.label10.TabIndex = 12;
+            this.label10.Text = "ODS code";
+            // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.ColumnCount = 3;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 400F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.Controls.Add(this.label7, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.btnGetDemographics, 2, 2);
+            this.tableLayoutPanel1.Controls.Add(this.label8, 0, 3);
+            this.tableLayoutPanel1.Controls.Add(this.tbNhsNumber, 1, 2);
+            this.tableLayoutPanel1.Controls.Add(this.tbGetDemographicsOdsCode, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.lblGetDemographicsFhirUrl, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.label10, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.label4, 0, 2);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.Padding = new System.Windows.Forms.Padding(10);
+            this.tableLayoutPanel1.RowCount = 4;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1603, 131);
+            this.tableLayoutPanel1.TabIndex = 13;
+            // 
+            // tableLayoutPanel2
+            // 
+            this.tableLayoutPanel2.ColumnCount = 3;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 400F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel2.Controls.Add(this.label11, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.btnGetFullRecord, 2, 2);
+            this.tableLayoutPanel2.Controls.Add(this.tbPatientGuid, 1, 2);
+            this.tableLayoutPanel2.Controls.Add(this.label12, 0, 3);
+            this.tableLayoutPanel2.Controls.Add(this.tbFullRecordOdsCode, 1, 1);
+            this.tableLayoutPanel2.Controls.Add(this.label5, 0, 2);
+            this.tableLayoutPanel2.Controls.Add(this.label14, 0, 1);
+            this.tableLayoutPanel2.Controls.Add(this.lblGetFullRecordFhirUrl, 1, 0);
+            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            this.tableLayoutPanel2.Padding = new System.Windows.Forms.Padding(10);
+            this.tableLayoutPanel2.RowCount = 4;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(1603, 131);
+            this.tableLayoutPanel2.TabIndex = 19;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(13, 10);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(56, 15);
+            this.label11.TabIndex = 9;
+            this.label11.Text = "FHIR URL";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(13, 100);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(57, 15);
+            this.label12.TabIndex = 10;
+            this.label12.Text = "Response";
+            // 
+            // tbFullRecordOdsCode
+            // 
+            this.tbFullRecordOdsCode.Location = new System.Drawing.Point(113, 43);
+            this.tbFullRecordOdsCode.Name = "tbFullRecordOdsCode";
+            this.tbFullRecordOdsCode.Size = new System.Drawing.Size(383, 23);
+            this.tbFullRecordOdsCode.TabIndex = 11;
+            this.tbFullRecordOdsCode.Text = "A99999";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(13, 40);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(59, 15);
+            this.label14.TabIndex = 12;
+            this.label14.Text = "ODS code";
             // 
             // SecondaryCareSystemForm
             // 
@@ -337,8 +445,14 @@
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
+            this.panel3.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
+            this.panel4.ResumeLayout(false);
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel1.PerformLayout();
+            this.tableLayoutPanel2.ResumeLayout(false);
+            this.tableLayoutPanel2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -352,25 +466,33 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox tbCimUrl;
+        private System.Windows.Forms.TextBox tbBaseUrl;
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.TextBox tbGetDemographicsResult;
         private System.Windows.Forms.TextBox tbNhsNumber;
         private System.Windows.Forms.Button btnGetDemographics;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox tbGetFullRecordResponse;
         private System.Windows.Forms.TextBox tbPatientGuid;
         private System.Windows.Forms.Button btnGetFullRecord;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label lblGetDemographicsFhirUrl;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label lblGetFullRecordFhirUrl;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.TextBox tbGetDemographicsResult;
+        private System.Windows.Forms.TextBox tbGetFullRecordResponse;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.TextBox tbGetDemographicsOdsCode;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.TextBox tbFullRecordOdsCode;
+        private System.Windows.Forms.Label label14;
     }
 }
 

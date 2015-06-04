@@ -20,51 +20,30 @@ namespace DotNetSecondaryCareSystem
             InitializeComponent();
         }
 
-        private static String generateHash(String method, String body)
-        {
-            ASCIIEncoding encoder = new ASCIIEncoding();
-
-            String privateKey = "privateKey";
-
-            String data = method;
-            if (data != null)
-                data += body;
-
-            HMAC mac = HMAC.Create("HmacSHA256");
-            mac.Key = encoder.GetBytes(privateKey);
-            mac.Initialize();
-            byte[] digest = mac.ComputeHash(encoder.GetBytes(data));
-            String hash = Convert.ToBase64String(digest);
-            return hash;
-        }
-
         private void btnGetDemographics_Click(object sender, EventArgs e)
         {
-            this.tbGetDemographicsResult.Text = MakeWebRequest(
-                relativeUrl: string.Format(this.lblGetDemographicsFhirUrl.Text, this.tbNhsNumber.Text),
-                hash: "GalgzDhYBRT0GmsWFtEUEU4dRyL+x0YKmt92i/uyESc=");
+            string baseUrl = this.tbBaseUrl.Text;
+            string restPath = this.lblGetDemographicsFhirUrl.Text;
+            string odsCode = this.tbGetDemographicsOdsCode.Text;
+            string nhsNumber = this.tbNhsNumber.Text;
+
+            this.tbGetDemographicsResult.Text = Utilities.MakeWebRequest(
+                baseUrl: tbBaseUrl.Text,
+                relativeUrl: Utilities.FormatRestPath(restPath, odsCode, nhsNumber),
+                hash: Utilities.GenerateHash(this.lblGetDemographicsFhirUrl.Text, null));
         }
 
         private void btnGetFullRecord_Click(object sender, EventArgs e)
         {
-            this.tbGetFullRecordResponse.Text = MakeWebRequest(
-               relativeUrl: string.Format(this.lblGetFullRecordFhirUrl.Text, this.tbPatientGuid.Text),
-               hash: "RPuOVmDlyaVoBPVWFLBpeyVORZYR6rhAxyeEVbmjWgc=");
-        }
+            string baseUrl = this.tbBaseUrl.Text;
+            string restPath = this.lblGetFullRecordFhirUrl.Text;
+            string odsCode = this.tbFullRecordOdsCode.Text;
+            string patientGuid = this.tbPatientGuid.Text;
 
-        private string MakeWebRequest(string relativeUrl, string hash)
-        {
-            string url = tbCimUrl.Text + relativeUrl;
-
-            HttpWebRequest webRequest = (HttpWebRequest)WebRequest.Create(url);
-            webRequest.Method = "GET";
-            webRequest.Headers.Add("api_key", "swagger");
-            webRequest.Headers.Add("hash", hash);
-
-            using (HttpWebResponse webResponse = (HttpWebResponse)webRequest.GetResponse())
-                using (Stream stream = webResponse.GetResponseStream())
-                    using (StreamReader reader = new StreamReader(stream))
-                        return reader.ReadToEnd();
+            this.tbGetFullRecordResponse.Text = Utilities.MakeWebRequest(
+               baseUrl: baseUrl,
+               relativeUrl: Utilities.FormatRestPath(restPath, odsCode, patientGuid),
+               hash: Utilities.GenerateHash(restPath, string.Empty));
         }
     }
 }
