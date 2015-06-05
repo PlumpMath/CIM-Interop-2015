@@ -22,6 +22,11 @@ namespace DotNetSecondaryCareSystem
             return MakeWebRequest("POST", baseUrl, relativeUrl, apiKey, hash, payload);
         }
 
+        public static WebResponse PutCimUrl(string baseUrl, string relativeUrl, string apiKey, string hash, string payload)
+        {
+            return MakeWebRequest("PUT", baseUrl, relativeUrl, apiKey, hash, payload);
+        }
+
         public static WebResponse MakeWebRequest(string method, string baseUrl, string relativeUrl, string apiKey, string hash, string payload)
         {
             string url = baseUrl + relativeUrl;
@@ -36,9 +41,9 @@ namespace DotNetSecondaryCareSystem
 
             try
             {
-                if (method == "POST")
+                if (!string.IsNullOrEmpty(payload))
                 {
-                    byte[] data = Encoding.ASCII.GetBytes(payload ?? string.Empty);
+                    byte[] data = Encoding.ASCII.GetBytes(payload);
 
                     webRequest.ContentType = "application/json";
                     webRequest.ContentLength = data.Length;

@@ -303,6 +303,21 @@
         "notes": " Scanty coase creps"
       }</value>
   </data>
+  <data name="tbSubscriptionPayload.Text" xml:space="preserve">
+    <value>{
+  'resourceType': 'Subscription',
+  'id': '917c53fd-058a-4e8b-8a64-344b3fcc00b9',
+  'criteria': '/Patient? ?identifier=NHS|6980086397',
+  'reason': 'Monitor new neonatal function',
+  'status': 'requested',
+  'channel': {
+    'type': 'rest-hook',
+    'endpoint': 'https://example.com/patients/update-result',
+    'payload': 'application/json',
+    'header': 'Authorization: Bearer secret-token-abc-123'
+  }
+}</value>
+  </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAQAICAAAAEAIACoEAAARgAAACAgAAABAAgAqAgAAO4QAAAQEAAAAQAgAGgEAACWGQAAEBAAAAEA

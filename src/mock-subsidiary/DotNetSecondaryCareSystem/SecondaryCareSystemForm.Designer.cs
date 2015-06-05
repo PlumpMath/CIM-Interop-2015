@@ -44,55 +44,70 @@
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.panel7 = new System.Windows.Forms.Panel();
+            this.tbGetDemographicsResult = new System.Windows.Forms.TextBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.label7 = new System.Windows.Forms.Label();
+            this.btnGetDemographics = new System.Windows.Forms.Button();
+            this.tbNhsNumber = new System.Windows.Forms.TextBox();
+            this.lblGetDemographicsFhirUrl = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.panel8 = new System.Windows.Forms.Panel();
+            this.tbGetFullRecordResponse = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.label11 = new System.Windows.Forms.Label();
-            this.btnGetFullRecord = new System.Windows.Forms.Button();
-            this.tbPatientGuid = new System.Windows.Forms.TextBox();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
             this.lblGetFullRecordFhirUrl = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.tbPatientGuid = new System.Windows.Forms.TextBox();
+            this.btnGetFullRecord = new System.Windows.Forms.Button();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.tbAddConditionResponse = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.label4 = new System.Windows.Forms.Label();
-            this.lblGetDemographicsFhirUrl = new System.Windows.Forms.Label();
-            this.tbNhsNumber = new System.Windows.Forms.TextBox();
-            this.btnGetDemographics = new System.Windows.Forms.Button();
-            this.label17 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.tbGetDemographicsResult = new System.Windows.Forms.TextBox();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.panel7 = new System.Windows.Forms.Panel();
-            this.panel8 = new System.Windows.Forms.Panel();
-            this.tbGetFullRecordResponse = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.label13 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.lblAddConditionFhirUrl = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.tbAddConditionPatientGuid = new System.Windows.Forms.TextBox();
-            this.btnPostCondition = new System.Windows.Forms.Button();
-            this.label13 = new System.Windows.Forms.Label();
             this.tbAddConditionPayload = new System.Windows.Forms.TextBox();
-            this.label14 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.btnPostCondition = new System.Windows.Forms.Button();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.panel9 = new System.Windows.Forms.Panel();
+            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.lblSubscribeFhirUrl = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
+            this.tbSubscriptionGuid = new System.Windows.Forms.TextBox();
+            this.tbSubscriptionPayload = new System.Windows.Forms.TextBox();
+            this.btnPutSubscription = new System.Windows.Forms.Button();
+            this.tbSubscriptionResponse = new System.Windows.Forms.TextBox();
+            this.label16 = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            this.panel7.SuspendLayout();
+            this.panel3.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
             this.tabPage2.SuspendLayout();
+            this.panel8.SuspendLayout();
             this.panel4.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.panel5.SuspendLayout();
-            this.panel3.SuspendLayout();
-            this.tableLayoutPanel1.SuspendLayout();
-            this.panel7.SuspendLayout();
-            this.panel8.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
+            this.tabPage4.SuspendLayout();
+            this.panel9.SuspendLayout();
+            this.tableLayoutPanel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel2
@@ -237,6 +252,7 @@
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
+            this.tabControl1.Controls.Add(this.tabPage4);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Location = new System.Drawing.Point(0, 118);
             this.tabControl1.Name = "tabControl1";
@@ -256,6 +272,120 @@
             this.tabPage1.Text = "Get demographics by NHS number";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // panel7
+            // 
+            this.panel7.Controls.Add(this.tbGetDemographicsResult);
+            this.panel7.Controls.Add(this.label17);
+            this.panel7.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel7.Location = new System.Drawing.Point(3, 85);
+            this.panel7.Name = "panel7";
+            this.panel7.Padding = new System.Windows.Forms.Padding(13, 0, 0, 0);
+            this.panel7.Size = new System.Drawing.Size(1603, 626);
+            this.panel7.TabIndex = 13;
+            // 
+            // tbGetDemographicsResult
+            // 
+            this.tbGetDemographicsResult.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tbGetDemographicsResult.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbGetDemographicsResult.Location = new System.Drawing.Point(13, 25);
+            this.tbGetDemographicsResult.Multiline = true;
+            this.tbGetDemographicsResult.Name = "tbGetDemographicsResult";
+            this.tbGetDemographicsResult.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.tbGetDemographicsResult.Size = new System.Drawing.Size(1590, 601);
+            this.tbGetDemographicsResult.TabIndex = 14;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label17.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.Location = new System.Drawing.Point(13, 0);
+            this.label17.Name = "label17";
+            this.label17.Padding = new System.Windows.Forms.Padding(0, 0, 0, 10);
+            this.label17.Size = new System.Drawing.Size(60, 25);
+            this.label17.TabIndex = 13;
+            this.label17.Text = "Response";
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.tableLayoutPanel1);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel3.Location = new System.Drawing.Point(3, 3);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(1603, 82);
+            this.panel3.TabIndex = 11;
+            // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.ColumnCount = 3;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 400F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.Controls.Add(this.label7, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.btnGetDemographics, 2, 1);
+            this.tableLayoutPanel1.Controls.Add(this.tbNhsNumber, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.lblGetDemographicsFhirUrl, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.label4, 0, 1);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.Padding = new System.Windows.Forms.Padding(10);
+            this.tableLayoutPanel1.RowCount = 2;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1603, 82);
+            this.tableLayoutPanel1.TabIndex = 13;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(13, 10);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(60, 15);
+            this.label7.TabIndex = 9;
+            this.label7.Text = "FHIR URL";
+            // 
+            // btnGetDemographics
+            // 
+            this.btnGetDemographics.Location = new System.Drawing.Point(513, 43);
+            this.btnGetDemographics.Name = "btnGetDemographics";
+            this.btnGetDemographics.Size = new System.Drawing.Size(132, 24);
+            this.btnGetDemographics.TabIndex = 4;
+            this.btnGetDemographics.Text = "Get demographics";
+            this.btnGetDemographics.UseVisualStyleBackColor = true;
+            this.btnGetDemographics.Click += new System.EventHandler(this.btnGetDemographics_Click);
+            // 
+            // tbNhsNumber
+            // 
+            this.tbNhsNumber.Location = new System.Drawing.Point(113, 43);
+            this.tbNhsNumber.Name = "tbNhsNumber";
+            this.tbNhsNumber.Size = new System.Drawing.Size(383, 23);
+            this.tbNhsNumber.TabIndex = 3;
+            this.tbNhsNumber.Text = "6936548122";
+            // 
+            // lblGetDemographicsFhirUrl
+            // 
+            this.lblGetDemographicsFhirUrl.AutoSize = true;
+            this.lblGetDemographicsFhirUrl.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblGetDemographicsFhirUrl.Location = new System.Drawing.Point(113, 10);
+            this.lblGetDemographicsFhirUrl.Name = "lblGetDemographicsFhirUrl";
+            this.lblGetDemographicsFhirUrl.Size = new System.Drawing.Size(294, 14);
+            this.lblGetDemographicsFhirUrl.TabIndex = 8;
+            this.lblGetDemographicsFhirUrl.Text = "/{odsCode}/Patient?identifier=NHS|{nhsNo}";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(13, 40);
+            this.label4.Name = "label4";
+            this.label4.Padding = new System.Windows.Forms.Padding(0, 6, 0, 0);
+            this.label4.Size = new System.Drawing.Size(79, 21);
+            this.label4.TabIndex = 7;
+            this.label4.Text = "NHS number";
+            // 
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.panel8);
@@ -267,6 +397,40 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Get full record by Patient GUID";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // panel8
+            // 
+            this.panel8.Controls.Add(this.tbGetFullRecordResponse);
+            this.panel8.Controls.Add(this.label12);
+            this.panel8.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel8.Location = new System.Drawing.Point(3, 85);
+            this.panel8.Name = "panel8";
+            this.panel8.Padding = new System.Windows.Forms.Padding(13, 0, 0, 0);
+            this.panel8.Size = new System.Drawing.Size(1603, 626);
+            this.panel8.TabIndex = 21;
+            // 
+            // tbGetFullRecordResponse
+            // 
+            this.tbGetFullRecordResponse.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tbGetFullRecordResponse.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbGetFullRecordResponse.Location = new System.Drawing.Point(13, 25);
+            this.tbGetFullRecordResponse.Multiline = true;
+            this.tbGetFullRecordResponse.Name = "tbGetFullRecordResponse";
+            this.tbGetFullRecordResponse.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.tbGetFullRecordResponse.Size = new System.Drawing.Size(1590, 601);
+            this.tbGetFullRecordResponse.TabIndex = 21;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label12.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(13, 0);
+            this.label12.Name = "label12";
+            this.label12.Padding = new System.Windows.Forms.Padding(0, 0, 0, 10);
+            this.label12.Size = new System.Drawing.Size(60, 25);
+            this.label12.TabIndex = 10;
+            this.label12.Text = "Response";
             // 
             // panel4
             // 
@@ -309,35 +473,15 @@
             this.label11.TabIndex = 9;
             this.label11.Text = "FHIR URL";
             // 
-            // btnGetFullRecord
+            // lblGetFullRecordFhirUrl
             // 
-            this.btnGetFullRecord.Location = new System.Drawing.Point(513, 43);
-            this.btnGetFullRecord.Name = "btnGetFullRecord";
-            this.btnGetFullRecord.Size = new System.Drawing.Size(132, 24);
-            this.btnGetFullRecord.TabIndex = 9;
-            this.btnGetFullRecord.Text = "Get full record";
-            this.btnGetFullRecord.UseVisualStyleBackColor = true;
-            this.btnGetFullRecord.Click += new System.EventHandler(this.btnGetFullRecord_Click);
-            // 
-            // tbPatientGuid
-            // 
-            this.tbPatientGuid.Location = new System.Drawing.Point(113, 43);
-            this.tbPatientGuid.Name = "tbPatientGuid";
-            this.tbPatientGuid.Size = new System.Drawing.Size(383, 23);
-            this.tbPatientGuid.TabIndex = 8;
-            this.tbPatientGuid.Text = "00b87973-f3a3-4db6-a4d9-a559db2660e7";
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label12.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(13, 0);
-            this.label12.Name = "label12";
-            this.label12.Padding = new System.Windows.Forms.Padding(0, 0, 0, 10);
-            this.label12.Size = new System.Drawing.Size(60, 25);
-            this.label12.TabIndex = 10;
-            this.label12.Text = "Response";
+            this.lblGetFullRecordFhirUrl.AutoSize = true;
+            this.lblGetFullRecordFhirUrl.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblGetFullRecordFhirUrl.Location = new System.Drawing.Point(113, 10);
+            this.lblGetFullRecordFhirUrl.Name = "lblGetFullRecordFhirUrl";
+            this.lblGetFullRecordFhirUrl.Size = new System.Drawing.Size(308, 14);
+            this.lblGetFullRecordFhirUrl.TabIndex = 16;
+            this.lblGetFullRecordFhirUrl.Text = "/{odsCode}/Patient/{id}/$everythingnobinary";
             // 
             // label5
             // 
@@ -350,19 +494,27 @@
             this.label5.TabIndex = 11;
             this.label5.Text = "Patient GUID";
             // 
-            // lblGetFullRecordFhirUrl
+            // tbPatientGuid
             // 
-            this.lblGetFullRecordFhirUrl.AutoSize = true;
-            this.lblGetFullRecordFhirUrl.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblGetFullRecordFhirUrl.Location = new System.Drawing.Point(113, 10);
-            this.lblGetFullRecordFhirUrl.Name = "lblGetFullRecordFhirUrl";
-            this.lblGetFullRecordFhirUrl.Size = new System.Drawing.Size(308, 14);
-            this.lblGetFullRecordFhirUrl.TabIndex = 16;
-            this.lblGetFullRecordFhirUrl.Text = "/{odsCode}/Patient/{id}/$everythingnobinary";
+            this.tbPatientGuid.Location = new System.Drawing.Point(113, 43);
+            this.tbPatientGuid.Name = "tbPatientGuid";
+            this.tbPatientGuid.Size = new System.Drawing.Size(383, 23);
+            this.tbPatientGuid.TabIndex = 8;
+            this.tbPatientGuid.Text = "00b87973-f3a3-4db6-a4d9-a559db2660e7";
+            // 
+            // btnGetFullRecord
+            // 
+            this.btnGetFullRecord.Location = new System.Drawing.Point(513, 43);
+            this.btnGetFullRecord.Name = "btnGetFullRecord";
+            this.btnGetFullRecord.Size = new System.Drawing.Size(132, 24);
+            this.btnGetFullRecord.TabIndex = 9;
+            this.btnGetFullRecord.Text = "Get full record";
+            this.btnGetFullRecord.UseVisualStyleBackColor = true;
+            this.btnGetFullRecord.Click += new System.EventHandler(this.btnGetFullRecord_Click);
             // 
             // tabPage3
             // 
-            this.tabPage3.Controls.Add(this.textBox3);
+            this.tabPage3.Controls.Add(this.tbAddConditionResponse);
             this.tabPage3.Controls.Add(this.label14);
             this.tabPage3.Controls.Add(this.panel5);
             this.tabPage3.Location = new System.Drawing.Point(4, 24);
@@ -373,6 +525,29 @@
             this.tabPage3.Text = "Add condition";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
+            // tbAddConditionResponse
+            // 
+            this.tbAddConditionResponse.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tbAddConditionResponse.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbAddConditionResponse.Location = new System.Drawing.Point(3, 463);
+            this.tbAddConditionResponse.Multiline = true;
+            this.tbAddConditionResponse.Name = "tbAddConditionResponse";
+            this.tbAddConditionResponse.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.tbAddConditionResponse.Size = new System.Drawing.Size(1603, 248);
+            this.tbAddConditionResponse.TabIndex = 23;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label14.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Location = new System.Drawing.Point(3, 438);
+            this.label14.Name = "label14";
+            this.label14.Padding = new System.Windows.Forms.Padding(0, 0, 0, 10);
+            this.label14.Size = new System.Drawing.Size(60, 25);
+            this.label14.TabIndex = 21;
+            this.label14.Text = "Response";
+            // 
             // panel5
             // 
             this.panel5.Controls.Add(this.tableLayoutPanel3);
@@ -381,142 +556,6 @@
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(1603, 435);
             this.panel5.TabIndex = 20;
-            // 
-            // panel3
-            // 
-            this.panel3.Controls.Add(this.tableLayoutPanel1);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel3.Location = new System.Drawing.Point(3, 3);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1603, 82);
-            this.panel3.TabIndex = 11;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(13, 40);
-            this.label4.Name = "label4";
-            this.label4.Padding = new System.Windows.Forms.Padding(0, 6, 0, 0);
-            this.label4.Size = new System.Drawing.Size(79, 21);
-            this.label4.TabIndex = 7;
-            this.label4.Text = "NHS number";
-            // 
-            // lblGetDemographicsFhirUrl
-            // 
-            this.lblGetDemographicsFhirUrl.AutoSize = true;
-            this.lblGetDemographicsFhirUrl.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblGetDemographicsFhirUrl.Location = new System.Drawing.Point(113, 10);
-            this.lblGetDemographicsFhirUrl.Name = "lblGetDemographicsFhirUrl";
-            this.lblGetDemographicsFhirUrl.Size = new System.Drawing.Size(294, 14);
-            this.lblGetDemographicsFhirUrl.TabIndex = 8;
-            this.lblGetDemographicsFhirUrl.Text = "/{odsCode}/Patient?identifier=NHS|{nhsNo}";
-            // 
-            // tbNhsNumber
-            // 
-            this.tbNhsNumber.Location = new System.Drawing.Point(113, 43);
-            this.tbNhsNumber.Name = "tbNhsNumber";
-            this.tbNhsNumber.Size = new System.Drawing.Size(383, 23);
-            this.tbNhsNumber.TabIndex = 3;
-            this.tbNhsNumber.Text = "6936548122";
-            // 
-            // btnGetDemographics
-            // 
-            this.btnGetDemographics.Location = new System.Drawing.Point(513, 43);
-            this.btnGetDemographics.Name = "btnGetDemographics";
-            this.btnGetDemographics.Size = new System.Drawing.Size(132, 24);
-            this.btnGetDemographics.TabIndex = 4;
-            this.btnGetDemographics.Text = "Get demographics";
-            this.btnGetDemographics.UseVisualStyleBackColor = true;
-            this.btnGetDemographics.Click += new System.EventHandler(this.btnGetDemographics_Click);
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label17.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.Location = new System.Drawing.Point(13, 0);
-            this.label17.Name = "label17";
-            this.label17.Padding = new System.Windows.Forms.Padding(0, 0, 0, 10);
-            this.label17.Size = new System.Drawing.Size(60, 25);
-            this.label17.TabIndex = 13;
-            this.label17.Text = "Response";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(13, 10);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(60, 15);
-            this.label7.TabIndex = 9;
-            this.label7.Text = "FHIR URL";
-            // 
-            // tbGetDemographicsResult
-            // 
-            this.tbGetDemographicsResult.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tbGetDemographicsResult.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbGetDemographicsResult.Location = new System.Drawing.Point(13, 25);
-            this.tbGetDemographicsResult.Multiline = true;
-            this.tbGetDemographicsResult.Name = "tbGetDemographicsResult";
-            this.tbGetDemographicsResult.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.tbGetDemographicsResult.Size = new System.Drawing.Size(1590, 601);
-            this.tbGetDemographicsResult.TabIndex = 14;
-            // 
-            // tableLayoutPanel1
-            // 
-            this.tableLayoutPanel1.ColumnCount = 3;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 400F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Controls.Add(this.label7, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.btnGetDemographics, 2, 1);
-            this.tableLayoutPanel1.Controls.Add(this.tbNhsNumber, 1, 1);
-            this.tableLayoutPanel1.Controls.Add(this.lblGetDemographicsFhirUrl, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.label4, 0, 1);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.Padding = new System.Windows.Forms.Padding(10);
-            this.tableLayoutPanel1.RowCount = 2;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1603, 82);
-            this.tableLayoutPanel1.TabIndex = 13;
-            // 
-            // panel7
-            // 
-            this.panel7.Controls.Add(this.tbGetDemographicsResult);
-            this.panel7.Controls.Add(this.label17);
-            this.panel7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel7.Location = new System.Drawing.Point(3, 85);
-            this.panel7.Name = "panel7";
-            this.panel7.Padding = new System.Windows.Forms.Padding(13, 0, 0, 0);
-            this.panel7.Size = new System.Drawing.Size(1603, 626);
-            this.panel7.TabIndex = 13;
-            // 
-            // panel8
-            // 
-            this.panel8.Controls.Add(this.tbGetFullRecordResponse);
-            this.panel8.Controls.Add(this.label12);
-            this.panel8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel8.Location = new System.Drawing.Point(3, 85);
-            this.panel8.Name = "panel8";
-            this.panel8.Padding = new System.Windows.Forms.Padding(13, 0, 0, 0);
-            this.panel8.Size = new System.Drawing.Size(1603, 626);
-            this.panel8.TabIndex = 21;
-            // 
-            // tbGetFullRecordResponse
-            // 
-            this.tbGetFullRecordResponse.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tbGetFullRecordResponse.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbGetFullRecordResponse.Location = new System.Drawing.Point(13, 25);
-            this.tbGetFullRecordResponse.Multiline = true;
-            this.tbGetFullRecordResponse.Name = "tbGetFullRecordResponse";
-            this.tbGetFullRecordResponse.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.tbGetFullRecordResponse.Size = new System.Drawing.Size(1590, 601);
-            this.tbGetFullRecordResponse.TabIndex = 21;
             // 
             // tableLayoutPanel3
             // 
@@ -541,6 +580,17 @@
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel3.Size = new System.Drawing.Size(1603, 435);
             this.tableLayoutPanel3.TabIndex = 20;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Location = new System.Drawing.Point(13, 80);
+            this.label13.Name = "label13";
+            this.label13.Padding = new System.Windows.Forms.Padding(0, 0, 0, 10);
+            this.label13.Size = new System.Drawing.Size(60, 25);
+            this.label13.TabIndex = 11;
+            this.label13.Text = "Condition";
             // 
             // label6
             // 
@@ -581,27 +631,6 @@
             this.tbAddConditionPatientGuid.TabIndex = 8;
             this.tbAddConditionPatientGuid.Text = "00b87973-f3a3-4db6-a4d9-a559db2660e7";
             // 
-            // btnPostCondition
-            // 
-            this.btnPostCondition.Location = new System.Drawing.Point(913, 83);
-            this.btnPostCondition.Name = "btnPostCondition";
-            this.btnPostCondition.Size = new System.Drawing.Size(132, 24);
-            this.btnPostCondition.TabIndex = 9;
-            this.btnPostCondition.Text = "Post condition";
-            this.btnPostCondition.UseVisualStyleBackColor = true;
-            this.btnPostCondition.Click += new System.EventHandler(this.btnPostCondition_Click);
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(13, 80);
-            this.label13.Name = "label13";
-            this.label13.Padding = new System.Windows.Forms.Padding(0, 0, 0, 10);
-            this.label13.Size = new System.Drawing.Size(60, 25);
-            this.label13.TabIndex = 11;
-            this.label13.Text = "Condition";
-            // 
             // tbAddConditionPayload
             // 
             this.tbAddConditionPayload.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -613,28 +642,155 @@
             this.tbAddConditionPayload.TabIndex = 22;
             this.tbAddConditionPayload.Text = resources.GetString("tbAddConditionPayload.Text");
             // 
-            // label14
+            // btnPostCondition
             // 
-            this.label14.AutoSize = true;
-            this.label14.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label14.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(3, 438);
-            this.label14.Name = "label14";
-            this.label14.Padding = new System.Windows.Forms.Padding(0, 0, 0, 10);
-            this.label14.Size = new System.Drawing.Size(60, 25);
-            this.label14.TabIndex = 21;
-            this.label14.Text = "Response";
+            this.btnPostCondition.Location = new System.Drawing.Point(913, 83);
+            this.btnPostCondition.Name = "btnPostCondition";
+            this.btnPostCondition.Size = new System.Drawing.Size(132, 24);
+            this.btnPostCondition.TabIndex = 9;
+            this.btnPostCondition.Text = "Post condition";
+            this.btnPostCondition.UseVisualStyleBackColor = true;
+            this.btnPostCondition.Click += new System.EventHandler(this.btnPostCondition_Click);
             // 
-            // textBox3
+            // tabPage4
             // 
-            this.textBox3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox3.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox3.Location = new System.Drawing.Point(3, 463);
-            this.textBox3.Multiline = true;
-            this.textBox3.Name = "textBox3";
-            this.textBox3.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBox3.Size = new System.Drawing.Size(1603, 248);
-            this.textBox3.TabIndex = 23;
+            this.tabPage4.Controls.Add(this.tbSubscriptionResponse);
+            this.tabPage4.Controls.Add(this.label16);
+            this.tabPage4.Controls.Add(this.panel9);
+            this.tabPage4.Location = new System.Drawing.Point(4, 24);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage4.Size = new System.Drawing.Size(1609, 714);
+            this.tabPage4.TabIndex = 3;
+            this.tabPage4.Text = "Subscribe to patient changes";
+            this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // panel9
+            // 
+            this.panel9.Controls.Add(this.tableLayoutPanel4);
+            this.panel9.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel9.Location = new System.Drawing.Point(3, 3);
+            this.panel9.Name = "panel9";
+            this.panel9.Size = new System.Drawing.Size(1603, 435);
+            this.panel9.TabIndex = 21;
+            // 
+            // tableLayoutPanel4
+            // 
+            this.tableLayoutPanel4.ColumnCount = 3;
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 800F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel4.Controls.Add(this.label8, 0, 2);
+            this.tableLayoutPanel4.Controls.Add(this.label15, 0, 0);
+            this.tableLayoutPanel4.Controls.Add(this.lblSubscribeFhirUrl, 1, 0);
+            this.tableLayoutPanel4.Controls.Add(this.label19, 0, 1);
+            this.tableLayoutPanel4.Controls.Add(this.tbSubscriptionGuid, 1, 1);
+            this.tableLayoutPanel4.Controls.Add(this.tbSubscriptionPayload, 1, 2);
+            this.tableLayoutPanel4.Controls.Add(this.btnPutSubscription, 2, 2);
+            this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel4.Name = "tableLayoutPanel4";
+            this.tableLayoutPanel4.Padding = new System.Windows.Forms.Padding(10);
+            this.tableLayoutPanel4.RowCount = 3;
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(1603, 435);
+            this.tableLayoutPanel4.TabIndex = 20;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(13, 80);
+            this.label8.Name = "label8";
+            this.label8.Padding = new System.Windows.Forms.Padding(0, 0, 0, 10);
+            this.label8.Size = new System.Drawing.Size(76, 25);
+            this.label8.TabIndex = 11;
+            this.label8.Text = "Subscription";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.Location = new System.Drawing.Point(13, 10);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(60, 15);
+            this.label15.TabIndex = 9;
+            this.label15.Text = "FHIR URL";
+            // 
+            // lblSubscribeFhirUrl
+            // 
+            this.lblSubscribeFhirUrl.AutoSize = true;
+            this.lblSubscribeFhirUrl.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSubscribeFhirUrl.Location = new System.Drawing.Point(113, 10);
+            this.lblSubscribeFhirUrl.Name = "lblSubscribeFhirUrl";
+            this.lblSubscribeFhirUrl.Size = new System.Drawing.Size(203, 14);
+            this.lblSubscribeFhirUrl.TabIndex = 16;
+            this.lblSubscribeFhirUrl.Text = "/{odsCode}/Subscription/{id}";
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.Location = new System.Drawing.Point(13, 40);
+            this.label19.Name = "label19";
+            this.label19.Padding = new System.Windows.Forms.Padding(0, 6, 0, 0);
+            this.label19.Size = new System.Drawing.Size(79, 36);
+            this.label19.TabIndex = 11;
+            this.label19.Text = "Subscription GUID";
+            // 
+            // tbSubscriptionGuid
+            // 
+            this.tbSubscriptionGuid.Location = new System.Drawing.Point(113, 43);
+            this.tbSubscriptionGuid.Name = "tbSubscriptionGuid";
+            this.tbSubscriptionGuid.Size = new System.Drawing.Size(383, 23);
+            this.tbSubscriptionGuid.TabIndex = 8;
+            this.tbSubscriptionGuid.Text = "00b87973-f3a3-4db6-a4d9-a559db2660e7";
+            // 
+            // tbSubscriptionPayload
+            // 
+            this.tbSubscriptionPayload.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbSubscriptionPayload.Location = new System.Drawing.Point(113, 83);
+            this.tbSubscriptionPayload.Multiline = true;
+            this.tbSubscriptionPayload.Name = "tbSubscriptionPayload";
+            this.tbSubscriptionPayload.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.tbSubscriptionPayload.Size = new System.Drawing.Size(794, 339);
+            this.tbSubscriptionPayload.TabIndex = 22;
+            this.tbSubscriptionPayload.Text = resources.GetString("tbSubscriptionPayload.Text");
+            // 
+            // btnPutSubscription
+            // 
+            this.btnPutSubscription.Location = new System.Drawing.Point(913, 83);
+            this.btnPutSubscription.Name = "btnPutSubscription";
+            this.btnPutSubscription.Size = new System.Drawing.Size(132, 24);
+            this.btnPutSubscription.TabIndex = 9;
+            this.btnPutSubscription.Text = "Put subscription";
+            this.btnPutSubscription.UseVisualStyleBackColor = true;
+            this.btnPutSubscription.Click += new System.EventHandler(this.btnPutSubscription_Click);
+            // 
+            // tbSubscriptionResponse
+            // 
+            this.tbSubscriptionResponse.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tbSubscriptionResponse.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbSubscriptionResponse.Location = new System.Drawing.Point(3, 463);
+            this.tbSubscriptionResponse.Multiline = true;
+            this.tbSubscriptionResponse.Name = "tbSubscriptionResponse";
+            this.tbSubscriptionResponse.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.tbSubscriptionResponse.Size = new System.Drawing.Size(1603, 248);
+            this.tbSubscriptionResponse.TabIndex = 25;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label16.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.Location = new System.Drawing.Point(3, 438);
+            this.label16.Name = "label16";
+            this.label16.Padding = new System.Windows.Forms.Padding(0, 0, 0, 10);
+            this.label16.Size = new System.Drawing.Size(60, 25);
+            this.label16.TabIndex = 24;
+            this.label16.Text = "Response";
             // 
             // SecondaryCareSystemForm
             // 
@@ -656,22 +812,27 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
+            this.panel7.ResumeLayout(false);
+            this.panel7.PerformLayout();
+            this.panel3.ResumeLayout(false);
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
+            this.panel8.ResumeLayout(false);
+            this.panel8.PerformLayout();
             this.panel4.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
             this.panel5.ResumeLayout(false);
-            this.panel3.ResumeLayout(false);
-            this.tableLayoutPanel1.ResumeLayout(false);
-            this.tableLayoutPanel1.PerformLayout();
-            this.panel7.ResumeLayout(false);
-            this.panel7.PerformLayout();
-            this.panel8.ResumeLayout(false);
-            this.panel8.PerformLayout();
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel3.PerformLayout();
+            this.tabPage4.ResumeLayout(false);
+            this.tabPage4.PerformLayout();
+            this.panel9.ResumeLayout(false);
+            this.tableLayoutPanel4.ResumeLayout(false);
+            this.tableLayoutPanel4.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -723,10 +884,22 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox tbAddConditionPatientGuid;
         private System.Windows.Forms.Button btnPostCondition;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox tbAddConditionResponse;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.TextBox tbAddConditionPayload;
+        private System.Windows.Forms.TabPage tabPage4;
+        private System.Windows.Forms.Panel panel9;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label lblSubscribeFhirUrl;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.TextBox tbSubscriptionGuid;
+        private System.Windows.Forms.TextBox tbSubscriptionPayload;
+        private System.Windows.Forms.Button btnPutSubscription;
+        private System.Windows.Forms.TextBox tbSubscriptionResponse;
+        private System.Windows.Forms.Label label16;
     }
 }
 

@@ -67,7 +67,25 @@ namespace DotNetSecondaryCareSystem
                hash: Utilities.GenerateHash(restPath, payload),
                payload: payload);
 
-            this.textBox3.Text = FormatWebRequestResponse(response);
+            this.tbAddConditionResponse.Text = FormatWebRequestResponse(response);
+        }
+
+        private void btnPutSubscription_Click(object sender, EventArgs e)
+        {
+            string baseUrl = this.tbBaseUrl.Text;
+            string restPath = this.lblSubscribeFhirUrl.Text;
+            string odsCode = this.tbOdsCode.Text;
+            string patientGuid = this.tbSubscriptionGuid.Text;
+            string payload = this.tbSubscriptionPayload.Text;
+
+            WebResponse response = Utilities.PutCimUrl(
+               baseUrl: baseUrl,
+               relativeUrl: Utilities.FormatRestPath(restPath, odsCode, patientGuid),
+               apiKey: tbApiKey.Text,
+               hash: Utilities.GenerateHash(restPath, payload),
+               payload: payload);
+
+            this.tbSubscriptionResponse.Text = FormatWebRequestResponse(response);
         }
 
         private static string FormatWebRequestResponse(WebResponse webResponse)
@@ -81,5 +99,7 @@ namespace DotNetSecondaryCareSystem
 
             return result;
         }
+
+        
     }
 }
