@@ -33,10 +33,9 @@ public class OpenHRTransformer implements Transformer {
     }
 
     public String fromFHIRCondition(Condition condition) throws TransformException {
-        return null;
-//        FromFHIRTransformer transformer = new FromFHIRTransformer();
-//        OpenHR001OpenHealthRecord openHR = transformer.transformFromCondition(condition);
-//        return serializeOpenHR(openHR);
+        FromFHIRTransformer transformer = new FromFHIRTransformer();
+        OpenHR001OpenHealthRecord openHR = transformer.transformFromCondition(condition);
+        return serializeOpenHR(openHR);
     }
 
     private OpenHR001OpenHealthRecord deserializeOpenHR(String openHRAsString) throws TransformException {
@@ -53,10 +52,11 @@ public class OpenHRTransformer implements Transformer {
 
     private String serializeOpenHR(OpenHR001OpenHealthRecord openHR) throws TransformException {
         try {
+            ObjectFactory factory = new ObjectFactory();
             StringWriter writer = new StringWriter();
-            JAXBContext context = JAXBContext.newInstance(ObjectFactory.class);
+            JAXBContext context = JAXBContext.newInstance(OpenHR001OpenHealthRecord.class);
             Marshaller jaxbMarshaller = context.createMarshaller();
-            jaxbMarshaller.marshal(openHR, writer);
+            jaxbMarshaller.marshal(factory.createOpenHealthRecord(openHR), writer);
             return writer.toString();
         } catch (JAXBException e) {
             throw new SerializationException("Error deserialising OpenHR", e);

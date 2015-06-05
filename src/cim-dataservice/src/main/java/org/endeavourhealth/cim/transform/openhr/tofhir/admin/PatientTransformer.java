@@ -133,6 +133,8 @@ class PatientTransformer {
         {
             case NHS:
                 return "http://fhir.endeavourhealth.org/identifier#nhsnumber";
+            case ONHS:
+                return "http://fhir.endeavourhealth.org/identifier#oldnhsnumber";
             case CHI:
                 return "http://fhir.endeavourhealth.org/identifier#chinumber";
             case HOSP:

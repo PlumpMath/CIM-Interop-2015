@@ -1,11 +1,14 @@
 package org.endeavourhealth.cim.transform.openhr.fromfhir;
 
 import org.endeavourhealth.cim.transform.TransformException;
+import org.endeavourhealth.cim.transform.TransformFeatureNotSupportedException;
+import org.endeavourhealth.cim.transform.TransformHelper;
 import org.endeavourhealth.cim.transform.openhr.fromfhir.clinical.ConditionTransformer;
-import org.endeavourhealth.cim.transform.schemas.openhr.OpenHR001OpenHealthRecord;
+import org.endeavourhealth.cim.transform.schemas.openhr.*;
 import org.hl7.fhir.instance.model.Condition;
 
-import javax.xml.datatype.XMLGregorianCalendar;
+import javax.xml.datatype.DatatypeConfigurationException;
+import java.util.Date;
 import java.util.UUID;
 
 public class FromFHIRTransformer {
@@ -15,11 +18,35 @@ public class FromFHIRTransformer {
         return createOpenHRFromContainer(container);
     }
 
-    private OpenHR001OpenHealthRecord createOpenHRFromContainer(OpenHRContainer container) {
+    private OpenHR001OpenHealthRecord createOpenHRFromContainer(OpenHRContainer container) throws TransformException {
         OpenHR001OpenHealthRecord openHR = new OpenHR001OpenHealthRecord();
         openHR.setId(UUID.randomUUID().toString());
-//        openHR.setCreationTime(new XMLGregorianCalendar().);
 
+        try {
+            openHR.setCreationTime(TransformHelper.fromDate(new Date()));
+        } catch (DatatypeConfigurationException e) {
+            throw new TransformFeatureNotSupportedException("Error creating Date", e);
+        }
+
+        OpenHR001AuthorSystem authorSystem = new OpenHR001AuthorSystem();
+        authorSystem.setSystemType(VocMessageAuthorSystemType.EXT);
+        OpenHR001MessageAuthor author = new OpenHR001MessageAuthor();
+        author.setSystem(authorSystem);
+        openHR.setAuthor(author);
+
+        OpenHR001ContentSpecification contentSpecification = new OpenHR001ContentSpecification();
+        contentSpecification.setSpecification("37231000000106");
+        openHR.setContentSpecification(contentSpecification);
+
+        OpenHR001HealthDomain healthDomain = new OpenHR001HealthDomain();
+
+        for (OpenHR001Event event: container.getEvents())
+            healthDomain.getEvent().add((OpenHR001HealthDomain.Event)event);
+
+        for (OpenHR001Problem problem: container.getProblems())
+            healthDomain.getProblem().add(problem);
+
+        openHR.setHealthDomain(healthDomain);
 
         return openHR;
     }
