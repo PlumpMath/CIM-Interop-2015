@@ -7,6 +7,7 @@ import org.endeavourhealth.cim.transform.Transformer;
 import org.endeavourhealth.cim.transform.TransformerFactory;
 import org.hl7.fhir.instance.formats.JsonParser;
 import org.hl7.fhir.instance.model.Bundle;
+import org.hl7.fhir.instance.model.Subscription;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -24,7 +25,7 @@ public class PollerProcessor implements org.apache.camel.Processor {
     }
 
     private ArrayList<String> _services = new ArrayList<>();
-    private HashMap<UUID, PollingSubscription> _subscriptions = new HashMap<>();
+    private HashMap<UUID, Subscription> _subscriptions = new HashMap<>();
 
     @Override
     public void process(Exchange exchange) throws Exception {
@@ -34,8 +35,8 @@ public class PollerProcessor implements org.apache.camel.Processor {
         // Check through subscriptions for any interested in this patient
         ArrayList<String> subscriberCallbacks = new ArrayList<>();
 
-        for(PollingSubscription subscription : _subscriptions.values()) {
-            subscriberCallbacks.add("log:"+subscription.subscriptionId.toString());
+        for(Subscription subscription : _subscriptions.values()) {
+            subscriberCallbacks.add(subscription.getChannel().getEndpoint());
         }
 
         if (subscriberCallbacks.size() > 0) {
@@ -53,8 +54,7 @@ public class PollerProcessor implements org.apache.camel.Processor {
         exchange.getIn().setHeader("Callbacks", subscriberCallbacks);
     }
 
-    public void addSubscription(UUID subscriptionId, String odsCode, String message) {
-        PollingSubscription subscription = new PollingSubscription(subscriptionId, odsCode, message);
+    public void addSubscription(UUID subscriptionId, String odsCode, Subscription subscription) {
         _subscriptions.put(subscriptionId, subscription);
 
         if (_services.contains(odsCode) == false)

@@ -27,9 +27,15 @@ public class GetChangedPatients implements org.apache.camel.Processor {
                 return;
         }
 
-        IDataAdapter dataAdapter = AdapterFactory.getDataAdapterForService(odsCode);
-        ArrayList<UUID> changedPatientIds = dataAdapter.getChangedPatients(dateUpdated);
-        exchange.getIn().setBody(changedPatientIds);
+        try {
+            IDataAdapter dataAdapter = AdapterFactory.getDataAdapterForService(odsCode);
+            ArrayList<UUID> changedPatientIds = dataAdapter.getChangedPatients(dateUpdated);
+            exchange.getIn().setBody(changedPatientIds);
+        } catch (Exception e) {
+            // Rollback poll date as this poll failed
+            if (_lastPoll != null)
+                _lastPoll = dateUpdated;
+        }
     }
 }
 
