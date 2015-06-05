@@ -1,5 +1,6 @@
 package org.endeavourhealth.cim.transform.openhr.fromfhir;
 
+import org.endeavourhealth.cim.transform.SourceDocumentInvalidException;
 import org.endeavourhealth.cim.transform.TransformException;
 import org.endeavourhealth.cim.transform.TransformFeatureNotSupportedException;
 import org.endeavourhealth.cim.transform.TransformHelper;
@@ -25,7 +26,7 @@ public class FromFHIRTransformer {
         try {
             openHR.setCreationTime(TransformHelper.fromDate(new Date()));
         } catch (DatatypeConfigurationException e) {
-            throw new TransformFeatureNotSupportedException("Error creating Date", e);
+            throw new SourceDocumentInvalidException("Error creating Date", e);
         }
 
         OpenHR001AuthorSystem authorSystem = new OpenHR001AuthorSystem();
@@ -40,8 +41,8 @@ public class FromFHIRTransformer {
 
         OpenHR001HealthDomain healthDomain = new OpenHR001HealthDomain();
 
-        for (OpenHR001Event event: container.getEvents())
-            healthDomain.getEvent().add((OpenHR001HealthDomain.Event)event);
+        for (OpenHR001HealthDomain.Event event: container.getEvents())
+            healthDomain.getEvent().add(event);
 
         for (OpenHR001Problem problem: container.getProblems())
             healthDomain.getProblem().add(problem);
