@@ -65,3 +65,4 @@ Maven__*.xml
 /src/mock-cms/DotNetGPSystem/obj
 /src/mock-subsidiary/DotNetSecondaryCareSystem/bin
 /src/mock-subsidiary/DotNetSecondaryCareSystem/obj
+/src/mock-subsidiary/packages

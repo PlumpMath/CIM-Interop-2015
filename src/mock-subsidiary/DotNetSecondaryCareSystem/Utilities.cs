@@ -12,20 +12,41 @@ namespace DotNetSecondaryCareSystem
 {
     internal static class Utilities
     {
-        public static WebResponse MakeWebRequest(string baseUrl, string relativeUrl, string hash)
+        public static WebResponse GetCimUrl(string baseUrl, string relativeUrl, string apiKey, string hash)
+        {
+            return MakeWebRequest("GET", baseUrl, relativeUrl, apiKey, hash, string.Empty);
+        }
+
+        public static WebResponse PostCimUrl(string baseUrl, string relativeUrl, string apiKey, string hash, string payload)
+        {
+            return MakeWebRequest("POST", baseUrl, relativeUrl, apiKey, hash, payload);
+        }
+
+        public static WebResponse MakeWebRequest(string method, string baseUrl, string relativeUrl, string apiKey, string hash, string payload)
         {
             string url = baseUrl + relativeUrl;
 
             HttpWebRequest webRequest = (HttpWebRequest)WebRequest.Create(url);
-            webRequest.Method = "GET";
-            webRequest.Headers.Add("api_key", "swagger");
+            webRequest.Method = method;
+            webRequest.Headers.Add("api_key", apiKey);
             webRequest.Headers.Add("hash", hash);
-
+            
             HttpStatusCode statusCode = HttpStatusCode.NotFound;
             string response;
 
             try
             {
+                if (method == "POST")
+                {
+                    byte[] data = Encoding.ASCII.GetBytes(payload ?? string.Empty);
+
+                    webRequest.ContentType = "application/json";
+                    webRequest.ContentLength = data.Length;
+
+                    using (Stream stream = webRequest.GetRequestStream())
+                        stream.Write(data, 0, data.Length);
+                }
+
                 using (HttpWebResponse webResponse = (HttpWebResponse)webRequest.GetResponse())
                 {
                     statusCode = webResponse.StatusCode;
