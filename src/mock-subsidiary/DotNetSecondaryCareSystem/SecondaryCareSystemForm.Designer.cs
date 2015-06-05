@@ -78,6 +78,8 @@
             this.tbAddConditionPayload = new System.Windows.Forms.TextBox();
             this.btnPostCondition = new System.Windows.Forms.Button();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.tbSubscriptionResponse = new System.Windows.Forms.TextBox();
+            this.label16 = new System.Windows.Forms.Label();
             this.panel9 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.label8 = new System.Windows.Forms.Label();
@@ -87,8 +89,6 @@
             this.tbSubscriptionGuid = new System.Windows.Forms.TextBox();
             this.tbSubscriptionPayload = new System.Windows.Forms.TextBox();
             this.btnPutSubscription = new System.Windows.Forms.Button();
-            this.tbSubscriptionResponse = new System.Windows.Forms.TextBox();
-            this.label16 = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel6.SuspendLayout();
@@ -665,6 +665,29 @@
             this.tabPage4.Text = "Subscribe to patient changes";
             this.tabPage4.UseVisualStyleBackColor = true;
             // 
+            // tbSubscriptionResponse
+            // 
+            this.tbSubscriptionResponse.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tbSubscriptionResponse.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbSubscriptionResponse.Location = new System.Drawing.Point(3, 463);
+            this.tbSubscriptionResponse.Multiline = true;
+            this.tbSubscriptionResponse.Name = "tbSubscriptionResponse";
+            this.tbSubscriptionResponse.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.tbSubscriptionResponse.Size = new System.Drawing.Size(1603, 248);
+            this.tbSubscriptionResponse.TabIndex = 25;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label16.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.Location = new System.Drawing.Point(3, 438);
+            this.label16.Name = "label16";
+            this.label16.Padding = new System.Windows.Forms.Padding(0, 0, 0, 10);
+            this.label16.Size = new System.Drawing.Size(60, 25);
+            this.label16.TabIndex = 24;
+            this.label16.Text = "Response";
+            // 
             // panel9
             // 
             this.panel9.Controls.Add(this.tableLayoutPanel4);
@@ -768,29 +791,6 @@
             this.btnPutSubscription.Text = "Put subscription";
             this.btnPutSubscription.UseVisualStyleBackColor = true;
             this.btnPutSubscription.Click += new System.EventHandler(this.btnPutSubscription_Click);
-            // 
-            // tbSubscriptionResponse
-            // 
-            this.tbSubscriptionResponse.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tbSubscriptionResponse.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbSubscriptionResponse.Location = new System.Drawing.Point(3, 463);
-            this.tbSubscriptionResponse.Multiline = true;
-            this.tbSubscriptionResponse.Name = "tbSubscriptionResponse";
-            this.tbSubscriptionResponse.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.tbSubscriptionResponse.Size = new System.Drawing.Size(1603, 248);
-            this.tbSubscriptionResponse.TabIndex = 25;
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label16.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(3, 438);
-            this.label16.Name = "label16";
-            this.label16.Padding = new System.Windows.Forms.Padding(0, 0, 0, 10);
-            this.label16.Size = new System.Drawing.Size(60, 25);
-            this.label16.TabIndex = 24;
-            this.label16.Text = "Response";
             // 
             // SecondaryCareSystemForm
             // 
