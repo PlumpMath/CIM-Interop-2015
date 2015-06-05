@@ -604,7 +604,7 @@
                         "description": "Message hash value",
                         "type": "string",
                         "enum": [
-                            "eHJPJr24XGuq/YU8LQ1Xj2LXHsHcSeQXQJWXt5GgUh0="
+                            "vGsa0MM8wPUCLzq0l0xATEeq0a6Ckcgfs25mtU1S/v4="
                         ]
                     },
                     {

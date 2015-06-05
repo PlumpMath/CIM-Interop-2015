@@ -1,17 +1,45 @@
 {
-  "resourceType":"Condition",
-  "dateAsserted":"2015-05-26T23:54:57Z",
-  "code":{
-    "coding":[
+  "resourceType": "Condition",
+  "id": "2070",
+  "subject": {
+    "reference": "Patient/207"
+  },
+  "asserter": {
+    "reference": "Practitioner/5"
+  },
+  "dateAsserted": "1982-02-01",
+  "code": {
+    "coding": [
       {
-        "system":"http://snomed.info/sct",
-        "code":"390798007",
-        "display":"Asthma finding"
+        "system": "READ2",
+        "code": "S2420",
+        "display": "Fracture of scaphoid"
+      },
+      {
+        "system": "SNOMED",
+        "code": "31975004",
+        "display": "Fracture of scaphoid"
+      },
+      {
+        "system": "http://www.e-mis.com/emisopen/MedicalRecord/Problem/ProblemStatus",
+        "code": "0",
+        "display": "Past Problem/Resolved"
       }
     ]
   },
-  "clinicalStatus":"confirmed",
-  "onsetString":"6HaaL7FClauf97j-ophQfw",
-  "abatementString":"uY2Pv3v-caH9ccDBGu4MUQ",
-  "notes":"mPz3dRD_7kXMUn3H6bZlCQ"
+  "severity": {
+    "coding": [
+      {
+        "system": "SNOMED",
+        "code": "24484000",
+        "display": "Severe"
+      },
+      {
+        "system": "http://www.e-mis.com/emisopen/MedicalRecord/Problem/Significance",
+        "code": "1",
+        "display": "Significant Problem/High Priority"
+      }
+    ]
+  },
+  "notes": " Scanty coase creps"
 }

@@ -84,7 +84,7 @@ public class MockDataAdapter implements IDataAdapter {
 
                 // SOAP Body
                 SOAPElement soapMethodElement = requestMessage.getSOAPBody().addChildElement("UpdatePatient", "", "http://tempuri.org/");
-                SOAPElement soapMethodParamElement1 = soapMethodElement.addChildElement("nhsNumber");
+                SOAPElement soapMethodParamElement1 = soapMethodElement.addChildElement("openHRXml");
                 soapMethodParamElement1.addTextNode(requestData);
                 requestMessage.saveChanges();
 
