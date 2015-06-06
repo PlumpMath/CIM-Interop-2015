@@ -3,6 +3,7 @@ package org.endeavourhealth.cim.transform.openhr.fromfhir.clinical;
 import org.apache.commons.lang3.StringUtils;
 import org.endeavourhealth.cim.transform.SourceDocumentInvalidException;
 import org.endeavourhealth.cim.transform.TransformException;
+import org.endeavourhealth.cim.transform.TransformFeatureNotSupportedException;
 import org.endeavourhealth.cim.transform.TransformHelper;
 import org.endeavourhealth.cim.transform.openhr.fromfhir.OpenHRContainer;
 import org.endeavourhealth.cim.transform.schemas.openhr.*;
@@ -52,7 +53,7 @@ public class ConditionTransformer {
         if (condition.getCode() != null) {
             for (Coding sourceCode: condition.getCode().getCoding()) {
                 DtCodeQualified targetCode = new DtCodeQualified();
-                targetCode.setCodeSystem(sourceCode.getSystem());
+                targetCode.setCodeSystem(convertCodeSystem(sourceCode.getSystem()));
                 targetCode.setCode(sourceCode.getCode());
                 targetCode.setDisplayName(sourceCode.getDisplay());
 
@@ -87,6 +88,18 @@ public class ConditionTransformer {
 
     private static String getPractitionerIdFromReference(Reference reference) {
         return StringUtils.removeStart(reference.getReference(), "Practitioner/");
+    }
+
+    private static String convertCodeSystem(String codeSystem) throws TransformFeatureNotSupportedException {
+        switch (codeSystem)
+        {
+            case "READ2":
+                return "2.16.840.1.113883.2.1.6.2";
+            case "SNOMED":
+                return "2.16.840.1.113883.2.1.3.2.4.15";
+            default:
+                throw new TransformFeatureNotSupportedException("CodeSystem not supported: " + codeSystem);
+        }
     }
 
 }
