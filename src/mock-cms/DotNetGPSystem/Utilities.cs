@@ -6,6 +6,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
+using System.Xml.Linq;
 using System.Xml.Schema;
 using System.Xml.Serialization;
 
@@ -93,6 +94,19 @@ namespace DotNetGPSystem
             {
                 serializer.Serialize(writer, item);
                 return writer.ToString();
+            }
+        }
+
+        public static string FormatXml(string xml)
+        {
+            try
+            {
+                XDocument doc = XDocument.Parse(xml);
+                return doc.ToString();
+            }
+            catch (Exception)
+            {
+                return xml;
             }
         }
     }

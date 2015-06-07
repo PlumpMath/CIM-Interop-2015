@@ -32,28 +32,35 @@ namespace DotNetGPSystem
 
         public void AddTask(DateTime dateStamp, string openHRXml)
         {
-            string taskDescription = "Patient update";
+            string taskName = "External update received";
             string patientName = string.Empty;
+            string description = string.Empty;
             Bitmap taskImage = DotNetGPSystem.Properties.Resources.email;
-            string taskBody = "Update message:" + Environment.NewLine + Environment.NewLine + openHRXml;
+
+            string taskBody = "Update message:" + Environment.NewLine + Environment.NewLine + Utilities.FormatXml(openHRXml);
             
             try
             {
-                OpenHRPatient patient = new OpenHRPatient(openHRXml);
+                OpenHR001OpenHealthRecord openHR = Utilities.Deserialize<OpenHR001OpenHealthRecord>(openHRXml);
 
+                var condition = openHR.healthDomain.@event.FirstOrDefault();
+                
+                OpenHRPatient patient = DataStore.OpenHRPatients.FirstOrDefault(t => new Guid(t.Patient.id) == new Guid(condition.patient));
                 patientName = patient.Person.GetCuiDisplayName();
+
+                description = "Add condition '" + condition.code.displayName + "'";
             }
             catch (Exception e)
             {
                 patientName = "(no patient identified)";
-                taskBody = "Error occurred parsing updated: " + e.Message + Environment.NewLine + Environment.NewLine + taskBody;
+                taskBody = "Error occurred parsing openHR XML: " + e.Message + Environment.NewLine + Environment.NewLine + taskBody;
                 taskImage = DotNetGPSystem.Properties.Resources.email_error;
             }
             
             DataGridViewRow row = (DataGridViewRow)dataGridView.RowTemplate.Clone();
             row.CreateCells(dataGridView);
 
-            row.SetValues(taskImage, dateStamp.ToString("yyyy-MMM-dd HH:mm:ss"), patientName, taskDescription);
+            row.SetValues(taskImage, dateStamp.ToString("yyyy-MMM-dd HH:mm:ss"), patientName, taskName, description);
 
             row.Tag = taskBody;
 

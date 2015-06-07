@@ -83,7 +83,7 @@
     <Compile Include="Controls\TasksControl.Designer.cs">
       <DependentUpon>TasksControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="Data\DataLayer.cs" />
+    <Compile Include="Data\DataStore.cs" />
     <Compile Include="GPSystemForm.cs">
       <SubType>Form</SubType>
     </Compile>
