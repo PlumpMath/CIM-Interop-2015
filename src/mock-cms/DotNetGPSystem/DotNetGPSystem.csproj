@@ -193,7 +193,7 @@
     <EmbeddedResource Include="Data\Samples\0b6ff8de-117e-4994-bbe8-64a628eeda7d.xml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Resources\computer.ico" />
+    <Content Include="Resources\server.ico" />
     <None Include="Resources\email.png" />
     <None Include="Resources\email_error.png" />
     <Content Include="Resources\pencil.png" />

@@ -58,7 +58,7 @@ namespace DotNetSecondaryCareSystem
             string restPath = this.lblAddConditionFhirUrl.Text;
             string odsCode = this.tbOdsCode.Text;
             string patientGuid = this.tbAddConditionPatientGuid.Text;
-            string payload = this.tbAddConditionPayload.Text;
+            string payload = this.tbAddConditionPayload.Text.Replace("<PATIENT_GUID>", patientGuid);
 
             WebResponse response = Utilities.PostCimUrl(
                baseUrl: baseUrl,
