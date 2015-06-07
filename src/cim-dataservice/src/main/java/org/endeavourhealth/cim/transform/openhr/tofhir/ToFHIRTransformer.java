@@ -3,6 +3,7 @@ package org.endeavourhealth.cim.transform.openhr.tofhir;
 import org.endeavourhealth.cim.transform.TransformException;
 import org.endeavourhealth.cim.transform.TransformHelper;
 import org.endeavourhealth.cim.transform.openhr.tofhir.admin.AdminDomainTransformer;
+import org.endeavourhealth.cim.transform.openhr.tofhir.clinical.HealthDomainTransformer;
 import org.endeavourhealth.cim.transform.schemas.openhr.OpenHR001OpenHealthRecord;
 import org.hl7.fhir.instance.model.*;
 
@@ -21,6 +22,7 @@ public class ToFHIRTransformer {
     private FHIRContainer transform(OpenHR001OpenHealthRecord openHR) throws TransformException {
         FHIRContainer container = new FHIRContainer();
         AdminDomainTransformer.transform(container, openHR);
+        HealthDomainTransformer.transform(container, openHR);
         return container;
     }
 
@@ -38,6 +40,12 @@ public class ToFHIRTransformer {
             bundle.addEntry(new Bundle.BundleEntryComponent().setResource(practitioner));
 
         bundle.addEntry(new Bundle.BundleEntryComponent().setResource(container.getPatient()));
+
+        for (Encounter encounter: container.getEncounters().values())
+            bundle.addEntry(new Bundle.BundleEntryComponent().setResource(encounter));
+
+        for (Resource event: container.getClinicalResources().values())
+            bundle.addEntry(new Bundle.BundleEntryComponent().setResource(event));
 
         return bundle;
     }
