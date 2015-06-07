@@ -28,9 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SecondaryCareSystemForm));
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.panel10 = new System.Windows.Forms.Panel();
+            this.label20 = new System.Windows.Forms.Label();
+            this.lblServiceStatus = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
+            this.llServiceStatus = new System.Windows.Forms.LinkLabel();
             this.panel6 = new System.Windows.Forms.Panel();
             this.tbApiKey = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -89,8 +95,19 @@
             this.tbSubscriptionGuid = new System.Windows.Forms.TextBox();
             this.tbSubscriptionPayload = new System.Windows.Forms.TextBox();
             this.btnPutSubscription = new System.Windows.Forms.Button();
+            this.timer = new System.Windows.Forms.Timer(this.components);
+            this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.dataGridView = new System.Windows.Forms.DataGridView();
+            this.colEmpty = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label24 = new System.Windows.Forms.Label();
+            this.tbSubscriptionNhsNumber = new System.Windows.Forms.TextBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label22 = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.panel10.SuspendLayout();
             this.panel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tabControl1.SuspendLayout();
@@ -108,6 +125,12 @@
             this.tabPage4.SuspendLayout();
             this.panel9.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
+            this.tabPage5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
+            this.splitContainer1.Panel1.SuspendLayout();
+            this.splitContainer1.Panel2.SuspendLayout();
+            this.splitContainer1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // panel2
@@ -118,12 +141,13 @@
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
             this.panel2.Padding = new System.Windows.Forms.Padding(0, 0, 0, 1);
-            this.panel2.Size = new System.Drawing.Size(1617, 93);
+            this.panel2.Size = new System.Drawing.Size(1515, 93);
             this.panel2.TabIndex = 2;
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Controls.Add(this.panel10);
             this.panel1.Controls.Add(this.panel6);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.pictureBox1);
@@ -132,8 +156,63 @@
             this.panel1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1617, 92);
+            this.panel1.Size = new System.Drawing.Size(1515, 92);
             this.panel1.TabIndex = 1;
+            // 
+            // panel10
+            // 
+            this.panel10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel10.Controls.Add(this.label20);
+            this.panel10.Controls.Add(this.lblServiceStatus);
+            this.panel10.Controls.Add(this.label21);
+            this.panel10.Controls.Add(this.llServiceStatus);
+            this.panel10.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.panel10.Location = new System.Drawing.Point(767, 15);
+            this.panel10.Name = "panel10";
+            this.panel10.Size = new System.Drawing.Size(380, 65);
+            this.panel10.TabIndex = 16;
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label20.Location = new System.Drawing.Point(12, 13);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(100, 15);
+            this.label20.TabIndex = 5;
+            this.label20.Text = "API Service Status";
+            // 
+            // lblServiceStatus
+            // 
+            this.lblServiceStatus.AutoSize = true;
+            this.lblServiceStatus.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblServiceStatus.Location = new System.Drawing.Point(118, 13);
+            this.lblServiceStatus.Name = "lblServiceStatus";
+            this.lblServiceStatus.Size = new System.Drawing.Size(75, 15);
+            this.lblServiceStatus.TabIndex = 10;
+            this.lblServiceStatus.Text = "STARTING...";
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label21.Location = new System.Drawing.Point(63, 38);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(56, 15);
+            this.label21.TabIndex = 8;
+            this.label21.Text = "FHIR URL";
+            // 
+            // llServiceStatus
+            // 
+            this.llServiceStatus.AutoSize = true;
+            this.llServiceStatus.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.llServiceStatus.Location = new System.Drawing.Point(118, 37);
+            this.llServiceStatus.Name = "llServiceStatus";
+            this.llServiceStatus.Size = new System.Drawing.Size(256, 15);
+            this.llServiceStatus.TabIndex = 9;
+            this.llServiceStatus.TabStop = true;
+            this.llServiceStatus.Text = "http://localhost:9002/SecondaryCareApiService";
+            this.llServiceStatus.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llServiceStatus_LinkClicked);
             // 
             // panel6
             // 
@@ -144,7 +223,7 @@
             this.panel6.Controls.Add(this.tbOdsCode);
             this.panel6.Controls.Add(this.tbBaseUrl);
             this.panel6.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel6.Location = new System.Drawing.Point(1227, 0);
+            this.panel6.Location = new System.Drawing.Point(1125, 0);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(390, 92);
             this.panel6.TabIndex = 15;
@@ -235,15 +314,15 @@
             this.label1.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(342, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(599, 32);
+            this.label1.Size = new System.Drawing.Size(419, 32);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Secondary Care System Demonstrator (CIM Consumer)";
+            this.label1.Text = "Secondary Care System Demonstrator";
             // 
             // toolStrip1
             // 
             this.toolStrip1.Location = new System.Drawing.Point(0, 93);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(1617, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(1515, 25);
             this.toolStrip1.TabIndex = 7;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -253,11 +332,12 @@
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Controls.Add(this.tabPage4);
+            this.tabControl1.Controls.Add(this.tabPage5);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Location = new System.Drawing.Point(0, 118);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1617, 742);
+            this.tabControl1.Size = new System.Drawing.Size(1515, 742);
             this.tabControl1.TabIndex = 8;
             // 
             // tabPage1
@@ -267,7 +347,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 24);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1609, 714);
+            this.tabPage1.Size = new System.Drawing.Size(1507, 714);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Get demographics by NHS number";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -280,7 +360,7 @@
             this.panel7.Location = new System.Drawing.Point(3, 85);
             this.panel7.Name = "panel7";
             this.panel7.Padding = new System.Windows.Forms.Padding(13, 0, 0, 0);
-            this.panel7.Size = new System.Drawing.Size(1603, 626);
+            this.panel7.Size = new System.Drawing.Size(1501, 626);
             this.panel7.TabIndex = 13;
             // 
             // tbGetDemographicsResult
@@ -291,7 +371,7 @@
             this.tbGetDemographicsResult.Multiline = true;
             this.tbGetDemographicsResult.Name = "tbGetDemographicsResult";
             this.tbGetDemographicsResult.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.tbGetDemographicsResult.Size = new System.Drawing.Size(1590, 601);
+            this.tbGetDemographicsResult.Size = new System.Drawing.Size(1488, 601);
             this.tbGetDemographicsResult.TabIndex = 14;
             // 
             // label17
@@ -312,7 +392,7 @@
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel3.Location = new System.Drawing.Point(3, 3);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1603, 82);
+            this.panel3.Size = new System.Drawing.Size(1501, 82);
             this.panel3.TabIndex = 11;
             // 
             // tableLayoutPanel1
@@ -334,7 +414,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1603, 82);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1501, 82);
             this.tableLayoutPanel1.TabIndex = 13;
             // 
             // label7
@@ -393,7 +473,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 24);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1609, 714);
+            this.tabPage2.Size = new System.Drawing.Size(1507, 714);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Get full record by Patient GUID";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -406,7 +486,7 @@
             this.panel8.Location = new System.Drawing.Point(3, 85);
             this.panel8.Name = "panel8";
             this.panel8.Padding = new System.Windows.Forms.Padding(13, 0, 0, 0);
-            this.panel8.Size = new System.Drawing.Size(1603, 626);
+            this.panel8.Size = new System.Drawing.Size(1501, 626);
             this.panel8.TabIndex = 21;
             // 
             // tbGetFullRecordResponse
@@ -417,7 +497,7 @@
             this.tbGetFullRecordResponse.Multiline = true;
             this.tbGetFullRecordResponse.Name = "tbGetFullRecordResponse";
             this.tbGetFullRecordResponse.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.tbGetFullRecordResponse.Size = new System.Drawing.Size(1590, 601);
+            this.tbGetFullRecordResponse.Size = new System.Drawing.Size(1488, 601);
             this.tbGetFullRecordResponse.TabIndex = 21;
             // 
             // label12
@@ -438,7 +518,7 @@
             this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel4.Location = new System.Drawing.Point(3, 3);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(1603, 82);
+            this.panel4.Size = new System.Drawing.Size(1501, 82);
             this.panel4.TabIndex = 19;
             // 
             // tableLayoutPanel2
@@ -460,7 +540,7 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(1603, 82);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(1501, 82);
             this.tableLayoutPanel2.TabIndex = 19;
             // 
             // label11
@@ -520,7 +600,7 @@
             this.tabPage3.Location = new System.Drawing.Point(4, 24);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(1609, 714);
+            this.tabPage3.Size = new System.Drawing.Size(1507, 714);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Add condition";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -533,7 +613,7 @@
             this.tbAddConditionResponse.Multiline = true;
             this.tbAddConditionResponse.Name = "tbAddConditionResponse";
             this.tbAddConditionResponse.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.tbAddConditionResponse.Size = new System.Drawing.Size(1603, 248);
+            this.tbAddConditionResponse.Size = new System.Drawing.Size(1501, 248);
             this.tbAddConditionResponse.TabIndex = 23;
             // 
             // label14
@@ -554,7 +634,7 @@
             this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel5.Location = new System.Drawing.Point(3, 3);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(1603, 435);
+            this.panel5.Size = new System.Drawing.Size(1501, 435);
             this.panel5.TabIndex = 20;
             // 
             // tableLayoutPanel3
@@ -578,7 +658,7 @@
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(1603, 435);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(1501, 435);
             this.tableLayoutPanel3.TabIndex = 20;
             // 
             // label13
@@ -660,7 +740,7 @@
             this.tabPage4.Location = new System.Drawing.Point(4, 24);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(1609, 714);
+            this.tabPage4.Size = new System.Drawing.Size(1507, 714);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Subscribe to patient changes";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -673,7 +753,7 @@
             this.tbSubscriptionResponse.Multiline = true;
             this.tbSubscriptionResponse.Name = "tbSubscriptionResponse";
             this.tbSubscriptionResponse.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.tbSubscriptionResponse.Size = new System.Drawing.Size(1603, 248);
+            this.tbSubscriptionResponse.Size = new System.Drawing.Size(1501, 248);
             this.tbSubscriptionResponse.TabIndex = 25;
             // 
             // label16
@@ -694,7 +774,7 @@
             this.panel9.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel9.Location = new System.Drawing.Point(3, 3);
             this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(1603, 435);
+            this.panel9.Size = new System.Drawing.Size(1501, 435);
             this.panel9.TabIndex = 21;
             // 
             // tableLayoutPanel4
@@ -703,29 +783,33 @@
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 800F));
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel4.Controls.Add(this.label8, 0, 2);
+            this.tableLayoutPanel4.Controls.Add(this.label8, 0, 3);
             this.tableLayoutPanel4.Controls.Add(this.label15, 0, 0);
             this.tableLayoutPanel4.Controls.Add(this.lblSubscribeFhirUrl, 1, 0);
             this.tableLayoutPanel4.Controls.Add(this.label19, 0, 1);
             this.tableLayoutPanel4.Controls.Add(this.tbSubscriptionGuid, 1, 1);
-            this.tableLayoutPanel4.Controls.Add(this.tbSubscriptionPayload, 1, 2);
-            this.tableLayoutPanel4.Controls.Add(this.btnPutSubscription, 2, 2);
+            this.tableLayoutPanel4.Controls.Add(this.tbSubscriptionPayload, 1, 3);
+            this.tableLayoutPanel4.Controls.Add(this.btnPutSubscription, 2, 3);
+            this.tableLayoutPanel4.Controls.Add(this.label24, 0, 2);
+            this.tableLayoutPanel4.Controls.Add(this.tbSubscriptionNhsNumber, 1, 2);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel4.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.Padding = new System.Windows.Forms.Padding(10);
-            this.tableLayoutPanel4.RowCount = 3;
+            this.tableLayoutPanel4.RowCount = 4;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(1603, 435);
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(1501, 435);
             this.tableLayoutPanel4.TabIndex = 20;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(13, 80);
+            this.label8.Location = new System.Drawing.Point(13, 120);
             this.label8.Name = "label8";
             this.label8.Padding = new System.Windows.Forms.Padding(0, 0, 0, 10);
             this.label8.Size = new System.Drawing.Size(76, 25);
@@ -774,17 +858,17 @@
             // tbSubscriptionPayload
             // 
             this.tbSubscriptionPayload.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbSubscriptionPayload.Location = new System.Drawing.Point(113, 83);
+            this.tbSubscriptionPayload.Location = new System.Drawing.Point(113, 123);
             this.tbSubscriptionPayload.Multiline = true;
             this.tbSubscriptionPayload.Name = "tbSubscriptionPayload";
             this.tbSubscriptionPayload.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.tbSubscriptionPayload.Size = new System.Drawing.Size(794, 339);
+            this.tbSubscriptionPayload.Size = new System.Drawing.Size(794, 299);
             this.tbSubscriptionPayload.TabIndex = 22;
             this.tbSubscriptionPayload.Text = resources.GetString("tbSubscriptionPayload.Text");
             // 
             // btnPutSubscription
             // 
-            this.btnPutSubscription.Location = new System.Drawing.Point(913, 83);
+            this.btnPutSubscription.Location = new System.Drawing.Point(913, 123);
             this.btnPutSubscription.Name = "btnPutSubscription";
             this.btnPutSubscription.Size = new System.Drawing.Size(132, 24);
             this.btnPutSubscription.TabIndex = 9;
@@ -792,11 +876,130 @@
             this.btnPutSubscription.UseVisualStyleBackColor = true;
             this.btnPutSubscription.Click += new System.EventHandler(this.btnPutSubscription_Click);
             // 
+            // timer
+            // 
+            this.timer.Enabled = true;
+            this.timer.Interval = 1000;
+            this.timer.Tick += new System.EventHandler(this.timer_Tick);
+            // 
+            // tabPage5
+            // 
+            this.tabPage5.Controls.Add(this.splitContainer1);
+            this.tabPage5.Location = new System.Drawing.Point(4, 24);
+            this.tabPage5.Name = "tabPage5";
+            this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage5.Size = new System.Drawing.Size(1507, 714);
+            this.tabPage5.TabIndex = 4;
+            this.tabPage5.Text = "Patient changes received";
+            this.tabPage5.UseVisualStyleBackColor = true;
+            // 
+            // splitContainer1
+            // 
+            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer1.Location = new System.Drawing.Point(3, 3);
+            this.splitContainer1.Name = "splitContainer1";
+            // 
+            // splitContainer1.Panel1
+            // 
+            this.splitContainer1.Panel1.Controls.Add(this.dataGridView);
+            // 
+            // splitContainer1.Panel2
+            // 
+            this.splitContainer1.Panel2.Controls.Add(this.textBox1);
+            this.splitContainer1.Panel2.Controls.Add(this.label22);
+            this.splitContainer1.Size = new System.Drawing.Size(1501, 708);
+            this.splitContainer1.SplitterDistance = 498;
+            this.splitContainer1.SplitterWidth = 5;
+            this.splitContainer1.TabIndex = 1;
+            // 
+            // dataGridView
+            // 
+            this.dataGridView.AllowUserToAddRows = false;
+            this.dataGridView.AllowUserToDeleteRows = false;
+            this.dataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dataGridView.BackgroundColor = System.Drawing.Color.White;
+            this.dataGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.dataGridView.ColumnHeadersHeight = 30;
+            this.dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.colEmpty,
+            this.colDate});
+            this.dataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView.Location = new System.Drawing.Point(0, 0);
+            this.dataGridView.MultiSelect = false;
+            this.dataGridView.Name = "dataGridView";
+            this.dataGridView.ReadOnly = true;
+            this.dataGridView.RowHeadersVisible = false;
+            this.dataGridView.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataGridView.RowTemplate.DefaultCellStyle.Padding = new System.Windows.Forms.Padding(5);
+            this.dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView.Size = new System.Drawing.Size(498, 708);
+            this.dataGridView.TabIndex = 6;
+            this.dataGridView.SelectionChanged += new System.EventHandler(this.dataGridView_SelectionChanged);
+            // 
+            // colEmpty
+            // 
+            this.colEmpty.FillWeight = 20F;
+            this.colEmpty.HeaderText = "Date";
+            this.colEmpty.Name = "colEmpty";
+            this.colEmpty.ReadOnly = true;
+            // 
+            // colDate
+            // 
+            this.colDate.FillWeight = 20F;
+            this.colDate.HeaderText = "HTTP Request";
+            this.colDate.Name = "colDate";
+            this.colDate.ReadOnly = true;
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label24.Location = new System.Drawing.Point(13, 80);
+            this.label24.Name = "label24";
+            this.label24.Padding = new System.Windows.Forms.Padding(0, 6, 0, 0);
+            this.label24.Size = new System.Drawing.Size(79, 21);
+            this.label24.TabIndex = 23;
+            this.label24.Text = "NHS number";
+            // 
+            // tbSubscriptionNhsNumber
+            // 
+            this.tbSubscriptionNhsNumber.Location = new System.Drawing.Point(113, 83);
+            this.tbSubscriptionNhsNumber.Name = "tbSubscriptionNhsNumber";
+            this.tbSubscriptionNhsNumber.Size = new System.Drawing.Size(383, 23);
+            this.tbSubscriptionNhsNumber.TabIndex = 24;
+            this.tbSubscriptionNhsNumber.Text = "6936548122";
+            // 
+            // textBox1
+            // 
+            this.textBox1.BackColor = System.Drawing.Color.White;
+            this.textBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBox1.Font = new System.Drawing.Font("Consolas", 9F);
+            this.textBox1.Location = new System.Drawing.Point(0, 27);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
+            this.textBox1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.textBox1.Size = new System.Drawing.Size(998, 681);
+            this.textBox1.TabIndex = 12;
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label22.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.label22.Location = new System.Drawing.Point(0, 0);
+            this.label22.Name = "label22";
+            this.label22.Padding = new System.Windows.Forms.Padding(0, 7, 0, 5);
+            this.label22.Size = new System.Drawing.Size(53, 27);
+            this.label22.TabIndex = 11;
+            this.label22.Text = "Message";
+            // 
             // SecondaryCareSystemForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1617, 860);
+            this.ClientSize = new System.Drawing.Size(1515, 860);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.panel2);
@@ -807,6 +1010,8 @@
             this.panel2.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.panel10.ResumeLayout(false);
+            this.panel10.PerformLayout();
             this.panel6.ResumeLayout(false);
             this.panel6.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -833,6 +1038,13 @@
             this.panel9.ResumeLayout(false);
             this.tableLayoutPanel4.ResumeLayout(false);
             this.tableLayoutPanel4.PerformLayout();
+            this.tabPage5.ResumeLayout(false);
+            this.splitContainer1.Panel1.ResumeLayout(false);
+            this.splitContainer1.Panel2.ResumeLayout(false);
+            this.splitContainer1.Panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
+            this.splitContainer1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -900,6 +1112,21 @@
         private System.Windows.Forms.Button btnPutSubscription;
         private System.Windows.Forms.TextBox tbSubscriptionResponse;
         private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Panel panel10;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Label lblServiceStatus;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.LinkLabel llServiceStatus;
+        private System.Windows.Forms.Timer timer;
+        private System.Windows.Forms.TabPage tabPage5;
+        private System.Windows.Forms.SplitContainer splitContainer1;
+        private System.Windows.Forms.DataGridView dataGridView;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colEmpty;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colDate;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.TextBox tbSubscriptionNhsNumber;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label label22;
     }
 }
 

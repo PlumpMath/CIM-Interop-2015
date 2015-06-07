@@ -256,6 +256,21 @@
   <metadata name="toolStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
+  <data name="tbSubscriptionPayload.Text" xml:space="preserve">
+    <value>{
+  'resourceType': 'Subscription',
+  'id': '&lt;SUBSCRIPTION_GUID&gt;',
+  'criteria': '/Patient? ?identifier=NHS|&lt;NHS_NUMBER&gt;',
+  'reason': 'Monitor patient changes',
+  'status': 'requested',
+  'channel': {
+    'type': 'rest-hook',
+    'endpoint': 'http://localhost:9002/SecondaryCareApiService/',
+    'payload': 'application/json',
+    'header': 'Authorization: Bearer secret-token-abc-123'
+  }
+}</value>
+  </data>
   <data name="tbAddConditionPayload.Text" xml:space="preserve">
     <value>{
   "resourceType": "Condition",
@@ -309,59 +324,21 @@
   "notes": "Scanty coase creps"
 }</value>
   </data>
-  <data name="tbSubscriptionPayload.Text" xml:space="preserve">
-    <value>{
-  "resourceType": "Condition",
-  "id": "60d3aa0e-02a1-4acb-8b51-4832855a657e",
-  "patient": {
-    "reference": "Patient/345dc633-eeb2-453a-b6fc-935fc16f71b2"
-  },
-  "asserter": {
-    "reference": "Practitioner/76753f65-6161-43fe-943c-e4e6ff25a6f9"
-  },
-  "dateAsserted": "2015-06-05",
-  "code": {
-    "coding": [
-      {
-        "system": "READ2",
-        "code": "S2420",
-        "display": "Fracture of scaphoid"
-      },
-      {
-        "system": "SNOMED",
-        "code": "31975004",
-        "display": "Fracture of scaphoid"
-      }
-    ]
-  },
-  "category": {
-    "coding": [
-      {
-        "system": "http://hl7.org/fhir/vs/condition-category",
-        "code": "diagnosis",
-        "display": "Diagnosis"
-      }
-    ]
-  },
-  "clinicalStatus": "confirmed",
-  "severity": {
-    "coding": [
-      {
-        "system": "SNOMED",
-        "code": "24484000",
-        "display": "Severe"
-      },
-      {
-        "system": "http://www.e-mis.com/emisopen/Problem/Significance",
-        "code": "1",
-        "display": "Significant"
-      }
-    ]
-  },
-  "onsetDateTime": "2015-06-05",
-  "notes": "Scanty coase creps"
-}</value>
-  </data>
+  <metadata name="timer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>202, 17</value>
+  </metadata>
+  <metadata name="colEmpty.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="colDate.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="colEmpty.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="colDate.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAQAICAAAAEAIACoEAAARgAAACAgAAABAAgAqAgAAO4QAAAQEAAAAQAgAGgEAACWGQAAEBAAAAEA

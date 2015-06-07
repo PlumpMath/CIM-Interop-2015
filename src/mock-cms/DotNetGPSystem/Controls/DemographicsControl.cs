@@ -46,6 +46,7 @@ namespace DotNetGPSystem
             this.tbWorkPhone.Text = _patient.Person.contact.GetFormattedContactValue(vocContactType.W);
             this.tbMobilePhone.Text = _patient.Person.contact.GetFormattedContactValue(vocContactType.M);
             this.tbEmailAddress.Text = _patient.Person.contact.GetFormattedContactValue(vocContactType.EM);
+            this.tbPatientGuid.Text = _patient.Patient.id;
         }
 
         private void CollectDemographics()
@@ -97,6 +98,8 @@ namespace DotNetGPSystem
                 tbTitle.Select();
             else
                 tbTitle.SelectionLength = 0;
+
+            tbPatientGuid.ReadOnly = true;
             
         }
 

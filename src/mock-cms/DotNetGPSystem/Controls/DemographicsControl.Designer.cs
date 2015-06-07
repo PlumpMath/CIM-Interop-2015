@@ -31,6 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DemographicsControl));
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.label7 = new System.Windows.Forms.Label();
             this.tbWorkPhone = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
@@ -39,6 +40,7 @@
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.tbHomePhone = new System.Windows.Forms.TextBox();
+            this.tbPatientGuid = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tbTitle = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -67,8 +69,8 @@
             // tableLayoutPanel2
             // 
             this.tableLayoutPanel2.ColumnCount = 3;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 500F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 500F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 530F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 530F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel3, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel1, 0, 0);
@@ -85,8 +87,7 @@
             this.tableLayoutPanel3.ColumnCount = 2;
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 171F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel3.Controls.Add(this.label7, 0, 12);
             this.tableLayoutPanel3.Controls.Add(this.tbWorkPhone, 1, 2);
             this.tableLayoutPanel3.Controls.Add(this.label11, 0, 3);
             this.tableLayoutPanel3.Controls.Add(this.label12, 0, 4);
@@ -95,11 +96,12 @@
             this.tableLayoutPanel3.Controls.Add(this.label8, 0, 1);
             this.tableLayoutPanel3.Controls.Add(this.label9, 0, 2);
             this.tableLayoutPanel3.Controls.Add(this.tbHomePhone, 1, 1);
+            this.tableLayoutPanel3.Controls.Add(this.tbPatientGuid, 1, 12);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(530, 4);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(560, 4);
             this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(30, 4, 3, 4);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
-            this.tableLayoutPanel3.RowCount = 12;
+            this.tableLayoutPanel3.RowCount = 13;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle());
@@ -112,8 +114,19 @@
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(467, 974);
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(497, 974);
             this.tableLayoutPanel3.TabIndex = 7;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(3, 112);
+            this.label7.Name = "label7";
+            this.label7.Padding = new System.Windows.Forms.Padding(0, 3, 0, 0);
+            this.label7.Size = new System.Drawing.Size(94, 23);
+            this.label7.TabIndex = 12;
+            this.label7.Text = "Patient GUID";
             // 
             // tbWorkPhone
             // 
@@ -123,7 +136,7 @@
             this.tbWorkPhone.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tbWorkPhone.Name = "tbWorkPhone";
             this.tbWorkPhone.ReadOnly = true;
-            this.tbWorkPhone.Size = new System.Drawing.Size(290, 20);
+            this.tbWorkPhone.Size = new System.Drawing.Size(320, 20);
             this.tbWorkPhone.TabIndex = 5;
             // 
             // label11
@@ -154,7 +167,7 @@
             this.tbMobilePhone.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tbMobilePhone.Name = "tbMobilePhone";
             this.tbMobilePhone.ReadOnly = true;
-            this.tbMobilePhone.Size = new System.Drawing.Size(290, 20);
+            this.tbMobilePhone.Size = new System.Drawing.Size(320, 20);
             this.tbMobilePhone.TabIndex = 10;
             // 
             // tbEmailAddress
@@ -165,7 +178,7 @@
             this.tbEmailAddress.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tbEmailAddress.Name = "tbEmailAddress";
             this.tbEmailAddress.ReadOnly = true;
-            this.tbEmailAddress.Size = new System.Drawing.Size(290, 20);
+            this.tbEmailAddress.Size = new System.Drawing.Size(320, 20);
             this.tbEmailAddress.TabIndex = 11;
             // 
             // label8
@@ -196,8 +209,19 @@
             this.tbHomePhone.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tbHomePhone.Name = "tbHomePhone";
             this.tbHomePhone.ReadOnly = true;
-            this.tbHomePhone.Size = new System.Drawing.Size(290, 20);
+            this.tbHomePhone.Size = new System.Drawing.Size(320, 20);
             this.tbHomePhone.TabIndex = 0;
+            // 
+            // tbPatientGuid
+            // 
+            this.tbPatientGuid.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tbPatientGuid.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
+            this.tbPatientGuid.Location = new System.Drawing.Point(174, 116);
+            this.tbPatientGuid.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.tbPatientGuid.Name = "tbPatientGuid";
+            this.tbPatientGuid.ReadOnly = true;
+            this.tbPatientGuid.Size = new System.Drawing.Size(320, 20);
+            this.tbPatientGuid.TabIndex = 13;
             // 
             // tableLayoutPanel1
             // 
@@ -217,9 +241,9 @@
             this.tableLayoutPanel1.Controls.Add(this.tbHomeAddress, 1, 11);
             this.tableLayoutPanel1.Controls.Add(this.label5, 0, 4);
             this.tableLayoutPanel1.Controls.Add(this.label6, 0, 5);
-            this.tableLayoutPanel1.Controls.Add(this.tbSex, 1, 3);
             this.tableLayoutPanel1.Controls.Add(this.tbDateOfBirth, 1, 4);
             this.tableLayoutPanel1.Controls.Add(this.tbNhsNumber, 1, 5);
+            this.tableLayoutPanel1.Controls.Add(this.tbSex, 1, 3);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 4);
             this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -237,7 +261,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(494, 974);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(524, 974);
             this.tableLayoutPanel1.TabIndex = 6;
             // 
             // tbTitle
@@ -248,7 +272,7 @@
             this.tbTitle.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tbTitle.Name = "tbTitle";
             this.tbTitle.ReadOnly = true;
-            this.tbTitle.Size = new System.Drawing.Size(317, 20);
+            this.tbTitle.Size = new System.Drawing.Size(347, 20);
             this.tbTitle.TabIndex = 0;
             // 
             // label1
@@ -289,7 +313,7 @@
             this.tbForenames.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tbForenames.Name = "tbForenames";
             this.tbForenames.ReadOnly = true;
-            this.tbForenames.Size = new System.Drawing.Size(317, 20);
+            this.tbForenames.Size = new System.Drawing.Size(347, 20);
             this.tbForenames.TabIndex = 4;
             // 
             // tbSurname
@@ -300,7 +324,7 @@
             this.tbSurname.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tbSurname.Name = "tbSurname";
             this.tbSurname.ReadOnly = true;
-            this.tbSurname.Size = new System.Drawing.Size(317, 20);
+            this.tbSurname.Size = new System.Drawing.Size(347, 20);
             this.tbSurname.TabIndex = 5;
             // 
             // label4
@@ -332,7 +356,7 @@
             this.tbHomeAddress.Multiline = true;
             this.tbHomeAddress.Name = "tbHomeAddress";
             this.tbHomeAddress.ReadOnly = true;
-            this.tbHomeAddress.Size = new System.Drawing.Size(317, 120);
+            this.tbHomeAddress.Size = new System.Drawing.Size(347, 120);
             this.tbHomeAddress.TabIndex = 13;
             this.tbHomeAddress.WordWrap = false;
             // 
@@ -364,7 +388,7 @@
             this.tbSex.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tbSex.Name = "tbSex";
             this.tbSex.ReadOnly = true;
-            this.tbSex.Size = new System.Drawing.Size(317, 20);
+            this.tbSex.Size = new System.Drawing.Size(347, 20);
             this.tbSex.TabIndex = 10;
             // 
             // tbDateOfBirth
@@ -375,7 +399,7 @@
             this.tbDateOfBirth.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tbDateOfBirth.Name = "tbDateOfBirth";
             this.tbDateOfBirth.ReadOnly = true;
-            this.tbDateOfBirth.Size = new System.Drawing.Size(317, 20);
+            this.tbDateOfBirth.Size = new System.Drawing.Size(347, 20);
             this.tbDateOfBirth.TabIndex = 11;
             // 
             // tbNhsNumber
@@ -386,7 +410,7 @@
             this.tbNhsNumber.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tbNhsNumber.Name = "tbNhsNumber";
             this.tbNhsNumber.ReadOnly = true;
-            this.tbNhsNumber.Size = new System.Drawing.Size(317, 20);
+            this.tbNhsNumber.Size = new System.Drawing.Size(347, 20);
             this.tbNhsNumber.TabIndex = 12;
             // 
             // panel1
@@ -506,5 +530,7 @@
         private System.Windows.Forms.LinkLabel llSave;
         private System.Windows.Forms.LinkLabel llEditDemographics;
         private System.Windows.Forms.LinkLabel linkLabel1;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox tbPatientGuid;
     }
 }
