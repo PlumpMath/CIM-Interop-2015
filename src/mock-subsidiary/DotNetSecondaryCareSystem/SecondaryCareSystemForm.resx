@@ -256,21 +256,6 @@
   <metadata name="toolStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
-  <data name="tbSubscriptionPayload.Text" xml:space="preserve">
-    <value>{
-  'resourceType': 'Subscription',
-  'id': '&lt;SUBSCRIPTION_GUID&gt;',
-  'criteria': '/Patient? ?identifier=NHS|&lt;NHS_NUMBER&gt;',
-  'reason': 'Monitor patient changes',
-  'status': 'requested',
-  'channel': {
-    'type': 'rest-hook',
-    'endpoint': 'http://localhost:9002/SecondaryCareApiService/',
-    'payload': 'application/json',
-    'header': 'Authorization: Bearer secret-token-abc-123'
-  }
-}</value>
-  </data>
   <data name="tbAddConditionPayload.Text" xml:space="preserve">
     <value>{
   "resourceType": "Condition",
@@ -324,20 +309,29 @@
   "notes": "Scanty coase creps"
 }</value>
   </data>
+  <data name="tbSubscriptionPayload.Text" xml:space="preserve">
+    <value>{
+  'resourceType': 'Subscription',
+  'id': '&lt;SUBSCRIPTION_GUID&gt;',
+  'criteria': '/Patient? ?identifier=NHS|&lt;NHS_NUMBER&gt;',
+  'reason': 'Monitor patient changes',
+  'status': 'requested',
+  'channel': {
+    'type': 'rest-hook',
+    'endpoint': 'http://localhost:9002/SecondaryCareApiService/',
+    'payload': 'application/json',
+    'header': 'Authorization: Bearer secret-token-abc-123'
+  }
+}</value>
+  </data>
+  <metadata name="colEmpty.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="colDate.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <metadata name="timer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>202, 17</value>
-  </metadata>
-  <metadata name="colEmpty.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="colDate.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="colEmpty.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="colDate.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
   </metadata>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>

@@ -37,7 +37,7 @@ namespace DotNetSecondaryCareSystem
             webRequest.Headers.Add("hash", hash);
             
             HttpStatusCode statusCode = HttpStatusCode.NotFound;
-            string response;
+            string response = string.Empty;
 
             try
             {
@@ -55,22 +55,29 @@ namespace DotNetSecondaryCareSystem
                 using (HttpWebResponse webResponse = (HttpWebResponse)webRequest.GetResponse())
                 {
                     statusCode = webResponse.StatusCode;
-
-                    using (Stream stream = webResponse.GetResponseStream())
-                    {
-                        using (StreamReader reader = new StreamReader(stream))
-                        {
-                            response = reader.ReadToEnd();
-                        }
-                    }
+                    response = GetWebResponseBody(webResponse);
                 }
             }
-            catch (Exception e)
+            catch (WebException e)
             {
-                response = e.Message;
+                HttpWebResponse webResponse = (HttpWebResponse)e.Response;
+
+                statusCode = webResponse.StatusCode;
+                response = GetWebResponseBody(webResponse);
+            }
+            catch (Exception e2)
+            {
+                response = e2.Message;
             }
 
             return new WebResponse(response, statusCode);
+        }
+
+        private static string GetWebResponseBody(HttpWebResponse webResponse)
+        {
+            using (Stream stream = webResponse.GetResponseStream())
+                using (StreamReader reader = new StreamReader(stream))
+                    return reader.ReadToEnd();
         }
 
         public static string GenerateHash(string restPath, string body)

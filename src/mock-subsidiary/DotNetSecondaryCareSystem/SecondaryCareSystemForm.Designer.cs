@@ -95,16 +95,16 @@
             this.tbSubscriptionGuid = new System.Windows.Forms.TextBox();
             this.tbSubscriptionPayload = new System.Windows.Forms.TextBox();
             this.btnPutSubscription = new System.Windows.Forms.Button();
-            this.timer = new System.Windows.Forms.Timer(this.components);
+            this.label24 = new System.Windows.Forms.Label();
+            this.tbSubscriptionNhsNumber = new System.Windows.Forms.TextBox();
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.dataGridView = new System.Windows.Forms.DataGridView();
             this.colEmpty = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.label24 = new System.Windows.Forms.Label();
-            this.tbSubscriptionNhsNumber = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label22 = new System.Windows.Forms.Label();
+            this.timer = new System.Windows.Forms.Timer(this.components);
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel10.SuspendLayout();
@@ -876,11 +876,24 @@
             this.btnPutSubscription.UseVisualStyleBackColor = true;
             this.btnPutSubscription.Click += new System.EventHandler(this.btnPutSubscription_Click);
             // 
-            // timer
+            // label24
             // 
-            this.timer.Enabled = true;
-            this.timer.Interval = 1000;
-            this.timer.Tick += new System.EventHandler(this.timer_Tick);
+            this.label24.AutoSize = true;
+            this.label24.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label24.Location = new System.Drawing.Point(13, 80);
+            this.label24.Name = "label24";
+            this.label24.Padding = new System.Windows.Forms.Padding(0, 6, 0, 0);
+            this.label24.Size = new System.Drawing.Size(79, 21);
+            this.label24.TabIndex = 23;
+            this.label24.Text = "NHS number";
+            // 
+            // tbSubscriptionNhsNumber
+            // 
+            this.tbSubscriptionNhsNumber.Location = new System.Drawing.Point(113, 83);
+            this.tbSubscriptionNhsNumber.Name = "tbSubscriptionNhsNumber";
+            this.tbSubscriptionNhsNumber.Size = new System.Drawing.Size(383, 23);
+            this.tbSubscriptionNhsNumber.TabIndex = 24;
+            this.tbSubscriptionNhsNumber.Text = "6936548122";
             // 
             // tabPage5
             // 
@@ -908,7 +921,7 @@
             this.splitContainer1.Panel2.Controls.Add(this.textBox1);
             this.splitContainer1.Panel2.Controls.Add(this.label22);
             this.splitContainer1.Size = new System.Drawing.Size(1501, 708);
-            this.splitContainer1.SplitterDistance = 498;
+            this.splitContainer1.SplitterDistance = 497;
             this.splitContainer1.SplitterWidth = 5;
             this.splitContainer1.TabIndex = 1;
             // 
@@ -933,7 +946,7 @@
             this.dataGridView.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dataGridView.RowTemplate.DefaultCellStyle.Padding = new System.Windows.Forms.Padding(5);
             this.dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView.Size = new System.Drawing.Size(498, 708);
+            this.dataGridView.Size = new System.Drawing.Size(497, 708);
             this.dataGridView.TabIndex = 6;
             this.dataGridView.SelectionChanged += new System.EventHandler(this.dataGridView_SelectionChanged);
             // 
@@ -951,25 +964,6 @@
             this.colDate.Name = "colDate";
             this.colDate.ReadOnly = true;
             // 
-            // label24
-            // 
-            this.label24.AutoSize = true;
-            this.label24.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label24.Location = new System.Drawing.Point(13, 80);
-            this.label24.Name = "label24";
-            this.label24.Padding = new System.Windows.Forms.Padding(0, 6, 0, 0);
-            this.label24.Size = new System.Drawing.Size(79, 21);
-            this.label24.TabIndex = 23;
-            this.label24.Text = "NHS number";
-            // 
-            // tbSubscriptionNhsNumber
-            // 
-            this.tbSubscriptionNhsNumber.Location = new System.Drawing.Point(113, 83);
-            this.tbSubscriptionNhsNumber.Name = "tbSubscriptionNhsNumber";
-            this.tbSubscriptionNhsNumber.Size = new System.Drawing.Size(383, 23);
-            this.tbSubscriptionNhsNumber.TabIndex = 24;
-            this.tbSubscriptionNhsNumber.Text = "6936548122";
-            // 
             // textBox1
             // 
             this.textBox1.BackColor = System.Drawing.Color.White;
@@ -980,7 +974,7 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.ReadOnly = true;
             this.textBox1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBox1.Size = new System.Drawing.Size(998, 681);
+            this.textBox1.Size = new System.Drawing.Size(999, 681);
             this.textBox1.TabIndex = 12;
             // 
             // label22
@@ -994,6 +988,12 @@
             this.label22.Size = new System.Drawing.Size(53, 27);
             this.label22.TabIndex = 11;
             this.label22.Text = "Message";
+            // 
+            // timer
+            // 
+            this.timer.Enabled = true;
+            this.timer.Interval = 1000;
+            this.timer.Tick += new System.EventHandler(this.timer_Tick);
             // 
             // SecondaryCareSystemForm
             // 

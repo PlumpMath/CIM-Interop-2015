@@ -1,0 +1,141 @@
+{
+  "resourceType": "Patient",
+  "id": "99d30432-33fe-4c93-84f9-92cc1961f417",
+  "identifier": [
+    {
+      "label": "NHS",
+      "system": "http://fhir.endeavourhealth.org/identifier#nhsnumber",
+      "value": "6980086397"
+    },
+    {
+      "label": "EMIS",
+      "system": "http://www.e-mis.com/emisopen/openHealthRecord/patient/id",
+      "value": "99d30432-33fe-4c93-84f9-92cc1961f417"
+    }
+  ],
+  "name": [
+    {
+      "use": "official",
+      "family": [
+        "Smith"
+      ],
+      "given": [
+        "David John"
+      ],
+      "prefix": [
+        "Mr"
+      ],
+      "text": "Mr David John Smith"
+    },
+    {
+      "use": "usual",
+      "text": "Dave Smith"
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "0113 5555555",
+      "use": "home"
+    },
+    {
+      "system": "phone",
+      "value": "07710 555555",
+      "use": "mobile"
+    },
+    {
+      "system": "email",
+      "value": "davesmith@email.com",
+      "use": "home"
+    }
+  ],
+  "gender": {
+    "coding": [
+      {
+        "code": "M",
+        "system": "http://hl7.org/fhir/v3/vs/AdministrativeGender"
+      }
+    ]
+  },
+  "birthDate": "1964-04-17",
+  "address": [
+    {
+      "text": "Flat 1a, 1 High Street, Bradley Hill, Thornhill, West Yorkshire. LS9 1AA",
+      "line": [
+        "Flat 1a",
+        "1 High Street",
+        "Bradley Hill"
+      ],
+      "city": "Thornhill",
+      "postalCode": "LS9 1AA",
+      "extension": [
+        {
+          "url": "http://fhir.endeavourhealth.org/profile/address",
+          "extension": [
+            {
+              "url": "http://fhir.endeavourhealth.org/address/#part-housenameflat",
+              "valueString": "Flat 1a"
+            },
+            {
+              "url": "http://fhir.endeavourhealth.org/address/#part-housenumber",
+              "valueString": "1"
+            },
+            {
+              "url": "http://fhir.endeavourhealth.org/address/#part-streetname",
+              "valueString": "High Street"
+            },
+            {
+              "url": "http://fhir.endeavourhealth.org/address/#part-village",
+              "valueString": "Bradley Hill"
+            },
+            {
+              "url": "http://fhir.endeavourhealth.org/address/#part-county",
+              "valueString": "West Yorkshire"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "careProvider": [
+    {
+      "resourceType": "Practitioner",
+      "name": {
+        "text": "Dr Robert Cook"
+      },
+      "practitionerRole": [
+        {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/v2/0286",
+              "code": "PP"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "managingOrganization": {
+    "resourceType": "Organization",
+    "type": {
+      "code": "General Practice",
+      "system": "http://fhir.endeavourhealth.org/organisation-types"
+    },
+    "name": "Hill Top Surgery",
+    "telecom": [
+      {
+        "system": "phone",
+        "value": "0113 7777777"
+      },
+      {
+        "system": "email",
+        "value": "hill.top@nhs.net"
+      }
+    ],
+    "address": [
+      {
+        "text": "Hill Top Surgery, Bradley Hill, Thornhill"
+      }
+    ]
+  }
+}
