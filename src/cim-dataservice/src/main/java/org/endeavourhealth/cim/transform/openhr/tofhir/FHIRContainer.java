@@ -11,6 +11,7 @@ public class FHIRContainer {
     private Map<String, Practitioner> practitioners;
     private Map<String, Encounter> encounters;
     private Map<String, Resource> clinicalResources;
+    private Map<String, String> eventEncouterMap;
 
     public Patient getPatient() {
         return patient;
@@ -54,5 +55,14 @@ public class FHIRContainer {
 
     public void setClinicalResources(Map<String, Resource> clinicalResources) {
         this.clinicalResources = clinicalResources;
+    }
+
+    public Map<String, String> getEventEncouterMap() {
+        if (eventEncouterMap == null) eventEncouterMap = new HashMap<>();
+        return eventEncouterMap;
+    }
+
+    public void setEventEncouterMap(Map<String, String> eventEncouterMap) {
+        this.eventEncouterMap = eventEncouterMap;
     }
 }

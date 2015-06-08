@@ -4,6 +4,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.endeavourhealth.cim.common.StreamExtension;
 import org.endeavourhealth.cim.transform.SourceDocumentInvalidException;
 import org.endeavourhealth.cim.transform.TransformException;
+import org.endeavourhealth.cim.transform.TransformFeatureNotSupportedException;
 import org.endeavourhealth.cim.transform.TransformHelper;
 import org.endeavourhealth.cim.transform.openhr.tofhir.FHIRContainer;
 import org.endeavourhealth.cim.transform.openhr.tofhir.ToFHIRHelper;
@@ -17,6 +18,7 @@ public class EncounterTransformer {
     public static void transform(FHIRContainer container, OpenHR001HealthDomain healthDomain) throws TransformException {
         for (OpenHR001Encounter source: healthDomain.getEncounter()) {
             addOrganisationToResults(container, createEncounter(healthDomain, source));
+            addEventEncouterMapping(container, source);
         }
     }
 
@@ -80,7 +82,7 @@ public class EncounterTransformer {
         if (source == null)
             throw new SourceDocumentInvalidException("Invalid DateTime");
 
-        return new Period().setEndElement(ToFHIRHelper.convertPartialDateTime(source));
+        return new Period().setEndElement(ToFHIRHelper.convertPartialDateTimeToDateTimeType(source));
     }
 
     private static Reference convertOrganisation(List<String> sourceOrganisations) throws SourceDocumentInvalidException {
@@ -128,5 +130,18 @@ public class EncounterTransformer {
         return new Encounter.EncounterLocationComponent()
                 .setLocation(new Reference()
                         .setReference(TransformHelper.createResourceReference(Location.class, locationId)));
+    }
+
+    private static void addEventEncouterMapping(FHIRContainer container, OpenHR001Encounter source) throws TransformException {
+        if (source.getComponent() == null)
+            return;
+
+        String encouterId = convertId(source.getId());
+
+        for (OpenHR001Component component: source.getComponent()) {
+            ToFHIRHelper.ensureDboNotDelete(component);
+
+            container.getEventEncouterMap().putIfAbsent(convertId(component.getEvent()), encouterId);
+        }
     }
 }
