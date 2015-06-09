@@ -51,6 +51,7 @@
     <Compile Include="API\GPApiService.cs" />
     <Compile Include="API\GPApiServiceLogger.cs" />
     <Compile Include="API\ApiLogMessage.cs" />
+    <Compile Include="API\TraceCriteria.cs" />
     <Compile Include="Controls\ApiLogControl.cs">
       <SubType>UserControl</SubType>
     </Compile>

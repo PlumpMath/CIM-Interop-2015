@@ -11,6 +11,9 @@ namespace DotNetGPSystem
     public interface IGPApiService       
     {
         [OperationContract]
+        string TracePatient(TraceCriteria criteria);
+
+        [OperationContract]
         string GetPatientDemographics(string nhsNumber);
         
         [OperationContract]
