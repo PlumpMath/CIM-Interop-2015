@@ -25,6 +25,123 @@
         }
     ],
     "paths": {
+        "/Person/$trace?identifier=NHS|{nhsNo}": {
+            "get": {
+                "tags": [
+                    "demographics"
+                ],
+                "summary":"Trace Person by NHS Number",
+                "description": "Trace registered patients linked to a person <br/><br/><u>Examples</u>:<br/><br/>https://endeavour-cim.cloudapp.net/CIM_war/v0.1/Person/$trace?identifier=NHS|6980086397",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "api_key",
+                        "in": "header",
+                        "description": "Client API key",
+                        "type": "string",
+                        "enum": [
+                            "swagger"
+                        ]
+                    },
+                    {
+                        "name": "hash",
+                        "in": "header",
+                        "description": "Message hash value",
+                        "type": "string",
+                        "enum": [
+                            "z4FZ7w8+vpdgnTvG9vIwJxJhnvzICLtiIvVofOJiPiw="
+                        ]
+                    },
+                    {
+                        "name": "nhsNo",
+                        "in": "path",
+                        "description": "Persons NHS Number",
+                        "required":true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description":"Returns a Single FHIR Person bundle, containing the person details and a number of ODS Patient details."
+                    },
+                    "404":{
+                        "description":"Not Found - resource type not supported, or not a FHIR end point"
+                    },
+                    "410":{
+                        "description":"Gone - the resource has been deleted"
+                    }
+                }
+            }
+        },
+        "/Person/$trace?surname={surname}&dob={dob}&gender={gender}": {
+            "get": {
+                "tags": [
+                    "demographics"
+                ],
+                "summary":"Trace Person by demographics",
+                "description": "Trace registered patients linked to a person <br/><br/><u>Examples</u>:<br/><br/>https://endeavour-cim.cloudapp.net/CIM_war/v0.1/Person/$trace?surname=Smith&dob=01/01/1980&gender=male",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "api_key",
+                        "in": "header",
+                        "description": "Client API key",
+                        "type": "string",
+                        "enum": [
+                            "swagger"
+                        ]
+                    },
+                    {
+                        "name": "hash",
+                        "in": "header",
+                        "description": "Message hash value",
+                        "type": "string",
+                        "enum": [
+                            "z4FZ7w8+vpdgnTvG9vIwJxJhnvzICLtiIvVofOJiPiw="
+                        ]
+                    },
+                    {
+                        "name": "surname",
+                        "in": "path",
+                        "description": "Persons surname",
+                        "required":true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "dob",
+                        "in": "path",
+                        "description": "Persons date of birth",
+                        "required":true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "gender",
+                        "in": "path",
+                        "description": "Persons gender",
+                        "required":true,
+                        "type": "string",
+                        "enum": [
+                            "male", "female", "unknown"
+                        ]
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description":"Returns a Single FHIR Person bundle, containing the person details and a number of ODS Patient details."
+                    },
+                    "404":{
+                        "description":"Not Found - resource type not supported, or not a FHIR end point"
+                    },
+                    "410":{
+                        "description":"Gone - the resource has been deleted"
+                    }
+                }
+            }
+        },
         "/{odsCode}/Patient/{id}": {
             "get": {
                 "tags": [
