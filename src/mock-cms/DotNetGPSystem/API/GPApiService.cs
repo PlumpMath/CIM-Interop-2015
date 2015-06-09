@@ -10,6 +10,23 @@ namespace DotNetGPSystem
     [ServiceBehavior(AddressFilterMode = AddressFilterMode.Any)] 
     internal class GPApiService : IGPApiService
     {
+        public string TracePatient(TraceCriteria criteria)
+        {
+            if (criteria == null)
+                throw new ArgumentNullException("criteria");
+
+            if (!string.IsNullOrEmpty(criteria.NhsNumber))
+            {
+                // trace by nhs number
+            }
+            else
+            {
+                // trace by demographics
+            }
+
+            return string.Empty;
+        }
+
         public string GetPatientDemographics(string nhsNumber)
         {
             OpenHRPatient[] patients = DataStore
