@@ -22,7 +22,7 @@ public class TracePersonProcessor implements org.apache.camel.Processor {
 		} else {
 			String surname = (String)exchange.getIn().getHeader("surname");
 			String dob = (String)exchange.getIn().getHeader("dob");
-			Date dateOfBirth = new SimpleDateFormat().parse(dob);
+			Date dateOfBirth = new SimpleDateFormat("dd/MM/yyyy").parse(dob);
 			String gender = (String)exchange.getIn().getHeader("gender");
 
 			traceResult = dataAdapter.getPatientDemographicsByQuery(surname, dateOfBirth, gender);
