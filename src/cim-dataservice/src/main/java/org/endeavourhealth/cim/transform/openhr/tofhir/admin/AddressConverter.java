@@ -13,7 +13,7 @@ import java.util.List;
 
 class AddressConverter {
     public static List<Address> convert(List<DtAddress> addressList) throws TransformFeatureNotSupportedException {
-        if (addressList != null || addressList.isEmpty())
+        if (addressList == null || addressList.isEmpty())
             return null;
 
         List<Address> targetAddressList = new ArrayList<>();
@@ -32,7 +32,7 @@ class AddressConverter {
     }
 
     public static List<Address> convertFromPersonAddress(List<OpenHR001Person.Address> addressList) throws TransformFeatureNotSupportedException {
-        if (addressList != null || addressList.isEmpty())
+        if (addressList == null || addressList.isEmpty())
             return null;
 
         List<Address> targetAddressList = new ArrayList<>();
@@ -53,7 +53,7 @@ class AddressConverter {
     }
 
     public static Address convert(DtAddress source) throws TransformFeatureNotSupportedException {
-        if (source != null)
+        if (source == null)
             return null;
 
         return convertAddress(source);
@@ -131,6 +131,9 @@ class AddressConverter {
 
     private static Address.AddressUse ConvertAddressType(VocAddressType sourceAddressType)
     {
+        if (sourceAddressType == null)
+            return Address.AddressUse.NULL;
+
         switch (sourceAddressType)
         {
             case H:
@@ -142,7 +145,7 @@ class AddressConverter {
             case L:
                 return Address.AddressUse.OLD;
             default:
-                return null;
+                return Address.AddressUse.NULL;
         }
     }
 
