@@ -21,7 +21,7 @@ public class RestConfiguration extends RouteBuilder {
         tracer.getDefaultTraceFormatter().setShowNode(false);
 
 
-        getContext().addInterceptStrategy(tracer);
+        // getContext().addInterceptStrategy(tracer);
 
         restConfiguration().component("servlet")
                 .bindingMode(RestBindingMode.off)

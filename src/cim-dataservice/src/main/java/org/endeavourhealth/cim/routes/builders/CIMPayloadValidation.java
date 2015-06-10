@@ -12,12 +12,12 @@ public class CIMPayloadValidation extends CIMRouteBuilder {
         from("direct:CIMPayloadValidation")
             .routeId("CIMPayloadValidation")
             .doTry()
-//                .to("validator:payloadSchema.xsd")
-                .to("direct:CIMPayloadValidationResult")
+                .to("mock:PayloadValidation")
             .doCatch(org.apache.camel.ValidationException.class)
                 .process(new CIMError(HttpStatus.SC_BAD_REQUEST, simple("Invalid payload")))
                 .stop()
-            .end();
+            .end()
+            .to("direct:CIMPayloadValidationResult");
 
     }
 }

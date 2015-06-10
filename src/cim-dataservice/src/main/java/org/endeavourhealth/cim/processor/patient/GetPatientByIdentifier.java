@@ -22,7 +22,7 @@ public class GetPatientByIdentifier implements org.apache.camel.Processor {
         String patientDataInNativeFormat = dataAdapter.getPatientDemographicsByNHSNumber(nhsNumber);
 
         // Get patientApi data transformer for service (native format -> FHIR)
-        Transformer transformer = TransformerFactory.getTransformerForService(odsCode);
+        Transformer transformer = TransformerFactory.getTransformerForAdapter(dataAdapter);
         Patient patient = transformer.toFHIRPatient(patientDataInNativeFormat);
         String body = new JsonParser().composeString(patient);
 

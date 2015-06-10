@@ -14,10 +14,10 @@ public class CIMHeaderValidation extends CIMRouteBuilder {
             .routeId("CIMHeaderValidation")
             .doTry()
                 .process(new HeaderValidationProcessor())
-                .to("direct:CIMHeaderValidationResult")
             .doCatch(Exception.class)
                 .process(new CIMError(HttpStatus.SC_BAD_REQUEST, simple("Invalid header : ${exception.message}")))
                 .stop()
-            .end();
+            .end()
+            .to("direct:CIMHeaderValidationResult");
     }
 }

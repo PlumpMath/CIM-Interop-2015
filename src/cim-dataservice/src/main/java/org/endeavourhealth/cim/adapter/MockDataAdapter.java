@@ -12,6 +12,10 @@ public class MockDataAdapter implements IDataAdapter {
     private final String _soapUri = "http://localhost:9001/GPApiService/Soap";
     private final String _actionUri = "http://tempuri.org/IGPApiService";
 
+    public String getTransformerTypeName() {
+        return "org.endeavourhealth.cim.transform.openhr.OpenHRTransformer";
+    }
+
     public String getPatientRecordByPatientId(UUID patientId) {
         SOAPConnection soapConnection = null;
         try {
@@ -72,6 +76,10 @@ public class MockDataAdapter implements IDataAdapter {
         }
     }
 
+    public String getPatientDemographicsByQuery(String surname, Date dateOfBirth, String gender) {
+        return null;
+    }
+
     public String createCondition(String requestData) {
         SOAPConnection soapConnection = null;
         try {
@@ -105,7 +113,6 @@ public class MockDataAdapter implements IDataAdapter {
         }
     }
 
-    @Override
     public ArrayList<UUID> getChangedPatients(Date date) {
         SOAPConnection soapConnection = null;
         try {

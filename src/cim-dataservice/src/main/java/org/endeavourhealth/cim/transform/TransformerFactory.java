@@ -1,10 +1,10 @@
 package org.endeavourhealth.cim.transform;
 
-import org.endeavourhealth.cim.Registry;
+import org.endeavourhealth.cim.adapter.IDataAdapter;
 
 public class TransformerFactory {
-    public static Transformer getTransformerForService(String odsCode) throws Exception {
-        String serviceTransformerTypeName = Registry.getTransformerTypeNameForService(odsCode);
+    public static Transformer getTransformerForAdapter(IDataAdapter dataAdapter) throws Exception {
+        String serviceTransformerTypeName = dataAdapter.getTransformerTypeName();
 
         if (serviceTransformerTypeName == null)
             return null;

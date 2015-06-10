@@ -20,7 +20,7 @@ public class GetPatientRecordByPatientId implements org.apache.camel.Processor {
         String patientData = dataAdapter.getPatientRecordByPatientId(UUID.fromString(patientId));
 
         // Get patientApi data transformer for service (native format -> FHIR)
-        Transformer transformer = TransformerFactory.getTransformerForService(odsCode);
+        Transformer transformer = TransformerFactory.getTransformerForAdapter(dataAdapter);
         Bundle bundle = transformer.toFHIRBundle(patientData);
         String body = new JsonParser().composeString(bundle);
 

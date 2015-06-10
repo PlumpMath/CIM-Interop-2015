@@ -20,17 +20,17 @@ public class PersonEndpoint extends RouteBuilder {
             .description("Person trace")
             .setHeader("MessageRouterCallback", constant("direct:TracePerson"))
             .to("direct:CIMCore")
-            .endRest();
+        .endRest();
 
         // Message router callback routes
         from("direct:TracePerson")
             .routeId("TracePerson")
-            .setBody(constant(AdapterFactory.getAllDataAdapters()))     // Get addapters as array list in body
-            .split(body())                                              // Split the body and call trace for each element...
-                // .parallelProcessing()                                // ...in parallel...
+            .setBody(constant(AdapterFactory.getAllDataAdapters()))         // Get adapters as array list in body
+            .setHeader("adapterCount", simple("${body.size}"))
+            .split(body(), new ArrayListAggregationStrategy())              // Split the body and call trace for each element...
+                .parallelProcessing()                                       // ...in parallel...
                 .process(new TracePersonProcessor())
-            .aggregate(header("id"), new ArrayListAggregationStrategy())// Aggregate the results into an array list in the body
-            .completionTimeout(3000)                                    // Timeout after 3 seconds if no response
-            .process(new TracePersonResultProcessor());                 // Process the results
+            .end()
+            .process(new TracePersonResultProcessor());                     // Process the results
     }
 }

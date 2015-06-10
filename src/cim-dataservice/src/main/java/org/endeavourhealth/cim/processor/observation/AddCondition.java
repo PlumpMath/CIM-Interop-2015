@@ -16,14 +16,14 @@ public class AddCondition implements org.apache.camel.Processor {
     public void process(Exchange exchange) throws Exception {
         String odsCode =(String) exchange.getIn().getHeader("odsCode");
 
-        Transformer transformer = TransformerFactory.getTransformerForService(odsCode);
+        IDataAdapter dataAdapter = AdapterFactory.getDataAdapterForService(odsCode);
+        Transformer transformer = TransformerFactory.getTransformerForAdapter(dataAdapter);
         String messageBody = IOUtils.toString((InputStream) exchange.getIn().getBody());
 
         Condition condition = (Condition)new JsonParser().parse(messageBody);
 
         String request = transformer.fromFHIRCondition(condition);
 
-        IDataAdapter dataAdapter = AdapterFactory.getDataAdapterForService(odsCode);
         String response = dataAdapter.createCondition(request);
 
         //exchange.getIn().setBody(transformer.toFHIRCondition(response));

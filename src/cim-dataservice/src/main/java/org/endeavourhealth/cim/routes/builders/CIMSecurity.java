@@ -15,10 +15,10 @@ public class CIMSecurity extends CIMRouteBuilder {
             .routeId("CIMSecurity")
             .doTry()
                 .process(new SecurityProcessor())
-                .to("direct:CIMSecurityResult")
             .doCatch(Exception.class)
                 .process(new CIMError(HttpStatus.SC_UNAUTHORIZED, simple("Invalid session")))
                 .stop()
-            .end();
+            .end()
+            .to("direct:CIMSecurityResult");
     }
 }

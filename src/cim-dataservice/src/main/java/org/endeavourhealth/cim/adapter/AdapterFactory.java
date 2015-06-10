@@ -19,7 +19,9 @@ public class AdapterFactory {
     public static ArrayList<IDataAdapter> getAllDataAdapters() throws Exception {
         ArrayList<IDataAdapter> adapters = new ArrayList<>();
 
-        adapters.add(getDataAdapterForService("999"));
+        adapters.add(getDataAdapterForService("1"));
+        adapters.add(getDataAdapterForService("2"));
+        adapters.add(getDataAdapterForService("3"));
 
         return adapters;
     }

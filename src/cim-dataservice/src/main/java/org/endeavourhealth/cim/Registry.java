@@ -10,16 +10,18 @@ public class Registry {
         return "org.endeavourhealth.cim.adapter.MockDataAdapter";
     }
 
-    public static String getTransformerTypeNameForService(String odsCode) {
-        return "org.endeavourhealth.cim.transform.openhr.OpenHRTransformer";
-    }
-
     public static Boolean validateMessage(String publicKey, String method, String body, String inboundHash) {
-        if (publicKey == "swagger")
-            return true;
-
         // Retrieve private key based on public key
         String privateKey = getPrivateKey(publicKey);
+
+        if (privateKey == null)
+            return false;
+
+        // Ensure private key exists first.  This allows swagger to bypass security
+        // for test servers by adding a key.  Swagger should not be added to live
+        // servers so cannot be used as back door.
+        if (publicKey.equals("swagger"))
+            return true;
 
         String data = method;
         if (body != null)
