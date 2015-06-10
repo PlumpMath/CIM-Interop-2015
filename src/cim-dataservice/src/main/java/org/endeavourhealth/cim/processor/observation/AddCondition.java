@@ -24,7 +24,7 @@ public class AddCondition implements org.apache.camel.Processor {
 
         String request = transformer.fromFHIRCondition(condition);
 
-        String response = dataAdapter.createCondition(request);
+        String response = dataAdapter.createCondition(odsCode, request);
 
         //exchange.getIn().setBody(transformer.toFHIRCondition(response));
     }

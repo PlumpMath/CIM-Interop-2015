@@ -16,7 +16,7 @@ public class MockDataAdapter implements IDataAdapter {
         return "org.endeavourhealth.cim.transform.openhr.OpenHRTransformer";
     }
 
-    public String getPatientRecordByPatientId(UUID patientId) {
+    public String getPatientRecordByPatientId(String odsCode, UUID patientId) {
         SOAPConnection soapConnection = null;
         try {
             try {
@@ -46,7 +46,7 @@ public class MockDataAdapter implements IDataAdapter {
         }
     }
 
-    public String getPatientDemographicsByNHSNumber(String nhsNumber) {
+    public String getPatientDemographicsByNHSNumber(String odsCode, String nhsNumber) {
         SOAPConnection soapConnection = null;
         try {
             try {
@@ -76,7 +76,7 @@ public class MockDataAdapter implements IDataAdapter {
         }
     }
 
-    public String getPatientDemographicsByQuery(String surname, Date dateOfBirth, String gender) {
+    public String tracePatient(String surname, Date dateOfBirth, String gender) {
         SOAPConnection soapConnection = null;
         try {
             try {
@@ -110,8 +110,38 @@ public class MockDataAdapter implements IDataAdapter {
             return null;
         }
     }
+    public String tracePatient(String nhsNumber) {
+        SOAPConnection soapConnection = null;
+        try {
+            try {
+                SOAPConnectionFactory soapConnectionFactory = SOAPConnectionFactory.newInstance();
+                soapConnection = soapConnectionFactory.createConnection();
 
-    public String createCondition(String requestData) {
+                // Create basic message
+                SOAPMessage requestMessage = createSOAPRequest("TracePatient");
+
+                // SOAP Body
+                SOAPElement soapMethodElement = requestMessage.getSOAPBody().addChildElement("TracePatient", "", "http://tempuri.org/");
+                SOAPElement criteriaElement = soapMethodElement.addChildElement("criteria");
+                SOAPElement surnameElement = criteriaElement.addChildElement("NhsNumber");
+                surnameElement.addTextNode(nhsNumber);
+                requestMessage.saveChanges();
+
+                // Send SOAP Message to SOAP Server
+                SOAPMessage soapResponse = soapConnection.call(requestMessage, _soapUri + "/TracePatient");
+                return soapResponse.getSOAPBody().getElementsByTagName("TracePatientResult").item(0).getTextContent();
+            } finally {
+                if (soapConnection != null)
+                    soapConnection.close();
+            }
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public String createCondition(String odsCode, String requestData) {
         SOAPConnection soapConnection = null;
         try {
             try {
@@ -144,7 +174,7 @@ public class MockDataAdapter implements IDataAdapter {
         }
     }
 
-    public ArrayList<UUID> getChangedPatients(Date date) {
+    public ArrayList<UUID> getChangedPatients(String odsCode, Date date) {
         SOAPConnection soapConnection = null;
         try {
             try {

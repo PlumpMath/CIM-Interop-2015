@@ -41,7 +41,7 @@ public class PollerProcessor implements org.apache.camel.Processor {
 
         if (subscriberCallbacks.size() > 0) {
             IDataAdapter dataAdapter = AdapterFactory.getDataAdapterForService(odsCode);
-            String patientData = dataAdapter.getPatientRecordByPatientId(patientUUID);
+            String patientData = dataAdapter.getPatientRecordByPatientId(odsCode, patientUUID);
 
             // Get patientApi data transformer for service (native format -> FHIR)
             Transformer transformer = TransformerFactory.getTransformerForAdapter(dataAdapter);

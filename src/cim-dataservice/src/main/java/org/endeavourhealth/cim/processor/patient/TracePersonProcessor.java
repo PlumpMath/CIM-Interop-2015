@@ -18,14 +18,14 @@ public class TracePersonProcessor implements org.apache.camel.Processor {
 		String traceResult = null;
 		if (identifier != null) {
 			String nhsNumber = identifier.substring(4);
-			traceResult = dataAdapter.getPatientDemographicsByNHSNumber(nhsNumber);
+			traceResult = dataAdapter.tracePatient(nhsNumber);
 		} else {
 			String surname = (String)exchange.getIn().getHeader("surname");
 			String dob = (String)exchange.getIn().getHeader("dob");
 			Date dateOfBirth = new SimpleDateFormat("dd/MM/yyyy").parse(dob);
 			String gender = (String)exchange.getIn().getHeader("gender");
 
-			traceResult = dataAdapter.getPatientDemographicsByQuery(surname, dateOfBirth, gender);
+			traceResult = dataAdapter.tracePatient(surname, dateOfBirth, gender);
 		}
 
 		Patient patient = null;

@@ -19,7 +19,7 @@ public class GetPatientByIdentifier implements org.apache.camel.Processor {
         IDataAdapter dataAdapter = AdapterFactory.getDataAdapterForService(odsCode);
 
         // Get patient data by NHS Number
-        String patientDataInNativeFormat = dataAdapter.getPatientDemographicsByNHSNumber(nhsNumber);
+        String patientDataInNativeFormat = dataAdapter.getPatientDemographicsByNHSNumber(odsCode, nhsNumber);
 
         // Get patientApi data transformer for service (native format -> FHIR)
         Transformer transformer = TransformerFactory.getTransformerForAdapter(dataAdapter);
