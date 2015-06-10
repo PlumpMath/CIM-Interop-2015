@@ -7,22 +7,25 @@ import java.util.ArrayList;
 public class AdapterFactory {
     public static IDataAdapter getDataAdapterForService(String odsCode) throws Exception {
         String serviceAdapterTypeName = Registry.getDataAdapterTypeNameForService(odsCode);
+        return getAdapter(serviceAdapterTypeName);
+    }
 
+    public static ArrayList<IDataAdapter> getAllDataAdapters() throws Exception {
+        ArrayList<String> adapterTypes = Registry.getAllAdapterTypes();
+        ArrayList<IDataAdapter> adapters = new ArrayList<>();
+
+        for(String adapterTypeName : adapterTypes)
+            adapters.add(getAdapter(adapterTypeName));
+
+        return adapters;
+    }
+
+    private static IDataAdapter getAdapter(String adapterTypeName) throws Exception {
         try {
-            return (IDataAdapter)Class.forName(serviceAdapterTypeName).newInstance();
+            return (IDataAdapter)Class.forName(adapterTypeName).newInstance();
         }
         catch (Exception e) {
             throw new Exception("Could not load data adapter", e);
         }
-    }
-
-    public static ArrayList<IDataAdapter> getAllDataAdapters() throws Exception {
-        ArrayList<IDataAdapter> adapters = new ArrayList<>();
-
-        adapters.add(getDataAdapterForService("1"));
-        adapters.add(getDataAdapterForService("2"));
-        adapters.add(getDataAdapterForService("3"));
-
-        return adapters;
     }
 }
