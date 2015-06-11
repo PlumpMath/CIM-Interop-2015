@@ -25,5 +25,8 @@
         <module name="cim-dataservice" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="cim-dataservice" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
 </project>
