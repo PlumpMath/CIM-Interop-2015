@@ -10,22 +10,11 @@ import org.hl7.fhir.instance.model.Bundle;
 import org.hl7.fhir.instance.model.Subscription;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.UUID;
 
-public class PollerProcessor implements org.apache.camel.Processor {
-    private static PollerProcessor _instance = null;
-
-    public static PollerProcessor getInstance() {
-        if (_instance == null)
-            _instance = new PollerProcessor();
-
-        return _instance;
-    }
-
-    private ArrayList<String> _services = new ArrayList<>();
-    private HashMap<UUID, Subscription> _subscriptions = new HashMap<>();
+public class SubscriptionProcessor implements org.apache.camel.Processor {
+    private HashMap<String, Subscription> _subscriptions = new HashMap<>();
 
     @Override
     public void process(Exchange exchange) throws Exception {
@@ -54,10 +43,7 @@ public class PollerProcessor implements org.apache.camel.Processor {
         exchange.getIn().setHeader("Callbacks", subscriberCallbacks);
     }
 
-    public void addSubscription(UUID subscriptionId, String odsCode, Subscription subscription) {
-        _subscriptions.put(subscriptionId, subscription);
-
-        if (_services.contains(odsCode) == false)
-            _services.add(odsCode);
+    public void add(Subscription subscription) {
+        _subscriptions.put(subscription.getId(), subscription);
     }
 }

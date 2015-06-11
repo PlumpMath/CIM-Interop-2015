@@ -2,8 +2,7 @@ package org.endeavourhealth.cim.processor.subscription;
 
 import org.apache.camel.Exchange;
 import org.apache.commons.io.IOUtils;
-import org.endeavourhealth.cim.adapter.AdapterFactory;
-import org.endeavourhealth.cim.adapter.IDataAdapter;
+import org.endeavourhealth.cim.subscriptions.SubscriptionManager;
 import org.hl7.fhir.instance.formats.JsonParser;
 import org.hl7.fhir.instance.model.Subscription;
 
@@ -24,7 +23,6 @@ public class AddSubscription implements org.apache.camel.Processor {
 
         Subscription subscription = (Subscription)new JsonParser().parse(message);
 
-        PollerProcessor.getInstance().addSubscription(subscriptionId, odsCode, subscription);
-
+        SubscriptionManager.getInstance().addSubscription(odsCode, subscription, exchange.getContext());
     }
 }

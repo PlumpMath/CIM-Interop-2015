@@ -37,7 +37,7 @@ public class PatientEndpoint extends RouteBuilder {
                     .process(new GetPatientByIdentifier())
                 .when(simple("${header._lastUpdated} != null"))
                     .routeId("GetChangedPatients")
-                    .process(new GetChangedPatients())
+                    .process(new GetChangedPatients(header("odsCode").toString()))
             .end();
 
         from("direct:GetPatientRecordById")
