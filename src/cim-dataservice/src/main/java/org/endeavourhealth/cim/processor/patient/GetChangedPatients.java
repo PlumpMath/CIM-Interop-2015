@@ -25,17 +25,19 @@ public class GetChangedPatients implements org.apache.camel.Processor {
     @Override
     public void process(Exchange exchange) throws Exception {
         String odsCode = (String)exchange.getIn().getHeader("odsCode");
-        String lastUpdate = (String)exchange.getIn().getHeader("_lastUpdated");
 
+        String lastUpdate = (String)exchange.getIn().getHeader("_lastUpdated");
         Date dateUpdated = null;
 
-        if (lastUpdate != null)
+        if (lastUpdate != null)         // Call originated from api
             dateUpdated = new SimpleDateFormat("dd/MM/yyyy hh:mm:ss").parse(lastUpdate.substring(1));
         else {
-            dateUpdated = _lastPoll;
+            dateUpdated = _lastPoll;    // Call originated from subscription
             _lastPoll = new Date();
-            if (dateUpdated == null)
+            if (dateUpdated == null) {  // Baseline poll - do nothing (option for full sync on first poll?)
+                exchange.getIn().setBody(new ArrayList<>());
                 return;
+            }
         }
 
         try {
