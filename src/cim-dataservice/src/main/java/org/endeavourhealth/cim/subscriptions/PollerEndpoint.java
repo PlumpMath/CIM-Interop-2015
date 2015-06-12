@@ -4,19 +4,19 @@ import org.apache.camel.builder.RouteBuilder;
 import org.endeavourhealth.cim.adapter.IDataAdapter;
 import org.endeavourhealth.cim.common.ArrayListAggregationStrategy;
 import org.endeavourhealth.cim.processor.patient.GetChangedPatients;
-import org.endeavourhealth.cim.processor.subscription.SubscriptionProcessor;
+import org.endeavourhealth.cim.processor.subscription.EvaluateSubscriptionsProcessor;
 import org.hl7.fhir.instance.model.Subscription;
 
 import java.util.ArrayList;
 
 public class PollerEndpoint extends RouteBuilder {
     private IDataAdapter _dataAdapter;
-	private SubscriptionProcessor _subscriptionProcessor;
+	private EvaluateSubscriptionsProcessor _subscriptionProcessor;
 	private ArrayList<String> _odsCodes = new ArrayList<>();
 
 	public PollerEndpoint(IDataAdapter dataAdapter) {
         _dataAdapter = dataAdapter;
-		_subscriptionProcessor = new SubscriptionProcessor();
+		_subscriptionProcessor = new EvaluateSubscriptionsProcessor();
     }
 
     @Override

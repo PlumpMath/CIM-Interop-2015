@@ -9,9 +9,8 @@ import org.hl7.fhir.instance.model.Subscription;
 import java.io.InputStream;
 import java.util.UUID;
 
-public class AddSubscription implements org.apache.camel.Processor {
+public class AddSubscriptionProcessor implements org.apache.camel.Processor {
     public void process(Exchange exchange) throws Exception {
-        UUID subscriptionId = UUID.fromString((String)exchange.getIn().getHeader("id"));
         String odsCode = (String) exchange.getIn().getHeader("odsCode");
 
         String message = "";

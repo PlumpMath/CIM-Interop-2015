@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.UUID;
 
-public class SubscriptionProcessor implements org.apache.camel.Processor {
+public class EvaluateSubscriptionsProcessor implements org.apache.camel.Processor {
     private HashMap<String, Subscription> _subscriptions = new HashMap<>();
 
     @Override

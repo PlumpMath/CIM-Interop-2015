@@ -1,7 +1,7 @@
 package org.endeavourhealth.cim.routes.endpoints;
 
 import org.apache.camel.builder.RouteBuilder;
-import org.endeavourhealth.cim.processor.subscription.AddSubscription;
+import org.endeavourhealth.cim.processor.subscription.AddSubscriptionProcessor;
 
 public class SubscriptionEndpoint extends RouteBuilder {
     @Override
@@ -19,6 +19,6 @@ public class SubscriptionEndpoint extends RouteBuilder {
 
         from("direct:AddSubscription")
             .routeId("AddSubscription")
-            .process(new AddSubscription());
+            .process(new AddSubscriptionProcessor());
     }
 }
