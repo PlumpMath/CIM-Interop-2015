@@ -26,4 +26,16 @@ public class FhirFilterHelper {
 
 		return bundle;
 	}
+
+	public static Bundle getMedicationPrescriptions(Bundle bundle) {
+		// Apply medication prescription filter (in case supplier can only provide full record)
+//		for(Bundle.BundleEntryComponent component : bundle.getEntry()) {
+//			if (component.getResource() instanceof Encounter) {
+//				Encounter encounter = (Encounter)component.getResource();
+//				if (encounter.)
+//			}
+//		}
+
+		return bundle;
+	}
 }
