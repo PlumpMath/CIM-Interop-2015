@@ -1,9 +1,7 @@
 package org.endeavourhealth.cim.routes.endpoints;
 
 import org.apache.camel.builder.RouteBuilder;
-import org.endeavourhealth.cim.processor.observation.AddCondition;
-import org.endeavourhealth.cim.processor.patient.GetConditions;
-import org.endeavourhealth.cim.processor.patient.GetImmunizations;
+import org.endeavourhealth.cim.processor.event.GetImmunizations;
 
 public class ImmunizationEndpoint extends RouteBuilder {
     @Override

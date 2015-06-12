@@ -1,4 +1,4 @@
-package org.endeavourhealth.cim.processor.patient;
+package org.endeavourhealth.cim.processor.event;
 
 import org.apache.camel.Exchange;
 import org.apache.camel.Processor;
@@ -9,7 +9,6 @@ import org.endeavourhealth.cim.transform.Transformer;
 import org.endeavourhealth.cim.transform.TransformerFactory;
 import org.hl7.fhir.instance.formats.JsonParser;
 import org.hl7.fhir.instance.model.Bundle;
-import org.hl7.fhir.instance.model.Encounter;
 
 import java.util.UUID;
 

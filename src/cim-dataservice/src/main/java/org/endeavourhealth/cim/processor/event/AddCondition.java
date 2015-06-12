@@ -1,4 +1,4 @@
-package org.endeavourhealth.cim.processor.observation;
+package org.endeavourhealth.cim.processor.event;
 
 import org.apache.camel.Exchange;
 import org.apache.commons.io.IOUtils;

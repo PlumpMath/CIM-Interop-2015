@@ -38,4 +38,16 @@ public class FhirFilterHelper {
 
 		return bundle;
 	}
+
+	public static Bundle getAllergyIntolerances(Bundle bundle) {
+		// Apply allergy intolerance filter (in case supplier can only provide full record)
+//		for(Bundle.BundleEntryComponent component : bundle.getEntry()) {
+//			if (component.getResource() instanceof Encounter) {
+//				Encounter encounter = (Encounter)component.getResource();
+//				if (encounter.)
+//			}
+//		}
+
+		return bundle;
+	}
 }
