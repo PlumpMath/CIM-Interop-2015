@@ -2,6 +2,7 @@ package org.endeavourhealth.cim.routes.endpoints;
 
 import org.apache.camel.builder.RouteBuilder;
 import org.endeavourhealth.cim.processor.observation.AddCondition;
+import org.endeavourhealth.cim.processor.patient.GetConditions;
 
 public class ConditionEndpoint extends RouteBuilder {
     @Override
@@ -11,17 +12,29 @@ public class ConditionEndpoint extends RouteBuilder {
             .description("Condition rest service")
 
         // Endpoint definitions (GET, PUT, etc)
+        .get()
+            .route()
+            .routeId("GetConditionsEndPoint")
+            .description("Get patient conditions")
+            .setHeader("MessageRouterCallback", constant("direct:GetConditionsRoute"))
+            .to("direct:CIMCore")
+        .endRest()
+
         .post()
             .route()
-            .routeId("CreateCondition")
+            .routeId("PostConditionEndPoint")
             .description("Add condition")
-            .setHeader("MessageRouterCallback", constant("direct:AddCondition"))
+            .setHeader("MessageRouterCallback", constant("direct:AddConditionRoute"))
             .to("direct:CIMCore")
         .endRest();
 
         // Message router callback routes
-        from("direct:AddCondition")
-            .routeId("AddCondition")
+        from("direct:GetConditionsRoute")
+            .routeId("GetConditionsRoute")
+            .process(new GetConditions());
+
+        from("direct:AddConditionRoute")
+            .routeId("AddConditionRoute")
             .process(new AddCondition());
     }
 }

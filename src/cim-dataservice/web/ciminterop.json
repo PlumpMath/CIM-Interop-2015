@@ -256,7 +256,8 @@
         "/{odsCode}/Patient": {
             "get": {
                 "tags": [
-                    "demographics"
+                    "demographics",
+                  "In progress"
                 ],
                 "summary":"Get All Patients",
                 "description": "Get Patient Demographic Records for All Patients<br/><br/><u>Examples</u>:<br/><br/>https://endeavour-cim.cloudapp.net/CIM_war/v0.1/Z99999/Patient",
@@ -303,7 +304,8 @@
         "/{odsCode}/Patient?active=true": {
             "get": {
                 "tags": [
-                    "demographics"
+                    "demographics",
+                  "In progress"
                 ],
                 "summary":"Get All Active Patients",
                 "description": "Get Patient Demographic Records for All ACTIVE Patients<br/><br/><u>Examples</u>:<br/><br/>https://endeavour-cim.cloudapp.net/CIM_war/v0.1/Z99999/Patient?active=true",
@@ -521,7 +523,8 @@
         "/{odsCode}/Binary/{id}": {
             "get": {
                 "tags": [
-                    "clinical"
+                    "clinical",
+                  "In progress"
                 ],
                 "summary":"Get Clinical Document by ID",
                 "description": "Get Binary Document by Document ID<br/><br/><u>Examples</u>:<br/><br/>https://endeavour-cim.cloudapp.net/CIM_war/v0.1/Z99999/Binary/99d30432-33fe-4c93-84f9-92cc1961f417",
@@ -578,7 +581,8 @@
         "/{odsCode}/Patient/{id}/MedicationPrescription": {
             "get": {
                 "tags": [
-                    "clinical"
+                    "clinical",
+                    "In progress"
                 ],
                 "summary":"Get Medication Prescriptions By Patient ID",
                 "description": "Get Patient Medication Prescriptions By Patient ID<br/><br/><u>Examples</u>:<br/><br/>https://endeavour-cim.cloudapp.net/CIM_war/v0.1/Z99999/Patient/1234/MedicationPrescription<br/>https://endeavour-cim.cloudapp.net/CIM_war/v0.1/Z99999/Patient/1234/MedicationPrescription?datewritten=2015-04-01&datewritten=2015-05-30",
@@ -639,7 +643,8 @@
         "/{odsCode}/Patient/{id}/Condition": {
             "get": {
                 "tags": [
-                    "clinical"
+                    "clinical",
+                  "In progress"
                 ],
                 "summary":"Get Conditions By Patient ID",
                 "description": "Get Patient Conditions (Problems) By Patient ID<br/><br/><u>Examples</u>:<br/><br/>https://endeavour-cim.cloudapp.net/CIM_war/v0.1/Z99999/Patient/1234/Condition<br/>https://endeavour-cim.cloudapp.net/CIM_war/v0.1/Z99999/Patient/1234/Condition?code=snomed|39065001",
@@ -761,7 +766,8 @@
         "/{odsCode}/Patient/{id}/Immunization": {
             "get": {
                 "tags": [
-                    "clinical"
+                    "clinical",
+                  "In progress"
                 ],
                 "summary":"Get Immunisations By Patient ID",
                 "description": "Get Patient Immunisations By Patient ID<br/><br/><u>Examples</u>:<br/><br/>https://endeavour-cim.cloudapp.net/CIM_war/v0.1/Z99999/Patient/1234/Immunization<br/>https://endeavour-cim.cloudapp.net/CIM_war/v0.1/Z99999/Patient/1234/Immunization?date=2015-04-01&date=2015-05-30",
@@ -822,7 +828,8 @@
         "/{odsCode}/Patient/{id}/AllergyIntolerance": {
             "get": {
                 "tags": [
-                    "clinical"
+                    "clinical",
+                  "In progress"
                 ],
                 "summary":"Get Allergies By Patient ID",
                 "description": "Get Patient Allergies By Patient ID<br/><br/><u>Examples</u>:<br/><br/>https://endeavour-cim.cloudapp.net/CIM_war/v0.1/Z99999/Patient/1234/AllergyIntolerance<br/>https://endeavour-cim.cloudapp.net/CIM_war/v0.1/Z99999/Patient/1234/AllergyIntolerance?criticality=high",
