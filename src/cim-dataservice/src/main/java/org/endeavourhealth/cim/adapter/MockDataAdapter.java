@@ -76,30 +76,33 @@ public class MockDataAdapter implements IDataAdapter {
         }
     }
 
-    public String tracePatient(String surname, Date dateOfBirth, String gender) {
+    public String tracePatientByDemographics(String surname, Date dateOfBirth, String gender, String forename, String postcode) {
         SOAPConnection soapConnection = null;
         try {
             try {
+                String soapMethodName = "TracePatientByDemographics";
+
                 SOAPConnectionFactory soapConnectionFactory = SOAPConnectionFactory.newInstance();
                 soapConnection = soapConnectionFactory.createConnection();
 
                 // Create basic message
-                SOAPMessage requestMessage = createSOAPRequest("TracePatient");
+                SOAPMessage requestMessage = createSOAPRequest(soapMethodName);
 
                 // SOAP Body
-                SOAPElement soapMethodElement = requestMessage.getSOAPBody().addChildElement("TracePatient", "", "http://tempuri.org/");
-                SOAPElement criteriaElement = soapMethodElement.addChildElement("criteria");
-                SOAPElement surnameElement = criteriaElement.addChildElement("Surname");
+                SOAPElement soapMethodElement = requestMessage.getSOAPBody().addChildElement(soapMethodName, "", "http://tempuri.org/");
+                SOAPElement surnameElement = soapMethodElement.addChildElement("surname");
                 surnameElement.addTextNode(surname);
-                SOAPElement sexElement = criteriaElement.addChildElement("Sex");
-                sexElement.addTextNode(gender);
-                SOAPElement dobElement = criteriaElement.addChildElement("DateOfBirth");
+                SOAPElement sexElement = soapMethodElement.addChildElement("sex");
+                sexElement.addTextNode(gender.substring(0, 1).toUpperCase());
+                SOAPElement dobElement = soapMethodElement.addChildElement("dateOfBirth");
                 dobElement.addTextNode(new SimpleDateFormat("yyyy-MM-dd").format(dateOfBirth));
+                soapMethodElement.addChildElement("forename");
+                soapMethodElement.addChildElement("postcode");
                 requestMessage.saveChanges();
 
                 // Send SOAP Message to SOAP Server
-                SOAPMessage soapResponse = soapConnection.call(requestMessage, _soapUri + "/TracePatient");
-                return soapResponse.getSOAPBody().getElementsByTagName("TracePatientResult").item(0).getTextContent();
+                SOAPMessage soapResponse = soapConnection.call(requestMessage, _soapUri + "/" + soapMethodName);
+                return soapResponse.getSOAPBody().getElementsByTagName(soapMethodName + "Result").item(0).getTextContent();
             } finally {
                 if (soapConnection != null)
                     soapConnection.close();
@@ -110,26 +113,27 @@ public class MockDataAdapter implements IDataAdapter {
             return null;
         }
     }
-    public String tracePatient(String nhsNumber) {
+    public String tracePatientByNhsNumber(String nhsNumber) {
         SOAPConnection soapConnection = null;
         try {
             try {
+                String soapMethodName = "TracePatientByNhsNumber";
+
                 SOAPConnectionFactory soapConnectionFactory = SOAPConnectionFactory.newInstance();
                 soapConnection = soapConnectionFactory.createConnection();
 
                 // Create basic message
-                SOAPMessage requestMessage = createSOAPRequest("TracePatient");
+                SOAPMessage requestMessage = createSOAPRequest(soapMethodName);
 
                 // SOAP Body
-                SOAPElement soapMethodElement = requestMessage.getSOAPBody().addChildElement("TracePatient", "", "http://tempuri.org/");
-                SOAPElement criteriaElement = soapMethodElement.addChildElement("criteria");
-                SOAPElement surnameElement = criteriaElement.addChildElement("NhsNumber");
-                surnameElement.addTextNode(nhsNumber);
+                SOAPElement soapMethodElement = requestMessage.getSOAPBody().addChildElement(soapMethodName, "", "http://tempuri.org/");
+                SOAPElement nhsNumberElement = soapMethodElement.addChildElement("nhsNumber");
+                nhsNumberElement.addTextNode(nhsNumber);
                 requestMessage.saveChanges();
 
                 // Send SOAP Message to SOAP Server
-                SOAPMessage soapResponse = soapConnection.call(requestMessage, _soapUri + "/TracePatient");
-                return soapResponse.getSOAPBody().getElementsByTagName("TracePatientResult").item(0).getTextContent();
+                SOAPMessage soapResponse = soapConnection.call(requestMessage, _soapUri + "/" + soapMethodName);
+                return soapResponse.getSOAPBody().getElementsByTagName(soapMethodName + "Result").item(0).getTextContent();
             } finally {
                 if (soapConnection != null)
                     soapConnection.close();

@@ -10,21 +10,37 @@ namespace DotNetGPSystem
     [ServiceBehavior(AddressFilterMode = AddressFilterMode.Any)] 
     internal class GPApiService : IGPApiService
     {
-        public string TracePatient(TraceCriteria criteria)
+        public string[] TracePatientByNhsNumber(string nhsNumber)
         {
-            if (criteria == null)
-                throw new ArgumentNullException("criteria");
+            if ((nhsNumber ?? string.Empty).Replace(" ", string.Empty).Length != 10)
+                throw new FaultException<ApiFault>(new ApiFault("NHS number must be ten digits"));
 
-            if (!string.IsNullOrEmpty(criteria.NhsNumber))
-            {
-                // trace by nhs number
-            }
-            else
-            {
-                // trace by demographics
-            }
+            string[] result = DataStore
+                .OpenHRPatients
+                .Where(t => t.Patient.patientIdentifier.GetNhsNumber() == nhsNumber.Replace(" ", string.Empty))
+                .Select(t => t.OpenHRExcludingHealthDomainXml)
+                .ToArray();
 
-            return string.Empty;
+            return result;
+        }
+
+        public string[] TracePatientByDemographics(string surname, vocSex sex, DateTime dateOfBirth, string forename = null, string postcode = null)
+        {
+            if ((surname ?? string.Empty).Replace(" ", string.Empty).Length < 2)
+                throw new FaultException<ApiFault>(new ApiFault("Two or more characters of the surname must be specified."));
+            
+            if (dateOfBirth == default(DateTime))
+                throw new FaultException<ApiFault>(new ApiFault("Date of birth must be specified."));
+
+            return DataStore
+                .OpenHRPatients
+                .Where(t => t.Person.surname.StartsWith(surname.Trim())
+                    && t.Person.sex == sex
+                    && t.Person.birthDate.Date == dateOfBirth.Date
+                    && (string.IsNullOrEmpty(forename) || t.Person.forenames.StartsWith(forename.Replace(" ", string.Empty)))
+                    && (string.IsNullOrEmpty(postcode) || t.Person.address.GetHomeAddress().postCode.ToUpper().Replace(" ", string.Empty).StartsWith(postcode.ToUpper().Replace(" ", string.Empty))))
+                .Select(t => t.OpenHRExcludingHealthDomainXml)
+                .ToArray();
         }
 
         public string GetPatientDemographics(string nhsNumber)
