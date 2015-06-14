@@ -109,5 +109,13 @@ namespace DotNetGPSystem
                 return xml;
             }
         }
+
+        public static R WhenNotNull<T, R>(this T source, Func<T, R> selector)
+        {
+            if (source == null)
+                return default(R);
+
+            return selector(source);
+        }
     }
 }

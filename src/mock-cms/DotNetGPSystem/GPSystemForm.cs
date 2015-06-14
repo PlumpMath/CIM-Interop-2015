@@ -33,14 +33,23 @@ namespace DotNetGPSystem
             btnViewApiLog.Click += (sender, e) => OpenApiMessageLog();
         }
 
-        private void GPSystemForm_KeyDown(object sender, KeyEventArgs e)
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {
-            switch (e.KeyCode)
+            if (tcTabControl.SelectedTab != null)
             {
-                case Keys.F5: btnOpenPatientRecord.PerformClick(); e.Handled = true; break;
-                case Keys.F6: btnViewTasks.PerformClick(); e.Handled = true; break;
-                case Keys.F7: btnViewApiLog.PerformClick(); e.Handled = true; break;
-                default: break;
+                IKeyHandler keyHandler = tcTabControl.SelectedTab as IKeyHandler;
+
+                if (keyHandler != null)
+                    if (keyHandler.ProcessKey(keyData))
+                        return true;
+            }
+            
+            switch (keyData)
+            {
+                case Keys.F5: btnOpenPatientRecord.PerformClick(); return true;
+                case Keys.F6: btnViewTasks.PerformClick(); return true;
+                case Keys.F7: btnViewApiLog.PerformClick(); return true;
+                default: return base.ProcessCmdKey(ref msg, keyData);
             }
         }
 

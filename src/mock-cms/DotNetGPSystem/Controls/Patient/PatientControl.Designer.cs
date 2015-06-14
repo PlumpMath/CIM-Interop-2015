@@ -43,6 +43,8 @@
             this.btnDemographics = new System.Windows.Forms.ToolStripButton();
             this.btnConditions = new System.Windows.Forms.ToolStripButton();
             this.btnConsultations = new System.Windows.Forms.ToolStripButton();
+            this.btnAllEvents = new System.Windows.Forms.ToolStripButton();
+            this.btnMedication = new System.Windows.Forms.ToolStripButton();
             this.btnViewOpenHR = new System.Windows.Forms.ToolStripButton();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pnlContent = new System.Windows.Forms.Panel();
@@ -170,6 +172,8 @@
             this.btnDemographics,
             this.btnConditions,
             this.btnConsultations,
+            this.btnMedication,
+            this.btnAllEvents,
             this.btnViewOpenHR});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
@@ -187,7 +191,7 @@
             this.btnDemographics.Name = "btnDemographics";
             this.btnDemographics.Size = new System.Drawing.Size(104, 34);
             this.btnDemographics.Text = "Demographics";
-            this.btnDemographics.Click += new System.EventHandler(this.btnDemographics_Click);
+            this.btnDemographics.Click += new System.EventHandler(this.toolStripButton_Click);
             // 
             // btnConditions
             // 
@@ -197,7 +201,7 @@
             this.btnConditions.Name = "btnConditions";
             this.btnConditions.Size = new System.Drawing.Size(85, 34);
             this.btnConditions.Text = "Conditions";
-            this.btnConditions.Click += new System.EventHandler(this.btnConditions_Click);
+            this.btnConditions.Click += new System.EventHandler(this.toolStripButton_Click);
             // 
             // btnConsultations
             // 
@@ -207,7 +211,27 @@
             this.btnConsultations.Name = "btnConsultations";
             this.btnConsultations.Size = new System.Drawing.Size(100, 34);
             this.btnConsultations.Text = "Consultations";
-            this.btnConsultations.Click += new System.EventHandler(this.btnConsultations_Click);
+            this.btnConsultations.Click += new System.EventHandler(this.toolStripButton_Click);
+            // 
+            // btnAllEvents
+            // 
+            this.btnAllEvents.CheckOnClick = true;
+            this.btnAllEvents.Image = ((System.Drawing.Image)(resources.GetObject("btnAllEvents.Image")));
+            this.btnAllEvents.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnAllEvents.Name = "btnAllEvents";
+            this.btnAllEvents.Size = new System.Drawing.Size(78, 34);
+            this.btnAllEvents.Text = "All Events";
+            this.btnAllEvents.Click += new System.EventHandler(this.toolStripButton_Click);
+            // 
+            // btnMedication
+            // 
+            this.btnMedication.CheckOnClick = true;
+            this.btnMedication.Image = ((System.Drawing.Image)(resources.GetObject("btnMedication.Image")));
+            this.btnMedication.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnMedication.Name = "btnMedication";
+            this.btnMedication.Size = new System.Drawing.Size(87, 34);
+            this.btnMedication.Text = "Medication";
+            this.btnMedication.Click += new System.EventHandler(this.toolStripButton_Click);
             // 
             // btnViewOpenHR
             // 
@@ -217,7 +241,7 @@
             this.btnViewOpenHR.Name = "btnViewOpenHR";
             this.btnViewOpenHR.Size = new System.Drawing.Size(100, 34);
             this.btnViewOpenHR.Text = "View OpenHR";
-            this.btnViewOpenHR.Click += new System.EventHandler(this.btnViewOpenHR_Click);
+            this.btnViewOpenHR.Click += new System.EventHandler(this.toolStripButton_Click);
             // 
             // panel1
             // 
@@ -281,5 +305,7 @@
         private System.Windows.Forms.ToolStripButton btnViewOpenHR;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel pnlContent;
+        private System.Windows.Forms.ToolStripButton btnAllEvents;
+        private System.Windows.Forms.ToolStripButton btnMedication;
     }
 }

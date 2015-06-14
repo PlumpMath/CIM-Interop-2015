@@ -39,8 +39,8 @@
             this.dataGridView = new System.Windows.Forms.DataGridView();
             this.colEmpty = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colDob = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colAddress = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colContactDetails = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colIdentifiers = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -130,7 +130,6 @@
             // 
             this.dataGridView.AllowUserToAddRows = false;
             this.dataGridView.AllowUserToDeleteRows = false;
-            this.dataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dataGridView.BackgroundColor = System.Drawing.Color.White;
             this.dataGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
@@ -138,8 +137,8 @@
             this.dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colEmpty,
             this.colName,
+            this.colDob,
             this.colAddress,
-            this.colContactDetails,
             this.colIdentifiers});
             this.dataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView.Location = new System.Drawing.Point(0, 82);
@@ -158,35 +157,35 @@
             // 
             // colEmpty
             // 
-            this.colEmpty.FillWeight = 5F;
             this.colEmpty.HeaderText = "";
             this.colEmpty.Name = "colEmpty";
             this.colEmpty.ReadOnly = true;
+            this.colEmpty.Width = 40;
             // 
             // colName
             // 
-            this.colName.FillWeight = 20F;
             this.colName.HeaderText = "Name";
             this.colName.Name = "colName";
             this.colName.ReadOnly = true;
+            this.colName.Width = 200;
+            // 
+            // colDob
+            // 
+            this.colDob.HeaderText = "Born";
+            this.colDob.Name = "colDob";
+            this.colDob.ReadOnly = true;
+            this.colDob.Width = 150;
             // 
             // colAddress
             // 
-            this.colAddress.FillWeight = 40F;
             this.colAddress.HeaderText = "Address";
             this.colAddress.Name = "colAddress";
             this.colAddress.ReadOnly = true;
-            // 
-            // colContactDetails
-            // 
-            this.colContactDetails.FillWeight = 20F;
-            this.colContactDetails.HeaderText = "Contact Details";
-            this.colContactDetails.Name = "colContactDetails";
-            this.colContactDetails.ReadOnly = true;
+            this.colAddress.Width = 400;
             // 
             // colIdentifiers
             // 
-            this.colIdentifiers.FillWeight = 20F;
+            this.colIdentifiers.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.colIdentifiers.HeaderText = "NHS Number";
             this.colIdentifiers.Name = "colIdentifiers";
             this.colIdentifiers.ReadOnly = true;
@@ -229,8 +228,8 @@
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.DataGridViewTextBoxColumn colEmpty;
         private System.Windows.Forms.DataGridViewTextBoxColumn colName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colDob;
         private System.Windows.Forms.DataGridViewTextBoxColumn colAddress;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colContactDetails;
         private System.Windows.Forms.DataGridViewTextBoxColumn colIdentifiers;
     }
 }

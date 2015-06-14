@@ -53,9 +53,9 @@
             this.tbHomeAddress = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.tbSex = new System.Windows.Forms.TextBox();
             this.tbDateOfBirth = new System.Windows.Forms.TextBox();
             this.tbNhsNumber = new System.Windows.Forms.TextBox();
+            this.tbSex = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.llSave = new System.Windows.Forms.LinkLabel();
@@ -380,17 +380,6 @@
             this.label6.TabIndex = 8;
             this.label6.Text = "NHS number";
             // 
-            // tbSex
-            // 
-            this.tbSex.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.tbSex.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
-            this.tbSex.Location = new System.Drawing.Point(174, 88);
-            this.tbSex.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.tbSex.Name = "tbSex";
-            this.tbSex.ReadOnly = true;
-            this.tbSex.Size = new System.Drawing.Size(347, 20);
-            this.tbSex.TabIndex = 10;
-            // 
             // tbDateOfBirth
             // 
             this.tbDateOfBirth.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -412,6 +401,17 @@
             this.tbNhsNumber.ReadOnly = true;
             this.tbNhsNumber.Size = new System.Drawing.Size(347, 20);
             this.tbNhsNumber.TabIndex = 12;
+            // 
+            // tbSex
+            // 
+            this.tbSex.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tbSex.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
+            this.tbSex.Location = new System.Drawing.Point(174, 88);
+            this.tbSex.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.tbSex.Name = "tbSex";
+            this.tbSex.ReadOnly = true;
+            this.tbSex.Size = new System.Drawing.Size(347, 20);
+            this.tbSex.TabIndex = 10;
             // 
             // panel1
             // 

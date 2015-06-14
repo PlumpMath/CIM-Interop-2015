@@ -24,6 +24,14 @@ namespace DotNetGPSystem
         public OpenHR001Patient Patient { get; private set; }
         public OpenHR001Person Person { get; private set; }
 
+        public OpenHR001HealthDomainEvent[] HealthDomainEvents
+        {
+            get
+            {
+                return OpenHealthRecord.healthDomain.@event ?? new OpenHR001HealthDomainEvent[] { }; 
+            }
+        }
+
         public string OpenHRXml
         {
             get
