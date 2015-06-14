@@ -42,7 +42,7 @@ namespace DotNetGPSystem
                 string effectiveTime = healthEvent.effectiveTime.GetFormattedDate();
                 string displayTerm = healthEvent.displayTerm;
                 string code = healthEvent.code.WhenNotNull(t => t.code);
-                string description = healthEvent.GetAssociatedTextWithValue();
+                string description = healthEvent.GetAssociatedTextWithValue().Trim();
                 
                 dataGridView.Rows.Add(eventType, effectiveTime, code, displayTerm, description);
             }

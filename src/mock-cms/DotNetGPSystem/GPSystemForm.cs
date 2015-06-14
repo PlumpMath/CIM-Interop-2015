@@ -61,12 +61,14 @@ namespace DotNetGPSystem
                 {
                     if (patientFindForm.SelectedPatient != null)
                     {
-                        if (_patientTabPage != null)
-                            tcTabControl.TabPages.Remove(_patientTabPage);
-                        
+                        TabPage previousTabPage = _patientTabPage;
+
                         _patientTabPage = new PatientTabPage(patientFindForm.SelectedPatient);
                         tcTabControl.TabPages.Insert(0, _patientTabPage);
                         tcTabControl.SelectedTab = _patientTabPage;
+
+                        if (previousTabPage != null)
+                            tcTabControl.TabPages.Remove(previousTabPage);
                     }
                 }
             }

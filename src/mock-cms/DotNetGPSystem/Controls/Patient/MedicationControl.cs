@@ -13,6 +13,7 @@ namespace DotNetGPSystem
     internal partial class MedicationControl : UserControl
     {
         private OpenHRPatient _patient;
+        private List<DataGridViewRow> _headerRows = new List<DataGridViewRow>();
         
         public MedicationControl()
         {
@@ -57,7 +58,7 @@ namespace DotNetGPSystem
         private void PopulateMedicationGroup(string groupDescription, OpenHR001HealthDomainEvent[] healthEvents)
         {
             DataGridViewRow headerRow = CreateDataGridViewRow(FontStyle.Bold, Color.AliceBlue);
-            //_headerRows.Add(headerRow);
+            _headerRows.Add(headerRow);
             headerRow.SetValues(groupDescription);
             dataGridView.Rows.Add(headerRow);
 
@@ -92,6 +93,14 @@ namespace DotNetGPSystem
                     dataGridView.Rows.Add(row);
                 }
             }
+        }
+
+        private void dataGridView_SelectionChanged(object sender, EventArgs e)
+        {
+            DataGridViewRow row = dataGridView.SelectedRows.Cast<DataGridViewRow>().FirstOrDefault();
+
+            if (_headerRows.Contains(row))
+                row.Selected = false;
         }
     }
 }
