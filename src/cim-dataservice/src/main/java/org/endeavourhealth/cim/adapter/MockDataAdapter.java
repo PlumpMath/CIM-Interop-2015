@@ -28,8 +28,10 @@ public class MockDataAdapter implements IDataAdapter {
 
                 // SOAP Body
                 SOAPElement soapMethodElement = requestMessage.getSOAPBody().addChildElement("GetPatient", "", "http://tempuri.org/");
-                SOAPElement soapMethodParamElement1 = soapMethodElement.addChildElement("patientGuid");
-                soapMethodParamElement1.addTextNode(patientId.toString());
+
+                createChildTextElement(soapMethodElement, "odsCode", odsCode);
+                createChildTextElement(soapMethodElement, "patientGuid", patientId.toString());
+
                 requestMessage.saveChanges();
 
                 // Send SOAP Message to SOAP Server
@@ -58,8 +60,10 @@ public class MockDataAdapter implements IDataAdapter {
 
                 // SOAP Body
                 SOAPElement soapMethodElement = requestMessage.getSOAPBody().addChildElement("GetPatientDemographics", "", "http://tempuri.org/");
-                SOAPElement soapMethodParamElement1 = soapMethodElement.addChildElement("nhsNumber");
-                soapMethodParamElement1.addTextNode(nhsNumber);
+
+                createChildTextElement(soapMethodElement, "odsCode", odsCode);
+                createChildTextElement(soapMethodElement, "nhsNumber", nhsNumber);
+
                 requestMessage.saveChanges();
 
                 // Send SOAP Message to SOAP Server
@@ -157,8 +161,10 @@ public class MockDataAdapter implements IDataAdapter {
 
                 // SOAP Body
                 SOAPElement soapMethodElement = requestMessage.getSOAPBody().addChildElement("UpdatePatient", "", "http://tempuri.org/");
-                SOAPElement soapMethodParamElement1 = soapMethodElement.addChildElement("openHRXml");
-                soapMethodParamElement1.addTextNode(requestData);
+
+                createChildTextElement(soapMethodElement, "odsCode", odsCode);
+                createChildTextElement(soapMethodElement, "openHRXml", requestData);
+
                 requestMessage.saveChanges();
 
                 // Send SOAP Message to SOAP Server
@@ -190,9 +196,10 @@ public class MockDataAdapter implements IDataAdapter {
 
                 // SOAP Body
                 SOAPElement soapMethodElement = requestMessage.getSOAPBody().addChildElement("GetChangedPatients", "", "http://tempuri.org/");
-                SOAPElement soapMethodParamElement1 = soapMethodElement.addChildElement("sinceDateTime");
-                SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
-                soapMethodParamElement1.addTextNode(dateFormat.format(date));
+
+                createChildTextElement(soapMethodElement, "odsCode", odsCode);
+                createChildTextElement(soapMethodElement, "sinceDateTime", (new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'")).format(date));
+
                 requestMessage.saveChanges();
 
                 // Send SOAP Message to SOAP Server
@@ -215,6 +222,12 @@ public class MockDataAdapter implements IDataAdapter {
             e.printStackTrace();
             return null;
         }
+    }
+
+    private static void createChildTextElement(SOAPElement element, String childElementName, String childElementValue) throws javax.xml.soap.SOAPException
+    {
+        SOAPElement childElement = element.addChildElement(childElementName);
+        childElement.addTextNode(childElementValue);
     }
 
     private SOAPMessage createSOAPRequest(String methodCall) throws Exception {
