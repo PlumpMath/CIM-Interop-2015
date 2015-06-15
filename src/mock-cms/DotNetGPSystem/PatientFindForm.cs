@@ -22,7 +22,8 @@ namespace DotNetGPSystem
         public PatientFindForm(OpenHRPatient[] patientRecords) : this()
         {
             _patientRecords = patientRecords
-                .OrderBy(t => t.Person.surname.ToLower())
+                .OrderBy(t => t.Organisation.name)
+                .ThenBy(t => t.Person.surname.ToLower())
                 .ToArray();
         }
 
@@ -49,11 +50,12 @@ namespace DotNetGPSystem
                 DataGridViewRow row = (DataGridViewRow)dataGridView.RowTemplate.Clone();
                 row.CreateCells(dataGridView);
                 
-                row.SetValues(string.Empty, 
+                row.SetValues(patientPerson.HealthDomainEvents.Length.ToString(),
                     patientPerson.Person.GetCuiDisplayName(), 
                     patientPerson.Person.GetCuiDobStringWithAge(),
                     patientPerson.Person.address.GetHomeAddress().GetAddressAsSingleLineString(), 
-                    patientPerson.Patient.patientIdentifier.GetFormattedNhsNumber());
+                    patientPerson.Patient.patientIdentifier.GetFormattedNhsNumber(),
+                    patientPerson.Organisation.name);
 
                 row.Tag = patientPerson;
 

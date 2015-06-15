@@ -129,11 +129,11 @@
     </organisation>
     <organisation updateMode="add">
       <id>4a3ea1cf-7f01-4f61-9654-b07dd51a34f8</id>
-      <name>EMIS PCS Test Surgery 2</name>
+      <name>Alpha Surgery</name>
       <organisationType codeSystem="2.16.840.1.113883.2.1.6.2" displayName="General Practice" code="" />
       <speciality codeSystem="2.16.840.1.113883.2.1.6.2" displayName="General Medical Practice" code="" />
       <cdb>50003</cdb>
-      <nationalPracticeCode>T00003</nationalPracticeCode>
+      <nationalPracticeCode>A00001</nationalPracticeCode>
       <mainLocation>187011f3-aa9d-4419-89b7-d461953f9eb0</mainLocation>
       <locations updateMode="add">
         <location>187011f3-aa9d-4419-89b7-d461953f9eb0</location>

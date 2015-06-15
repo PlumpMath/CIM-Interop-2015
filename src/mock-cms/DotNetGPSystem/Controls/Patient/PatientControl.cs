@@ -41,6 +41,7 @@ namespace DotNetGPSystem
             this.lblPrecisDateOfBirth.Text = patient.Person.GetCuiDobStringWithAge();
             this.lblPrecisGender.Text = patient.Person.sex.GetSexString();
             this.lblPrecisNhsNumber.Text = patient.Patient.patientIdentifier.GetFormattedNhsNumber();
+            this.lblOrganisation.Text = patient.Organisation.name;
         }
 
         private void CreatePages(OpenHRPatient patient)

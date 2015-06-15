@@ -10,6 +10,8 @@ namespace DotNetGPSystem
     [ServiceContract]       
     public interface IGPApiService       
     {
+        // Supplier wide services
+        
         [OperationContract]
         [FaultContract(typeof(ApiFault))]
         string[] TracePatientByNhsNumber(string nhsNumber);
@@ -18,16 +20,19 @@ namespace DotNetGPSystem
         [FaultContract(typeof(ApiFault))]
         string[] TracePatientByDemographics(string surname, vocSex sex, DateTime dateOfBirth, string forename = null, string postcode = null);
 
+        
+        // Organisation services
+
         [OperationContract]
-        string GetPatientDemographics(string nhsNumber);
+        string GetPatientDemographics(string odsCode, string nhsNumber);
         
         [OperationContract]
-        string GetPatient(Guid patientGuid);
+        string GetPatient(string odsCode, Guid patientGuid);
 
         [OperationContract]
-        Guid[] GetChangedPatients(DateTime sinceDateTime);
+        Guid[] GetChangedPatients(string odsCode, DateTime sinceDateTime);
 
         [OperationContract]
-        void UpdatePatient(string openHRXml);
+        void UpdatePatient(string odsCode, string openHRXml);
     }       
 }

@@ -10,6 +10,8 @@ namespace DotNetGPSystem
     [ServiceBehavior(AddressFilterMode = AddressFilterMode.Any)] 
     internal class GPApiService : IGPApiService
     {
+        // Supplier wide services
+
         public string[] TracePatientByNhsNumber(string nhsNumber)
         {
             if ((nhsNumber ?? string.Empty).Replace(" ", string.Empty).Length != 10)
@@ -43,10 +45,12 @@ namespace DotNetGPSystem
                 .ToArray();
         }
 
-        public string GetPatientDemographics(string nhsNumber)
+        // Organisation services
+
+        public string GetPatientDemographics(string odsCode, string nhsNumber)
         {
             OpenHRPatient[] patients = DataStore
-                .OpenHRPatients
+                .GetPatients(odsCode)
                 .Where(t => t.Patient.patientIdentifier.GetNhsNumber() == nhsNumber)
                 .ToArray();
 
@@ -57,10 +61,10 @@ namespace DotNetGPSystem
                 
         }
 
-        public string GetPatient(Guid patientGuid)
+        public string GetPatient(string odsCode, Guid patientGuid)
         {
             OpenHRPatient[] patients = DataStore
-                .OpenHRPatients
+                .GetPatients(odsCode)
                 .Where(t => new Guid(t.Patient.id) == patientGuid)
                 .ToArray();
 
@@ -71,10 +75,10 @@ namespace DotNetGPSystem
 
         }
 
-        public Guid[] GetChangedPatients(DateTime sinceDateTime)
+        public Guid[] GetChangedPatients(string odsCode, DateTime sinceDateTime)
         {
             return DataStore
-                .PatientChangeList
+                .GetPatientChangeList(odsCode)
                 .Where(t => t.Key >= sinceDateTime)
                 .OrderBy(t => t.Key)
                 .Select(t => new Guid(t.Value.Patient.id))
@@ -82,7 +86,7 @@ namespace DotNetGPSystem
                 .ToArray();
         }
 
-        public void UpdatePatient(string openHRXml)
+        public void UpdatePatient(string odsCode, string openHRXml)
         {
             DataStore.ProcessExternalUpdate(openHRXml);
         }

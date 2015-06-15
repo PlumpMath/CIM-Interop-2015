@@ -18,11 +18,13 @@ namespace DotNetGPSystem
             OpenHealthRecord = openHealthRecord;
             Patient = openHealthRecord.adminDomain.patient.Single();
             Person = openHealthRecord.adminDomain.person.Single(t => t.id == openHealthRecord.adminDomain.patient.Single().patientPerson);
+            Organisation = openHealthRecord.adminDomain.organisation.Single(t => new Guid(t.id) == new Guid(openHealthRecord.author.organisation));
         }
 
         public OpenHR001OpenHealthRecord OpenHealthRecord { get; private set; }
         public OpenHR001Patient Patient { get; private set; }
         public OpenHR001Person Person { get; private set; }
+        public OpenHR001Organisation Organisation { get; private set; }
 
         public OpenHR001HealthDomainEvent[] HealthDomainEvents
         {

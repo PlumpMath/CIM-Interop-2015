@@ -31,6 +31,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PatientControl));
             this.panel5 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.lblOrganisation = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.lblPrecisNhsNumber = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.lblPrecisGender = new System.Windows.Forms.Label();
@@ -43,8 +45,8 @@
             this.btnDemographics = new System.Windows.Forms.ToolStripButton();
             this.btnConditions = new System.Windows.Forms.ToolStripButton();
             this.btnConsultations = new System.Windows.Forms.ToolStripButton();
-            this.btnAllEvents = new System.Windows.Forms.ToolStripButton();
             this.btnMedication = new System.Windows.Forms.ToolStripButton();
+            this.btnAllEvents = new System.Windows.Forms.ToolStripButton();
             this.btnViewOpenHR = new System.Windows.Forms.ToolStripButton();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pnlContent = new System.Windows.Forms.Panel();
@@ -63,12 +65,14 @@
             this.panel5.Location = new System.Drawing.Point(0, 0);
             this.panel5.Name = "panel5";
             this.panel5.Padding = new System.Windows.Forms.Padding(0, 0, 0, 1);
-            this.panel5.Size = new System.Drawing.Size(999, 53);
+            this.panel5.Size = new System.Drawing.Size(1172, 53);
             this.panel5.TabIndex = 2;
             // 
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.panel4.Controls.Add(this.lblOrganisation);
+            this.panel4.Controls.Add(this.label2);
             this.panel4.Controls.Add(this.lblPrecisNhsNumber);
             this.panel4.Controls.Add(this.label8);
             this.panel4.Controls.Add(this.lblPrecisGender);
@@ -80,8 +84,28 @@
             this.panel4.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.panel4.Location = new System.Drawing.Point(0, 0);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(999, 52);
+            this.panel4.Size = new System.Drawing.Size(1172, 52);
             this.panel4.TabIndex = 1;
+            // 
+            // lblOrganisation
+            // 
+            this.lblOrganisation.AutoSize = true;
+            this.lblOrganisation.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
+            this.lblOrganisation.Location = new System.Drawing.Point(1005, 15);
+            this.lblOrganisation.Name = "lblOrganisation";
+            this.lblOrganisation.Size = new System.Drawing.Size(108, 20);
+            this.lblOrganisation.TabIndex = 8;
+            this.lblOrganisation.Text = "Alpha Surgery";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Italic);
+            this.label2.Location = new System.Drawing.Point(910, 17);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(92, 19);
+            this.label2.TabIndex = 7;
+            this.label2.Text = "Organisation";
             // 
             // lblPrecisNhsNumber
             // 
@@ -161,7 +185,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 53);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(999, 37);
+            this.panel2.Size = new System.Drawing.Size(1172, 37);
             this.panel2.TabIndex = 6;
             // 
             // toolStrip1
@@ -177,7 +201,7 @@
             this.btnViewOpenHR});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(999, 37);
+            this.toolStrip1.Size = new System.Drawing.Size(1172, 37);
             this.toolStrip1.TabIndex = 5;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -213,16 +237,6 @@
             this.btnConsultations.Text = "Consultations";
             this.btnConsultations.Click += new System.EventHandler(this.toolStripButton_Click);
             // 
-            // btnAllEvents
-            // 
-            this.btnAllEvents.CheckOnClick = true;
-            this.btnAllEvents.Image = ((System.Drawing.Image)(resources.GetObject("btnAllEvents.Image")));
-            this.btnAllEvents.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnAllEvents.Name = "btnAllEvents";
-            this.btnAllEvents.Size = new System.Drawing.Size(78, 34);
-            this.btnAllEvents.Text = "All Events";
-            this.btnAllEvents.Click += new System.EventHandler(this.toolStripButton_Click);
-            // 
             // btnMedication
             // 
             this.btnMedication.CheckOnClick = true;
@@ -232,6 +246,16 @@
             this.btnMedication.Size = new System.Drawing.Size(87, 34);
             this.btnMedication.Text = "Medication";
             this.btnMedication.Click += new System.EventHandler(this.toolStripButton_Click);
+            // 
+            // btnAllEvents
+            // 
+            this.btnAllEvents.CheckOnClick = true;
+            this.btnAllEvents.Image = ((System.Drawing.Image)(resources.GetObject("btnAllEvents.Image")));
+            this.btnAllEvents.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnAllEvents.Name = "btnAllEvents";
+            this.btnAllEvents.Size = new System.Drawing.Size(78, 34);
+            this.btnAllEvents.Text = "All Events";
+            this.btnAllEvents.Click += new System.EventHandler(this.toolStripButton_Click);
             // 
             // btnViewOpenHR
             // 
@@ -251,7 +275,7 @@
             this.panel1.Location = new System.Drawing.Point(0, 90);
             this.panel1.Name = "panel1";
             this.panel1.Padding = new System.Windows.Forms.Padding(1);
-            this.panel1.Size = new System.Drawing.Size(999, 450);
+            this.panel1.Size = new System.Drawing.Size(1172, 450);
             this.panel1.TabIndex = 7;
             // 
             // pnlContent
@@ -261,7 +285,7 @@
             this.pnlContent.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pnlContent.Location = new System.Drawing.Point(1, 1);
             this.pnlContent.Name = "pnlContent";
-            this.pnlContent.Size = new System.Drawing.Size(997, 448);
+            this.pnlContent.Size = new System.Drawing.Size(1170, 448);
             this.pnlContent.TabIndex = 11;
             // 
             // PatientControl
@@ -273,7 +297,7 @@
             this.Controls.Add(this.panel5);
             this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "PatientControl";
-            this.Size = new System.Drawing.Size(999, 540);
+            this.Size = new System.Drawing.Size(1172, 540);
             this.panel5.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
@@ -307,5 +331,7 @@
         private System.Windows.Forms.Panel pnlContent;
         private System.Windows.Forms.ToolStripButton btnAllEvents;
         private System.Windows.Forms.ToolStripButton btnMedication;
+        private System.Windows.Forms.Label lblOrganisation;
+        private System.Windows.Forms.Label label2;
     }
 }

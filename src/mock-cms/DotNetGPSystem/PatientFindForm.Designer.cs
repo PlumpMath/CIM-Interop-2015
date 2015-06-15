@@ -42,6 +42,7 @@
             this.colDob = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colAddress = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colIdentifiers = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colGPPractice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -139,7 +140,8 @@
             this.colName,
             this.colDob,
             this.colAddress,
-            this.colIdentifiers});
+            this.colIdentifiers,
+            this.colGPPractice});
             this.dataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView.Location = new System.Drawing.Point(0, 82);
             this.dataGridView.MultiSelect = false;
@@ -157,7 +159,7 @@
             // 
             // colEmpty
             // 
-            this.colEmpty.HeaderText = "";
+            this.colEmpty.HeaderText = "Size";
             this.colEmpty.Name = "colEmpty";
             this.colEmpty.ReadOnly = true;
             this.colEmpty.Width = 40;
@@ -181,14 +183,21 @@
             this.colAddress.HeaderText = "Address";
             this.colAddress.Name = "colAddress";
             this.colAddress.ReadOnly = true;
-            this.colAddress.Width = 400;
+            this.colAddress.Width = 350;
             // 
             // colIdentifiers
             // 
-            this.colIdentifiers.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.colIdentifiers.HeaderText = "NHS Number";
             this.colIdentifiers.Name = "colIdentifiers";
             this.colIdentifiers.ReadOnly = true;
+            this.colIdentifiers.Width = 120;
+            // 
+            // colGPPractice
+            // 
+            this.colGPPractice.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.colGPPractice.HeaderText = "Organisation";
+            this.colGPPractice.Name = "colGPPractice";
+            this.colGPPractice.ReadOnly = true;
             // 
             // PatientFindForm
             // 
@@ -231,5 +240,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colDob;
         private System.Windows.Forms.DataGridViewTextBoxColumn colAddress;
         private System.Windows.Forms.DataGridViewTextBoxColumn colIdentifiers;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colGPPractice;
     }
 }

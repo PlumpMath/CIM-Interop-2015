@@ -39,12 +39,18 @@ namespace DotNetGPSystem
             }
         }
 
-        public static KeyValuePair<DateTime, OpenHRPatient>[] PatientChangeList
+        public static OpenHRPatient[] GetPatients(string odsCode)
         {
-            get
-            {
-                return _patientChangeList.ToArray();
-            }
+            return OpenHRPatients
+                .Where(t => t.Organisation.nationalPracticeCode == odsCode)
+                .ToArray();
+        }
+
+        public static KeyValuePair<DateTime, OpenHRPatient>[] GetPatientChangeList(string odsCode)
+        {
+            return _patientChangeList
+                .Where(t => t.Value.Organisation.nationalPracticeCode == odsCode)
+                .ToArray();
         }
 
         public static void SaveOpenHRPatient(OpenHRPatient patient)
