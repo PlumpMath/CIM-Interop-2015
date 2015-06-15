@@ -261,7 +261,7 @@
       <organisationType codeSystem="2.16.840.1.113883.2.1.6.2" displayName="General Practice" code="" />
       <speciality codeSystem="2.16.840.1.113883.2.1.6.2" displayName="General Medical Practice" code="" />
       <cdb>50003</cdb>
-      <nationalPracticeCode>Y00001</nationalPracticeCode>
+      <nationalPracticeCode>Y99999</nationalPracticeCode>
       <mainLocation>187011f3-aa9d-4419-89b7-d461953f9eb0</mainLocation>
       <locations updateMode="add">
         <location>187011f3-aa9d-4419-89b7-d461953f9eb0</location>

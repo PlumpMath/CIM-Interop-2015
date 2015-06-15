@@ -20,7 +20,6 @@ namespace DotNetGPSystem
 {
     internal partial class GPSystemForm : Form
     {
-        private string[] _odsCodes = new string[] { "A00001", "B00001", "Y00001", "Z00001" };
         private TabPage _tasksTabPage = new TasksTabPage();
         private ApiLogTabPage _apiLogTabPage = new ApiLogTabPage();
         private PatientTabPage _patientTabPage = null;
