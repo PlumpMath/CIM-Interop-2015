@@ -53,37 +53,61 @@
     <Compile Include="API\GPApiService.cs" />
     <Compile Include="API\GPApiServiceLogger.cs" />
     <Compile Include="API\ApiLogMessage.cs" />
-    <Compile Include="API\TraceCriteria.cs" />
-    <Compile Include="Controls\ApiLogControl.cs">
+    <Compile Include="Controls\ApiLog\ApiLogControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Controls\ApiLogControl.Designer.cs">
+    <Compile Include="Controls\ApiLog\ApiLogControl.Designer.cs">
       <DependentUpon>ApiLogControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controls\ApiLogTabPage.cs">
+    <Compile Include="Controls\ApiLog\ApiLogTabPage.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Controls\DemographicsControl.cs">
+    <Compile Include="Controls\IKeyHandler.cs" />
+    <Compile Include="Controls\Patient\ConditionsControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Controls\DemographicsControl.Designer.cs">
+    <Compile Include="Controls\Patient\ConditionsControl.Designer.cs">
+      <DependentUpon>ConditionsControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Patient\ConsultationsControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Patient\ConsultationsControl.Designer.cs">
+      <DependentUpon>ConsultationsControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Patient\DemographicsControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Patient\DemographicsControl.Designer.cs">
       <DependentUpon>DemographicsControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Controls\MessageBox.cs" />
-    <Compile Include="Controls\OpenHRControl.cs">
+    <Compile Include="Controls\Patient\AllEventsControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Controls\OpenHRControl.Designer.cs">
+    <Compile Include="Controls\Patient\AllEventsControl.Designer.cs">
+      <DependentUpon>AllEventsControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Patient\MedicationControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Patient\MedicationControl.Designer.cs">
+      <DependentUpon>MedicationControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Patient\OpenHRControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Patient\OpenHRControl.Designer.cs">
       <DependentUpon>OpenHRControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controls\PatientControlToolStripRenderer.cs" />
-    <Compile Include="Controls\TasksTabPage.cs">
+    <Compile Include="Controls\Patient\PatientControlToolStripRenderer.cs" />
+    <Compile Include="Controls\Tasks\TasksTabPage.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Controls\TasksControl.cs">
+    <Compile Include="Controls\Tasks\TasksControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Controls\TasksControl.Designer.cs">
+    <Compile Include="Controls\Tasks\TasksControl.Designer.cs">
       <DependentUpon>TasksControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Data\DataStore.cs" />
@@ -99,10 +123,10 @@
       <DependentUpon>OpenHR001.xsd</DependentUpon>
     </Compile>
     <Compile Include="Data\OpenHRExtensionMethods.cs" />
-    <Compile Include="Controls\PatientControl.cs">
+    <Compile Include="Controls\Patient\PatientControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Controls\PatientControl.Designer.cs">
+    <Compile Include="Controls\Patient\PatientControl.Designer.cs">
       <DependentUpon>PatientControl.cs</DependentUpon>
     </Compile>
     <Compile Include="PatientFindForm.cs">
@@ -111,28 +135,37 @@
     <Compile Include="PatientFindForm.Designer.cs">
       <DependentUpon>PatientFindForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controls\PatientTabPage.cs">
+    <Compile Include="Controls\Patient\PatientTabPage.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utilities.cs" />
-    <EmbeddedResource Include="Controls\ApiLogControl.resx">
+    <EmbeddedResource Include="Controls\ApiLog\ApiLogControl.resx">
       <DependentUpon>ApiLogControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Controls\DemographicsControl.resx">
+    <EmbeddedResource Include="Controls\Patient\ConditionsControl.resx">
+      <DependentUpon>ConditionsControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Patient\DemographicsControl.resx">
       <DependentUpon>DemographicsControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Controls\OpenHRControl.resx">
+    <EmbeddedResource Include="Controls\Patient\AllEventsControl.resx">
+      <DependentUpon>AllEventsControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Patient\MedicationControl.resx">
+      <DependentUpon>MedicationControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Patient\OpenHRControl.resx">
       <DependentUpon>OpenHRControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Controls\TasksControl.resx">
+    <EmbeddedResource Include="Controls\Tasks\TasksControl.resx">
       <DependentUpon>TasksControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GPSystemForm.resx">
       <DependentUpon>GPSystemForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Controls\PatientControl.resx">
+    <EmbeddedResource Include="Controls\Patient\PatientControl.resx">
       <DependentUpon>PatientControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PatientFindForm.resx">

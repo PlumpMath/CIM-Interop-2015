@@ -6,7 +6,7 @@
     <system>
       <systemType>EMISWEB</systemType>
     </system>
-    <organisation>4A3EA1CF-7F01-4F61-9654-B07DD51A34F8</organisation>
+    <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
   </author>
   <contentSpecification>
     <specification>37241000000102</specification>
@@ -49,7 +49,7 @@
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <caseloadPatient updateMode="add">
         <id>0a296054-8e4a-4ce5-b7b9-307584e8d05a</id>
-        <organisation>4a3ea1cf-7f01-4f61-9654-b07dd51a34f8</organisation>
+        <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
         <dateRecorded>1999-10-19T00:00:00</dateRecorded>
         <patientStatus>
           <status>6</status>
@@ -80,12 +80,12 @@
       <openDate>2006-10-01T00:00:00</openDate>
     </organisation>
     <organisation updateMode="add">
-      <id>4a3ea1cf-7f01-4f61-9654-b07dd51a34f8</id>
-      <name>EMIS PCS Test Surgery 2</name>
+      <id>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</id>
+      <name>Bravo Surgery</name>
       <organisationType codeSystem="2.16.840.1.113883.2.1.6.2" displayName="General Practice" code="" />
       <speciality codeSystem="2.16.840.1.113883.2.1.6.2" displayName="General Medical Practice" code="" />
       <cdb>50003</cdb>
-      <nationalPracticeCode>T00003</nationalPracticeCode>
+      <nationalPracticeCode>B99999</nationalPracticeCode>
       <mainLocation>187011f3-aa9d-4419-89b7-d461953f9eb0</mainLocation>
       <locations updateMode="add">
         <location>187011f3-aa9d-4419-89b7-d461953f9eb0</location>
@@ -160,7 +160,7 @@
       <id>63115222-7fad-9016-12ed-1091def75a50</id>
       <name>Principal</name>
       <userCategory codeSystem="2.16.840.1.113883.2.1.6.2" displayName="General Medical Practitioner" code="" />
-      <organisation>4a3ea1cf-7f01-4f61-9654-b07dd51a34f8</organisation>
+      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
     </role>
     <userInRole updateMode="add">

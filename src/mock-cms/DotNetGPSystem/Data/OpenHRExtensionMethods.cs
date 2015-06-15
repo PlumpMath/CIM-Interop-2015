@@ -16,7 +16,7 @@ namespace DotNetGPSystem
 
         public static string GetCuiDobString(this OpenHR001Person person)
         {
-            return person.birthDate.ToString("yyyy-MMM-dd");
+            return person.birthDate.ToString("dd-MMM-yyyy");
         }
 
         public static string GetCuiDobStringWithAge(this OpenHR001Person person)
@@ -55,6 +55,139 @@ namespace DotNetGPSystem
         public static string GetAddressAsSingleLineString(this OpenHR001PersonAddress address)
         {
             return GetAddressAsMultilineString(address).Replace(Environment.NewLine, ", ");
+        }
+
+        public static string GetFormattedDate(this dtDatePart date)
+        {
+            switch (date.datepart)
+            {
+                case vocDatePart.YMD: return date.value.ToString("dd-MMM-yyyy");
+                case vocDatePart.YM: return date.value.ToString("MMM-yyyy");
+                case vocDatePart.Y: return date.value.ToString("yyyy");
+                case vocDatePart.YMDT: return date.value.ToString("dd-MMM-yyyy HH:mm");
+                case vocDatePart.U: return string.Empty;
+                default: throw new NotSupportedException("vocDatePart");
+            }
+        }
+
+        public static string GetEventTypeDescription(this vocEventType eventType)
+        {
+            switch (eventType)
+            {
+                case vocEventType.OBS: return "Observation";
+				case vocEventType.MED: return "Medication";
+				case vocEventType.TR: return "Test Request";
+				case vocEventType.INV: return "Investigation";
+				case vocEventType.VAL: return "Value";
+				case vocEventType.ISS: return "Medication Issue";
+                case vocEventType.ATT: return "Attachment";
+				case vocEventType.REF: return "Referral";
+                case vocEventType.DRY: return "Diary";
+				case vocEventType.ALT: return "Alert";
+				case vocEventType.ALL: return "Allergy";
+				case vocEventType.FH: return "Family history";
+				case vocEventType.IMM: return "Immunisation";
+				case vocEventType.REP: return "Report";
+				case vocEventType.OH: return "Order Header";
+                default: throw new NotSupportedException("vocEventType");
+            }
+        }
+
+        public static string GetProblemSignficance(this vocProblemSignificance signficance)
+        {
+            switch (signficance)
+            {
+                case vocProblemSignificance.S: return "Signficant";
+                case vocProblemSignificance.M: return "Minor";
+                default: throw new NotSupportedException("vocProblemSignficance");
+            }
+        }
+
+        public static string GetDescription(this vocProblemStatus status)
+        {
+            switch (status)
+            {
+                case vocProblemStatus.A: return "Active";
+                case vocProblemStatus.HP: return "Health Admin";
+                case vocProblemStatus.I: return "Inactive";
+                case vocProblemStatus.PP: return "Potential Condition";
+                default: throw new NotSupportedException("vocProblemStatus");
+            }
+        }
+
+        public static string GetDescription(this vocPrescriptionType type)
+        {
+            switch (type)
+            {
+                case vocPrescriptionType.A: return "Acute";
+                case vocPrescriptionType.R: return "Repeat";
+                case vocPrescriptionType.D: return "Repeat Dispensed";
+                case vocPrescriptionType.U: return "Automatic";
+                default: throw new NotSupportedException("vocPrescriptionType");
+            }
+        }
+
+        public static string GetDescription(this vocDrugStatus status)
+        {
+            switch (status)
+            {
+                case vocDrugStatus.A: return "Active";
+                case vocDrugStatus.C: return "Cancelled";
+                case vocDrugStatus.N: return "Never Active";
+                default: throw new NotSupportedException("vocDrugStatus");
+            }
+        }
+
+        public static string GetObservationValueText(this OpenHR001HealthDomainEvent healthEvent)
+        {
+            string result = string.Empty;
+            
+            OpenHR001Observation observation = (healthEvent.Item as OpenHR001Observation);
+
+            if (observation != null)
+            {
+                if (observation.value != null)
+                {
+                    if (observation.value.Item is OpenHR001NumericValue)
+                    {
+                        OpenHR001NumericValue observationValue = observation.value.Item as OpenHR001NumericValue;
+
+                        result = observationValue.value.ToString() + " " + observationValue.units;
+
+                    }
+                    else if (observation.value.Item is OpenHR001TextValue)
+                    {
+                        OpenHR001TextValue textValue = observation.value.Item as OpenHR001TextValue;
+
+                        result = textValue.value;
+                    }
+                }
+            }
+
+            return result;
+        }
+
+        public static string[] GetAssociatedText(this OpenHR001HealthDomainEvent healthEvent)
+        {
+            if (healthEvent.associatedText == null)
+                return new string[] { };
+
+            return healthEvent.associatedText.Select(t => t.value).ToArray();
+        }
+
+        public static string GetAssociatedTextWithValue(this OpenHR001HealthDomainEvent healthEvent)
+        {
+            string value = healthEvent.GetObservationValueText();
+            string[] associatedText = healthEvent.GetAssociatedText();
+
+            List<string> descriptionText = new List<string>();
+
+            if (!string.IsNullOrEmpty(value))
+                descriptionText.Add(value);
+
+            descriptionText.AddRange(associatedText);
+
+            return string.Join(" | ", descriptionText);
         }
 
         public static string GetAddressAsMultilineString(this OpenHR001PersonAddress address)

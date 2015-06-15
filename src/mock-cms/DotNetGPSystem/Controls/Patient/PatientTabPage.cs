@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace DotNetGPSystem
 {
-    internal partial class PatientTabPage : TabPage
+    internal partial class PatientTabPage : TabPage, IKeyHandler
     {
         private OpenHRPatient _patient;
         private PatientControl _patientControl;
@@ -40,6 +40,11 @@ namespace DotNetGPSystem
             {
                 return _patient;
             }
+        }
+
+        public bool ProcessKey(Keys key)
+        {
+            return _patientControl.ProcessKey(key);
         }
     }
 }

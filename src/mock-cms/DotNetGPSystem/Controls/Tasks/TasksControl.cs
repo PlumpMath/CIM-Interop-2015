@@ -60,7 +60,7 @@ namespace DotNetGPSystem
             DataGridViewRow row = (DataGridViewRow)dataGridView.RowTemplate.Clone();
             row.CreateCells(dataGridView);
 
-            row.SetValues(taskImage, dateStamp.ToString("yyyy-MMM-dd HH:mm:ss"), patientName, taskName, description);
+            row.SetValues(taskImage, dateStamp.ToString("dd-MMM-yyyy HH:mm:ss"), patientName, taskName, description);
 
             row.Tag = taskBody;
 

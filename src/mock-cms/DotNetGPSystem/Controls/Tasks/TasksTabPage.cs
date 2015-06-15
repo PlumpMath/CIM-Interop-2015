@@ -21,7 +21,6 @@ namespace DotNetGPSystem
             _tasksControl = new TasksControl();
             _tasksControl.Dock = DockStyle.Fill;
             _tasksControl.Parent = this;
-            
         }
     }
 }
