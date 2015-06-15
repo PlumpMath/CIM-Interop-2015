@@ -98,7 +98,10 @@ namespace DotNetGPSystem
             Control control = (Control)button.Tag;
 
             if (control != null)
+            {
                 control.BringToFront();
+                control.Focus();
+            }
 
             CheckToolStripButton(button);
         }
