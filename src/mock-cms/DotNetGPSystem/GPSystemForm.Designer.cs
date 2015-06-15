@@ -49,6 +49,7 @@
             this.btnViewApiLog = new System.Windows.Forms.ToolStripButton();
             this.tcTabControl = new System.Windows.Forms.TabControl();
             this.timer = new System.Windows.Forms.Timer(this.components);
+            this.btnAppointmentBook = new System.Windows.Forms.ToolStripButton();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -186,6 +187,7 @@
             this.toolStripLabel1,
             this.toolStripSeparator1,
             this.btnOpenPatientRecord,
+            this.btnAppointmentBook,
             this.btnViewTasks,
             this.btnViewApiLog});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
@@ -244,6 +246,14 @@
             this.timer.Interval = 1000;
             this.timer.Tick += new System.EventHandler(this.timer_Tick);
             // 
+            // btnAppointmentBook
+            // 
+            this.btnAppointmentBook.Image = ((System.Drawing.Image)(resources.GetObject("btnAppointmentBook.Image")));
+            this.btnAppointmentBook.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnAppointmentBook.Name = "btnAppointmentBook";
+            this.btnAppointmentBook.Size = new System.Drawing.Size(128, 34);
+            this.btnAppointmentBook.Text = "Appointment Book";
+            // 
             // GPSystemForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -292,6 +302,7 @@
         private System.Windows.Forms.LinkLabel llServiceStatus;
         private System.Windows.Forms.Timer timer;
         private System.Windows.Forms.ToolStripButton btnViewApiLog;
+        private System.Windows.Forms.ToolStripButton btnAppointmentBook;
 
     }
 }

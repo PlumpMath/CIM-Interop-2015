@@ -62,6 +62,15 @@
     <Compile Include="Controls\ApiLog\ApiLogTabPage.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Controls\AppointmentBook\AppointmentBookControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\AppointmentBook\AppointmentBookControl.Designer.cs">
+      <DependentUpon>AppointmentBookControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\AppointmentBook\AppointmentBookTabPage.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Controls\IKeyHandler.cs" />
     <Compile Include="Controls\Patient\ConditionsControl.cs">
       <SubType>UserControl</SubType>
@@ -144,8 +153,14 @@
     <EmbeddedResource Include="Controls\ApiLog\ApiLogControl.resx">
       <DependentUpon>ApiLogControl.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Controls\AppointmentBook\AppointmentBookControl.resx">
+      <DependentUpon>AppointmentBookControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Controls\Patient\ConditionsControl.resx">
       <DependentUpon>ConditionsControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Patient\ConsultationsControl.resx">
+      <DependentUpon>ConsultationsControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\Patient\DemographicsControl.resx">
       <DependentUpon>DemographicsControl.cs</DependentUpon>

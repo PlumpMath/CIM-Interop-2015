@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using System.Xml;
 using System.Xml.Linq;
 using System.Xml.Schema;
@@ -116,6 +118,24 @@ namespace DotNetGPSystem
                 return default(R);
 
             return selector(source);
+        }
+
+        public static DataGridViewRow CloneDataGridViewRow(this DataGridView dataGridView, FontStyle? fontStyle = null, Color? backColor = null, DataGridViewContentAlignment? alignment = null)
+        {
+            DataGridViewRow row = (DataGridViewRow)dataGridView.RowTemplate.Clone();
+
+            if (backColor != null)
+                row.DefaultCellStyle.BackColor = backColor.Value;
+
+            if (fontStyle != null)
+                row.DefaultCellStyle.Font = new Font(row.DefaultCellStyle.Font, fontStyle.Value);
+
+            if (alignment != null)
+                row.DefaultCellStyle.Alignment = alignment.Value;
+
+            row.CreateCells(dataGridView);
+
+            return row;
         }
     }
 }

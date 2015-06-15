@@ -22,6 +22,7 @@ namespace DotNetGPSystem
     {
         private TabPage _tasksTabPage = new TasksTabPage();
         private ApiLogTabPage _apiLogTabPage = new ApiLogTabPage();
+        private AppointmentBookTabPage _appointmentBookTabPage = new AppointmentBookTabPage();
         private PatientTabPage _patientTabPage = null;
 
         public GPSystemForm()
@@ -31,6 +32,7 @@ namespace DotNetGPSystem
             btnOpenPatientRecord.Click += (sender, e) => OpenPatientRecord();
             btnViewTasks.Click += (sender, e) => OpenTasks();
             btnViewApiLog.Click += (sender, e) => OpenApiMessageLog();
+            btnAppointmentBook.Click += (sender, e) => OpenAppointmentBook();
         }
 
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
@@ -55,6 +57,8 @@ namespace DotNetGPSystem
 
         private void OpenPatientRecord()
         {
+            
+            
             using (PatientFindForm patientFindForm = new PatientFindForm(DataStore.OpenHRPatients))
             {
                 if (patientFindForm.ShowDialog() == System.Windows.Forms.DialogResult.OK)
@@ -88,6 +92,14 @@ namespace DotNetGPSystem
                 tcTabControl.TabPages.Add(_apiLogTabPage);
 
             tcTabControl.SelectedTab = _apiLogTabPage;
+        }
+
+        private void OpenAppointmentBook()
+        {
+            if (!tcTabControl.TabPages.Contains(_appointmentBookTabPage))
+                tcTabControl.TabPages.Add(_appointmentBookTabPage);
+
+            tcTabControl.SelectedTab = _appointmentBookTabPage;
         }
 
         private void llServiceStatus_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)

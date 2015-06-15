@@ -39,31 +39,16 @@ namespace DotNetGPSystem
             PopulateConditionGroup(vocProblemStatus.PP.GetDescription(), problems.Where(t => t.status == vocProblemStatus.PP).ToArray());
         }
 
-        private DataGridViewRow CreateDataGridViewRow(FontStyle? fontStyle = null, Color? backColor = null)
-        {
-            DataGridViewRow row = (DataGridViewRow)dataGridView.RowTemplate.Clone();
-
-            if (backColor != null)
-                row.DefaultCellStyle.BackColor = backColor.Value;
-
-            if (fontStyle != null)
-                row.DefaultCellStyle.Font = new Font(row.DefaultCellStyle.Font, fontStyle.Value);
-
-            row.CreateCells(dataGridView);
-
-            return row;
-        }
-
         private void PopulateConditionGroup(string description, OpenHR001Problem[] problems2)
         {
-            DataGridViewRow headerRow = CreateDataGridViewRow(FontStyle.Bold, Color.AliceBlue);
+            DataGridViewRow headerRow = dataGridView.CloneDataGridViewRow(FontStyle.Bold, Color.AliceBlue);
             _headerRows.Add(headerRow);
             headerRow.SetValues(description);
             dataGridView.Rows.Add(headerRow);
 
             if (problems2.Length == 0)
             {
-                DataGridViewRow row = CreateDataGridViewRow(FontStyle.Italic);
+                DataGridViewRow row = dataGridView.CloneDataGridViewRow(FontStyle.Italic);
                 row.SetValues("No conditions");
                 dataGridView.Rows.Add(row);
             }
@@ -87,7 +72,7 @@ namespace DotNetGPSystem
                     string code = healthEvent.code.WhenNotNull(t => t.code);
                     string text = healthEvent.GetAssociatedTextWithValue();
 
-                    DataGridViewRow row = CreateDataGridViewRow();
+                    DataGridViewRow row = dataGridView.CloneDataGridViewRow();
                     row.SetValues(eventType, effectiveTime, code, displayTerm, text);
                     dataGridView.Rows.Add(row);
                 }
