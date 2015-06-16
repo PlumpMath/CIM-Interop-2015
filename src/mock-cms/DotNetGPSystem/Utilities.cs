@@ -120,6 +120,19 @@ namespace DotNetGPSystem
             return selector(source);
         }
 
+        public static IEnumerable<TSource> DistinctBy<TSource, TKey>(this IEnumerable<TSource> source, Func<TSource, TKey> keySelector)
+        {
+            HashSet<TKey> seenKeys = new HashSet<TKey>();
+
+            foreach (TSource element in source)
+            {
+                if (seenKeys.Add(keySelector(element)))
+                {
+                    yield return element;
+                }
+            }
+        }
+
         public static DataGridViewRow CloneDataGridViewRow(this DataGridView dataGridView, FontStyle? fontStyle = null, Color? backColor = null, DataGridViewContentAlignment? alignment = null)
         {
             DataGridViewRow row = (DataGridViewRow)dataGridView.RowTemplate.Clone();
@@ -136,6 +149,19 @@ namespace DotNetGPSystem
             row.CreateCells(dataGridView);
 
             return row;
+        }
+
+        public static void PopulateComboBox<T>(this ComboBox comboBox, IEnumerable<T> list, Func<T, string> displaySelector, string emptyItemDisplayText = null) where T : class
+        {
+            comboBox.DisplayMember = "DisplayMember";
+            comboBox.ValueMember = "ValueMember";
+            
+            var comboBoxList = list.Select(t => new { DisplayMember = displaySelector(t), ValueMember = t }).ToList();
+
+            if (emptyItemDisplayText != null)
+                comboBoxList.Insert(0, new { DisplayMember = emptyItemDisplayText, ValueMember = (T)null });
+
+            comboBox.DataSource = comboBoxList.ToArray();
         }
     }
 }

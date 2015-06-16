@@ -15,7 +15,7 @@ namespace DotNetGPSystem
         {
             this.Text = "Appointment Book";
 
-            _appointmentBook = new AppointmentBookControl();
+            _appointmentBook = new AppointmentBookControl(DataStore.GetOrganisations());
             _appointmentBook.Dock = DockStyle.Fill;
             _appointmentBook.Parent = this;
         }

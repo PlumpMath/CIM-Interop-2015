@@ -120,6 +120,8 @@
       <DependentUpon>TasksControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Data\DataStore.cs" />
+    <Compile Include="Data\OpenHROrganisation.cs" />
+    <Compile Include="Data\OpenHRUser.cs" />
     <Compile Include="GPSystemForm.cs">
       <SubType>Form</SubType>
     </Compile>
