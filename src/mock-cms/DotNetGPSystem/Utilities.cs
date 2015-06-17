@@ -163,5 +163,11 @@ namespace DotNetGPSystem
 
             comboBox.DataSource = comboBoxList.ToArray();
         }
+
+        public static void CreateColumn(this TableLayoutPanel tableLayoutPanel, ColumnStyle columnStyle)
+        {
+            tableLayoutPanel.ColumnCount++;
+            tableLayoutPanel.ColumnStyles.Add(columnStyle);
+        }
     }
 }

@@ -15,6 +15,7 @@ namespace DotNetGPSystem
         private OpenHROrganisation[] _organisations;
         private OpenHRUser[] _allUsers;
         private OpenHRUser[] _distinctUsers;
+        private int[] _appointmentTimes = new int[] { 9, 10, 11, 12, 13, 14, 15, 16, 17 };
         
         private AppointmentBookControl()
         {
@@ -99,9 +100,7 @@ namespace DotNetGPSystem
 
             int columnCount = 0;
 
-            tableLayoutPanel1.ColumnCount++;
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 50F));
-
+            AddVerticalTimeStripPanel();
             columnCount++;
 
             foreach (var grouping in users.GroupBy(t => t.Organisation))
@@ -110,48 +109,133 @@ namespace DotNetGPSystem
 
                 foreach (OpenHRUser user in grouping)
                 {
-                    tableLayoutPanel1.ColumnCount++;
-                    tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 200F));
+                    AddVerticalUserPanel(user, organisation);
+                    columnCount++;
 
-                    Panel panel = new Panel()
+                    if (columnCount % 5 == 0)
                     {
-                        Dock = DockStyle.Fill,
-                        BackColor = Color.AliceBlue
-                    };
-
-                    Panel headerPanel = new Panel()
-                    {
-                        AutoSize = true,
-                        Dock = DockStyle.Top,
-                        BackColor = Color.White
-                    };
-
-                    Label clinicianLabel = new Label()
-                    {
-                        Font = new Font(this.Font, FontStyle.Bold),
-                        Dock = DockStyle.Top,
-                        Text = user.Person.GetCuiDisplayName()
-                    };
-
-                    Label organisationLabel = new Label()
-                    {
-                        Font = new Font(this.Font, FontStyle.Bold),
-                        Dock = DockStyle.Top,
-                        Text = " at " + organisation.name
-                    };
-
-                    headerPanel.Controls.Add(organisationLabel);
-                    headerPanel.Controls.Add(clinicianLabel);
-
-                    panel.Controls.Add(headerPanel);
-
-                    tableLayoutPanel1.Controls.Add(panel, columnCount++, 0);
+                        AddVerticalTimeStripPanel();
+                        columnCount++;
+                    }
                 }
             }
 
-            tableLayoutPanel1.ColumnCount++;
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 10F));
+            tableLayoutPanel1.CreateColumn(new ColumnStyle(SizeType.Absolute, 10F));
             panel1.SendToBack();
+        }
+
+        private void AddVerticalUserPanel(OpenHRUser user, OpenHR001Organisation organisation)
+        {
+            tableLayoutPanel1.CreateColumn(new ColumnStyle(SizeType.Absolute, 200F));
+            Panel panel = CreateVerticalPanel(user.Person.GetCuiDisplayName(), " at " + organisation.name);
+
+            foreach (int time in _appointmentTimes)
+            {
+                Panel outer = new Panel()
+                {
+                    Height = 100,
+                    Dock = DockStyle.Top,
+                    Padding = new Padding(10, 10, 10, 0)
+                };
+                
+                Panel p = new Panel()
+                {
+                    Dock = DockStyle.Fill,
+                    BackColor = Color.White,
+                    ContextMenuStrip = contextMenuStrip1
+                };
+
+                outer.Controls.Add(p);
+                panel.Controls.Add(outer);
+                outer.BringToFront();
+            }
+
+            tableLayoutPanel1.Controls.Add(panel, (tableLayoutPanel1.ColumnCount - 1), 0);
+        }
+
+        private void AddVerticalTimeStripPanel()
+        {
+            tableLayoutPanel1.CreateColumn(new ColumnStyle(SizeType.Absolute, 50F));
+            Panel timeStripPanel = CreateVerticalTimeStrip();
+            tableLayoutPanel1.Controls.Add(timeStripPanel, (tableLayoutPanel1.ColumnCount - 1), 0);
+        }
+
+        private Panel CreateVerticalTimeStrip()
+        {
+            Panel timePanel = CreateVerticalPanel(string.Empty, string.Empty);
+
+            foreach (int time in _appointmentTimes)
+            {
+                Panel p = new Panel()
+                {
+                    Height = 100,
+                    Dock = DockStyle.Top,
+                    BackColor = Color.WhiteSmoke
+                };
+
+                Label timeLabel = new Label()
+                {
+                    Font = new Font(this.Font, FontStyle.Regular),
+                    Text = time.ToString().PadLeft(2, '0') + ":00",
+                    Dock = DockStyle.Top,
+                    Padding = new Padding(5, 2, 0, 0)
+                };
+
+                p.Controls.Add(timeLabel);
+
+                timePanel.Controls.Add(p);
+                p.BringToFront();
+            }
+
+            return timePanel;
+        }
+
+        private Panel CreateVerticalPanel(string headerLine1, string headerLine2)
+        {
+            Panel panel = new Panel()
+            {
+                Dock = DockStyle.Fill,
+                BackColor = Color.AliceBlue
+            };
+
+            Panel headerPanel = CreateHeaderPanel(headerLine1, headerLine2);
+            panel.Controls.Add(headerPanel);
+
+            return panel;
+        }
+
+        private Panel CreateHeaderPanel(string line1, string line2)
+        {
+            Panel headerPanel = new Panel()
+            {
+                AutoSize = true,
+                Dock = DockStyle.Top,
+                BackColor = Color.White
+            };
+
+            Label clinicianLabel = new Label()
+            {
+                Font = new Font(this.Font, FontStyle.Bold),
+                Dock = DockStyle.Top,
+                Text = line1
+            };
+
+            Label organisationLabel = new Label()
+            {
+                Font = new Font(this.Font, FontStyle.Bold),
+                Dock = DockStyle.Top,
+                Text = line2
+            };
+
+            headerPanel.Controls.Add(organisationLabel);
+            headerPanel.Controls.Add(clinicianLabel);
+
+            return headerPanel;
+        }
+
+        private void toolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            System.Windows.Forms.MessageBox.Show("Book slot");
         }
     }
 }
