@@ -2,7 +2,6 @@ package org.endeavourhealth.cim.routes.config;
 
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.model.rest.RestBindingMode;
-import org.apache.camel.processor.interceptor.DefaultTraceFormatter;
 import org.apache.camel.processor.interceptor.Tracer;
 
 public class RestConfiguration extends RouteBuilder {

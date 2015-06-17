@@ -12,4 +12,11 @@ public interface IDataAdapter {
     String tracePatientByNhsNumber(String nhsNumber);
     String createCondition(String odsCode, String request);
     ArrayList<UUID> getChangedPatients(String odsCode, Date date);
+
+    String getConditionsByPatientId(String odsCode, UUID patientId);
+    String getAllergyIntolerancesByPatientId(String odsCode, UUID patientId);
+
+    String getImmunizationsByPatientId(String odsCode, UUID patientId);
+
+    String getMedicationPrescriptionsByPatientId(String odsCode, UUID patientId);
 }

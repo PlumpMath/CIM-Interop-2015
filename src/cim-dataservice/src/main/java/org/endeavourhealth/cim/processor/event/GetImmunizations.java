@@ -19,7 +19,7 @@ public class GetImmunizations implements Processor {
 
 		// Get patientApi data (native format) using adapter
 		IDataAdapter dataAdapter = AdapterFactory.getDataAdapterForService(odsCode);
-		String patientData = dataAdapter.getPatientRecordByPatientId(odsCode, UUID.fromString(patientId));
+		String patientData = dataAdapter.getImmunizationsByPatientId(odsCode, UUID.fromString(patientId));
 
 		// Get patientApi data transformer for service (native format -> FHIR)
 		Transformer transformer = TransformerFactory.getTransformerForAdapter(dataAdapter);

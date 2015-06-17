@@ -224,6 +224,19 @@ public class MockDataAdapter implements IDataAdapter {
         }
     }
 
+    public String getConditionsByPatientId(String odsCode, UUID patientId) {
+        return getPatientRecordByPatientId(odsCode, patientId);
+    }
+    public String getAllergyIntolerancesByPatientId(String odsCode, UUID patientId) {
+        return getPatientRecordByPatientId(odsCode, patientId);
+    }
+    public String getImmunizationsByPatientId(String odsCode, UUID patientId) {
+        return getPatientRecordByPatientId(odsCode, patientId);
+    }
+    public String getMedicationPrescriptionsByPatientId(String odsCode, UUID patientId) {
+        return getPatientRecordByPatientId(odsCode, patientId);
+    }
+
     private static void createChildTextElement(SOAPElement element, String childElementName, String childElementValue) throws javax.xml.soap.SOAPException
     {
         SOAPElement childElement = element.addChildElement(childElementName);
