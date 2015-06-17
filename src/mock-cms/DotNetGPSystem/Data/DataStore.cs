@@ -39,6 +39,48 @@ namespace DotNetGPSystem
             }
         }
 
+        public static OpenHROrganisation[] GetOrganisations()
+        {
+            List<OpenHROrganisation> structuredOrganisations = new List<OpenHROrganisation>();
+            
+            OpenHR001Organisation[] organisations = OpenHRPatients
+                .SelectMany(t => t.OpenHealthRecord.adminDomain.organisation.Where(s => new Guid(s.id) == new Guid(t.OpenHealthRecord.author.organisation)))
+                .DistinctBy(t => t.id)
+                .OrderBy(t => t.name)
+                .ToArray();
+
+            foreach (OpenHR001Organisation organisation in organisations)
+            {
+                OpenHRPatient[] openHRAtOrganisation = OpenHRPatients
+                    .Where(t => new Guid(t.OpenHealthRecord.author.organisation) == new Guid(organisation.id))
+                    .ToArray();
+
+                OpenHR001User[] users = openHRAtOrganisation
+                    .SelectMany(t => t.OpenHealthRecord.adminDomain.user)
+                    .DistinctBy(t => new Guid(t.id))
+                    .ToArray();
+
+                List<OpenHRUser> structuredUsers = new List<OpenHRUser>();
+
+                foreach (OpenHR001User user in users)
+                {
+                    OpenHRUser structuredUser = new OpenHRUser();
+                    structuredUser.User = user;
+                    structuredUser.UserInRole = openHRAtOrganisation.SelectMany(t => t.OpenHealthRecord.adminDomain.userInRole).FirstOrDefault(t => new Guid(t.user) == new Guid(user.id));
+                    structuredUser.Role = openHRAtOrganisation.SelectMany(t => t.OpenHealthRecord.adminDomain.role).FirstOrDefault(t => new Guid(t.id) == new Guid(structuredUser.UserInRole.id));
+                    structuredUser.Person = openHRAtOrganisation.SelectMany(t => t.OpenHealthRecord.adminDomain.person).FirstOrDefault(t => new Guid(t.id) == new Guid(structuredUser.User.userPerson));
+                    structuredUser.Organisation = organisation;
+
+                    structuredUsers.Add(structuredUser);
+                }
+
+                structuredOrganisations.Add(new OpenHROrganisation(organisation, structuredUsers.ToArray()));
+            }
+
+            return structuredOrganisations.ToArray();
+
+        }
+
         public static OpenHRPatient[] GetPatients(string odsCode)
         {
             return OpenHRPatients

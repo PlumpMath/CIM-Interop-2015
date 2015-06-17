@@ -116,7 +116,7 @@
     </organisation>
     <organisation updateMode="add">
       <id>07187750-1F3B-4438-887A-9A842F63B5D0</id>
-      <name>Yellow Surgery</name>
+      <name>Yankee Surgery</name>
       <organisationType codeSystem="2.16.840.1.113883.2.1.6.2" displayName="General Practice" code="" />
       <speciality codeSystem="2.16.840.1.113883.2.1.6.2" displayName="General Medical Practice" code="" />
       <cdb>50003</cdb>
