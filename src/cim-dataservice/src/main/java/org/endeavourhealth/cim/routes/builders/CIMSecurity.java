@@ -1,12 +1,11 @@
 package org.endeavourhealth.cim.routes.builders;
 
-import org.apache.camel.builder.RouteBuilder;
 import org.apache.commons.httpclient.HttpStatus;
-import org.endeavourhealth.cim.common.CIMRouteBuilder;
+import org.endeavourhealth.cim.common.ExceptionHandlerBaseRouteBuilder;
 import org.endeavourhealth.cim.processor.core.CIMError;
 import org.endeavourhealth.cim.processor.core.SecurityProcessor;
 
-public class CIMSecurity extends CIMRouteBuilder {
+public class CIMSecurity extends ExceptionHandlerBaseRouteBuilder {
     @Override
     public void configure() throws Exception {
         super.configure();

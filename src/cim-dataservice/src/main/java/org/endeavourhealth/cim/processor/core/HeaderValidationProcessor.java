@@ -16,14 +16,21 @@ public class HeaderValidationProcessor implements org.apache.camel.Processor {
     @Override
     public void process(Exchange exchange) throws Exception {
         String odsCode = (String)exchange.getIn().getHeader("odsCode");
+        String api_key = (String) exchange.getIn().getHeader("api_key");
 
         if (odsCode != null) {
-            ValidateLegitimateRelationships(exchange, odsCode);
+            LoadDataProtocols(api_key, odsCode);
+            ValidateLegitimateRelationships(api_key, odsCode);
         }
     }
 
-    private void ValidateLegitimateRelationships(Exchange exchange, String odsCode) throws Exception {
-        String api_key = (String) exchange.getIn().getHeader("api_key");
+    private void LoadDataProtocols(String api_key, String odsCode) {
+        // Load relevant data protocols from DB
+
+        // Set protocols in message header for processing later in pipeline
+    }
+
+    private void ValidateLegitimateRelationships(String api_key, String odsCode) throws Exception {
 
         List<String> validOrganisations = _legitimateRelationships.get(api_key);
 

@@ -1,9 +1,9 @@
 package org.endeavourhealth.cim.routes.builders;
 
 import org.apache.camel.LoggingLevel;
-import org.endeavourhealth.cim.common.CIMRouteBuilder;
+import org.endeavourhealth.cim.common.ExceptionHandlerBaseRouteBuilder;
 
-public class CIMCore extends CIMRouteBuilder {
+public class CIMCore extends ExceptionHandlerBaseRouteBuilder {
     @Override
     public void configure() throws Exception {
         super.configure();
@@ -41,6 +41,10 @@ public class CIMCore extends CIMRouteBuilder {
                 .wireTap("direct:CIMAudit")
                 .newExchangeHeader("TapLocation", constant("Outbound"))
             .end()
-                .to("direct:CIMResponse");
+            .to("direct:CIMDataProtocols");
+
+        from("direct:CIMDataProtocolsResult")
+            .routeId("CIMDataProtocolsResult")
+            .to("direct:CIMResponse");
     }
 }

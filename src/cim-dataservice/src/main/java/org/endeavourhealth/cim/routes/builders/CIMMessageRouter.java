@@ -1,8 +1,8 @@
 package org.endeavourhealth.cim.routes.builders;
 
-import org.endeavourhealth.cim.common.CIMRouteBuilder;
+import org.endeavourhealth.cim.common.ExceptionHandlerBaseRouteBuilder;
 
-public class CIMMessageRouter extends CIMRouteBuilder {
+public class CIMMessageRouter extends ExceptionHandlerBaseRouteBuilder {
     @Override
     public void configure() throws Exception {
         super.configure();

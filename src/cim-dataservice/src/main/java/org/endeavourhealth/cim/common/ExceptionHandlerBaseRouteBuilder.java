@@ -2,7 +2,7 @@ package org.endeavourhealth.cim.common;
 
 import org.apache.camel.builder.RouteBuilder;
 
-public abstract class CIMRouteBuilder extends RouteBuilder {
+public abstract class ExceptionHandlerBaseRouteBuilder extends RouteBuilder {
     @Override
     public void configure() throws Exception {
         onException(Exception.class)
