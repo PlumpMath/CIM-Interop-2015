@@ -2,6 +2,7 @@ package org.endeavourhealth.cim.routes.endpoints;
 
 import org.apache.camel.builder.RouteBuilder;
 import org.endeavourhealth.cim.processor.patient.GetChangedPatients;
+import org.endeavourhealth.cim.processor.patient.GetPatientAppointments;
 import org.endeavourhealth.cim.processor.patient.GetPatientRecordByPatientId;
 import org.endeavourhealth.cim.processor.patient.GetPatientByIdentifier;
 
@@ -22,12 +23,20 @@ public class PatientEndpoint extends RouteBuilder {
         .endRest()
 
         .get("/{id}/$everythingnobinary")
-                .route()
-                .routeId("GetServicePatientRecordById")
-                .description("Direct (patient id) call")
-                .setHeader("MessageRouterCallback", constant("direct:GetPatientRecordById"))
-                .to("direct:CIMCore")
-                .endRest();
+            .route()
+            .routeId("GetServicePatientRecordById")
+            .description("Direct (patient id) call")
+            .setHeader("MessageRouterCallback", constant("direct:GetPatientRecordById"))
+            .to("direct:CIMCore")
+        .endRest()
+
+        .get("{id}/Appointment?status={status}&start={start}&end={end}")
+            .route()
+            .routeId("GetServicePatientAppointments")
+            .description("Get Patient Appointments By Patient ID")
+            .setHeader("MessageRouterCallback", constant("direct:GetPatientAppointments"))
+            .to("direct:CIMCore")
+        .endRest();
 
         // Message router callback routes
         from("direct:GetPatientByQuery")
@@ -43,5 +52,9 @@ public class PatientEndpoint extends RouteBuilder {
         from("direct:GetPatientRecordById")
             .routeId("GetPatientRecordById")
             .process(new GetPatientRecordByPatientId());
+
+        from("direct:GetPatientAppointments")
+            .routeId("GetPatientAppointments")
+            .process(new GetPatientAppointments());
     }
 }
