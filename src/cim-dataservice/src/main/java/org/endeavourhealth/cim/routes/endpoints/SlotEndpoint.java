@@ -8,7 +8,7 @@ public class SlotEndpoint extends RouteBuilder {
     @Override
     public void configure() throws Exception {
         // Endpoint root URI
-        rest("{odsCode}/Slot?schedule={schedule}&start={start}")
+        rest("{odsCode}/Slot?schedule={scheduleId}&start={start}")
             .description("Slot rest service")
 
         // Endpoint definitions (GET, PUT, etc)

@@ -19,4 +19,12 @@ public interface IDataAdapter {
     String getImmunizationsByPatientId(String odsCode, UUID patientId);
 
     String getMedicationPrescriptionsByPatientId(String odsCode, UUID patientId);
+
+    String getAppointmentsForPatient(String odsCode, UUID patientId);
+
+    void requestOrder(String odsCode, String orderRequest);
+
+    String getSchedules(String odsCode);
+
+    String getSlots(String odsCode, UUID scheduleId);
 }

@@ -12,10 +12,12 @@ public class MockDataAdapter implements IDataAdapter {
     private final String _soapUri = "http://localhost:9001/GPApiService/Soap";
     private final String _actionUri = "http://tempuri.org/IGPApiService";
 
+    // System
     public String getTransformerTypeName() {
         return "org.endeavourhealth.cim.transform.openhr.OpenHRTransformer";
     }
 
+    // Demographics
     public String getPatientRecordByPatientId(String odsCode, UUID patientId) {
         SOAPConnection soapConnection = null;
         try {
@@ -47,7 +49,6 @@ public class MockDataAdapter implements IDataAdapter {
             return null;
         }
     }
-
     public String getPatientDemographicsByNHSNumber(String odsCode, String nhsNumber) {
         SOAPConnection soapConnection = null;
         try {
@@ -79,7 +80,6 @@ public class MockDataAdapter implements IDataAdapter {
             return null;
         }
     }
-
     public String tracePatientByDemographics(String surname, Date dateOfBirth, String gender, String forename, String postcode) {
         SOAPConnection soapConnection = null;
         try {
@@ -148,42 +148,6 @@ public class MockDataAdapter implements IDataAdapter {
             return null;
         }
     }
-
-    public String createCondition(String odsCode, String requestData) {
-        SOAPConnection soapConnection = null;
-        try {
-            try {
-                SOAPConnectionFactory soapConnectionFactory = SOAPConnectionFactory.newInstance();
-                soapConnection = soapConnectionFactory.createConnection();
-
-                // Create basic message
-                SOAPMessage requestMessage = createSOAPRequest("UpdatePatient");
-
-                // SOAP Body
-                SOAPElement soapMethodElement = requestMessage.getSOAPBody().addChildElement("UpdatePatient", "", "http://tempuri.org/");
-
-                createChildTextElement(soapMethodElement, "odsCode", odsCode);
-                createChildTextElement(soapMethodElement, "openHRXml", requestData);
-
-                requestMessage.saveChanges();
-
-                // Send SOAP Message to SOAP Server
-                SOAPMessage soapResponse = soapConnection.call(requestMessage, _soapUri + "/UpdatePatient");
-
-                soapResponse.writeTo(System.out);
-
-                return soapResponse.getSOAPBody().getElementsByTagName("UpdatePatientResult").item(0).getTextContent();
-
-            } finally {
-                if (soapConnection != null)
-                    soapConnection.close();
-            }
-        }
-        catch (Exception e) {
-            return null;
-        }
-    }
-
     public ArrayList<UUID> getChangedPatients(String odsCode, Date date) {
         SOAPConnection soapConnection = null;
         try {
@@ -224,6 +188,41 @@ public class MockDataAdapter implements IDataAdapter {
         }
     }
 
+    // Medical record
+    public String createCondition(String odsCode, String requestData) {
+        SOAPConnection soapConnection = null;
+        try {
+            try {
+                SOAPConnectionFactory soapConnectionFactory = SOAPConnectionFactory.newInstance();
+                soapConnection = soapConnectionFactory.createConnection();
+
+                // Create basic message
+                SOAPMessage requestMessage = createSOAPRequest("UpdatePatient");
+
+                // SOAP Body
+                SOAPElement soapMethodElement = requestMessage.getSOAPBody().addChildElement("UpdatePatient", "", "http://tempuri.org/");
+
+                createChildTextElement(soapMethodElement, "odsCode", odsCode);
+                createChildTextElement(soapMethodElement, "openHRXml", requestData);
+
+                requestMessage.saveChanges();
+
+                // Send SOAP Message to SOAP Server
+                SOAPMessage soapResponse = soapConnection.call(requestMessage, _soapUri + "/UpdatePatient");
+
+                soapResponse.writeTo(System.out);
+
+                return soapResponse.getSOAPBody().getElementsByTagName("UpdatePatientResult").item(0).getTextContent();
+
+            } finally {
+                if (soapConnection != null)
+                    soapConnection.close();
+            }
+        }
+        catch (Exception e) {
+            return null;
+        }
+    }
     public String getConditionsByPatientId(String odsCode, UUID patientId) {
         return getPatientRecordByPatientId(odsCode, patientId);
     }
@@ -237,12 +236,25 @@ public class MockDataAdapter implements IDataAdapter {
         return getPatientRecordByPatientId(odsCode, patientId);
     }
 
-    private static void createChildTextElement(SOAPElement element, String childElementName, String childElementValue) throws javax.xml.soap.SOAPException
-    {
+    // Appointments
+    public String getAppointmentsForPatient(String odsCode, UUID patientId) {
+        return null;
+    }
+    public void requestOrder(String odsCode, String orderRequest) {
+
+    }
+    public String getSchedules(String odsCode) {
+        return null;
+    }
+    public String getSlots(String odsCode, UUID scheduleId) {
+        return null;
+    }
+
+    // Utility methods
+    private static void createChildTextElement(SOAPElement element, String childElementName, String childElementValue) throws javax.xml.soap.SOAPException {
         SOAPElement childElement = element.addChildElement(childElementName);
         childElement.addTextNode(childElementValue);
     }
-
     private SOAPMessage createSOAPRequest(String methodCall) throws Exception {
         MessageFactory messageFactory = MessageFactory.newInstance();
         SOAPMessage soapMessage = messageFactory.createMessage();
