@@ -66,3 +66,5 @@ Maven__*.xml
 /src/mock-subsidiary/DotNetSecondaryCareSystem/bin
 /src/mock-subsidiary/DotNetSecondaryCareSystem/obj
 /src/mock-subsidiary/packages
+/src/utilities/OpenHRObfuscator/OpenHRObfuscate/bin
+/src/utilities/OpenHRObfuscator/OpenHRObfuscate/obj
