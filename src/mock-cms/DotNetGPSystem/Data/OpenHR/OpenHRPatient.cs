@@ -8,13 +8,14 @@ namespace DotNetGPSystem
 {
     internal class OpenHRPatient
     {
-        public OpenHRPatient(string openHRXml)
-            : this(Utilities.Deserialize<OpenHR001OpenHealthRecord>(openHRXml))
+        public OpenHRPatient(int patientId, string openHRXml)
+            : this(patientId, Utilities.Deserialize<OpenHR001OpenHealthRecord>(openHRXml))
         {
         }
         
-        public OpenHRPatient(OpenHR001OpenHealthRecord openHealthRecord)
+        public OpenHRPatient(int patientId, OpenHR001OpenHealthRecord openHealthRecord)
         {
+            PatientId = patientId;
             OpenHealthRecord = openHealthRecord;
             Patient = openHealthRecord.adminDomain.patient.Single();
             Person = openHealthRecord.adminDomain.person.Single(t => t.id == openHealthRecord.adminDomain.patient.Single().patientPerson);
@@ -25,6 +26,7 @@ namespace DotNetGPSystem
         public OpenHR001Patient Patient { get; private set; }
         public OpenHR001Person Person { get; private set; }
         public OpenHR001Organisation Organisation { get; private set; }
+        public int PatientId { get; private set; }
 
         public OpenHR001HealthDomainEvent[] HealthDomainEvents
         {

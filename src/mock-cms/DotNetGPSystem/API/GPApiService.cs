@@ -90,5 +90,22 @@ namespace DotNetGPSystem
         {
             DataStore.ProcessExternalUpdate(openHRXml);
         }
+
+        public string GetAppointmentSessions(string odsCode, DateTime fromDate, DateTime toDate)
+        {
+            Session[] sessions = DataStore.GetSessions(odsCode, fromDate, toDate);
+            AppointmentSessionList session = EomAppointmentTranform.ToEomSessionList(sessions);
+
+            return Utilities.Serialize<AppointmentSessionList>(session);
+        }
+        
+        public string GetSlotsForSession(string odsCode, int sessionId)
+        {
+            Slot[] slots = DataStore.GetSlots(odsCode, sessionId);
+
+            SlotListStruct slot = EomAppointmentTranform.ToEomSlotList(slots);
+
+            return Utilities.Serialize<SlotListStruct>(slot);
+        }
     }
 }

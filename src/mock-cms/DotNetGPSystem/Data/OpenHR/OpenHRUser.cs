@@ -12,5 +12,8 @@ namespace DotNetGPSystem
         public OpenHR001UserInRole UserInRole { get; set; }
         public OpenHR001Role Role { get; set; }
         public OpenHR001Organisation Organisation { get; set; }
+        public bool IsSessionHolder { get; set; }
+
+        public int OpenHRUserId { get; set; }
     }
 }

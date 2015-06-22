@@ -12,8 +12,8 @@ namespace DotNetGPSystem
 
     internal static class DataStore
     {
-        private const string _samplesPrefix = "DotNetGPSystem.Data.Samples";
-        private const string _schemaPrefix = "DotNetGPSystem.Data.Schema";
+        private const string _samplesPrefix = "DotNetGPSystem.Data.OpenHR.Samples";
+        private const string _schemaPrefix = "DotNetGPSystem.Data.OpenHR.Schema";
 
         private static readonly string[] _schemaNames = new string[]
         {
@@ -22,12 +22,38 @@ namespace DotNetGPSystem
             _schemaPrefix + ".vocabulary.xsd"
         };
 
+        private const int _numberOfDaysToCreateSessionsFor = 56;
+        private const int _maxSessionHoldersPerOrganisation = 4;
         private static OpenHRPatient[] _openHRPatients = null;
         private static List<KeyValuePair<DateTime, OpenHRPatient>> _patientChangeList = new List<KeyValuePair<DateTime, OpenHRPatient>>();
         private static List<KeyValuePair<DateTime, string>> _externalUpdateList = new List<KeyValuePair<DateTime, string>>();
-
+        private static OpenHROrganisation[] _organisations;
+        private static Session[] _sessions;
+        public static readonly int[] AppointmentTimes = new int[] { 9, 10, 11, 12, 13, 14, 15, 16, 17 };
         public static event ExternalUpdateReceivedHandler ExternalUpdateReceived;
-        
+
+        public static Session[] AppointmentSessions
+        {
+            get
+            {
+                if (_sessions == null)
+                    _sessions = CreateAppointmentSessionsAndSlots();
+
+                return _sessions;
+            }
+        }
+        public static OpenHROrganisation[] Organisations
+        {
+            get
+            {
+                if (_organisations == null)
+                    _organisations = GetOrganisations();
+
+                return _organisations;
+            }
+        }
+
+
         public static OpenHRPatient[] OpenHRPatients
         {
             get
@@ -39,15 +65,56 @@ namespace DotNetGPSystem
             }
         }
 
-        public static OpenHROrganisation[] GetOrganisations()
+        private static Session[] CreateAppointmentSessionsAndSlots()
+        {
+            DateTime today = DateTime.Now.Date;
+
+            List<Session> sessions = new List<Session>();
+            List<DateTime> dates = new List<DateTime>();
+
+            int sessionId = 1;
+
+            for (int dayCount = 0; dayCount < _numberOfDaysToCreateSessionsFor; dayCount++)
+            {
+                DateTime date = today.AddDays(dayCount);
+
+                if ((date.DayOfWeek == DayOfWeek.Saturday) || (date.DayOfWeek == DayOfWeek.Sunday))
+                    continue;
+
+                dates.Add(date);
+
+                foreach (OpenHROrganisation organisation in Organisations)
+                {
+                    foreach (OpenHRUser user in organisation.Users.Where(t => t.IsSessionHolder))
+                    {
+                        Session session = new Session(
+                            sessionId: sessionId++,
+                            date: date,
+                            user: user,
+                            organisation: organisation);
+
+                        session.CreateSlots(DataStore.AppointmentTimes);
+
+                        sessions.Add(session);
+                    }
+                }
+            }
+
+            return sessions.ToArray();
+        }
+
+        private static OpenHROrganisation[] GetOrganisations()
         {
             List<OpenHROrganisation> structuredOrganisations = new List<OpenHROrganisation>();
-            
+
             OpenHR001Organisation[] organisations = OpenHRPatients
                 .SelectMany(t => t.OpenHealthRecord.adminDomain.organisation.Where(s => new Guid(s.id) == new Guid(t.OpenHealthRecord.author.organisation)))
                 .DistinctBy(t => t.id)
                 .OrderBy(t => t.name)
                 .ToArray();
+
+            int organisationId = 1;
+            int userId = 1;
 
             foreach (OpenHR001Organisation organisation in organisations)
             {
@@ -62,19 +129,30 @@ namespace DotNetGPSystem
 
                 List<OpenHRUser> structuredUsers = new List<OpenHRUser>();
 
+                int organisationUserCount = 1;
+
                 foreach (OpenHR001User user in users)
                 {
                     OpenHRUser structuredUser = new OpenHRUser();
+                    structuredUser.OpenHRUserId = userId++;
                     structuredUser.User = user;
                     structuredUser.UserInRole = openHRAtOrganisation.SelectMany(t => t.OpenHealthRecord.adminDomain.userInRole).FirstOrDefault(t => new Guid(t.user) == new Guid(user.id));
                     structuredUser.Role = openHRAtOrganisation.SelectMany(t => t.OpenHealthRecord.adminDomain.role).FirstOrDefault(t => new Guid(t.id) == new Guid(structuredUser.UserInRole.id));
                     structuredUser.Person = openHRAtOrganisation.SelectMany(t => t.OpenHealthRecord.adminDomain.person).FirstOrDefault(t => new Guid(t.id) == new Guid(structuredUser.User.userPerson));
                     structuredUser.Organisation = organisation;
+                    
+                    if (organisationUserCount <= _maxSessionHoldersPerOrganisation)
+                        structuredUser.IsSessionHolder = true;
+
+                    organisationUserCount++;
 
                     structuredUsers.Add(structuredUser);
                 }
 
-                structuredOrganisations.Add(new OpenHROrganisation(organisation, structuredUsers.ToArray()));
+                structuredOrganisations.Add(new OpenHROrganisation(
+                        organisationId: organisationId++,
+                        organisation: organisation,
+                        users: structuredUsers.ToArray()));
             }
 
             return structuredOrganisations.ToArray();
@@ -117,8 +195,10 @@ namespace DotNetGPSystem
 
         private static OpenHRPatient[] LoadOpenHRPatients()
         {
+            int patientId = 1;
+
             return GetOpenHRFiles()
-                .Select(t => new OpenHRPatient(t))
+                .Select(t => new OpenHRPatient(patientId++, t))
                 .ToArray();
         }
 
@@ -148,6 +228,27 @@ namespace DotNetGPSystem
                 if (!result)
                     throw new Exception(string.Join(Environment.NewLine, errors));
             }
+        }
+
+        public static Session[] GetSessions(string odsCode, DateTime from, DateTime to)
+        {
+            return AppointmentSessions
+                .Where(t => t.Organisation.Organisation.nationalPracticeCode == odsCode
+                            && t.Date >= from.Date 
+                            && t.Date < to.Date.AddDays(1))
+                .ToArray();
+        }
+
+        public static Slot[] GetSlots(string odsCode, int sessionId)
+        {
+            Session session = AppointmentSessions
+                .FirstOrDefault(t => t.SessionId == sessionId
+                                    && t.Organisation.Organisation.nationalPracticeCode == odsCode);
+
+            if (session == null)
+                return null;
+
+            return session.Slots;
         }
     }
 }

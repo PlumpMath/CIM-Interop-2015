@@ -34,5 +34,11 @@ namespace DotNetGPSystem
 
         [OperationContract]
         void UpdatePatient(string odsCode, string openHRXml);
+
+        [OperationContract]
+        string GetAppointmentSessions(string odsCode, DateTime fromDate, DateTime toDate);
+        
+        [OperationContract]
+        string GetSlotsForSession(string odsCode, int sessionId);
     }       
 }

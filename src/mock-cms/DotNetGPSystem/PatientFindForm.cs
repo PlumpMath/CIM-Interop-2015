@@ -12,6 +12,15 @@ namespace DotNetGPSystem
 {
     internal partial class PatientFindForm : Form
     {
+        public static OpenHRPatient ChoosePatient()
+        {
+            using (PatientFindForm patientFindForm = new PatientFindForm(DataStore.OpenHRPatients))
+                if (patientFindForm.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                    return patientFindForm.SelectedPatient;
+
+            return null;
+        }
+        
         private OpenHRPatient[] _patientRecords;
         
         private PatientFindForm()

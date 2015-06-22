@@ -15,7 +15,8 @@ namespace DotNetGPSystem
         private OpenHROrganisation[] _organisations;
         private OpenHRUser[] _allUsers;
         private OpenHRUser[] _distinctUsers;
-        private int[] _appointmentTimes = new int[] { 9, 10, 11, 12, 13, 14, 15, 16, 17 };
+
+        private ContextMenuStrip _contextMenuStrip;
         
         private AppointmentBookControl()
         {
@@ -36,7 +37,11 @@ namespace DotNetGPSystem
 
             cbOrganisationFilter.PopulateComboBox(organisations, t => t.Organisation.name, "(no filter)");
 
-            DrawAppointmentBook();
+            monthCalendar1.BoldedDates = DataStore
+                .AppointmentSessions
+                .Select(t => t.Date.Date)
+                .Distinct()
+                .ToArray();
         }
 
         private void cbOrganisationFilter_SelectedIndexChanged(object sender, EventArgs e)
@@ -44,7 +49,7 @@ namespace DotNetGPSystem
             OpenHROrganisation selectedOrganisation = (OpenHROrganisation)cbOrganisationFilter.SelectedValue;
             OpenHRUser selectedUser = (OpenHRUser)cbClinicianFilter.SelectedValue;
 
-            OpenHRUser[] users = _distinctUsers;
+            OpenHRUser[] users = _distinctUsers.Where(t => t.IsSessionHolder).ToArray();
 
             if (selectedOrganisation != null)
                 users = selectedOrganisation.Users;
@@ -67,6 +72,8 @@ namespace DotNetGPSystem
 
         private void DrawAppointmentBook()
         {
+            lblDateHeader.Text = monthCalendar1.SelectionStart.Date.ToString("dddd dd MMMM yyyy");
+            
             OpenHRUser[] userFilter = _allUsers;
 
             if (cbClinicianFilter.SelectedValue != null)
@@ -87,14 +94,82 @@ namespace DotNetGPSystem
                     .ToArray();
             }
 
-            DrawAppointmentBook(userFilter);
+            DateTime selectedDate = monthCalendar1.SelectionStart.Date;
+
+            Session[] sessions = DataStore
+                    .AppointmentSessions
+                    .Where(t => t.Date.Date.Equals(selectedDate)
+                        && userFilter.Contains(t.User))
+                    .OrderBy(t => t.Date)
+                    .ThenBy(t => t.Organisation.Organisation.name)
+                    .ThenBy(t => t.User.Person.GetCuiDisplayName())
+                    .ToArray();
+
+            DrawAppointmentBook(sessions);
         }
 
-        private void DrawAppointmentBook(OpenHRUser[] users)
+        private void ClearAndDisposeControls(ControlCollection controls)
+        {
+            for (int i = 0; i < controls.Count; i++)
+            {
+                Control control = controls[i];
+
+                if (control.Controls != null)
+                    if (control.Controls.Count > 0)
+                        ClearAndDisposeControls(control.Controls);
+
+                if (control.ContextMenuStrip != null)
+                    control.ContextMenuStrip = null;
+
+                control.Dispose();
+                control = null;
+            }
+
+            controls.Clear();
+        }
+
+        private ContextMenuStrip CreateContextMenuStrip()
+        {
+            ContextMenuStrip contextMenuStrip1 = new ContextMenuStrip();
+            ToolStripMenuItem btnBookSlot = new ToolStripMenuItem();
+            ToolStripMenuItem btnCancelSlot = new ToolStripMenuItem();
+
+            contextMenuStrip1.SuspendLayout();
+
+            contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { btnBookSlot, btnCancelSlot});
+            contextMenuStrip1.Name = "contextMenuStrip1";
+            contextMenuStrip1.Size = new System.Drawing.Size(133, 48);
+            btnBookSlot.Name = "toolStripMenuItem1";
+            btnBookSlot.Size = new System.Drawing.Size(132, 22);
+            btnBookSlot.Text = "Book slot";
+            btnBookSlot.Click += new System.EventHandler(btnBookSlot_Click);
+            btnCancelSlot.Name = "toolStripMenuItem2";
+            btnCancelSlot.Size = new System.Drawing.Size(132, 22);
+            btnCancelSlot.Text = "Cancel slot";
+            btnCancelSlot.Click += new System.EventHandler(btnCancelSlot_Click);
+
+            contextMenuStrip1.ResumeLayout(false);
+
+            return contextMenuStrip1;
+        }
+
+        private void DrawAppointmentBook(Session[] sessions)
         {
             panel1.BringToFront();
             panel1.Refresh();
-            tableLayoutPanel1.Controls.Clear();
+
+            tableLayoutPanel1.SuspendLayout();
+            
+            ClearAndDisposeControls(tableLayoutPanel1.Controls);
+
+            if (_contextMenuStrip != null)
+            {
+                _contextMenuStrip.Dispose();
+                _contextMenuStrip = null;
+            }
+
+            _contextMenuStrip = CreateContextMenuStrip();
+
             tableLayoutPanel1.ColumnStyles.Clear();
             tableLayoutPanel1.ColumnCount = 0;
 
@@ -103,33 +178,34 @@ namespace DotNetGPSystem
             AddVerticalTimeStripPanel();
             columnCount++;
 
-            foreach (var grouping in users.GroupBy(t => t.Organisation))
+            foreach (Session session in sessions)
             {
-                OpenHR001Organisation organisation = grouping.Key;
+                AddVerticalUserPanel(session);
+                columnCount++;
 
-                foreach (OpenHRUser user in grouping)
+                if (columnCount % 5 == 0)
                 {
-                    AddVerticalUserPanel(user, organisation);
+                    AddVerticalTimeStripPanel();
                     columnCount++;
-
-                    if (columnCount % 5 == 0)
-                    {
-                        AddVerticalTimeStripPanel();
-                        columnCount++;
-                    }
                 }
             }
 
             tableLayoutPanel1.CreateColumn(new ColumnStyle(SizeType.Absolute, 10F));
+
+            tableLayoutPanel1.ResumeLayout();
+
             panel1.SendToBack();
         }
 
-        private void AddVerticalUserPanel(OpenHRUser user, OpenHR001Organisation organisation)
+        private void AddVerticalUserPanel(Session session)
         {
+            OpenHRUser user = session.User;
+            OpenHR001Organisation organisation = session.Organisation.Organisation;
+
             tableLayoutPanel1.CreateColumn(new ColumnStyle(SizeType.Absolute, 200F));
             Panel panel = CreateVerticalPanel(user.Person.GetCuiDisplayName(), " at " + organisation.name);
 
-            foreach (int time in _appointmentTimes)
+            foreach (Slot slot in session.Slots)
             {
                 Panel outer = new Panel()
                 {
@@ -141,9 +217,16 @@ namespace DotNetGPSystem
                 Panel p = new Panel()
                 {
                     Dock = DockStyle.Fill,
-                    BackColor = Color.White,
-                    ContextMenuStrip = contextMenuStrip1
+                    BackColor = Color.White, 
+                    ContextMenuStrip = _contextMenuStrip,
+                    Tag = slot
                 };
+                
+                if (slot.Patient != null)
+                {
+                    Control c = CreateBookedPatientControl(slot.Patient);
+                    p.Controls.Add(c);
+                }
 
                 outer.Controls.Add(p);
                 panel.Controls.Add(outer);
@@ -164,7 +247,7 @@ namespace DotNetGPSystem
         {
             Panel timePanel = CreateVerticalPanel(string.Empty, string.Empty);
 
-            foreach (int time in _appointmentTimes)
+            foreach (int time in DataStore.AppointmentTimes)
             {
                 Panel p = new Panel()
                 {
@@ -233,9 +316,61 @@ namespace DotNetGPSystem
             return headerPanel;
         }
 
-        private void toolStripMenuItem1_Click(object sender, EventArgs e)
+        private void btnBookSlot_Click(object sender, EventArgs e)
         {
-            System.Windows.Forms.MessageBox.Show("Book slot");
+            OpenHRPatient patient = PatientFindForm.ChoosePatient();
+
+            if (patient != null)
+            {
+                Control control = ((sender as ToolStripMenuItem)
+                    .WhenNotNull(t => (t.Owner as ContextMenuStrip).WhenNotNull(s => s.SourceControl)));
+
+                if (control != null)
+                {
+                    ClearAndDisposeControls(control.Controls);
+
+                    Control l = CreateBookedPatientControl(patient);
+                    
+                    Slot slot = control.Tag as Slot;
+                    slot.Patient = patient;
+
+                    control.Controls.Add(l);
+                }
+            }
+        }
+
+        private Control CreateBookedPatientControl(OpenHRPatient patient)
+        {
+            Label l = new Label()
+            {
+                BackColor = Color.Silver,
+                ForeColor = Color.ForestGreen,
+                Dock = DockStyle.Fill,
+                TextAlign = ContentAlignment.MiddleCenter,
+                Font = new Font(this.Font.FontFamily, this.Font.Size + 1, FontStyle.Bold),
+                Text = patient.Person.GetCuiDisplayName() + "\r\n" + patient.Person.GetCuiDobStringWithAge()
+            };
+
+            return l;
+        }
+
+        private void btnCancelSlot_Click(object sender, EventArgs e)
+        {
+            Control control = ((sender as ToolStripMenuItem)
+                    .WhenNotNull(t => (t.Owner as ContextMenuStrip).WhenNotNull(s => s.SourceControl)));
+
+            if (control != null)
+                ClearAndDisposeControls(control.Controls);
+
+            Slot slot = control.Tag as Slot;
+
+            if (slot != null)
+                slot.Patient = null;
+        }
+
+        private void monthCalendar1_DateSelected(object sender, DateRangeEventArgs e)
+        {
+            DrawAppointmentBook();
         }
     }
 }

@@ -57,24 +57,18 @@ namespace DotNetGPSystem
 
         private void OpenPatientRecord()
         {
-            
-            
-            using (PatientFindForm patientFindForm = new PatientFindForm(DataStore.OpenHRPatients))
+            OpenHRPatient patient = PatientFindForm.ChoosePatient();
+
+            if (patient != null)
             {
-                if (patientFindForm.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-                {
-                    if (patientFindForm.SelectedPatient != null)
-                    {
-                        TabPage previousTabPage = _patientTabPage;
+                TabPage previousTabPage = _patientTabPage;
 
-                        _patientTabPage = new PatientTabPage(patientFindForm.SelectedPatient);
-                        tcTabControl.TabPages.Insert(0, _patientTabPage);
-                        tcTabControl.SelectedTab = _patientTabPage;
+                _patientTabPage = new PatientTabPage(patient);
+                tcTabControl.TabPages.Insert(0, _patientTabPage);
+                tcTabControl.SelectedTab = _patientTabPage;
 
-                        if (previousTabPage != null)
-                            tcTabControl.TabPages.Remove(previousTabPage);
-                    }
-                }
+                if (previousTabPage != null)
+                    tcTabControl.TabPages.Remove(previousTabPage);
             }
         }
 

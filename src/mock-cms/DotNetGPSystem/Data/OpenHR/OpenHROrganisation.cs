@@ -8,12 +8,14 @@ namespace DotNetGPSystem
 {
     internal class OpenHROrganisation
     {
-        public OpenHROrganisation(OpenHR001Organisation organisation, OpenHRUser[] users)
+        public OpenHROrganisation(int organisationId, OpenHR001Organisation organisation, OpenHRUser[] users)
         {
+            OrganisationId = organisationId;
             Organisation = organisation;
             Users = users;
         }
 
+        public int OrganisationId { get; private set; }
         public OpenHR001Organisation Organisation { get; private set; }
         public OpenHRUser[] Users { get; private set; }
     }
