@@ -11,6 +11,8 @@ namespace OpenHRObfuscate
     {
         static void Main(string[] args)
         {
+            //args = new string[] { @"..\..\..\..\Test\OpenHRSamples", @"..\..\..\..\Test\Obfuscated" };
+
             try
             {
                 int argsLength = args.WhenNotNull(t => t.Length);

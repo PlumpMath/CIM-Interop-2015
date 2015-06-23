@@ -41,6 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Obfuscator\Data\Name.cs" />
+    <Compile Include="Obfuscator\Data\NameList.cs" />
     <Compile Include="Obfuscator\Obfuscator.cs" />
     <Compile Include="Obfuscator\OpenHRFile.cs" />
     <Compile Include="Obfuscator\Schema\OpenHR001.cs">
@@ -61,6 +63,11 @@
     <None Include="Obfuscator\Schema\vocabulary.xsd">
       <SubType>Designer</SubType>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Obfuscator\Data\first-female.txt" />
+    <None Include="Obfuscator\Data\last.txt" />
+    <EmbeddedResource Include="Obfuscator\Data\first-male.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
