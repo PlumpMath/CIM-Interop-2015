@@ -11,6 +11,8 @@ namespace OpenHRObfuscate
     public class Obfuscator
     {
         private Dictionary<Guid, Guid> _guidMap = new Dictionary<Guid, Guid>();
+        private Dictionary<Guid, Name> _nameMap = new Dictionary<Guid, Name>();
+        private NameList _nameList;
         
         public Obfuscator()
         {
@@ -18,14 +20,70 @@ namespace OpenHRObfuscate
 
         public void Obfuscate(OpenHRFile[] openHRFiles)
         {
+            Initialise();
+
             foreach (OpenHRFile openHRFile in openHRFiles)
             {
-                openHRFile.OpenHR = Utilities.Deserialize<OpenHR.OpenHR001OpenHealthRecord>(openHRFile.InputText);
+                openHRFile.OpenHR = Deserialize(openHRFile.InputText);
 
+                UpdatePersonNames(openHRFile.OpenHR);
                 UpdateAllGuidFields(openHRFile.OpenHR);
 
-                openHRFile.OutputText = Utilities.Serialize<OpenHR.OpenHR001OpenHealthRecord>(openHRFile.OpenHR);
+                openHRFile.OutputText = Serialize(openHRFile.OpenHR);
             }
+        }
+
+        private void Initialise()
+        {
+            _nameList = new NameList();
+        }
+        
+        private void UpdatePersonNames(OpenHR.OpenHR001OpenHealthRecord openHR)
+        {
+            foreach (OpenHR.OpenHR001Person person in openHR.adminDomain.person)
+            {
+                Name name = GetName(person);
+
+                person.title = name.Title;
+                person.forenames = name.Forename;
+                person.surname = name.Surname;
+
+                if (!string.IsNullOrEmpty(person.previousSurname))
+                    person.previousSurname = name.PreviousSurname;
+
+                if (!string.IsNullOrEmpty(person.callingName))
+                    person.callingName = name.Forename;
+
+                if (!string.IsNullOrEmpty(person.birthSurname))
+                    person.birthSurname = name.BirthSurname;
+            }
+        }
+
+        private Name GetName(OpenHR.OpenHR001Person person)
+        {
+            if (!_nameMap.ContainsKey(person.id))
+            {
+                Name name;
+                
+                if (person.sex == OpenHR.vocSex.F)
+                    name = _nameList.GetFemaleName(person.title);
+                else
+                    name = _nameList.GetMaleName(person.title);
+
+                _nameMap.Add(person.id, name);
+            }
+
+            return _nameMap[person.id];
+        }
+
+        private static OpenHR.OpenHR001OpenHealthRecord Deserialize(string xml)
+        {
+            return Utilities.Deserialize<OpenHR.OpenHR001OpenHealthRecord>(xml);
+        }
+
+        private static string Serialize(OpenHR.OpenHR001OpenHealthRecord openHR)
+        {
+            return Utilities.Serialize<OpenHR.OpenHR001OpenHealthRecord>(openHR);
         }
 
         private void UpdateAllGuidFields(OpenHR.OpenHR001OpenHealthRecord openHR)

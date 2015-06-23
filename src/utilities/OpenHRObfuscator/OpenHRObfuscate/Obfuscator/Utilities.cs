@@ -98,5 +98,20 @@ namespace OpenHRObfuscate
                 }
             }
         }
+
+        public static string LoadStringResource(string resourceName)
+        {
+            using (Stream stream = Assembly.GetExecutingAssembly().GetManifestResourceStream(resourceName))
+            {
+                StreamReader reader = new StreamReader(stream);
+
+                return reader.ReadToEnd();
+            }
+        }
+
+        public static string ToTitleCase(this string s)
+        {
+            return System.Globalization.CultureInfo.CurrentCulture.TextInfo.ToTitleCase(s.ToLower());
+        }
     }
 }
