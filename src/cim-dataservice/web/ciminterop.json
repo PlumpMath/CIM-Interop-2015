@@ -1,7 +1,7 @@
 {
     "swagger": "2.0",
     "info": {
-        "description": "This is a RESTful test server with API documentation for the Endeavour Common Interface Mechanism, which can be used to send requests to, and receive example responses.",
+        "description": "This is a RESTful test server with API documentation for the Endeavour Common Interface Mechanism, which can be used to send requests to, and receive example responses.<br><br><b>NOTE:</b> All dates should be provided in the standard ISO-8601 format (yyyy-MM-dd'T'HH:mm:ss'Z')",
         "version": "0.1",
         "title": "Endeavour CIM Interop 2015",
         "contact": {
@@ -1024,7 +1024,9 @@
                         "in":"query",
                         "description":"Search for Schedule resources that have a period that contains this date specified",
                         "required":false,
-                        "type":"string"
+                        "type":"array",
+                        "items" : { "type" : "string" },
+                        "collectionFormat": "multi"
                     },
                     {
                         "name":"actor",

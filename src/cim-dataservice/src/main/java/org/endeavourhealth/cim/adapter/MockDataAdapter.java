@@ -243,11 +243,69 @@ public class MockDataAdapter implements IDataAdapter {
     public void requestOrder(String odsCode, String orderRequest) {
 
     }
-    public String getSchedules(String odsCode) {
-        return null;
+    public String getSchedules(String odsCode, Date dateFrom, Date dateTo) {
+        SOAPConnection soapConnection = null;
+        try {
+            try {
+                SOAPConnectionFactory soapConnectionFactory = SOAPConnectionFactory.newInstance();
+                soapConnection = soapConnectionFactory.createConnection();
+
+                // Create basic message
+                SOAPMessage requestMessage = createSOAPRequest("GetAppointmentSessions");
+
+                // SOAP Body
+                SOAPElement soapMethodElement = requestMessage.getSOAPBody().addChildElement("GetAppointmentSessions", "", "http://tempuri.org/");
+
+                createChildTextElement(soapMethodElement, "odsCode", odsCode);
+                createChildTextElement(soapMethodElement, "fromDate", (new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'")).format(dateFrom));
+                createChildTextElement(soapMethodElement, "toDate", (new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'")).format(dateTo));
+
+                requestMessage.saveChanges();
+
+                // Send SOAP Message to SOAP Server
+                SOAPMessage soapResponse = soapConnection.call(requestMessage, _soapUri + "/GetAppointmentSessions");
+                return soapResponse.getSOAPBody().getElementsByTagName("GetAppointmentSessionsResult").item(0).getTextContent();
+            } finally {
+                if (soapConnection != null)
+                    soapConnection.close();
+            }
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
     }
-    public String getSlots(String odsCode, UUID scheduleId) {
-        return null;
+    public String getSlots(String odsCode, String scheduleId, Date startTime) {
+        SOAPConnection soapConnection = null;
+        try {
+            try {
+                SOAPConnectionFactory soapConnectionFactory = SOAPConnectionFactory.newInstance();
+                soapConnection = soapConnectionFactory.createConnection();
+
+                // Create basic message
+                SOAPMessage requestMessage = createSOAPRequest("GetSlotsForSession");
+
+                // SOAP Body
+                SOAPElement soapMethodElement = requestMessage.getSOAPBody().addChildElement("GetSlotsForSession", "", "http://tempuri.org/");
+
+                createChildTextElement(soapMethodElement, "odsCode", odsCode);
+                createChildTextElement(soapMethodElement, "sessionId", scheduleId);
+                // createChildTextElement(soapMethodElement, "startTime", (new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'")).format(startTime));
+
+                requestMessage.saveChanges();
+
+                // Send SOAP Message to SOAP Server
+                SOAPMessage soapResponse = soapConnection.call(requestMessage, _soapUri + "/GetSlotsForSession");
+                return soapResponse.getSOAPBody().getElementsByTagName("GetSlotsForSessionResult").item(0).getTextContent();
+            } finally {
+                if (soapConnection != null)
+                    soapConnection.close();
+            }
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 
     // Utility methods
