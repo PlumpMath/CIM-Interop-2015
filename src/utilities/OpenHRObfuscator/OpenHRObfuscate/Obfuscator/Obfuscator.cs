@@ -13,6 +13,7 @@ namespace OpenHRObfuscate
         private Dictionary<Guid, Guid> _guidMap = new Dictionary<Guid, Guid>();
         private Dictionary<Guid, Name> _nameMap = new Dictionary<Guid, Name>();
         private NameList _nameList;
+        private Random _random = new Random(DateTime.Now.Millisecond);
         
         public Obfuscator()
         {
@@ -28,6 +29,7 @@ namespace OpenHRObfuscate
 
                 UpdatePersonNames(openHRFile.OpenHR);
                 UpdateAllGuidFields(openHRFile.OpenHR);
+                ReorderArrays(openHRFile.OpenHR);
 
                 openHRFile.OutputText = Serialize(openHRFile.OpenHR);
             }
@@ -56,6 +58,58 @@ namespace OpenHRObfuscate
 
                 if (!string.IsNullOrEmpty(person.birthSurname))
                     person.birthSurname = name.BirthSurname;
+            }
+        }
+
+        private void ReorderArrays(OpenHR.OpenHR001OpenHealthRecord openHR)
+        {
+            Stack<object> objects = new Stack<object>();
+
+            objects.Push(openHR);
+
+            while (objects.Count > 0)
+            {
+                object nextObject = objects.Pop();
+
+                foreach (FieldInfo field in nextObject.GetType().GetFields())
+                {
+                    if (field.FieldType.IsArray)
+                    {
+                        IEnumerable array = field.GetValue(nextObject) as IEnumerable;
+
+                        if (array == null)
+                            continue;
+
+                        foreach (object item in array)
+                            objects.Push(item);
+
+                        Type arrayElementType = field.FieldType.GetElementType();
+                        
+                        object[] shuffledArray = array.OfType<object>().OrderBy(t => _random.Next()).ToArray();
+                                               
+                        MethodInfo ofTypeMethod = typeof(Enumerable)
+                            .GetMethod("OfType")
+                            .MakeGenericMethod(new Type[] { arrayElementType });
+
+                        var shuffledTypedEnumerable = ofTypeMethod.Invoke(null, new object[] { shuffledArray });
+
+                        MethodInfo toArrayMethod = typeof(Enumerable)
+                            .GetMethod("ToArray")
+                            .MakeGenericMethod(new Type[] { arrayElementType });
+
+                        var shuffledTypedArray = toArrayMethod.Invoke(null, new object[] { shuffledTypedEnumerable });
+
+                        field.SetValue(nextObject, shuffledTypedArray);
+                    }
+                    else if (field.FieldType.IsClass)
+                    {
+                        object nextNextObject = field.GetValue(nextObject);
+
+                        if (nextNextObject != null)
+                            if (field.FieldType != nextObject.GetType())
+                                objects.Push(nextNextObject);
+                    }
+                }
             }
         }
 
