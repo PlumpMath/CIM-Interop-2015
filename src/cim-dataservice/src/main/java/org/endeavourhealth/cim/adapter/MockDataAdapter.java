@@ -14,7 +14,7 @@ public class MockDataAdapter implements IDataAdapter {
 
     // System
     public String getTransformerTypeName() {
-        return "org.endeavourhealth.cim.transform.openhr.OpenHRTransformer";
+        return "org.endeavourhealth.cim.transform.EmisTransformer";
     }
 
     // Demographics
