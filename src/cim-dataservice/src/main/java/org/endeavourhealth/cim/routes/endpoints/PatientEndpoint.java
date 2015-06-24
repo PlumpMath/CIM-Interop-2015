@@ -1,10 +1,7 @@
 package org.endeavourhealth.cim.routes.endpoints;
 
 import org.apache.camel.builder.RouteBuilder;
-import org.endeavourhealth.cim.processor.patient.GetChangedPatients;
-import org.endeavourhealth.cim.processor.patient.GetPatientAppointments;
-import org.endeavourhealth.cim.processor.patient.GetPatientRecordByPatientId;
-import org.endeavourhealth.cim.processor.patient.GetPatientByIdentifier;
+import org.endeavourhealth.cim.processor.patient.*;
 
 public class PatientEndpoint extends RouteBuilder {
     @Override
@@ -47,6 +44,12 @@ public class PatientEndpoint extends RouteBuilder {
                 .when(simple("${header._lastUpdated} != null"))
                     .routeId("GetChangedPatients")
                     .process(new GetChangedPatients(header("odsCode").toString()))
+                .when(simple("${header.active} == true"))
+                    .routeId("GetActivePatients")
+                    .process(new GetAllPatients(true))
+                .otherwise()
+					.routeId("GetAllPatients")
+					.process(new GetAllPatients(false))
             .end();
 
         from("direct:GetPatientRecordById")
