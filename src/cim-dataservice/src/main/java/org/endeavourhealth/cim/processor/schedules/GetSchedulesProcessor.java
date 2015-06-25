@@ -15,7 +15,7 @@ public class GetSchedulesProcessor implements org.apache.camel.Processor {
 	public void process(Exchange exchange) throws Exception {
 		// Get data from exchange
 		String odsCode = (String) exchange.getIn().getHeader("odsCode");
-		ArrayList<String> date = (ArrayList<String>)exchange.getIn().getHeader("date");
+		ArrayList date = (ArrayList)exchange.getIn().getHeader("date");
 		String actor = (String)exchange.getIn().getHeader("actor");
 
 		if ((actor == null && date == null) || (actor != null && date != null))

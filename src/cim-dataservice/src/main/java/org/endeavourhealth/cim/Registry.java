@@ -4,6 +4,7 @@ import org.apache.commons.codec.binary.Base64;
 
 import javax.crypto.Mac;
 import javax.crypto.spec.SecretKeySpec;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 
 public class Registry {
@@ -41,10 +42,10 @@ public class Registry {
         // Hash data based on private key
         try {
             Mac mac = Mac.getInstance("HmacSHA256");
-            SecretKeySpec secret = new SecretKeySpec(privateKey.getBytes(), "HmacSHA256");
+            SecretKeySpec secret = new SecretKeySpec(privateKey.getBytes(StandardCharsets.UTF_8), "HmacSHA256");
             mac.init(secret);
-            byte[] digest = mac.doFinal(data.getBytes());
-            String hash = new String(Base64.encodeBase64(digest));
+            byte[] digest = mac.doFinal(data.getBytes(StandardCharsets.UTF_8));
+            String hash = new String(Base64.encodeBase64(digest), StandardCharsets.UTF_8);
             // Compare to inbound hash
             return hash.equals(inboundHash);
         } catch (Exception e) {
