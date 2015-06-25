@@ -4,7 +4,7 @@ import org.apache.camel.Exchange;
 import org.apache.camel.Processor;
 
 public class GetAllPatients implements Processor {
-	private boolean _activeOnly;
+	private final boolean _activeOnly;
 	public GetAllPatients(boolean activeOnly) {
 		_activeOnly = activeOnly;
 	}

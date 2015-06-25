@@ -4,6 +4,7 @@ import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.model.rest.RestBindingMode;
 import org.apache.camel.processor.interceptor.Tracer;
 
+@SuppressWarnings("WeakerAccess")
 public class RestConfiguration extends RouteBuilder {
     @Override
     public void configure() throws Exception {

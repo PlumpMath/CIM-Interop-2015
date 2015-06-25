@@ -9,10 +9,11 @@ import org.hl7.fhir.instance.model.Subscription;
 
 import java.util.ArrayList;
 
+@SuppressWarnings("WeakerAccess")
 public class PollerEndpoint extends RouteBuilder {
-    private IDataAdapter _dataAdapter;
-	private EvaluateSubscriptionsProcessor _subscriptionProcessor;
-	private ArrayList<String> _odsCodes = new ArrayList<>();
+    private final IDataAdapter _dataAdapter;
+	private final EvaluateSubscriptionsProcessor _subscriptionProcessor;
+	private final ArrayList<String> _odsCodes = new ArrayList<>();
 
 	public PollerEndpoint(IDataAdapter dataAdapter) {
         _dataAdapter = dataAdapter;
@@ -41,7 +42,7 @@ public class PollerEndpoint extends RouteBuilder {
     }
 
 	public void addSubscription(String odsCode, Subscription subscription) {
-		if (_odsCodes.contains(odsCode) == false)
+		if (!_odsCodes.contains(odsCode))
 			_odsCodes.add(odsCode);
 
 		_subscriptionProcessor.add(subscription);

@@ -6,6 +6,7 @@ import org.endeavourhealth.cim.common.ArrayListAggregationStrategy;
 import org.endeavourhealth.cim.processor.patient.TracePersonProcessor;
 import org.endeavourhealth.cim.processor.patient.TracePersonResultProcessor;
 
+@SuppressWarnings("WeakerAccess")
 public class PersonEndpoint extends RouteBuilder {
     @Override
     public void configure() throws Exception {

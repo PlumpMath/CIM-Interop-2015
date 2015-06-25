@@ -9,7 +9,6 @@ import org.endeavourhealth.cim.transform.openhr.fromfhir.OpenHRContainer;
 import org.endeavourhealth.cim.transform.schemas.openhr.*;
 import org.hl7.fhir.instance.model.Coding;
 import org.hl7.fhir.instance.model.Condition;
-import org.hl7.fhir.instance.model.Observation;
 import org.hl7.fhir.instance.model.Reference;
 
 import javax.xml.datatype.DatatypeConfigurationException;

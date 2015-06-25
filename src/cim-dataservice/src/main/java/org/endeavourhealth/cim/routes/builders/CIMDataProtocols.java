@@ -3,6 +3,7 @@ package org.endeavourhealth.cim.routes.builders;
 import org.endeavourhealth.cim.common.ExceptionHandlerBaseRouteBuilder;
 import org.endeavourhealth.cim.processor.core.DataProtocolsProcessor;
 
+@SuppressWarnings("unused")
 public class CIMDataProtocols extends ExceptionHandlerBaseRouteBuilder {
     @Override
     public void configure() throws Exception {

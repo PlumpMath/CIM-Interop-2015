@@ -15,33 +15,45 @@ public class GetSchedulesProcessor implements org.apache.camel.Processor {
 	public void process(Exchange exchange) throws Exception {
 		// Get data from exchange
 		String odsCode = (String) exchange.getIn().getHeader("odsCode");
-		Object date = exchange.getIn().getHeader("date");
+		ArrayList<String> date = (ArrayList<String>)exchange.getIn().getHeader("date");
 		String actor = (String)exchange.getIn().getHeader("actor");
 
-		if (actor == null && date == null)
-			throw new Exception("Invalid schedule criteria");
+		if ((actor == null && date == null) || (actor != null && date != null))
+			throw new Exception("Either an actor OR a date range must be supplied.");
 
-		if (date instanceof String ||
-			date instanceof ArrayList && ((ArrayList)date).size() != 2)
-			throw new Exception("Two dates must be supplied to specify a range");
-
-		// Get the relevant data adapter from the factory
 		IDataAdapter dataAdapter = AdapterFactory.getDataAdapterForService(odsCode);
 
-		ArrayList<Date> dateList = new ArrayList<>();
-		for (String dateString : (ArrayList<String>)date)
-			dateList.add(new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'").parse(dateString));
-
-		Date dateFrom = Collections.min(dateList);
-		Date dateTo = Collections.max(dateList);
-
-		// Get schedules
-		String schedulesInNativeFormat = dataAdapter.getSchedules(odsCode, dateFrom, dateTo);
+		String schedulesInNativeFormat;
+		if (date != null)
+			schedulesInNativeFormat = GetSchedulesByDateRange(odsCode, date, dataAdapter);
+		else
+			schedulesInNativeFormat = GetSchedulesByActor(odsCode, actor, dataAdapter);
 
 		// Get data transformer for service
 		Transformer transformer = TransformerFactory.getTransformerForAdapter(dataAdapter);
 		//Bundle schedules = (Bundle)transformer.toFHIRBundle(schedulesInNativeFormat);
 
 		exchange.getIn().setBody(schedulesInNativeFormat);
+	}
+
+	private String GetSchedulesByDateRange(String odsCode, ArrayList<String> date, IDataAdapter dataAdapter) throws Exception {
+		if (date == null || (date != null &&  date.size() != 2))
+			throw new Exception("Two dates must be supplied to specify a range");
+
+		// Get the relevant data adapter from the factory
+
+		ArrayList<Date> dateList = new ArrayList<>();
+		for (String dateString : date)
+			dateList.add(new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'").parse(dateString));
+
+		Date dateFrom = Collections.min(dateList);
+		Date dateTo = Collections.max(dateList);
+
+		// Get schedules
+		return dataAdapter.getSchedules(odsCode, dateFrom, dateTo);
+	}
+
+	private String GetSchedulesByActor(String odsCode, String actor, IDataAdapter dataAdapter) {
+		return "";
 	}
 }

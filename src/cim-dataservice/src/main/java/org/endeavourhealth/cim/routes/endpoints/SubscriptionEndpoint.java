@@ -3,6 +3,7 @@ package org.endeavourhealth.cim.routes.endpoints;
 import org.apache.camel.builder.RouteBuilder;
 import org.endeavourhealth.cim.processor.subscription.AddSubscriptionProcessor;
 
+@SuppressWarnings("WeakerAccess")
 public class SubscriptionEndpoint extends RouteBuilder {
     @Override
     public void configure() throws Exception {

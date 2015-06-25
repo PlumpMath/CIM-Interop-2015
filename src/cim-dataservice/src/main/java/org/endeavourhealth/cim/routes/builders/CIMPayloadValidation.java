@@ -4,6 +4,7 @@ import org.apache.commons.httpclient.HttpStatus;
 import org.endeavourhealth.cim.common.ExceptionHandlerBaseRouteBuilder;
 import org.endeavourhealth.cim.processor.core.CIMError;
 
+@SuppressWarnings("unused")
 public class CIMPayloadValidation extends ExceptionHandlerBaseRouteBuilder {
     @Override
     public void configure() throws Exception {

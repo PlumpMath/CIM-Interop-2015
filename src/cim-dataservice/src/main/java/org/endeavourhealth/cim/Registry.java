@@ -31,7 +31,7 @@ public class Registry {
         // Ensure private key exists first.  This allows swagger to bypass security
         // for test servers by adding a key.  Swagger should not be added to live
         // servers so cannot be used as back door.
-        if (publicKey.equals("swagger"))
+        if ("swagger".equals(publicKey))
             return true;
 
         String data = method;

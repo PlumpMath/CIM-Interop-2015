@@ -7,7 +7,6 @@ import org.hl7.fhir.instance.formats.JsonParser;
 import org.hl7.fhir.instance.model.Subscription;
 
 import java.io.InputStream;
-import java.util.UUID;
 
 public class AddSubscriptionProcessor implements org.apache.camel.Processor {
     public void process(Exchange exchange) throws Exception {

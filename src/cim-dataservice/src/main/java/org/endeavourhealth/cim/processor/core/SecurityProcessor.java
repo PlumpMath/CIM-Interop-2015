@@ -12,7 +12,7 @@ public class SecurityProcessor implements Processor {
         String method = exchange.getFromEndpoint().getEndpointConfiguration().getParameter("path");
         String body = exchange.getIn().getBody(String.class);
 
-        if (Registry.validateMessage(publicKey, method, body, inboundHash) == false) {
+        if (!Registry.validateMessage(publicKey, method, body, inboundHash)) {
             exchange.getIn().setHeader(Exchange.HTTP_RESPONSE_CODE, HttpStatus.SC_UNAUTHORIZED);
             exchange.getIn().setHeader(Exchange.CONTENT_TYPE, "text/plain");
             exchange.getIn().setBody("Invalid Session");

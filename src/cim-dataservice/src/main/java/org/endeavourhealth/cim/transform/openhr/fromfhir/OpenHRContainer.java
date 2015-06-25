@@ -1,6 +1,5 @@
 package org.endeavourhealth.cim.transform.openhr.fromfhir;
 
-import org.endeavourhealth.cim.transform.schemas.openhr.OpenHR001Event;
 import org.endeavourhealth.cim.transform.schemas.openhr.OpenHR001HealthDomain;
 import org.endeavourhealth.cim.transform.schemas.openhr.OpenHR001Problem;
 

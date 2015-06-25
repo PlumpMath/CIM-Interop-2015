@@ -1,12 +1,9 @@
 package org.endeavourhealth.cim.routes.endpoints;
 
 import org.apache.camel.builder.RouteBuilder;
-import org.endeavourhealth.cim.adapter.AdapterFactory;
-import org.endeavourhealth.cim.common.ArrayListAggregationStrategy;
-import org.endeavourhealth.cim.processor.patient.TracePersonProcessor;
-import org.endeavourhealth.cim.processor.patient.TracePersonResultProcessor;
 import org.endeavourhealth.cim.processor.schedules.GetSchedulesProcessor;
 
+@SuppressWarnings("WeakerAccess")
 public class ScheduleEndpoint extends RouteBuilder {
     @Override
     public void configure() throws Exception {

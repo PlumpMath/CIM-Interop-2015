@@ -5,11 +5,9 @@ import org.endeavourhealth.cim.adapter.AdapterFactory;
 import org.endeavourhealth.cim.adapter.IDataAdapter;
 import org.endeavourhealth.cim.transform.Transformer;
 import org.endeavourhealth.cim.transform.TransformerFactory;
-import org.hl7.fhir.instance.model.Bundle;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.UUID;
 
 public class GetSlotsProcessor implements org.apache.camel.Processor {
 	public void process(Exchange exchange) throws Exception {

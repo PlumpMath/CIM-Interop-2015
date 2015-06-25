@@ -5,8 +5,8 @@ import org.apache.camel.Expression;
 import org.apache.camel.Processor;
 
 public class CIMError implements Processor {
-    private int _errorCode;
-    private Expression _errorMessage;
+    private final int _errorCode;
+    private final Expression _errorMessage;
 
     public CIMError(int errorCode, Expression errorMessage) {
         super();

@@ -17,12 +17,14 @@ public class SubscriptionManager {
 		return _instance;
 	}
 
-	private HashMap<String, Subscription> _subscriptions = new HashMap<>();
-	private HashMap<String, PollerEndpoint> _pollers = new HashMap<>();
+	private final HashMap<String, Subscription> _subscriptions = new HashMap<>();
+	private final HashMap<String, PollerEndpoint> _pollers = new HashMap<>();
 
 	public void addSubscription(String odsCode, Subscription subscription, CamelContext context) throws Exception {
 		if (_subscriptions.containsKey(subscription.getId()))
 			return;
+
+		_subscriptions.put(subscription.getId(), subscription);
 
 		String adapterType = Registry.getDataAdapterTypeNameForService(odsCode);
 		PollerEndpoint poller = _pollers.get(adapterType);

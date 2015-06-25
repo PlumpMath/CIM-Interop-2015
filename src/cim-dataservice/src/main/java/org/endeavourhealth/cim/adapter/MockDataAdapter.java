@@ -1,10 +1,8 @@
 package org.endeavourhealth.cim.adapter;
 
 import javax.xml.soap.*;
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Date;
 import java.util.UUID;
 
@@ -171,7 +169,7 @@ public class MockDataAdapter implements IDataAdapter {
                 String responseText = soapResponse.getSOAPBody().getElementsByTagName("GetChangedPatientsResult").item(0).getTextContent();
 
                 ArrayList<UUID> uuids = new ArrayList<>();
-                if (responseText.isEmpty() == false)
+                if (!responseText.isEmpty())
                     for (String uuidString : responseText.split("(?<=\\G.{36})"))
                         uuids.add(UUID.fromString(uuidString));
 

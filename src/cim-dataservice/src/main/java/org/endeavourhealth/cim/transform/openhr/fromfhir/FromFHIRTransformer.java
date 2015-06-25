@@ -2,7 +2,6 @@ package org.endeavourhealth.cim.transform.openhr.fromfhir;
 
 import org.endeavourhealth.cim.transform.SourceDocumentInvalidException;
 import org.endeavourhealth.cim.transform.TransformException;
-import org.endeavourhealth.cim.transform.TransformFeatureNotSupportedException;
 import org.endeavourhealth.cim.transform.TransformHelper;
 import org.endeavourhealth.cim.transform.openhr.fromfhir.clinical.ConditionTransformer;
 import org.endeavourhealth.cim.transform.schemas.openhr.*;

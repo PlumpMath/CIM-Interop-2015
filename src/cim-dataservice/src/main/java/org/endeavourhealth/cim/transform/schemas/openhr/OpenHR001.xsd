@@ -4,8 +4,8 @@
 <xs:schema xmlns="http://www.e-mis.com/emisopen" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.e-mis.com/emisopen" elementFormDefault="qualified" attributeFormDefault="unqualified" version="2.1.1">
 	<!--Author: Jonathan Homer (jonathan.homer@e-mis.com)-->
 	<!--Version: 2.1.4-->
-	<xs:include schemaLocation="..\datatypes\datatypes.xsd"/>
-	<xs:include schemaLocation="..\vocabulary\vocabulary.xsd"/>
+	<xs:include schemaLocation="datatypes.xsd"/>
+	<xs:include schemaLocation="vocabulary.xsd"/>
 	<xs:element name="openHealthRecord" type="OpenHR001.OpenHealthRecord"/>
 	<xs:complexType name="OpenHR001.OpenHealthRecord">
 		<xs:sequence>

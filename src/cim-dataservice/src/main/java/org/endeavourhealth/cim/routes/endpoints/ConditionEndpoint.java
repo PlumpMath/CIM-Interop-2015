@@ -4,6 +4,7 @@ import org.apache.camel.builder.RouteBuilder;
 import org.endeavourhealth.cim.processor.event.AddCondition;
 import org.endeavourhealth.cim.processor.event.GetConditions;
 
+@SuppressWarnings({"WeakerAccess", "unused"})
 public class ConditionEndpoint extends RouteBuilder {
     @Override
     public void configure() throws Exception {

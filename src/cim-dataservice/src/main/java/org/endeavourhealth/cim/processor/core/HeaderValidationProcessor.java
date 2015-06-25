@@ -5,7 +5,7 @@ import org.apache.camel.Exchange;
 import java.util.*;
 
 public class HeaderValidationProcessor implements org.apache.camel.Processor {
-    private Map<String, List<String>> _legitimateRelationships;
+    private final Map<String, List<String>> _legitimateRelationships;
 
     public HeaderValidationProcessor() {
         _legitimateRelationships = new HashMap<>();
@@ -37,7 +37,7 @@ public class HeaderValidationProcessor implements org.apache.camel.Processor {
         if (validOrganisations == null)
 			throw new Exception("No legitimate relationships configured for this subsidiary system");
 
-        if (validOrganisations.contains(odsCode) == false)
+        if (!validOrganisations.contains(odsCode))
 			throw new Exception("Subsidiary system has no legitimate relationship with this organisation");
     }
 }

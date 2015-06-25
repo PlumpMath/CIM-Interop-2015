@@ -3,6 +3,7 @@ package org.endeavourhealth.cim.routes.endpoints;
 import org.apache.camel.builder.RouteBuilder;
 import org.endeavourhealth.cim.processor.event.GetImmunizations;
 
+@SuppressWarnings("WeakerAccess")
 public class ImmunizationEndpoint extends RouteBuilder {
     @Override
     public void configure() throws Exception {

@@ -1,7 +1,6 @@
 package org.endeavourhealth.cim.transform.openhr.tofhir;
 
 import org.endeavourhealth.cim.transform.SourceDocumentInvalidException;
-import org.endeavourhealth.cim.transform.TransformException;
 import org.endeavourhealth.cim.transform.TransformFeatureNotSupportedException;
 import org.endeavourhealth.cim.transform.TransformHelper;
 import org.endeavourhealth.cim.transform.schemas.openhr.DtDatePart;
@@ -10,7 +9,6 @@ import org.endeavourhealth.cim.transform.schemas.openhr.VocDatePart;
 import org.endeavourhealth.cim.transform.schemas.openhr.VocUpdateMode;
 import org.hl7.fhir.instance.model.DateTimeType;
 import org.hl7.fhir.instance.model.DateType;
-import org.hl7.fhir.instance.model.Period;
 import org.hl7.fhir.instance.model.TemporalPrecisionEnum;
 
 import java.util.UUID;

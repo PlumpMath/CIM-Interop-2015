@@ -14,7 +14,7 @@ import java.util.HashMap;
 import java.util.UUID;
 
 public class EvaluateSubscriptionsProcessor implements org.apache.camel.Processor {
-    private HashMap<String, Subscription> _subscriptions = new HashMap<>();
+    private final HashMap<String, Subscription> _subscriptions = new HashMap<>();
 
     @Override
     public void process(Exchange exchange) throws Exception {

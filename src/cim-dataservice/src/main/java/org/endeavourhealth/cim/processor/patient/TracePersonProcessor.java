@@ -32,7 +32,7 @@ public class TracePersonProcessor implements org.apache.camel.Processor {
 
 		Patient patient = null;
 
-		if (traceResult != null && traceResult.isEmpty() == false) {
+		if (traceResult != null && !traceResult.isEmpty()) {
 			Transformer transformer = TransformerFactory.getTransformerForAdapter(dataAdapter);
 			patient = transformer.toFHIRPatient(traceResult);
 		}

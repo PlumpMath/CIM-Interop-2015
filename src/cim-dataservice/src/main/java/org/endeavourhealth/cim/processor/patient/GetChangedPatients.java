@@ -1,7 +1,6 @@
 package org.endeavourhealth.cim.processor.patient;
 
 import org.apache.camel.Exchange;
-import org.endeavourhealth.cim.Registry;
 import org.endeavourhealth.cim.adapter.AdapterFactory;
 import org.endeavourhealth.cim.adapter.IDataAdapter;
 

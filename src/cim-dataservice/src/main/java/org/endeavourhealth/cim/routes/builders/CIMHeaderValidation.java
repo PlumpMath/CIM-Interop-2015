@@ -5,6 +5,7 @@ import org.endeavourhealth.cim.common.ExceptionHandlerBaseRouteBuilder;
 import org.endeavourhealth.cim.processor.core.CIMError;
 import org.endeavourhealth.cim.processor.core.HeaderValidationProcessor;
 
+@SuppressWarnings("unused")
 public class CIMHeaderValidation extends ExceptionHandlerBaseRouteBuilder {
     @Override
     public void configure() throws Exception {

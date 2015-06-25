@@ -1,9 +1,9 @@
 package org.endeavourhealth.cim.routes.endpoints;
 
 import org.apache.camel.builder.RouteBuilder;
-import org.endeavourhealth.cim.processor.schedules.GetSchedulesProcessor;
 import org.endeavourhealth.cim.processor.slots.GetSlotsProcessor;
 
+@SuppressWarnings("WeakerAccess")
 public class SlotEndpoint extends RouteBuilder {
     @Override
     public void configure() throws Exception {

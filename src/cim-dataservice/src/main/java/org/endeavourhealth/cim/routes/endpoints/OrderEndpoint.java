@@ -2,8 +2,8 @@ package org.endeavourhealth.cim.routes.endpoints;
 
 import org.apache.camel.builder.RouteBuilder;
 import org.endeavourhealth.cim.processor.orders.RequestOrderProcessor;
-import org.endeavourhealth.cim.processor.slots.GetSlotsProcessor;
 
+@SuppressWarnings("WeakerAccess")
 public class OrderEndpoint extends RouteBuilder {
     @Override
     public void configure() throws Exception {

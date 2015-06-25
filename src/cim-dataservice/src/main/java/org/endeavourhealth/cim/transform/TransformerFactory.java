@@ -6,9 +6,6 @@ public class TransformerFactory {
     public static Transformer getTransformerForAdapter(IDataAdapter dataAdapter) throws Exception {
         String serviceTransformerTypeName = dataAdapter.getTransformerTypeName();
 
-        if (serviceTransformerTypeName == null)
-            return null;
-
         try {
             return (Transformer)Class.forName(serviceTransformerTypeName).newInstance();
         }
