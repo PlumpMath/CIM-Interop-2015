@@ -38,6 +38,18 @@
             <artifactId>camel-cassandraql</artifactId>
             <version>${camel_version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.apache.camel</groupId>
+            <artifactId>camel-test</artifactId>
+            <version>${camel_version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>servlet-api</artifactId>
+            <version>2.5</version>
+        </dependency>
 
         <dependency>
             <groupId>org.slf4j</groupId>
