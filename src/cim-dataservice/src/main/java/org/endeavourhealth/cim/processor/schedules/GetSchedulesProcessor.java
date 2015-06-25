@@ -5,6 +5,9 @@ import org.endeavourhealth.cim.adapter.AdapterFactory;
 import org.endeavourhealth.cim.adapter.IDataAdapter;
 import org.endeavourhealth.cim.transform.Transformer;
 import org.endeavourhealth.cim.transform.TransformerFactory;
+import org.hl7.fhir.instance.formats.JsonParser;
+import org.hl7.fhir.instance.model.Bundle;
+import org.hl7.fhir.instance.model.Schedule;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -34,9 +37,11 @@ public class GetSchedulesProcessor implements org.apache.camel.Processor {
 
 		// Get data transformer for service
 		Transformer transformer = TransformerFactory.getTransformerForAdapter(dataAdapter);
-		//Bundle schedules = (Bundle)transformer.toFHIRBundle(schedulesInNativeFormat);
 
-		exchange.getIn().setBody(schedulesInNativeFormat);
+		Bundle bundle = transformer.toFHIRScheduleBundle(schedulesInNativeFormat);
+		String body = new JsonParser().composeString(bundle);
+
+		exchange.getIn().setBody(body);
 	}
 
 	private String GetSchedulesByDateRange(String odsCode, ArrayList date, IDataAdapter dataAdapter) throws Exception {

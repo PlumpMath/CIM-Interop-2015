@@ -15,7 +15,7 @@ import javax.xml.bind.*;
 import java.io.StringReader;
 import java.io.StringWriter;
 
-public class OpenHRTransformer implements Transformer {
+public class OpenHRTransformer {
     public Bundle toFHIRBundle(String sourceData) throws TransformException {
         OpenHR001OpenHealthRecord openHR = deserializeOpenHR(sourceData);
 
