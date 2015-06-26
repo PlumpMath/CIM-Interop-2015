@@ -23,6 +23,10 @@ public class EmisTransformer implements Transformer {
 		return _emisOpenTransformer.toFHIRScheduleBundle(sourceData);
 	}
 
+	public Bundle toFHIRSlotBundle(String sourceData) throws TransformException {
+		return _emisOpenTransformer.toFHIRSlotBundle(sourceData);
+	}
+
 	public String fromFHIRCondition(Condition condition) throws TransformException {
 		return _openHrTransformer.fromFHIRCondition(condition);
 	}

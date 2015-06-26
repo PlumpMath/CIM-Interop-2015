@@ -1053,7 +1053,7 @@
                     "In progress"
                 ],
                 "summary":"Get Available Appointment Slots",
-                "description": "Get slots of time on a schedule that may be available for booking appointments.<br/><br/><u>Examples</u>:<br/><br/>https://endeavour-cim.cloudapp.net/CIM_war/v0.1/Z99999/Slot?schedule=1234&start=2015-06-01T00:00:00&start=2015-06-05T00:00:00",
+                "description": "Get slots of time on a schedule that may be available for booking appointments.<br/><br/><u>Examples</u>:<br/><br/>https://endeavour-cim.cloudapp.net/CIM_war/v0.1/Z99999/Slot?schedule=1234&start=2015-06-01T00:00:00",
                 "produces": [
                     "application/json"
                 ],
@@ -1087,7 +1087,7 @@
                         "name":"schedule",
                         "in":"query",
                         "description":"The Schedule Resource that we are seeking a slot within",
-                        "required":false,
+                        "required":true,
                         "type":"string"
                     },
                     {
