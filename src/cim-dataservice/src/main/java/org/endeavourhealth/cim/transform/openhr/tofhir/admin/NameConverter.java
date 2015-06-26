@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-class NameConverter {
+public class NameConverter {
 
     public static List<HumanName> convert(String title, String forenames, String surname, String callingName, String birthSurname, String previousSurname) {
         return convertCleaned(
