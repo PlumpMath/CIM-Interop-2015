@@ -6,6 +6,8 @@ import org.apache.camel.ProducerTemplate;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.component.mock.MockEndpoint;
 import org.apache.camel.test.junit4.CamelTestSupport;
+import org.endeavourhealth.cim.TestRegistry;
+import org.endeavourhealth.cim.adapter.AdapterFactory;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -23,6 +25,8 @@ public class GetSchedulesProcessorTest extends CamelTestSupport {
 	protected RouteBuilder createRouteBuilder() {
 		return new RouteBuilder() {
 			public void configure() {
+				AdapterFactory.setRegistry(new TestRegistry());
+
 				from("direct:start")
 					.process(new GetSchedulesProcessor())
 					.to("mock:result");

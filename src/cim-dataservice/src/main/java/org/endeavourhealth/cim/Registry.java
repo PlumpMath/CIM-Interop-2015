@@ -7,22 +7,22 @@ import javax.crypto.spec.SecretKeySpec;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 
-public class Registry {
-    public static String getDataAdapterTypeNameForService(String odsCode) {
+public class Registry implements IRegistry {
+    public String getDataAdapterTypeNameForService(String odsCode) {
         return "org.endeavourhealth.cim.adapter.MockDataAdapter";
     }
 
-	public static ArrayList<String> getAllAdapterTypes() {
-		ArrayList<String> adapterTypes = new ArrayList<>();
+	public ArrayList<String> getAllAdapterTypes() {
+        ArrayList<String> adapterTypes = new ArrayList<>();
 
-		adapterTypes.add("org.endeavourhealth.cim.adapter.MockDataAdapter");
-		adapterTypes.add("org.endeavourhealth.cim.adapter.MockDataAdapter");
-		adapterTypes.add("org.endeavourhealth.cim.adapter.MockDataAdapter");
+        adapterTypes.add("org.endeavourhealth.cim.adapter.MockDataAdapter");
+        adapterTypes.add("org.endeavourhealth.cim.adapter.MockDataAdapter");
+        adapterTypes.add("org.endeavourhealth.cim.adapter.MockDataAdapter");
 
-		return adapterTypes;
-	}
+        return adapterTypes;
+    }
 
-	public static Boolean validateMessage(String publicKey, String method, String body, String inboundHash) {
+	public Boolean validateMessage(String publicKey, String method, String body, String inboundHash) {
         // Retrieve private key based on public key
         String privateKey = getPrivateKey(publicKey);
 
@@ -54,7 +54,7 @@ public class Registry {
         }
     }
 
-    private static String getPrivateKey(String publicKey) {
+    private String getPrivateKey(String publicKey) {
         return "privateKey";
     }
 }
