@@ -7,6 +7,7 @@ import org.hl7.fhir.instance.model.Condition;
 import org.hl7.fhir.instance.model.Patient;
 import org.hl7.fhir.instance.model.Schedule;
 
+@SuppressWarnings("unused")
 public class EmisTransformer implements Transformer {
 	private final OpenHRTransformer _openHrTransformer = new OpenHRTransformer();
 	private final EmisOpenTransformer _emisOpenTransformer = new EmisOpenTransformer();

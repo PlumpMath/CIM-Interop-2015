@@ -27,6 +27,10 @@ public class CIMCore extends ExceptionHandlerBaseRouteBuilder {
 
         from("direct:CIMSecurityResult")
             .routeId("CIMSecurityResult")
+            .to("direct:CIMDataProtocol");
+
+        from("direct:CIMDataProtocolResult")
+            .routeId("CIMDataProtocolResult")
             .to("direct:CIMPayloadValidation");
 
         from("direct:CIMPayloadValidationResult")
@@ -42,10 +46,10 @@ public class CIMCore extends ExceptionHandlerBaseRouteBuilder {
                 .wireTap("direct:CIMAudit")
                 .newExchangeHeader("TapLocation", constant("Outbound"))
             .end()
-            .to("direct:CIMDataProtocols");
+            .to("direct:CIMDataProtocolFilter");
 
-        from("direct:CIMDataProtocolsResult")
-            .routeId("CIMDataProtocolsResult")
+        from("direct:CIMDataProtocolFilterResult")
+            .routeId("CIMDataProtocolFilterResult")
             .to("direct:CIMResponse");
     }
 }
