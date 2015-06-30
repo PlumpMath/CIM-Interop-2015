@@ -40,5 +40,8 @@ namespace DotNetGPSystem
         
         [OperationContract]
         string GetSlotsForSession(string odsCode, int sessionId);
+
+        [OperationContract]
+        string GetPatientAppointments(string odsCode, Guid patientGuid, DateTime fromDate, DateTime toDate);
     }       
 }

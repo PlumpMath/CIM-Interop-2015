@@ -94,18 +94,27 @@ namespace DotNetGPSystem
         public string GetAppointmentSessions(string odsCode, DateTime fromDate, DateTime toDate)
         {
             Session[] sessions = DataStore.GetSessions(odsCode, fromDate, toDate);
-            AppointmentSessionList session = EomAppointmentTranform.ToEomSessionList(sessions);
+            EomAppointmentSessions.AppointmentSessionList session = EomAppointmentTranform.ToEomSessionList(sessions);
 
-            return Utilities.Serialize<AppointmentSessionList>(session);
+            return Utilities.Serialize<EomAppointmentSessions.AppointmentSessionList>(session);
         }
         
         public string GetSlotsForSession(string odsCode, int sessionId)
         {
             Slot[] slots = DataStore.GetSlots(odsCode, sessionId);
 
-            SlotListStruct slot = EomAppointmentTranform.ToEomSlotList(slots);
+            EomSlotsForSession.SlotListStruct slot = EomAppointmentTranform.ToEomSlotList(slots);
 
-            return Utilities.Serialize<SlotListStruct>(slot);
+            return Utilities.Serialize<EomSlotsForSession.SlotListStruct>(slot);
+        }
+
+        public string GetPatientAppointments(string odsCode, Guid patientGuid, DateTime fromDate, DateTime toDate)
+        {
+            Slot[] slots = DataStore.GetSlotsForPatient(odsCode, patientGuid, fromDate, toDate);
+
+            EomGetPatientAppointments.PatientAppointmentList appointmentList = EomAppointmentTranform.ToEomPatientAppointmentList(slots);
+
+            return Utilities.Serialize<EomGetPatientAppointments.PatientAppointmentList>(appointmentList);
         }
     }
 }

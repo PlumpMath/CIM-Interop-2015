@@ -23,10 +23,10 @@ namespace DotNetGPSystem
 
         public Slot[] Slots { get; internal set; }
 
-        internal void CreateSlots(int[] times)
+        internal void CreateSlots(int[] times, int nextSlotId)
         {
             Slots = times
-                .Select(t => new Slot(this, t))
+                .Select(t => new Slot(nextSlotId++, this, t))
                 .ToArray();
         }
     }

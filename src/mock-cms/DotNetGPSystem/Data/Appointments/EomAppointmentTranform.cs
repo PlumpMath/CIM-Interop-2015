@@ -9,19 +9,41 @@ namespace DotNetGPSystem
     internal static class EomAppointmentTranform
     {
         private static object _key = new object();
-        private static int _slotId = 1;
-
-        private static int GetNextSlotId()
-        {
-            lock (_key)
-            {
-                return _slotId++;
-            }
-        }
         
-        public static SlotListStruct ToEomSlotList(Slot[] slots)
+        public static EomGetPatientAppointments.PatientAppointmentList ToEomPatientAppointmentList(Slot[] slots)
         {
-            return new SlotListStruct()
+            return new EomGetPatientAppointments.PatientAppointmentList()
+            {
+                Appointment = slots.Select(t => ToEomPatientAppointment(t)).ToArray()
+            };
+        }
+
+        public static EomGetPatientAppointments.AppointmentStruct ToEomPatientAppointment(Slot slot)
+        {
+            return new EomGetPatientAppointments.AppointmentStruct()
+            {
+                Date = slot.Session.Date.ToShortDateString(),
+                Duration = slot.Length.ToString(),
+                SessionDBID = slot.Session.SessionId,
+                SlotID = slot.SlotId,
+                StartTime = slot.FormattedTime,
+                Status = slot.Status,
+                HolderList = new EomGetPatientAppointments.HolderStruct[]
+                {
+                    new EomGetPatientAppointments.HolderStruct()
+                    {
+                        Title = slot.Patient.Person.title,
+                        FirstNames = slot.Patient.Person.forenames,
+                        LastName = slot.Patient.Person.surname,
+                        DBID = slot.Patient.PatientId
+                    }
+                }
+            };
+        }
+
+        public static EomSlotsForSession.SlotListStruct ToEomSlotList(Slot[] slots)
+        {
+            return new EomSlotsForSession.SlotListStruct()
             {
                 Slot = slots
                     .Select(t => ToEomSlot(t))
@@ -29,15 +51,15 @@ namespace DotNetGPSystem
             };
         }
 
-        private static SlotStruct ToEomSlot(Slot slot)
+        private static EomSlotsForSession.SlotStruct ToEomSlot(Slot slot)
         {
-            PatientListStruct patient = null;
+            EomSlotsForSession.PatientListStruct patient = null;
             
             if (slot.Patient != null)
             {
-                patient = new PatientListStruct()
+                patient = new EomSlotsForSession.PatientListStruct()
                 {
-                    Patient = new PatientStruct()
+                    Patient = new EomSlotsForSession.PatientStruct()
                     {
                         DBID = slot.Patient.PatientId,
                         RefID = slot.Patient.PatientId,
@@ -49,22 +71,22 @@ namespace DotNetGPSystem
                 };
             }
 
-            return new SlotStruct()
+            return new EomSlotsForSession.SlotStruct()
             {
-                DBID = _slotId,
-                RefID = _slotId,
-                Status = (slot.Patient == null) ? "Slot Available" : "Booked",
-                StartTime = slot.Time.ToString().PadLeft(2, '0') + ":00",
-                SlotLength = "60",
+                DBID = slot.SlotId,
+                RefID = slot.SlotId,
+                Status = slot.Status,
+                StartTime = slot.FormattedTime,
+                SlotLength = slot.Length.ToString(),
                 Reason = string.Empty,
                 Notes = string.Empty,
                 PatientList =  patient
             };
         }
         
-        public static AppointmentSessionList ToEomSessionList(Session[] sessions)
+        public static EomAppointmentSessions.AppointmentSessionList ToEomSessionList(Session[] sessions)
         {
-            return new AppointmentSessionList()
+            return new EomAppointmentSessions.AppointmentSessionList()
             {
                 AppointmentSession = sessions
                     .Select(t => ToEomSession(t))
@@ -72,41 +94,37 @@ namespace DotNetGPSystem
             };
         }
 
-        private static AppointmentSessionStruct ToEomSession(Session session)
+        private static EomAppointmentSessions.AppointmentSessionStruct ToEomSession(Session session)
         {
-            return new AppointmentSessionStruct()
+            return new EomAppointmentSessions.AppointmentSessionStruct()
             {
                 Date = session.Date.ToShortDateString(),
                 DBID = session.SessionId,
                 
                 StartTime = session
                     .Slots
-                    .Min(t => t.Time)
-                    .ToString()
-                    .PadLeft(2, '0') + ":00",
+                    .Min(t => t.FormattedTime),
                 
                 EndTime = session
                     .Slots
-                    .Max(t => t.Time)
-                    .ToString()
-                    .PadLeft(2, '0') + ":00",
+                    .Max(t => t.FormattedTime),
 
-                Site = new SiteStruct()
+                Site = new EomAppointmentSessions.SiteStruct()
                 {
                     Name = session.Organisation.Organisation.name,
                     DBID = session.Organisation.OrganisationId
                 },
 
                 SlotLength = "60",
-                
-                HolderList = new HolderStruct[] 
+
+                HolderList = new EomAppointmentSessions.HolderStruct[] 
                 { 
                     ToEomHolder(session.User) 
                 },
 
-                SlotTypeList = new SlotsStruct[] 
+                SlotTypeList = new EomAppointmentSessions.SlotsStruct[] 
                 { 
-                    new SlotsStruct()
+                    new EomAppointmentSessions.SlotsStruct()
                     {
                         Available = session.Slots.Count(t => t.Patient == null),
                         Blocked = 0,
@@ -120,9 +138,9 @@ namespace DotNetGPSystem
             };
         }
 
-        private static HolderStruct ToEomHolder(OpenHRUser user)
+        private static EomAppointmentSessions.HolderStruct ToEomHolder(OpenHRUser user)
         {
-            return new HolderStruct()
+            return new EomAppointmentSessions.HolderStruct()
             {
                 FirstNames = user.Person.forenames,
                 LastName = user.Person.surname,

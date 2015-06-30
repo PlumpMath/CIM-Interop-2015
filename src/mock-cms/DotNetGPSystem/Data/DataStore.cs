@@ -73,6 +73,7 @@ namespace DotNetGPSystem
             List<DateTime> dates = new List<DateTime>();
 
             int sessionId = 1;
+            int slotId = 1;
 
             for (int dayCount = 0; dayCount < _numberOfDaysToCreateSessionsFor; dayCount++)
             {
@@ -93,7 +94,9 @@ namespace DotNetGPSystem
                             user: user,
                             organisation: organisation);
 
-                        session.CreateSlots(DataStore.AppointmentTimes);
+                        session.CreateSlots(DataStore.AppointmentTimes, slotId);
+
+                        slotId += DataStore.AppointmentTimes.Length;
 
                         sessions.Add(session);
                     }
@@ -249,6 +252,17 @@ namespace DotNetGPSystem
                 return null;
 
             return session.Slots;
+        }
+
+        public static Slot[] GetSlotsForPatient(string odsCode, Guid patientGuid, DateTime fromDate, DateTime toDate)
+        {
+            return AppointmentSessions
+                .Where(t => t.Organisation.Organisation.nationalPracticeCode == odsCode
+                            && t.Date.Date >= fromDate.Date && t.Date.Date <= toDate.Date)
+                .SelectMany(t => t.Slots)
+                .Where(t => t.Patient != null)
+                .Where(t => new Guid(t.Patient.Patient.id) == patientGuid)
+                .ToArray();
         }
     }
 }
