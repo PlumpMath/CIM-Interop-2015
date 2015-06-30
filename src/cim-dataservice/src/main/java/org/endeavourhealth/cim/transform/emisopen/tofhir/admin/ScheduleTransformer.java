@@ -13,21 +13,18 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class ScheduleTransformer
-{
-    public static ArrayList<Resource> transformToScheduleResources(AppointmentSessionList appointmentSessionList) throws SerializationException, TransformFeatureNotSupportedException
-    {
+public class ScheduleTransformer {
+
+    public static ArrayList<Resource> transformToScheduleResources(AppointmentSessionList appointmentSessionList) throws SerializationException, TransformFeatureNotSupportedException {
         ArrayList<Resource> resources = new ArrayList<Resource>();
 
-        for (AppointmentSessionStruct appointmentSession : appointmentSessionList.getAppointmentSession())
-        {
+        for (AppointmentSessionStruct appointmentSession : appointmentSessionList.getAppointmentSession()) {
             Practitioner practitioner = transformToPractitioner(appointmentSession.getHolderList());
 
             if (!resources
                     .stream()
                     .anyMatch(t -> (t instanceof Practitioner)
-                                    && (t.getId().equals(practitioner.getId()))))
-            {
+                                    && (t.getId().equals(practitioner.getId())))) {
                 resources.add(practitioner);
             }
 
@@ -38,8 +35,7 @@ public class ScheduleTransformer
         return resources;
     }
 
-    private static Schedule transformToSchedule(AppointmentSessionStruct appointmentSession, Practitioner practitioner) throws SerializationException, TransformFeatureNotSupportedException
-    {
+    private static Schedule transformToSchedule(AppointmentSessionStruct appointmentSession, Practitioner practitioner) throws SerializationException, TransformFeatureNotSupportedException {
         Schedule schedule = new Schedule();
         schedule.setId(Integer.toString(appointmentSession.getDBID()));
         schedule.setComment(appointmentSession.getName());
@@ -60,8 +56,7 @@ public class ScheduleTransformer
         return schedule;
     }
 
-    private static Practitioner transformToPractitioner(HolderList holderList) throws TransformFeatureNotSupportedException
-    {
+    private static Practitioner transformToPractitioner(HolderList holderList) throws TransformFeatureNotSupportedException {
         List<HolderStruct> holders = holderList.getHolder();
 
         if (holders.size() != 1)
@@ -78,14 +73,10 @@ public class ScheduleTransformer
         return practitioner;
     }
 
-    private static Date getDateAndTime(String dateString, String timeString) throws SerializationException
-    {
-        try
-        {
+    private static Date getDateAndTime(String dateString, String timeString) throws SerializationException {
+        try {
             return EmisOpenConstants.EMISOPEN_DATEFORMAT.parse(dateString + " " + timeString);
-        }
-        catch (ParseException e)
-        {
+        } catch (ParseException e) {
             throw new SerializationException("Could not parse date", e);
         }
     }

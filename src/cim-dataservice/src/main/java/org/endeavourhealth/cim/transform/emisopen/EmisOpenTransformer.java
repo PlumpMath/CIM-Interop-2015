@@ -11,6 +11,7 @@ import org.hl7.fhir.instance.model.Bundle;
 import java.text.SimpleDateFormat;
 
 public class EmisOpenTransformer {
+
     public Bundle toFHIRScheduleBundle(String sourceData) throws TransformException {
         AppointmentSessionList appointmentSessionList = TransformHelper.unmarshall(sourceData, AppointmentSessionList.class);
 

@@ -35,8 +35,7 @@ public class TransformHelper {
     }
 
     public static <T> T unmarshall(String xml, Class<T> objectClass) throws SerializationException {
-        try
-        {
+        try  {
             StringReader reader = new StringReader(xml);
             XMLInputFactory factory = XMLInputFactory.newInstance();
             XMLStreamReader xmlReader = factory.createXMLStreamReader(reader);
@@ -45,9 +44,7 @@ public class TransformHelper {
             Unmarshaller unmarshaller = jaxbContent.createUnmarshaller();
 
             return (T)unmarshaller.unmarshal(xmlReader, objectClass).getValue();
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             throw new SerializationException(String.format("Error deserialising %s", objectClass.getTypeName()), e);
         }
     }
