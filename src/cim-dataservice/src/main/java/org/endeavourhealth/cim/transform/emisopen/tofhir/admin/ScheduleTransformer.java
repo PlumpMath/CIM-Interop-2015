@@ -2,21 +2,19 @@ package org.endeavourhealth.cim.transform.emisopen.tofhir.admin;
 
 import org.endeavourhealth.cim.transform.SerializationException;
 import org.endeavourhealth.cim.transform.TransformFeatureNotSupportedException;
+import org.endeavourhealth.cim.transform.emisopen.EmisOpenConstants;
 import org.endeavourhealth.cim.transform.openhr.tofhir.admin.NameConverter;
 import org.endeavourhealth.cim.transform.TransformHelper;
 import org.endeavourhealth.cim.transform.schemas.emisopen.eomappointmentsessions.*;
 import org.hl7.fhir.instance.model.*;
 
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 public class ScheduleTransformer
 {
-    private static SimpleDateFormat _dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm");
-
     public static ArrayList<Resource> transformToScheduleResources(AppointmentSessionList appointmentSessionList) throws SerializationException, TransformFeatureNotSupportedException
     {
         ArrayList<Resource> resources = new ArrayList<Resource>();
@@ -84,7 +82,7 @@ public class ScheduleTransformer
     {
         try
         {
-            return _dateFormat.parse(dateString + " " + timeString);
+            return EmisOpenConstants.EMISOPEN_DATEFORMAT.parse(dateString + " " + timeString);
         }
         catch (ParseException e)
         {

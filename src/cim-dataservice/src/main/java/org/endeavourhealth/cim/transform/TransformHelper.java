@@ -8,6 +8,9 @@ import javax.xml.bind.Unmarshaller;
 import javax.xml.datatype.DatatypeConfigurationException;
 import javax.xml.datatype.DatatypeFactory;
 import javax.xml.datatype.XMLGregorianCalendar;
+import javax.xml.stream.XMLInputFactory;
+import javax.xml.stream.XMLStreamException;
+import javax.xml.stream.XMLStreamReader;
 import java.io.StringReader;
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -31,16 +34,19 @@ public class TransformHelper {
         return resourceClass.getSimpleName() + "/" + id;
     }
 
-    public static <T> T unmarshall(String xml, Class<T> objectClass) throws SerializationException
-    {
+    public static <T> T unmarshall(String xml, Class<T> objectClass) throws SerializationException {
         try
         {
             StringReader reader = new StringReader(xml);
+            XMLInputFactory factory = XMLInputFactory.newInstance();
+            XMLStreamReader xmlReader = factory.createXMLStreamReader(reader);
+
             JAXBContext jaxbContent = JAXBContext.newInstance(objectClass);
             Unmarshaller unmarshaller = jaxbContent.createUnmarshaller();
-            return (T)unmarshaller.unmarshal(reader);
+
+            return (T)unmarshaller.unmarshal(xmlReader, objectClass).getValue();
         }
-        catch (JAXBException e)
+        catch (Exception e)
         {
             throw new SerializationException(String.format("Error deserialising %s", objectClass.getTypeName()), e);
         }

@@ -8,6 +8,17 @@ namespace DotNetGPSystem
 {
     internal static class EomAppointmentTranform
     {
+        private static object _key = new object();
+        private static int _slotId = 1;
+
+        private static int GetNextSlotId()
+        {
+            lock (_key)
+            {
+                return _slotId++;
+            }
+        }
+        
         public static SlotListStruct ToEomSlotList(Slot[] slots)
         {
             return new SlotListStruct()
@@ -40,8 +51,9 @@ namespace DotNetGPSystem
 
             return new SlotStruct()
             {
-                DBID = 0,
-                RefID = 0,
+                DBID = _slotId,
+                RefID = _slotId,
+                Status = (slot.Patient == null) ? "Slot Available" : "Booked",
                 StartTime = slot.Time.ToString().PadLeft(2, '0') + ":00",
                 SlotLength = "60",
                 Reason = string.Empty,

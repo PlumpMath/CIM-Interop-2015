@@ -273,7 +273,7 @@ public class MockDataAdapter implements IDataAdapter {
             return null;
         }
     }
-    public String getSlots(String odsCode, String scheduleId, Date startTime) {
+    public String getSlots(String odsCode, String scheduleId) {
         SOAPConnection soapConnection = null;
         try {
             try {
@@ -288,7 +288,6 @@ public class MockDataAdapter implements IDataAdapter {
 
                 createChildTextElement(soapMethodElement, "odsCode", odsCode);
                 createChildTextElement(soapMethodElement, "sessionId", scheduleId);
-                // createChildTextElement(soapMethodElement, "startTime", (new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'")).format(startTime));
 
                 requestMessage.saveChanges();
 
