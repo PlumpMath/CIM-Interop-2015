@@ -1,6 +1,7 @@
 package org.endeavourhealth.cim.processor.core;
 
 import org.apache.camel.Exchange;
+import org.endeavourhealth.cim.exceptions.LegitimateRelationshipException;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -40,9 +41,9 @@ public class DataProtocolProcessor implements org.apache.camel.Processor {
 		List<String> validOrganisations = _legitimateRelationships.get(api_key);
 
 		if (validOrganisations == null)
-			throw new Exception("No legitimate relationships configured for this subsidiary system");
+			throw new LegitimateRelationshipException("No legitimate relationships configured for this subsidiary system");
 
 		if (!validOrganisations.contains(odsCode))
-			throw new Exception("Subsidiary system has no legitimate relationship with this organisation");
+			throw new LegitimateRelationshipException("Subsidiary system has no legitimate relationship with this organisation");
 	}
 }

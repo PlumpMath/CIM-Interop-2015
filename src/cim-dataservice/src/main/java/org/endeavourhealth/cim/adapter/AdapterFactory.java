@@ -32,7 +32,7 @@ public class AdapterFactory {
             return (IDataAdapter)Class.forName(adapterTypeName).newInstance();
         }
         catch (Exception e) {
-            throw new Exception("Could not load data adapter", e);
+            throw new ClassNotFoundException("Could not load data adapter", e);
         }
     }
 }

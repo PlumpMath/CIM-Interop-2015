@@ -1,5 +1,6 @@
 package org.endeavourhealth.cim.processor.schedules;
 
+import org.apache.camel.CamelExecutionException;
 import org.apache.camel.EndpointInject;
 import org.apache.camel.Produce;
 import org.apache.camel.ProducerTemplate;
@@ -34,7 +35,7 @@ public class GetSchedulesProcessorTest extends CamelTestSupport {
 		};
 	}
 
-	@Test(expected = Exception.class)
+	@Test(expected = CamelExecutionException.class)
 	public void testProcessNoParams() throws Exception {
 		Map<String, Object> headerParams = new HashMap<>();
 		headerParams.put("odsCode", "A99999");
@@ -46,7 +47,7 @@ public class GetSchedulesProcessorTest extends CamelTestSupport {
 		resultEndpoint.assertIsSatisfied();
 	}
 
-	@Test(expected = Exception.class)
+	@Test(expected = CamelExecutionException.class)
 	public void testProcessBothParams() throws Exception {
 		Map<String, Object> headerParams = new HashMap<>();
 		headerParams.put("odsCode", "A99999");
@@ -60,7 +61,7 @@ public class GetSchedulesProcessorTest extends CamelTestSupport {
 		resultEndpoint.assertIsSatisfied();
 	}
 
-	@Test(expected = Exception.class)
+	@Test(expected = CamelExecutionException.class)
 	public void testProcessWrongDateType() throws Exception {
 		Map<String, Object> headerParams = new HashMap<>();
 		headerParams.put("odsCode", "A99999");
@@ -72,7 +73,7 @@ public class GetSchedulesProcessorTest extends CamelTestSupport {
 		resultEndpoint.assertIsSatisfied();
 	}
 
-	@Test(expected = Exception.class)
+	@Test(expected = CamelExecutionException.class)
 	public void testProcessNotEnoughDates() throws Exception {
 		Map<String, Object> headerParams = new HashMap<>();
 		headerParams.put("odsCode", "A99999");
@@ -86,7 +87,7 @@ public class GetSchedulesProcessorTest extends CamelTestSupport {
 		resultEndpoint.assertIsSatisfied();
 	}
 
-	@Test(expected = Exception.class)
+	@Test(expected = CamelExecutionException.class)
 	public void testProcessToManyDates() throws Exception {
 		Map<String, Object> headerParams = new HashMap<>();
 		headerParams.put("odsCode", "A99999");

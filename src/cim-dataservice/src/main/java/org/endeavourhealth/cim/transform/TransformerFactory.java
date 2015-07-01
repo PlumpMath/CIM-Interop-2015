@@ -10,7 +10,7 @@ public class TransformerFactory {
             return (Transformer)Class.forName(serviceTransformerTypeName).newInstance();
         }
         catch (Exception e) {
-            throw new Exception("Could not load data transformer", e);
+            throw new ClassNotFoundException("Could not load data transformer", e);
         }
     }
 }

@@ -5,6 +5,7 @@ import org.apache.camel.Processor;
 import org.apache.commons.httpclient.HttpStatus;
 import org.endeavourhealth.cim.IRegistry;
 import org.endeavourhealth.cim.Registry;
+import org.endeavourhealth.cim.exceptions.SessionException;
 
 public class SecurityProcessor implements Processor {
 	private IRegistry _registry = new Registry();
@@ -19,7 +20,7 @@ public class SecurityProcessor implements Processor {
             exchange.getIn().setHeader(Exchange.HTTP_RESPONSE_CODE, HttpStatus.SC_UNAUTHORIZED);
             exchange.getIn().setHeader(Exchange.CONTENT_TYPE, "text/plain");
             exchange.getIn().setBody("Invalid Session");
-            throw new Exception("Invalid session");
+            throw new SessionException("Invalid session");
         }
     }
 }
