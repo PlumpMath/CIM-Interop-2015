@@ -304,7 +304,7 @@ public class TestDataAdapter implements IDataAdapter {
                 "  </AppointmentSession>\n" +
                 "</AppointmentSessionList>";
     }
-    public String getSlots(String odsCode, String scheduleId, Date startTime) {
+    public String getSlots(String odsCode, String scheduleId) {
         return "";
     }
 }
