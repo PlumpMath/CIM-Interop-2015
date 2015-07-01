@@ -21,7 +21,7 @@ public class GetSchedulesProcessor implements org.apache.camel.Processor {
 		DateSearchParameter date = DateSearchParameter.Parse(exchange.getIn().getHeader("date"));
 		String actor = (String)exchange.getIn().getHeader("actor");
 
-		if ((actor == null && date == null) || (actor != null && date != null))
+		if ((actor == null && date == null) || (actor != null && date != null) || (date != null) && (date.getIntervalStart().equals(date.getIntervalEnd())))
 			throw new Exception("Either an actor OR a date range must be supplied.");
 
 		IDataAdapter dataAdapter = AdapterFactory.getDataAdapterForService(odsCode);
