@@ -8,6 +8,7 @@ import java.util.Map;
 public class FHIRContainer {
     private Patient patient;
     private Map<String, Organization> organisations;
+    private Map<String, Location> locations;
     private Map<String, Practitioner> practitioners;
     private Map<String, Encounter> encounters;
     private Map<String, Resource> clinicalResources;
@@ -29,6 +30,13 @@ public class FHIRContainer {
     public void setOrganisations(Map<String, Organization> organisations) {
         this.organisations = organisations;
     }
+
+    public Map<String, Location> getLocations() {
+        if (locations == null) locations = new HashMap<>();
+        return locations;
+    }
+
+    public void setLocations(Map<String, Location> locations) { this.locations = locations; }
 
     public Map<String, Practitioner> getPractitioners() {
         if (practitioners == null) practitioners = new HashMap<>();

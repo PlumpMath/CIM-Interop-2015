@@ -8,6 +8,7 @@ import org.endeavourhealth.cim.transform.schemas.openhr.OpenHR001OpenHealthRecor
 import org.hl7.fhir.instance.model.*;
 
 public class ToFHIRTransformer {
+    public final static String EMISOPEN_NAMESPACE = "http://www.e-mis.com/emisopen";
 
     public Bundle transformToBundle(OpenHR001OpenHealthRecord openHR) throws TransformException {
         FHIRContainer container = transform(openHR);
@@ -30,11 +31,15 @@ public class ToFHIRTransformer {
         Bundle bundle = new Bundle()
                 .setType(Bundle.BundleType.SEARCHSET);
         bundle.setId(openHR.getId());
-        bundle.setBase("http://www.e-mis.com/emisopen");
-        bundle.setMeta(new Meta().setLastUpdated(TransformHelper.toDate(openHR.getCreationTime())));
+        bundle.setBase(EMISOPEN_NAMESPACE);
+        bundle.setMeta(new Meta()
+                .setLastUpdated(TransformHelper.toDate(openHR.getCreationTime())));
 
         for (Organization organisation: container.getOrganisations().values())
             bundle.addEntry(new Bundle.BundleEntryComponent().setResource(organisation));
+
+        for (Location location: container.getLocations().values())
+            bundle.addEntry(new Bundle.BundleEntryComponent().setResource(location));
 
         for (Practitioner practitioner: container.getPractitioners().values())
             bundle.addEntry(new Bundle.BundleEntryComponent().setResource(practitioner));

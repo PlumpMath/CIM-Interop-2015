@@ -25,10 +25,9 @@ public class TransformHelper {
 
     public static XMLGregorianCalendar fromDate(Date value) throws DatatypeConfigurationException {
         GregorianCalendar gregorianCalendar = new GregorianCalendar();
-        gregorianCalendar.setTime(new Date(System.currentTimeMillis()));
+        gregorianCalendar.setTime(value);
         return DatatypeFactory.newInstance().newXMLGregorianCalendar(gregorianCalendar);
     }
-
 
     public static <T extends Resource> String createResourceReference(Class<T> resourceClass, String id) {
         return resourceClass.getSimpleName() + "/" + id;
