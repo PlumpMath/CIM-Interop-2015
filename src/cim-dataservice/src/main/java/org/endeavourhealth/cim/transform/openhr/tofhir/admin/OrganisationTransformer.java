@@ -21,53 +21,26 @@ class OrganisationTransformer {
     }
 
     private static Organization createOrganisation(OpenHR001AdminDomain adminDomain, OpenHR001Organisation source) throws SourceDocumentInvalidException, TransformFeatureNotSupportedException {
-        OpenHR001Location mainLocation = getLocation(adminDomain.getLocation(), source.getMainLocation());
-
         ToFHIRHelper.ensureDboNotDelete(source);
-        if (mainLocation != null)
-            ToFHIRHelper.ensureDboNotDelete(mainLocation);
 
         Organization target = new Organization();
         target.setId(source.getId());
 
-        String odsCode = source.getNationalPracticeCode();
-        if (StringUtils.isNotBlank(odsCode)) {
-            target.addIdentifier(new Identifier()
-                    .setSystem("ODS")
-                    .setValue(odsCode));
-        }
+        addIdentifiers(source, target);
 
         target.setName(source.getName());
 
-        DtCode organisationType = source.getOrganisationType();
-        if (organisationType != null) {
-            target.setType(new CodeableConcept()
-                    .addCoding(new Coding()
-                                    .setSystem("http://www.e-mis.com/emisopen/OrganisationType")
-                                    .setCode(organisationType.getCode())
-                                    .setDisplay(organisationType.getDisplayName())
-                    ));
-        }
+        target.setType(convertOrganisationType(source));
 
+        OpenHR001Location mainLocation = getLocation(adminDomain.getLocation(), source.getMainLocation());
         if (mainLocation != null) {
-            List<ContactPoint> telecoms = ContactPointConverter.convert(mainLocation.getContact());
-            if (telecoms != null) {
-                telecoms.forEach(target::addTelecom);
-            }
-
-            if (mainLocation.getAddress() != null)
-                target.addAddress(AddressConverter.convert(mainLocation.getAddress()));
+            addTelecoms(mainLocation.getContact(), target);
+            addAddress(mainLocation.getAddress(), target);
         }
 
-        String parentOrganisationId = source.getParentOrganisation();
-        if (StringUtils.isNotBlank(parentOrganisationId)) {
-            target.setPartOf(new Reference().setReference(TransformHelper.createResourceReference(Organization.class, parentOrganisationId)));
-        }
+        target.setPartOf(createParentReference(source.getParentOrganisation()));
 
-        if (source.getCloseDate() == null)
-            target.setActive(true);
-        else
-            target.setActive(false);
+        target.setActive(source.getCloseDate() == null);
 
         return target;
     }
@@ -76,22 +49,80 @@ class OrganisationTransformer {
         container.getOrganisations().put(organisation.getId(), organisation);
     }
 
-    private static OpenHR001Location getLocation(List<OpenHR001Location> locationList, String locationId) throws SourceDocumentInvalidException {
+    private static void addIdentifiers(OpenHR001Organisation source, Organization target) throws SourceDocumentInvalidException {
+        // add Identifier for NationalPracticeCode(ODS)
+        String odsCode = source.getNationalPracticeCode();
+        if (StringUtils.isNotBlank(odsCode)) {
+            target.addIdentifier(new Identifier()
+                    .setSystem("ODS")
+                    .setValue(odsCode));
+        }
+
+        // add Identifier for EMIS CDB Number
+        Integer cdb = source.getCdb();
+        if (cdb != null) {
+            target.addIdentifier(new Identifier()
+                    .setSystem("urn:fhir.nhs.uk:id/LocalIdentifier")
+                    .setValue(cdb.toString()));
+        }
+    }
+
+    private static CodeableConcept convertOrganisationType(OpenHR001Organisation source) throws SourceDocumentInvalidException {
+        DtCode organisationType = source.getOrganisationType();
+
+        if (organisationType == null)
+            throw new SourceDocumentInvalidException("Missing OrganisationType from Organisation: " + source.getId());
+
+        return new CodeableConcept()
+                .addCoding(new Coding()
+                                .setSystem("http://www.e-mis.com/emisopen/OrganisationType")
+                                .setCode(organisationType.getCode())
+                                .setDisplay(organisationType.getDisplayName())
+                );
+    }
+
+    private static OpenHR001Location getLocation(List<OpenHR001Location> locations, String locationId) throws SourceDocumentInvalidException, TransformFeatureNotSupportedException {
         if (StringUtils.isBlank(locationId))
             return null;
 
-        if (locationList == null)
+        if (locations == null)
             throw new SourceDocumentInvalidException("Location not found: " + locationId);
 
-        OpenHR001Location location = locationList.stream()
+        //if the location exists multiple times, then it will just throw a general exception.
+        OpenHR001Location location = locations.stream()
                 .filter(u -> u.getId().equals(locationId))
                 .collect(StreamExtension.singleOrNullCollector());
-
-        //if the location is there multiple times, then it will just throw a general exception.
 
         if (location == null)
             throw new SourceDocumentInvalidException("Location not found: " + locationId);
 
+        ToFHIRHelper.ensureDboNotDelete(location);
+
         return location;
+    }
+
+    private static void addTelecoms(List<DtContact> sourceContacts, Organization target) throws TransformFeatureNotSupportedException {
+        if (sourceContacts == null)
+            return;
+
+        List<ContactPoint> telecoms = ContactPointConverter.convert(sourceContacts);
+        if (telecoms != null) {
+            telecoms.forEach(target::addTelecom);
+        }
+    }
+
+    private static void addAddress(DtAddress sourceAddress, Organization target) throws TransformFeatureNotSupportedException {
+        if (sourceAddress == null)
+            return;
+
+        target.addAddress(AddressConverter.convert(sourceAddress));
+    }
+
+    private static Reference createParentReference(String parentOrganisationId) {
+        if (StringUtils.isBlank(parentOrganisationId))
+            return null;
+
+        return new Reference()
+                .setReference(TransformHelper.createResourceReference(Organization.class, parentOrganisationId));
     }
 }

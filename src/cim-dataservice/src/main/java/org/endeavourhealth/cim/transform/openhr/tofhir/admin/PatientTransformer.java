@@ -82,7 +82,7 @@ class PatientTransformer {
         List<OpenHR001Patient> patients = adminDomain.getPatient();
 
         if (patients == null || patients.isEmpty())
-            throw new TransformFeatureNotSupportedException("No AdminDomain.Patients found.  Only full patient record supported.");
+            throw new TransformFeatureNotSupportedException("No AdminDomain.Patients found.");
 
         if (patients.size() != 1)
             throw new TransformFeatureNotSupportedException("Only single patient supported in AdminDomain.Patients.");
