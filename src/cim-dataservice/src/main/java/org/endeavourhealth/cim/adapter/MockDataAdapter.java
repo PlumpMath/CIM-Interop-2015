@@ -9,6 +9,7 @@ import java.util.UUID;
 public class MockDataAdapter implements IDataAdapter {
     private final String _soapUri = "http://localhost:9001/GPApiService/Soap";
     private final String _actionUri = "http://tempuri.org/IGPApiService";
+    private final SimpleDateFormat _dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
 
     // System
     public String getTransformerTypeName() {
@@ -20,14 +21,13 @@ public class MockDataAdapter implements IDataAdapter {
         SOAPConnection soapConnection = null;
         try {
             try {
-                SOAPConnectionFactory soapConnectionFactory = SOAPConnectionFactory.newInstance();
-                soapConnection = soapConnectionFactory.createConnection();
+                soapConnection = createSOAPConnection();
 
                 // Create basic message
-                SOAPMessage requestMessage = createSOAPRequest("GetPatient");
+                SOAPMessage requestMessage = createSOAPRequestMessage("GetPatient");
 
                 // SOAP Body
-                SOAPElement soapMethodElement = requestMessage.getSOAPBody().addChildElement("GetPatient", "", "http://tempuri.org/");
+                SOAPElement soapMethodElement = createSOAPMethodElement(requestMessage, "GetPatient", "http://tempuri.org/");
 
                 createChildTextElement(soapMethodElement, "odsCode", odsCode);
                 createChildTextElement(soapMethodElement, "patientGuid", patientId.toString());
@@ -51,11 +51,10 @@ public class MockDataAdapter implements IDataAdapter {
         SOAPConnection soapConnection = null;
         try {
             try {
-                SOAPConnectionFactory soapConnectionFactory = SOAPConnectionFactory.newInstance();
-                soapConnection = soapConnectionFactory.createConnection();
+                soapConnection = createSOAPConnection();
 
                 // Create basic message
-                SOAPMessage requestMessage = createSOAPRequest("GetPatientDemographics");
+                SOAPMessage requestMessage = createSOAPRequestMessage("GetPatientDemographics");
 
                 // SOAP Body
                 SOAPElement soapMethodElement = requestMessage.getSOAPBody().addChildElement("GetPatientDemographics", "", "http://tempuri.org/");
@@ -82,29 +81,25 @@ public class MockDataAdapter implements IDataAdapter {
         SOAPConnection soapConnection = null;
         try {
             try {
-                String soapMethodName = "TracePatientByDemographics";
-
-                SOAPConnectionFactory soapConnectionFactory = SOAPConnectionFactory.newInstance();
-                soapConnection = soapConnectionFactory.createConnection();
+                soapConnection = createSOAPConnection();
 
                 // Create basic message
-                SOAPMessage requestMessage = createSOAPRequest(soapMethodName);
+                SOAPMessage requestMessage = createSOAPRequestMessage("TracePatientByDemographics");
 
                 // SOAP Body
-                SOAPElement soapMethodElement = requestMessage.getSOAPBody().addChildElement(soapMethodName, "", "http://tempuri.org/");
-                SOAPElement surnameElement = soapMethodElement.addChildElement("surname");
-                surnameElement.addTextNode(surname);
-                SOAPElement sexElement = soapMethodElement.addChildElement("sex");
-                sexElement.addTextNode(gender.substring(0, 1).toUpperCase());
-                SOAPElement dobElement = soapMethodElement.addChildElement("dateOfBirth");
-                dobElement.addTextNode(new SimpleDateFormat("yyyy-MM-dd").format(dateOfBirth));
-                soapMethodElement.addChildElement("forename");
-                soapMethodElement.addChildElement("postcode");
+                SOAPElement soapMethodElement = createSOAPMethodElement(requestMessage, "TracePatientByDemographics", "http://tempuri.org/");
+
+                createChildTextElement(soapMethodElement, "surname", surname);
+                createChildTextElement(soapMethodElement, "sex", gender.substring(0, 1).toUpperCase());
+                createChildTextElement(soapMethodElement, "dateOfBirth", new SimpleDateFormat("yyyy-MM-dd").format(dateOfBirth));
+                createChildTextElement(soapMethodElement, "forename", null);
+                createChildTextElement(soapMethodElement, "postcode", null);
+
                 requestMessage.saveChanges();
 
                 // Send SOAP Message to SOAP Server
-                SOAPMessage soapResponse = soapConnection.call(requestMessage, _soapUri + "/" + soapMethodName);
-                return soapResponse.getSOAPBody().getElementsByTagName(soapMethodName + "Result").item(0).getTextContent();
+                SOAPMessage soapResponse = soapConnection.call(requestMessage, _soapUri + "/TracePatientByDemographics");
+                return soapResponse.getSOAPBody().getElementsByTagName("TracePatientByDemographicsResult").item(0).getTextContent();
             } finally {
                 if (soapConnection != null)
                     soapConnection.close();
@@ -119,23 +114,21 @@ public class MockDataAdapter implements IDataAdapter {
         SOAPConnection soapConnection = null;
         try {
             try {
-                String soapMethodName = "TracePatientByNhsNumber";
-
-                SOAPConnectionFactory soapConnectionFactory = SOAPConnectionFactory.newInstance();
-                soapConnection = soapConnectionFactory.createConnection();
+                soapConnection = createSOAPConnection();
 
                 // Create basic message
-                SOAPMessage requestMessage = createSOAPRequest(soapMethodName);
+                SOAPMessage requestMessage = createSOAPRequestMessage("TracePatientByNhsNumber");
 
                 // SOAP Body
-                SOAPElement soapMethodElement = requestMessage.getSOAPBody().addChildElement(soapMethodName, "", "http://tempuri.org/");
-                SOAPElement nhsNumberElement = soapMethodElement.addChildElement("nhsNumber");
-                nhsNumberElement.addTextNode(nhsNumber);
+                SOAPElement soapMethodElement = createSOAPMethodElement(requestMessage, "TracePatientByNhsNumber", "http://tempuri.org/");
+
+                createChildTextElement(soapMethodElement, "nhsNumber", nhsNumber);
+
                 requestMessage.saveChanges();
 
                 // Send SOAP Message to SOAP Server
-                SOAPMessage soapResponse = soapConnection.call(requestMessage, _soapUri + "/" + soapMethodName);
-                return soapResponse.getSOAPBody().getElementsByTagName(soapMethodName + "Result").item(0).getTextContent();
+                SOAPMessage soapResponse = soapConnection.call(requestMessage, _soapUri + "/" + "TracePatientByNhsNumber");
+                return soapResponse.getSOAPBody().getElementsByTagName("TracePatientByNhsNumberResult").item(0).getTextContent();
             } finally {
                 if (soapConnection != null)
                     soapConnection.close();
@@ -150,17 +143,16 @@ public class MockDataAdapter implements IDataAdapter {
         SOAPConnection soapConnection = null;
         try {
             try {
-                SOAPConnectionFactory soapConnectionFactory = SOAPConnectionFactory.newInstance();
-                soapConnection = soapConnectionFactory.createConnection();
+                soapConnection = createSOAPConnection();
 
                 // Create basic message
-                SOAPMessage requestMessage = createSOAPRequest("GetChangedPatients");
+                SOAPMessage requestMessage = createSOAPRequestMessage("GetChangedPatients");
 
                 // SOAP Body
-                SOAPElement soapMethodElement = requestMessage.getSOAPBody().addChildElement("GetChangedPatients", "", "http://tempuri.org/");
+                SOAPElement soapMethodElement = createSOAPMethodElement(requestMessage, "GetChangedPatients", "http://tempuri.org/");
 
                 createChildTextElement(soapMethodElement, "odsCode", odsCode);
-                createChildTextElement(soapMethodElement, "sinceDateTime", (new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'")).format(date));
+                createChildTextElement(soapMethodElement, "sinceDateTime", _dateFormat.format(date));
 
                 requestMessage.saveChanges();
 
@@ -191,14 +183,13 @@ public class MockDataAdapter implements IDataAdapter {
         SOAPConnection soapConnection = null;
         try {
             try {
-                SOAPConnectionFactory soapConnectionFactory = SOAPConnectionFactory.newInstance();
-                soapConnection = soapConnectionFactory.createConnection();
+                soapConnection = createSOAPConnection();
 
                 // Create basic message
-                SOAPMessage requestMessage = createSOAPRequest("UpdatePatient");
+                SOAPMessage requestMessage = createSOAPRequestMessage("UpdatePatient");
 
                 // SOAP Body
-                SOAPElement soapMethodElement = requestMessage.getSOAPBody().addChildElement("UpdatePatient", "", "http://tempuri.org/");
+                SOAPElement soapMethodElement = createSOAPMethodElement(requestMessage, "UpdatePatient", "http://tempuri.org/");
 
                 createChildTextElement(soapMethodElement, "odsCode", odsCode);
                 createChildTextElement(soapMethodElement, "openHRXml", requestData);
@@ -236,8 +227,38 @@ public class MockDataAdapter implements IDataAdapter {
 
     // Appointments
     public String getAppointmentsForPatient(String odsCode, UUID patientId) {
-        return null;
+        SOAPConnection soapConnection = null;
+        try {
+            try {
+                soapConnection = createSOAPConnection();
+
+                // Create basic message
+                SOAPMessage requestMessage = createSOAPRequestMessage("GetPatientAppointments");
+
+                // SOAP Body
+                SOAPElement soapMethodElement = createSOAPMethodElement(requestMessage, "GetPatientAppointments", "http://tempuri.org/");
+
+                createChildTextElement(soapMethodElement, "odsCode", odsCode);
+                createChildTextElement(soapMethodElement, "patientGuid", patientId.toString());
+                createChildTextElement(soapMethodElement, "fromDate", null); //_dateFormat.format(dateFrom));
+                createChildTextElement(soapMethodElement, "toDate", null); //_dateFormat.format(dateTo));
+
+                requestMessage.saveChanges();
+
+                // Send SOAP Message to SOAP Server
+                SOAPMessage soapResponse = soapConnection.call(requestMessage, _soapUri + "/GetPatientAppointments");
+                return soapResponse.getSOAPBody().getElementsByTagName("GetPatientAppointmentsResult").item(0).getTextContent();
+            } finally {
+                if (soapConnection != null)
+                    soapConnection.close();
+            }
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
     }
+
     public void requestOrder(String odsCode, String orderRequest) {
 
     }
@@ -245,18 +266,17 @@ public class MockDataAdapter implements IDataAdapter {
         SOAPConnection soapConnection = null;
         try {
             try {
-                SOAPConnectionFactory soapConnectionFactory = SOAPConnectionFactory.newInstance();
-                soapConnection = soapConnectionFactory.createConnection();
+                soapConnection = createSOAPConnection();
 
                 // Create basic message
-                SOAPMessage requestMessage = createSOAPRequest("GetAppointmentSessions");
+                SOAPMessage requestMessage = createSOAPRequestMessage("GetAppointmentSessions");
 
                 // SOAP Body
-                SOAPElement soapMethodElement = requestMessage.getSOAPBody().addChildElement("GetAppointmentSessions", "", "http://tempuri.org/");
+                SOAPElement soapMethodElement = createSOAPMethodElement(requestMessage, "GetAppointmentSessions", "http://tempuri.org/");
 
                 createChildTextElement(soapMethodElement, "odsCode", odsCode);
-                createChildTextElement(soapMethodElement, "fromDate", (new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'")).format(dateFrom));
-                createChildTextElement(soapMethodElement, "toDate", (new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'")).format(dateTo));
+                createChildTextElement(soapMethodElement, "fromDate", (_dateFormat).format(dateFrom));
+                createChildTextElement(soapMethodElement, "toDate", _dateFormat.format(dateTo));
 
                 requestMessage.saveChanges();
 
@@ -273,18 +293,18 @@ public class MockDataAdapter implements IDataAdapter {
             return null;
         }
     }
+
     public String getSlots(String odsCode, String scheduleId) {
         SOAPConnection soapConnection = null;
         try {
             try {
-                SOAPConnectionFactory soapConnectionFactory = SOAPConnectionFactory.newInstance();
-                soapConnection = soapConnectionFactory.createConnection();
+                soapConnection = createSOAPConnection();
 
                 // Create basic message
-                SOAPMessage requestMessage = createSOAPRequest("GetSlotsForSession");
+                SOAPMessage requestMessage = createSOAPRequestMessage("GetSlotsForSession");
 
                 // SOAP Body
-                SOAPElement soapMethodElement = requestMessage.getSOAPBody().addChildElement("GetSlotsForSession", "", "http://tempuri.org/");
+                SOAPElement soapMethodElement = createSOAPMethodElement(requestMessage, "GetSlotsForSession", "http://tempuri.org/");
 
                 createChildTextElement(soapMethodElement, "odsCode", odsCode);
                 createChildTextElement(soapMethodElement, "sessionId", scheduleId);
@@ -306,11 +326,23 @@ public class MockDataAdapter implements IDataAdapter {
     }
 
     // Utility methods
+    private static SOAPConnection createSOAPConnection() throws SOAPException {
+        SOAPConnectionFactory soapConnectionFactory = SOAPConnectionFactory.newInstance();
+        return soapConnectionFactory.createConnection();
+    }
+
+    private static SOAPElement createSOAPMethodElement(SOAPMessage message, String name, String namespace) throws SOAPException {
+        return message.getSOAPBody().addChildElement(name, "", namespace);
+    }
+
     private static void createChildTextElement(SOAPElement element, String childElementName, String childElementValue) throws javax.xml.soap.SOAPException {
         SOAPElement childElement = element.addChildElement(childElementName);
-        childElement.addTextNode(childElementValue);
+
+        if (childElementValue != null)
+            childElement.addTextNode(childElementValue);
     }
-    private SOAPMessage createSOAPRequest(String methodCall) throws Exception {
+
+    private SOAPMessage createSOAPRequestMessage(String methodCall) throws Exception {
         MessageFactory messageFactory = MessageFactory.newInstance();
         SOAPMessage soapMessage = messageFactory.createMessage();
 
