@@ -20,7 +20,7 @@ public interface IDataAdapter {
 
     String getMedicationPrescriptionsByPatientId(String odsCode, UUID patientId);
 
-    String getAppointmentsForPatient(String odsCode, UUID patientId);
+    String getAppointmentsForPatient(String odsCode, UUID patientId, Date dateFrom, Date dateTo);
 
     void requestOrder(String odsCode, String orderRequest);
 

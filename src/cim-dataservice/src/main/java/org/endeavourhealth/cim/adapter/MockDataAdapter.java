@@ -1,5 +1,7 @@
 package org.endeavourhealth.cim.adapter;
 
+import org.endeavourhealth.cim.common.DateUtils;
+
 import javax.xml.soap.*;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -9,7 +11,6 @@ import java.util.UUID;
 public class MockDataAdapter implements IDataAdapter {
     private final String _soapUri = "http://localhost:9001/GPApiService/Soap";
     private final String _actionUri = "http://tempuri.org/IGPApiService";
-    private final SimpleDateFormat _dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
 
     // System
     public String getTransformerTypeName() {
@@ -152,7 +153,7 @@ public class MockDataAdapter implements IDataAdapter {
                 SOAPElement soapMethodElement = createSOAPMethodElement(requestMessage, "GetChangedPatients", "http://tempuri.org/");
 
                 createChildTextElement(soapMethodElement, "odsCode", odsCode);
-                createChildTextElement(soapMethodElement, "sinceDateTime", _dateFormat.format(date));
+                createChildTextElement(soapMethodElement, "sinceDateTime", DateUtils.formatDateAsISO8601(date));
 
                 requestMessage.saveChanges();
 
@@ -226,7 +227,7 @@ public class MockDataAdapter implements IDataAdapter {
     }
 
     // Appointments
-    public String getAppointmentsForPatient(String odsCode, UUID patientId) {
+    public String getAppointmentsForPatient(String odsCode, UUID patientId, Date dateFrom, Date dateTo) {
         SOAPConnection soapConnection = null;
         try {
             try {
@@ -240,8 +241,8 @@ public class MockDataAdapter implements IDataAdapter {
 
                 createChildTextElement(soapMethodElement, "odsCode", odsCode);
                 createChildTextElement(soapMethodElement, "patientGuid", patientId.toString());
-                createChildTextElement(soapMethodElement, "fromDate", null); //_dateFormat.format(dateFrom));
-                createChildTextElement(soapMethodElement, "toDate", null); //_dateFormat.format(dateTo));
+                createChildTextElement(soapMethodElement, "fromDate", DateUtils.formatDateAsISO8601(dateFrom));
+                createChildTextElement(soapMethodElement, "toDate", DateUtils.formatDateAsISO8601(dateTo));
 
                 requestMessage.saveChanges();
 
@@ -275,8 +276,8 @@ public class MockDataAdapter implements IDataAdapter {
                 SOAPElement soapMethodElement = createSOAPMethodElement(requestMessage, "GetAppointmentSessions", "http://tempuri.org/");
 
                 createChildTextElement(soapMethodElement, "odsCode", odsCode);
-                createChildTextElement(soapMethodElement, "fromDate", (_dateFormat).format(dateFrom));
-                createChildTextElement(soapMethodElement, "toDate", _dateFormat.format(dateTo));
+                createChildTextElement(soapMethodElement, "fromDate", DateUtils.formatDateAsISO8601(dateFrom));
+                createChildTextElement(soapMethodElement, "toDate", DateUtils.formatDateAsISO8601(dateTo));
 
                 requestMessage.saveChanges();
 

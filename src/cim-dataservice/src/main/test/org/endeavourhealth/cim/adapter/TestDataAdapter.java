@@ -45,7 +45,7 @@ public class TestDataAdapter implements IDataAdapter {
     }
 
     // Appointments
-    public String getAppointmentsForPatient(String odsCode, UUID patientId) {
+    public String getAppointmentsForPatient(String odsCode, UUID patientId, Date dateFrom, Date dateTo) {
         return "";
     }
     public void requestOrder(String odsCode, String orderRequest) {

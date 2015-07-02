@@ -6,23 +6,28 @@ import org.endeavourhealth.cim.adapter.AdapterFactory;
 import org.endeavourhealth.cim.adapter.IDataAdapter;
 import org.endeavourhealth.cim.common.ArrayListHelper;
 import org.endeavourhealth.cim.common.DateSearchParameter;
+import org.endeavourhealth.cim.common.DateUtils;
 import org.endeavourhealth.cim.transform.Transformer;
 import org.endeavourhealth.cim.transform.TransformerFactory;
 
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.UUID;
 
 public class GetPatientAppointments implements Processor{
 	public void process(Exchange exchange) throws Exception {
 		// Get data from exchange
-		UUID patientId = UUID.fromString((String)exchange.getIn().getHeader("id"));
+		UUID patientId = UUID.fromString((String) exchange.getIn().getHeader("id"));
 		String odsCode = (String)exchange.getIn().getHeader("odsCode");
-		DateSearchParameter dateSearchParameter = DateSearchParameter.Parse(ArrayListHelper.FromSingleOrArray(exchange.getIn().getHeader("date")));
+		DateSearchParameter date = DateSearchParameter.Parse(ArrayListHelper.FromSingleOrArray(exchange.getIn().getHeader("date")));
 
 		// Get the relevant data adapter from the factory
 		IDataAdapter dataAdapter = AdapterFactory.getDataAdapterForService(odsCode);
 
-		// Get patient data by NHS Number
-		String appointmentDataInNativeFormat = dataAdapter.getAppointmentsForPatient(odsCode, patientId);
+		Date fromDate = (date != null) ? date.getIntervalStart() : DateUtils.DOTNET_MINIMUM_DATE;
+		Date toDate = (date != null) ? date.getIntervalEnd() : DateUtils.DOTNET_MAXIMUM_DATE;
+
+		String appointmentDataInNativeFormat = dataAdapter.getAppointmentsForPatient(odsCode, patientId, fromDate, toDate);
 		exchange.getIn().setBody(appointmentDataInNativeFormat);
 
 		// Get patientApi data transformer for service (native format -> FHIR)
