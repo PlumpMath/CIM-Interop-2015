@@ -1,22 +1,14 @@
 package org.endeavourhealth.cim.processor.core;
 
 import org.apache.camel.Exchange;
+import org.endeavourhealth.cim.Registry;
 import org.endeavourhealth.cim.exceptions.LegitimateRelationshipException;
 
-import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class DataProtocolProcessor implements org.apache.camel.Processor {
-	private final Map<String, List<String>> _legitimateRelationships;
-
-	public DataProtocolProcessor() {
-		// TODO : Implement full DP logic
-		_legitimateRelationships = new HashMap<>();
-		_legitimateRelationships.put("swagger", Arrays.asList("A99999", "B99999"));
-		_legitimateRelationships.put("subsidiary", Arrays.asList("Y99999", "Z99999"));
-	}
+	public static final String NO_LEGITIMATE_RELATIONSHIPS_CONFIGURED_FOR_THIS_SUBSIDIARY_SYSTEM = "No legitimate relationships configured for this subsidiary system";
+	public static final String SUBSIDIARY_SYSTEM_HAS_NO_LEGITIMATE_RELATIONSHIP_WITH_THIS_ORGANISATION = "Subsidiary system has no legitimate relationship with this organisation";
 
 	@Override
 	public void process(Exchange exchange) throws Exception {
@@ -38,12 +30,12 @@ public class DataProtocolProcessor implements org.apache.camel.Processor {
 
 	private void ValidateLegitimateRelationships(String api_key, String odsCode) throws Exception {
 
-		List<String> validOrganisations = _legitimateRelationships.get(api_key);
+		List<String> validOrganisations = Registry.Instance().getLegitimateRelationships().get(api_key);
 
 		if (validOrganisations == null)
-			throw new LegitimateRelationshipException("No legitimate relationships configured for this subsidiary system");
+			throw new LegitimateRelationshipException(NO_LEGITIMATE_RELATIONSHIPS_CONFIGURED_FOR_THIS_SUBSIDIARY_SYSTEM);
 
 		if (!validOrganisations.contains(odsCode))
-			throw new LegitimateRelationshipException("Subsidiary system has no legitimate relationship with this organisation");
+			throw new LegitimateRelationshipException(SUBSIDIARY_SYSTEM_HAS_NO_LEGITIMATE_RELATIONSHIP_WITH_THIS_ORGANISATION);
 	}
 }

@@ -1,4 +1,4 @@
-package org.endeavourhealth.cim.processor.schedules;
+package org.endeavourhealth.cim.endpoints;
 
 import org.apache.camel.EndpointInject;
 import org.apache.camel.Produce;
@@ -7,9 +7,10 @@ import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.component.mock.MockEndpoint;
 import org.apache.camel.test.junit4.CamelTestSupport;
 import org.apache.commons.httpclient.HttpStatus;
+import org.endeavourhealth.cim.Registry;
 import org.endeavourhealth.cim.TestRegistry;
-import org.endeavourhealth.cim.adapter.AdapterFactory;
 import org.endeavourhealth.cim.common.DateSearchParameter;
+import org.endeavourhealth.cim.processor.schedules.GetSchedulesProcessor;
 import org.endeavourhealth.cim.routes.endpoints.ScheduleEndpoint;
 import org.junit.Test;
 
@@ -17,7 +18,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class GetSchedulesProcessorTest extends CamelTestSupport {
+public class SchedulesTest extends CamelTestSupport {
 	@EndpointInject(uri = "mock:result")
 	protected MockEndpoint resultEndpoint;
 
@@ -28,7 +29,9 @@ public class GetSchedulesProcessorTest extends CamelTestSupport {
 	protected RouteBuilder createRouteBuilder() {
 		return new RouteBuilder() {
 			public void configure() throws Exception {
-				AdapterFactory.setRegistry(new TestRegistry());
+				getContext().setTracing(true);
+
+				Registry.setInstance(new TestRegistry());
 
 				this.includeRoutes(new ScheduleEndpoint());
 
