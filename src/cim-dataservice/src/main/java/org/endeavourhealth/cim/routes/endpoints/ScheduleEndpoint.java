@@ -1,6 +1,8 @@
 package org.endeavourhealth.cim.routes.endpoints;
 
 import org.apache.camel.builder.RouteBuilder;
+import org.apache.commons.httpclient.HttpStatus;
+import org.endeavourhealth.cim.processor.core.CIMError;
 import org.endeavourhealth.cim.processor.schedules.GetSchedulesProcessor;
 
 @SuppressWarnings("WeakerAccess")
@@ -23,6 +25,11 @@ public class ScheduleEndpoint extends RouteBuilder {
         // Message router callback routes
         from("direct:GetSchedules")
             .routeId("GetSchedules")
-            .process(new GetSchedulesProcessor());
+            .doTry()
+                .process(new GetSchedulesProcessor())
+            .doCatch(IllegalArgumentException.class)
+                .process(new CIMError(HttpStatus.SC_BAD_REQUEST, simple("${exception.message}")))
+            .end();
+
     }
 }

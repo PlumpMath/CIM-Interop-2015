@@ -9,12 +9,9 @@ import org.endeavourhealth.cim.transform.TransformerFactory;
 import org.hl7.fhir.instance.formats.JsonParser;
 import org.hl7.fhir.instance.model.Bundle;
 
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Date;
-
 public class GetSchedulesProcessor implements org.apache.camel.Processor {
+	public static final String EITHER_AN_ACTOR_A_DATE_RANGE_OR_BOTH_MUST_BE_SUPPLIED = "Either an actor, a date range or both must be supplied.";
+
 	public void process(Exchange exchange) throws Exception {
 
 		String odsCode = (String)exchange.getIn().getHeader("odsCode");
@@ -22,7 +19,7 @@ public class GetSchedulesProcessor implements org.apache.camel.Processor {
 		String actor = (String)exchange.getIn().getHeader("actor");
 
 		if ((actor == null && date == null) || (actor != null && date != null) || (date != null) && (date.getIntervalStart().equals(date.getIntervalEnd())))
-			throw new IllegalArgumentException("Either an actor OR a date range must be supplied.");
+			throw new IllegalArgumentException(EITHER_AN_ACTOR_A_DATE_RANGE_OR_BOTH_MUST_BE_SUPPLIED);
 
 		IDataAdapter dataAdapter = AdapterFactory.getDataAdapterForService(odsCode);
 
