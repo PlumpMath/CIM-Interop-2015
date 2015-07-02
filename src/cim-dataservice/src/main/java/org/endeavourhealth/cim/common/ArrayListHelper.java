@@ -2,11 +2,11 @@ package org.endeavourhealth.cim.common;
 
 import java.util.ArrayList;
 
-public class ArrayParameter {
-    private ArrayParameter() {
+public class ArrayListHelper {
+    private ArrayListHelper() {
     }
 
-    public static ArrayList Receive(Object object) {
+    public static ArrayList FromSingleOrArray(Object object) {
         if (object == null)
             return null;
 

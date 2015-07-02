@@ -3,14 +3,12 @@ package org.endeavourhealth.cim.processor.schedules;
 import org.apache.camel.Exchange;
 import org.endeavourhealth.cim.adapter.AdapterFactory;
 import org.endeavourhealth.cim.adapter.IDataAdapter;
-import org.endeavourhealth.cim.common.ArrayParameter;
+import org.endeavourhealth.cim.common.ArrayListHelper;
 import org.endeavourhealth.cim.common.DateSearchParameter;
 import org.endeavourhealth.cim.transform.Transformer;
 import org.endeavourhealth.cim.transform.TransformerFactory;
 import org.hl7.fhir.instance.formats.JsonParser;
 import org.hl7.fhir.instance.model.Bundle;
-
-import java.util.ArrayList;
 
 public class GetSchedulesProcessor implements org.apache.camel.Processor {
 	public static final String EITHER_AN_ACTOR_A_DATE_RANGE_OR_BOTH_MUST_BE_SUPPLIED = "Either an actor, a date range or both must be supplied.";
@@ -18,7 +16,7 @@ public class GetSchedulesProcessor implements org.apache.camel.Processor {
 	public void process(Exchange exchange) throws Exception {
 
 		String odsCode = (String)exchange.getIn().getHeader("odsCode");
-		DateSearchParameter date = DateSearchParameter.Parse(ArrayParameter.Receive(exchange.getIn().getHeader("date")));
+		DateSearchParameter date = DateSearchParameter.Parse(ArrayListHelper.FromSingleOrArray(exchange.getIn().getHeader("date")));
 		String actor = (String)exchange.getIn().getHeader("actor");
 
 		if ((actor == null && date == null) || (actor != null && date != null) || (date != null) && (date.getIntervalStart().equals(date.getIntervalEnd())))

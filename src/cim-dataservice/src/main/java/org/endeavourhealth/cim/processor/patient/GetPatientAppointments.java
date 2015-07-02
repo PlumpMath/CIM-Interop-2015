@@ -4,6 +4,8 @@ import org.apache.camel.Exchange;
 import org.apache.camel.Processor;
 import org.endeavourhealth.cim.adapter.AdapterFactory;
 import org.endeavourhealth.cim.adapter.IDataAdapter;
+import org.endeavourhealth.cim.common.ArrayListHelper;
+import org.endeavourhealth.cim.common.DateSearchParameter;
 import org.endeavourhealth.cim.transform.Transformer;
 import org.endeavourhealth.cim.transform.TransformerFactory;
 
@@ -13,7 +15,8 @@ public class GetPatientAppointments implements Processor{
 	public void process(Exchange exchange) throws Exception {
 		// Get data from exchange
 		UUID patientId = UUID.fromString((String)exchange.getIn().getHeader("id"));
-		String odsCode = (String) exchange.getIn().getHeader("odsCode");
+		String odsCode = (String)exchange.getIn().getHeader("odsCode");
+		DateSearchParameter dateSearchParameter = DateSearchParameter.Parse(ArrayListHelper.FromSingleOrArray(exchange.getIn().getHeader("date")));
 
 		// Get the relevant data adapter from the factory
 		IDataAdapter dataAdapter = AdapterFactory.getDataAdapterForService(odsCode);
