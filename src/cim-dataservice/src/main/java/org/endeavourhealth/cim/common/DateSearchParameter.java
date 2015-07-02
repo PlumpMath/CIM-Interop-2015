@@ -16,40 +16,34 @@ import java.util.Date;
 */
 
 public class DateSearchParameter {
-    public static final String OBJECT_TYPE_NOT_VALID = "object type not valid";
-    public static final String DATE_TIMES_MUST_CONTAIN_TWO_ELEMENTS_ONLY = "dateTimes must contain two elements only";
-
-    public static DateSearchParameter Parse(Object object) {
-        if (object == null)
-            return null;
-        else if (object.getClass().equals(String.class))
-            return Parse((String)object);
-        else if (object.getClass().equals(ArrayList.class))
-            return Parse((ArrayList<String>)object);
-        else
-            throw new IllegalArgumentException(OBJECT_TYPE_NOT_VALID);
-    }
+    public static final String DATE_TIMES_MUST_CONTAIN_ONE_OR_TWO_ELEMENTS = "dateTimes must contain one or two elements";
 
     public static DateSearchParameter Parse(String dateTime) {
         if (dateTime == null)
             return null;
 
-        DateSearchParameter dateParameter = new DateSearchParameter();
-        dateParameter._startInputDate = new DateTimeType(dateTime);
-        return dateParameter;
+        ArrayList<String> arrayList = new ArrayList<String>();
+        arrayList.add(dateTime);
+
+        return Parse(arrayList);
     }
 
     public static DateSearchParameter Parse(ArrayList<String> dateTimes) {
         if (dateTimes == null)
             return null;
 
-        if (dateTimes.size() != 2) {
-            throw new IllegalArgumentException(DATE_TIMES_MUST_CONTAIN_TWO_ELEMENTS_ONLY);
+        int size = dateTimes.size();
+
+        if ((size < 1) || (size > 2)) {
+            throw new IllegalArgumentException(DATE_TIMES_MUST_CONTAIN_ONE_OR_TWO_ELEMENTS);
         }
 
         DateSearchParameter dateParameter = new DateSearchParameter();
         dateParameter._startInputDate = new DateTimeType(dateTimes.get(0));
-        dateParameter._endInputDate = new DateTimeType(dateTimes.get(1));
+
+        if (size == 2)
+            dateParameter._endInputDate = new DateTimeType(dateTimes.get(1));
+
         return dateParameter;
     }
 
