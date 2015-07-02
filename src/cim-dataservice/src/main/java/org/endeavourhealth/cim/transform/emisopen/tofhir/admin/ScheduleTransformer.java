@@ -16,21 +16,24 @@ import java.util.List;
 public class ScheduleTransformer {
 
     public static ArrayList<Resource> transformToScheduleResources(AppointmentSessionList appointmentSessionList) throws SerializationException, TransformFeatureNotSupportedException {
-        ArrayList<Resource> resources = new ArrayList<Resource>();
+        ArrayList<Practitioner> practitioners = new ArrayList<Practitioner>();
+        ArrayList<Schedule> schedules = new ArrayList<Schedule>();
 
         for (AppointmentSessionStruct appointmentSession : appointmentSessionList.getAppointmentSession()) {
             Practitioner practitioner = transformToPractitioner(appointmentSession.getHolderList());
 
-            if (!resources
+            if (!practitioners
                     .stream()
-                    .anyMatch(t -> (t instanceof Practitioner)
-                                    && (t.getId().equals(practitioner.getId())))) {
-                resources.add(practitioner);
+                    .anyMatch(t -> (t.getId().equals(practitioner.getId())))) {
+                practitioners.add(practitioner);
             }
 
-            Schedule schedule = transformToSchedule(appointmentSession, practitioner);
-            resources.add(schedule);
+            schedules.add(transformToSchedule(appointmentSession, practitioner));
         }
+
+        ArrayList<Resource> resources = new ArrayList<Resource>();
+        resources.addAll(practitioners);
+        resources.addAll(schedules);
 
         return resources;
     }
@@ -67,7 +70,7 @@ public class ScheduleTransformer {
         Practitioner practitioner = new Practitioner();
         practitioner.setId(Integer.toString(holder.getDBID()));
 
-        HumanName humanName = NameConverter.convert(holder.getTitle(), holder.getFirstNames(), holder.getLastName());
+        HumanName humanName = NameConverter.convert(holder.getFirstNames(), holder.getLastName(), holder.getTitle());
         practitioner.setName(humanName);
 
         return practitioner;

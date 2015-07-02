@@ -965,11 +965,13 @@
                         }
                     },
                     {
-                        "name":"start",
+                        "name":"date",
                         "in":"query",
                         "description":"Date/Time that the appointment is to take place",
                         "required":false,
-                        "type":"string"
+                        "type":"array",
+                        "items" : { "type" : "string" },
+                        "collectionFormat": "multi"
                     }
                 ],
                 "responses": {
@@ -1095,7 +1097,9 @@
                         "in":"query",
                         "description":"Appointment date/time",
                         "required":false,
-                        "type":"string"
+                        "type":"array",
+                        "items" : { "type" : "string" },
+                        "collectionFormat": "multi"
                     }
                 ],
                 "responses": {
