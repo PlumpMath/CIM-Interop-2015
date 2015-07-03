@@ -116,5 +116,24 @@ namespace DotNetGPSystem
 
             return Utilities.Serialize<EomGetPatientAppointments.PatientAppointmentList>(appointmentList);
         }
+
+        public string GetUserByID(string odsCode, int userInRoleId)
+        {
+            OpenHRUser user = DataStore
+                .Users
+                .FirstOrDefault(t => t.Organisation.nationalPracticeCode == odsCode
+                                    && t.OpenHRUserId == userInRoleId);
+
+            string result = string.Empty;
+
+            if (user != null)
+            {
+                EomUserDetails37.UserDetails userDetails = EomUsersTransform.ToEomUserDetails(user);
+
+                result = Utilities.Serialize<EomUserDetails37.UserDetails>(userDetails);
+            }
+
+            return result;
+        }
     }
 }

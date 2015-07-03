@@ -42,6 +42,7 @@ namespace DotNetGPSystem
                 return _sessions;
             }
         }
+        
         public static OpenHROrganisation[] Organisations
         {
             get
@@ -62,6 +63,16 @@ namespace DotNetGPSystem
                     _openHRPatients = LoadOpenHRPatients();
 
                 return _openHRPatients;
+            }
+        }
+
+        public static OpenHRUser[] Users
+        {
+            get
+            {
+                return Organisations
+                    .SelectMany(t => t.Users)
+                    .ToArray();
             }
         }
 

@@ -119,18 +119,22 @@
     <Compile Include="Controls\Tasks\TasksControl.Designer.cs">
       <DependentUpon>TasksControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="Data\Appointments\EomAppointmentTranform.cs" />
-    <Compile Include="Data\Appointments\EomAppointmentSessions.cs">
+    <Compile Include="Data\ClientAPI\EomAppointmentTranform.cs" />
+    <Compile Include="Data\ClientAPI\Appointments\EomAppointmentSessions.cs">
       <DependentUpon>EomAppointmentSessions.xsd</DependentUpon>
     </Compile>
-    <Compile Include="Data\Appointments\EomGetPatientAppointments.cs">
+    <Compile Include="Data\ClientAPI\Appointments\EomGetPatientAppointments.cs">
       <DependentUpon>EomGetPatientAppointments.xsd</DependentUpon>
     </Compile>
-    <Compile Include="Data\Appointments\EomSlotsForSession.cs">
+    <Compile Include="Data\ClientAPI\Appointments\EomSlotsForSession.cs">
       <DependentUpon>EomSlotsForSession.xsd</DependentUpon>
     </Compile>
-    <Compile Include="Data\Appointments\Session.cs" />
-    <Compile Include="Data\Appointments\Slot.cs" />
+    <Compile Include="Data\ClientAPI\Appointments\Session.cs" />
+    <Compile Include="Data\ClientAPI\Appointments\Slot.cs" />
+    <Compile Include="Data\ClientAPI\Users\EomUserDetails37.cs">
+      <DependentUpon>EomUserDetails37.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Data\ClientAPI\EomUserTransform.cs" />
     <Compile Include="Data\DataStore.cs" />
     <Compile Include="Data\OpenHR\OpenHROrganisation.cs" />
     <Compile Include="Data\OpenHR\OpenHRUser.cs" />
@@ -191,6 +195,12 @@
     <EmbeddedResource Include="Controls\Tasks\TasksControl.resx">
       <DependentUpon>TasksControl.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Data\ClientAPI\Users\EomMedicalRecord35.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Data\ClientAPI\Users\EomUserDetails37.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="GPSystemForm.resx">
       <DependentUpon>GPSystemForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -219,13 +229,13 @@
     <EmbeddedResource Include="Data\OpenHR\Schema\vocabulary.xsd">
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <None Include="Data\Appointments\EomAppointmentSessions.xsd">
+    <None Include="Data\ClientAPI\Appointments\EomAppointmentSessions.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Data\Appointments\EomGetPatientAppointments.xsd">
+    <None Include="Data\ClientAPI\Appointments\EomGetPatientAppointments.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Data\Appointments\EomSlotsForSession.xsd">
+    <None Include="Data\ClientAPI\Appointments\EomSlotsForSession.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Properties\Settings.settings">
@@ -272,6 +282,7 @@
     <None Include="Resources\email_error.png" />
     <Content Include="Resources\pencil.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

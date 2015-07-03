@@ -43,5 +43,8 @@ namespace DotNetGPSystem
 
         [OperationContract]
         string GetPatientAppointments(string odsCode, Guid patientGuid, DateTime fromDate, DateTime toDate);
+
+        [OperationContract]
+        string GetUserByID(string odsCode, int userInRoleId);
     }       
 }
