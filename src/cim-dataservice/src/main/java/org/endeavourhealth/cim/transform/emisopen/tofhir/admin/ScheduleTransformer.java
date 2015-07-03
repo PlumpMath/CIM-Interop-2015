@@ -2,13 +2,12 @@ package org.endeavourhealth.cim.transform.emisopen.tofhir.admin;
 
 import org.endeavourhealth.cim.transform.SerializationException;
 import org.endeavourhealth.cim.transform.TransformFeatureNotSupportedException;
-import org.endeavourhealth.cim.transform.emisopen.EmisOpenConstants;
+import org.endeavourhealth.cim.transform.emisopen.EmisOpenCommon;
 import org.endeavourhealth.cim.transform.openhr.tofhir.admin.NameConverter;
 import org.endeavourhealth.cim.transform.TransformHelper;
 import org.endeavourhealth.cim.transform.schemas.emisopen.eomappointmentsessions.*;
 import org.hl7.fhir.instance.model.*;
 
-import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -49,8 +48,8 @@ public class ScheduleTransformer {
 
         Period period = new Period();
 
-        Date fromDate = getDateAndTime(appointmentSession.getDate(), appointmentSession.getStartTime());
-        Date toDate = getDateAndTime(appointmentSession.getDate(), appointmentSession.getEndTime());
+        Date fromDate = EmisOpenCommon.getDateAndTime(appointmentSession.getDate(), appointmentSession.getStartTime());
+        Date toDate = EmisOpenCommon.getDateAndTime(appointmentSession.getDate(), appointmentSession.getEndTime());
 
         period.setStart(fromDate);
         period.setEnd(toDate);
@@ -74,13 +73,5 @@ public class ScheduleTransformer {
         practitioner.setName(humanName);
 
         return practitioner;
-    }
-
-    private static Date getDateAndTime(String dateString, String timeString) throws SerializationException {
-        try {
-            return EmisOpenConstants.EMISOPEN_DATEFORMAT.parse(dateString + " " + timeString);
-        } catch (ParseException e) {
-            throw new SerializationException("Could not parse date", e);
-        }
     }
 }

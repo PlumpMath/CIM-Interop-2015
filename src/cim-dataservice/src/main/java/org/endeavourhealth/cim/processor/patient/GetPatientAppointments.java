@@ -9,6 +9,8 @@ import org.endeavourhealth.cim.common.DateSearchParameter;
 import org.endeavourhealth.cim.common.DateUtils;
 import org.endeavourhealth.cim.transform.Transformer;
 import org.endeavourhealth.cim.transform.TransformerFactory;
+import org.hl7.fhir.instance.formats.JsonParser;
+import org.hl7.fhir.instance.model.Bundle;
 
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -32,8 +34,10 @@ public class GetPatientAppointments implements Processor{
 
 		// Get patientApi data transformer for service (native format -> FHIR)
 		Transformer transformer = TransformerFactory.getTransformerForAdapter(dataAdapter);
-		// Bundle appointments = transformer.toFHIRAppointments(appointmentDataInNativeFormat);
-		// String body = new JsonParser().composeString(patient);
-		// exchange.getIn().setBody(body);
+
+		Bundle appointments = transformer.toFHIRAppointmentBundle(appointmentDataInNativeFormat);
+		String body = new JsonParser().composeString(appointments);
+
+		exchange.getIn().setBody(body);
 	}
 }
