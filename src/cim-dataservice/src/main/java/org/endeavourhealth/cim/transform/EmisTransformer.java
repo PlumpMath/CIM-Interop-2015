@@ -20,6 +20,10 @@ public class EmisTransformer implements Transformer {
 		return _openHrTransformer.toFHIRPatient(sourceData);
 	}
 
+	public Bundle toFHIRAppointmentBundle(String sourceData) throws TransformException {
+		return _emisOpenTransformer.toFHIRAppointmentBundle(sourceData);
+	}
+
 	public Bundle toFHIRScheduleBundle(String sourceData) throws TransformException {
 		return _emisOpenTransformer.toFHIRScheduleBundle(sourceData);
 	}
