@@ -21,9 +21,7 @@ public class SecurityProcessor implements Processor {
         String method = exchange.getFromEndpoint().getEndpointConfiguration().getParameter("path");
         String body = exchange.getIn().getBody(String.class);
 
-        String privateKey = Registry.Instance().getPrivateKey(publicKey);
-
-        if (!validateMessage(publicKey, privateKey, method, body, inboundHash)) {
+        if (!validateMessage(publicKey, method, body, inboundHash)) {
             exchange.getIn().setHeader(Exchange.HTTP_RESPONSE_CODE, HttpStatus.SC_UNAUTHORIZED);
             exchange.getIn().setHeader(Exchange.CONTENT_TYPE, "text/plain");
             exchange.getIn().setBody(INVALID_SESSION);
@@ -32,14 +30,16 @@ public class SecurityProcessor implements Processor {
     }
 
 
-    private Boolean validateMessage(String pubicKey, String privateKey, String method, String body, String inboundHash) {
+    private Boolean validateMessage(String publicKey, String method, String body, String inboundHash) {
+        String privateKey = Registry.Instance().getPrivateKey(publicKey);
+
         if (privateKey == null)
             return false;
 
         // Ensure private key exists first.  This allows swagger to bypass security
         // for test servers by adding a key.  Swagger should not be added to live
         // servers so cannot be used as back door.
-        if ("swagger".equals(pubicKey))
+        if ("swagger".equals(publicKey))
             return true;
 
         String data = method;

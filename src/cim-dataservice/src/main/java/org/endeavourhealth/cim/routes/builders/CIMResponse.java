@@ -8,7 +8,7 @@ public class CIMResponse extends RouteBuilder {
     @Override
     public void configure() throws Exception {
         from("direct:CIMResponse")
-                .routeId("CIMResponse")
-                .process(new ResponseProcessor());
+            .routeId("CIMResponse")
+            .process(new ResponseProcessor());
     }
 }
