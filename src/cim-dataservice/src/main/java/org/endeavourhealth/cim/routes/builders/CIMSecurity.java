@@ -1,24 +1,22 @@
 package org.endeavourhealth.cim.routes.builders;
 
+import org.apache.camel.builder.RouteBuilder;
 import org.apache.commons.httpclient.HttpStatus;
-import org.endeavourhealth.cim.common.ExceptionHandlerBaseRouteBuilder;
 import org.endeavourhealth.cim.processor.core.CIMError;
 import org.endeavourhealth.cim.processor.core.SecurityProcessor;
 
 @SuppressWarnings("unused")
-public class CIMSecurity extends ExceptionHandlerBaseRouteBuilder {
+public class CIMSecurity extends RouteBuilder {
     @Override
     public void configure() throws Exception {
-        super.configure();
-
         from("direct:CIMSecurity")
             .routeId("CIMSecurity")
             .doTry()
                 .process(new SecurityProcessor())
             .doCatch(Exception.class)
-                .process(new CIMError(HttpStatus.SC_UNAUTHORIZED, simple("Invalid session")))
-                .stop()
+                .process(new CIMError(HttpStatus.SC_UNAUTHORIZED, simple("${exception.message}")))
+				.to("direct:CIMInvalidMessage")
             .end()
-            .to("direct:CIMSecurityResult");
+			.to("direct:CIMSecurityResult");
     }
 }

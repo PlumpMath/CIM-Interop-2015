@@ -1,24 +1,21 @@
 package org.endeavourhealth.cim.routes.builders;
 
+import org.apache.camel.builder.RouteBuilder;
 import org.apache.commons.httpclient.HttpStatus;
-import org.endeavourhealth.cim.common.ExceptionHandlerBaseRouteBuilder;
 import org.endeavourhealth.cim.processor.core.CIMError;
 
 @SuppressWarnings("unused")
-public class CIMPayloadValidation extends ExceptionHandlerBaseRouteBuilder {
+public class CIMPayloadValidation extends RouteBuilder {
     @Override
     public void configure() throws Exception {
-        super.configure();
-
         from("direct:CIMPayloadValidation")
             .routeId("CIMPayloadValidation")
             .doTry()
                 .to("mock:PayloadValidation")
             .doCatch(org.apache.camel.ValidationException.class)
                 .process(new CIMError(HttpStatus.SC_BAD_REQUEST, simple("Invalid payload")))
-                .stop()
+                .to("direct:CIMInvalidMessage")
             .end()
             .to("direct:CIMPayloadValidationResult");
-
     }
 }

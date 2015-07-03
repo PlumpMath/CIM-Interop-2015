@@ -1,13 +1,12 @@
 package org.endeavourhealth.cim.routes.builders;
 
-import org.endeavourhealth.cim.common.ExceptionHandlerBaseRouteBuilder;
+import org.apache.camel.builder.RouteBuilder;
 import org.endeavourhealth.cim.processor.core.AggregationProcessor;
 
 @SuppressWarnings("unused")
-public class CIMDataAggregator extends ExceptionHandlerBaseRouteBuilder {
+public class CIMDataAggregator extends RouteBuilder {
     @Override
     public void configure() throws Exception {
-        super.configure();
         from("direct:CIMDataAggregator")
             .routeId("CIMDataAggregator")
             .process(new AggregationProcessor())

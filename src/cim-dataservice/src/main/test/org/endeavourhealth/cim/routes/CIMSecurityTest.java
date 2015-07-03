@@ -10,13 +10,15 @@ import org.apache.commons.httpclient.HttpStatus;
 import org.endeavourhealth.cim.Registry;
 import org.endeavourhealth.cim.TestRegistry;
 import org.endeavourhealth.cim.processor.core.DataProtocolProcessor;
+import org.endeavourhealth.cim.processor.core.SecurityProcessor;
 import org.endeavourhealth.cim.routes.builders.CIMDataProtocol;
+import org.endeavourhealth.cim.routes.builders.CIMSecurity;
 import org.junit.Test;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class CIMDataProtocolTest extends CamelTestSupport {
+public class CIMSecurityTest extends CamelTestSupport {
 	@EndpointInject(uri = "mock:result")
 	protected MockEndpoint resultEndpoint;
 
@@ -34,61 +36,86 @@ public class CIMDataProtocolTest extends CamelTestSupport {
 
 				getContext().setTracing(true);
 
-				this.includeRoutes(new CIMDataProtocol());
+				this.includeRoutes(new CIMSecurity());
 
 				from("direct:start")
-					.to("direct:CIMDataProtocol");
+					.to("direct:CIMSecurity");
 
 				from("direct:CIMInvalidMessage")
 					.to("mock:error")
 					.stop();
 
-				from("direct:CIMDataProtocolResult")
+				from("direct:CIMSecurityResult")
 					.to("mock:result")
 					.stop();
 			}
-
 		};
 	}
 
 	@Test
-	public void InvalidOrg() throws Exception {
+	public void InvalidApiKey() throws Exception {
 		Map<String, Object> headerParams = new HashMap<>();
-		headerParams.put("api_key", "invalidOrg");
+		headerParams.put("api_key", "null");
 		headerParams.put("odsCode", "Z99999");
 
-		errorEndpoint.expectedHeaderReceived("CamelHttpResponseCode", HttpStatus.SC_FORBIDDEN);
-		errorEndpoint.expectedBodiesReceived(DataProtocolProcessor.NO_LEGITIMATE_RELATIONSHIPS_CONFIGURED_FOR_THIS_SUBSIDIARY_SYSTEM);
+		resultEndpoint.expectedMessageCount(0);
 
-		template.sendBodyAndHeaders(null, headerParams);
-
-		errorEndpoint.assertIsSatisfied();
-	}
-
-
-	@Test
-	public void LegitOrgNoRelationship() throws Exception {
-		Map<String, Object> headerParams = new HashMap<>();
-		headerParams.put("api_key", "swagger");
-		headerParams.put("odsCode", "Z99999");
-
-		errorEndpoint.expectedHeaderReceived("CamelHttpResponseCode", HttpStatus.SC_FORBIDDEN);
-		errorEndpoint.expectedBodiesReceived(DataProtocolProcessor.SUBSIDIARY_SYSTEM_HAS_NO_LEGITIMATE_RELATIONSHIP_WITH_THIS_ORGANISATION);
-
-		template.sendBodyAndHeaders(null, headerParams);
-
-		errorEndpoint.assertIsSatisfied();
-	}
-
-	@Test
-	public void LegitOrgWithRelationship() throws Exception {
-		Map<String, Object> headerParams = new HashMap<>();
-		headerParams.put("api_key", "swagger");
-		headerParams.put("odsCode", "A99999");
+		errorEndpoint.expectedMessageCount(1);
+		errorEndpoint.expectedHeaderReceived("CamelHttpResponseCode", HttpStatus.SC_UNAUTHORIZED);
+		errorEndpoint.expectedBodiesReceived(SecurityProcessor.INVALID_SESSION);
 
 		template.sendBodyAndHeaders(null, headerParams);
 
 		resultEndpoint.assertIsSatisfied();
+		errorEndpoint.assertIsSatisfied();
 	}
 
+	@Test
+	public void IncorrectHash() throws Exception {
+		Map<String, Object> headerParams = new HashMap<>();
+		headerParams.put("api_key", "foobar");
+		headerParams.put("odsCode", "Z99999");
+
+		resultEndpoint.expectedMessageCount(0);
+
+		errorEndpoint.expectedMessageCount(1);
+		errorEndpoint.expectedHeaderReceived("CamelHttpResponseCode", HttpStatus.SC_UNAUTHORIZED);
+		errorEndpoint.expectedBodiesReceived(SecurityProcessor.INVALID_SESSION);
+
+		template.sendBodyAndHeaders(null, headerParams);
+
+		resultEndpoint.assertIsSatisfied();
+		errorEndpoint.assertIsSatisfied();
+	}
+
+	@Test
+	public void SwaggerApiKey() throws Exception {
+		Map<String, Object> headerParams = new HashMap<>();
+		headerParams.put("api_key", "swagger");
+		headerParams.put("odsCode", "A99999");
+
+		resultEndpoint.expectedMessageCount(1);
+		errorEndpoint.expectedMessageCount(0);
+
+		template.sendBodyAndHeaders(null, headerParams);
+
+		resultEndpoint.assertIsSatisfied();
+		errorEndpoint.assertIsSatisfied();
+	}
+
+	@Test
+	public void CorrectHash() throws Exception {
+		Map<String, Object> headerParams = new HashMap<>();
+		headerParams.put("api_key", "foobar");
+		headerParams.put("odsCode", "A99999");
+		headerParams.put("hash","K5DOPZBbuiJrPQGHVwcbKoOX2OQtnT27lpyWrYRV3bo=");
+
+		resultEndpoint.expectedMessageCount(1);
+		errorEndpoint.expectedMessageCount(0);
+
+		template.sendBodyAndHeaders(null, headerParams);
+
+		resultEndpoint.assertIsSatisfied();
+		errorEndpoint.assertIsSatisfied();
+	}
 }

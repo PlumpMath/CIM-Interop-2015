@@ -1,13 +1,11 @@
 package org.endeavourhealth.cim.routes.builders;
 
-import org.endeavourhealth.cim.common.ExceptionHandlerBaseRouteBuilder;
+import org.apache.camel.builder.RouteBuilder;
 
 @SuppressWarnings("unused")
-public class CIMMessageRouter extends ExceptionHandlerBaseRouteBuilder {
+public class CIMMessageRouter extends RouteBuilder {
     @Override
     public void configure() throws Exception {
-        super.configure();
-
         from("direct:CIMMessageRouter")
             .routeId("CIMMessageRouter")
             .recipientList(header("MessageRouterCallback"))

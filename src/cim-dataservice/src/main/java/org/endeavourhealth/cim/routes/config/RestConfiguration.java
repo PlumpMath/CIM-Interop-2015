@@ -8,6 +8,10 @@ import org.apache.camel.processor.interceptor.Tracer;
 public class RestConfiguration extends RouteBuilder {
     @Override
     public void configure() throws Exception {
+        // Set critical error handling
+        onException(Exception.class)
+            .to("direct:CIMCriticalError")
+            .stop();
 
         // enable debug output
         getContext().setTracing(true);

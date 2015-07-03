@@ -1,14 +1,12 @@
 package org.endeavourhealth.cim.routes.builders;
 
 import org.apache.camel.LoggingLevel;
-import org.endeavourhealth.cim.common.ExceptionHandlerBaseRouteBuilder;
+import org.apache.camel.builder.RouteBuilder;
 
 @SuppressWarnings("unused")
-public class CIMCore extends ExceptionHandlerBaseRouteBuilder {
+public class CIMCore extends RouteBuilder {
     @Override
     public void configure() throws Exception {
-        super.configure();
-
         from("direct:CIMCore")
             .routeId("CIMCore")
             .choice()

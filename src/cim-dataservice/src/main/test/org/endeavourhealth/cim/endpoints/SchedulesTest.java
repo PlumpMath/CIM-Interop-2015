@@ -43,7 +43,7 @@ public class SchedulesTest extends CamelTestSupport {
 	}
 
 	@Test
-	public void testProcessNoParams() throws Exception {
+	public void NoParams() throws Exception {
 		Map<String, Object> headerParams = new HashMap<>();
 		headerParams.put("odsCode", "A99999");
 		headerParams.put("actor", null);
@@ -58,7 +58,7 @@ public class SchedulesTest extends CamelTestSupport {
 	}
 
 	@Test
-	public void testProcessBothParams() throws Exception {
+	public void BothParams() throws Exception {
 		Map<String, Object> headerParams = new HashMap<>();
 		headerParams.put("odsCode", "A99999");
 		headerParams.put("actor", "practitioner|G12345");
@@ -75,7 +75,7 @@ public class SchedulesTest extends CamelTestSupport {
 	}
 
 	@Test
-	public void testProcessWrongDateType() throws Exception {
+	public void WrongDateType() throws Exception {
 		Map<String, Object> headerParams = new HashMap<>();
 		headerParams.put("odsCode", "A99999");
 		headerParams.put("actor", null);
@@ -90,7 +90,7 @@ public class SchedulesTest extends CamelTestSupport {
 	}
 
 	@Test
-	public void testProcessNotEnoughDates() throws Exception {
+	public void NotEnoughDates() throws Exception {
 		Map<String, Object> headerParams = new HashMap<>();
 		headerParams.put("odsCode", "A99999");
 		headerParams.put("actor", null);
@@ -106,7 +106,7 @@ public class SchedulesTest extends CamelTestSupport {
 	}
 
 	@Test
-	public void testProcessToManyDates() throws Exception {
+	public void TooManyDates() throws Exception {
 		Map<String, Object> headerParams = new HashMap<>();
 		headerParams.put("odsCode", "A99999");
 		headerParams.put("actor", null);
@@ -125,7 +125,7 @@ public class SchedulesTest extends CamelTestSupport {
 	}
 
 	@Test
-	public void testProcessSuccess() throws Exception {
+	public void TwoDates() throws Exception {
 		Map<String, Object> headerParams = new HashMap<>();
 		headerParams.put("odsCode", "A99999");
 		headerParams.put("actor", null);

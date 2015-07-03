@@ -1,13 +1,12 @@
 package org.endeavourhealth.cim.routes.builders;
 
-import org.endeavourhealth.cim.common.ExceptionHandlerBaseRouteBuilder;
+import org.apache.camel.builder.RouteBuilder;
 import org.endeavourhealth.cim.processor.core.DataProtocolFilterProcessor;
 
 @SuppressWarnings("unused")
-public class CIMDataProtocolFilter extends ExceptionHandlerBaseRouteBuilder {
+public class CIMDataProtocolFilter extends RouteBuilder {
     @Override
     public void configure() throws Exception {
-        super.configure();
         from("direct:CIMDataProtocolFilter")
             .routeId("CIMDataProtocolFilter")
             .process(new DataProtocolFilterProcessor())

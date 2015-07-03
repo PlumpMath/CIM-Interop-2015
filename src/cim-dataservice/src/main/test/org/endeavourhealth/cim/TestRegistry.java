@@ -17,10 +17,6 @@ public class TestRegistry implements IRegistry {
         return adapterTypes;
     }
 
-	public Boolean validateMessage(String publicKey, String method, String body, String inboundHash) {
-        return true;
-    }
-
     @Override
     public Map<String, List<String>> getLegitimateRelationships() {
         // TODO : Implement full DP logic
@@ -30,7 +26,13 @@ public class TestRegistry implements IRegistry {
         return _legitimateRelationships;
     }
 
-    private String getPrivateKey(String publicKey) {
+    public String getPrivateKey(String publicKey) {
+        if ("swagger".equals(publicKey))
+            return "privateKey";
+
+        if ("null".equals(publicKey))
+            return null;
+
         return publicKey;
     }
 }
