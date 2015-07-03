@@ -27,7 +27,7 @@ public class GetSlotsProcessor implements org.apache.camel.Processor {
 
 		Transformer transformer = TransformerFactory.getTransformerForAdapter(dataAdapter);
 
-		Bundle bundle = transformer.toFHIRSlotBundle(slotsInNativeFormat, scheduleId);
+		Bundle bundle = transformer.toFHIRSlotBundle(scheduleId, slotsInNativeFormat);
 		String body = new JsonParser().composeString(bundle);
 
 		exchange.getIn().setBody(body);

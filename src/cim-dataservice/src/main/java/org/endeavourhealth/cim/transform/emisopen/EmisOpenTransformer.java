@@ -14,11 +14,11 @@ import java.text.SimpleDateFormat;
 
 public class EmisOpenTransformer {
 
-    public Bundle toFHIRAppointmentBundle(String sourceData) throws TransformException {
+    public Bundle toFHIRAppointmentBundle(String patientGuid, String sourceData) throws TransformException {
         PatientAppointmentList appointmentList = TransformHelper.unmarshall(sourceData, PatientAppointmentList.class);
 
         ToFHIRTransformer toFHIRTransformer = new ToFHIRTransformer();
-        return toFHIRTransformer.transformToAppointmentBundle(appointmentList);
+        return toFHIRTransformer.transformToAppointmentBundle(patientGuid, appointmentList);
     }
 
     public Bundle toFHIRScheduleBundle(String sourceData) throws TransformException {
@@ -28,10 +28,10 @@ public class EmisOpenTransformer {
         return toFHIRTransformer.transformToScheduleBundle(appointmentSessionList);
     }
 
-    public Bundle toFHIRSlotBundle(String sourceData, String scheduleId) throws TransformException {
+    public Bundle toFHIRSlotBundle(String scheduleId, String sourceData) throws TransformException {
         SlotListStruct slotListStruct = TransformHelper.unmarshall(sourceData, SlotListStruct.class);
 
         ToFHIRTransformer toFHIRTransformer = new ToFHIRTransformer();
-        return toFHIRTransformer.transformToSlotBundle(slotListStruct, scheduleId);
+        return toFHIRTransformer.transformToSlotBundle(scheduleId, slotListStruct);
     }
 }

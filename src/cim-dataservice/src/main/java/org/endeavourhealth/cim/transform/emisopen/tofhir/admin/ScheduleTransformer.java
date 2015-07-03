@@ -42,7 +42,7 @@ public class ScheduleTransformer {
         schedule.setId(Integer.toString(appointmentSession.getDBID()));
         schedule.setComment(appointmentSession.getName());
 
-        Reference reference = new Reference().setReference(TransformHelper.createResourceReference(Practitioner.class, practitioner.getId()));
+        Reference reference = EmisOpenCommon.createReference(Practitioner.class, practitioner.getId());
 
         schedule.setActor(reference);
 

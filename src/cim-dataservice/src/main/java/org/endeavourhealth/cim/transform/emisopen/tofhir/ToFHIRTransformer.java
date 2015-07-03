@@ -16,8 +16,8 @@ import java.util.ArrayList;
 
 public class ToFHIRTransformer {
 
-    public static Bundle transformToAppointmentBundle(PatientAppointmentList patientAppointmentList) throws TransformFeatureNotSupportedException, SerializationException {
-        ArrayList<Resource> resources = AppointmentTransformer.transformToAppointmentResources(patientAppointmentList);
+    public static Bundle transformToAppointmentBundle(String patientGuid, PatientAppointmentList patientAppointmentList) throws TransformFeatureNotSupportedException, SerializationException {
+        ArrayList<Resource> resources = AppointmentTransformer.transformToAppointmentResources(patientGuid, patientAppointmentList);
 
         return createBundle(resources, null);
     }
@@ -28,8 +28,8 @@ public class ToFHIRTransformer {
         return createBundle(resources, null);
     }
 
-    public static Bundle transformToSlotBundle(SlotListStruct appointmentSlotList, String scheduleId) throws TransformFeatureNotSupportedException, SerializationException {
-        ArrayList<Resource> resources = SlotTransformer.transformToSlotResources(appointmentSlotList, scheduleId);
+    public static Bundle transformToSlotBundle(String scheduleId, SlotListStruct appointmentSlotList) throws TransformFeatureNotSupportedException, SerializationException {
+        ArrayList<Resource> resources = SlotTransformer.transformToSlotResources(scheduleId, appointmentSlotList);
 
         return createBundle(resources, null);
     }

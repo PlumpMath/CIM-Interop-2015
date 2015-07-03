@@ -20,7 +20,7 @@ import java.util.GregorianCalendar;
 
 public class SlotTransformer {
 
-    public static ArrayList<Resource> transformToSlotResources(SlotListStruct appointmentSlotList, String scheduleId) throws SerializationException, TransformFeatureNotSupportedException {
+    public static ArrayList<Resource> transformToSlotResources(String scheduleId, SlotListStruct appointmentSlotList) throws SerializationException, TransformFeatureNotSupportedException {
         ArrayList<Resource> resources = new ArrayList<Resource>();
 
         for (SlotStruct appointmentSlot : appointmentSlotList.getSlot())
@@ -44,7 +44,7 @@ public class SlotTransformer {
         if (!TextUtils.isNullOrTrimmedEmpty(slotStatus))
             slot.setFreeBusyType(getSlotStatus(slotStatus));
 
-        slot.setSchedule(new Reference().setReference(TransformHelper.createResourceReference(Schedule.class, scheduleId)));
+        slot.setSchedule(EmisOpenCommon.createReference(Schedule.class, scheduleId));
 
         return slot;
     }

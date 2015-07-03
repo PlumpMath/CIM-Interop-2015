@@ -35,7 +35,7 @@ public class GetPatientAppointments implements Processor{
 		// Get patientApi data transformer for service (native format -> FHIR)
 		Transformer transformer = TransformerFactory.getTransformerForAdapter(dataAdapter);
 
-		Bundle appointments = transformer.toFHIRAppointmentBundle(appointmentDataInNativeFormat);
+		Bundle appointments = transformer.toFHIRAppointmentBundle(patientId.toString(), appointmentDataInNativeFormat);
 		String body = new JsonParser().composeString(appointments);
 
 		exchange.getIn().setBody(body);

@@ -6,19 +6,21 @@ import org.endeavourhealth.cim.transform.TransformFeatureNotSupportedException;
 import org.endeavourhealth.cim.transform.TransformHelper;
 import org.endeavourhealth.cim.transform.emisopen.EmisOpenCommon;
 import org.endeavourhealth.cim.transform.schemas.emisopen.eomgetpatientappointments.AppointmentStruct;
+import org.endeavourhealth.cim.transform.schemas.emisopen.eomgetpatientappointments.HolderStruct;
 import org.endeavourhealth.cim.transform.schemas.emisopen.eomgetpatientappointments.PatientAppointmentList;
 import org.hl7.fhir.instance.model.*;
 
+import java.security.PrivilegedAction;
 import java.util.ArrayList;
 import java.util.Date;
 
 public class AppointmentTransformer {
 
-    public static ArrayList<Resource> transformToAppointmentResources(PatientAppointmentList patientAppointmentList) throws TransformFeatureNotSupportedException, SerializationException {
+    public static ArrayList<Resource> transformToAppointmentResources(String patientGuid, PatientAppointmentList patientAppointmentList) throws TransformFeatureNotSupportedException, SerializationException {
         ArrayList<Appointment> appointments = new ArrayList<Appointment>();
 
         for (AppointmentStruct appointment : patientAppointmentList.getAppointment()) {
-            appointments.add(transformToAppointment(appointment));
+            appointments.add(transformToAppointment(patientGuid, appointment));
         }
 
         ArrayList<Resource> resources = new ArrayList<Resource>(appointments);
@@ -26,7 +28,7 @@ public class AppointmentTransformer {
         return resources;
     }
 
-    public static Appointment transformToAppointment(AppointmentStruct appointmentStruct) throws SerializationException {
+    public static Appointment transformToAppointment(String patientGuid, AppointmentStruct appointmentStruct) throws SerializationException {
         Appointment appointment = new Appointment();
 
         appointment.setId(Integer.toString(appointmentStruct.getSlotID()));
@@ -45,16 +47,39 @@ public class AppointmentTransformer {
         Date endTime = EmisOpenCommon.addMinutesToTime(startTime, Integer.parseInt(appointmentStruct.getDuration()));
         appointment.setEnd(endTime);
 
-        Reference reference = new Reference();
-        reference.setReference(TransformHelper.createResourceReference(Slot.class, Integer.toString(appointmentStruct.getSlotID())));
+        Reference reference = EmisOpenCommon.createReference(Slot.class, Integer.toString(appointmentStruct.getSlotID()));
         appointment.addSlot(reference);
+
+        Appointment.Participantrequired requiredStatus = Appointment.Participantrequired.REQUIRED;
+        Appointment.Participationstatus participationstatus = Appointment.Participationstatus.ACCEPTED;
+
+        Appointment.AppointmentParticipantComponent patient
+                = createParticipant(Patient.class, patientGuid, requiredStatus, participationstatus);
+
+        appointment.addParticipant(patient);
+
+        for (HolderStruct holder : appointmentStruct.getHolderList().getHolder())
+            appointment.addParticipant(createParticipant(Practitioner.class, Integer.toString(holder.getDBID()), requiredStatus, participationstatus));
 
         return appointment;
     }
 
+    private static <T extends Resource> Appointment.AppointmentParticipantComponent createParticipant(Class<T> resourceClass, String id, Appointment.Participantrequired required, Appointment.Participationstatus status) {
+        Appointment.AppointmentParticipantComponent participant = new Appointment.AppointmentParticipantComponent();
+
+        Reference reference = EmisOpenCommon.createReference(resourceClass, id);
+
+        participant.setActor(reference);
+        participant.setRequired(required);
+        participant.setStatus(status);
+
+        return participant;
+    }
+
     private static Appointment.Appointmentstatus getAppointmentStatus(String status) {
         switch (status) {
-            case "Slot Available": return Appointment.Appointmentstatus.BOOKED;
+            case "Slot Available":
+            case "Booked": return Appointment.Appointmentstatus.BOOKED;
 
             case "Start Call":
             case "Quiet Send In":

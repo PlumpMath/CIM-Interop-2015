@@ -1,6 +1,9 @@
 package org.endeavourhealth.cim.transform.emisopen;
 
 import org.endeavourhealth.cim.transform.SerializationException;
+import org.endeavourhealth.cim.transform.TransformHelper;
+import org.hl7.fhir.instance.model.Reference;
+import org.hl7.fhir.instance.model.Resource;
 
 import java.sql.Time;
 import java.text.ParseException;
@@ -36,5 +39,11 @@ public class EmisOpenCommon {
         cal.setTime(date);
         cal.add(Calendar.MINUTE, minutes);
         return new Time(cal.getTime().getTime());
+    }
+
+    public static <T extends Resource> Reference createReference(Class<T> resourceClass, String id) {
+        Reference reference = new Reference();
+        reference.setReference(TransformHelper.createResourceReference(resourceClass, id));
+        return reference;
     }
 }
