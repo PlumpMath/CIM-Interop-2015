@@ -991,7 +991,7 @@
                     "In progress"
                 ],
                 "summary":"Get Available Appointment Schedules",
-                "description": "Get Available Appointment Schedules.<br/><br/>When checking availability for an appointment, first check what schedules are applicable, then check for available slots within these schedules.<br/><br/><u>Examples</u>:<br/><br/>https://endeavour-cim.cloudapp.net/CIM_war/v0.1/Z99999/Schedule?date=2015-04-01&date=2015-05-30<br/>https://endeavour-cim.cloudapp.net/CIM_war/v0.1/Z99999/Schedule?actor=practitioner|G12345",
+                "description": "Get Available Appointment Schedules.<br/><br/>When checking availability for an appointment, first check what schedules are applicable, then check for available slots within these schedules.<br/><br/><u>Examples</u>:<br/><br/>https://endeavour-cim.cloudapp.net/CIM_war/v0.1/Z99999/Schedule?date=2015-04-01&date=2015-05-30<br/>https://endeavour-cim.cloudapp.net/CIM_war/v0.1/Z99999/Schedule?actor:Practitioner=G12345",
                 "produces": [
                     "application/json"
                 ],
@@ -1031,9 +1031,9 @@
                         "collectionFormat": "multi"
                     },
                     {
-                        "name":"actor",
+                        "name":"actor:Practitioner",
                         "in":"query",
-                        "description":"The individual(HealthcareService, Practitioner, Location, ...) to find a Schedule for",
+                        "description":"The individual Practitioner to find a Schedule for",
                         "required":false,
                         "type":"string"
                     }

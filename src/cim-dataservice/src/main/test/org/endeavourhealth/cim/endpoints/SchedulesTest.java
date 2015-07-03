@@ -22,6 +22,9 @@ public class SchedulesTest extends CamelTestSupport {
 	@EndpointInject(uri = "mock:result")
 	protected MockEndpoint resultEndpoint;
 
+	@EndpointInject(uri = "mock:error")
+	protected MockEndpoint errorEndpoint;
+
 	@Produce(uri = "direct:start")
 	protected ProducerTemplate template;
 
@@ -38,6 +41,10 @@ public class SchedulesTest extends CamelTestSupport {
 				from("direct:start")
 					.to("direct:GetSchedules")
 					.to("mock:result");
+
+				from("direct:CIMInvalidMessage")
+					.to("mock:error")
+					.stop();
 			}
 		};
 	}
@@ -46,96 +53,129 @@ public class SchedulesTest extends CamelTestSupport {
 	public void NoParams() throws Exception {
 		Map<String, Object> headerParams = new HashMap<>();
 		headerParams.put("odsCode", "A99999");
-		headerParams.put("actor", null);
-		headerParams.put("date", null);
 
-		resultEndpoint.expectedHeaderReceived("CamelHttpResponseCode", HttpStatus.SC_BAD_REQUEST);
-		resultEndpoint.expectedBodiesReceived(GetSchedulesProcessor.EITHER_AN_ACTOR_A_DATE_RANGE_OR_BOTH_MUST_BE_SUPPLIED);
+		resultEndpoint.expectedMessageCount(0);
+		errorEndpoint.expectedMessageCount(1);
+
+		errorEndpoint.expectedHeaderReceived("CamelHttpResponseCode", HttpStatus.SC_BAD_REQUEST);
+		errorEndpoint.expectedBodiesReceived(GetSchedulesProcessor.EITHER_AN_ACTOR_A_DATE_RANGE_OR_BOTH_MUST_BE_SUPPLIED);
 
 		template.sendBodyAndHeaders(null, headerParams);
 
 		resultEndpoint.assertIsSatisfied();
+		errorEndpoint.assertIsSatisfied();
 	}
 
 	@Test
 	public void BothParams() throws Exception {
 		Map<String, Object> headerParams = new HashMap<>();
 		headerParams.put("odsCode", "A99999");
-		headerParams.put("actor", "practitioner|G12345");
+		headerParams.put("practitioner", "G12345");
 		ArrayList<String> dates = new ArrayList<>();
 		dates.add("2015-06-30T00:00:00Z");
 		headerParams.put("date", dates);
 
-		resultEndpoint.expectedHeaderReceived("CamelHttpResponseCode", HttpStatus.SC_BAD_REQUEST);
-		resultEndpoint.expectedBodiesReceived(GetSchedulesProcessor.EITHER_AN_ACTOR_A_DATE_RANGE_OR_BOTH_MUST_BE_SUPPLIED);
+		resultEndpoint.expectedMessageCount(0);
+		errorEndpoint.expectedMessageCount(1);
+
+		errorEndpoint.expectedHeaderReceived("CamelHttpResponseCode", HttpStatus.SC_BAD_REQUEST);
+		errorEndpoint.expectedBodiesReceived(GetSchedulesProcessor.EITHER_AN_ACTOR_A_DATE_RANGE_OR_BOTH_MUST_BE_SUPPLIED);
 
 		template.sendBodyAndHeaders(null, headerParams);
 
 		resultEndpoint.assertIsSatisfied();
+		errorEndpoint.assertIsSatisfied();
 	}
 
 	@Test
 	public void WrongDateType() throws Exception {
 		Map<String, Object> headerParams = new HashMap<>();
 		headerParams.put("odsCode", "A99999");
-		headerParams.put("actor", null);
 		headerParams.put("date", "2015-06-22T00:00:00Z");
 
-		resultEndpoint.expectedHeaderReceived("CamelHttpResponseCode", HttpStatus.SC_BAD_REQUEST);
-		resultEndpoint.expectedBodiesReceived(GetSchedulesProcessor.EITHER_AN_ACTOR_A_DATE_RANGE_OR_BOTH_MUST_BE_SUPPLIED);
+		resultEndpoint.expectedMessageCount(0);
+		errorEndpoint.expectedMessageCount(1);
+
+		errorEndpoint.expectedHeaderReceived("CamelHttpResponseCode", HttpStatus.SC_BAD_REQUEST);
+		errorEndpoint.expectedBodiesReceived(GetSchedulesProcessor.EITHER_AN_ACTOR_A_DATE_RANGE_OR_BOTH_MUST_BE_SUPPLIED);
 
 		template.sendBodyAndHeaders(null, headerParams);
 
 		resultEndpoint.assertIsSatisfied();
+		errorEndpoint.assertIsSatisfied();
+
 	}
 
 	@Test
 	public void NotEnoughDates() throws Exception {
 		Map<String, Object> headerParams = new HashMap<>();
 		headerParams.put("odsCode", "A99999");
-		headerParams.put("actor", null);
 		ArrayList<String> dates = new ArrayList<>();
 		headerParams.put("date", dates);
 
-		resultEndpoint.expectedHeaderReceived("CamelHttpResponseCode", HttpStatus.SC_BAD_REQUEST);
-		resultEndpoint.expectedBodiesReceived(DateSearchParameter.DATE_TIMES_MUST_CONTAIN_ONE_OR_TWO_ELEMENTS);
+		resultEndpoint.expectedMessageCount(0);
+		errorEndpoint.expectedMessageCount(1);
+
+		errorEndpoint.expectedHeaderReceived("CamelHttpResponseCode", HttpStatus.SC_BAD_REQUEST);
+		errorEndpoint.expectedBodiesReceived(DateSearchParameter.DATE_TIMES_MUST_CONTAIN_ONE_OR_TWO_ELEMENTS);
 
 		template.sendBodyAndHeaders(null, headerParams);
 
 		resultEndpoint.assertIsSatisfied();
+		errorEndpoint.assertIsSatisfied();
 	}
 
 	@Test
 	public void TooManyDates() throws Exception {
 		Map<String, Object> headerParams = new HashMap<>();
 		headerParams.put("odsCode", "A99999");
-		headerParams.put("actor", null);
 		ArrayList<String> dates = new ArrayList<>();
 		dates.add("2015-06-22T00:00:00Z");
 		dates.add("2015-06-25T00:00:00Z");
 		dates.add("2015-06-30T00:00:00Z");
 		headerParams.put("date", dates);
 
-		resultEndpoint.expectedHeaderReceived("CamelHttpResponseCode", HttpStatus.SC_BAD_REQUEST);
-		resultEndpoint.expectedBodiesReceived(DateSearchParameter.DATE_TIMES_MUST_CONTAIN_ONE_OR_TWO_ELEMENTS);
+		resultEndpoint.expectedMessageCount(0);
+		errorEndpoint.expectedMessageCount(1);
+
+		errorEndpoint.expectedHeaderReceived("CamelHttpResponseCode", HttpStatus.SC_BAD_REQUEST);
+		errorEndpoint.expectedBodiesReceived(DateSearchParameter.DATE_TIMES_MUST_CONTAIN_ONE_OR_TWO_ELEMENTS);
 
 		template.sendBodyAndHeaders(null, headerParams);
 
 		resultEndpoint.assertIsSatisfied();
+		errorEndpoint.assertIsSatisfied();
 	}
 
 	@Test
 	public void TwoDates() throws Exception {
 		Map<String, Object> headerParams = new HashMap<>();
 		headerParams.put("odsCode", "A99999");
-		headerParams.put("actor", null);
 		ArrayList<String> dates = new ArrayList<>();
 		dates.add("2015-06-22T00:00:00Z");
 		dates.add("2015-06-30T00:00:00Z");
 		headerParams.put("date", dates);
 
+		resultEndpoint.expectedMessageCount(1);
+		errorEndpoint.expectedMessageCount(0);
+
 		template.sendBodyAndHeaders(null, headerParams);
 
 		resultEndpoint.assertIsSatisfied();
+		errorEndpoint.assertIsSatisfied();
 	}
-}
+
+	@Test
+	public void Practitioner() throws Exception {
+		Map<String, Object> headerParams = new HashMap<>();
+		headerParams.put("odsCode", "A99999");
+		headerParams.put("actor:Practitioner", "G12345");
+
+		resultEndpoint.expectedMessageCount(1);
+		errorEndpoint.expectedMessageCount(0);
+
+		template.sendBodyAndHeaders(null, headerParams);
+
+		resultEndpoint.assertIsSatisfied();
+		errorEndpoint.assertIsSatisfied();
+	}}

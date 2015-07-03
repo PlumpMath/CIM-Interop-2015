@@ -25,5 +25,6 @@ public interface IDataAdapter {
     void requestOrder(String odsCode, String orderRequest);
 
     String getSchedules(String odsCode, Date dateFrom, Date dateTo);
+    String getSchedules(String odsCode, String actor);
     String getSlots(String odsCode, String scheduleId);
 }

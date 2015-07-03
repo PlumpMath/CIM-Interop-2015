@@ -29,7 +29,6 @@ public class SecurityProcessor implements Processor {
         }
     }
 
-
     private Boolean validateMessage(String publicKey, String method, String body, String inboundHash) {
         String privateKey = Registry.Instance().getPrivateKey(publicKey);
 

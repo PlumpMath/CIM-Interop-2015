@@ -17,18 +17,18 @@ public class GetSchedulesProcessor implements org.apache.camel.Processor {
 
 		String odsCode = (String)exchange.getIn().getHeader("odsCode");
 		DateSearchParameter date = DateSearchParameter.Parse(ArrayListHelper.FromSingleOrArray(exchange.getIn().getHeader("date")));
-		String actor = (String)exchange.getIn().getHeader("actor");
+		String practitioner = (String)exchange.getIn().getHeader("actor:Practitioner");
 
-		if ((actor == null && date == null) || (actor != null && date != null) || (date != null) && (date.getIntervalStart().equals(date.getIntervalEnd())))
+		if ((practitioner == null && date == null) || (practitioner != null && date != null) || (date != null) && (date.getIntervalStart().equals(date.getIntervalEnd())))
 			throw new IllegalArgumentException(EITHER_AN_ACTOR_A_DATE_RANGE_OR_BOTH_MUST_BE_SUPPLIED);
 
 		IDataAdapter dataAdapter = AdapterFactory.getDataAdapterForService(odsCode);
 
 		String schedulesInNativeFormat;
 		if (date != null) {
-			schedulesInNativeFormat = GetSchedulesByDateRange(odsCode, date, dataAdapter);
+			schedulesInNativeFormat = dataAdapter.getSchedules(odsCode, date.getIntervalStart(), date.getIntervalEnd());
 		} else
-			schedulesInNativeFormat = GetSchedulesByActor(odsCode, actor, dataAdapter);
+			schedulesInNativeFormat = dataAdapter.getSchedules(odsCode, practitioner);
 
 		Transformer transformer = TransformerFactory.getTransformerForAdapter(dataAdapter);
 
@@ -36,13 +36,5 @@ public class GetSchedulesProcessor implements org.apache.camel.Processor {
 		String body = new JsonParser().composeString(bundle);
 
 		exchange.getIn().setBody(body);
-	}
-
-	private String GetSchedulesByDateRange(String odsCode, DateSearchParameter date, IDataAdapter dataAdapter) throws Exception {
-		return dataAdapter.getSchedules(odsCode, date.getIntervalStart(), date.getIntervalEnd());
-	}
-
-	private String GetSchedulesByActor(String odsCode, String actor, IDataAdapter dataAdapter) {
-		return "";
 	}
 }

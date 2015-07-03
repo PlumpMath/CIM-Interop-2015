@@ -295,6 +295,11 @@ public class MockDataAdapter implements IDataAdapter {
         }
     }
 
+    @Override
+    public String getSchedules(String odsCode, String actor) {
+        return null;
+    }
+
     public String getSlots(String odsCode, String scheduleId) {
         SOAPConnection soapConnection = null;
         try {

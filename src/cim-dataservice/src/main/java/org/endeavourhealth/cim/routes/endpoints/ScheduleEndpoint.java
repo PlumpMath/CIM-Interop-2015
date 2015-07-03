@@ -10,7 +10,7 @@ public class ScheduleEndpoint extends RouteBuilder {
     @Override
     public void configure() throws Exception {
         // Endpoint root URI
-        rest("{odsCode}/Schedule?date={date}&actor={actor}")
+        rest("{odsCode}/Schedule?date={date}&actor:Practitioner={practitioner}")
             .description("Schedule rest service")
 
         // Endpoint definitions (GET, PUT, etc)
@@ -29,6 +29,7 @@ public class ScheduleEndpoint extends RouteBuilder {
                 .process(new GetSchedulesProcessor())
             .doCatch(IllegalArgumentException.class)
                 .process(new CIMError(HttpStatus.SC_BAD_REQUEST, simple("${exception.message}")))
+                .to("direct:CIMInvalidMessage")
             .end();
 
     }
