@@ -1,8 +1,9 @@
 package org.endeavourhealth.cim.processor.patient;
 
 import org.apache.camel.Exchange;
-import org.endeavourhealth.cim.adapter.AdapterFactory;
+import org.endeavourhealth.cim.dataManager.DataManagerFactory;
 import org.endeavourhealth.cim.adapter.IDataAdapter;
+import org.endeavourhealth.cim.dataManager.IDataManager;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -10,15 +11,15 @@ import java.util.Date;
 import java.util.UUID;
 
 public class GetChangedPatients implements org.apache.camel.Processor {
-    private final IDataAdapter _dataAdapter;
+    private final IDataManager _dataManager;
     private Date _lastPoll = null;
 
     public GetChangedPatients(String odsCode) throws Exception {
-        _dataAdapter = AdapterFactory.getDataAdapterForService(odsCode);
+        _dataManager = DataManagerFactory.getDataManagerForService(odsCode);
     }
 
-    public GetChangedPatients(IDataAdapter dataAdapter) {
-        _dataAdapter = dataAdapter;
+    public GetChangedPatients(IDataManager dataManager) {
+        _dataManager = dataManager;
     }
 
     @Override
@@ -40,7 +41,7 @@ public class GetChangedPatients implements org.apache.camel.Processor {
         }
 
         try {
-            ArrayList<UUID> changedPatientIds = _dataAdapter.getChangedPatients(odsCode, dateUpdated);
+            ArrayList<UUID> changedPatientIds = _dataManager.getChangedPatients(odsCode, dateUpdated);
             exchange.getIn().setBody(changedPatientIds);
         } catch (Exception e) {
             // Rollback poll date as this poll failed

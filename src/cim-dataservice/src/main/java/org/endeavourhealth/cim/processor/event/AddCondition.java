@@ -2,12 +2,8 @@ package org.endeavourhealth.cim.processor.event;
 
 import org.apache.camel.Exchange;
 import org.apache.commons.io.IOUtils;
-import org.endeavourhealth.cim.adapter.AdapterFactory;
-import org.endeavourhealth.cim.adapter.IDataAdapter;
-import org.endeavourhealth.cim.transform.Transformer;
-import org.endeavourhealth.cim.transform.TransformerFactory;
-import org.hl7.fhir.instance.formats.JsonParser;
-import org.hl7.fhir.instance.model.Condition;
+import org.endeavourhealth.cim.dataManager.DataManagerFactory;
+import org.endeavourhealth.cim.dataManager.IDataManager;
 
 import java.io.InputStream;
 
@@ -15,17 +11,12 @@ public class AddCondition implements org.apache.camel.Processor {
     @Override
     public void process(Exchange exchange) throws Exception {
         String odsCode =(String) exchange.getIn().getHeader("odsCode");
+        String fhirRequest = IOUtils.toString((InputStream) exchange.getIn().getBody());
 
-        IDataAdapter dataAdapter = AdapterFactory.getDataAdapterForService(odsCode);
-        Transformer transformer = TransformerFactory.getTransformerForAdapter(dataAdapter);
-        String messageBody = IOUtils.toString((InputStream) exchange.getIn().getBody());
+        IDataManager dataManager = DataManagerFactory.getDataManagerForService(odsCode);
 
-        Condition condition = (Condition)new JsonParser().parse(messageBody);
+        String response = dataManager.createCondition(odsCode, fhirRequest);
 
-        String request = transformer.fromFHIRCondition(condition);
-
-        String response = dataAdapter.createCondition(odsCode, request);
-
-        //exchange.getIn().setBody(transformer.toFHIRCondition(response));
+        exchange.getIn().setBody(response);
     }
 }

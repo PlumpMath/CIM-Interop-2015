@@ -1,12 +1,8 @@
 package org.endeavourhealth.cim.processor.subscription;
 
 import org.apache.camel.Exchange;
-import org.endeavourhealth.cim.adapter.AdapterFactory;
-import org.endeavourhealth.cim.adapter.IDataAdapter;
-import org.endeavourhealth.cim.transform.Transformer;
-import org.endeavourhealth.cim.transform.TransformerFactory;
-import org.hl7.fhir.instance.formats.JsonParser;
-import org.hl7.fhir.instance.model.Bundle;
+import org.endeavourhealth.cim.dataManager.DataManagerFactory;
+import org.endeavourhealth.cim.dataManager.IDataManager;
 import org.hl7.fhir.instance.model.Subscription;
 
 import java.util.ArrayList;
@@ -29,14 +25,8 @@ public class EvaluateSubscriptionsProcessor implements org.apache.camel.Processo
         }
 
         if (subscriberCallbacks.size() > 0) {
-            IDataAdapter dataAdapter = AdapterFactory.getDataAdapterForService(odsCode);
-            String patientData = dataAdapter.getPatientRecordByPatientId(odsCode, patientUUID);
-
-            // Get patientApi data transformer for service (native format -> FHIR)
-            Transformer transformer = TransformerFactory.getTransformerForAdapter(dataAdapter);
-            Bundle bundle = transformer.toFHIRBundle(patientData);
-            String body = new JsonParser().composeString(bundle);
-
+            IDataManager dataManager = DataManagerFactory.getDataManagerForService(odsCode);
+            String body = dataManager.getPatientRecordByPatientId(odsCode, patientUUID);
             exchange.getIn().setBody(body);
         }
 

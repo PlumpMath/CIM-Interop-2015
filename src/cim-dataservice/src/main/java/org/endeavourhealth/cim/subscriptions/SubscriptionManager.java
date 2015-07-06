@@ -3,8 +3,9 @@ package org.endeavourhealth.cim.subscriptions;
 import org.apache.camel.CamelContext;
 import org.endeavourhealth.cim.IRegistry;
 import org.endeavourhealth.cim.Registry;
-import org.endeavourhealth.cim.adapter.AdapterFactory;
+import org.endeavourhealth.cim.dataManager.DataManagerFactory;
 import org.endeavourhealth.cim.adapter.IDataAdapter;
+import org.endeavourhealth.cim.dataManager.IDataManager;
 import org.hl7.fhir.instance.model.Subscription;
 
 import java.util.HashMap;
@@ -28,13 +29,13 @@ public class SubscriptionManager {
 
 		_subscriptions.put(subscription.getId(), subscription);
 
-		String adapterType = _registry.getDataAdapterTypeNameForService(odsCode);
-		PollerEndpoint poller = _pollers.get(adapterType);
+		String dataManagerType = _registry.getDataManagerTypeNameForService(odsCode);
+		PollerEndpoint poller = _pollers.get(dataManagerType);
 		if (poller == null) {
-			IDataAdapter dataAdapter = AdapterFactory.getDataAdapterForService(odsCode);
-			poller = new PollerEndpoint(dataAdapter);
+			IDataManager dataManager = DataManagerFactory.getDataManagerForService(odsCode);
+			poller = new PollerEndpoint(dataManager);
 			poller.addRoutesToCamelContext(context);
-			_pollers.put(adapterType, poller);
+			_pollers.put(dataManagerType, poller);
 
 		}
 

@@ -1,7 +1,7 @@
 package org.endeavourhealth.cim.routes.endpoints;
 
 import org.apache.camel.builder.RouteBuilder;
-import org.endeavourhealth.cim.adapter.AdapterFactory;
+import org.endeavourhealth.cim.dataManager.DataManagerFactory;
 import org.endeavourhealth.cim.common.ArrayListAggregationStrategy;
 import org.endeavourhealth.cim.processor.patient.TracePersonProcessor;
 import org.endeavourhealth.cim.processor.patient.TracePersonResultProcessor;
@@ -26,7 +26,7 @@ public class PersonEndpoint extends RouteBuilder {
         // Message router callback routes
         from("direct:TracePerson")
             .routeId("TracePerson")
-            .setBody(constant(AdapterFactory.getAllDataAdapters()))         // Get adapters as array list in body
+            .setBody(constant(DataManagerFactory.getAllDataAdapters()))         // Get adapters as array list in body
             .setHeader("adapterCount", simple("${body.size}"))
             .split(body(), new ArrayListAggregationStrategy())              // Split the body and call trace for each element...
                 .parallelProcessing()                                       // ...in parallel...

@@ -3,16 +3,16 @@ package org.endeavourhealth.cim;
 import java.util.*;
 
 public class TestRegistry implements IRegistry {
-    public String getDataAdapterTypeNameForService(String odsCode) {
-        return "org.endeavourhealth.cim.adapter.TestDataAdapter";
+    public String getDataManagerTypeNameForService(String odsCode) {
+        return "org.endeavourhealth.cim.dataManager.EmisTestDataManager";
     }
 
-	public ArrayList<String> getAllAdapterTypes() {
+	public ArrayList<String> getAllDataManagerTypes() {
         ArrayList<String> adapterTypes = new ArrayList<>();
 
-        adapterTypes.add("org.endeavourhealth.cim.adapter.TestDataAdapter");
-        adapterTypes.add("org.endeavourhealth.cim.adapter.TestDataAdapter");
-        adapterTypes.add("org.endeavourhealth.cim.adapter.TestDataAdapter");
+        adapterTypes.add("org.endeavourhealth.cim.dataManager.TestEmisDataManager");
+        adapterTypes.add("org.endeavourhealth.cim.dataManager.TestEmisDataManager");
+        adapterTypes.add("org.endeavourhealth.cim.dataManager.TestEmisDataManager");
 
         return adapterTypes;
     }

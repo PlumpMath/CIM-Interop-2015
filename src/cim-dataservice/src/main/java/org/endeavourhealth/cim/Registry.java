@@ -1,10 +1,5 @@
 package org.endeavourhealth.cim;
 
-import org.apache.commons.codec.binary.Base64;
-
-import javax.crypto.Mac;
-import javax.crypto.spec.SecretKeySpec;
-import java.nio.charset.StandardCharsets;
 import java.util.*;
 
 public class Registry implements IRegistry {
@@ -20,18 +15,18 @@ public class Registry implements IRegistry {
 		_instance = registry;
 	}
 
-    public String getDataAdapterTypeNameForService(String odsCode) {
-        return "org.endeavourhealth.cim.adapter.MockDataAdapter";
+    public String getDataManagerTypeNameForService(String odsCode) throws ClassNotFoundException {
+        return "org.endeavourhealth.cim.dataManager.EmisDataManager";
     }
 
-	public ArrayList<String> getAllAdapterTypes() {
-        ArrayList<String> adapterTypes = new ArrayList<>();
+	public ArrayList<String> getAllDataManagerTypes() {
+        ArrayList<String> dataManagerTypes = new ArrayList<>();
 
-        adapterTypes.add("org.endeavourhealth.cim.adapter.MockDataAdapter");
-        adapterTypes.add("org.endeavourhealth.cim.adapter.MockDataAdapter");
-        adapterTypes.add("org.endeavourhealth.cim.adapter.MockDataAdapter");
+        dataManagerTypes.add("org.endeavourhealth.cim.dataManager.EmisDataManager");
+        dataManagerTypes.add("org.endeavourhealth.cim.dataManager.EmisDataManager");
+        dataManagerTypes.add("org.endeavourhealth.cim.dataManager.EmisDataManager");
 
-        return adapterTypes;
+        return dataManagerTypes;
     }
 
     public Map<String, List<String>> getLegitimateRelationships() {

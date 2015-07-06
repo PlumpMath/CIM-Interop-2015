@@ -5,12 +5,7 @@ import java.util.Date;
 import java.util.UUID;
 
 public class TestDataAdapter implements IDataAdapter {
-    // System
-    public String getTransformerTypeName() {
-        return "org.endeavourhealth.cim.transform.EmisTransformer";
-    }
-
-    // Demographics
+     // Demographics
     public String getPatientRecordByPatientId(String odsCode, UUID patientId) {
         return "";
     }
