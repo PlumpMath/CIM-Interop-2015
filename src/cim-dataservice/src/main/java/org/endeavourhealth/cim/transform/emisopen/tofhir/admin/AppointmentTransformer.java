@@ -47,7 +47,7 @@ public class AppointmentTransformer {
         Date endTime = EmisOpenCommon.addMinutesToTime(startTime, Integer.parseInt(appointmentStruct.getDuration()));
         appointment.setEnd(endTime);
 
-        Reference reference = EmisOpenCommon.createReference(Slot.class, Integer.toString(appointmentStruct.getSlotID()));
+        Reference reference = TransformHelper.createReference(Slot.class, Integer.toString(appointmentStruct.getSlotID()));
         appointment.addSlot(reference);
 
         Appointment.Participantrequired requiredStatus = Appointment.Participantrequired.REQUIRED;
@@ -67,7 +67,7 @@ public class AppointmentTransformer {
     private static <T extends Resource> Appointment.AppointmentParticipantComponent createParticipant(Class<T> resourceClass, String id, Appointment.Participantrequired required, Appointment.Participationstatus status) {
         Appointment.AppointmentParticipantComponent participant = new Appointment.AppointmentParticipantComponent();
 
-        Reference reference = EmisOpenCommon.createReference(resourceClass, id);
+        Reference reference = TransformHelper.createReference(resourceClass, id);
 
         participant.setActor(reference);
         participant.setRequired(required);

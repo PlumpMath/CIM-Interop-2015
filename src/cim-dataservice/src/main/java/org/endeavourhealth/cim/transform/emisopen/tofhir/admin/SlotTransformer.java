@@ -44,7 +44,7 @@ public class SlotTransformer {
         if (!TextUtils.isNullOrTrimmedEmpty(slotStatus))
             slot.setFreeBusyType(getSlotStatus(slotStatus));
 
-        slot.setSchedule(EmisOpenCommon.createReference(Schedule.class, scheduleId));
+        slot.setSchedule(TransformHelper.createReference(Schedule.class, scheduleId));
 
         return slot;
     }

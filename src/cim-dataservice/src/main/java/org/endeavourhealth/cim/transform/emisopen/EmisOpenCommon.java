@@ -40,10 +40,4 @@ public class EmisOpenCommon {
         cal.add(Calendar.MINUTE, minutes);
         return new Time(cal.getTime().getTime());
     }
-
-    public static <T extends Resource> Reference createReference(Class<T> resourceClass, String id) {
-        Reference reference = new Reference();
-        reference.setReference(TransformHelper.createResourceReference(resourceClass, id));
-        return reference;
-    }
 }
