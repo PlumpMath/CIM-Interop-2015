@@ -26,12 +26,12 @@ public class ToFHIRTransformer {
     public static Bundle transformToScheduleBundle(AppointmentSessionList appointmentSessionList) throws TransformFeatureNotSupportedException, SerializationException {
         ArrayList<Resource> resources = ScheduleTransformer.transformToScheduleResources(appointmentSessionList);
 
-        return BundleHelper.createBundle(null, EmisOpenCommon.EMISOPEN_NAMESPACE, null);
+        return BundleHelper.createBundle(null, EmisOpenCommon.EMISOPEN_NAMESPACE, resources);
     }
 
     public static Bundle transformToSlotBundle(String scheduleId, SlotListStruct appointmentSlotList) throws TransformFeatureNotSupportedException, SerializationException {
         ArrayList<Resource> resources = SlotTransformer.transformToSlotResources(scheduleId, appointmentSlotList);
 
-        return BundleHelper.createBundle(null, EmisOpenCommon.EMISOPEN_NAMESPACE, null);
+        return BundleHelper.createBundle(null, EmisOpenCommon.EMISOPEN_NAMESPACE, resources);
     }
 }
