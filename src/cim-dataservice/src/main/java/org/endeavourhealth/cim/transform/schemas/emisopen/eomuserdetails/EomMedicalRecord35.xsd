@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.e-mis.com/emisopen/MedicalRecord" targetNamespace="http://www.e-mis.com/emisopen/MedicalRecord" elementFormDefault="qualified" attributeFormDefault="unqualified">
+<xs:complexType name="PersonType">
+		<xs:annotation>
+			<xs:documentation>Desribes a person  (e.g. as user) user n a particular role</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="IdentType">
+				<xs:sequence>
+					<xs:element name="Mnemonic" type="xs:string" minOccurs="0"/>
+					<xs:element name="PCSUser" type="xs:integer" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Indicates whether they are internal to the PCS system or an external person</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="ActiveEMISUser" type="xs:string" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Idictates that PCSUser is active or an ex user Y=Active N=ExUser</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="Title" type="xs:string" minOccurs="0"/>
+					<xs:element name="FirstNames" type="xs:string" minOccurs="0"/>
+					<xs:element name="LastName" type="xs:string" minOccurs="0"/>
+					<xs:element name="Category" type="PersonCategoryType" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Job or staff category including PR-Principals,AS Assistants and so forth
+</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="NationalCode" type="xs:string" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>National code used in most NHS correspondance e.g. G5678901</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="PrescriptionCode" type="xs:string" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Code that appears on the script</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="GmcCode" type="xs:integer" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>The GPs GMC code, rarely used</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="UKCCCode" type="xs:string" minOccurs="0"/>
+					<xs:element name="Scripts" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Can they authorise scripts?</xs:documentation>
+						</xs:annotation>
+						<xs:simpleType>
+							<xs:restriction base="xs:string">
+								<xs:enumeration value="Y"/>
+								<xs:enumeration value="N"/>
+							</xs:restriction>
+						</xs:simpleType>
+					</xs:element>
+					<xs:element name="Consulter" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Can they consult</xs:documentation>
+						</xs:annotation>
+						<xs:simpleType>
+							<xs:restriction base="xs:string">
+								<xs:enumeration value="Y"/>
+								<xs:enumeration value="N"/>
+								<xs:enumeration value="O"/>
+							</xs:restriction>
+						</xs:simpleType>
+					</xs:element>
+					<xs:element name="ContractStart" type="xs:string" minOccurs="0"/>
+					<xs:element name="ContractEnd" type="xs:string" minOccurs="0"/>
+					<xs:element name="Doctor" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Are they a doctor?</xs:documentation>
+						</xs:annotation>
+						<xs:simpleType>
+							<xs:restriction base="xs:string">
+								<xs:enumeration value="Y"/>
+								<xs:enumeration value="N"/>
+							</xs:restriction>
+						</xs:simpleType>
+					</xs:element>
+					<xs:element name="Locum" minOccurs="0">
+						<xs:simpleType>
+							<xs:restriction base="xs:string">
+								<xs:enumeration value="Y"/>
+								<xs:enumeration value="N"/>
+							</xs:restriction>
+						</xs:simpleType>
+					</xs:element>
+					<xs:element name="Registrar" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Are they a gp registrar</xs:documentation>
+						</xs:annotation>
+						<xs:simpleType>
+							<xs:restriction base="xs:string">
+								<xs:enumeration value="Y"/>
+								<xs:enumeration value="N"/>
+							</xs:restriction>
+						</xs:simpleType>
+					</xs:element>
+					<xs:element name="Maternity" type="xs:string" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>whether supplies maternity services</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="ChildSurveillance" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Whether the GP can undertake child surveillance (IOS)</xs:documentation>
+						</xs:annotation>
+						<xs:simpleType>
+							<xs:restriction base="xs:string">
+								<xs:length value="1"/>
+								<xs:enumeration value="Y"/>
+								<xs:enumeration value="N"/>
+							</xs:restriction>
+						</xs:simpleType>
+					</xs:element>
+					<xs:element name="Contraceptive" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Whether they can ujndertake contraceptive services
+</xs:documentation>
+						</xs:annotation>
+						<xs:simpleType>
+							<xs:restriction base="xs:string">
+								<xs:length value="1"/>
+								<xs:enumeration value="Y"/>
+								<xs:enumeration value="N"/>
+							</xs:restriction>
+						</xs:simpleType>
+					</xs:element>
+					<xs:element name="TwentyFourHour" minOccurs="0">
+						<xs:simpleType>
+							<xs:restriction base="xs:string">
+								<xs:enumeration value="Y"/>
+								<xs:enumeration value="N"/>
+							</xs:restriction>
+						</xs:simpleType>
+					</xs:element>
+					<xs:element name="MinorSurgery" minOccurs="0">
+						<xs:simpleType>
+							<xs:restriction base="xs:string">
+								<xs:enumeration value="Y"/>
+								<xs:enumeration value="N"/>
+							</xs:restriction>
+						</xs:simpleType>
+					</xs:element>
+					<xs:element name="ResonsibleHA" type="IdentType" minOccurs="0"/>
+					<xs:element name="Trainer" type="IdentType" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>If a registrar, the id of the trainer</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="ContractualRelationship" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Whether employed (E) or associated (A) with the practice</xs:documentation>
+						</xs:annotation>
+						<xs:simpleType>
+							<xs:restriction base="xs:string">
+								<xs:enumeration value="A"/>
+								<xs:enumeration value="E"/>
+								<xs:enumeration value="O"/>
+							</xs:restriction>
+						</xs:simpleType>
+					</xs:element>
+					<xs:element name="Address" type="AddressType" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Address of person in the role</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="Telephone1" type="xs:string" minOccurs="0"/>
+					<xs:element name="Telephone2" type="xs:string" minOccurs="0"/>
+					<xs:element name="Fax" type="xs:string" minOccurs="0"/>
+					<xs:element name="Email" type="xs:string" minOccurs="0"/>
+					<xs:element name="Role" type="RoleType" minOccurs="0"/>
+					<xs:element name="ActiveUser" type="xs:string" minOccurs="0"/>
+				</xs:sequence>
+				<xs:attribute name="Security1" type="xs:string"/>
+				<xs:attribute name="Security2" type="xs:string"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+		<xs:complexType name="IdentType">
+		<xs:annotation>
+			<xs:documentation>Base ID/Ref Type . DBID is the internal EMIS db, RefID references something else within the message that also has the same ID , GUID is used for GUID projects </xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="DBID" type="xs:integer" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Used internally, ignored in any imported message</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="RefID" type="xs:integer" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Used internally for referncing components within the message. Unique to any component of a certtain type. Must be populated in any inbound message.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="GUID" type="xs:string" minOccurs="0"/>
+			<xs:element name="FileStatus" type="xs:integer" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>The intended filing status of this item 0 = New,1 = edit, 2= delete 3 = reference only</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+		<xs:complexType name="PersonCategoryType">
+		<xs:complexContent>
+			<xs:extension base="IdentType">
+				<xs:sequence>
+					<xs:element name="Mnemonic" type="xs:string" minOccurs="0"/>
+					<xs:element name="Description" type="xs:string" minOccurs="0"/>
+				</xs:sequence>
+				<xs:attribute name="Purpose">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:enumeration value="UPDATE"/>
+							<xs:enumeration value="REFERENCE"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:attribute>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+		<xs:complexType name="AddressType">
+		<xs:annotation>
+			<xs:documentation>RFA General format for addresses</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="IdentType">
+				<xs:sequence>
+					<xs:element name="HouseNameFlat" type="xs:string" minOccurs="0"/>
+					<xs:element name="Street" type="xs:string" minOccurs="0"/>
+					<xs:element name="Village" type="xs:string" minOccurs="0"/>
+					<xs:element name="Town" type="xs:string" minOccurs="0"/>
+					<xs:element name="County" type="xs:string" minOccurs="0"/>
+					<xs:element name="PostCode" type="xs:string" minOccurs="0"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+		<xs:complexType name="RoleType">
+		<xs:annotation>
+			<xs:documentation>Role as defined by application type, location and team</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="IdentType">
+				<xs:sequence>
+					<xs:element name="Application" type="ApplicationType" minOccurs="0"/>
+					<xs:element name="Team" type="IdentType" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Points to a team in the team directory</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="Location" type="IdentType" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Points to the location directory</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+		<xs:complexType name="ApplicationType">
+		<xs:annotation>
+			<xs:documentation>Nature of the EMIS PCS application that the user is using
+e.g.GP, DDU (drug dependency) PO (podiatry)</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="IdentType">
+				<xs:sequence>
+					<xs:element name="ApplicationMnemonic" type="xs:string" minOccurs="0"/>
+					<xs:element name="ApplicationName" minOccurs="0">
+						<xs:simpleType>
+							<xs:restriction base="xs:string"/>
+						</xs:simpleType>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+</xs:schema>
