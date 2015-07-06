@@ -45,6 +45,9 @@ namespace DotNetGPSystem
         string GetPatientAppointments(string odsCode, Guid patientGuid, DateTime fromDate, DateTime toDate);
 
         [OperationContract]
+        bool BookAppointment(string odsCode, int slotId, Guid patientGuid, string reason);
+
+        [OperationContract]
         string GetUserByID(string odsCode, int userInRoleId);
     }       
 }

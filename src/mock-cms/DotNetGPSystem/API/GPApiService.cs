@@ -63,15 +63,13 @@ namespace DotNetGPSystem
 
         public string GetPatient(string odsCode, Guid patientGuid)
         {
-            OpenHRPatient[] patients = DataStore
-                .GetPatients(odsCode)
-                .Where(t => new Guid(t.Patient.id) == patientGuid)
-                .ToArray();
+            OpenHRPatient patient = DataStore
+                .GetPatient(odsCode, patientGuid);
 
-            if (patients.Length == 0)
+            if (patient == null)
                 return string.Empty;
 
-            return patients.FirstOrDefault().OpenHRXml;
+            return patient.OpenHRXml;
 
         }
 
@@ -134,6 +132,27 @@ namespace DotNetGPSystem
             }
 
             return result;
+        }
+
+        public bool BookAppointment(string odsCode, int slotId, Guid patientGuid, string reason)
+        {
+            Slot slot = DataStore.GetSlot(odsCode, slotId);
+
+            if (slot != null)
+            {
+                if (slot.Patient == null)
+                {
+                    OpenHRPatient patient = DataStore.GetPatient(odsCode, patientGuid);
+
+                    if (patient != null)
+                    {
+                        slot.Patient = patient;
+                        return true;
+                    }
+                }
+            }
+            
+            return false;
         }
     }
 }

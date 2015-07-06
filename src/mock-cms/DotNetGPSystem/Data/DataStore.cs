@@ -180,6 +180,12 @@ namespace DotNetGPSystem
                 .ToArray();
         }
 
+        public static OpenHRPatient GetPatient(string odsCode, Guid patientGuid)
+        {
+            return GetPatients(odsCode)
+                .SingleOrDefault(t => new Guid(t.Patient.id) == patientGuid);
+        }
+
         public static KeyValuePair<DateTime, OpenHRPatient>[] GetPatientChangeList(string odsCode)
         {
             return _patientChangeList
@@ -263,6 +269,15 @@ namespace DotNetGPSystem
                 return null;
 
             return session.Slots;
+        }
+
+        public static Slot GetSlot(string odsCode, int slotId)
+        {
+            return AppointmentSessions
+                .Where(t => t.Organisation.Organisation.nationalPracticeCode == odsCode)
+                .SelectMany(t => t.Slots)
+                .FirstOrDefault(t => t.SlotId == slotId);
+                
         }
 
         public static Slot[] GetSlotsForPatient(string odsCode, Guid patientGuid, DateTime fromDate, DateTime toDate)
