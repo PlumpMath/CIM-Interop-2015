@@ -311,4 +311,8 @@ public class TestDataAdapter implements IDataAdapter {
 				"  </AppointmentSession>\n" +
 				"</AppointmentSessionList>";
 	}
+
+	public String getUserById(String odsCode, String userId) throws Exception {
+		return "";
+	}
 }

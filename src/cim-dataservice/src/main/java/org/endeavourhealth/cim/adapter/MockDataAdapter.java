@@ -331,6 +331,34 @@ public class MockDataAdapter implements IDataAdapter {
         }
     }
 
+    public String getUserById(String odsCode, String userId) {
+        SOAPConnection soapConnection = null;
+        try {
+            try {
+                soapConnection = createSOAPConnection();
+
+                SOAPMessage requestMessage = createSOAPRequestMessage("GetUserByID");
+
+                SOAPElement soapMethodElement = createSOAPMethodElement(requestMessage, "GetUserByID", "http://tempuri.org/");
+
+                createChildTextElement(soapMethodElement, "odsCode", odsCode);
+                createChildTextElement(soapMethodElement, "userInRoleId", userId);
+
+                requestMessage.saveChanges();
+
+                SOAPMessage soapResponse = soapConnection.call(requestMessage, _soapUri + "/GetUserByID");
+                return soapResponse.getSOAPBody().getElementsByTagName("GetUserByIDResult").item(0).getTextContent();
+            } finally {
+                if (soapConnection != null)
+                    soapConnection.close();
+            }
+        }
+        catch (Exception e){
+            e.printStackTrace();
+            return null;
+        }
+    }
+
     // Utility methods
     private static SOAPConnection createSOAPConnection() throws SOAPException {
         SOAPConnectionFactory soapConnectionFactory = SOAPConnectionFactory.newInstance();

@@ -1,7 +1,10 @@
 package org.endeavourhealth.cim.common;
 
+import org.hl7.fhir.instance.model.Practitioner;
 import org.hl7.fhir.instance.model.Reference;
 import org.hl7.fhir.instance.model.Resource;
+
+import java.util.HashMap;
 
 public class ReferenceHelper {
     public static <T extends Resource> String createResourceReference(Class<T> resourceClass, String id) {
@@ -30,5 +33,14 @@ public class ReferenceHelper {
             return null;
 
         return parts[1];
+    }
+
+    public static <T extends Resource> void updateReferenceFromMap(Reference reference, Class<T> resourceClass, HashMap<String, String> updateMap) {
+        String referenceId = getReferenceId(reference, resourceClass);
+
+        if (!TextUtils.isNullOrTrimmedEmpty(referenceId))
+            if (updateMap.containsKey(referenceId))
+                reference.setReference(ReferenceHelper.createResourceReference(Practitioner.class, updateMap.get(referenceId)));
+
     }
 }

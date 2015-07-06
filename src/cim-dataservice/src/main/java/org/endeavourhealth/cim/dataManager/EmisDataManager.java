@@ -1,19 +1,26 @@
 package org.endeavourhealth.cim.dataManager;
 
+import org.apache.camel.util.ResourceHelper;
 import org.endeavourhealth.cim.adapter.IDataAdapter;
 import org.endeavourhealth.cim.adapter.MockDataAdapter;
+import org.endeavourhealth.cim.common.BundleHelper;
 import org.endeavourhealth.cim.common.FhirFilterHelper;
+import org.endeavourhealth.cim.common.ReferenceHelper;
+import org.endeavourhealth.cim.common.TextUtils;
+import org.endeavourhealth.cim.transform.SerializationException;
+import org.endeavourhealth.cim.transform.TransformHelper;
 import org.endeavourhealth.cim.transform.emisopen.EmisOpenTransformer;
 import org.endeavourhealth.cim.transform.openhr.OpenHRTransformer;
+import org.endeavourhealth.cim.transform.schemas.emisopen.eomuserdetails.UserDetails;
 import org.hl7.fhir.instance.formats.JsonParser;
-import org.hl7.fhir.instance.model.Bundle;
-import org.hl7.fhir.instance.model.Condition;
-import org.hl7.fhir.instance.model.Order;
-import org.hl7.fhir.instance.model.Patient;
+import org.hl7.fhir.instance.model.*;
 
+import java.security.PrivilegedAction;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 @SuppressWarnings("unused")
 public class EmisDataManager implements IDataManager {
@@ -142,7 +149,47 @@ public class EmisDataManager implements IDataManager {
 
 		// Get patientApi data transformer for service (native format -> FHIR)
 		Bundle appointments = _emisOpenTransformer.toFHIRAppointmentBundle(patientId.toString(), appointmentDataInNativeFormat);
+
+		// Get practitioner user ids from appointment bundle
+		ArrayList<String> userIds = new ArrayList<String>();
+
+		BundleHelper
+				.getResourcesOfType(appointments, Appointment.class)
+				.forEach(t -> userIds.addAll(
+							t
+							.getParticipant()
+							.stream()
+							.map(s -> ReferenceHelper.getReferenceId(s.getActor(), Practitioner.class))
+							.filter(s -> !TextUtils.isNullOrTrimmedEmpty(s))
+							.distinct()
+							.collect(Collectors.toCollection(ArrayList<String>::new))));
+
+		// Create mapping between user ids and guids
+		HashMap<String, String> userIdGuidMap = new HashMap<String, String>();
+
+		for (String userId : userIds)
+			userIdGuidMap.put(userId, getUserGuidById(odsCode, Integer.parseInt(userId)));
+
+		// set user guids back to appointment bundle
+		BundleHelper
+				.getResourcesOfType(appointments, Appointment.class)
+				.forEach(t ->
+						t
+						.getParticipant()
+						.forEach(s -> ReferenceHelper.updateReferenceFromMap(s.getActor(), Practitioner.class, userIdGuidMap)));
+
 		return new JsonParser().composeString(appointments);
+	}
+
+	private String getUserGuidById(String odsCode, int userId) throws Exception {
+		String userXml = _emisDataAdapter.getUserById(odsCode, Integer.toString(userId));
+
+		if (TextUtils.isNullOrTrimmedEmpty(userXml))
+			return null;
+
+		UserDetails userDetails = TransformHelper.unmarshall(userXml, UserDetails.class);
+
+		return userDetails.getPerson().getGUID();
 	}
 
 	@Override
