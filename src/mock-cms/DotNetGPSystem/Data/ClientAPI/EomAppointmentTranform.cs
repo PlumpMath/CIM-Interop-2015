@@ -30,14 +30,19 @@ namespace DotNetGPSystem
                 Status = slot.Status,
                 HolderList = new EomGetPatientAppointments.HolderStruct[]
                 {
-                    new EomGetPatientAppointments.HolderStruct()
-                    {
-                        Title = slot.Patient.Person.title,
-                        FirstNames = slot.Patient.Person.forenames,
-                        LastName = slot.Patient.Person.surname,
-                        DBID = slot.Patient.PatientId
-                    }
+                    ToEomHolder2(slot.Session.User)
                 }
+            };
+        }
+
+        public static EomGetPatientAppointments.HolderStruct ToEomHolder2(OpenHRUser user)
+        {
+            return new EomGetPatientAppointments.HolderStruct()
+            {
+                Title = user.Person.title,
+                FirstNames = user.Person.forenames,
+                LastName = user.Person.surname,
+                DBID = user.OpenHRUserId
             };
         }
 
