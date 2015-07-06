@@ -1,5 +1,6 @@
 package org.endeavourhealth.cim.transform.emisopen.tofhir;
 
+import org.endeavourhealth.cim.common.BundleHelper;
 import org.endeavourhealth.cim.common.TextUtils;
 import org.endeavourhealth.cim.transform.SerializationException;
 import org.endeavourhealth.cim.transform.TransformFeatureNotSupportedException;
@@ -19,31 +20,18 @@ public class ToFHIRTransformer {
     public static Bundle transformToAppointmentBundle(String patientGuid, PatientAppointmentList patientAppointmentList) throws TransformFeatureNotSupportedException, SerializationException {
         ArrayList<Resource> resources = AppointmentTransformer.transformToAppointmentResources(patientGuid, patientAppointmentList);
 
-        return createBundle(resources, null);
+        return BundleHelper.createBundle(null, EmisOpenCommon.EMISOPEN_NAMESPACE, resources);
     }
 
     public static Bundle transformToScheduleBundle(AppointmentSessionList appointmentSessionList) throws TransformFeatureNotSupportedException, SerializationException {
         ArrayList<Resource> resources = ScheduleTransformer.transformToScheduleResources(appointmentSessionList);
 
-        return createBundle(resources, null);
+        return BundleHelper.createBundle(null, EmisOpenCommon.EMISOPEN_NAMESPACE, null);
     }
 
     public static Bundle transformToSlotBundle(String scheduleId, SlotListStruct appointmentSlotList) throws TransformFeatureNotSupportedException, SerializationException {
         ArrayList<Resource> resources = SlotTransformer.transformToSlotResources(scheduleId, appointmentSlotList);
 
-        return createBundle(resources, null);
-    }
-
-    private static Bundle createBundle(ArrayList<Resource> resources, String id) {
-        Bundle bundle = new Bundle()
-                .setType(Bundle.BundleType.COLLECTION)
-                .setBase(EmisOpenCommon.EMISOPEN_NAMESPACE);
-
-        if (!TextUtils.isNullOrTrimmedEmpty(id))
-            bundle.setId(id);
-
-        resources.forEach(t -> bundle.addEntry(new Bundle.BundleEntryComponent().setResource(t)));
-
-        return bundle;
+        return BundleHelper.createBundle(null, EmisOpenCommon.EMISOPEN_NAMESPACE, null);
     }
 }

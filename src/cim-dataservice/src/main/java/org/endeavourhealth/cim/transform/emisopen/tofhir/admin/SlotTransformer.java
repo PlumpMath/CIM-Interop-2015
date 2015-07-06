@@ -1,5 +1,6 @@
 package org.endeavourhealth.cim.transform.emisopen.tofhir.admin;
 
+import org.endeavourhealth.cim.common.ReferenceHelper;
 import org.endeavourhealth.cim.common.TextUtils;
 import org.endeavourhealth.cim.transform.SerializationException;
 import org.endeavourhealth.cim.transform.TransformFeatureNotSupportedException;
@@ -44,7 +45,7 @@ public class SlotTransformer {
         if (!TextUtils.isNullOrTrimmedEmpty(slotStatus))
             slot.setFreeBusyType(getSlotStatus(slotStatus));
 
-        slot.setSchedule(TransformHelper.createReference(Schedule.class, scheduleId));
+        slot.setSchedule(ReferenceHelper.createReference(Schedule.class, scheduleId));
 
         return slot;
     }

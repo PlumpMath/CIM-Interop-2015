@@ -1,6 +1,7 @@
 package org.endeavourhealth.cim.transform.openhr.tofhir.clinical;
 
 import org.apache.commons.lang3.StringUtils;
+import org.endeavourhealth.cim.common.ReferenceHelper;
 import org.endeavourhealth.cim.transform.SourceDocumentInvalidException;
 import org.endeavourhealth.cim.transform.TransformException;
 import org.endeavourhealth.cim.transform.TransformFeatureNotSupportedException;
@@ -44,7 +45,7 @@ class ConditionTransformer {
         // TODO: consider checking id Id is a valid guid
         if (StringUtils.isBlank(sourcePatientId))
             throw new SourceDocumentInvalidException("Invalid Patient Id");
-        return new Reference().setReference(TransformHelper.createResourceReference(Patient.class, sourcePatientId));
+        return new Reference().setReference(ReferenceHelper.createResourceReference(Patient.class, sourcePatientId));
     }
 
     private static Reference getEncounter(Map<String, String> eventEncouterMap, String eventId) {
@@ -52,14 +53,14 @@ class ConditionTransformer {
         if (StringUtils.isBlank(encounterId))
             return null;
 
-        return new Reference().setReference(TransformHelper.createResourceReference(Encounter.class, encounterId));
+        return new Reference().setReference(ReferenceHelper.createResourceReference(Encounter.class, encounterId));
     }
 
     private static Reference convertUserInRole(String userInRoleId) throws SourceDocumentInvalidException {
         if (StringUtils.isBlank(userInRoleId))
             throw new SourceDocumentInvalidException("UserInRoleId not found");
 
-        return new Reference().setReference(TransformHelper.createResourceReference(Practitioner.class, userInRoleId));
+        return new Reference().setReference(ReferenceHelper.createResourceReference(Practitioner.class, userInRoleId));
     }
 
     private static DateType convertEffectiveDateTime(DtDatePart source) throws TransformException {

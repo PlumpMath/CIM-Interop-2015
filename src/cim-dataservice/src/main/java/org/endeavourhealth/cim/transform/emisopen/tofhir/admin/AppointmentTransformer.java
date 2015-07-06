@@ -1,5 +1,6 @@
 package org.endeavourhealth.cim.transform.emisopen.tofhir.admin;
 
+import org.endeavourhealth.cim.common.ReferenceHelper;
 import org.endeavourhealth.cim.common.TextUtils;
 import org.endeavourhealth.cim.transform.SerializationException;
 import org.endeavourhealth.cim.transform.TransformFeatureNotSupportedException;
@@ -47,7 +48,7 @@ public class AppointmentTransformer {
         Date endTime = EmisOpenCommon.addMinutesToTime(startTime, Integer.parseInt(appointmentStruct.getDuration()));
         appointment.setEnd(endTime);
 
-        Reference reference = TransformHelper.createReference(Slot.class, Integer.toString(appointmentStruct.getSlotID()));
+        Reference reference = ReferenceHelper.createReference(Slot.class, Integer.toString(appointmentStruct.getSlotID()));
         appointment.addSlot(reference);
 
         Appointment.Participantrequired requiredStatus = Appointment.Participantrequired.REQUIRED;
@@ -67,7 +68,7 @@ public class AppointmentTransformer {
     private static <T extends Resource> Appointment.AppointmentParticipantComponent createParticipant(Class<T> resourceClass, String id, Appointment.Participantrequired required, Appointment.Participationstatus status) {
         Appointment.AppointmentParticipantComponent participant = new Appointment.AppointmentParticipantComponent();
 
-        Reference reference = TransformHelper.createReference(resourceClass, id);
+        Reference reference = ReferenceHelper.createReference(resourceClass, id);
 
         participant.setActor(reference);
         participant.setRequired(required);

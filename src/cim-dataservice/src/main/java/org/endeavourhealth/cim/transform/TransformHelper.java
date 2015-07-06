@@ -30,16 +30,6 @@ public class TransformHelper {
         return DatatypeFactory.newInstance().newXMLGregorianCalendar(gregorianCalendar);
     }
 
-    public static <T extends Resource> String createResourceReference(Class<T> resourceClass, String id) {
-        return resourceClass.getSimpleName() + "/" + id;
-    }
-
-    public static <T extends Resource> Reference createReference(Class<T> resourceClass, String id) {
-        Reference reference = new Reference();
-        reference.setReference(createResourceReference(resourceClass, id));
-        return reference;
-    }
-
     public static <T> T unmarshall(String xml, Class<T> objectClass) throws SerializationException {
         try  {
             StringReader reader = new StringReader(xml);

@@ -1,6 +1,7 @@
 package org.endeavourhealth.cim.transform.openhr.tofhir.admin;
 
 import org.apache.commons.lang3.StringUtils;
+import org.endeavourhealth.cim.common.ReferenceHelper;
 import org.endeavourhealth.cim.common.StreamExtension;
 import org.endeavourhealth.cim.transform.SourceDocumentInvalidException;
 import org.endeavourhealth.cim.transform.TransformException;
@@ -70,7 +71,7 @@ class LocationTransformer {
             return null;
 
         return new Reference()
-                .setReference(TransformHelper.createResourceReference(Location.class, parentLocationId));
+                .setReference(ReferenceHelper.createResourceReference(Location.class, parentLocationId));
     }
 
     private static Location.LocationStatus convertCloseDateToStatus(XMLGregorianCalendar closeDate) {
@@ -92,7 +93,7 @@ class LocationTransformer {
             return null;
 
         return new Reference()
-                .setReference(TransformHelper.createResourceReference(Organization.class, organisationWithLocationMatch.getId()));
+                .setReference(ReferenceHelper.createResourceReference(Organization.class, organisationWithLocationMatch.getId()));
     }
 
     private static void addLocationTypeExtension(OpenHR001LocationType locationType, Location target) {

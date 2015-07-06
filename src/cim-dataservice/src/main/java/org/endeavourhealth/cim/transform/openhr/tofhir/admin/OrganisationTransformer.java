@@ -1,6 +1,7 @@
 package org.endeavourhealth.cim.transform.openhr.tofhir.admin;
 
 import org.apache.commons.lang3.StringUtils;
+import org.endeavourhealth.cim.common.ReferenceHelper;
 import org.endeavourhealth.cim.common.StreamExtension;
 import org.endeavourhealth.cim.transform.TransformHelper;
 import org.endeavourhealth.cim.transform.SourceDocumentInvalidException;
@@ -123,6 +124,6 @@ class OrganisationTransformer {
             return null;
 
         return new Reference()
-                .setReference(TransformHelper.createResourceReference(Organization.class, parentOrganisationId));
+                .setReference(ReferenceHelper.createResourceReference(Organization.class, parentOrganisationId));
     }
 }

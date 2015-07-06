@@ -1,5 +1,6 @@
 package org.endeavourhealth.cim.transform.openhr.tofhir.admin;
 
+import org.endeavourhealth.cim.common.ReferenceHelper;
 import org.endeavourhealth.cim.common.StreamExtension;
 import org.endeavourhealth.cim.transform.TransformHelper;
 import org.endeavourhealth.cim.transform.SourceDocumentInvalidException;
@@ -50,7 +51,7 @@ class PractitionerTransformer {
         }
 
         Practitioner.PractitionerPractitionerRoleComponent practitionerRole =  practitioner.addPractitionerRole();
-        practitionerRole.setManagingOrganization(new Reference().setReference(TransformHelper.createResourceReference(Organization.class, role.getOrganisation())));
+        practitionerRole.setManagingOrganization(new Reference().setReference(ReferenceHelper.createResourceReference(Organization.class, role.getOrganisation())));
 
         DtCode userCategory = role.getUserCategory();
 

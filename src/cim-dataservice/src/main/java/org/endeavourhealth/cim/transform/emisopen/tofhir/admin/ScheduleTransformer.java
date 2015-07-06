@@ -1,5 +1,6 @@
 package org.endeavourhealth.cim.transform.emisopen.tofhir.admin;
 
+import org.endeavourhealth.cim.common.ReferenceHelper;
 import org.endeavourhealth.cim.transform.SerializationException;
 import org.endeavourhealth.cim.transform.TransformFeatureNotSupportedException;
 import org.endeavourhealth.cim.transform.emisopen.EmisOpenCommon;
@@ -42,7 +43,7 @@ public class ScheduleTransformer {
         schedule.setId(Integer.toString(appointmentSession.getDBID()));
         schedule.setComment(appointmentSession.getName());
 
-        Reference reference = TransformHelper.createReference(Practitioner.class, practitioner.getId());
+        Reference reference = ReferenceHelper.createReference(Practitioner.class, practitioner.getId());
 
         schedule.setActor(reference);
 
