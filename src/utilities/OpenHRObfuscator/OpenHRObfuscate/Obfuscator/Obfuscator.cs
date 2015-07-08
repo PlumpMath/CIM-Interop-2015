@@ -10,11 +10,19 @@ namespace OpenHRObfuscate
 {
     public class Obfuscator
     {
+        private NameList _nameList;
+        private AddressList _addressList;
+        private string[] _organisationTypesToLeaveUnmodified = new string[] { "National Health Service", "Primary Care Trust", "Strategic Health Authority", "EMIS" };
+        private string[] _organisationNamePrefixes = new string[] { "Alpha", "Bravo", "Delta", "Echo", "Foxtrot", "India", "Juliet", "Kilo", "Lima", "November", "Oscar", "Quebec", "Romeo", "Sierra", "Tango", "Uniform", "Yankee", "Zulu" };
+        private int _nextOrganisationNameIndex = 0;
+
+        private Dictionary<string, string> _organisationNameMap = new Dictionary<string, string>();
         private Dictionary<Guid, Guid> _guidMap = new Dictionary<Guid, Guid>();
         private Dictionary<Guid, Name> _nameMap = new Dictionary<Guid, Name>();
         private Dictionary<string, Address> _addressMap = new Dictionary<string, Address>();
-        private NameList _nameList;
-        private AddressList _addressList;
+        private Dictionary<string, string> _phoneNumberMap = new Dictionary<string, string>();
+        private Dictionary<int, int> _cdbMap = new Dictionary<int, int>();
+        
         private Random _random = new Random(DateTime.Now.Millisecond);
         
         public Obfuscator()
@@ -29,8 +37,10 @@ namespace OpenHRObfuscate
             {
                 openHRFile.OpenHR = Deserialize(openHRFile.InputText);
 
+                UpdateOrganisationAndLocations(openHRFile.OpenHR);
                 UpdatePersonNames(openHRFile.OpenHR);
                 UpdateAddressFields(openHRFile.OpenHR);
+                //UpdatePhoneNumberFields(openHRFile.OpenHR);
                 UpdateAllGuidFields(openHRFile.OpenHR);
                 ReorderArrays(openHRFile.OpenHR);
 
@@ -44,6 +54,71 @@ namespace OpenHRObfuscate
             _addressList = new AddressList();
         }
         
+        private void UpdateOrganisationAndLocations(OpenHR.OpenHR001OpenHealthRecord openHR)
+        {
+            foreach (OpenHR.OpenHR001Organisation organisation in openHR.adminDomain.organisation)
+            {
+                UpdateOrganisationCDB(organisation);
+                
+                string organisationTypeDescription = organisation.organisationType.WhenNotNull(t => t.displayName);
+
+                if (!_organisationTypesToLeaveUnmodified.Contains(organisationTypeDescription))
+                {
+                    if (!_organisationNameMap.ContainsKey(organisation.name))
+                        _organisationNameMap.Add(organisation.name, GetNextOrganisationName(organisationTypeDescription));
+
+                    organisation.name = _organisationNameMap[organisation.name];
+                    
+                    if (!string.IsNullOrEmpty(organisation.nationalPracticeCode))
+                        organisation.nationalPracticeCode = organisation.name.First().ToString().ToUpper() + "99999";
+                }
+            }
+        }
+
+        private string GetNextOrganisationName(string organisationTypeDescription)
+        {
+            string nameSuffix = organisationTypeDescription;
+
+            if (organisationTypeDescription == "General Practice")
+                nameSuffix = "Surgery";
+            else if (organisationTypeDescription == "Hospital")
+                nameSuffix = "Hospital";
+
+            if (_nextOrganisationNameIndex > (_organisationNamePrefixes.Length - 1))
+                _nextOrganisationNameIndex = 0;
+            
+            return _organisationNamePrefixes[_nextOrganisationNameIndex++] + " " + nameSuffix;
+        }
+
+        private void UpdateOrganisationCDB(OpenHR.OpenHR001Organisation organisation)
+        {
+            if (organisation.cdb < 0)
+            {
+                organisation.cdb = 0;
+                organisation.cdbSpecified = false;
+            }
+            else if (organisation.cdb != 0)
+            {
+                if (!_cdbMap.ContainsKey(organisation.cdb))
+                    _cdbMap.Add(organisation.cdb, _random.Next(10, 999) * 100);
+
+                organisation.cdb = _cdbMap[organisation.cdb];
+            }
+        }
+
+        //private void UpdatePhoneNumberFields(OpenHR.OpenHR001OpenHealthRecord openHR)
+        //{
+
+        //    OpenHR.dtContact[] contacts = ReflectionHelper.GetObjectsOfType<OpenHR.dtContact>(openHR);
+
+        //    OpenHR.OpenHR001PatientContact[] patientContacts = ReflectionHelper.GetObjectsOfType<OpenHR.OpenHR001PatientContact>(openHR);
+
+        //    OpenHR.OpenHR001PatientCarer[] patientCarers = ReflectionHelper.GetObjectsOfType<OpenHR.OpenHR001PatientCarer>(openHR);
+
+        //    OpenHR.OpenHR001EtpPrescription[] prescriptions = ReflectionHelper.GetObjectsOfType<OpenHR.OpenHR001EtpPrescription>(openHR);
+
+        //}
+
         private void UpdatePersonNames(OpenHR.OpenHR001OpenHealthRecord openHR)
         {
             foreach (OpenHR.OpenHR001Person person in openHR.adminDomain.person)
