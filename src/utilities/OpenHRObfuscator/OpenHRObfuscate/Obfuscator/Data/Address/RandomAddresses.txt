@@ -1,0 +1,324 @@
+23,Norman View,,Leeds,West Yorkshire,LS5 3JJ
+7,Ghyll Royd,Guiseley,Leeds,West Yorkshire,LS20 9LT
+38A,Nixon Avenue,,Leeds,West Yorkshire,LS9 9BE
+52,Southway,Guiseley,Leeds,West Yorkshire,LS20 8JE
+1,Potternewton Lane,,Leeds,West Yorkshire,LS7 3DD
+65,Easterly Road,,Leeds,West Yorkshire,LS8 2TW
+26,Arncliffe Road,,Leeds,West Yorkshire,LS16 5AP
+6,Holly Bank,Garforth,Leeds,West Yorkshire,LS25 2JL
+4,High Ash Avenue,,Leeds,West Yorkshire,LS17 8RR
+1,Victoria Street,,Leeds,West Yorkshire,LS3 1BT
+4,Broughton Terrace,,Pudsey,West Yorkshire,LS28 7QG
+7,Heaton's Court,,Leeds,West Yorkshire,LS1 4LJ
+5,Greenthorpe Road,,Leeds,West Yorkshire,LS13 4LL
+,Renison Avenue,,Leeds,West Yorkshire,LS15 9JL
+11,Low Way,Clifford,Wetherby,West Yorkshire,LS23 6LB
+34,Woodlands Park Road,,Pudsey,West Yorkshire,LS28 8LX
+129,Spen Lane,,Leeds,West Yorkshire,LS16 5BF
+5,Parkinson Way,Guiseley,Leeds,West Yorkshire,LS20 9PJ
+29,Scott Green Drive,Gildersome,Leeds,West Yorkshire,LS27 7BZ
+1,Cadman Court,Morley,Leeds,West Yorkshire,LS27 0RX
+16,Woodlands Grove,,Pudsey,West Yorkshire,LS28 6QQ
+29,Saint Matthias' Street,,Leeds,West Yorkshire,LS4 2DZ
+19,The Moorlands,,Wetherby,West Yorkshire,LS22 6TA
+31A,King Lane,,Leeds,West Yorkshire,LS17 5PP
+4A,Cambridge Gardens,,Leeds,West Yorkshire,LS13 3LT
+21A,Leopold Street,,Leeds,West Yorkshire,LS7 4DA
+5,Croft Park,Menston,Ilkley,West Yorkshire,LS29 6NA
+6,Wesley Close,,Leeds,West Yorkshire,LS11 8RG
+4,Rowland Road,,Leeds,West Yorkshire,LS11 6ED
+14,Ingle Court,Morley,Leeds,West Yorkshire,LS27 9RG
+150,Birchwood Hill,,Leeds,West Yorkshire,LS17 8NS
+6,Birkdale Walk,,Leeds,West Yorkshire,LS17 7SX
+448A,Street Lane,,Leeds,West Yorkshire,LS17 6RB
+34,Glen Road,Morley,Leeds,West Yorkshire,LS27 9HG
+2,Castle Lodge Garth,Rothwell,Leeds,West Yorkshire,LS26 0ZE
+14,Dovedale Garth,,Leeds,West Yorkshire,LS15 8UW
+2,Foundry Square,,Leeds,West Yorkshire,LS11 5DL
+26,Lakeside Chase,Rawdon,Leeds,West Yorkshire,LS19 6RL
+73,Compton Crescent,,Leeds,West Yorkshire,LS9 6DQ
+15,Cragg Terrace,Horsforth,Leeds,West Yorkshire,LS18 4NS
+6,Monkswood,,Leeds,West Yorkshire,LS5 3QZ
+3,Hall Grove,,Leeds,West Yorkshire,LS6 1NT
+9,Falcon Mews,Morley,Leeds,West Yorkshire,LS27 8UP
+35,Thorn Lane,,Leeds,West Yorkshire,LS8 1NF
+101,Wellington Road,,Leeds,West Yorkshire,LS12 1DX
+22,King Edward Street,,Leeds,West Yorkshire,LS1 6AX
+34,Glen Road,Morley,Leeds,West Yorkshire,LS27 9HG
+5,The Lea,Garforth,Leeds,West Yorkshire,LS25 2BT
+6,Glebe Field Garth,,Wetherby,West Yorkshire,LS22 6WH
+15,Eastwood Nook,,Leeds,West Yorkshire,LS14 5HG
+3,Christ Church Place,,Leeds,West Yorkshire,LS12 3NJ
+128B,Main Street,Shadwell,Leeds,West Yorkshire,LS17 8JB
+61,East Park Street,,Leeds,West Yorkshire,LS9 9NF
+33,Adel Green,,Leeds,West Yorkshire,LS16 8JX
+12,Croft Rise,Menston,Ilkley,West Yorkshire,LS29 6LU
+19,Northwood Gardens,,Leeds,West Yorkshire,LS15 9HH
+212,Leeds Road,Kippax,Leeds,West Yorkshire,LS25 7EH
+6,Monkswood,,Leeds,West Yorkshire,LS5 3QZ
+58,Hough End Lane,,Leeds,West Yorkshire,LS13 4HA
+1,Parlington Court,Barwick in Elmet,Leeds,West Yorkshire,LS15 4EB
+10,Winrose Grove,,Leeds,West Yorkshire,LS10 3DX
+23,Balbec Avenue,,Leeds,West Yorkshire,LS6 2BB
+14,Appleton Grove,,Leeds,West Yorkshire,LS9 9EN
+,Carlton Court,,Leeds,West Yorkshire,LS12 6LT
+2,Elmwood Chase,Barwick in Elmet,Leeds,West Yorkshire,LS15 4JZ
+51,Oldfield Lane,,Leeds,West Yorkshire,LS12 4BS
+14,Saint Chad's Road,,Leeds,West Yorkshire,LS16 5QS
+20,Gordon Terrace,,Leeds,West Yorkshire,LS6 4HX
+49,Burley Lodge Street,,Leeds,West Yorkshire,LS6 1QB
+232,Town Street,,Leeds,West Yorkshire,LS10 3SF
+1,Motley Lane,Guiseley,Leeds,West Yorkshire,LS20 9EE
+75,Ash Tree Walk,,Tadcaster,North Yorkshire,LS24 9HW
+3,Church Lane,,Leeds,West Yorkshire,LS6 4NP
+98,Kirkstall Road,,Leeds,West Yorkshire,LS3 1YN
+8A,Town Gate,Calverley,Pudsey,West Yorkshire,LS28 5NF
+1,Swardale Road,,Leeds,West Yorkshire,LS14 5HN
+59,Foxhill Court,,Leeds,West Yorkshire,LS16 5PJ
+37,Nesfield View,,Leeds,West Yorkshire,LS10 3LA
+,Harrogate Road,,Leeds,North Yorkshire,LS17 0EY
+66D,Harehills Lane,,Leeds,West Yorkshire,LS8 4JA
+1,Woodnook Drive,,Leeds,West Yorkshire,LS16 6DY
+16,Cranbrook Avenue,,Leeds,West Yorkshire,LS11 7AX
+3,Turners Yard,Farsley,Pudsey,West Yorkshire,LS28 5EX
+65A,Carden Avenue,,Leeds,West Yorkshire,LS15 0EJ
+79A,Hall Lane,,Leeds,West Yorkshire,LS12 1PQ
+17,Southlands Avenue,Rawdon,Leeds,West Yorkshire,LS19 6JN
+17,Grange View Gardens,,Leeds,West Yorkshire,LS17 8NL
+134A,High Street,Boston Spa,Wetherby,West Yorkshire,LS23 6BW
+30,Cavendish Mews,,Leeds,West Yorkshire,LS17 7WW
+6,Whincover Bank,,Leeds,West Yorkshire,LS12 5JW
+18A,Heuthwaite Avenue,,Wetherby,West Yorkshire,LS22 6RR
+80,Crescent Grange,,Leeds,West Yorkshire,LS11 5UW
+26,Woodland Road,,Leeds,West Yorkshire,LS15 7SF
+15,Cobden Terrace,,Leeds,West Yorkshire,LS12 5LE
+99,Breary Lane,Yeadon,Leeds,West Yorkshire,LS19 9EU
+44,Larkhill Close,,Leeds,West Yorkshire,LS8 1QZ
+25,Swarcliffe Drive,,Leeds,West Yorkshire,LS14 5JW
+1,Caraway Drive,,Leeds,West Yorkshire,LS6 4RZ
+14,Flaxton Street,,Leeds,West Yorkshire,LS11 6DQ
+172,Bowman Lane,,Leeds,West Yorkshire,LS10 1HQ
+4,Saint Helen's Drive,Micklefield,Leeds,West Yorkshire,LS25 4AY
+6,Black Wood Grove,,Leeds,West Yorkshire,LS16 7BJ
+5,Walford Avenue,,Leeds,West Yorkshire,LS9 7RB
+33,Hammerton Drive,Garforth,Leeds,West Yorkshire,LS25 2BJ
+42,Shay Street,,Leeds,West Yorkshire,LS6 2PZ
+11A,Wendel Avenue,Barwick in Elmet,Leeds,West Yorkshire,LS15 4JU
+11,Elder Croft,,Leeds,West Yorkshire,LS13 4BX
+22,Shirley Close,,Otley,West Yorkshire,LS21 1HF
+482,Stanningley Road,,Leeds,West Yorkshire,LS13 3HZ
+29,Whitebridge Crescent,,Leeds,West Yorkshire,LS9 0EF
+4,Henley Crescent,,Leeds,West Yorkshire,LS13 3AH
+10,Creskeld Park,Bramhope,Leeds,West Yorkshire,LS16 9EZ
+,B6451,,Otley,North Yorkshire,LS21 2RA
+66,Green Road,,Leeds,West Yorkshire,LS6 4JP
+57,Beechwood,Woodlesford,Leeds,West Yorkshire,LS26 8PQ
+24,Browsfield Road,Addingham,Ilkley,West Yorkshire,LS29 0TF
+15,Providence Street,Farsley,Pudsey,West Yorkshire,LS28 5AZ
+4,Avenue Terrace,Yeadon,Leeds,West Yorkshire,LS19 7AT
+7,Lascelles Street,,Leeds,West Yorkshire,LS8 5PW
+9,Spring Hill Terrace,,Leeds,West Yorkshire,LS6 4EY
+8,Haddon Avenue,,Leeds,West Yorkshire,LS4 2JF
+110C,Fir Tree Approach,,Leeds,West Yorkshire,LS17 7EX
+16,Baildon Walk,,Leeds,West Yorkshire,LS14 2BN
+70A,Leeds Road,Oulton,Leeds,West Yorkshire,LS26 8JY
+6,Field House Close,,Wetherby,West Yorkshire,LS22 6UD
+2A,Hessle Terrace,,Leeds,West Yorkshire,LS6 1EQ
+4,Carlton Hill,,Leeds,West Yorkshire,LS7 1NT
+,Braythorne Lane,,Otley,North Yorkshire,LS21 2LW
+6,Wood Street,Horsforth,Leeds,West Yorkshire,LS18 5PH
+10,Westbourne Grove,,Otley,West Yorkshire,LS21 3LJ
+3,Gillroyd Parade,Morley,Leeds,West Yorkshire,LS27 8AN
+10,Leconfield Court,,Wetherby,West Yorkshire,LS22 6TY
+21,Newell Square,,Pudsey,West Yorkshire,LS28 8PQ
+59,Lincombe Drive,,Leeds,West Yorkshire,LS8 1PS
+2,Bodmin Garth,,Leeds,West Yorkshire,LS10 4NU
+39,Coxwold View,,Wetherby,West Yorkshire,LS22 7PU
+1,Pinfold Hill,,Leeds,West Yorkshire,LS15 0PW
+8,Rose Avenue,Sherburn in Elmet,Leeds,North Yorkshire,LS25 6AY
+79A,Silver Royd Hill,,Leeds,West Yorkshire,LS12 4QQ
+,Templenewsam Road,,Leeds,West Yorkshire,LS15 0BG
+2,Sunny Bank,,Leeds,West Yorkshire,LS8 4EB
+37,Coronation Parade,,Leeds,West Yorkshire,LS15 0BX
+10,Sandfield Garth,,Leeds,West Yorkshire,LS6 4JL
+10A,Manston Gardens,,Leeds,West Yorkshire,LS15 8EX
+17,Saint Paul's Street,Morley,Leeds,West Yorkshire,LS27 9EP
+12A,Whinbrook Crescent,,Leeds,West Yorkshire,LS17 5PN
+277A,Middleton Road,,Leeds,West Yorkshire,LS10 3JB
+50A,Bradford Road,Menston,Ilkley,West Yorkshire,LS29 6BX
+64,Coal Road,,Leeds,West Yorkshire,LS14 2AF
+7,Micklethwaite Stables,,Wetherby,West Yorkshire,LS22 5LL
+108A,Cross Flatts Grove,,Leeds,West Yorkshire,LS11 7JD
+7,Landseer Crescent,,Leeds,West Yorkshire,LS13 2RB
+,Parkinson Approach,Garforth,Leeds,West Yorkshire,LS25 2DX
+19,Maud Avenue,,Leeds,West Yorkshire,LS11 7DN
+15,Park Lane,Kippax,Leeds,West Yorkshire,LS25 7AP
+12,Ashwood,,Leeds,West Yorkshire,LS14 2HA
+Feb-33,Sholebroke Place,,Leeds,West Yorkshire,LS7 3HJ
+43A,Clough Street,Morley,Leeds,West Yorkshire,LS27 8RL
+1,Stadium Way,,Leeds,West Yorkshire,LS11 0EW
+1,Greaves Yd,,Pudsey,West Yorkshire,LS28 8NJ
+16,Longroyd Grove,,Leeds,West Yorkshire,LS11 5HQ
+38,Low Garth Road,Sherburn in Elmet,Leeds,North Yorkshire,LS25 6DH
+10,Barkly Street,,Leeds,West Yorkshire,LS11 7HA
+14,Belvedere Avenue,,Leeds,West Yorkshire,LS17 8BW
+10,Fern Lea View,,Pudsey,West Yorkshire,LS28 6JX
+14,Crawshaw Hill,,Pudsey,West Yorkshire,LS28 7BW
+159A,Old Lane,,Leeds,West Yorkshire,LS11 7AQ
+5,Wharfe Bank Terrace,,Tadcaster,North Yorkshire,LS24 9BA
+375-377,Harrogate Road,,Leeds,West Yorkshire,LS17 6DW
+10,Bank Gardens,Horsforth,Leeds,West Yorkshire,LS18 4QT
+46,Church Lane,Micklefield,Leeds,West Yorkshire,LS25 4AX
+33,Allerton Grange Way,,Leeds,West Yorkshire,LS17 6LP
+1A,Leeds Road,Barwick in Elmet,Leeds,West Yorkshire,LS15 4JE
+4,John O'Gaunts Walk,Rothwell,Leeds,West Yorkshire,LS26 0LR
+6,Langley Road,,Leeds,West Yorkshire,LS13 1DW
+1,Widows Row,Aberford,Leeds,West Yorkshire,LS25 3DR
+14,Bowood Avenue,,Leeds,West Yorkshire,LS7 2PU
+9,Southleigh View,,Leeds,West Yorkshire,LS11 5SJ
+,Lumley Avenue,,Leeds,West Yorkshire,LS4 2LS
+2,Woodlea Lane,,Leeds,West Yorkshire,LS6 4SX
+7,Moorland Road,,Leeds,West Yorkshire,LS6 1AL
+1,Billingwood Drive,Rawdon,Leeds,West Yorkshire,LS19 6PZ
+8,Royal Park Road,,Leeds,West Yorkshire,LS6 1HW
+64,Coal Road,,Leeds,West Yorkshire,LS14 2AF
+30,Chapel Green,,Pudsey,West Yorkshire,LS28 8PH
+69,Amberton Road,,Leeds,West Yorkshire,LS8 3AG
+22,Pasture Way,Sherburn in Elmet,Leeds,North Yorkshire,LS25 6LQ
+28A,Cobden Road,,Leeds,West Yorkshire,LS12 5LB
+18,Swithen's Street,Rothwell,Leeds,West Yorkshire,LS26 0BU
+6B,High Street,Yeadon,Leeds,West Yorkshire,LS19 7PP
+51,Woodside Park Drive,Horsforth,Leeds,West Yorkshire,LS18 4TG
+17A,Ederoyd Drive,,Pudsey,West Yorkshire,LS28 7RB
+12A,Ingledew Court,,Leeds,West Yorkshire,LS17 8TP
+23,Cranmore Crescent,,Leeds,West Yorkshire,LS10 4AN
+3,Staithe Avenue,,Leeds,West Yorkshire,LS10 3LU
+14A,Harrier Way,Morley,Leeds,West Yorkshire,LS27 8TG
+33A,Regent Park Terrace,,Leeds,West Yorkshire,LS6 2AX
+2,Providence Villas,Clifford,Wetherby,West Yorkshire,LS23 6HS
+49,Primrose Hill Drive,Swillington,Leeds,West Yorkshire,LS26 8XL
+9,Chartwell Court,,Leeds,West Yorkshire,LS17 8AY
+203,Bodmin Crescent,,Leeds,West Yorkshire,LS10 4NE
+4,Beechfield,,Leeds,West Yorkshire,LS12 5QS
+24-26,Trentham Grove,,Leeds,West Yorkshire,LS11 6HT
+1,Victoria Road,Burley in Wharfedale,Ilkley,West Yorkshire,LS29 7HX
+9,South Farm Road,,Leeds,West Yorkshire,LS9 6NY
+17,Hollin Park Crescent,,Leeds,West Yorkshire,LS8 3HH
+97,Ackroyd Street,Morley,Leeds,West Yorkshire,LS27 8BP
+3,Dysons Houses,,Leeds,West Yorkshire,LS4 2QW
+18,Grange Road,Burley in Wharfedale,Ilkley,West Yorkshire,LS29 7HB
+3,James Avenue,,Leeds,West Yorkshire,LS8 1LH
+28A,Manor Road,Rothwell,Leeds,West Yorkshire,LS26 0RD
+,Unnamed Road,,Tadcaster,North Yorkshire,LS24 8BR
+5,Saxon Way,Sherburn in Elmet,Leeds,North Yorkshire,LS25 6PP
+2,Deanswood View,,Leeds,West Yorkshire,LS17 5JU
+18,Arksey Terrace,,Leeds,West Yorkshire,LS12 2NQ
+4,Holt Garth,,Leeds,West Yorkshire,LS16 7QN
+14,Oriental Street,,Leeds,West Yorkshire,LS12 1UE
+1,Audby Lane,,Wetherby,West Yorkshire,LS22 7FL
+71,Torre Road,,Leeds,West Yorkshire,LS9 7QL
+2,Aberfield Gardens,,Leeds,West Yorkshire,LS10 3QL
+8,Bawn Gardens,,Leeds,West Yorkshire,LS12 5QQ
+1,Sugar Hill,Addingham,Ilkley,West Yorkshire,LS29 0PE
+6,Britannia Street,,Leeds,West Yorkshire,LS1 2DZ
+4,Storey Place,,Leeds,West Yorkshire,LS14 6AW
+1,Fitzroy Drive,,Leeds,West Yorkshire,LS8 4AB
+19,Falkland Rise,,Leeds,West Yorkshire,LS17 6JQ
+37,Braine Road,,Wetherby,West Yorkshire,LS22 6NP
+1,Chesterton Court,,Leeds,West Yorkshire,LS15 9HW
+279,Selby Road,,Leeds,West Yorkshire,LS15 7JS
+37,Mozart Way,Churwell,Leeds,West Yorkshire,LS27 7GQ
+3,Welton Grove,,Leeds,West Yorkshire,LS6 1ES
+29,Meadow Park Crescent,,Pudsey,West Yorkshire,LS28 7TN
+21,Swallow Drive,Pool in Wharfedale,Otley,West Yorkshire,LS21 1RS
+22,Claremont Grove,,Pudsey,West Yorkshire,LS28 7DJ
+5,Cotton Street,,Leeds,West Yorkshire,LS9 8BR
+17,Grove Road,,Sutton,Greater London,SM1 1BA
+5,Holme Road,,Manchester,Greater Manchester,M20 2TX
+22,Moss Pit,,Stafford,Staffordshire,ST17 9JR
+22,Hilton Road,Seamer,Middlesbrough,North Yorkshire,TS9 5LU
+9,Penmaesglas,,Aberaeron,Ceredigion,SA46 0BL
+10,Lifton Avenue,,Manchester,Greater Manchester,M40 8DD
+9,Lawnside Road,,Southampton,Southampton,SO15 4GW
+525,Antrim Road,,Belfast,Belfast,BT15 3BW
+4,Church Road,Long Itchington,Southam,Warwickshire,CV47 9PG
+1,Ramsey Close,,Lutterworth,Leicestershire,LE17 4GH
+6,Westfield Croft,Brampton Bierlow,Rotherham,South Yorkshire,S63 6LW
+1,Mevril Springs Way,Road New,High Peak,Derbyshire,SK23 7JQ
+55-57,Nether Hall Road,,Doncaster,South Yorkshire,DN55 1US
+5,Newton Avenue,Radcliffe on Trent,Nottingham,Nottinghamshire,NG12 1BY
+70,Charlotte Street,,London,Greater London,W1T 4QG
+60,Winnall Manor Road,,Winchester,Hampshire,SO23 0NJ
+5,Addington Road,,Margate,Kent,CT9 1NH
+11,Puddledock,,London,Greater London,EC4V 3PD
+36,Robroyston Road,,Glasgow,Glasgow City,G33 1EQ
+4,Wesley Court,,Dartmouth,Devon,TQ6 9QD
+15,Reynolds Street,,Filey,North Yorkshire,YO14 9DT
+4,Tannery Close,Seven Waters,Stonehouse,Gloucestershire,GL10 3LL
+1007,Huddersfield Road,Wyke,Bradford,West Yorkshire,BD12 8LP
+120,Main Street,Ochiltree,Cumnock,East Ayrshire,KA18 2PG
+9,Allan Place,,Ayr,South Ayrshire,KA8 9PX
+,Lowesmoor Wharf,,Worcester,Worcestershire,WR1 1UT
+218,Broad Street,,Birmingham,West Midlands,B15 1AY
+143,Sefton Street,,Liverpool,Merseyside,L8 5SN
+,Unnamed Road,,Usk,Monmouthshire,NP15 1RJ
+,Unnamed Road,,Isle of Mull,Argyll and Bute,PA63 6AH
+34A,Wallsend Road,,North Shields,Tyne and Wear,NE29 7BP
+4,Eliot Way,Higham Ferrers,Rushden,Northamptonshire,NN10 8PG
+2,Highfield Drive,Farnworth,Bolton,Greater Manchester,BL4 0RN
+6,Warren Hill,,Torquay,Torbay,TQ2 5TD
+2,Goodwin Walk,,Peterborough,Peterborough,PE4 6GQ
+47,Hyde Close,Chafford Hundred,Grays,Essex,RM16 6RR
+33A,Newbury Road,,London,Greater London,E4 9JH
+12,Wall Croft,,Walsall,West Midlands,WS9 8QJ
+22-24,Main Street,Kirkby Green,Lincoln,Lincolnshire,LN4 3PE
+01-Feb,Newham Road,,Truro,Cornwall,TR1 2DP
+8,Seymour Place,Odiham,Hook,Hampshire,RG29 1AY
+200,High Street,,Canvey Island,Essex,SS8 7ST
+18,Knock Rash,Evanton,Dingwall,Highland,IV16 9XF
+10,Tabernacle Lane,Forncett Saint Peter,Norwich,Norfolk,NR16 1LE
+696,Dorchester Road,,Weymouth,Dorset,DT3 5LD
+12,Skylark Avenue,Walton Bay,Clevedon,North Somerset,BS21 7FR
+53,Fifth Street,Newtongrange,Dalkeith,Midlothian,EH22 4PJ
+19,Grange Road,,Bracknell,Bracknell Forest,RG12 2HY
+,Railway Terrace,,Inverness,Highland,IV2 7WE
+12,Adamstiles,Barrowby,Grantham,Lincolnshire,NG32 1TG
+,Boundary Way,,Woking,Surrey,GU21 5DH
+11,New Busines,,London,Greater London,E7 9AB
+12,Griffe Road,Wyke,Bradford,West Yorkshire,BD12 9JT
+38,Sewell Street,,London,Greater London,E13 8AT
+2,Inval Hill,,Haslemere,Surrey,GU27 1AP
+17,The Esplanade,Scratby,Great Yarmouth,Norfolk,NR29 3NZ
+39,West Bars,,Chesterfield,Derbyshire,S40 1AG
+95,Addison Road,,London,Greater London,W14 8DD
+65,Herbert Street,,Oldham,Greater Manchester,OL4 2QX
+23,Barnards Close,,Evesham,Worcestershire,WR11 1JD
+,Benhurst Court,,London,Greater London,SW16 2QW
+1,Harvey Road,,Truro,Cornwall,TR1 2XW
+7,Rothbury Gardens,,Wallsend,Tyne and Wear,NE28 7DZ
+9,Wearfield,,Sunderland,Tyne and Wear,SR5 2TG
+4B,Hungate Lane,Hunmanby,Filey,North Yorkshire,YO14 0NN
+51,De Montfort Street,,Leicester,Leicester,LE1 7BB
+7,Bluebell Close,Tittensor,Stoke-on-Trent,Staffordshire,ST12 9JP
+14,Bainesmore Drive,,Belfast,Belfast,BT13 3FF
+6,Buckmaster Close,,London,Greater London,SW9 0TG
+17,Saint Ann's Road,,London,Greater London,N9 9PJ
+42,Duff Street,,Macduff,Aberdeenshire,AB44 1LN
+33,Monteagle Way,,London,Greater London,E5 8PH
+97A,Glinton Road,Helpston,Peterborough,Peterborough,PE6 7DG
+97,Passage Road,,Bristol,City of Bristol,BS9 3LF
+10,Princess Street,,Maesteg,Bridgend,CF34 9BD
+60,Spring Gardens,,Manchester,Greater Manchester,M60 1HU
+8,Church Road,,Henlow,Central Bedfordshire,SG16 6AN
+4A,Shewalton Road,,Irvine,North Ayrshire,KA11 5AW
+8,Bridge Court,,Yarm,Stockton-on-Tees,TS15 9NY
+2,Fishermans Walk,Selsey,Chichester,West Sussex,PO20 0BZ
+2,Bushmill Cottages,Gruinart,Isle of Islay,Argyll and Bute,PA44 7PP
+29,Merbury Close,,London,Greater London,SE28 0NF
+69,Cambridge Road,,Sawbridgeworth,Hertfordshire,CM21 9JP
+3,Swan Road,,London,Greater London,SE16 7DU
+143,Sefton Street,,Liverpool,Merseyside,L8 5SN
+1,Burneston Way,,Wigston,Leicestershire,LE18 3YE
+24,Biggar Court,,Fraserburgh,Aberdeenshire,AB43 9WB
+10,The Firs,Hersden,Canterbury,Kent,CT3 4HT
+96A,Ringley Road,Whitefield,Manchester,Greater Manchester,M45 7LN

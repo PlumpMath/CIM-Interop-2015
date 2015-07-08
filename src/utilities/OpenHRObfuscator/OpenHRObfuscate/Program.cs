@@ -11,7 +11,7 @@ namespace OpenHRObfuscate
     {
         static void Main(string[] args)
         {
-            //args = new string[] { @"..\..\..\..\Test\OpenHRSamples", @"..\..\..\..\Test\Obfuscated" };
+            //args = new string[] { @"..\..\..\..\OpenHR-Original", @"..\..\..\..\OpenHR-Obfuscated" };
 
             try
             {
@@ -36,7 +36,7 @@ namespace OpenHRObfuscate
             }
             finally
             {
-                Console.ReadLine();
+                //Console.ReadLine();
             }
         }
 

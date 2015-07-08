@@ -8,10 +8,10 @@ namespace OpenHRObfuscate
 {
     internal class NameList
     {
-        private const string ResourcePrefix = "OpenHRObfuscate.Obfuscator.Data";
-        private const string MaleFirstNameNameListResourceName = ResourcePrefix + ".first-male.txt";
-        private const string FemaleFirstNameListResourceName = ResourcePrefix + ".first-female.txt";
-        private const string LastNameListResourceName = ResourcePrefix + ".last.txt";
+        private const string ResourcePrefix = "OpenHRObfuscate.Obfuscator.Data.Name";
+        private const string MaleFirstNameNameListResourceName = ResourcePrefix + ".MaleFirstNames.txt";
+        private const string FemaleFirstNameListResourceName = ResourcePrefix + ".FemaleFirstNames.txt";
+        private const string LastNameListResourceName = ResourcePrefix + ".LastNames.txt";
 
         private string[] _maleFirstNames;
         private string[] _femaleFirstNames;

@@ -12,7 +12,9 @@ namespace OpenHRObfuscate
     {
         private Dictionary<Guid, Guid> _guidMap = new Dictionary<Guid, Guid>();
         private Dictionary<Guid, Name> _nameMap = new Dictionary<Guid, Name>();
+        private Dictionary<string, Address> _addressMap = new Dictionary<string, Address>();
         private NameList _nameList;
+        private AddressList _addressList;
         private Random _random = new Random(DateTime.Now.Millisecond);
         
         public Obfuscator()
@@ -28,6 +30,7 @@ namespace OpenHRObfuscate
                 openHRFile.OpenHR = Deserialize(openHRFile.InputText);
 
                 UpdatePersonNames(openHRFile.OpenHR);
+                UpdateAddressFields(openHRFile.OpenHR);
                 UpdateAllGuidFields(openHRFile.OpenHR);
                 ReorderArrays(openHRFile.OpenHR);
 
@@ -38,13 +41,14 @@ namespace OpenHRObfuscate
         private void Initialise()
         {
             _nameList = new NameList();
+            _addressList = new AddressList();
         }
         
         private void UpdatePersonNames(OpenHR.OpenHR001OpenHealthRecord openHR)
         {
             foreach (OpenHR.OpenHR001Person person in openHR.adminDomain.person)
             {
-                Name name = GetName(person);
+                Name name = GetNameReplacement(person);
 
                 person.title = name.Title;
                 person.forenames = name.Forename;
@@ -61,64 +65,12 @@ namespace OpenHRObfuscate
             }
         }
 
-        private void ReorderArrays(OpenHR.OpenHR001OpenHealthRecord openHR)
-        {
-            Stack<object> objects = new Stack<object>();
-
-            objects.Push(openHR);
-
-            while (objects.Count > 0)
-            {
-                object nextObject = objects.Pop();
-
-                foreach (FieldInfo field in nextObject.GetType().GetFields())
-                {
-                    if (field.FieldType.IsArray)
-                    {
-                        IEnumerable array = field.GetValue(nextObject) as IEnumerable;
-
-                        if (array == null)
-                            continue;
-
-                        foreach (object item in array)
-                            objects.Push(item);
-
-                        Type arrayElementType = field.FieldType.GetElementType();
-                        
-                        object[] shuffledArray = array.OfType<object>().OrderBy(t => _random.Next()).ToArray();
-                                               
-                        MethodInfo ofTypeMethod = typeof(Enumerable)
-                            .GetMethod("OfType")
-                            .MakeGenericMethod(new Type[] { arrayElementType });
-
-                        var shuffledTypedEnumerable = ofTypeMethod.Invoke(null, new object[] { shuffledArray });
-
-                        MethodInfo toArrayMethod = typeof(Enumerable)
-                            .GetMethod("ToArray")
-                            .MakeGenericMethod(new Type[] { arrayElementType });
-
-                        var shuffledTypedArray = toArrayMethod.Invoke(null, new object[] { shuffledTypedEnumerable });
-
-                        field.SetValue(nextObject, shuffledTypedArray);
-                    }
-                    else if (field.FieldType.IsClass)
-                    {
-                        object nextNextObject = field.GetValue(nextObject);
-
-                        if (nextNextObject != null)
-                            if (field.FieldType != nextObject.GetType())
-                                objects.Push(nextNextObject);
-                    }
-                }
-            }
-        }
-
-        private Name GetName(OpenHR.OpenHR001Person person)
+        private Name GetNameReplacement(OpenHR.OpenHR001Person person)
         {
             if (!_nameMap.ContainsKey(person.id))
             {
                 Name name;
-                
+
                 if (person.sex == OpenHR.vocSex.F)
                     name = _nameList.GetFemaleName(person.title);
                 else
@@ -130,6 +82,64 @@ namespace OpenHRObfuscate
             return _nameMap[person.id];
         }
 
+        private void UpdateAddressFields(OpenHR.OpenHR001OpenHealthRecord openHR)
+        {
+            OpenHR.dtAddress[] addresses = ReflectionHelper.GetObjectsOfType<OpenHR.dtAddress>(openHR);
+
+            foreach (OpenHR.dtAddress address in addresses)
+            {
+                if (address != null)
+                {
+                    string addressLine = address.houseNameFlat + address.street + address.village + address.town + address.county + address.postCode;
+
+                    if (!string.IsNullOrEmpty(addressLine.Trim()))
+                    {
+                        Address addressReplacement;
+
+                        if (!_addressMap.ContainsKey(addressLine))
+                            _addressMap[addressLine] = _addressList.GetRandomAddress();
+                        
+                        addressReplacement = _addressMap[addressLine];
+
+                        address.houseNameFlat = addressReplacement.HouseNameFlatNumber;
+                        address.street = addressReplacement.NumberAndStreet;
+                        address.village = addressReplacement.Locality;
+                        address.town = addressReplacement.Town;
+                        address.county = addressReplacement.County;
+                        address.postCode = addressReplacement.Postcode;
+                    }
+                }
+            }
+        }
+
+        private void UpdateAllGuidFields(OpenHR.OpenHR001OpenHealthRecord openHR)
+        {
+            ReflectionHelper.ReplaceObjectsOfType<System.Guid>(openHR, ReplaceGuid);
+        }
+
+        private bool ReplaceGuid(Guid original, out Guid replacement)
+        {
+            if (original != Guid.Empty)
+            {
+                if (!_guidMap.ContainsKey(original))
+                    _guidMap.Add(original, Guid.NewGuid());
+
+                replacement = _guidMap[original];
+
+                return true;
+            }
+            else
+            {
+                replacement = Guid.Empty;
+                return false;
+            }
+        }
+
+        private void ReorderArrays(OpenHR.OpenHR001OpenHealthRecord openHR)
+        {
+            ReflectionHelper.ReorderArrays(openHR);
+        }
+
         private static OpenHR.OpenHR001OpenHealthRecord Deserialize(string xml)
         {
             return Utilities.Deserialize<OpenHR.OpenHR001OpenHealthRecord>(xml);
@@ -138,54 +148,6 @@ namespace OpenHRObfuscate
         private static string Serialize(OpenHR.OpenHR001OpenHealthRecord openHR)
         {
             return Utilities.Serialize<OpenHR.OpenHR001OpenHealthRecord>(openHR);
-        }
-
-        private void UpdateAllGuidFields(OpenHR.OpenHR001OpenHealthRecord openHR)
-        {
-            Stack<object> objects = new Stack<object>();
-
-            objects.Push(openHR);
-
-            while (objects.Count > 0)
-            {
-                object nextObject = objects.Pop();
-
-                foreach (FieldInfo field in nextObject.GetType().GetFields())
-                {
-                    if (field.FieldType == typeof(System.Guid))
-                    {
-                        Guid currentGuid = (Guid)field.GetValue(nextObject);
-
-                        if (currentGuid != Guid.Empty)
-                        {
-                            if (!_guidMap.ContainsKey(currentGuid))
-                                _guidMap.Add(currentGuid, Guid.NewGuid());
-
-                            Guid newGuid = _guidMap[currentGuid];
-
-                            if (currentGuid != Guid.Empty)
-                                field.SetValue(nextObject, newGuid);
-                        }
-                    }
-                    else if (field.FieldType.IsArray)
-                    {
-                        object array = field.GetValue(nextObject);
-
-                        if (array != null)
-                            foreach (object item in (array as IEnumerable))
-                                objects.Push(item);
-                        
-                    }
-                    else if (field.FieldType.IsClass)
-                    {
-                        object nextNextObject = field.GetValue(nextObject);
-
-                        if (nextNextObject != null)
-                            if (field.FieldType != nextObject.GetType())
-                                objects.Push(nextNextObject);
-                    }
-                }
-            }
         }
     }
 }
