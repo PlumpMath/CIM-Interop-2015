@@ -8,7 +8,7 @@ namespace OpenHRObfuscate
 {
     internal class AddressList
     {
-        private const string ResourcePrefix = "OpenHRObfuscate.Obfuscator.Data.Address";
+        private const string ResourcePrefix = "OpenHRObfuscate.Obfuscator.Obfuscators.Address";
         private const string AddressListResourceName = ResourcePrefix + ".RandomAddresses.txt";
 
         private Address[] _addresses;

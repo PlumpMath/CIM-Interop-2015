@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace OpenHRObfuscate
 {
-    public class Address
+    internal class Address
     {
         public Address(string houseNameFlatNumber, string numberAndStreet, string locality, string town, string county, string postcode)
         {

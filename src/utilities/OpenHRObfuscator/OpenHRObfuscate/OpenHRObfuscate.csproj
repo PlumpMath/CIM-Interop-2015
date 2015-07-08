@@ -41,23 +41,29 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Obfuscator\Data\Address\Address.cs" />
-    <Compile Include="Obfuscator\Data\Address\AddressList.cs" />
-    <Compile Include="Obfuscator\Data\Name\Name.cs" />
-    <Compile Include="Obfuscator\Data\Name\NameList.cs" />
+    <Compile Include="Obfuscator\Obfuscators\Address\Address.cs" />
+    <Compile Include="Obfuscator\Obfuscators\Address\AddressList.cs" />
+    <Compile Include="Obfuscator\Obfuscators\Address\AddressObfuscator.cs" />
+    <Compile Include="Obfuscator\Obfuscators\Array\ArrayObfuscator.cs" />
+    <Compile Include="Obfuscator\Obfuscators\Guid\GuidObfuscator.cs" />
+    <Compile Include="Obfuscator\Obfuscators\OrganisationAndLocation\OrganisationAndLocationObfuscator.cs" />
+    <Compile Include="Obfuscator\Obfuscators\PersonName\Name.cs" />
+    <Compile Include="Obfuscator\Obfuscators\PersonName\NameList.cs" />
+    <Compile Include="Obfuscator\Obfuscators\IObfuscator.cs" />
     <Compile Include="Obfuscator\Obfuscator.cs" />
-    <Compile Include="Obfuscator\OpenHRFile.cs" />
+    <Compile Include="Obfuscator\Obfuscators\PersonName\PersonNameObfuscator.cs" />
+    <Compile Include="Obfuscator\Schema\OpenHRFile.cs" />
     <Compile Include="Obfuscator\Schema\OpenHR001.cs">
       <DependentUpon>OpenHR001.xsd</DependentUpon>
     </Compile>
-    <Compile Include="Obfuscator\Utilities.cs" />
+    <Compile Include="Obfuscator\Utilities\Utilities.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Obfuscator\ReflectionHelper.cs" />
+    <Compile Include="Obfuscator\Utilities\ReflectionHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <EmbeddedResource Include="Obfuscator\Data\Address\RandomAddresses.txt" />
+    <EmbeddedResource Include="Obfuscator\Obfuscators\Address\RandomAddresses.txt" />
     <None Include="Obfuscator\Schema\datatypes.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -69,9 +75,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Obfuscator\Data\Name\FemaleFirstNames.txt" />
-    <None Include="Obfuscator\Data\Name\LastNames.txt" />
-    <EmbeddedResource Include="Obfuscator\Data\Name\MaleFirstNames.txt" />
+    <EmbeddedResource Include="Obfuscator\Obfuscators\PersonName\FemaleFirstNames.txt" />
+    <None Include="Obfuscator\Obfuscators\PersonName\LastNames.txt" />
+    <EmbeddedResource Include="Obfuscator\Obfuscators\PersonName\MaleFirstNames.txt" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
