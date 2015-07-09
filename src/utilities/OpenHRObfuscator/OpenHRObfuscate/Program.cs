@@ -11,7 +11,7 @@ namespace OpenHRObfuscate
     {
         static void Main(string[] args)
         {
-            //args = new string[] { @"..\..\..\..\OpenHR-Original", @"..\..\..\..\OpenHR-Obfuscated" };
+            //args = new string[] { @"..\..\..\..\..\..\..\OpenHR-Original", @"..\..\..\..\..\..\..\OpenHR-Obfuscated" };
 
             try
             {

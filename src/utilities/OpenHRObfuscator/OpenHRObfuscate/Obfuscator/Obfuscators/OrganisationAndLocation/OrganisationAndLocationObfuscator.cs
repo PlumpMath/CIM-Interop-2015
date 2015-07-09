@@ -26,18 +26,54 @@ namespace OpenHRObfuscate
             {
                 UpdateOrganisationCDB(organisation);
 
-                string organisationTypeDescription = organisation.organisationType.WhenNotNull(t => t.displayName);
+                UpdateNameAndOdsCode(organisation);
 
-                if (!_organisationTypesToLeaveUnmodified.Contains(organisationTypeDescription))
-                {
-                    if (!_organisationNameMap.ContainsKey(organisation.name))
-                        _organisationNameMap.Add(organisation.name, GetNextOrganisationName(organisationTypeDescription));
+                OpenHR.OpenHR001Location mainLocation = openHR.adminDomain.location.FirstOrDefault(t => t.id == organisation.mainLocation);
+                OpenHR.OpenHR001Location[] branchLocations = openHR
+                        .adminDomain
+                        .location
+                        .Where(t => organisation.locations != null)
+                        .Where(t => (organisation.locations.Select(s => s.location).Contains(t.id)))
+                        .ToArray();
 
-                    organisation.name = _organisationNameMap[organisation.name];
+                UpdateLocation(organisation, mainLocation, branchLocations);
+            }
+        }
 
-                    if (!string.IsNullOrEmpty(organisation.nationalPracticeCode))
-                        organisation.nationalPracticeCode = organisation.name.First().ToString().ToUpper() + "99999";
-                }
+        private void UpdateLocation(OpenHR.OpenHR001Organisation organisation, OpenHR.OpenHR001Location mainLocation, OpenHR.OpenHR001Location[] branchLocations)
+        {
+            if (mainLocation != null)
+                mainLocation.name = organisation.name;
+
+            int branchLocationCount = 1;
+
+            foreach (OpenHR.OpenHR001Location branchLocation in branchLocations)
+            {
+                if (branchLocation == mainLocation)
+                    continue;
+                
+                string branchLocationNumberSuffix = string.Empty;
+
+                if (branchLocations.Length > 1)
+                    branchLocationNumberSuffix = " " + (branchLocationCount++).ToString();
+                
+                branchLocation.name = organisation.name + " Location " + branchLocationNumberSuffix;
+            }
+        }
+
+        private void UpdateNameAndOdsCode(OpenHR.OpenHR001Organisation organisation)
+        {
+            string organisationTypeDescription = organisation.organisationType.WhenNotNull(t => t.displayName);
+
+            if (!_organisationTypesToLeaveUnmodified.Contains(organisationTypeDescription))
+            {
+                if (!_organisationNameMap.ContainsKey(organisation.name))
+                    _organisationNameMap.Add(organisation.name, GetNextOrganisationName(organisationTypeDescription));
+
+                organisation.name = _organisationNameMap[organisation.name];
+
+                if (!string.IsNullOrEmpty(organisation.nationalPracticeCode))
+                    organisation.nationalPracticeCode = organisation.name.First().ToString().ToUpper() + "99999";
             }
         }
 

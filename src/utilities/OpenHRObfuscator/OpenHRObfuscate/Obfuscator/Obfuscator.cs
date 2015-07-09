@@ -16,14 +16,14 @@ namespace OpenHRObfuscate
 
         private IObfuscator[] GetObfuscators()
         {
-            List<IObfuscator> obfuscators = new List<IObfuscator>();
-            obfuscators.Add(new PersonNameObfuscator());
-            obfuscators.Add(new OrganisationAndLocationObfuscator());
-            obfuscators.Add(new AddressObfuscator());
-            obfuscators.Add(new GuidObfuscator());
-            obfuscators.Add(new ArrayObfuscator());
-
-            return obfuscators.ToArray();
+            return new List<IObfuscator>()
+            {            
+                new PersonNameObfuscator(),
+                new OrganisationAndLocationObfuscator(),
+                new AddressObfuscator(),
+                new GuidObfuscator(),
+                new ArrayObfuscator()
+            }.ToArray();
         }
 
         public void Obfuscate(OpenHRFile[] openHRFiles)
