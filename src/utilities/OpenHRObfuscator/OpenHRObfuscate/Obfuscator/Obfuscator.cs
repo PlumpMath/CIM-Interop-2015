@@ -22,8 +22,10 @@ namespace OpenHRObfuscate
                 new OrganisationAndLocationObfuscator(),
                 new AddressObfuscator(),
                 new GuidObfuscator(),
-                new ArrayObfuscator()
-            }.ToArray();
+                new ArrayObfuscator(),
+                new DateObfuscator()
+            }
+            .ToArray();
         }
 
         public void Obfuscate(OpenHRFile[] openHRFiles)

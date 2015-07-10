@@ -20,22 +20,15 @@ namespace OpenHRObfuscate
             ReflectionHelper.ReplaceObjectsOfType<System.Guid>(openHR, ReplaceGuid);
         }
 
-        private bool ReplaceGuid(Guid original, out Guid replacement)
+        private Guid ReplaceGuid(Guid original)
         {
-            if (original != Guid.Empty)
-            {
-                if (!_guidMap.ContainsKey(original))
-                    _guidMap.Add(original, Guid.NewGuid());
+            if (original == Guid.Empty)
+                return Guid.Empty;
 
-                replacement = _guidMap[original];
+            if (!_guidMap.ContainsKey(original))
+                _guidMap.Add(original, Guid.NewGuid());
 
-                return true;
-            }
-            else
-            {
-                replacement = Guid.Empty;
-                return false;
-            }
+            return _guidMap[original];
         }
     }
 }

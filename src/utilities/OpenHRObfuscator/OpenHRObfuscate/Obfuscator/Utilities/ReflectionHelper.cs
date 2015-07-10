@@ -50,7 +50,7 @@ namespace OpenHRObfuscate
             return result.ToArray();
         }
 
-        public delegate bool ReplaceObject<T>(T original, out T replacement);
+        public delegate T ReplaceObject<T>(T original);
 
         public static void ReplaceObjectsOfType<T>(object objectHierarchy, ReplaceObject<T> replaceFunction)
         {
@@ -68,9 +68,9 @@ namespace OpenHRObfuscate
                     {
                         T original = (T)field.GetValue(nextObject);
 
-                        T replacement;
+                        T replacement = replaceFunction(original);
 
-                        if (replaceFunction(original, out replacement))
+                        if (!EqualityComparer<T>.Default.Equals(replacement, original))
                             field.SetValue(nextObject, replacement);
 
                     }
@@ -88,9 +88,9 @@ namespace OpenHRObfuscate
                                 {
                                     T original = (T)typedArray.GetValue(i);
 
-                                    T replacement;
+                                    T replacement = replaceFunction(original);
 
-                                    if (replaceFunction(original, out replacement))
+                                    if (!EqualityComparer<T>.Default.Equals(replacement, original))
                                         typedArray.SetValue(replacement, i);
                                 }
                             }

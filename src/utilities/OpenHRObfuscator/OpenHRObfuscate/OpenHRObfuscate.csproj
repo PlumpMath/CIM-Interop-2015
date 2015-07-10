@@ -45,6 +45,7 @@
     <Compile Include="Obfuscator\Obfuscators\Address\AddressList.cs" />
     <Compile Include="Obfuscator\Obfuscators\Address\AddressObfuscator.cs" />
     <Compile Include="Obfuscator\Obfuscators\Array\ArrayObfuscator.cs" />
+    <Compile Include="Obfuscator\Obfuscators\Date\DateObfuscator.cs" />
     <Compile Include="Obfuscator\Obfuscators\Guid\GuidObfuscator.cs" />
     <Compile Include="Obfuscator\Obfuscators\OrganisationAndLocation\OrganisationAndLocationObfuscator.cs" />
     <Compile Include="Obfuscator\Obfuscators\PersonName\Name.cs" />
