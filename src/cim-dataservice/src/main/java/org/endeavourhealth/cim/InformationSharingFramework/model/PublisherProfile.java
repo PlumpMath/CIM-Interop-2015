@@ -1,6 +1,6 @@
-package org.endeavourhealth.cim.InformationSharingProtocol.model;
+package org.endeavourhealth.cim.InformationSharingFramework.model;
 
-import org.endeavourhealth.cim.InformationSharingProtocol.Manager;
+import org.endeavourhealth.cim.InformationSharingFramework.Manager;
 
 import java.util.ArrayList;
 

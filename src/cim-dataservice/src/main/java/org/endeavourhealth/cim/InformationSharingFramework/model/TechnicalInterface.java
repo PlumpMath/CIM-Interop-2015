@@ -1,4 +1,4 @@
-package org.endeavourhealth.cim.InformationSharingProtocol.model;
+package org.endeavourhealth.cim.InformationSharingFramework.model;
 
 public class TechnicalInterface {
 	private Integer id;

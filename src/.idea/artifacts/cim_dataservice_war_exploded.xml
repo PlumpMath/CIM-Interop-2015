@@ -39,7 +39,6 @@
           <element id="library" level="project" name="Maven: org.jdom:jdom:1.1.3" />
           <element id="library" level="project" name="Maven: xpp3:xpp3:1.1.4c" />
           <element id="library" level="project" name="Maven: org.apache.camel:camel-cassandraql:2.15.2" />
-          <element id="library" level="project" name="JAX-WS-Apache Axis" />
           <element id="library" level="project" name="Maven: com.datastax.cassandra:cassandra-driver-core:2.1.5" />
         </element>
       </element>
