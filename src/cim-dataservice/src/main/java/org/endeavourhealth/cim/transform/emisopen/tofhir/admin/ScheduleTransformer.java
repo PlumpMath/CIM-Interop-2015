@@ -1,78 +1,101 @@
 package org.endeavourhealth.cim.transform.emisopen.tofhir.admin;
 
 import org.endeavourhealth.cim.common.ReferenceHelper;
+import org.endeavourhealth.cim.common.StreamExtension;
 import org.endeavourhealth.cim.transform.SerializationException;
 import org.endeavourhealth.cim.transform.TransformFeatureNotSupportedException;
 import org.endeavourhealth.cim.transform.emisopen.EmisOpenCommon;
 import org.endeavourhealth.cim.transform.openhr.tofhir.admin.NameConverter;
-import org.endeavourhealth.cim.transform.TransformHelper;
 import org.endeavourhealth.cim.transform.schemas.emisopen.eomappointmentsessions.*;
 import org.hl7.fhir.instance.model.*;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class ScheduleTransformer {
 
+    public final static String SESSIONADDITIONALACTOR_EXTENSION_URL = "http://www.e-mis.com/emisopen/extension/SessionAdditionalActor";
+
     public static ArrayList<Resource> transformToScheduleResources(AppointmentSessionList appointmentSessionList) throws SerializationException, TransformFeatureNotSupportedException {
-        ArrayList<Practitioner> practitioners = new ArrayList<Practitioner>();
-        ArrayList<Schedule> schedules = new ArrayList<Schedule>();
+        ArrayList<Practitioner> practitioners = new ArrayList<>();
+        ArrayList<Location> locations = new ArrayList<>();
+        ArrayList<Schedule> schedules = new ArrayList<>();
 
         for (AppointmentSessionStruct appointmentSession : appointmentSessionList.getAppointmentSession()) {
-            Practitioner practitioner = transformToPractitioner(appointmentSession.getHolderList());
 
-            if (!practitioners
-                    .stream()
-                    .anyMatch(t -> (t.getId().equals(practitioner.getId())))) {
-                practitioners.add(practitioner);
-            }
+            List<Practitioner> sessionPractitioners = transformToPractitioners(appointmentSession.getHolderList());
+            practitioners.addAll(sessionPractitioners);
 
-            schedules.add(transformToSchedule(appointmentSession, practitioner));
+            Location location = transformToLocation(appointmentSession.getSite());
+            locations.add(location);
+
+            schedules.add(transformToSchedule(appointmentSession, location, sessionPractitioners));
         }
 
         ArrayList<Resource> resources = new ArrayList<Resource>();
-        resources.addAll(practitioners);
+//        resources.addAll(RemoveDuplicates(new ArrayList<Resource>(practitioners)));
+//        resources.addAll(RemoveDuplicates(new ArrayList<Resource>(locations)));
         resources.addAll(schedules);
 
         return resources;
     }
 
-    private static Schedule transformToSchedule(AppointmentSessionStruct appointmentSession, Practitioner practitioner) throws SerializationException, TransformFeatureNotSupportedException {
+    private static Schedule transformToSchedule(AppointmentSessionStruct appointmentSession, Location location, List<Practitioner> practitioners) throws SerializationException, TransformFeatureNotSupportedException {
         Schedule schedule = new Schedule();
         schedule.setId(Integer.toString(appointmentSession.getDBID()));
-        schedule.setComment(appointmentSession.getName());
 
-        Reference reference = ReferenceHelper.createReference(Practitioner.class, practitioner.getId());
+        Period period = new Period()
+            .setStart(EmisOpenCommon.getDateAndTime(appointmentSession.getDate(), appointmentSession.getStartTime()))
+            .setEnd(EmisOpenCommon.getDateAndTime(appointmentSession.getDate(), appointmentSession.getEndTime()));
 
-        schedule.setActor(reference);
+        schedule
+            .setPlanningHorizon(period)
+            .setComment(appointmentSession.getName());
 
-        Period period = new Period();
+        for (int i = 0; i < practitioners.size(); i++) {
+            Reference reference = ReferenceHelper.createReference(Practitioner.class, practitioners.get(i).getId());
 
-        Date fromDate = EmisOpenCommon.getDateAndTime(appointmentSession.getDate(), appointmentSession.getStartTime());
-        Date toDate = EmisOpenCommon.getDateAndTime(appointmentSession.getDate(), appointmentSession.getEndTime());
+            if (i == 0) {
+                schedule.setActor(reference);
+            } else {
+                schedule.addExtension(new Extension()
+                        .setUrl(SESSIONADDITIONALACTOR_EXTENSION_URL)
+                        .setValue(reference));
+            }
+        }
 
-        period.setStart(fromDate);
-        period.setEnd(toDate);
-        schedule.setPlanningHorizon(period);
+        schedule.addExtension(new Extension()
+                .setUrl(SESSIONADDITIONALACTOR_EXTENSION_URL)
+                .setValue(ReferenceHelper.createReference(Location.class, location.getId())));
 
         return schedule;
     }
 
-    private static Practitioner transformToPractitioner(HolderList holderList) throws TransformFeatureNotSupportedException {
-        List<HolderStruct> holders = holderList.getHolder();
+    private static Location transformToLocation(SiteStruct site) {
+        return (Location)new Location()
+                .setName(site.getName())
+                .setId(Integer.toString(site.getDBID()));
+    }
 
-        if (holders.size() != 1)
-            throw new TransformFeatureNotSupportedException("AppointmentSession must have 1 holder.");
+    private static List<Practitioner> transformToPractitioners(HolderList holders) {
+        return holders
+            .getHolder()
+            .stream()
+            .map(t -> transformToPractitioner(t))
+            .collect(Collectors.toList());
+    }
 
-        HolderStruct holder = holders.get(0);
+    private static Practitioner transformToPractitioner(HolderStruct holder) {
+        return (Practitioner)new Practitioner()
+            .setName(NameConverter.convert(holder.getFirstNames(), holder.getLastName(), holder.getTitle()))
+            .setId(Integer.toString(holder.getDBID()));
+    }
 
-        Practitioner practitioner = new Practitioner();
-        practitioner.setId(Integer.toString(holder.getDBID()));
-
-        HumanName humanName = NameConverter.convert(holder.getFirstNames(), holder.getLastName(), holder.getTitle());
-        practitioner.setName(humanName);
-
-        return practitioner;
+    private static List<Resource> RemoveDuplicatesById(List<Resource> resources) {
+        return resources
+                .stream()
+                .filter(StreamExtension.distinctByKey(t -> t.getId()))
+                .collect(Collectors.toList());
     }
 }
