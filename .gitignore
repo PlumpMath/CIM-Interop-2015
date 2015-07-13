@@ -61,10 +61,8 @@ Maven__*.xml
 #.NET files
 *.user
 *.suo
-/src/mock-cms/DotNetGPSystem/bin
-/src/mock-cms/DotNetGPSystem/obj
-/src/mock-subsidiary/DotNetSecondaryCareSystem/bin
-/src/mock-subsidiary/DotNetSecondaryCareSystem/obj
-/src/mock-subsidiary/packages
-/src/utilities/OpenHRObfuscator/OpenHRObfuscate/bin
-/src/utilities/OpenHRObfuscator/OpenHRObfuscate/obj
+/src/mock-systems/DotNetGPSystem/DotNetGPSystem/bin
+/src/mock-systems/DotNetGPSystem/DotNetGPSystem/obj
+/src/mock-systems/DotNetSecondaryCareSystem/DotNetSecondaryCareSystem/bin
+/src/mock-systems/DotNetSecondaryCareSystem/DotNetSecondaryCareSystem/obj
+/src/mock-systems/packages
