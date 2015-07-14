@@ -128,6 +128,7 @@ namespace DotNetGPSystem
                 .ToArray();
 
             int organisationId = 1;
+            int locationId = 1;
             int userId = 1;
 
             foreach (OpenHR001Organisation organisation in organisations)
@@ -163,9 +164,17 @@ namespace DotNetGPSystem
                     structuredUsers.Add(structuredUser);
                 }
 
+                OpenHRLocation[] locations = openHRAtOrganisation
+                    .SelectMany(t => t.OpenHealthRecord.adminDomain.location)
+                    .Where(t => (new Guid(t.id) == new Guid(organisation.mainLocation)) || (organisation.locations.Select(s => new Guid(s.location)).Contains(new Guid(t.id))))
+                    .DistinctBy(t => new Guid(t.id))
+                    .Select(t => new OpenHRLocation(locationId++, t))
+                    .ToArray();
+
                 structuredOrganisations.Add(new OpenHROrganisation(
                         organisationId: organisationId++,
                         organisation: organisation,
+                        locations: locations,
                         users: structuredUsers.ToArray()));
             }
 

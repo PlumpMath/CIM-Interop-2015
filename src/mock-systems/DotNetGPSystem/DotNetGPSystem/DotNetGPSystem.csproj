@@ -131,11 +131,16 @@
     </Compile>
     <Compile Include="Data\ClientAPI\Appointments\Session.cs" />
     <Compile Include="Data\ClientAPI\Appointments\Slot.cs" />
+    <Compile Include="Data\ClientAPI\EomOrganisationTransform.cs" />
+    <Compile Include="Data\ClientAPI\Organisations\EomOrganisationInformation37.cs">
+      <DependentUpon>EomOrganisationInformation37.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Data\ClientAPI\Users\EomUserDetails37.cs">
       <DependentUpon>EomUserDetails37.xsd</DependentUpon>
     </Compile>
     <Compile Include="Data\ClientAPI\EomUserTransform.cs" />
     <Compile Include="Data\DataStore.cs" />
+    <Compile Include="Data\OpenHR\OpenHRLocation.cs" />
     <Compile Include="Data\OpenHR\OpenHROrganisation.cs" />
     <Compile Include="Data\OpenHR\OpenHRUser.cs" />
     <Compile Include="GPSystemForm.cs">
@@ -236,6 +241,12 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Data\ClientAPI\Appointments\EomSlotsForSession.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Data\ClientAPI\Organisations\EomMedicalRecord35.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Data\ClientAPI\Organisations\EomOrganisationInformation37.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Properties\Settings.settings">

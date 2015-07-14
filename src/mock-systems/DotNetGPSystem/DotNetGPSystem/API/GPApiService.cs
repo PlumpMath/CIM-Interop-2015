@@ -154,5 +154,24 @@ namespace DotNetGPSystem
             
             return false;
         }
+
+        public string GetOrganisationInformation(string odsCode)
+        {
+            OpenHROrganisation organisation = DataStore
+                .Organisations
+                .FirstOrDefault(t => t.Organisation.nationalPracticeCode == odsCode
+                                    && (!string.IsNullOrEmpty(odsCode)));
+
+            string result = string.Empty;
+
+            if (organisation != null)
+            {
+                EomOrganisationInformation.OrganisationInformation organisationInformation = EomOrganisationTransform.ToEomOrganisationInformation(organisation);
+
+                result = Utilities.Serialize<EomOrganisationInformation.OrganisationInformation>(organisationInformation);
+            }
+
+            return result;
+        }
     }
 }
