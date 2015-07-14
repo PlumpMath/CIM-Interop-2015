@@ -4,14 +4,12 @@ import org.endeavourhealth.cim.common.ReferenceHelper;
 import org.endeavourhealth.cim.common.TextUtils;
 import org.endeavourhealth.cim.transform.SerializationException;
 import org.endeavourhealth.cim.transform.TransformFeatureNotSupportedException;
-import org.endeavourhealth.cim.transform.TransformHelper;
 import org.endeavourhealth.cim.transform.emisopen.EmisOpenCommon;
 import org.endeavourhealth.cim.transform.schemas.emisopen.eomgetpatientappointments.AppointmentStruct;
 import org.endeavourhealth.cim.transform.schemas.emisopen.eomgetpatientappointments.HolderStruct;
 import org.endeavourhealth.cim.transform.schemas.emisopen.eomgetpatientappointments.PatientAppointmentList;
 import org.hl7.fhir.instance.model.*;
 
-import java.security.PrivilegedAction;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -24,9 +22,7 @@ public class AppointmentTransformer {
             appointments.add(transformToAppointment(patientGuid, appointment));
         }
 
-        ArrayList<Resource> resources = new ArrayList<Resource>(appointments);
-
-        return resources;
+        return new ArrayList<>(appointments);
     }
 
     public static Appointment transformToAppointment(String patientGuid, AppointmentStruct appointmentStruct) throws SerializationException {
@@ -54,27 +50,21 @@ public class AppointmentTransformer {
         Appointment.Participantrequired requiredStatus = Appointment.Participantrequired.REQUIRED;
         Appointment.Participationstatus participationstatus = Appointment.Participationstatus.ACCEPTED;
 
-        Appointment.AppointmentParticipantComponent patient
-                = createParticipant(Patient.class, patientGuid, requiredStatus, participationstatus);
-
-        appointment.addParticipant(patient);
+        appointment.addParticipant(createParticipant(Patient.class, patientGuid, requiredStatus, participationstatus));
 
         for (HolderStruct holder : appointmentStruct.getHolderList().getHolder())
             appointment.addParticipant(createParticipant(Practitioner.class, Integer.toString(holder.getDBID()), requiredStatus, participationstatus));
+
+        appointment.addParticipant(createParticipant(Location.class, Integer.toString(appointmentStruct.getSiteID()), requiredStatus, participationstatus));
 
         return appointment;
     }
 
     private static <T extends Resource> Appointment.AppointmentParticipantComponent createParticipant(Class<T> resourceClass, String id, Appointment.Participantrequired required, Appointment.Participationstatus status) {
-        Appointment.AppointmentParticipantComponent participant = new Appointment.AppointmentParticipantComponent();
-
-        Reference reference = ReferenceHelper.createReference(resourceClass, id);
-
-        participant.setActor(reference);
-        participant.setRequired(required);
-        participant.setStatus(status);
-
-        return participant;
+        return new Appointment.AppointmentParticipantComponent()
+                .setActor(ReferenceHelper.createReference(resourceClass, id))
+                .setRequired(required)
+                .setStatus(status);
     }
 
     private static Appointment.Appointmentstatus getAppointmentStatus(String status) {
