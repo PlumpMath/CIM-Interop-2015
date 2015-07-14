@@ -8,19 +8,23 @@ import org.endeavourhealth.cim.transform.emisopen.EmisOpenCommon;
 import org.endeavourhealth.cim.transform.schemas.emisopen.eomgetpatientappointments.AppointmentStruct;
 import org.endeavourhealth.cim.transform.schemas.emisopen.eomgetpatientappointments.HolderStruct;
 import org.endeavourhealth.cim.transform.schemas.emisopen.eomgetpatientappointments.PatientAppointmentList;
+import org.endeavourhealth.cim.transform.schemas.emisopen.eomorganisationinformation.OrganisationInformation;
 import org.hl7.fhir.instance.model.*;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Map;
 
 public class AppointmentTransformer {
 
-    public static ArrayList<Resource> transformToAppointmentResources(String patientGuid, PatientAppointmentList patientAppointmentList) throws TransformFeatureNotSupportedException, SerializationException {
+    public static ArrayList<Resource> transformToAppointmentResources(String patientGuid, PatientAppointmentList patientAppointmentList, OrganisationInformation organisationInformation) throws TransformFeatureNotSupportedException, SerializationException {
         ArrayList<Appointment> appointments = new ArrayList<Appointment>();
 
         for (AppointmentStruct appointment : patientAppointmentList.getAppointment()) {
             appointments.add(transformToAppointment(patientGuid, appointment));
         }
+
+        updateAppointmentParticipantIds(appointments, organisationInformation);
 
         return new ArrayList<>(appointments);
     }
@@ -90,5 +94,21 @@ public class AppointmentTransformer {
             case "Unknown":
             default: return Appointment.Appointmentstatus.NULL;
         }
+    }
+
+    public static <T extends Resource> void updateAppointmentParticipantIds(ArrayList<Appointment> appointments, OrganisationInformation organisationInformation) {
+        Map<String, String> userIdGuidMap = EmisOpenCommon.buildUserIdGuidMap(organisationInformation);
+        updateAppointmentParticipantIds(appointments, Practitioner.class, userIdGuidMap);
+
+        Map<String, String> locationIdGuidMap = EmisOpenCommon.buildLocationIdGuidMap(organisationInformation);
+        updateAppointmentParticipantIds(appointments, Location.class, locationIdGuidMap);
+    }
+
+    private static <T extends Resource> void updateAppointmentParticipantIds(ArrayList<Appointment> appointments, Class<T> participantResourceType, Map<String, String> idGuidMap) {
+        appointments.forEach(t ->
+                t
+                        .getParticipant()
+                        .forEach(s -> ReferenceHelper.updateReferenceFromMap(s.getActor(), participantResourceType, idGuidMap)));
+
     }
 }

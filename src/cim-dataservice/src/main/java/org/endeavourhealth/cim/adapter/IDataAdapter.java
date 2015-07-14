@@ -7,5 +7,5 @@ import java.util.Date;
 import java.util.UUID;
 
 public interface IDataAdapter extends IDataManager {
-    String getUserById(String odsCode, String userId) throws Exception;
+    String getOrganisationInformation(String odsCode) throws Exception;
 }

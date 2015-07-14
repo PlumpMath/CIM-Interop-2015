@@ -9,14 +9,13 @@ import org.endeavourhealth.cim.dataManager.IDataManager;
 import org.endeavourhealth.cim.transform.TransformHelper;
 import org.endeavourhealth.cim.transform.emisopen.EmisOpenTransformer;
 import org.endeavourhealth.cim.transform.openhr.OpenHRTransformer;
+import org.endeavourhealth.cim.transform.schemas.emisopen.eomorganisationinformation.OrganisationInformation;
 import org.endeavourhealth.cim.transform.schemas.emisopen.eomuserdetails.UserDetails;
 import org.hl7.fhir.instance.formats.JsonParser;
 import org.hl7.fhir.instance.model.*;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.UUID;
+import java.security.PrivilegedAction;
+import java.util.*;
 
 @SuppressWarnings("unused")
 public class EmisDataManager implements IDataManager {
@@ -140,36 +139,12 @@ public class EmisDataManager implements IDataManager {
 
 	@Override
 	public String getAppointmentsForPatient(String odsCode, UUID patientId, Date dateFrom, Date dateTo) throws Exception {
-		// Get the relevant data adapter from the factory
 		String appointmentDataInNativeFormat = _emisDataAdapter.getAppointmentsForPatient(odsCode, patientId, dateFrom, dateTo);
+		String organisationXml = _emisDataAdapter.getOrganisationInformation(odsCode);
 
-		// Get patientApi data transformer for service (native format -> FHIR)
-		Bundle appointments = _emisOpenTransformer.toFHIRAppointmentBundle(patientId.toString(), appointmentDataInNativeFormat);
+		Bundle bundle = _emisOpenTransformer.toFHIRAppointmentBundle(patientId.toString(), appointmentDataInNativeFormat, organisationXml);
 
-		// Get practitioner user ids from appointment bundle
-		ArrayList<String> practitionerIds = EmisAppointmentsDataHelper.getAppointmentPractitionerIds(BundleHelper.getResourcesOfType(appointments, Appointment.class));
-
-		// Create mapping between user ids and guids
-		HashMap<String, String> userIdGuidMap = new HashMap<String, String>();
-
-		for (String userId : practitionerIds)
-			userIdGuidMap.put(userId, getUserGuidById(odsCode, Integer.parseInt(userId)));
-
-		// set user guids back to appointment bundle
-		EmisAppointmentsDataHelper.updateAppointmentPractitionerIds(BundleHelper.getResourcesOfType(appointments, Appointment.class), userIdGuidMap);
-
-		return new JsonParser().composeString(appointments);
-	}
-
-	private String getUserGuidById(String odsCode, int userId) throws Exception {
-		String userXml = _emisDataAdapter.getUserById(odsCode, Integer.toString(userId));
-
-		if (TextUtils.isNullOrTrimmedEmpty(userXml))
-			return null;
-
-		UserDetails userDetails = TransformHelper.unmarshall(userXml, UserDetails.class);
-
-		return userDetails.getPerson().getGUID();
+		return new JsonParser().composeString(bundle);
 	}
 
 	@Override
@@ -185,36 +160,30 @@ public class EmisDataManager implements IDataManager {
 
 	@Override
 	public String getSchedules(String odsCode, Date dateFrom, Date dateTo) throws Exception {
-		String schedulesInNativeFormat = _emisDataAdapter.getSchedules(odsCode, dateFrom, dateTo);
-		Bundle bundle = _emisOpenTransformer.toFHIRScheduleBundle(schedulesInNativeFormat);
+		String schedulesXml = _emisDataAdapter.getSchedules(odsCode, dateFrom, dateTo);
+		String organisationXml = _emisDataAdapter.getOrganisationInformation(odsCode);
 
-		// Get practitioner user ids from schedule bundle
-		ArrayList<String> practitionerIds = EmisAppointmentsDataHelper.getSchedulePractitionerIds(BundleHelper.getResourcesOfType(bundle, Schedule.class));
-
-		// Create mapping between user ids and guids
-		HashMap<String, String> userIdGuidMap = new HashMap<String, String>();
-
-		for (String userId : practitionerIds)
-			userIdGuidMap.put(userId, getUserGuidById(odsCode, Integer.parseInt(userId)));
-
-		// set user guids back to schedule bundle
-		EmisAppointmentsDataHelper.updateSchedulePractitionerIds(BundleHelper.getResourcesOfType(bundle, Schedule.class), userIdGuidMap);
+		Bundle bundle = _emisOpenTransformer.toFHIRScheduleBundle(schedulesXml, organisationXml);
 
 		return new JsonParser().composeString(bundle);
 	}
 
 	@Override
 	public String getSchedules(String odsCode, String actor) throws Exception {
-		String schedulesInNativeFormat = _emisDataAdapter.getSchedules(odsCode, actor);
-		Bundle bundle = _emisOpenTransformer.toFHIRScheduleBundle(schedulesInNativeFormat);
+		String schedulesXml = _emisDataAdapter.getSchedules(odsCode, actor);
+		String organisationXml = _emisDataAdapter.getOrganisationInformation(odsCode);
+
+		Bundle bundle = _emisOpenTransformer.toFHIRScheduleBundle(schedulesXml, organisationXml);
+
 		return new JsonParser().composeString(bundle);
 	}
 
 	@Override
 	public String getSlots(String odsCode, String scheduleId) throws Exception {
-		String slotsInNativeFormat = _emisDataAdapter.getSlots(odsCode, scheduleId);
-		Bundle bundle = _emisOpenTransformer.toFHIRSlotBundle(scheduleId, slotsInNativeFormat);
-		return new JsonParser().composeString(bundle);
+		String slotsXml = _emisDataAdapter.getSlots(odsCode, scheduleId);
 
+		Bundle bundle = _emisOpenTransformer.toFHIRSlotBundle(scheduleId, slotsXml);
+
+		return new JsonParser().composeString(bundle);
 	}
 }

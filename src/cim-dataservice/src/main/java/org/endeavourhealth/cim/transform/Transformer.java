@@ -9,9 +9,9 @@ public interface Transformer {
     Bundle toFHIRBundle(String sourceData) throws TransformException;
     Patient toFHIRPatient(String sourceData) throws TransformException;
 
-    Bundle toFHIRAppointmentBundle(String patientGuid, String sourceData) throws TransformException;
-    Bundle toFHIRScheduleBundle(String sourceData) throws TransformException;
-    Bundle toFHIRSlotBundle(String scheduleId, String sourceData) throws TransformException;
+    Bundle toFHIRAppointmentBundle(String patientGuid, String appointmentsXml, String organisationXml) throws TransformException;
+    Bundle toFHIRScheduleBundle(String schedulesXml, String organisationXml) throws TransformException;
+    Bundle toFHIRSlotBundle(String scheduleId, String slotsXml, String organisationXml) throws TransformException;
 
     String fromFHIRCondition(Condition condition) throws TransformException;
 }

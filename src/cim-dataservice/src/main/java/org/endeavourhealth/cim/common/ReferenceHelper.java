@@ -5,6 +5,7 @@ import org.hl7.fhir.instance.model.Reference;
 import org.hl7.fhir.instance.model.Resource;
 
 import java.util.HashMap;
+import java.util.Map;
 
 public class ReferenceHelper {
     public static <T extends Resource> String createResourceReference(Class<T> resourceClass, String id) {
@@ -35,7 +36,7 @@ public class ReferenceHelper {
         return parts[1];
     }
 
-    public static <T extends Resource> void updateReferenceFromMap(Reference reference, Class<T> resourceClass, HashMap<String, String> updateMap) {
+    public static <T extends Resource> void updateReferenceFromMap(Reference reference, Class<T> resourceClass, Map<String, String> updateMap) {
         if (reference == null)
             return;
 

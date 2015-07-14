@@ -2,15 +2,14 @@ package org.endeavourhealth.cim.transform.emisopen;
 
 import org.endeavourhealth.cim.transform.SerializationException;
 import org.endeavourhealth.cim.transform.TransformHelper;
+import org.endeavourhealth.cim.transform.schemas.emisopen.eomorganisationinformation.OrganisationInformation;
 import org.hl7.fhir.instance.model.Reference;
 import org.hl7.fhir.instance.model.Resource;
 
 import java.sql.Time;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.GregorianCalendar;
+import java.util.*;
 
 public class EmisOpenCommon {
 
@@ -39,5 +38,29 @@ public class EmisOpenCommon {
         cal.setTime(date);
         cal.add(Calendar.MINUTE, minutes);
         return new Time(cal.getTime().getTime());
+    }
+
+    public static Map<String, String> buildUserIdGuidMap(OrganisationInformation organisationInformation) {
+        HashMap<String, String> userIdGuidMap = new HashMap<>();
+
+        organisationInformation
+                .getUserList()
+                .getUser()
+                .forEach(t ->
+                        userIdGuidMap.put(t.getDBID().toString(), t.getGUID()));
+
+        return userIdGuidMap;
+    }
+
+    public static Map<String, String> buildLocationIdGuidMap(OrganisationInformation organisationInformation) {
+        HashMap<String, String> locationIdGuidMap = new HashMap<>();
+
+        organisationInformation
+                .getLocationTypeList()
+                .getLocationType()
+                .forEach(t ->
+                        locationIdGuidMap.put(t.getDBID().toString(), t.getGUID()));
+
+        return locationIdGuidMap;
     }
 }

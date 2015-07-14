@@ -7,17 +7,19 @@ import org.endeavourhealth.cim.transform.TransformFeatureNotSupportedException;
 import org.endeavourhealth.cim.transform.emisopen.EmisOpenCommon;
 import org.endeavourhealth.cim.transform.openhr.tofhir.admin.NameConverter;
 import org.endeavourhealth.cim.transform.schemas.emisopen.eomappointmentsessions.*;
+import org.endeavourhealth.cim.transform.schemas.emisopen.eomorganisationinformation.OrganisationInformation;
 import org.hl7.fhir.instance.model.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 public class ScheduleTransformer {
 
     public final static String SCHEDULEADDITIONALACTOR_EXTENSION_URL = "http://www.e-mis.com/emisopen/extension/Schedule/AdditionalActor";
 
-    public static ArrayList<Resource> transformToScheduleResources(AppointmentSessionList appointmentSessionList) throws SerializationException, TransformFeatureNotSupportedException {
+    public static ArrayList<Resource> transformToScheduleResources(AppointmentSessionList appointmentSessionList, OrganisationInformation organisationInformation) throws SerializationException, TransformFeatureNotSupportedException {
         ArrayList<Practitioner> practitioners = new ArrayList<>();
         ArrayList<Location> locations = new ArrayList<>();
         ArrayList<Schedule> schedules = new ArrayList<>();
@@ -32,6 +34,8 @@ public class ScheduleTransformer {
 
             schedules.add(transformToSchedule(appointmentSession, location, sessionPractitioners));
         }
+
+        updateScheduleActorIds(schedules, organisationInformation);
 
         ArrayList<Resource> resources = new ArrayList<Resource>();
 //        resources.addAll(RemoveDuplicates(new ArrayList<Resource>(practitioners)));
@@ -97,5 +101,24 @@ public class ScheduleTransformer {
                 .stream()
                 .filter(StreamExtension.distinctByKey(t -> t.getId()))
                 .collect(Collectors.toList());
+    }
+
+    public static <T extends Resource> void updateScheduleActorIds(List<Schedule> schedules, OrganisationInformation organisationInformation) {
+        Map<String, String> userIdGuidMap = EmisOpenCommon.buildUserIdGuidMap(organisationInformation);
+        updateScheduleActorIds(schedules, Practitioner.class, userIdGuidMap);
+
+        Map<String, String> locationIdGuidMap = EmisOpenCommon.buildLocationIdGuidMap(organisationInformation);
+        updateScheduleActorIds(schedules, Location.class, locationIdGuidMap);
+    }
+
+    private static <T extends Resource> void updateScheduleActorIds(List<Schedule> schedules, Class<T> actorResourceType, Map<String, String> idGuidMap) {
+        schedules.forEach(t -> ReferenceHelper.updateReferenceFromMap(t.getActor(), actorResourceType, idGuidMap));
+
+        schedules.forEach(t ->
+                t
+                        .getExtension()
+                        .stream()
+                        .filter(s -> s.getUrl().equals(ScheduleTransformer.SCHEDULEADDITIONALACTOR_EXTENSION_URL))
+                        .forEach(s -> ReferenceHelper.updateReferenceFromMap((Reference) s.getValue(), actorResourceType, idGuidMap)));
     }
 }
