@@ -1,6 +1,7 @@
 package org.endeavourhealth.cim.processor.patient;
 
 import org.apache.camel.Exchange;
+import org.endeavourhealth.cim.common.HeaderKey;
 import org.endeavourhealth.cim.dataManager.DataManagerFactory;
 import org.endeavourhealth.cim.adapter.IDataAdapter;
 import org.endeavourhealth.cim.dataManager.IDataManager;
@@ -24,9 +25,9 @@ public class GetChangedPatients implements org.apache.camel.Processor {
 
     @Override
     public void process(Exchange exchange) throws Exception {
-        String odsCode = (String)exchange.getIn().getHeader("odsCode");
+        String odsCode = (String)exchange.getIn().getHeader(HeaderKey.OdsCode);
 
-        String lastUpdate = (String)exchange.getIn().getHeader("_lastUpdated");
+        String lastUpdate = (String)exchange.getIn().getHeader(HeaderKey.LastUpdated);
         Date dateUpdated = null;
 
         if (lastUpdate != null)         // Call originated from api

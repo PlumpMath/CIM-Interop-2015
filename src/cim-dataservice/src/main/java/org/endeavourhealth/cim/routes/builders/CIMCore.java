@@ -2,6 +2,7 @@ package org.endeavourhealth.cim.routes.builders;
 
 import org.apache.camel.LoggingLevel;
 import org.apache.camel.builder.RouteBuilder;
+import org.endeavourhealth.cim.common.HeaderKey;
 
 @SuppressWarnings("unused")
 public class CIMCore extends RouteBuilder {
@@ -19,7 +20,7 @@ public class CIMCore extends RouteBuilder {
         from("direct:CIMHeaderValidationResult")
             .routeId("CIMHeaderValidationResult")
             .wireTap("direct:CIMAudit")
-                .newExchangeHeader("TapLocation", constant("Inbound"))
+                .newExchangeHeader(HeaderKey.TapLocation, constant("Inbound"))
             .end()
             .to("direct:CIMSecurity");
 
@@ -42,7 +43,7 @@ public class CIMCore extends RouteBuilder {
         from("direct:CIMDataAggregatorResult")
             .routeId("CIMDataAggregatorResult")
                 .wireTap("direct:CIMAudit")
-                .newExchangeHeader("TapLocation", constant("Outbound"))
+                .newExchangeHeader(HeaderKey.TapLocation, constant("Outbound"))
             .end()
             .to("direct:CIMDataProtocolFilter");
 

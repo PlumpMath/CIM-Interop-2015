@@ -1,6 +1,7 @@
 package org.endeavourhealth.cim.adapter;
 
 import org.endeavourhealth.cim.common.DateUtils;
+import org.endeavourhealth.cim.common.HeaderKey;
 
 import javax.xml.soap.*;
 import java.text.SimpleDateFormat;
@@ -381,7 +382,7 @@ public class MockDataAdapter implements IDataAdapter {
         SOAPMessage soapMessage = messageFactory.createMessage();
 
         MimeHeaders headers = soapMessage.getMimeHeaders();
-        headers.addHeader("SOAPAction", _actionUri + "/" + methodCall);
+        headers.addHeader(HeaderKey.SOAPAction, _actionUri + "/" + methodCall);
 
         return soapMessage;
     }

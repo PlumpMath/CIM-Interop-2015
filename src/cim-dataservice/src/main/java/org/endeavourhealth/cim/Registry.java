@@ -29,14 +29,6 @@ public class Registry implements IRegistry {
         return dataManagerTypes;
     }
 
-    public Map<String, List<String>> getLegitimateRelationships() {
-        // TODO : Implement full DP logic
-        Map<String, List<String>> _legitimateRelationships = new HashMap<>();
-        _legitimateRelationships.put("swagger", Arrays.asList("A99999", "B99999"));
-        _legitimateRelationships.put("subsidiary", Arrays.asList("Y99999", "Z99999"));
-        return _legitimateRelationships;
-    }
-
     public String getPrivateKey(String publicKey) {
         return "privateKey";
     }

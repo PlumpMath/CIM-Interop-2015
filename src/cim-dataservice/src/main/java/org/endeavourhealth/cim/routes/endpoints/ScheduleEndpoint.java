@@ -2,6 +2,7 @@ package org.endeavourhealth.cim.routes.endpoints;
 
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.commons.httpclient.HttpStatus;
+import org.endeavourhealth.cim.common.HeaderKey;
 import org.endeavourhealth.cim.processor.core.CIMError;
 import org.endeavourhealth.cim.processor.schedules.GetSchedulesProcessor;
 
@@ -18,7 +19,7 @@ public class ScheduleEndpoint extends RouteBuilder {
             .route()
             .routeId("GetAvailableAppointmentSchedules")
             .description("Get available appointment schedules")
-            .setHeader("MessageRouterCallback", constant("direct:GetSchedules"))
+            .setHeader(HeaderKey.MessageRouterCallback, constant("direct:GetSchedules"))
             .to("direct:CIMCore")
         .endRest();
 

@@ -6,6 +6,7 @@ import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.httpclient.HttpStatus;
 import org.endeavourhealth.cim.IRegistry;
 import org.endeavourhealth.cim.Registry;
+import org.endeavourhealth.cim.common.HeaderKey;
 import org.endeavourhealth.cim.exceptions.SessionException;
 
 import javax.crypto.Mac;
@@ -16,8 +17,8 @@ public class SecurityProcessor implements Processor {
     public static final String INVALID_SESSION = "Invalid Session";
 
     public void process(Exchange exchange) throws Exception {
-        String publicKey = (String)exchange.getIn().getHeader("api_key");
-        String inboundHash = (String)exchange.getIn().getHeader("hash");
+        String publicKey = (String)exchange.getIn().getHeader(HeaderKey.ApiKey);
+        String inboundHash = (String)exchange.getIn().getHeader(HeaderKey.Hash);
         String method = exchange.getFromEndpoint().getEndpointConfiguration().getParameter("path");
         String body = exchange.getIn().getBody(String.class);
 

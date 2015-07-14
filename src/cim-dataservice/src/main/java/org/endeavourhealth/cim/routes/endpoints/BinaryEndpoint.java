@@ -1,6 +1,7 @@
 package org.endeavourhealth.cim.routes.endpoints;
 
 import org.apache.camel.builder.RouteBuilder;
+import org.endeavourhealth.cim.common.HeaderKey;
 import org.endeavourhealth.cim.processor.binary.RetrieveBinaryObjectProcessor;
 
 @SuppressWarnings({"WeakerAccess", "unused"})
@@ -16,7 +17,7 @@ public class BinaryEndpoint extends RouteBuilder {
             .route()
             .routeId("GetBinary")
             .description("Retrieve binary object")
-            .setHeader("MessageRouterCallback", constant("direct:RetrieveBinaryObject"))
+            .setHeader(HeaderKey.MessageRouterCallback, constant("direct:RetrieveBinaryObject"))
             .to("direct:CIMCore")
         .endRest();
 

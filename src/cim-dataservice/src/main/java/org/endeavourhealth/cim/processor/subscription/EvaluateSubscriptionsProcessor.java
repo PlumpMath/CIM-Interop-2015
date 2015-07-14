@@ -1,6 +1,7 @@
 package org.endeavourhealth.cim.processor.subscription;
 
 import org.apache.camel.Exchange;
+import org.endeavourhealth.cim.common.HeaderKey;
 import org.endeavourhealth.cim.dataManager.DataManagerFactory;
 import org.endeavourhealth.cim.dataManager.IDataManager;
 import org.hl7.fhir.instance.model.Subscription;
@@ -15,7 +16,7 @@ public class EvaluateSubscriptionsProcessor implements org.apache.camel.Processo
     @Override
     public void process(Exchange exchange) throws Exception {
         UUID patientUUID = (UUID)exchange.getIn().getBody();
-        String odsCode = (String) exchange.getIn().getHeader("odsCode");
+        String odsCode = (String) exchange.getIn().getHeader(HeaderKey.OdsCode);
 
         // Check through subscriptions for any interested in this patient
         ArrayList<String> subscriberCallbacks = new ArrayList<>();
@@ -30,7 +31,7 @@ public class EvaluateSubscriptionsProcessor implements org.apache.camel.Processo
             exchange.getIn().setBody(body);
         }
 
-        exchange.getIn().setHeader("Callbacks", subscriberCallbacks);
+        exchange.getIn().setHeader(HeaderKey.Callbacks, subscriberCallbacks);
     }
 
     public void add(Subscription subscription) {

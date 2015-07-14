@@ -1,6 +1,7 @@
 package org.endeavourhealth.cim.routes.endpoints;
 
 import org.apache.camel.builder.RouteBuilder;
+import org.endeavourhealth.cim.common.HeaderKey;
 import org.endeavourhealth.cim.processor.event.GetAllergyIntolerances;
 
 @SuppressWarnings({"WeakerAccess", "unused"})
@@ -16,7 +17,7 @@ public class AllergyIntoleranceEndpoint extends RouteBuilder {
             .route()
             .routeId("GetAllergyIntolerancesEndPoint")
             .description("Get patient allergies & intolerances")
-            .setHeader("MessageRouterCallback", constant("direct:GetAllergyIntolerancesRoute"))
+            .setHeader(HeaderKey.MessageRouterCallback, constant("direct:GetAllergyIntolerancesRoute"))
             .to("direct:CIMCore")
         .endRest();
 

@@ -1,11 +1,15 @@
 package org.endeavourhealth.cim.InformationSharingFramework.model;
 
 import org.endeavourhealth.cim.InformationSharingFramework.Manager;
+import org.endeavourhealth.cim.common.models.BaseEntity;
+import org.endeavourhealth.cim.common.models.EntityIdentifier;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
 
-public class InformationSharingProtocol {
-	private Integer id;
+public class InformationSharingProtocol extends BaseEntity {
+	private UUID id;
 	private String name;
 	private String description;
 	private Boolean enabled;
@@ -16,12 +20,21 @@ public class InformationSharingProtocol {
 	private ArrayList<Integer> publisherSharingAgreement = new ArrayList<>();
 	private ArrayList<Integer> subscriberSharingAgreement = new ArrayList<>();
 
-	public Integer getId() { return id; }
-	public void setId(Integer id) { this.id = id; }
+	public UUID getId() { return id; }
+	public void setId(UUID id) { this.id = id; }
 
 	public String getName() {
 		return name;
 	}
+
+	public String getSchemaVersion() {
+		return "1.0";
+	}
+
+	public List<EntityIdentifier> getIdentifiers() {
+		return null;
+	}
+
 	public void setName(String name) {
 		this.name = name;
 	}

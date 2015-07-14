@@ -1,6 +1,7 @@
 package org.endeavourhealth.cim.routes.endpoints;
 
 import org.apache.camel.builder.RouteBuilder;
+import org.endeavourhealth.cim.common.HeaderKey;
 import org.endeavourhealth.cim.processor.event.AddCondition;
 import org.endeavourhealth.cim.processor.event.GetConditions;
 
@@ -17,7 +18,7 @@ public class ConditionEndpoint extends RouteBuilder {
             .route()
             .routeId("GetConditionsEndPoint")
             .description("Get patient conditions")
-            .setHeader("MessageRouterCallback", constant("direct:GetConditionsRoute"))
+            .setHeader(HeaderKey.MessageRouterCallback, constant("direct:GetConditionsRoute"))
             .to("direct:CIMCore")
         .endRest()
 
@@ -25,7 +26,7 @@ public class ConditionEndpoint extends RouteBuilder {
             .route()
             .routeId("PostConditionEndPoint")
             .description("Add condition")
-            .setHeader("MessageRouterCallback", constant("direct:AddConditionRoute"))
+            .setHeader(HeaderKey.MessageRouterCallback, constant("direct:AddConditionRoute"))
             .to("direct:CIMCore")
         .endRest();
 

@@ -1,6 +1,7 @@
 package org.endeavourhealth.cim.routes.endpoints;
 
 import org.apache.camel.builder.RouteBuilder;
+import org.endeavourhealth.cim.common.HeaderKey;
 import org.endeavourhealth.cim.processor.event.GetMedicationPrescriptions;
 
 @SuppressWarnings("WeakerAccess")
@@ -16,7 +17,7 @@ public class MedicationPrescriptionEndpoint extends RouteBuilder {
             .route()
             .routeId("GetMedicationPrescriptionsEndPoint")
             .description("Get patient medication prescriptions")
-            .setHeader("MessageRouterCallback", constant("direct:GetMedicationPrescriptionsRoute"))
+            .setHeader(HeaderKey.MessageRouterCallback, constant("direct:GetMedicationPrescriptionsRoute"))
             .to("direct:CIMCore")
         .endRest();
 

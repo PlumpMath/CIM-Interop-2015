@@ -1,24 +1,38 @@
 package org.endeavourhealth.cim.InformationSharingFramework.model;
 
-import java.util.ArrayList;
+import org.endeavourhealth.cim.common.models.BaseEntity;
+import org.endeavourhealth.cim.common.models.EntityIdentifier;
 
-public class Service {
-	private Integer id;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
+
+public class Service extends BaseEntity{
+	private UUID id;
 	private String name;
 	private Boolean enabled;
 	private ArrayList<Integer> serviceCategory = new ArrayList<>();
 	private Integer organisationId;
 
-	public Integer getId() {
+	public UUID getId() {
 		return id;
 	}
-	public void setId(Integer id) {
+	public void setId(UUID id) {
 		this.id = id;
 	}
 
 	public String getName() {
 		return name;
 	}
+
+	public String getSchemaVersion() {
+		return "1.0";
+	}
+
+	public List<EntityIdentifier> getIdentifiers() {
+		return null;
+	}
+
 	public void setName(String name) {
 		this.name = name;
 	}

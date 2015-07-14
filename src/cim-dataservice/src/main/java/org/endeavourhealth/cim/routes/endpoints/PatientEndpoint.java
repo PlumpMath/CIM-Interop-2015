@@ -1,6 +1,7 @@
 package org.endeavourhealth.cim.routes.endpoints;
 
 import org.apache.camel.builder.RouteBuilder;
+import org.endeavourhealth.cim.common.HeaderKey;
 import org.endeavourhealth.cim.processor.patient.*;
 
 @SuppressWarnings("WeakerAccess")
@@ -16,7 +17,7 @@ public class PatientEndpoint extends RouteBuilder {
             .route()
             .routeId("GetServicePatientByQuery")
             .description("Query based call")
-            .setHeader("MessageRouterCallback", constant("direct:GetPatientByQuery"))
+            .setHeader(HeaderKey.MessageRouterCallback, constant("direct:GetPatientByQuery"))
             .to("direct:CIMCore")
         .endRest()
 
@@ -24,7 +25,7 @@ public class PatientEndpoint extends RouteBuilder {
             .route()
             .routeId("GetServicePatientRecordById")
             .description("Direct (patient id) call")
-            .setHeader("MessageRouterCallback", constant("direct:GetPatientRecordById"))
+            .setHeader(HeaderKey.MessageRouterCallback, constant("direct:GetPatientRecordById"))
             .to("direct:CIMCore")
         .endRest()
 
@@ -32,7 +33,7 @@ public class PatientEndpoint extends RouteBuilder {
             .route()
             .routeId("GetServicePatientAppointments")
             .description("Get Patient Appointments By Patient ID")
-            .setHeader("MessageRouterCallback", constant("direct:GetPatientAppointments"))
+            .setHeader(HeaderKey.MessageRouterCallback, constant("direct:GetPatientAppointments"))
             .to("direct:CIMCore")
         .endRest();
 
@@ -44,7 +45,7 @@ public class PatientEndpoint extends RouteBuilder {
                     .process(new GetPatientByIdentifier())
                 .when(simple("${header._lastUpdated} != null"))
                     .routeId("GetChangedPatients")
-                    .process(new GetChangedPatients(header("odsCode").toString()))
+                    .process(new GetChangedPatients(header(HeaderKey.OdsCode).toString()))
                 .when(simple("${header.active} == true"))
                     .routeId("GetActivePatients")
                     .process(new GetAllPatients(true))
