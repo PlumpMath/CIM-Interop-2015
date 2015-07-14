@@ -15,7 +15,7 @@ import java.util.stream.Collectors;
 
 public class ScheduleTransformer {
 
-    public final static String SESSIONADDITIONALACTOR_EXTENSION_URL = "http://www.e-mis.com/emisopen/extension/SessionAdditionalActor";
+    public final static String SCHEDULEADDITIONALACTOR_EXTENSION_URL = "http://www.e-mis.com/emisopen/extension/Schedule/AdditionalActor";
 
     public static ArrayList<Resource> transformToScheduleResources(AppointmentSessionList appointmentSessionList) throws SerializationException, TransformFeatureNotSupportedException {
         ArrayList<Practitioner> practitioners = new ArrayList<>();
@@ -60,13 +60,13 @@ public class ScheduleTransformer {
                 schedule.setActor(reference);
             } else {
                 schedule.addExtension(new Extension()
-                        .setUrl(SESSIONADDITIONALACTOR_EXTENSION_URL)
+                        .setUrl(SCHEDULEADDITIONALACTOR_EXTENSION_URL)
                         .setValue(reference));
             }
         }
 
         schedule.addExtension(new Extension()
-                .setUrl(SESSIONADDITIONALACTOR_EXTENSION_URL)
+                .setUrl(SCHEDULEADDITIONALACTOR_EXTENSION_URL)
                 .setValue(ReferenceHelper.createReference(Location.class, location.getId())));
 
         return schedule;

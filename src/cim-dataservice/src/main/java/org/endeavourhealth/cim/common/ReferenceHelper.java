@@ -36,6 +36,9 @@ public class ReferenceHelper {
     }
 
     public static <T extends Resource> void updateReferenceFromMap(Reference reference, Class<T> resourceClass, HashMap<String, String> updateMap) {
+        if (reference == null)
+            return;
+
         String referenceId = getReferenceId(reference, resourceClass);
 
         if (!TextUtils.isNullOrTrimmedEmpty(referenceId))
