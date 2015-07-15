@@ -1,6 +1,6 @@
 package org.endeavourhealth.cim.InformationSharingFramework.model;
 
-import org.endeavourhealth.cim.InformationSharingFramework.Manager;
+import org.endeavourhealth.cim.InformationSharingFramework.ISFManager;
 import org.endeavourhealth.cim.common.models.BaseEntity;
 import org.endeavourhealth.cim.common.models.EntityIdentifier;
 
@@ -66,7 +66,7 @@ public class InformationSharingProtocol extends BaseEntity {
 	public void setDerivedFromId(Integer derivedFromId) {
 		this.derivedFromId = derivedFromId;
 	}
-	public InformationSharingProtocol getDerivedFrom() { return Manager.Instance().getInformationSharingProtocol(derivedFromId); }
+	public InformationSharingProtocol getDerivedFrom() { return ISFManager.Instance().getInformationSharingProtocol(derivedFromId); }
 
 	public ArrayList<Integer> getPublisherProfiles() {
 		return publisherProfiles;

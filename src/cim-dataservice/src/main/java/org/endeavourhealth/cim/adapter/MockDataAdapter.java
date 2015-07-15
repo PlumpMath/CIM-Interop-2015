@@ -260,7 +260,6 @@ public class MockDataAdapter implements IDataAdapter {
             return null;
         }
     }
-
     public void requestOrder(String odsCode, String orderRequest) {
 
     }
@@ -295,12 +294,9 @@ public class MockDataAdapter implements IDataAdapter {
             return null;
         }
     }
-
-    @Override
     public String getSchedules(String odsCode, String actor) {
         return null;
     }
-
     public String getSlots(String odsCode, String scheduleId) {
         SOAPConnection soapConnection = null;
         try {
@@ -332,6 +328,7 @@ public class MockDataAdapter implements IDataAdapter {
         }
     }
 
+    // Admin
     public String getOrganisationInformation(String odsCode) {
         SOAPConnection soapConnection = null;
         try {
@@ -358,7 +355,6 @@ public class MockDataAdapter implements IDataAdapter {
             return null;
         }
     }
-
     public String getUserById(String odsCode, String userId) {
         SOAPConnection soapConnection = null;
         try {
@@ -392,18 +388,15 @@ public class MockDataAdapter implements IDataAdapter {
         SOAPConnectionFactory soapConnectionFactory = SOAPConnectionFactory.newInstance();
         return soapConnectionFactory.createConnection();
     }
-
     private static SOAPElement createSOAPMethodElement(SOAPMessage message, String name, String namespace) throws SOAPException {
         return message.getSOAPBody().addChildElement(name, "", namespace);
     }
-
     private static void createChildTextElement(SOAPElement element, String childElementName, String childElementValue) throws javax.xml.soap.SOAPException {
         SOAPElement childElement = element.addChildElement(childElementName);
 
         if (childElementValue != null)
             childElement.addTextNode(childElementValue);
     }
-
     private SOAPMessage createSOAPRequestMessage(String methodCall) throws Exception {
         MessageFactory messageFactory = MessageFactory.newInstance();
         SOAPMessage soapMessage = messageFactory.createMessage();

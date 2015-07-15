@@ -1,6 +1,6 @@
 package org.endeavourhealth.cim.InformationSharingFramework.model;
 
-import org.endeavourhealth.cim.InformationSharingFramework.Manager;
+import org.endeavourhealth.cim.InformationSharingFramework.ISFManager;
 
 import java.util.ArrayList;
 
@@ -23,7 +23,7 @@ public class PublisherProfile {
 	public void setDataSetCollectionId(Integer dataSetCollectionId) {
 		this.dataSetCollectionId = dataSetCollectionId;
 	}
-	public DataSetCollection getDataSetCollection() { return Manager.Instance().getDataSetCollection(dataSetCollectionId); }
+	public DataSetCollection getDataSetCollection() { return ISFManager.Instance().getDataSetCollection(dataSetCollectionId); }
 
 	public ArrayList<Integer> getServiceCategory() {
 		return serviceCategory;

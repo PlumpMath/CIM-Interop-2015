@@ -1,7 +1,7 @@
 package org.endeavourhealth.cim.processor.core;
 
 import org.apache.camel.Exchange;
-import org.endeavourhealth.cim.InformationSharingFramework.Manager;
+import org.endeavourhealth.cim.InformationSharingFramework.ISFManager;
 import org.endeavourhealth.cim.InformationSharingFramework.model.InformationSharingProtocol;
 import org.endeavourhealth.cim.common.HeaderKey;
 import org.endeavourhealth.cim.common.data.RepositoryException;
@@ -26,7 +26,7 @@ public class DataProtocolProcessor implements org.apache.camel.Processor {
 
 	private void LoadDataProtocols(Exchange exchange, String api_key, String odsCode) throws RepositoryException {
 		// Load relevant data protocols from DB
-		List<InformationSharingProtocol> informationSharingProtocols = Manager.Instance().getRelevantProtocols(odsCode, api_key);
+		List<InformationSharingProtocol> informationSharingProtocols = ISFManager.Instance().getRelevantProtocols(odsCode, api_key);
 
 		// Set protocols in message header for processing later in pipeline
 		exchange.getIn().setHeader(HeaderKey.InformationSharingProtocols, informationSharingProtocols);
@@ -34,7 +34,7 @@ public class DataProtocolProcessor implements org.apache.camel.Processor {
 
 	private void ValidateLegitimateRelationships(String api_key, String odsCode) throws Exception {
 
-		List<String> validOrganisations = Manager.Instance().getLegitimateRelationships().get(api_key);
+		List<String> validOrganisations = ISFManager.Instance().getLegitimateRelationships().get(api_key);
 
 		if (validOrganisations == null)
 			throw new LegitimateRelationshipException(NO_LEGITIMATE_RELATIONSHIPS_CONFIGURED_FOR_THIS_SUBSIDIARY_SYSTEM);

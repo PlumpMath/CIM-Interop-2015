@@ -1,6 +1,6 @@
 package org.endeavourhealth.cim.InformationSharingFramework.model;
 
-import org.endeavourhealth.cim.InformationSharingFramework.Manager;
+import org.endeavourhealth.cim.InformationSharingFramework.ISFManager;
 import org.endeavourhealth.cim.common.models.BaseEntity;
 import org.endeavourhealth.cim.common.models.EntityIdentifier;
 
@@ -50,7 +50,7 @@ public class SharingAgreement extends BaseEntity {
 		this.technicalInterfaceId = technicalInterfaceId;
 	}
 	public TechnicalInterface getTechnicalInterface() {
-		return Manager.Instance().getTechnicalInterface(technicalInterfaceId);
+		return ISFManager.Instance().getTechnicalInterface(technicalInterfaceId);
 	}
 
 	public Boolean getActive() {

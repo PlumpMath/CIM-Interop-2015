@@ -44,20 +44,16 @@ public class TestDataAdapter implements IDataAdapter {
         return "";
     }
     public void requestOrder(String odsCode, String orderRequest) {
-
     }
     public String getSchedules(String odsCode, Date dateFrom, Date dateTo) {
             return getSchedulesResult();
     }
-
 	public String getSchedules(String odsCode, String actor) {
 			return getSchedulesResult();
 	}
-
 	public String getSlots(String odsCode, String scheduleId) {
         return "";
     }
-
 	private String getSchedulesResult() {
 		return "<?xml version=\"1.0\" encoding=\"utf-16\"?>\n" +
 				"<AppointmentSessionList xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns=\"http://www.e-mis.com/emisopen/MedicalRecord\">\n" +
@@ -312,7 +308,135 @@ public class TestDataAdapter implements IDataAdapter {
 				"</AppointmentSessionList>";
 	}
 
+	// Admin
 	public String getUserById(String odsCode, String userId) throws Exception {
 		return "";
+	}
+	public String getOrganisationInformation(String odsCode) throws Exception {
+		return "<?xml version=\"1.0\" encoding=\"utf-16\"?>\n" +
+				"<OrganisationInformation xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns=\"http://www.e-mis.com/emisopen/MedicalRecord\">\n" +
+				"  <OrganisationList>\n" +
+				"    <Organisation>\n" +
+				"      <DBID>1</DBID>\n" +
+				"      <GUID>4a3ea1cf-7f01-4f61-9654-b07dd51a34f8</GUID>\n" +
+				"      <LocationName>Alpha Surgery</LocationName>\n" +
+				"      <NationalCode>A99999</NationalCode>\n" +
+				"    </Organisation>\n" +
+				"  </OrganisationList>\n" +
+				"  <UserList>\n" +
+				"    <User>\n" +
+				"      <DBID>1</DBID>\n" +
+				"      <GUID>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</GUID>\n" +
+				"      <Title>Dr</Title>\n" +
+				"      <FirstNames>Robert</FirstNames>\n" +
+				"      <LastName>Burns</LastName>\n" +
+				"    </User>\n" +
+				"    <User>\n" +
+				"      <DBID>2</DBID>\n" +
+				"      <GUID>316d34eb-f495-4c91-b814-364c69b1a541</GUID>\n" +
+				"      <Title>Mrs</Title>\n" +
+				"      <FirstNames>Sharon</FirstNames>\n" +
+				"      <LastName>Cook</LastName>\n" +
+				"    </User>\n" +
+				"    <User>\n" +
+				"      <DBID>3</DBID>\n" +
+				"      <GUID>6cf19e3c-fbc4-4430-be96-5b98a94e12ab</GUID>\n" +
+				"      <Title>Mrs</Title>\n" +
+				"      <FirstNames>Kathleen</FirstNames>\n" +
+				"      <LastName>Bray</LastName>\n" +
+				"    </User>\n" +
+				"    <User>\n" +
+				"      <DBID>4</DBID>\n" +
+				"      <GUID>a21d7adb-b000-49fb-b2b3-5ec9c9d2ed49</GUID>\n" +
+				"      <Title>Mr</Title>\n" +
+				"      <FirstNames>Anonymous</FirstNames>\n" +
+				"      <LastName>User</LastName>\n" +
+				"    </User>\n" +
+				"    <User>\n" +
+				"      <DBID>5</DBID>\n" +
+				"      <GUID>756ce7b3-6e45-4693-b147-65ae05936534</GUID>\n" +
+				"      <Title>Mrs</Title>\n" +
+				"      <FirstNames>Carol</FirstNames>\n" +
+				"      <LastName>Fitzgerald</LastName>\n" +
+				"    </User>\n" +
+				"    <User>\n" +
+				"      <DBID>6</DBID>\n" +
+				"      <GUID>7235b5fe-a01f-4cfe-b7fa-b8cbe0c2725c</GUID>\n" +
+				"      <Title />\n" +
+				"      <FirstNames>Mary</FirstNames>\n" +
+				"      <LastName>Cunningham</LastName>\n" +
+				"    </User>\n" +
+				"    <User>\n" +
+				"      <DBID>7</DBID>\n" +
+				"      <GUID>0e9fec8f-c287-4f48-aece-c0c6433eb5e8</GUID>\n" +
+				"      <Title>Mr</Title>\n" +
+				"      <FirstNames>Philip</FirstNames>\n" +
+				"      <LastName>Oliver</LastName>\n" +
+				"    </User>\n" +
+				"    <User>\n" +
+				"      <DBID>8</DBID>\n" +
+				"      <GUID>893001d7-07fa-42d8-a303-c61fd99c874b</GUID>\n" +
+				"      <Title>Dr</Title>\n" +
+				"      <FirstNames>Adam</FirstNames>\n" +
+				"      <LastName>Walton</LastName>\n" +
+				"    </User>\n" +
+				"    <User>\n" +
+				"      <DBID>9</DBID>\n" +
+				"      <GUID>bdd39c67-dee0-474c-a3fe-2dcd09810aaf</GUID>\n" +
+				"      <Title>Mrs</Title>\n" +
+				"      <FirstNames>Eileen</FirstNames>\n" +
+				"      <LastName>Walton</LastName>\n" +
+				"    </User>\n" +
+				"    <User>\n" +
+				"      <DBID>10</DBID>\n" +
+				"      <GUID>256ddcf6-710b-4d0d-b1fe-02713063d187</GUID>\n" +
+				"      <Title>Miss</Title>\n" +
+				"      <FirstNames>Julie</FirstNames>\n" +
+				"      <LastName>Thomson</LastName>\n" +
+				"    </User>\n" +
+				"    <User>\n" +
+				"      <DBID>11</DBID>\n" +
+				"      <GUID>d664182d-c980-402e-b1c9-117f9c329475</GUID>\n" +
+				"      <Title>Mrs</Title>\n" +
+				"      <FirstNames>Joanne</FirstNames>\n" +
+				"      <LastName>Sharpe</LastName>\n" +
+				"    </User>\n" +
+				"    <User>\n" +
+				"      <DBID>12</DBID>\n" +
+				"      <GUID>7a07b9c1-9595-4f17-9672-4c5de9072879</GUID>\n" +
+				"      <Title>Mrs</Title>\n" +
+				"      <FirstNames>Rachel</FirstNames>\n" +
+				"      <LastName>Skinner</LastName>\n" +
+				"    </User>\n" +
+				"    <User>\n" +
+				"      <DBID>13</DBID>\n" +
+				"      <GUID>ded17d52-5646-47bd-8cb5-80667c1522aa</GUID>\n" +
+				"      <Title />\n" +
+				"      <FirstNames>Physiotherapist</FirstNames>\n" +
+				"      <LastName>-</LastName>\n" +
+				"    </User>\n" +
+				"    <User>\n" +
+				"      <DBID>14</DBID>\n" +
+				"      <GUID>cf1a5b91-d02d-49e4-9f52-9bc961628aaa</GUID>\n" +
+				"      <Title>Mrs</Title>\n" +
+				"      <FirstNames>Victoria</FirstNames>\n" +
+				"      <LastName>Herbert</LastName>\n" +
+				"    </User>\n" +
+				"    <User>\n" +
+				"      <DBID>15</DBID>\n" +
+				"      <GUID>7fab7cd6-10be-454c-a34f-ddec091f5625</GUID>\n" +
+				"      <Title>Miss</Title>\n" +
+				"      <FirstNames>Maureen</FirstNames>\n" +
+				"      <LastName>Whitehouse</LastName>\n" +
+				"    </User>\n" +
+				"  </UserList>\n" +
+				"  <LocationTypeList>\n" +
+				"    <LocationType>\n" +
+				"      <DBID>1</DBID>\n" +
+				"      <GUID>187011f3-aa9d-4419-89b7-d461953f9eb0</GUID>\n" +
+				"      <Description>EMIS PCS Test Surgery 2</Description>\n" +
+				"    </LocationType>\n" +
+				"  </LocationTypeList>\n" +
+				"</OrganisationInformation>";
 	}
 }

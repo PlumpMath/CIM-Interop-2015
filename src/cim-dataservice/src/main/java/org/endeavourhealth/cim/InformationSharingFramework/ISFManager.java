@@ -7,12 +7,11 @@ import org.endeavourhealth.cim.InformationSharingFramework.model.*;
 import org.endeavourhealth.cim.InformationSharingFramework.model.System;
 import org.endeavourhealth.cim.common.data.RepositoryException;
 
-import javax.naming.directory.Attribute;
 import java.util.*;
 
-public class Manager {
-	private static Manager _instance = new Manager();
-	public static Manager Instance() { return _instance; }
+public class ISFManager {
+	private static ISFManager _instance = new ISFManager();
+	public static ISFManager Instance() { return _instance; }
 
 	SharingAgreementRepository sharingAgreementRepository = new SharingAgreementRepository();
 	InformationSharingProtocolRepository protocolRepository = new InformationSharingProtocolRepository();

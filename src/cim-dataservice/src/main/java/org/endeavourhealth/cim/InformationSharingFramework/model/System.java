@@ -1,6 +1,6 @@
 package org.endeavourhealth.cim.InformationSharingFramework.model;
 
-import org.endeavourhealth.cim.InformationSharingFramework.Manager;
+import org.endeavourhealth.cim.InformationSharingFramework.ISFManager;
 
 public class System {
 	private Integer id;
@@ -36,6 +36,6 @@ public class System {
 		this.technicalInterfaceId = technicalInterfaceId;
 	}
 	public TechnicalInterface getTechnicalInterface() {
-		return Manager.Instance().getTechnicalInterface(technicalInterfaceId);
+		return ISFManager.Instance().getTechnicalInterface(technicalInterfaceId);
 	}
 }
