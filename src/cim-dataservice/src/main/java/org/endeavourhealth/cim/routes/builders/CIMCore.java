@@ -11,7 +11,7 @@ public class CIMCore extends RouteBuilder {
         from("direct:CIMCore")
             .routeId("CIMCore")
             .choice()
-                .when(simple("${header.MessageRouterCallback} == null"))
+                .when(simple("${header." + HeaderKey.MessageRouterCallback + "} == null"))
                     .log(LoggingLevel.ERROR, "No destination for message route")
                     .stop()
                 .otherwise()

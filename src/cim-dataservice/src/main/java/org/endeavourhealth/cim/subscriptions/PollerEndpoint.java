@@ -28,7 +28,7 @@ public class PollerEndpoint extends RouteBuilder {
             .routeId("MockCMSPoller")
 			.setHeader(HeaderKey.OdsCodeList, constant(_odsCodes))
 			.split(header(HeaderKey.OdsCodeList), new ArrayListAggregationStrategy())	// Split the call by single ods code
-				.setHeader(HeaderKey.OdsCode, simple("${header.odsCodes[0]}"))		// Set the odsCode
+				.setHeader(HeaderKey.OdsCode, simple("${header." + HeaderKey.OdsCodeList +"[0]}"))		// Set the odsCode
             	.process(new GetChangedPatients(_dataManager))				// Call the adapter for each ods code (returns array)
 			.end()															// Aggregate the results (array of arrays)
 			.choice()
