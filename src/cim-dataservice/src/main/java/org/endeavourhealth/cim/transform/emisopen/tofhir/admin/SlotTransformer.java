@@ -4,20 +4,13 @@ import org.endeavourhealth.cim.common.ReferenceHelper;
 import org.endeavourhealth.cim.common.TextUtils;
 import org.endeavourhealth.cim.transform.SerializationException;
 import org.endeavourhealth.cim.transform.TransformFeatureNotSupportedException;
-import org.endeavourhealth.cim.transform.TransformHelper;
 import org.endeavourhealth.cim.transform.emisopen.EmisOpenCommon;
 import org.endeavourhealth.cim.transform.schemas.emisopen.eomslotsforsession.SlotListStruct;
 import org.endeavourhealth.cim.transform.schemas.emisopen.eomslotsforsession.SlotStruct;
-import org.hl7.fhir.instance.model.Reference;
-import org.hl7.fhir.instance.model.Resource;
-import org.hl7.fhir.instance.model.Schedule;
-import org.hl7.fhir.instance.model.Slot;
+import org.hl7.fhir.instance.model.*;
 
 import java.sql.Time;
-import java.text.ParseException;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
 
 public class SlotTransformer {
 
@@ -45,7 +38,7 @@ public class SlotTransformer {
         if (!TextUtils.isNullOrTrimmedEmpty(slotStatus))
             slot.setFreeBusyType(getSlotStatus(slotStatus));
 
-        slot.setSchedule(ReferenceHelper.createReference(Schedule.class, scheduleId));
+        slot.setSchedule(ReferenceHelper.createReference(ResourceType.Schedule, scheduleId));
 
         return slot;
     }

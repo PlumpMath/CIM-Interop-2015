@@ -35,17 +35,15 @@ class ConditionTransformer {
     }
 
     private static String convertId(String sourceId) throws SourceDocumentInvalidException {
-        // TODO: consider checking if Id is a valid guid
         if (StringUtils.isBlank(sourceId))
             throw new SourceDocumentInvalidException("Invalid Event Id");
         return sourceId;
     }
 
     private static Reference convertPatient(String sourcePatientId) throws SourceDocumentInvalidException {
-        // TODO: consider checking id Id is a valid guid
         if (StringUtils.isBlank(sourcePatientId))
             throw new SourceDocumentInvalidException("Invalid Patient Id");
-        return new Reference().setReference(ReferenceHelper.createResourceReference(Patient.class, sourcePatientId));
+        return ReferenceHelper.createReference(ResourceType.Patient, sourcePatientId);
     }
 
     private static Reference getEncounter(Map<String, String> eventEncouterMap, String eventId) {
@@ -53,14 +51,14 @@ class ConditionTransformer {
         if (StringUtils.isBlank(encounterId))
             return null;
 
-        return new Reference().setReference(ReferenceHelper.createResourceReference(Encounter.class, encounterId));
+        return ReferenceHelper.createReference(ResourceType.Encounter, encounterId);
     }
 
     private static Reference convertUserInRole(String userInRoleId) throws SourceDocumentInvalidException {
         if (StringUtils.isBlank(userInRoleId))
             throw new SourceDocumentInvalidException("UserInRoleId not found");
 
-        return new Reference().setReference(ReferenceHelper.createResourceReference(Practitioner.class, userInRoleId));
+        return ReferenceHelper.createReference(ResourceType.Practitioner, userInRoleId);
     }
 
     private static DateType convertEffectiveDateTime(DtDatePart source) throws TransformException {

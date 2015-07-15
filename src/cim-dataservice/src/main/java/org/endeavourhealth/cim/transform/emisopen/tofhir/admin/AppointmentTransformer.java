@@ -48,25 +48,25 @@ public class AppointmentTransformer {
         Date endTime = EmisOpenCommon.addMinutesToTime(startTime, Integer.parseInt(appointmentStruct.getDuration()));
         appointment.setEnd(endTime);
 
-        Reference reference = ReferenceHelper.createReference(Slot.class, Integer.toString(appointmentStruct.getSlotID()));
+        Reference reference = ReferenceHelper.createReference(ResourceType.Slot, Integer.toString(appointmentStruct.getSlotID()));
         appointment.addSlot(reference);
 
         Appointment.Participantrequired requiredStatus = Appointment.Participantrequired.REQUIRED;
         Appointment.Participationstatus participationstatus = Appointment.Participationstatus.ACCEPTED;
 
-        appointment.addParticipant(createParticipant(Patient.class, patientGuid, requiredStatus, participationstatus));
+        appointment.addParticipant(createParticipant(ResourceType.Patient, patientGuid, requiredStatus, participationstatus));
 
         for (HolderStruct holder : appointmentStruct.getHolderList().getHolder())
-            appointment.addParticipant(createParticipant(Practitioner.class, Integer.toString(holder.getDBID()), requiredStatus, participationstatus));
+            appointment.addParticipant(createParticipant(ResourceType.Practitioner, Integer.toString(holder.getDBID()), requiredStatus, participationstatus));
 
-        appointment.addParticipant(createParticipant(Location.class, Integer.toString(appointmentStruct.getSiteID()), requiredStatus, participationstatus));
+        appointment.addParticipant(createParticipant(ResourceType.Location, Integer.toString(appointmentStruct.getSiteID()), requiredStatus, participationstatus));
 
         return appointment;
     }
 
-    private static <T extends Resource> Appointment.AppointmentParticipantComponent createParticipant(Class<T> resourceClass, String id, Appointment.Participantrequired required, Appointment.Participationstatus status) {
+    private static Appointment.AppointmentParticipantComponent createParticipant(ResourceType resourceType, String id, Appointment.Participantrequired required, Appointment.Participationstatus status) {
         return new Appointment.AppointmentParticipantComponent()
-                .setActor(ReferenceHelper.createReference(resourceClass, id))
+                .setActor(ReferenceHelper.createReference(resourceType, id))
                 .setRequired(required)
                 .setStatus(status);
     }
@@ -96,15 +96,15 @@ public class AppointmentTransformer {
         }
     }
 
-    public static <T extends Resource> void updateAppointmentParticipantIds(ArrayList<Appointment> appointments, OrganisationInformation organisationInformation) {
+    public static void updateAppointmentParticipantIds(ArrayList<Appointment> appointments, OrganisationInformation organisationInformation) {
         Map<String, String> userIdGuidMap = EmisOpenCommon.buildUserIdGuidMap(organisationInformation);
-        updateAppointmentParticipantIds(appointments, Practitioner.class, userIdGuidMap);
+        updateAppointmentParticipantIds(appointments, ResourceType.Practitioner, userIdGuidMap);
 
         Map<String, String> locationIdGuidMap = EmisOpenCommon.buildLocationIdGuidMap(organisationInformation);
-        updateAppointmentParticipantIds(appointments, Location.class, locationIdGuidMap);
+        updateAppointmentParticipantIds(appointments, ResourceType.Location, locationIdGuidMap);
     }
 
-    private static <T extends Resource> void updateAppointmentParticipantIds(ArrayList<Appointment> appointments, Class<T> participantResourceType, Map<String, String> idGuidMap) {
+    private static void updateAppointmentParticipantIds(ArrayList<Appointment> appointments, ResourceType participantResourceType, Map<String, String> idGuidMap) {
         appointments.forEach(t ->
                 t
                         .getParticipant()

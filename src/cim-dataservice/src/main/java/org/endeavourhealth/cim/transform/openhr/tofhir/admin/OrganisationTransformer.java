@@ -123,7 +123,6 @@ class OrganisationTransformer {
         if (StringUtils.isBlank(parentOrganisationId))
             return null;
 
-        return new Reference()
-                .setReference(ReferenceHelper.createResourceReference(Organization.class, parentOrganisationId));
+        return ReferenceHelper.createReference(ResourceType.Organization, parentOrganisationId);
     }
 }

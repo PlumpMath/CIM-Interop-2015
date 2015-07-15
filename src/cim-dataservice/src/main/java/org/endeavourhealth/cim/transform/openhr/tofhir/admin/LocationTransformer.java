@@ -70,8 +70,7 @@ class LocationTransformer {
         if (StringUtils.isBlank(parentLocationId))
             return null;
 
-        return new Reference()
-                .setReference(ReferenceHelper.createResourceReference(Location.class, parentLocationId));
+        return ReferenceHelper.createReference(ResourceType.Location, parentLocationId);
     }
 
     private static Location.LocationStatus convertCloseDateToStatus(XMLGregorianCalendar closeDate) {
@@ -92,8 +91,7 @@ class LocationTransformer {
         if (organisationWithLocationMatch == null)
             return null;
 
-        return new Reference()
-                .setReference(ReferenceHelper.createResourceReference(Organization.class, organisationWithLocationMatch.getId()));
+        return ReferenceHelper.createReference(ResourceType.Organization, organisationWithLocationMatch.getId());
     }
 
     private static void addLocationTypeExtension(OpenHR001LocationType locationType, Location target) {

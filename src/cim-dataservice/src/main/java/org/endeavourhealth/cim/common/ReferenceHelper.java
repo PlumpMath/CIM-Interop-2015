@@ -1,24 +1,20 @@
 package org.endeavourhealth.cim.common;
 
-import org.hl7.fhir.instance.model.Practitioner;
 import org.hl7.fhir.instance.model.Reference;
-import org.hl7.fhir.instance.model.Resource;
+import org.hl7.fhir.instance.model.ResourceType;
 
-import java.util.HashMap;
 import java.util.Map;
 
 public class ReferenceHelper {
-    public static <T extends Resource> String createResourceReference(Class<T> resourceClass, String id) {
-        return resourceClass.getSimpleName() + "/" + id;
+    public static String createResourceReference(ResourceType resourceType, String id) {
+        return resourceType.toString() + "/" + id;
     }
 
-    public static <T extends Resource> Reference createReference(Class<T> resourceClass, String id) {
-        Reference reference = new Reference();
-        reference.setReference(createResourceReference(resourceClass, id));
-        return reference;
+    public static Reference createReference(ResourceType resourceType, String id) {
+        return new Reference().setReference(createResourceReference(resourceType, id));
     }
 
-    public static <T extends Resource> String getReferenceId(Reference reference, Class<T> resourceClass) {
+    public static String getReferenceId(Reference reference, ResourceType resourceType) {
         if (reference == null)
             return null;
 
@@ -30,21 +26,21 @@ public class ReferenceHelper {
         if (parts.length != 2)
             throw new IllegalArgumentException("Invalid reference string.");
 
-        if (!parts[0].equals(resourceClass.getSimpleName()))
+        if (!parts[0].equals(resourceType.toString()))
             return null;
 
         return parts[1];
     }
 
-    public static <T extends Resource> void updateReferenceFromMap(Reference reference, Class<T> resourceClass, Map<String, String> updateMap) {
+    public static void updateReferenceFromMap(Reference reference, ResourceType resourceType, Map<String, String> updateMap) {
         if (reference == null)
             return;
 
-        String referenceId = getReferenceId(reference, resourceClass);
+        String referenceId = getReferenceId(reference, resourceType);
 
         if (!TextUtils.isNullOrTrimmedEmpty(referenceId))
             if (updateMap.containsKey(referenceId))
-                reference.setReference(ReferenceHelper.createResourceReference(Practitioner.class, updateMap.get(referenceId)));
+                reference.setReference(ReferenceHelper.createResourceReference(resourceType, updateMap.get(referenceId)));
 
     }
 }

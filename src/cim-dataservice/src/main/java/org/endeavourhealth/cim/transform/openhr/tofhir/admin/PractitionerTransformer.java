@@ -51,7 +51,7 @@ class PractitionerTransformer {
         }
 
         Practitioner.PractitionerPractitionerRoleComponent practitionerRole =  practitioner.addPractitionerRole();
-        practitionerRole.setManagingOrganization(new Reference().setReference(ReferenceHelper.createResourceReference(Organization.class, role.getOrganisation())));
+        practitionerRole.setManagingOrganization(ReferenceHelper.createReference(ResourceType.Organization, role.getOrganisation()));
 
         DtCode userCategory = role.getUserCategory();
 

@@ -58,7 +58,7 @@ public class ScheduleTransformer {
             .setComment(appointmentSession.getName());
 
         for (int i = 0; i < practitioners.size(); i++) {
-            Reference reference = ReferenceHelper.createReference(Practitioner.class, practitioners.get(i).getId());
+            Reference reference = ReferenceHelper.createReference(ResourceType.Practitioner, practitioners.get(i).getId());
 
             if (i == 0) {
                 schedule.setActor(reference);
@@ -71,7 +71,7 @@ public class ScheduleTransformer {
 
         schedule.addExtension(new Extension()
                 .setUrl(SCHEDULEADDITIONALACTOR_EXTENSION_URL)
-                .setValue(ReferenceHelper.createReference(Location.class, location.getId())));
+                .setValue(ReferenceHelper.createReference(ResourceType.Location, location.getId())));
 
         return schedule;
     }
@@ -105,13 +105,13 @@ public class ScheduleTransformer {
 
     public static <T extends Resource> void updateScheduleActorIds(List<Schedule> schedules, OrganisationInformation organisationInformation) {
         Map<String, String> userIdGuidMap = EmisOpenCommon.buildUserIdGuidMap(organisationInformation);
-        updateScheduleActorIds(schedules, Practitioner.class, userIdGuidMap);
+        updateScheduleActorIds(schedules, ResourceType.Practitioner, userIdGuidMap);
 
         Map<String, String> locationIdGuidMap = EmisOpenCommon.buildLocationIdGuidMap(organisationInformation);
-        updateScheduleActorIds(schedules, Location.class, locationIdGuidMap);
+        updateScheduleActorIds(schedules, ResourceType.Location, locationIdGuidMap);
     }
 
-    private static <T extends Resource> void updateScheduleActorIds(List<Schedule> schedules, Class<T> actorResourceType, Map<String, String> idGuidMap) {
+    private static void updateScheduleActorIds(List<Schedule> schedules, ResourceType actorResourceType, Map<String, String> idGuidMap) {
         schedules.forEach(t -> ReferenceHelper.updateReferenceFromMap(t.getActor(), actorResourceType, idGuidMap));
 
         schedules.forEach(t ->

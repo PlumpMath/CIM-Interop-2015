@@ -72,10 +72,9 @@ public class EncounterTransformer {
     }
 
     private static Reference convertPatient(String sourcePatientId) throws SourceDocumentInvalidException {
-        // TODO: consider checking id Id is a valid guid
         if (StringUtils.isBlank(sourcePatientId))
             throw new SourceDocumentInvalidException("Invalid Patient Id");
-        return new Reference().setReference(ReferenceHelper.createResourceReference(Patient.class, sourcePatientId));
+        return ReferenceHelper.createReference(ResourceType.Patient, sourcePatientId);
     }
 
     private static Period convertEffectiveDateTime(DtDatePart source) throws TransformException {
@@ -97,7 +96,7 @@ public class EncounterTransformer {
         if (StringUtils.isBlank(organisationId))
             throw new SourceDocumentInvalidException("Organisation not found");
 
-        return new Reference().setReference(ReferenceHelper.createResourceReference(Organization.class, organisationId));
+        return ReferenceHelper.createReference(ResourceType.Organization, organisationId);
     }
 
     private static Duration convertDuration(DtDuration sourceDuration) {
@@ -117,19 +116,15 @@ public class EncounterTransformer {
             throw new SourceDocumentInvalidException("UserInRoleId not found");
 
         return new Encounter.EncounterParticipantComponent()
-                    .setIndividual(new Reference()
-                            .setReference(ReferenceHelper.createResourceReference(Practitioner.class, userInRoleId)));
+                    .setIndividual(ReferenceHelper.createReference(ResourceType.Practitioner, userInRoleId));
     }
 
     private static Encounter.EncounterLocationComponent convertLocation(String locationId) {
         if (StringUtils.isBlank(locationId))
             return null;
 
-        // TODO: consider checking id Id is a valid guid
-
         return new Encounter.EncounterLocationComponent()
-                .setLocation(new Reference()
-                        .setReference(ReferenceHelper.createResourceReference(Location.class, locationId)));
+                .setLocation(ReferenceHelper.createReference(ResourceType.Location, locationId));
     }
 
     private static void addEventEncouterMapping(FHIRContainer container, OpenHR001Encounter source) throws TransformException {
