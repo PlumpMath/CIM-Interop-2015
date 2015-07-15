@@ -2,10 +2,11 @@ package org.endeavourhealth.cim.transform.openhr.tofhir.clinical;
 
 import org.apache.commons.lang3.StringUtils;
 import org.endeavourhealth.cim.common.ReferenceHelper;
+import org.endeavourhealth.cim.common.StreamExtension;
+import org.endeavourhealth.cim.transform.FHIRConstants;
 import org.endeavourhealth.cim.transform.SourceDocumentInvalidException;
 import org.endeavourhealth.cim.transform.TransformException;
 import org.endeavourhealth.cim.transform.TransformFeatureNotSupportedException;
-import org.endeavourhealth.cim.transform.TransformHelper;
 import org.endeavourhealth.cim.transform.openhr.tofhir.FHIRContainer;
 import org.endeavourhealth.cim.transform.openhr.tofhir.ToFHIRHelper;
 import org.endeavourhealth.cim.transform.schemas.openhr.*;
@@ -14,15 +15,14 @@ import org.hl7.fhir.instance.model.*;
 import java.util.List;
 import java.util.Map;
 
-class ConditionTransformer {
-    public static Condition transform(OpenHR001HealthDomain healthDomain,
-                                      FHIRContainer container,
-                                      OpenHR001HealthDomain.Event source,
-                                      OpenHR001Problem problem) throws TransformException {
+class ConditionTransformer implements ClinicalResourceTransformer {
+    public Condition transform(OpenHR001HealthDomain healthDomain, FHIRContainer container, OpenHR001HealthDomain.Event source) throws TransformException {
+        OpenHR001Problem problem = getProblem(healthDomain.getProblem(), convertId(source.getId()));
+
         Condition target = new Condition();
         target.setId(convertId(source.getId()));
         target.setPatient(convertPatient(source.getPatient()));
-        target.setEncounter(getEncounter(container.getEventEncouterMap(), source.getId()));
+        target.setEncounter(getEncounter(container.getEventEncounterMap(), source.getId()));
         target.setAsserter(convertUserInRole(source.getAuthorisingUserInRole()));
         target.setDateAssertedElement(convertEffectiveDateTime(source.getEffectiveTime()));
         target.setCode(convertCode(source.getCode()));
@@ -32,6 +32,19 @@ class ConditionTransformer {
         handleAssociatedText(source, target);
 
         return target;
+    }
+
+    private OpenHR001Problem getProblem(List<OpenHR001Problem> problemList, String eventId) throws SourceDocumentInvalidException {
+        if (problemList == null)
+            return null;
+
+        OpenHR001Problem problem = problemList.stream()
+                .filter(u -> u.getId().equals(eventId))
+                .collect(StreamExtension.singleOrNullCollector());
+
+        //if the problem is there multiple times, then it will just throw a general exception.
+
+        return problem;
     }
 
     private static String convertId(String sourceId) throws SourceDocumentInvalidException {
@@ -94,7 +107,7 @@ class ConditionTransformer {
             case "2.16.840.1.113883.2.1.6.2":
                 return "READ2";
             case "2.16.840.1.113883.2.1.3.2.4.15":
-                return "SNOMED";
+                return FHIRConstants.CODE_SYSTEM_SNOMED_CT;
             case "2.16.840.1.113883.2.1.6.3":
                 return "http://www.e-mis.com/emisopen/emis_snomed";
             default:

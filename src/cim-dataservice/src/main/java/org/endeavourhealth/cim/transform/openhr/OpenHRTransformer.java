@@ -2,7 +2,6 @@ package org.endeavourhealth.cim.transform.openhr;
 
 import org.endeavourhealth.cim.transform.SerializationException;
 import org.endeavourhealth.cim.transform.TransformException;
-import org.endeavourhealth.cim.transform.Transformer;
 import org.endeavourhealth.cim.transform.openhr.fromfhir.FromFHIRTransformer;
 import org.endeavourhealth.cim.transform.openhr.tofhir.ToFHIRTransformer;
 import org.endeavourhealth.cim.transform.schemas.openhr.ObjectFactory;

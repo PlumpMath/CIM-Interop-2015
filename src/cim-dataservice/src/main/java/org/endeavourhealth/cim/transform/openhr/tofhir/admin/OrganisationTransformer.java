@@ -47,7 +47,7 @@ class OrganisationTransformer {
     }
 
     private static void addOrganisationToResults(FHIRContainer container, Organization organisation) throws SourceDocumentInvalidException {
-        container.getOrganisations().put(organisation.getId(), organisation);
+        container.getAdminResources().put(organisation.getId(), organisation);
     }
 
     private static void addIdentifiers(OpenHR001Organisation source, Organization target) throws SourceDocumentInvalidException {

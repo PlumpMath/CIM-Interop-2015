@@ -35,22 +35,13 @@ public class ToFHIRTransformer {
         bundle.setMeta(new Meta()
                 .setLastUpdated(TransformHelper.toDate(openHR.getCreationTime())));
 
-        for (Organization organisation: container.getOrganisations().values())
-            bundle.addEntry(new Bundle.BundleEntryComponent().setResource(organisation));
-
-        for (Location location: container.getLocations().values())
-            bundle.addEntry(new Bundle.BundleEntryComponent().setResource(location));
-
-        for (Practitioner practitioner: container.getPractitioners().values())
-            bundle.addEntry(new Bundle.BundleEntryComponent().setResource(practitioner));
-
         bundle.addEntry(new Bundle.BundleEntryComponent().setResource(container.getPatient()));
 
-        for (Encounter encounter: container.getEncounters().values())
-            bundle.addEntry(new Bundle.BundleEntryComponent().setResource(encounter));
+        for (Resource adminResource: container.getSortedAdminResources())
+            bundle.addEntry(new Bundle.BundleEntryComponent().setResource(adminResource));
 
-        for (Resource event: container.getClinicalResources().values())
-            bundle.addEntry(new Bundle.BundleEntryComponent().setResource(event));
+        for (Resource clinicalResource: container.getSortedClinicalResources())
+            bundle.addEntry(new Bundle.BundleEntryComponent().setResource(clinicalResource));
 
         return bundle;
     }

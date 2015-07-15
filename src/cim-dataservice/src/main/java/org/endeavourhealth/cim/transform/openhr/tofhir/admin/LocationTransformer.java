@@ -46,7 +46,7 @@ class LocationTransformer {
     }
 
     private static void addLocationToResults(FHIRContainer container, Location location) throws SourceDocumentInvalidException {
-        container.getLocations().put(location.getId(), location);
+        container.getAdminResources().put(location.getId(), location);
     }
 
     private static void addTelecoms(List<DtContact> sourceContacts, Location target) throws TransformFeatureNotSupportedException {

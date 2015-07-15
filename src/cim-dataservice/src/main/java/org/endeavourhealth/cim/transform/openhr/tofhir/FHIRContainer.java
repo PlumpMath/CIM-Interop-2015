@@ -2,17 +2,17 @@ package org.endeavourhealth.cim.transform.openhr.tofhir;
 
 import org.hl7.fhir.instance.model.*;
 
+import java.util.Comparator;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class FHIRContainer {
     private Patient patient;
-    private Map<String, Organization> organisations;
-    private Map<String, Location> locations;
-    private Map<String, Practitioner> practitioners;
-    private Map<String, Encounter> encounters;
+    private Map<String, Resource> adminResources;
     private Map<String, Resource> clinicalResources;
-    private Map<String, String> eventEncouterMap;
+    private Map<String, String> eventEncounterMap;
 
     public Patient getPatient() {
         return patient;
@@ -22,38 +22,13 @@ public class FHIRContainer {
         this.patient = patient;
     }
 
-    public Map<String, Organization> getOrganisations() {
-        if (organisations == null) organisations = new HashMap<>();
-        return organisations;
+    public Map<String, Resource> getAdminResources() {
+        if (adminResources == null) adminResources = new HashMap<>();
+        return adminResources;
     }
 
-    public void setOrganisations(Map<String, Organization> organisations) {
-        this.organisations = organisations;
-    }
-
-    public Map<String, Location> getLocations() {
-        if (locations == null) locations = new HashMap<>();
-        return locations;
-    }
-
-    public void setLocations(Map<String, Location> locations) { this.locations = locations; }
-
-    public Map<String, Practitioner> getPractitioners() {
-        if (practitioners == null) practitioners = new HashMap<>();
-        return practitioners;
-    }
-
-    public void setPractitioners(Map<String, Practitioner> practitioners) {
-        this.practitioners = practitioners;
-    }
-
-    public Map<String, Encounter> getEncounters() {
-        if (encounters == null) encounters = new HashMap<>();
-        return encounters;
-    }
-
-    public void setEncounters(Map<String, Encounter> encounters) {
-        this.encounters = encounters;
+    public void setAdminResources(Map<String, Resource> adminResources) {
+        this.adminResources = adminResources;
     }
 
     public Map<String, Resource> getClinicalResources() {
@@ -65,12 +40,34 @@ public class FHIRContainer {
         this.clinicalResources = clinicalResources;
     }
 
-    public Map<String, String> getEventEncouterMap() {
-        if (eventEncouterMap == null) eventEncouterMap = new HashMap<>();
-        return eventEncouterMap;
+    public Map<String, String> getEventEncounterMap() {
+        if (eventEncounterMap == null) eventEncounterMap = new HashMap<>();
+        return eventEncounterMap;
     }
 
-    public void setEventEncouterMap(Map<String, String> eventEncouterMap) {
-        this.eventEncouterMap = eventEncouterMap;
+    public void setEventEncounterMap(Map<String, String> eventEncounterMap) {
+        this.eventEncounterMap = eventEncounterMap;
+    }
+
+    public List<Resource> getSortedAdminResources() {
+        return getAdminResources().values()
+                .stream()
+                .sorted(new ResourceComparator())
+                .collect(Collectors.toList());
+    }
+
+    public List<Resource> getSortedClinicalResources() {
+        return getClinicalResources().values()
+                .stream()
+                .sorted(new ResourceComparator())
+                .collect(Collectors.toList());
+    }
+
+    private static class ResourceComparator implements Comparator<Resource>
+    {
+        public int compare(Resource r1, Resource r2)
+        {
+            return r1.getResourceType().toString().compareTo(r2.getResourceType().toString());
+        }
     }
 }

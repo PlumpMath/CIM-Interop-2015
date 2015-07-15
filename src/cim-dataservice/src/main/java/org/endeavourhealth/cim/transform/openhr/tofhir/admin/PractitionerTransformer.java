@@ -67,7 +67,7 @@ class PractitionerTransformer {
     }
 
     private static void addPractitionerToResults(FHIRContainer container, Practitioner practitioner) throws SourceDocumentInvalidException {
-        container.getPractitioners().put(practitioner.getId(), practitioner);
+        container.getAdminResources().put(practitioner.getId(), practitioner);
     }
 
 
