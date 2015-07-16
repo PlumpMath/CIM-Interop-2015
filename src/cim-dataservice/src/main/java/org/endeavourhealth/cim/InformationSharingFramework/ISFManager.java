@@ -10,12 +10,24 @@ import org.endeavourhealth.cim.common.data.RepositoryException;
 import java.util.*;
 
 public class ISFManager {
-	private static ISFManager _instance = new ISFManager();
-	public static ISFManager Instance() { return _instance; }
+	private static ISFManager _instance;
+	public static ISFManager Instance() {
+		if (_instance == null)
+			_instance = new ISFManager();
 
-	SharingAgreementRepository sharingAgreementRepository = new SharingAgreementRepository();
-	InformationSharingProtocolRepository protocolRepository = new InformationSharingProtocolRepository();
-	ServiceRepository serviceRepository = new ServiceRepository();
+		return _instance;
+	}
+	public static void setInstance(ISFManager isfManager) { _instance = isfManager; }
+
+	private SharingAgreementRepository sharingAgreementRepository;
+	private InformationSharingProtocolRepository protocolRepository;
+	private ServiceRepository serviceRepository;
+
+	public ISFManager() {
+		sharingAgreementRepository = new SharingAgreementRepository();
+		protocolRepository = new InformationSharingProtocolRepository();
+		serviceRepository = new ServiceRepository();
+	}
 
 	public InformationSharingProtocol getInformationSharingProtocol(Integer id) { return null; }
 	public SharingAgreement getSharingAgreement(UUID id) throws RepositoryException {
@@ -37,7 +49,6 @@ public class ISFManager {
 
 		return protocolRepository.getByPublisherAndSubscriberAgreementId(publisherAgreement.getId(), subscriberAgreement.getId());
 	}
-
 	public Map<String, List<String>> getLegitimateRelationships() {
 			// TODO : Implement full DP logic
 			Map<String, List<String>> _legitimateRelationships = new HashMap<>();

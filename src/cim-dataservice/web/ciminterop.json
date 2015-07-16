@@ -261,8 +261,7 @@
         "/{odsCode}/Patient": {
             "get": {
                 "tags": [
-                    "demographics",
-                  "In progress"
+                    "demographics"
                 ],
                 "summary":"Get All Patients",
                 "description": "Get Patient Demographic Records for All Patients<br/><br/><u>Examples</u>:<br/><br/>https://endeavour-cim.cloudapp.net/CIM_war/v0.1/Z99999/Patient",
@@ -309,8 +308,7 @@
         "/{odsCode}/Patient?active=true": {
             "get": {
                 "tags": [
-                    "demographics",
-                  "In progress"
+                    "demographics"
                 ],
                 "summary":"Get All Active Patients",
                 "description": "Get Patient Demographic Records for All ACTIVE Patients<br/><br/><u>Examples</u>:<br/><br/>https://endeavour-cim.cloudapp.net/CIM_war/v0.1/Z99999/Patient?active=true",
@@ -455,7 +453,10 @@
                         "in":"body",
                         "name":"body",
                         "description":"FHIR Subscription Resource.<br/><br/>Example:<br/><br/>{<br/>&nbsp;&nbsp;'resourceType':&nbsp;'Subscription',<br/>&nbsp;&nbsp;'id':&nbsp;'917c53fd-058a-4e8b-8a64-344b3fcc00b9',<br/>&nbsp;&nbsp;'criteria':&nbsp;'/Patient?&nbsp;?identifier=NHS|6980086397',<br/>&nbsp;&nbsp;'reason':&nbsp;'Monitor&nbsp;new&nbsp;neonatal&nbsp;function',<br/>&nbsp;&nbsp;'status':&nbsp;'requested',<br/>&nbsp;&nbsp;'channel':&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;'type':&nbsp;'rest-hook',<br/>&nbsp;&nbsp;&nbsp;&nbsp;'endpoint':&nbsp;'https://example.com/patients/update-result',<br/>&nbsp;&nbsp;&nbsp;&nbsp;'payload':&nbsp;'application/json',<br/>&nbsp;&nbsp;&nbsp;&nbsp;'header':&nbsp;'Authorization:&nbsp;Bearer&nbsp;secret-token-abc-123'<br/>&nbsp;&nbsp;}<br/>}",
-                        "required":true
+                        "required":true,
+                        "schema":{
+                            "type": "object"
+                        }
                     }
                 ],
                 "responses": {
@@ -528,8 +529,7 @@
         "/{odsCode}/Binary/{id}": {
             "get": {
                 "tags": [
-                    "clinical",
-                  "In progress"
+                    "clinical"
                 ],
                 "summary":"Get Clinical Document by ID",
                 "description": "Get Binary Document by Document ID<br/><br/><u>Examples</u>:<br/><br/>https://endeavour-cim.cloudapp.net/CIM_war/v0.1/Z99999/Binary/99d30432-33fe-4c93-84f9-92cc1961f417",
@@ -586,8 +586,7 @@
         "/{odsCode}/Patient/{id}/MedicationPrescription": {
             "get": {
                 "tags": [
-                    "clinical",
-                    "In progress"
+                    "clinical"
                 ],
                 "summary":"Get Medication Prescriptions By Patient ID",
                 "description": "Get Patient Medication Prescriptions By Patient ID<br/><br/><u>Examples</u>:<br/><br/>https://endeavour-cim.cloudapp.net/CIM_war/v0.1/Z99999/Patient/1234/MedicationPrescription<br/>https://endeavour-cim.cloudapp.net/CIM_war/v0.1/Z99999/Patient/1234/MedicationPrescription?datewritten=2015-04-01&datewritten=2015-05-30",
@@ -648,8 +647,7 @@
         "/{odsCode}/Patient/{id}/Condition": {
             "get": {
                 "tags": [
-                    "clinical",
-                  "In progress"
+                    "clinical"
                 ],
                 "summary":"Get Conditions By Patient ID",
                 "description": "Get Patient Conditions (Problems) By Patient ID<br/><br/><u>Examples</u>:<br/><br/>https://endeavour-cim.cloudapp.net/CIM_war/v0.1/Z99999/Patient/1234/Condition<br/>https://endeavour-cim.cloudapp.net/CIM_war/v0.1/Z99999/Patient/1234/Condition?code=snomed|39065001",
@@ -752,7 +750,10 @@
                         "in":"body",
                         "name":"body",
                         "description":"FHIR Condition Resource. See FHIR specification at: <a target='_blank'  href='http://hl7.org/fhir/2015May/condition.html'>http://hl7.org/fhir/2015May/condition.html</a>",
-                        "required":true
+                        "required":true,
+                        "schema":{
+                            "type": "object"
+                        }
                     }
                 ],
                 "responses": {
@@ -771,8 +772,7 @@
         "/{odsCode}/Patient/{id}/Immunization": {
             "get": {
                 "tags": [
-                    "clinical",
-                  "In progress"
+                    "clinical"
                 ],
                 "summary":"Get Immunisations By Patient ID",
                 "description": "Get Patient Immunisations By Patient ID<br/><br/><u>Examples</u>:<br/><br/>https://endeavour-cim.cloudapp.net/CIM_war/v0.1/Z99999/Patient/1234/Immunization<br/>https://endeavour-cim.cloudapp.net/CIM_war/v0.1/Z99999/Patient/1234/Immunization?date=2015-04-01&date=2015-05-30",
@@ -833,8 +833,7 @@
         "/{odsCode}/Patient/{id}/AllergyIntolerance": {
             "get": {
                 "tags": [
-                    "clinical",
-                  "In progress"
+                    "clinical"
                 ],
                 "summary":"Get Allergies By Patient ID",
                 "description": "Get Patient Allergies By Patient ID<br/><br/><u>Examples</u>:<br/><br/>https://endeavour-cim.cloudapp.net/CIM_war/v0.1/Z99999/Patient/1234/AllergyIntolerance<br/>https://endeavour-cim.cloudapp.net/CIM_war/v0.1/Z99999/Patient/1234/AllergyIntolerance?criticality=high",
@@ -904,8 +903,7 @@
         "/{odsCode}/Appointment": {
             "get": {
                 "tags": [
-                    "administrative",
-                    "In progress"
+                    "administrative"
                 ],
                 "summary":"Get Appointments By Patient ID",
                 "description": "Get Patient Appointments By Patient ID<br/><br/><u>Examples</u>:<br/><br/>https://endeavour-cim.cloudapp.net/CIM_war/v0.1/Z99999/Appointment?patient=1234&date=2015",
@@ -968,8 +966,7 @@
         "/{odsCode}/Schedule": {
             "get": {
                 "tags": [
-                    "administrative",
-                    "In progress"
+                    "administrative"
                 ],
                 "summary":"Get Available Appointment Schedules",
                 "description": "Get Available Appointment Schedules.<br/><br/>When checking availability for an appointment, first check what schedules are applicable, then check for available slots within these schedules.<br/><br/><u>Examples</u>:<br/><br/>https://endeavour-cim.cloudapp.net/CIM_war/v0.1/Z99999/Schedule?date=2015-04-01&date=2015-05-30<br/>https://endeavour-cim.cloudapp.net/CIM_war/v0.1/Z99999/Schedule?actor:Practitioner=G12345",
@@ -1032,8 +1029,7 @@
         "/{odsCode}/Slot": {
             "get": {
                 "tags": [
-                    "administrative",
-                    "In progress"
+                    "administrative"
                 ],
                 "summary":"Get Available Appointment Slots",
                 "description": "Get slots of time on a schedule that may be available for booking appointments.<br/><br/><u>Examples</u>:<br/><br/>https://endeavour-cim.cloudapp.net/CIM_war/v0.1/Z99999/Slot?schedule=1234&start=2015-06-01T00:00:00",
@@ -1096,8 +1092,7 @@
         "/{odsCode}/Order": {
             "post": {
                 "tags": [
-                    "administrative",
-                    "In progress"
+                    "administrative"
                 ],
                 "summary":"A Request To Book an Appointment Slot",
                 "description": "When the server accepts the order, it has only stored the order; there is no direct response to the order.<br/><br/><u>Examples</u>:<br/><br/>https://endeavour-cim.cloudapp.net/CIM_war/v0.1/Z99999/Order",
@@ -1134,7 +1129,10 @@
                         "in":"body",
                         "name":"body",
                         "description":"FHIR Order Resource. See FHIR specification at: <a target='_blank'  href='http://hl7.org/fhir/2015May/order.html'>http://hl7.org/fhir/2015May/order.html</a>",
-                        "required":true
+                        "required":true,
+                        "schema":{
+                            "type": "object"
+                        }
                     }
                 ],
                 "responses": {
@@ -1150,71 +1148,5 @@
                 }
             }
         }
-    },
-    "definitions":{
-        "Patient":{
-            "type":"object",
-            "properties":{
-                "identifier":{
-                    "type":"string",
-                    "description":"An identifier for this patient"
-                },
-                "name":{
-                    "type":"array",
-                    "description":"A name associated with the patient",
-                    "items":{
-                        "$ref":"#/definitions/HumanName"
-                    }
-
-                },
-                "telecom":{
-                    "type":"string"
-
-                },
-                "gender":{
-                    "type":"string",
-                    "description":"code",
-                    "enum":[
-                        "male",
-                        "female",
-                        "other",
-                        "unknown"
-                    ]
-                }
-            },
-            "xml":{
-                "name":"Patient"
-            }
-        },
-        "HumanName":{
-            "type":"object",
-            "properties":{
-                "use":{
-                    "type":"string",
-                    "description":"code",
-                    "enum":[
-                        "usual",
-                        "official",
-                        "temp",
-                        "nickname",
-                        "anonymous",
-                        "old",
-                        "maiden"
-                    ]
-                },
-                "text":{
-                    "type":"string",
-                    "description":"Text representation of the full name"
-                },
-                "family":{
-                    "type":"string",
-                    "description":"Family name (often called 'Surname')"
-                }
-            },
-            "xml":{
-                "name":"HumanName"
-            }
-        }
     }
-
 }

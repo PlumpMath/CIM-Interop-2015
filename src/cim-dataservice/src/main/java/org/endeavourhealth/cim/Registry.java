@@ -10,7 +10,6 @@ public class Registry implements IRegistry {
 
 		return _instance;
 	}
-
 	public static void setInstance(IRegistry registry) {
 		_instance = registry;
 	}
