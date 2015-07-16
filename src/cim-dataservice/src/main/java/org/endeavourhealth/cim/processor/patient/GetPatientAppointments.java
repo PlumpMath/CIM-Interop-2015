@@ -1,23 +1,23 @@
 package org.endeavourhealth.cim.processor.patient;
 
 import org.apache.camel.Exchange;
-import org.apache.camel.Processor;
 import org.endeavourhealth.cim.common.HeaderKey;
 import org.endeavourhealth.cim.dataManager.DataManagerFactory;
-import org.endeavourhealth.cim.common.ArrayListHelper;
 import org.endeavourhealth.cim.common.DateSearchParameter;
 import org.endeavourhealth.cim.common.DateUtils;
 import org.endeavourhealth.cim.dataManager.IDataManager;
+import org.endeavourhealth.cim.processor.CIMProcessor;
 
 import java.util.Date;
 import java.util.UUID;
 
-public class GetPatientAppointments implements Processor{
+public class GetPatientAppointments extends CIMProcessor {
+
 	public void process(Exchange exchange) throws Exception {
-		// Get data from exchange
-		UUID patientId = UUID.fromString((String) exchange.getIn().getHeader(HeaderKey.PatientId));
-		String odsCode = (String)exchange.getIn().getHeader(HeaderKey.OdsCode);
-		DateSearchParameter date = DateSearchParameter.Parse(ArrayListHelper.FromSingleOrArray(exchange.getIn().getHeader(HeaderKey.Date)));
+
+		String odsCode = getInHeaderString(exchange, HeaderKey.OdsCode);
+		UUID patientId = getInHeaderUUID(exchange, HeaderKey.Patient);
+		DateSearchParameter date = DateSearchParameter.Parse(getInHeaderArray(exchange, HeaderKey.Date));
 
 		Date fromDate = (date != null) ? date.getIntervalStart() : DateUtils.DOTNET_MINIMUM_DATE;
 		Date toDate = (date != null) ? date.getIntervalEnd() : DateUtils.DOTNET_MAXIMUM_DATE;
@@ -25,6 +25,6 @@ public class GetPatientAppointments implements Processor{
 		IDataManager dataManager = DataManagerFactory.getDataManagerForService(odsCode);
 		String body = dataManager.getAppointmentsForPatient(odsCode, patientId, fromDate, toDate);
 
-		exchange.getIn().setBody(body);
+		setInBody(exchange, body);
 	}
 }

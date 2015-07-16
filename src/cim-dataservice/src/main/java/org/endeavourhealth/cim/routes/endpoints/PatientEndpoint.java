@@ -27,14 +27,6 @@ public class PatientEndpoint extends RouteBuilder {
             .description("Direct (patient id) call")
             .setHeader(HeaderKey.MessageRouterCallback, constant("direct:GetPatientRecordById"))
             .to("direct:CIMCore")
-        .endRest()
-
-        .get("{id}/Appointment?status={status}&start={start}&end={end}")
-            .route()
-            .routeId("GetServicePatientAppointments")
-            .description("Get Patient Appointments By Patient ID")
-            .setHeader(HeaderKey.MessageRouterCallback, constant("direct:GetPatientAppointments"))
-            .to("direct:CIMCore")
         .endRest();
 
         // Message router callback routes
@@ -57,9 +49,5 @@ public class PatientEndpoint extends RouteBuilder {
         from("direct:GetPatientRecordById")
             .routeId("GetPatientRecordById")
             .process(new GetPatientRecordByPatientId());
-
-        from("direct:GetPatientAppointments")
-            .routeId("GetPatientAppointments")
-            .process(new GetPatientAppointments());
     }
 }

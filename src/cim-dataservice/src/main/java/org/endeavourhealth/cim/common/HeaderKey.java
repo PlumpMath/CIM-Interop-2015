@@ -24,4 +24,5 @@ public class HeaderKey {
 	public static final String Start = "start";
 	public static final String TapLocation = "TapLocation";
 	public static final String Active = "active";
+	public static final String Patient = "patient";
 }

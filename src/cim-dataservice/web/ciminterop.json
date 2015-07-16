@@ -901,14 +901,14 @@
                 }
             }
         },
-        "/{odsCode}/Patient/{id}/Appointment": {
+        "/{odsCode}/Appointment": {
             "get": {
                 "tags": [
                     "administrative",
                     "In progress"
                 ],
                 "summary":"Get Appointments By Patient ID",
-                "description": "Get Patient Appointments By Patient ID<br/><br/><u>Examples</u>:<br/><br/>https://endeavour-cim.cloudapp.net/CIM_war/v0.1/Z99999/Patient/1234/Appointment<br/>https://endeavour-cim.cloudapp.net/CIM_war/v0.1/Z99999/Patient/1234/Appointment?status=code|booked<br/>https://endeavour-cim.cloudapp.net/CIM_war/v0.1/Z99999/Patient/1234/Appointment?start=2015-04-01&start=2015-05-30",
+                "description": "Get Patient Appointments By Patient ID<br/><br/><u>Examples</u>:<br/><br/>https://endeavour-cim.cloudapp.net/CIM_war/v0.1/Z99999/Appointment?patient=1234&date=2015",
                 "produces": [
                     "application/json"
                 ],
@@ -939,30 +939,11 @@
                         "type": "string"
                     },
                     {
-                        "name": "id",
-                        "in": "path",
-                        "description": "Patient unique identifier. Any combination of upper or lower case ASCII letters ('A'..'Z', and 'a'..'z', numerals ('0'..'9'), '-' and '.', with a length limit of 64 characters. (This might be an integer, an un-prefixed OID, UUID or any other identifier pattern that meets these constraints.) regex: [A-Za-z0-9-.]{1,64}",
+                        "name": "patient",
+                        "in": "query",
+                        "description": "One of the individuals of the appointment is this patient",
                         "required":true,
                         "type": "string"
-                    },
-                    {
-                        "name":"status",
-                        "in":"query",
-                        "description":"Appointment status",
-                        "required":false,
-                        "type":"array",
-                        "items":{
-                            "type":"string",
-                            "enum":[
-                                "pending",
-                                "booked",
-                                "arrived",
-                                "fulfilled",
-                                "cancelled",
-                                "noshow"
-                            ],
-                            "default":"pending"
-                        }
                     },
                     {
                         "name":"date",
