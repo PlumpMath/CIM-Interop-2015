@@ -900,69 +900,6 @@
                 }
             }
         },
-        "/{odsCode}/Appointment": {
-            "get": {
-                "tags": [
-                    "administrative"
-                ],
-                "summary":"Get Appointments By Patient ID",
-                "description": "Get Patient Appointments By Patient ID<br/><br/><u>Examples</u>:<br/><br/>https://endeavour-cim.cloudapp.net/CIM_war/v0.1/Z99999/Appointment?patient=1234&date=2015",
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "name": "api_key",
-                        "in": "header",
-                        "description": "Client API key",
-                        "type": "string",
-                        "enum": [
-                            "swagger"
-                        ]
-                    },
-                    {
-                        "name": "hash",
-                        "in": "header",
-                        "description": "Message hash value",
-                        "type": "string",
-                        "enum": [
-                            "Vb82Z3D59sIm9UX2/0CsO+yEbcvQFyxoWRT2j4HK95Q="
-                        ]
-                    },
-                    {
-                        "name": "odsCode",
-                        "in": "path",
-                        "description": "Organisational code that uniquely identifies the owner of the patient record",
-                        "required":true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "patient",
-                        "in": "query",
-                        "description": "One of the individuals of the appointment is this patient",
-                        "required":true,
-                        "type": "string"
-                    },
-                    {
-                        "name":"date",
-                        "in":"query",
-                        "description":"Date/Time that the appointment is to take place",
-                        "required":false,
-                        "type":"array",
-                        "items" : { "type" : "string" },
-                        "collectionFormat": "multi"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description":"Returns a FHIR Bundle of Appointment Resources. See FHIR specification at: <a target='_blank'  href='http://hl7.org/fhir/2015May/appointment.html'>http://hl7.org/fhir/2015May/appointment.html</a>"
-                    },
-                    "403":{
-                        "description":"Forbidden - Requested operation not permitted"
-                    }
-                }
-            }
-        },
         "/{odsCode}/Schedule": {
             "get": {
                 "tags": [
@@ -1089,13 +1026,13 @@
                 }
             }
         },
-        "/{odsCode}/Order": {
+        "/{odsCode}/Slot/{id}/$book": {
             "post": {
                 "tags": [
                     "administrative"
                 ],
-                "summary":"A Request To Book an Appointment Slot",
-                "description": "When the server accepts the order, it has only stored the order; there is no direct response to the order.<br/><br/><u>Examples</u>:<br/><br/>https://endeavour-cim.cloudapp.net/CIM_war/v0.1/Z99999/Order",
+                "summary":"Book an Appointment Slot",
+                "description": "",
                 "produces": [
                     "application/json"
                 ],
@@ -1126,12 +1063,41 @@
                         "type": "string"
                     },
                     {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Slot identifier",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
                         "in":"body",
                         "name":"body",
-                        "description":"FHIR Order Resource. See FHIR specification at: <a target='_blank'  href='http://hl7.org/fhir/2015May/order.html'>http://hl7.org/fhir/2015May/order.html</a>",
+                        "description":"FHIR Parameters Resource. See FHIR specification at: <a target='_blank'  href='http://hl7.org/fhir/2015May/parameters.html'>http://hl7.org/fhir/2015May/parameters.html</a>",
                         "required":true,
                         "schema":{
-                            "type": "object"
+                            "type":"object",
+                            "properties": {
+                                "resourceType": {
+                                    "type": "string",
+                                    "example": "Parameters"
+                                },
+                                "parameter": {
+                                    "type": "array",
+                                    "items": [{
+                                        "type": "object",
+                                        "properties": {
+                                            "name": {
+                                                "type": "string",
+                                                "example": "patient"
+                                            },
+                                            "valueString": {
+                                                "type": "string",
+                                                "example": "00000000-0000-0000-0000-000000000000"
+                                            }
+                                        }
+                                    }]
+                                }
+                            }
                         }
                     }
                 ],
@@ -1144,6 +1110,69 @@
                     },
                     "404":{
                         "description":"Not found - resource type not supported, or not a FHIR end point"
+                    }
+                }
+            }
+        },
+        "/{odsCode}/Appointment": {
+            "get": {
+                "tags": [
+                    "administrative"
+                ],
+                "summary":"Get Appointments By Patient ID",
+                "description": "Get Patient Appointments By Patient ID<br/><br/><u>Examples</u>:<br/><br/>https://endeavour-cim.cloudapp.net/CIM_war/v0.1/Z99999/Appointment?patient=1234&date=2015",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "api_key",
+                        "in": "header",
+                        "description": "Client API key",
+                        "type": "string",
+                        "enum": [
+                            "swagger"
+                        ]
+                    },
+                    {
+                        "name": "hash",
+                        "in": "header",
+                        "description": "Message hash value",
+                        "type": "string",
+                        "enum": [
+                            "Vb82Z3D59sIm9UX2/0CsO+yEbcvQFyxoWRT2j4HK95Q="
+                        ]
+                    },
+                    {
+                        "name": "odsCode",
+                        "in": "path",
+                        "description": "Organisational code that uniquely identifies the owner of the patient record",
+                        "required":true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "patient",
+                        "in": "query",
+                        "description": "One of the individuals of the appointment is this patient",
+                        "required":true,
+                        "type": "string"
+                    },
+                    {
+                        "name":"date",
+                        "in":"query",
+                        "description":"Date/Time that the appointment is to take place",
+                        "required":false,
+                        "type":"array",
+                        "items" : { "type" : "string" },
+                        "collectionFormat": "multi"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description":"Returns a FHIR Bundle of Appointment Resources. See FHIR specification at: <a target='_blank'  href='http://hl7.org/fhir/2015May/appointment.html'>http://hl7.org/fhir/2015May/appointment.html</a>"
+                    },
+                    "403":{
+                        "description":"Forbidden - Requested operation not permitted"
                     }
                 }
             }

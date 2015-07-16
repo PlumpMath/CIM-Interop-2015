@@ -1,6 +1,11 @@
 package org.endeavourhealth.cim.common;
 
+import org.apache.camel.util.ResourceHelper;
 import org.hl7.fhir.instance.model.Bundle;
+import org.hl7.fhir.instance.model.Resource;
+import org.hl7.fhir.instance.model.Schedule;
+
+import java.util.List;
 
 public class FhirFilterHelper {
 	public static Bundle getConditions(Bundle bundle) {
@@ -48,6 +53,10 @@ public class FhirFilterHelper {
 //			}
 //		}
 
+		return bundle;
+	}
+
+	public static Bundle filterScheduleByPractitioner(Bundle bundle, String practitionerId) {
 		return bundle;
 	}
 }

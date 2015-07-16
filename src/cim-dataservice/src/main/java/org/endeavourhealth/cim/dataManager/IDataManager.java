@@ -22,10 +22,7 @@ public interface IDataManager {
     String getMedicationPrescriptionsByPatientId(String odsCode, UUID patientId) throws Exception;
 
     String getAppointmentsForPatient(String odsCode, UUID patientId, Date dateFrom, Date dateTo) throws Exception;
-
-    void requestOrder(String odsCode, String orderRequest) throws Exception;
-
-    String getSchedules(String odsCode, Date dateFrom, Date dateTo) throws Exception;
-    String getSchedules(String odsCode, String actor) throws Exception;
+    String getSchedules(String odsCode, Date dateFrom, Date dateTo, String practitionerId) throws Exception;
     String getSlots(String odsCode, String scheduleId) throws Exception;
+    Boolean bookSlot(String odsCode, String slotId, UUID patientId) throws Exception;
 }

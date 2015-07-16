@@ -10,7 +10,7 @@ import java.util.UUID;
 
 public class GetPatientRecordByPatientId implements org.apache.camel.Processor {
     public void process(Exchange exchange) throws Exception {
-        String patientId = (String)exchange.getIn().getHeader(HeaderKey.PatientId);
+        String patientId = (String)exchange.getIn().getHeader(HeaderKey.Id);
         String odsCode = (String) exchange.getIn().getHeader(HeaderKey.OdsCode);
 
         IDataManager dataManager = DataManagerFactory.getDataManagerForService(odsCode);

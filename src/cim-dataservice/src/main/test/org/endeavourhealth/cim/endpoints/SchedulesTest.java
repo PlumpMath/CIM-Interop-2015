@@ -58,7 +58,7 @@ public class SchedulesTest extends CamelTestSupport {
 		errorEndpoint.expectedMessageCount(1);
 
 		errorEndpoint.expectedHeaderReceived("CamelHttpResponseCode", HttpStatus.SC_BAD_REQUEST);
-		errorEndpoint.expectedBodiesReceived(GetSchedulesProcessor.EITHER_AN_ACTOR_A_DATE_RANGE_OR_BOTH_MUST_BE_SUPPLIED);
+		errorEndpoint.expectedBodiesReceived(GetSchedulesProcessor.EITHER_ACTOR_OR_OR_BOTH_MUST_BE_SUPPLIED);
 
 		template.sendBodyAndHeaders(null, headerParams);
 
@@ -79,7 +79,7 @@ public class SchedulesTest extends CamelTestSupport {
 		errorEndpoint.expectedMessageCount(1);
 
 		errorEndpoint.expectedHeaderReceived("CamelHttpResponseCode", HttpStatus.SC_BAD_REQUEST);
-		errorEndpoint.expectedBodiesReceived(GetSchedulesProcessor.EITHER_AN_ACTOR_A_DATE_RANGE_OR_BOTH_MUST_BE_SUPPLIED);
+		errorEndpoint.expectedBodiesReceived(GetSchedulesProcessor.EITHER_ACTOR_OR_OR_BOTH_MUST_BE_SUPPLIED);
 
 		template.sendBodyAndHeaders(null, headerParams);
 
@@ -97,7 +97,7 @@ public class SchedulesTest extends CamelTestSupport {
 		errorEndpoint.expectedMessageCount(1);
 
 		errorEndpoint.expectedHeaderReceived("CamelHttpResponseCode", HttpStatus.SC_BAD_REQUEST);
-		errorEndpoint.expectedBodiesReceived(GetSchedulesProcessor.EITHER_AN_ACTOR_A_DATE_RANGE_OR_BOTH_MUST_BE_SUPPLIED);
+		errorEndpoint.expectedBodiesReceived(GetSchedulesProcessor.EITHER_ACTOR_OR_OR_BOTH_MUST_BE_SUPPLIED);
 
 		template.sendBodyAndHeaders(null, headerParams);
 

@@ -11,7 +11,7 @@ import java.util.UUID;
 public class GetConditions implements Processor {
 	public void process(Exchange exchange) throws Exception {
 		String odsCode =(String) exchange.getIn().getHeader(HeaderKey.OdsCode);
-		String patientId =(String) exchange.getIn().getHeader(HeaderKey.PatientId);
+		String patientId =(String) exchange.getIn().getHeader(HeaderKey.Id);
 
 		IDataManager dataManager = DataManagerFactory.getDataManagerForService(odsCode);
 		String body = dataManager.getConditionsByPatientId(odsCode, UUID.fromString(patientId));

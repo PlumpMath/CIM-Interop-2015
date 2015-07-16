@@ -2,7 +2,11 @@ package org.endeavourhealth.cim.processor;
 
 import org.apache.camel.Exchange;
 import org.apache.camel.Processor;
+import org.apache.commons.io.IOUtils;
+import org.hl7.fhir.instance.formats.JsonParser;
+import org.hl7.fhir.instance.model.Resource;
 
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.UUID;
 
@@ -38,7 +42,16 @@ public abstract class CIMProcessor implements Processor {
         return exchange.getIn().getHeader(headerKey);
     }
 
-    protected void setInBody(Exchange exchange, String body) {
-        exchange.getIn().setBody(body);
+    protected void setInBodyString(Exchange exchange, String body) {
+        exchange.getIn().setBody(body, String.class);
+    }
+
+    protected static String getInBodyString(Exchange exchange) throws Exception {
+        return IOUtils.toString((InputStream)exchange.getIn().getBody());
+    }
+
+    protected static <T extends Resource> T getInBodyResource(Exchange exchange, Class<T> type) throws Exception {
+        String body = getInBodyString(exchange);
+        return (T)new JsonParser().parse(body);
     }
 }

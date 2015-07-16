@@ -10,7 +10,7 @@ public class HeaderKey {
 	public static final String SOAPAction = "SOAPAction";
 	public static final String ApiKey = "api_key";
 	public static final String Hash = "hash";
-	public static final String PatientId = "id";
+	public static final String Id = "id";
 	public static final String LastUpdated = "_lastUpdated";
 	public static final String Date = "date";
 	public static final String Identifier ="identifier";

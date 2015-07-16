@@ -18,6 +18,6 @@ public class GetSlotsProcessor extends CIMProcessor {
 		IDataManager dataManager = DataManagerFactory.getDataManagerForService(odsCode);
 		String body = dataManager.getSlots(odsCode, scheduleId);
 
-		setInBody(exchange, body);
+		setInBodyString(exchange, body);
 	}
 }

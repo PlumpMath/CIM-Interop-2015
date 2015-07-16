@@ -2,19 +2,12 @@ package org.endeavourhealth.cim.dataManager;
 
 import org.endeavourhealth.cim.adapter.IDataAdapter;
 import org.endeavourhealth.cim.adapter.MockDataAdapter;
-import org.endeavourhealth.cim.common.BundleHelper;
 import org.endeavourhealth.cim.common.FhirFilterHelper;
-import org.endeavourhealth.cim.common.TextUtils;
-import org.endeavourhealth.cim.dataManager.IDataManager;
-import org.endeavourhealth.cim.transform.TransformHelper;
 import org.endeavourhealth.cim.transform.emisopen.EmisOpenTransformer;
 import org.endeavourhealth.cim.transform.openhr.OpenHRTransformer;
-import org.endeavourhealth.cim.transform.schemas.emisopen.eomorganisationinformation.OrganisationInformation;
-import org.endeavourhealth.cim.transform.schemas.emisopen.eomuserdetails.UserDetails;
 import org.hl7.fhir.instance.formats.JsonParser;
 import org.hl7.fhir.instance.model.*;
 
-import java.security.PrivilegedAction;
 import java.util.*;
 
 @SuppressWarnings("unused")
@@ -148,32 +141,21 @@ public class EmisDataManager implements IDataManager {
 	}
 
 	@Override
-	public void requestOrder(String odsCode, String orderRequestData) throws Exception {
-		Order orderRequest = (Order)new JsonParser().parse(orderRequestData);
+	public Boolean bookSlot(String odsCode, String slotId, UUID patientId) throws Exception {
 
-		// Get data transformer for service
-		String orderRequestInNativeFormat = ""; //transformer.fromFHIROrder(orderRequest);
+		_emisDataAdapter.bookSlot(odsCode, slotId, patientId);
 
-		// Get patient data by NHS Number
-		_emisDataAdapter.requestOrder(odsCode, orderRequestInNativeFormat);
+		return true;
 	}
 
 	@Override
-	public String getSchedules(String odsCode, Date dateFrom, Date dateTo) throws Exception {
-		String schedulesXml = _emisDataAdapter.getSchedules(odsCode, dateFrom, dateTo);
+	public String getSchedules(String odsCode, Date dateFrom, Date dateTo, String practitionerId) throws Exception {
+		String schedulesXml = _emisDataAdapter.getSchedules(odsCode, dateFrom, dateTo, practitionerId);
 		String organisationXml = _emisDataAdapter.getOrganisationInformation(odsCode);
 
 		Bundle bundle = _emisOpenTransformer.toFHIRScheduleBundle(schedulesXml, organisationXml);
 
-		return new JsonParser().composeString(bundle);
-	}
-
-	@Override
-	public String getSchedules(String odsCode, String actor) throws Exception {
-		String schedulesXml = _emisDataAdapter.getSchedules(odsCode, actor);
-		String organisationXml = _emisDataAdapter.getOrganisationInformation(odsCode);
-
-		Bundle bundle = _emisOpenTransformer.toFHIRScheduleBundle(schedulesXml, organisationXml);
+		bundle = FhirFilterHelper.filterScheduleByPractitioner(bundle, practitionerId);
 
 		return new JsonParser().composeString(bundle);
 	}

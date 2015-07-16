@@ -25,6 +25,6 @@ public class GetPatientAppointments extends CIMProcessor {
 		IDataManager dataManager = DataManagerFactory.getDataManagerForService(odsCode);
 		String body = dataManager.getAppointmentsForPatient(odsCode, patientId, fromDate, toDate);
 
-		setInBody(exchange, body);
+		setInBodyString(exchange, body);
 	}
 }

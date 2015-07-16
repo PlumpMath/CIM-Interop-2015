@@ -43,17 +43,19 @@ public class TestDataAdapter implements IDataAdapter {
     public String getAppointmentsForPatient(String odsCode, UUID patientId, Date dateFrom, Date dateTo) {
         return "";
     }
-    public void requestOrder(String odsCode, String orderRequest) {
-    }
-    public String getSchedules(String odsCode, Date dateFrom, Date dateTo) {
-            return getSchedulesResult();
-    }
-	public String getSchedules(String odsCode, String actor) {
-			return getSchedulesResult();
+
+	public String getSchedules(String odsCode, Date dateFrom, Date dateTo, String practitionerId) throws Exception {
+		return null;
 	}
+
 	public String getSlots(String odsCode, String scheduleId) {
         return "";
     }
+
+	public Boolean bookSlot(String odsCode, String slotId, UUID patientId) throws Exception {
+		return null;
+	}
+
 	private String getSchedulesResult() {
 		return "<?xml version=\"1.0\" encoding=\"utf-16\"?>\n" +
 				"<AppointmentSessionList xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns=\"http://www.e-mis.com/emisopen/MedicalRecord\">\n" +
