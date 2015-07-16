@@ -136,23 +136,7 @@ namespace DotNetGPSystem
 
         public bool BookAppointment(string odsCode, int slotId, Guid patientGuid, string reason)
         {
-            Slot slot = DataStore.GetSlot(odsCode, slotId);
-
-            if (slot != null)
-            {
-                if (slot.Patient == null)
-                {
-                    OpenHRPatient patient = DataStore.GetPatient(odsCode, patientGuid);
-
-                    if (patient != null)
-                    {
-                        slot.Patient = patient;
-                        return true;
-                    }
-                }
-            }
-            
-            return false;
+            return DataStore.BookAppointment(odsCode, slotId, patientGuid);
         }
 
         public string GetOrganisationInformation(string odsCode)

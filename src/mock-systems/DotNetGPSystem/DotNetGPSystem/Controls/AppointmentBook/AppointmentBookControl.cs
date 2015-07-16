@@ -21,6 +21,19 @@ namespace DotNetGPSystem
         private AppointmentBookControl()
         {
             InitializeComponent();
+
+            DataStore.ExternalAppointmentBookChangeMade += DataStore_ExternalAppointmentBookChangeMade;
+        }
+
+        private void DataStore_ExternalAppointmentBookChangeMade(object sender, EventArgs e)
+        {
+            if (this.InvokeRequired)
+            {
+                this.Invoke((EventHandler)DataStore_ExternalAppointmentBookChangeMade, new object[] { sender, e });
+                return;
+            }
+
+            DrawAppointmentBook();
         }
 
         public AppointmentBookControl(OpenHROrganisation[] organisations) : this()

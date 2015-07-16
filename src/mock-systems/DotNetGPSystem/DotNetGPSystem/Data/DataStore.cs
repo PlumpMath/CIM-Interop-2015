@@ -31,6 +31,7 @@ namespace DotNetGPSystem
         private static Session[] _sessions;
         public static readonly int[] AppointmentTimes = new int[] { 9, 10, 11, 12, 13, 14, 15, 16, 17 };
         public static event ExternalUpdateReceivedHandler ExternalUpdateReceived;
+        public static event EventHandler ExternalAppointmentBookChangeMade;
 
         public static Session[] AppointmentSessions
         {
@@ -220,6 +221,36 @@ namespace DotNetGPSystem
         {
             if (ExternalUpdateReceived != null)
                 ExternalUpdateReceived(dateStamp, openHRXml);
+        }
+
+        private static void OnExternalAppointmentBookChangeMade()
+        {
+            if (ExternalAppointmentBookChangeMade != null)
+                ExternalAppointmentBookChangeMade(null, new EventArgs());
+        }
+
+        public static bool BookAppointment(string odsCode, int slotId, Guid patientGuid)
+        {
+            Slot slot = DataStore.GetSlot(odsCode, slotId);
+
+            if (slot != null)
+            {
+                if (slot.Patient == null)
+                {
+                    OpenHRPatient patient = DataStore.GetPatient(odsCode, patientGuid);
+
+                    if (patient != null)
+                    {
+                        slot.Patient = patient;
+
+                        OnExternalAppointmentBookChangeMade();
+
+                        return true;
+                    }
+                }
+            }
+
+            return false;
         }
 
         private static OpenHRPatient[] LoadOpenHRPatients()
