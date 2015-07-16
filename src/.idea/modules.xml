@@ -3,7 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/cim-common/cim-common.iml" filepath="$PROJECT_DIR$/cim-common/cim-common.iml" />
-      <module fileurl="file://$PROJECT_DIR$/cim-dataprotocols/cim-dataprotocols.iml" filepath="$PROJECT_DIR$/cim-dataprotocols/cim-dataprotocols.iml" />
       <module fileurl="file://$PROJECT_DIR$/cim-dataservice/cim-dataservice.iml" filepath="$PROJECT_DIR$/cim-dataservice/cim-dataservice.iml" />
       <module fileurl="file://$PROJECT_DIR$/cim-transforms/cim-transforms.iml" filepath="$PROJECT_DIR$/cim-transforms/cim-transforms.iml" />
     </modules>
