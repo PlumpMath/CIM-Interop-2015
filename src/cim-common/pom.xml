@@ -6,7 +6,7 @@
 
     <groupId>org.endeavourhealth.cim</groupId>
     <artifactId>cim-common</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
+    <version>1.0-SNAPSHOT</version>
 
     <dependencies>
         <!-- the core, which includes Streaming API, shared low-level abstractions (but NOT data-binding) -->

@@ -22,27 +22,32 @@
         <sourceTestOutputDir name="target\generated-test-sources\test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
-        <module name="cim-dataservice" />
       </profile>
       <profile default="false" name="Annotation profile for cim-dataprotocols" enabled="true">
         <sourceOutputDir name="target\generated-sources\annotations" />
         <sourceTestOutputDir name="target\generated-test-sources\test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
-        <module name="cim-dataprotocols" />
       </profile>
       <profile default="false" name="Annotation profile for cim-common" enabled="true">
         <sourceOutputDir name="target\generated-sources\annotations" />
         <sourceTestOutputDir name="target\generated-test-sources\test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
-        <module name="cim-common" />
+      </profile>
+      <profile default="false" name="Annotation profile for cim-transforms" enabled="true">
+        <sourceOutputDir name="target\generated-sources\annotations" />
+        <sourceTestOutputDir name="target\generated-test-sources\test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="true" />
+        <module name="cim-transforms" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="cim-common" target="1.8" />
       <module name="cim-dataprotocols" target="1.8" />
       <module name="cim-dataservice" target="1.8" />
+      <module name="cim-transforms" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

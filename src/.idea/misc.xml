@@ -49,6 +49,7 @@
         <option value="$PROJECT_DIR$/cim-dataservice/pom.xml" />
         <option value="$PROJECT_DIR$/cim-dataprotocols/pom.xml" />
         <option value="$PROJECT_DIR$/cim-common/pom.xml" />
+        <option value="$PROJECT_DIR$/cim-transforms/pom.xml" />
       </list>
     </option>
   </component>

@@ -16,7 +16,12 @@
         <dependency>
             <groupId>org.endeavourhealth.cim</groupId>
             <artifactId>cim-common</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>org.endeavourhealth.cim</groupId>
+            <artifactId>cim-transforms</artifactId>
+            <version>1.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.apache.camel</groupId>
