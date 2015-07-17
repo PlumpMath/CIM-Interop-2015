@@ -7,10 +7,13 @@ import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.component.mock.MockEndpoint;
 import org.apache.camel.test.junit4.CamelTestSupport;
 import org.apache.commons.httpclient.HttpStatus;
+import org.endeavourhealth.cim.InformationSharingFramework.ISFManager;
+import org.endeavourhealth.cim.InformationSharingFramework.TestISFManager;
 import org.endeavourhealth.cim.Registry;
 import org.endeavourhealth.cim.TestRegistry;
 import org.endeavourhealth.cim.processor.core.DataProtocolProcessor;
 import org.endeavourhealth.cim.routes.builders.CIMDataProtocol;
+import org.endeavourhealth.cim.routes.config.RestConfiguration;
 import org.junit.Test;
 
 import java.util.HashMap;
@@ -31,9 +34,9 @@ public class CIMDataProtocolTest extends CamelTestSupport {
 		return new RouteBuilder() {
 			public void configure() throws Exception {
 				Registry.setInstance(new TestRegistry());
+				ISFManager.setInstance(new TestISFManager());
 
-				getContext().setTracing(true);
-
+				this.includeRoutes(new RestConfiguration());
 				this.includeRoutes(new CIMDataProtocol());
 
 				from("direct:start")
@@ -57,11 +60,15 @@ public class CIMDataProtocolTest extends CamelTestSupport {
 		headerParams.put("api_key", "invalidOrg");
 		headerParams.put("odsCode", "Z99999");
 
+		resultEndpoint.expectedMessageCount(0);
+		errorEndpoint.expectedMessageCount(1);
+
 		errorEndpoint.expectedHeaderReceived("CamelHttpResponseCode", HttpStatus.SC_FORBIDDEN);
-		errorEndpoint.expectedBodiesReceived(DataProtocolProcessor.NO_LEGITIMATE_RELATIONSHIPS_CONFIGURED_FOR_THIS_SUBSIDIARY_SYSTEM);
+		errorEndpoint.expectedBodiesReceived(DataProtocolProcessor.SUBSIDIARY_SYSTEM_HAS_NO_LEGITIMATE_RELATIONSHIP_WITH_THIS_ORGANISATION);
 
 		template.sendBodyAndHeaders(null, headerParams);
 
+		resultEndpoint.assertIsSatisfied();
 		errorEndpoint.assertIsSatisfied();
 	}
 
@@ -72,11 +79,15 @@ public class CIMDataProtocolTest extends CamelTestSupport {
 		headerParams.put("api_key", "swagger");
 		headerParams.put("odsCode", "Z99999");
 
+		resultEndpoint.expectedMessageCount(0);
+		errorEndpoint.expectedMessageCount(1);
+
 		errorEndpoint.expectedHeaderReceived("CamelHttpResponseCode", HttpStatus.SC_FORBIDDEN);
 		errorEndpoint.expectedBodiesReceived(DataProtocolProcessor.SUBSIDIARY_SYSTEM_HAS_NO_LEGITIMATE_RELATIONSHIP_WITH_THIS_ORGANISATION);
 
 		template.sendBodyAndHeaders(null, headerParams);
 
+		resultEndpoint.assertIsSatisfied();
 		errorEndpoint.assertIsSatisfied();
 	}
 
@@ -86,9 +97,13 @@ public class CIMDataProtocolTest extends CamelTestSupport {
 		headerParams.put("api_key", "swagger");
 		headerParams.put("odsCode", "A99999");
 
+		resultEndpoint.expectedMessageCount(1);
+		errorEndpoint.expectedMessageCount(0);
+
 		template.sendBodyAndHeaders(null, headerParams);
 
 		resultEndpoint.assertIsSatisfied();
+		errorEndpoint.assertIsSatisfied();
 	}
 
 }

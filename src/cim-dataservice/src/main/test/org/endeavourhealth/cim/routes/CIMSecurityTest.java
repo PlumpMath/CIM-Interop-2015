@@ -7,12 +7,15 @@ import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.component.mock.MockEndpoint;
 import org.apache.camel.test.junit4.CamelTestSupport;
 import org.apache.commons.httpclient.HttpStatus;
+import org.endeavourhealth.cim.InformationSharingFramework.ISFManager;
+import org.endeavourhealth.cim.InformationSharingFramework.TestISFManager;
 import org.endeavourhealth.cim.Registry;
 import org.endeavourhealth.cim.TestRegistry;
 import org.endeavourhealth.cim.processor.core.DataProtocolProcessor;
 import org.endeavourhealth.cim.processor.core.SecurityProcessor;
 import org.endeavourhealth.cim.routes.builders.CIMDataProtocol;
 import org.endeavourhealth.cim.routes.builders.CIMSecurity;
+import org.endeavourhealth.cim.routes.config.RestConfiguration;
 import org.junit.Test;
 
 import java.util.HashMap;
@@ -33,9 +36,9 @@ public class CIMSecurityTest extends CamelTestSupport {
 		return new RouteBuilder() {
 			public void configure() throws Exception {
 				Registry.setInstance(new TestRegistry());
+				ISFManager.setInstance(new TestISFManager());
 
-				getContext().setTracing(true);
-
+				this.includeRoutes(new RestConfiguration());
 				this.includeRoutes(new CIMSecurity());
 
 				from("direct:start")

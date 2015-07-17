@@ -7,10 +7,13 @@ import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.component.mock.MockEndpoint;
 import org.apache.camel.test.junit4.CamelTestSupport;
 import org.apache.commons.httpclient.HttpStatus;
+import org.endeavourhealth.cim.InformationSharingFramework.ISFManager;
+import org.endeavourhealth.cim.InformationSharingFramework.TestISFManager;
 import org.endeavourhealth.cim.Registry;
 import org.endeavourhealth.cim.TestRegistry;
 import org.endeavourhealth.cim.common.DateSearchParameter;
 import org.endeavourhealth.cim.processor.schedules.GetSchedulesProcessor;
+import org.endeavourhealth.cim.routes.config.RestConfiguration;
 import org.endeavourhealth.cim.routes.endpoints.ScheduleEndpoint;
 import org.junit.Test;
 
@@ -32,10 +35,10 @@ public class SchedulesTest extends CamelTestSupport {
 	protected RouteBuilder createRouteBuilder() {
 		return new RouteBuilder() {
 			public void configure() throws Exception {
-				getContext().setTracing(true);
-
 				Registry.setInstance(new TestRegistry());
+				ISFManager.setInstance(new TestISFManager());
 
+				this.includeRoutes(new RestConfiguration());
 				this.includeRoutes(new ScheduleEndpoint());
 
 				from("direct:start")

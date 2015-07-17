@@ -15,6 +15,7 @@ public class RestConfiguration extends RouteBuilder {
 
         // enable debug output
         getContext().setTracing(true);
+        getContext().setAllowUseOriginalMessage(false);
 
         Tracer tracer = new Tracer();
         tracer.getDefaultTraceFormatter().setShowBreadCrumb(false);

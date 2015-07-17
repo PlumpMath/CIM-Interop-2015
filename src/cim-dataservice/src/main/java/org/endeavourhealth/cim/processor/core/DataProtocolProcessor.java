@@ -10,7 +10,6 @@ import org.endeavourhealth.cim.exceptions.LegitimateRelationshipException;
 import java.util.List;
 
 public class DataProtocolProcessor implements org.apache.camel.Processor {
-	public static final String NO_LEGITIMATE_RELATIONSHIPS_CONFIGURED_FOR_THIS_SUBSIDIARY_SYSTEM = "No legitimate relationships configured for this subsidiary system";
 	public static final String SUBSIDIARY_SYSTEM_HAS_NO_LEGITIMATE_RELATIONSHIP_WITH_THIS_ORGANISATION = "Subsidiary system has no legitimate relationship with this organisation";
 
 	@Override
@@ -18,28 +17,23 @@ public class DataProtocolProcessor implements org.apache.camel.Processor {
 		String odsCode = (String)exchange.getIn().getHeader(HeaderKey.OdsCode);
 		String api_key = (String) exchange.getIn().getHeader(HeaderKey.ApiKey);
 
-		if (odsCode != null) {
+		if (odsCode != null)
 			LoadDataProtocols(exchange, api_key, odsCode);
-			ValidateLegitimateRelationships(api_key, odsCode);
-		}
 	}
 
-	private void LoadDataProtocols(Exchange exchange, String api_key, String odsCode) throws RepositoryException {
+	private void LoadDataProtocols(Exchange exchange, String api_key, String odsCode) throws RepositoryException, LegitimateRelationshipException {
 		// Load relevant data protocols from DB
 		List<InformationSharingProtocol> informationSharingProtocols = ISFManager.Instance().getRelevantProtocols(odsCode, api_key);
+
+		ValidateLegitimateRelationships(informationSharingProtocols);
 
 		// Set protocols in message header for processing later in pipeline
 		exchange.getIn().setHeader(HeaderKey.InformationSharingProtocols, informationSharingProtocols);
 	}
 
-	private void ValidateLegitimateRelationships(String api_key, String odsCode) throws Exception {
-
-		List<String> validOrganisations = ISFManager.Instance().getLegitimateRelationships().get(api_key);
-
-		if (validOrganisations == null)
-			throw new LegitimateRelationshipException(NO_LEGITIMATE_RELATIONSHIPS_CONFIGURED_FOR_THIS_SUBSIDIARY_SYSTEM);
-
-		if (!validOrganisations.contains(odsCode))
+	private void ValidateLegitimateRelationships(List<InformationSharingProtocol> informationSharingProtocols) throws LegitimateRelationshipException {
+		// If a protocol exists then there is a LR
+		if (informationSharingProtocols == null || informationSharingProtocols.size() == 0)
 			throw new LegitimateRelationshipException(SUBSIDIARY_SYSTEM_HAS_NO_LEGITIMATE_RELATIONSHIP_WITH_THIS_ORGANISATION);
 	}
 }

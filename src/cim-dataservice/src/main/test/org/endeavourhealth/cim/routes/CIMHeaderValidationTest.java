@@ -7,11 +7,13 @@ import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.component.mock.MockEndpoint;
 import org.apache.camel.test.junit4.CamelTestSupport;
 import org.apache.commons.httpclient.HttpStatus;
+import org.endeavourhealth.cim.InformationSharingFramework.ISFManager;
+import org.endeavourhealth.cim.InformationSharingFramework.TestISFManager;
 import org.endeavourhealth.cim.Registry;
 import org.endeavourhealth.cim.TestRegistry;
-import org.endeavourhealth.cim.processor.core.DataProtocolProcessor;
-import org.endeavourhealth.cim.routes.builders.CIMDataProtocol;
+import org.endeavourhealth.cim.processor.core.HeaderValidationProcessor;
 import org.endeavourhealth.cim.routes.builders.CIMHeaderValidation;
+import org.endeavourhealth.cim.routes.config.RestConfiguration;
 import org.junit.Test;
 
 import java.util.HashMap;
@@ -32,14 +34,17 @@ public class CIMHeaderValidationTest extends CamelTestSupport {
 		return new RouteBuilder() {
 			public void configure() throws Exception {
 				Registry.setInstance(new TestRegistry());
+				ISFManager.setInstance(new TestISFManager());
 
-				getContext().setTracing(true);
-
+				this.includeRoutes(new RestConfiguration());
 				this.includeRoutes(new CIMHeaderValidation());
 
 				from("direct:start")
-					.to("direct:CIMHeaderValidation")
-					.to("mock:error");
+					.to("direct:CIMHeaderValidation");
+
+				from("direct:CIMInvalidMessage")
+						.to("mock:error")
+						.stop();
 
 				from("direct:CIMHeaderValidationResult")
 					.to("mock:result");
@@ -54,22 +59,32 @@ public class CIMHeaderValidationTest extends CamelTestSupport {
 		headerParams.put("api_key", "invalidOrg");
 		headerParams.put("odsCode", "Z99999");
 
+/*
+		resultEndpoint.expectedMessageCount(0);
+		errorEndpoint.expectedMessageCount(1);
+
 		errorEndpoint.expectedHeaderReceived("CamelHttpResponseCode", HttpStatus.SC_BAD_REQUEST);
-		errorEndpoint.expectedBodiesReceived(DataProtocolProcessor.NO_LEGITIMATE_RELATIONSHIPS_CONFIGURED_FOR_THIS_SUBSIDIARY_SYSTEM);
+		errorEndpoint.expectedBodiesReceived(HeaderValidationProcessor.INVALID_HEADER);
+*/
 
 		template.sendBodyAndHeaders(null, headerParams);
 
-		// errorEndpoint.assertIsSatisfied();
+		resultEndpoint.assertIsSatisfied();
+		errorEndpoint.assertIsSatisfied();
 	}
 
 	@Test
 	public void ValidHeader() throws Exception {
 		Map<String, Object> headerParams = new HashMap<>();
-		headerParams.put("api_key", "invalidOrg");
+		headerParams.put("api_key", "swagger");
 		headerParams.put("odsCode", "Z99999");
+
+		resultEndpoint.expectedMessageCount(1);
+		errorEndpoint.expectedMessageCount(0);
 
 		template.sendBodyAndHeaders(null, headerParams);
 
 		resultEndpoint.assertIsSatisfied();
+		errorEndpoint.assertIsSatisfied();
 	}
 }
