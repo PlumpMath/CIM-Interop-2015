@@ -1,6 +1,5 @@
 package org.endeavourhealth.cim.dataManager;
 
-import org.endeavourhealth.cim.adapter.IDataAdapter;
 import org.endeavourhealth.cim.adapter.MockDataAdapter;
 import org.endeavourhealth.cim.common.FhirFilterHelper;
 import org.endeavourhealth.cim.transform.emisopen.EmisOpenTransformer;
@@ -12,7 +11,7 @@ import java.util.*;
 
 @SuppressWarnings("unused")
 public class EmisDataManager implements IDataManager {
-	protected IDataAdapter _emisDataAdapter = new MockDataAdapter();
+	protected MockDataAdapter _emisDataAdapter = new MockDataAdapter();
 	private final OpenHRTransformer _openHrTransformer = new OpenHRTransformer();
 	private final EmisOpenTransformer _emisOpenTransformer = new EmisOpenTransformer();
 

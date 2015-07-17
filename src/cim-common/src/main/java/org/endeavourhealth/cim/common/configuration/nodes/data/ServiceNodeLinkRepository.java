@@ -48,14 +48,14 @@ public class ServiceNodeLinkRepository extends Repository{
             updateNodeToServiceLookups(batch, serviceId, serviceNodeLinks, null);
             addAuditToBatch(batch, serviceId, serviceNodeLinks, userId, AuditMode.add);
 
-            session.execute(batch);
+            getSession().execute(batch);
         } catch (JsonProcessingException e) {
             throw new RepositoryException(e);
         }
     }
 
     private void addNodeToServiceLookup(BatchStatement batch, UUID nodeId, UUID serviceId) {
-        BoundStatement boundStatement = new InsertStatementBuilder(statementCache, NODE_TO_SERVICE_TABLE)
+        BoundStatement boundStatement = new InsertStatementBuilder(getStatementCache(), NODE_TO_SERVICE_TABLE)
                 .addColumnUUID("node_id", nodeId)
                 .addColumnUUID("service_id", serviceId)
                 .build();
@@ -70,7 +70,7 @@ public class ServiceNodeLinkRepository extends Repository{
                 QueryBuilder.eq("service_id", QueryBuilder.bindMarker("service_id"))
         };
 
-        BoundStatement boundStatement = new DeleteStatementBuilder(statementCache, NODE_TO_SERVICE_TABLE, clauses)
+        BoundStatement boundStatement = new DeleteStatementBuilder(getStatementCache(), NODE_TO_SERVICE_TABLE, clauses)
             .addParameterUUID("node_id", nodeId)
             .addParameterUUID("service_id", serviceId)
             .build();
@@ -83,7 +83,7 @@ public class ServiceNodeLinkRepository extends Repository{
             UUID serviceId,
             ServiceNodeLinks serviceNodeLinks) throws JsonProcessingException {
 
-        BoundStatement boundStatement = new InsertStatementBuilder(statementCache, SERVICE_TO_NODE_TABLE)
+        BoundStatement boundStatement = new InsertStatementBuilder(getStatementCache(), SERVICE_TO_NODE_TABLE)
                 .addColumnUUID("service_id", serviceId)
                 .addColumnString("schema_version", ServiceNodeLinks.SCHEMA_VERSION)
                 .addColumnString("node_links", JsonSerializer.serialize(serviceNodeLinks))
@@ -101,7 +101,7 @@ public class ServiceNodeLinkRepository extends Repository{
             updateNodeToServiceLookups(batch, serviceId, serviceNodeLinks, currentLinks);
             addAuditToBatch(batch, serviceId, serviceNodeLinks, userId, AuditMode.edit);
 
-            session.execute(batch);
+            getSession().execute(batch);
         } catch (JsonProcessingException e) {
             throw new RepositoryException(e);
         }
@@ -157,7 +157,7 @@ public class ServiceNodeLinkRepository extends Repository{
 
         Clause clause = QueryBuilder.eq("service_id", QueryBuilder.bindMarker("service_id"));
 
-        BoundStatement boundStatement = new UpdateStatementBuilder(statementCache, SERVICE_TO_NODE_TABLE, clause)
+        BoundStatement boundStatement = new UpdateStatementBuilder(getStatementCache(), SERVICE_TO_NODE_TABLE, clause)
                 .addColumnString("schema_version", ServiceNodeLinks.SCHEMA_VERSION)
                 .addColumnString("node_links", JsonSerializer.serialize(serviceNodeLinks))
                 .addParameterUUID("service_id", serviceId)
@@ -169,8 +169,8 @@ public class ServiceNodeLinkRepository extends Repository{
     public List<UUID> getServiceIdsByNodeId(UUID nodeId) throws RepositoryException {
 
         List<Row> rows = RepositoryHelper.getRowsById(
-                session,
-                statementCache,
+                getSession(),
+                getStatementCache(),
                 SERVICE_TO_NODE_TABLE,
                 "node_id",
                 nodeId);
@@ -183,8 +183,8 @@ public class ServiceNodeLinkRepository extends Repository{
     public ServiceNodeLinks getNodesByServiceId(UUID serviceId) throws RepositoryException {
 
         Row row = RepositoryHelper.getSingleRowFromId(
-                session,
-                statementCache,
+                getSession(),
+                getStatementCache(),
                 SERVICE_TO_NODE_TABLE,
                 "service_id",
                 serviceId);
@@ -205,7 +205,7 @@ public class ServiceNodeLinkRepository extends Repository{
 
     public List<AuditItem<ServiceNodeLinks>> getAuditHistory(UUID serviceId) throws RepositoryException {
         try {
-            return AuditHelper.getAuditItems(session, statementCache, SERVICE_TO_NODE_TABLE, serviceId, ServiceNodeLinks.class);
+            return AuditHelper.getAuditItems(getSession(), getStatementCache(), SERVICE_TO_NODE_TABLE, serviceId, ServiceNodeLinks.class);
         } catch (DeserializationException e) {
             throw new RepositoryException(e);
         }
@@ -219,7 +219,7 @@ public class ServiceNodeLinkRepository extends Repository{
             AuditMode mode) throws JsonProcessingException {
 
         BoundStatement boundStatement = AuditHelper.buildAuditStatement(
-                statementCache,
+                getStatementCache(),
                 SERVICE_TO_NODE_TABLE,
                 serviceId,
                 userId,

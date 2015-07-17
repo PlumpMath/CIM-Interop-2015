@@ -1,7 +1,6 @@
 package org.endeavourhealth.cim.dataManager;
 
 import org.endeavourhealth.cim.Registry;
-import org.endeavourhealth.cim.adapter.IDataAdapter;
 
 import java.util.ArrayList;
 

@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.UUID;
 
-public class MockDataAdapter implements IDataAdapter {
+public class MockDataAdapter {
     private final String _soapUri = "http://localhost:9001/GPApiService/Soap";
     private final String _actionUri = "http://tempuri.org/IGPApiService";
 
@@ -294,7 +294,6 @@ public class MockDataAdapter implements IDataAdapter {
         }
     }
 
-    @Override
     public String getSchedules(String odsCode, Date dateFrom, Date dateTo, String practitionerId) {
         SOAPConnection soapConnection = null;
         try {

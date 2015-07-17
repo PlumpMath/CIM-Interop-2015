@@ -39,7 +39,7 @@ public class NodeRepository extends Repository{
             addNodeInsertToBatch(batch, node);
             addAuditToBatch(batch, node, userId, AuditMode.add);
 
-            session.execute(batch);
+            getSession().execute(batch);
         } catch (JsonProcessingException e) {
             throw new RepositoryException(e);
         }
@@ -66,7 +66,7 @@ public class NodeRepository extends Repository{
             addNodeUpdateToBatch(batch, node);
             addAuditToBatch(batch, node, userId, AuditMode.edit);
 
-            session.execute(batch);
+            getSession().execute(batch);
         } catch (JsonProcessingException e) {
             throw new RepositoryException(e);
         }
@@ -74,7 +74,7 @@ public class NodeRepository extends Repository{
 
     private void addNodeInsertToBatch(BatchStatement batch, Node node) throws JsonProcessingException {
 
-        BoundStatement boundStatement = new InsertStatementBuilder(statementCache, NODE_TABLE)
+        BoundStatement boundStatement = new InsertStatementBuilder(getStatementCache(), NODE_TABLE)
                 .addColumnString("purpose", node.getPurpose().name())
                 .addColumnUUID("id", node.getId())
                 .addColumnString("schema_version", node.getSchemaVersion())
@@ -91,7 +91,7 @@ public class NodeRepository extends Repository{
                 QueryBuilder.eq("id", QueryBuilder.bindMarker("id"))
         };
 
-        BoundStatement boundStatement = new UpdateStatementBuilder(statementCache, NODE_TABLE, clauses)
+        BoundStatement boundStatement = new UpdateStatementBuilder(getStatementCache(), NODE_TABLE, clauses)
                 .addColumnString("schema_version", node.getSchemaVersion())
                 .addColumnString("data", JsonSerializer.serialize(node))
                 .addParameterUUID("id", node.getId())
@@ -103,7 +103,7 @@ public class NodeRepository extends Repository{
 
     public Node getById(NodePurpose purpose, UUID nodeId) throws RepositoryException {
 
-        PreparedStatement preparedStatement = statementCache.getOrAdd(QueryBuilder.select()
+        PreparedStatement preparedStatement = getStatementCache().getOrAdd(QueryBuilder.select()
                 .all()
                 .from(NODE_TABLE)
                 .where(QueryBuilder.eq("id", QueryBuilder.bindMarker("id")))
@@ -114,7 +114,7 @@ public class NodeRepository extends Repository{
                 .setUUID("id", nodeId)
                 .setString("purpose", purpose.name());
 
-        Row row = session.execute(boundStatement)
+        Row row = getSession().execute(boundStatement)
                 .all()
                 .stream()
                 .collect(StreamExtension.singleOrNullCollector());
@@ -143,7 +143,7 @@ public class NodeRepository extends Repository{
 
     public List<AuditItem<Node>> getAuditHistory(UUID nodeId) throws RepositoryException {
         try {
-            return AuditHelper.getAuditItems(session, statementCache, NODE_TABLE, nodeId, Node.class);
+            return AuditHelper.getAuditItems(getSession(), getStatementCache(), NODE_TABLE, nodeId, Node.class);
         } catch (DeserializationException e) {
             throw new RepositoryException(e);
         }
@@ -151,7 +151,7 @@ public class NodeRepository extends Repository{
 
     private void addAuditToBatch(BatchStatement batch, Node node, UUID userId, AuditMode mode) throws JsonProcessingException {
         BoundStatement boundStatement = AuditHelper.buildAuditStatement(
-                statementCache,
+                getStatementCache(),
                 NODE_TABLE,
                 node.getId(),
                 userId,

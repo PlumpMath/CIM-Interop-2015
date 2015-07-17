@@ -4,7 +4,6 @@ import org.apache.camel.CamelContext;
 import org.endeavourhealth.cim.IRegistry;
 import org.endeavourhealth.cim.Registry;
 import org.endeavourhealth.cim.dataManager.DataManagerFactory;
-import org.endeavourhealth.cim.adapter.IDataAdapter;
 import org.endeavourhealth.cim.dataManager.IDataManager;
 import org.hl7.fhir.instance.model.Subscription;
 

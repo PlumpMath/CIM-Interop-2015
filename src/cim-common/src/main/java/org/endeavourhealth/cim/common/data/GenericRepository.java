@@ -40,7 +40,7 @@ public class GenericRepository<T extends BaseEntity> extends Repository {
 			insertSearchTerms(batch, object);
 			addAuditToBatch(batch, object, userId, AuditMode.add);
 
-			session.execute(batch);
+			getSession().execute(batch);
 		} catch (JsonProcessingException e) {
 			throw new RepositoryException(e);
 		}
@@ -66,7 +66,7 @@ public class GenericRepository<T extends BaseEntity> extends Repository {
 			updateSearchTerms(batch, objectBeforeUpdate, object);
 			addAuditToBatch(batch, object, userId, AuditMode.edit);
 
-			session.execute(batch);
+			getSession().execute(batch);
 		} catch (JsonProcessingException e) {
 			throw new RepositoryException(e);
 		}
@@ -86,7 +86,7 @@ public class GenericRepository<T extends BaseEntity> extends Repository {
 
 	private void addInsertToBatch(BatchStatement batch, T object) throws JsonProcessingException {
 
-		BoundStatement boundStatement = new InsertStatementBuilder(statementCache, className)
+		BoundStatement boundStatement = new InsertStatementBuilder(getStatementCache(), className)
 				.addColumnUUID("id", object.getId())
 				.addColumnString("schema_version", object.getSchemaVersion())
 				.addColumnString("data", JsonSerializer.serialize(object))
@@ -99,7 +99,7 @@ public class GenericRepository<T extends BaseEntity> extends Repository {
 
 		Clause clause = QueryBuilder.eq("id", QueryBuilder.bindMarker("id"));
 
-		BoundStatement boundStatement = new UpdateStatementBuilder(statementCache, className, clause)
+		BoundStatement boundStatement = new UpdateStatementBuilder(getStatementCache(), className, clause)
 				.addColumnString("schema_version", object.getSchemaVersion())
 				.addColumnString("data", JsonSerializer.serialize(object))
 				.addParameterUUID("id", object.getId())
@@ -151,8 +151,8 @@ public class GenericRepository<T extends BaseEntity> extends Repository {
 	private HelperForKeyAndBlobTables<T> getTableHelper() {
 		if (lazyLoadedTableHelper == null) {
 			lazyLoadedTableHelper = new HelperForKeyAndBlobTables<>(
-					session,
-					statementCache,
+					getSession(),
+					getStatementCache(),
 					className,
 					this::convert);
 		}
@@ -163,8 +163,8 @@ public class GenericRepository<T extends BaseEntity> extends Repository {
 	private HelperForSearchTermTables getSearchTermTableHelper() {
 		if (lazyLoadedSearchTermTableHelper == null) {
 			lazyLoadedSearchTermTableHelper = new HelperForSearchTermTables(
-					session,
-					statementCache,
+					getSession(),
+					getStatementCache(),
 					className +"_search_terms",
 					"id");
 		}
@@ -187,7 +187,7 @@ public class GenericRepository<T extends BaseEntity> extends Repository {
 
 	private void addAuditToBatch(BatchStatement batch, T object, UUID userId, AuditMode mode) throws JsonProcessingException {
 		BoundStatement boundStatement = AuditHelper.buildAuditStatement(
-				statementCache,
+				getStatementCache(),
 				className,
 				object.getId(),
 				userId,

@@ -1,7 +1,6 @@
 package org.endeavourhealth.cim.subscriptions;
 
 import org.apache.camel.builder.RouteBuilder;
-import org.endeavourhealth.cim.adapter.IDataAdapter;
 import org.endeavourhealth.cim.common.ArrayListAggregationStrategy;
 import org.endeavourhealth.cim.common.HeaderKey;
 import org.endeavourhealth.cim.dataManager.IDataManager;
