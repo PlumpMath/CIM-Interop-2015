@@ -3,7 +3,6 @@ package org.endeavourhealth.cim.transform.openhr.tofhir.clinical;
 import org.apache.commons.lang3.StringUtils;
 import org.endeavourhealth.cim.common.ReferenceHelper;
 import org.endeavourhealth.cim.common.StreamExtension;
-import org.endeavourhealth.cim.transform.FHIRConstants;
 import org.endeavourhealth.cim.transform.SourceDocumentInvalidException;
 import org.endeavourhealth.cim.transform.TransformException;
 import org.endeavourhealth.cim.transform.TransformFeatureNotSupportedException;
@@ -25,7 +24,7 @@ class ConditionTransformer implements ClinicalResourceTransformer {
         target.setEncounter(getEncounter(container.getEventEncounterMap(), source.getId()));
         target.setAsserter(convertUserInRole(source.getAuthorisingUserInRole()));
         target.setDateAssertedElement(convertEffectiveDateTime(source.getEffectiveTime()));
-        target.setCode(convertCode(source.getCode()));
+        target.setCode(CodeConverter.convertCode(source.getCode(), source.getDisplayTerm()));
         target.setCategory(convertCategory());
         target.setSeverity(convertSeverity(problem.getSignificance()));
 
@@ -79,40 +78,6 @@ class ConditionTransformer implements ClinicalResourceTransformer {
             throw new SourceDocumentInvalidException("Invalid DateTime");
 
         return ToFHIRHelper.convertPartialDateTimeToDateType(source);
-    }
-
-    private static CodeableConcept convertCode(DtCodeQualified sourceCode) throws TransformFeatureNotSupportedException {
-        if (sourceCode == null)
-            return null;
-
-        CodeableConcept result = new CodeableConcept();
-        addCode(result, sourceCode);
-        return result;
-    }
-
-    private static void addCode(CodeableConcept codeableConcept, DtCodeQualified sourceCode) throws TransformFeatureNotSupportedException {
-        codeableConcept.addCoding(new Coding()
-                .setCode(sourceCode.getCode())
-                .setDisplay(sourceCode.getDisplayName())
-                .setSystem(convertCodeSystem(sourceCode.getCodeSystem())));
-
-        if (sourceCode.getTranslation() != null) {
-            for (DtCodeQualified code : sourceCode.getTranslation())
-                addCode(codeableConcept, code);
-        }
-    }
-
-    private static String convertCodeSystem(String sourceCodeSystem) throws TransformFeatureNotSupportedException {
-        switch (sourceCodeSystem) {
-            case "2.16.840.1.113883.2.1.6.2":
-                return "READ2";
-            case "2.16.840.1.113883.2.1.3.2.4.15":
-                return FHIRConstants.CODE_SYSTEM_SNOMED_CT;
-            case "2.16.840.1.113883.2.1.6.3":
-                return "http://www.e-mis.com/emisopen/emis_snomed";
-            default:
-                throw new TransformFeatureNotSupportedException("CodeSystem not supported: " + sourceCodeSystem);
-        }
     }
 
     private static CodeableConcept convertCategory() throws TransformFeatureNotSupportedException {
