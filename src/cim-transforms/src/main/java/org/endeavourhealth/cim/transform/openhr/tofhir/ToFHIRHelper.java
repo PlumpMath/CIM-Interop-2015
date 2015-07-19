@@ -3,14 +3,10 @@ package org.endeavourhealth.cim.transform.openhr.tofhir;
 import org.endeavourhealth.cim.transform.SourceDocumentInvalidException;
 import org.endeavourhealth.cim.transform.TransformFeatureNotSupportedException;
 import org.endeavourhealth.cim.transform.TransformHelper;
-import org.endeavourhealth.cim.transform.schemas.openhr.DtDatePart;
-import org.endeavourhealth.cim.transform.schemas.openhr.DtDbo;
-import org.endeavourhealth.cim.transform.schemas.openhr.VocDatePart;
-import org.endeavourhealth.cim.transform.schemas.openhr.VocUpdateMode;
-import org.hl7.fhir.instance.model.DateTimeType;
-import org.hl7.fhir.instance.model.DateType;
-import org.hl7.fhir.instance.model.TemporalPrecisionEnum;
+import org.endeavourhealth.cim.transform.schemas.openhr.*;
+import org.hl7.fhir.instance.model.*;
 
+import java.math.BigDecimal;
 import java.util.UUID;
 
 public class ToFHIRHelper {
@@ -69,6 +65,44 @@ public class ToFHIRHelper {
                 return new DateType(TransformHelper.toDate(source.getValue()), TemporalPrecisionEnum.DAY);
             default:
                 throw new TransformFeatureNotSupportedException("Date part not supported: " + source.getDatepart().toString());
+        }
+    }
+
+    public static Range convertAgeRange(DtAgeRange source) throws TransformFeatureNotSupportedException {
+        if (source == null)
+            return null;
+
+        Range target = new Range();
+
+        //TODO: Age Unit - Consider coding the unit
+
+        if (source.getLow() != null) {
+            target.setLow(new Quantity()
+                    .setValue(new BigDecimal(source.getLow().getValue()))
+                    .setUnits(convertAgeUnit(source.getLow().getUnit())));
+        }
+
+        if (source.getHigh() != null) {
+            target.setHigh(new Quantity()
+                    .setValue(new BigDecimal(source.getHigh().getValue()))
+                    .setUnits(convertAgeUnit(source.getHigh().getUnit())));
+        }
+
+        return target;
+    }
+
+    private static String convertAgeUnit(VocAgeUnit ageUnit) throws TransformFeatureNotSupportedException {
+        switch (ageUnit) {
+            case D:
+                return "day";
+            case W:
+                return "week";
+            case M:
+                return "month";
+            case Y:
+                return "year";
+            default:
+                throw new TransformFeatureNotSupportedException("Age Unit not supported: " + ageUnit.toString());
         }
     }
 
