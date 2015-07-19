@@ -3,10 +3,7 @@ package org.endeavourhealth.cim.transform.openhr.tofhir.clinical;
 import org.apache.commons.lang3.StringUtils;
 import org.endeavourhealth.cim.common.ReferenceHelper;
 import org.endeavourhealth.cim.common.StreamExtension;
-import org.endeavourhealth.cim.transform.FHIRConstants;
-import org.endeavourhealth.cim.transform.SourceDocumentInvalidException;
-import org.endeavourhealth.cim.transform.TransformException;
-import org.endeavourhealth.cim.transform.TransformHelper;
+import org.endeavourhealth.cim.transform.*;
 import org.endeavourhealth.cim.transform.openhr.tofhir.FHIRContainer;
 import org.endeavourhealth.cim.transform.openhr.tofhir.ToFHIRHelper;
 import org.endeavourhealth.cim.transform.schemas.openhr.*;
@@ -16,12 +13,7 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
-public class EncounterTransformer {
-    private final static String EXT_ENCOUNTER_COMPOSITION = "urn:fhir.nhs.uk:extension/EncounterComposition";
-    private final static String EXT_ENCOUNTER_COMPOSITION_TOPIC = "Topic";
-    private final static String EXT_ENCOUNTER_COMPOSITION_CATEGORY = "Category";
-    private final static String EXT_ENCOUNTER_COMPOSITION_COMPONENT = "Component";
-
+class EncounterTransformer {
     private final static String PROBLEM_HEADING_TERM = "Problem";
 
     //TODO: This concept has been deprecated. There is no alternative to this code
@@ -74,9 +66,13 @@ public class EncounterTransformer {
 
     public static void transform(FHIRContainer container, OpenHR001HealthDomain healthDomain) throws TransformException {
         for (OpenHR001Encounter source: healthDomain.getEncounter()) {
-            addEncounterToResults(container, createEncounter(healthDomain, container, source));
-            addEventEncounterMapping(container, source);
+            addResourceToResults(container, createEncounter(healthDomain, container, source));
         }
+    }
+
+    private static void addResourceToResults(FHIRContainer container, Resource resource) throws SourceDocumentInvalidException {
+        if (resource != null)
+            container.getClinicalResources().put(resource.getId(), resource);
     }
 
     private static Encounter createEncounter(OpenHR001HealthDomain healthDomain, FHIRContainer container, OpenHR001Encounter source) throws TransformException {
@@ -86,7 +82,7 @@ public class EncounterTransformer {
         target.setId(source.getId());
         target.setStatus(convertStatus(source.isComplete()));
         target.setClass_(Encounter.EncounterClass.AMBULATORY);
-        target.addType(convertType());
+        target.addType(convertType(source.getLocationType()));
         target.setPatient(createPatientReference(source.getPatient()));
         target.addParticipant(createParticipantFromAuthorisingUser(source.getAuthorisingUserInRole()));
         target.setPeriod(convertEffectiveDateTime(source.getEffectiveTime()));
@@ -96,16 +92,9 @@ public class EncounterTransformer {
 
         addAccompanyingHCPsAsAttenderParticipants(source.getAccompanyingHCP(), target);
 
-        //TODO: locationType
-        //TODO: clinicalPurpose
-
-        addComponents(source, target, container);
+        addComposition(source, target, container);
 
         return target;
-    }
-
-    private static void addEncounterToResults(FHIRContainer container, Encounter encounter) throws SourceDocumentInvalidException {
-        container.getClinicalResources().put(encounter.getId(), encounter);
     }
 
     private static Encounter.EncounterState convertStatus(boolean isComplete) {
@@ -114,18 +103,19 @@ public class EncounterTransformer {
                 : Encounter.EncounterState.INPROGRESS;
     }
 
-    private static CodeableConcept convertType() {
+    private static CodeableConcept convertType(OpenHR001LocationType sourceLocationType) {
         return new CodeableConcept()
                 .addCoding(new Coding()
-                                .setSystem(FHIRConstants.CODE_SYSTEM_SNOMED_CT)
-                                .setCode("11429006")
-                                .setDisplay("Consultation")
+                        .setSystem(FHIRConstants.CODE_SYSTEM_SNOMED_CT)
+                        .setCode(sourceLocationType.getCode())
+                        .setDisplay(sourceLocationType.getDisplayName())
                 );
     }
 
     private static Reference createPatientReference(String sourcePatientId) throws SourceDocumentInvalidException {
         if (StringUtils.isBlank(sourcePatientId))
             throw new SourceDocumentInvalidException("Invalid Patient Id");
+
         return ReferenceHelper.createReference(ResourceType.Patient, sourcePatientId);
     }
 
@@ -199,62 +189,52 @@ public class EncounterTransformer {
         }
     }
 
-    private static void addEventEncounterMapping(FHIRContainer container, OpenHR001Encounter source) throws TransformException {
-        if (source.getComponent() == null)
-            return;
-
-        for (OpenHR001Component component: source.getComponent()) {
-            ToFHIRHelper.ensureDboNotDelete(component);
-
-            container.getEventEncounterMap().putIfAbsent(component.getEvent(), source.getId());
-        }
+    private static void addComposition(OpenHR001Encounter source, Encounter target, FHIRContainer container) throws TransformFeatureNotSupportedException, SourceDocumentInvalidException {
+        Composition composition = createComposition(source, container);
+        if (composition != null)
+            target.getContained().add(composition);
     }
 
-    private static void addComponents(OpenHR001Encounter source, Encounter target, FHIRContainer container) throws SourceDocumentInvalidException {
+    private static Composition createComposition(OpenHR001Encounter source, FHIRContainer container) throws SourceDocumentInvalidException, TransformFeatureNotSupportedException {
         if (source.getComponent() == null || source.getComponent().isEmpty())
-            return;
+            return null;
+
+        Composition composition = new Composition();
+        composition.setId("composition");
+        composition.setDate(TransformHelper.toDate(source.getAvailabilityTimeStamp()));
+        composition.setType(new CodeableConcept()
+                .setText(source.getLocationType().getDisplayName())
+                .addCoding(convertCompositionType(source.getLocationType())));
+        composition.setStatus(Composition.CompositionStatus.FINAL);
+        composition.setSubject(createPatientReference(source.getPatient()));
+        composition.addAuthor(ReferenceHelper.createReference(ResourceType.Practitioner, source.getAuthorisingUserInRole()));
+        composition.setEncounter(ReferenceHelper.createReference(ResourceType.Encounter, source.getId()));
 
         List<EncounterPage> pages = convertFlatComponentListToPageAndSectionHierarchy(source.getComponent());
 
-        Extension compositionExtension = new Extension()
-                .setUrl(EXT_ENCOUNTER_COMPOSITION);
-
         for (EncounterPage page: pages) {
-            CodeableConcept topicExtensionValue = getTopicCodeFromEncounterPage(page, container);
+            Composition.SectionComponent topicSection = new Composition.SectionComponent()
+                    .setCode(getTopicCodeFromEncounterPage(page, container));
 
-            for (EncounterSection section: page.getSections()) {
-                CodeableConcept categoryExtensionValue =  new CodeableConcept()
-                        .addCoding(new Coding()
-                                .setSystem(FHIRConstants.CODE_SYSTEM_SNOMED_CT)
-                                .setDisplay(section.getHeading().getDisplayName())
-                                .setCode(section.getHeading().getCode()));
+            for (EncounterSection sourceSection: page.getSections()) {
+                Composition.SectionComponent categorySection = new Composition.SectionComponent()
+                        .setCode(new CodeableConcept()
+                                .addCoding(new Coding()
+                                        .setSystem(FHIRConstants.CODE_SYSTEM_SNOMED_CT)
+                                        .setDisplay(sourceSection.getHeading().getDisplayName())
+                                        .setCode(sourceSection.getHeading().getCode())));
 
-                for (String eventId: section.getEvents()) {
-                    categoryExtensionValue.addExtension(new Extension()
-                            .setUrl(EXT_ENCOUNTER_COMPOSITION_COMPONENT)
-                            .setValue(createResourceReferenceFromEvent(container, eventId)));
-                }
+                List_ sectionComponentList = createSectionComponentList(page, sourceSection, container);
 
-                topicExtensionValue.addExtension(new Extension()
-                        .setUrl(EXT_ENCOUNTER_COMPOSITION_CATEGORY)
-                        .setValue(categoryExtensionValue));
+                composition.getContained().add(sectionComponentList);
+                categorySection.setContent(ReferenceHelper.createInternalReference(sectionComponentList.getId()));
+                topicSection.addSection(categorySection);
             }
 
-            compositionExtension.addExtension(new Extension()
-                    .setUrl(EXT_ENCOUNTER_COMPOSITION_TOPIC)
-                    .setValue(topicExtensionValue));
+            composition.addSection(topicSection);
         }
 
-        target.addExtension(compositionExtension);
-    }
-
-    private static Reference createResourceReferenceFromEvent(FHIRContainer container, String eventId) throws SourceDocumentInvalidException {
-        // find event resource in container
-        Resource resource = container.getClinicalResources().get(eventId);
-        if (resource == null)
-            throw new SourceDocumentInvalidException("Encounter component event resource not found in container. EventId:" + eventId);
-
-        return ReferenceHelper.createReference(resource.getResourceType(), eventId);
+        return composition;
     }
 
     private static List<EncounterPage> convertFlatComponentListToPageAndSectionHierarchy(List<OpenHR001Component> components) {
@@ -326,4 +306,114 @@ public class EncounterTransformer {
         return result;
     }
 
+    private static Coding convertCompositionType(OpenHR001LocationType locationType) {
+        switch (locationType.getCode()) {
+            // GP2GP EhrComposition Vocabulary Codes
+            case "24561000000109": // A+E report
+            case "37361000000105": // Additional Note
+            case "37351000000107": // Administration Note
+            case "37341000000109": // Alert Note
+            case "37331000000100": // Comment Note
+            case "15611000000104": // Diagnosis
+            case "37321000000102": // Community Nursing Note
+            case "24571000000102": // Community Nursing Report
+            case "25561000000105": // Data transferred from other system
+            case "24581000000100": // Day Case Report
+            case "25571000000103": // Discharge Report
+            case "24591000000103": // Other Report
+            case "25581000000101": // Discharge Summary Report
+            case "37311000000108": // Out of Hours, Non Practice Note
+            case "37301000000106": // Emergency Consultation Note
+            case "37281000000105": // Out of Hours, Practice Note
+            case "37291000000107": // Externally Entered Note
+            case "24601000000109": // Radiology Request
+            case "25591000000104": // Follow-up/Routine Visit Note
+            case "25601000000105": // G.O.S. 18 Report
+            case "24611000000106": // Radiology Result
+            case "25611000000107": // Referral Letter
+            case "24621000000100": // Health Authority Entry
+            case "25631000000104": // Health Visitor Note
+            case "25621000000101": // Repeat Issue Note
+            case "25641000000108": // Health Visitor Report
+            case "24631000000103": // Residential Home Visit Note
+            case "25651000000106": // Home Visit Note
+            case "24641000000107": // Investigation Result
+            case "25661000000109": // Social Services Report
+            case "24651000000105": // Hospital Admission Note
+            case "24661000000108": // Hospital Inpatient Report
+            case "25671000000102": // Surgery Consultation Note
+            case "25681000000100": // Hospital Outpatient Report
+            case "25691000000103": // Telephone call from a patient
+            case "25701000000103": // Hotel Visit Note
+            case "24671000000101": // Telephone call to a patient
+            case "25711000000101": // Initial post discharge review
+            case "24681000000104": // Telephone Consultation
+            case "24691000000102": // Laboratory Request
+            case "24701000000102": // Laboratory Result
+            case "25741000000100": // Third Party Consultation
+            case "25731000000109": // Mail from patient
+            case "37271000000108": // Twilight Visit Note
+            case "24711000000100": // Mail to patient
+            case "24721000000106": // Acute Visit Note
+            case "24881000000103": // NHS Direct Report
+            case "25751000000102": // Children's Home Visit Note
+            case "25761000000104": // Night Visit Note
+            case "24731000000108": // Clinic Note
+            case "25771000000106": // Night visit practice note
+            case "25791000000105": // Community Clinic Note
+            case "25781000000108": // OOH Report
+            case "24741000000104": // Night visit, deputising service note
+            case "25801000000109": // Night visit local rota note
+            case "109341000000100": // GP to GP communication transaction
+            case "24751000000101": // Nursing Home Visit Note
+            case "25811000000106": // OOH Attendance Note
+                return new Coding().setSystem(FHIRConstants.CODE_SYSTEM_SNOMED_CT).setDisplay(locationType.getDisplayName()).setCode(locationType.getCode());
+            // LocationTypes mapped to valid GP2GP EhrComposition Vocabulary Code
+            case "1503371000006105": //	GP Surgery
+                return new Coding().setSystem(FHIRConstants.CODE_SYSTEM_SNOMED_CT).setDisplay("Surgery Consultation Note").setCode("25671000000102");
+            case "1809181000006108": //	Emergency consultation
+                return new Coding().setSystem(FHIRConstants.CODE_SYSTEM_SNOMED_CT).setDisplay("Emergency Consultation Note").setCode("37301000000106");
+            case "185221008": // Seen in gynaecology clinic
+            case "185229005": // Seen in diabetic clinic
+            case "185242005": // Seen in asthma clinic
+            case "313103006": // Seen in baby clinic
+            case "1503121000006107": //	Walk-in clinic
+            case "1854731000006104": //	Seen in drug misuse clinic
+            case "1839331000006101": //	Seen in chronic obstructive pulmonary disease clinic
+                return new Coding().setSystem(FHIRConstants.CODE_SYSTEM_SNOMED_CT).setDisplay("Clinic Note").setCode("24731000000108");
+            case "185317003": // Telephone encounter
+            case "1849981000006103": //	Follow up telephone consultation
+            case "1849991000006100": //	First telephone consultation
+            case "386473003": // Telephone follow-up
+            case "401267002": // Telephone triage encounter
+                return new Coding().setSystem(FHIRConstants.CODE_SYSTEM_SNOMED_CT).setDisplay("Telephone Consultation").setCode("24681000000104");
+            default:
+                //A composition with a name that is not the same as any specified composition name. The originalText element specifies a title for the composition.
+                return new Coding().setSystem(FHIRConstants.CODE_SYSTEM_SNOMED_CT).setDisplay("Other Report").setCode("24591000000103");
+        }
+    }
+
+    private static List_ createSectionComponentList(EncounterPage page, EncounterSection section, FHIRContainer container) throws SourceDocumentInvalidException {
+        List_ componentList = new List_();
+        String id = page.getPageNumber() + "-" + section.getHeading().getDisplayName();
+        componentList.setId(StringUtils.left(id, 64));
+        componentList.setStatus(List_.ListStatus.CURRENT);
+        componentList.setMode(List_.ListMode.WORKING);
+
+        for (String eventId: section.getEvents()) {
+            componentList.addEntry(new List_.ListEntryComponent()
+                    .setItem(createResourceReferenceFromEvent(container, eventId)));
+        }
+
+        return componentList;
+    }
+
+    private static Reference createResourceReferenceFromEvent(FHIRContainer container, String eventId) throws SourceDocumentInvalidException {
+        // find event resource in container
+        Resource resource = container.getClinicalResources().get(eventId);
+        if (resource == null)
+            throw new SourceDocumentInvalidException("Encounter component event resource not found in container. EventId:" + eventId);
+
+        return ReferenceHelper.createReference(resource.getResourceType(), eventId);
+    }
 }

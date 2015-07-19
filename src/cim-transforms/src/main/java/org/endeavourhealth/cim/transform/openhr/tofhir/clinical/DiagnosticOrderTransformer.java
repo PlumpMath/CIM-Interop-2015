@@ -5,7 +5,7 @@ import org.endeavourhealth.cim.transform.openhr.tofhir.FHIRContainer;
 import org.endeavourhealth.cim.transform.schemas.openhr.OpenHR001HealthDomain;
 import org.hl7.fhir.instance.model.DiagnosticOrder;
 
-public class DiagnosticOrderTransformer implements ClinicalResourceTransformer {
+class DiagnosticOrderTransformer implements ClinicalResourceTransformer {
     public DiagnosticOrder transform(OpenHR001HealthDomain healthDomain, FHIRContainer container, OpenHR001HealthDomain.Event source) throws TransformException {
         DiagnosticOrder target = new DiagnosticOrder();
         target.setId(source.getId());

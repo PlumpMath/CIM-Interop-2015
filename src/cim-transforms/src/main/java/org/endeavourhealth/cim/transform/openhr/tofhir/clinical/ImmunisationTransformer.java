@@ -5,7 +5,7 @@ import org.endeavourhealth.cim.transform.openhr.tofhir.FHIRContainer;
 import org.endeavourhealth.cim.transform.schemas.openhr.OpenHR001HealthDomain;
 import org.hl7.fhir.instance.model.Immunization;
 
-public class ImmunisationTransformer implements ClinicalResourceTransformer {
+class ImmunisationTransformer implements ClinicalResourceTransformer {
     public Immunization transform(OpenHR001HealthDomain healthDomain, FHIRContainer container, OpenHR001HealthDomain.Event source) throws TransformException {
         Immunization target = new Immunization();
         target.setId(source.getId());

@@ -7,7 +7,7 @@ import org.endeavourhealth.cim.transform.openhr.tofhir.ToFHIRHelper;
 import org.endeavourhealth.cim.transform.schemas.openhr.OpenHR001HealthDomain;
 import org.hl7.fhir.instance.model.Resource;
 
-public class EventTransformer {
+class EventTransformer {
     public static void transform(FHIRContainer container, OpenHR001HealthDomain healthDomain) throws TransformException {
         for (OpenHR001HealthDomain.Event source: healthDomain.getEvent()) {
             ToFHIRHelper.ensureDboNotDelete(source);

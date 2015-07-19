@@ -14,6 +14,10 @@ public class ReferenceHelper {
         return new Reference().setReference(createResourceReference(resourceType, id));
     }
 
+    public static Reference createInternalReference(String id) {
+        return new Reference().setReference("#" + id);
+    }
+
     public static String getReferenceId(Reference reference, ResourceType resourceType) {
         if (reference == null)
             return null;

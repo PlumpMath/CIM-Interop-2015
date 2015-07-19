@@ -5,6 +5,6 @@ import org.endeavourhealth.cim.transform.openhr.tofhir.FHIRContainer;
 import org.endeavourhealth.cim.transform.schemas.openhr.OpenHR001HealthDomain;
 import org.hl7.fhir.instance.model.Resource;
 
-public interface ClinicalResourceTransformer {
+interface ClinicalResourceTransformer {
     Resource transform(OpenHR001HealthDomain healthDomain, FHIRContainer container, OpenHR001HealthDomain.Event source) throws TransformException;
 }

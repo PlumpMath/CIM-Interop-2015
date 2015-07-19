@@ -1,7 +1,11 @@
 package org.endeavourhealth.cim.transform.openhr.tofhir.clinical;
 
 import org.endeavourhealth.cim.transform.TransformException;
+import org.endeavourhealth.cim.transform.TransformFeatureNotSupportedException;
 import org.endeavourhealth.cim.transform.openhr.tofhir.FHIRContainer;
+import org.endeavourhealth.cim.transform.openhr.tofhir.ToFHIRHelper;
+import org.endeavourhealth.cim.transform.schemas.openhr.OpenHR001Component;
+import org.endeavourhealth.cim.transform.schemas.openhr.OpenHR001Encounter;
 import org.endeavourhealth.cim.transform.schemas.openhr.OpenHR001HealthDomain;
 import org.endeavourhealth.cim.transform.schemas.openhr.OpenHR001OpenHealthRecord;
 
@@ -11,9 +15,20 @@ public class HealthDomainTransformer {
         if (healthDomain == null)
             return;
 
+        buildEventEncounterMap(container, healthDomain);
+
         EventTransformer.transform(container, healthDomain);
 
         // encounter transform must come after event transform as there is a dependency on a populated container
         EncounterTransformer.transform(container, healthDomain);
+    }
+
+    private static void buildEventEncounterMap(FHIRContainer container, OpenHR001HealthDomain healthDomain) throws TransformFeatureNotSupportedException {
+        for (OpenHR001Encounter encounter : healthDomain.getEncounter()) {
+            for (OpenHR001Component component : encounter.getComponent()) {
+                ToFHIRHelper.ensureDboNotDelete(component);
+                container.getEventEncounterMap().putIfAbsent(component.getEvent(), encounter.getId());
+            }
+        }
     }
 }
