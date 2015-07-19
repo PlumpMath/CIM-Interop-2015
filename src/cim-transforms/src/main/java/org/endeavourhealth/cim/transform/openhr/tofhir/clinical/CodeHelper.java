@@ -7,7 +7,7 @@ import org.endeavourhealth.cim.transform.schemas.openhr.DtCodeQualified;
 import org.hl7.fhir.instance.model.CodeableConcept;
 import org.hl7.fhir.instance.model.Coding;
 
-class CodeConverter {
+class CodeHelper {
     public static CodeableConcept convertCode(DtCodeQualified sourceCode) throws TransformFeatureNotSupportedException {
         return convertCode(sourceCode, null);
     }

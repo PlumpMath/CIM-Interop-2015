@@ -21,7 +21,7 @@ class ObservationTransformer implements ClinicalResourceTransformer {
     public Resource transform(OpenHR001HealthDomain healthDomain, FHIRContainer container, OpenHR001HealthDomain.Event source) throws TransformException {
         Observation target = new Observation();
         target.setId(source.getId());
-        target.setCode(CodeConverter.convertCode(source.getCode(), source.getDisplayTerm()));
+        target.setCode(CodeHelper.convertCode(source.getCode(), source.getDisplayTerm()));
         target.setApplies(convertEffectiveDateTime(source.getEffectiveTime()));
         target.setIssued(TransformHelper.toDate(source.getAvailabilityTimeStamp()));
         target.setStatus(Observation.ObservationStatus.FINAL);
@@ -72,7 +72,7 @@ class ObservationTransformer implements ClinicalResourceTransformer {
     }
 
     private static Observation.ObservationReliability convertReliability(DtCodeQualified sourceCode) {
-        return CodeConverter.hasQualifier(sourceCode, CERTAINTY_QUALIFIER_NAME, UNCERTAIN_QUALIFIER_VALUE)
+        return CodeHelper.hasQualifier(sourceCode, CERTAINTY_QUALIFIER_NAME, UNCERTAIN_QUALIFIER_VALUE)
                 ? Observation.ObservationReliability.QUESTIONABLE
                 : Observation.ObservationReliability.OK;
     }
@@ -229,10 +229,10 @@ class ObservationTransformer implements ClinicalResourceTransformer {
         if (complexObservation == null)
             return;
 
-        Observation.ObservationRelationshiptypes relationshipType = CodeConverter.isBloodPressureCode(sourceCode)
+        Observation.ObservationRelationshiptypes relationshipType = CodeHelper.isBloodPressureCode(sourceCode)
                 ? Observation.ObservationRelationshiptypes.HASCOMPONENT
                 : Observation.ObservationRelationshiptypes.HASMEMBER;
-        
+
         for (String relatedObservationId: complexObservation.getChildLink()) {
             target.addRelated(new Observation.ObservationRelatedComponent()
                     .setTarget(ReferenceHelper.createReference(ResourceType.Observation, relatedObservationId))
