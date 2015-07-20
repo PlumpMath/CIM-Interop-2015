@@ -44,6 +44,8 @@ class CodeHelper {
                 return FHIRConstants.CODE_SYSTEM_SNOMED_CT;
             case "2.16.840.1.113883.2.1.6.3":
                 return "http://www.e-mis.com/emisopen/emis_snomed";
+            case "EMISPREPARATION":
+                return "http://www.e-mis.com/emisopen/emis_preparation";
             default:
                 throw new TransformFeatureNotSupportedException("CodeSystem not supported: " + sourceCodeSystem);
         }
