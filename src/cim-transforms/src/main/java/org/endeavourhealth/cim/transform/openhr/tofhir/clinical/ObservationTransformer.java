@@ -18,6 +18,10 @@ class ObservationTransformer implements ClinicalResourceTransformer {
     private final static String CERTAINTY_QUALIFIER_NAME = "Certainty";
     private final static String UNCERTAIN_QUALIFIER_VALUE = "Uncertain";
 
+    private final static String EPISODICITY_EXTENSION = "urn:fhir.nhs.uk:extension/Episodicity";
+    private final static String EPISODICITY_SYSTEM = "urn:fhir.nhs.uk:vs/Episodicity";
+
+
     public Resource transform(OpenHR001HealthDomain healthDomain, FHIRContainer container, OpenHR001HealthDomain.Event source) throws TransformException {
         Observation target = new Observation();
         target.setId(source.getId());
@@ -38,32 +42,34 @@ class ObservationTransformer implements ClinicalResourceTransformer {
             target.setInterpretation(convertAbnormality(sourceObservation));
             convertValue(sourceObservation.getValue(), target);
             addRelatedObservations(sourceObservation.getComplexObservation(), source.getCode(), target);
+
+            addEpisodicity(sourceObservation.getEpisodicity(), target);
         }
 
         return target;
     }
 
-    private static DateType convertEffectiveDateTime(DtDatePart source) throws TransformException {
+    private DateType convertEffectiveDateTime(DtDatePart source) throws TransformException {
         if (source == null)
             throw new SourceDocumentInvalidException("Invalid DateTime");
 
         return ToFHIRHelper.convertPartialDateTimeToDateType(source);
     }
 
-    private static Reference convertPatient(String sourcePatientId) throws SourceDocumentInvalidException {
+    private Reference convertPatient(String sourcePatientId) throws SourceDocumentInvalidException {
         if (StringUtils.isBlank(sourcePatientId))
             throw new SourceDocumentInvalidException("Invalid Patient Id");
         return ReferenceHelper.createReference(ResourceType.Patient, sourcePatientId);
     }
 
-    private static Reference convertUserInRole(String userInRoleId) throws SourceDocumentInvalidException {
+    private Reference convertUserInRole(String userInRoleId) throws SourceDocumentInvalidException {
         if (StringUtils.isBlank(userInRoleId))
             throw new SourceDocumentInvalidException("UserInRoleId not found");
 
         return ReferenceHelper.createReference(ResourceType.Practitioner, userInRoleId);
     }
 
-    private static Reference getEncounter(FHIRContainer container, String eventId) {
+    private Reference getEncounter(FHIRContainer container, String eventId) {
         OpenHR001Encounter encounter = container.getEncounterFromEventId(eventId);
         if (encounter == null)
             return null;
@@ -71,13 +77,13 @@ class ObservationTransformer implements ClinicalResourceTransformer {
         return ReferenceHelper.createReference(ResourceType.Encounter, encounter.getId());
     }
 
-    private static Observation.ObservationReliability convertReliability(DtCodeQualified sourceCode) {
+    private Observation.ObservationReliability convertReliability(DtCodeQualified sourceCode) {
         return CodeHelper.hasQualifier(sourceCode, CERTAINTY_QUALIFIER_NAME, UNCERTAIN_QUALIFIER_VALUE)
                 ? Observation.ObservationReliability.QUESTIONABLE
                 : Observation.ObservationReliability.OK;
     }
 
-    private static void convertAssociatedText(OpenHR001Event source, Observation target) throws SourceDocumentInvalidException {
+    private void convertAssociatedText(OpenHR001Event source, Observation target) throws SourceDocumentInvalidException {
 
         List<OpenHR001Event.AssociatedText> associatedTextList = source.getAssociatedText();
 
@@ -108,7 +114,7 @@ class ObservationTransformer implements ClinicalResourceTransformer {
         }
     }
 
-    private static CodeableConcept convertAbnormality(OpenHR001Observation source)
+    private CodeableConcept convertAbnormality(OpenHR001Observation source)
     {
         if (source == null || source.getAbnormal() == null || !source.getAbnormal().isValue())
             return null;
@@ -155,7 +161,7 @@ class ObservationTransformer implements ClinicalResourceTransformer {
         return result;
     }
 
-    private static void convertValue(OpenHR001ObservationValue sourceValue, Observation target) throws SourceDocumentInvalidException, TransformFeatureNotSupportedException {
+    private void convertValue(OpenHR001ObservationValue sourceValue, Observation target) throws SourceDocumentInvalidException, TransformFeatureNotSupportedException {
         if (sourceValue == null)
             return;
 
@@ -175,7 +181,7 @@ class ObservationTransformer implements ClinicalResourceTransformer {
             throw new SourceDocumentInvalidException("Invalid Observation Value: Missing Numeric and Text Value");
     }
 
-    private static Quantity.QuantityComparator convertQuantityComparator(String operator) throws SourceDocumentInvalidException {
+    private Quantity.QuantityComparator convertQuantityComparator(String operator) throws SourceDocumentInvalidException {
         if (StringUtils.isBlank(operator))
             return null;
 
@@ -193,7 +199,7 @@ class ObservationTransformer implements ClinicalResourceTransformer {
         }
     }
 
-    private static Observation.ObservationReferenceRangeComponent convertRange(OpenHR001Range sourceRange) throws SourceDocumentInvalidException, TransformFeatureNotSupportedException {
+    private Observation.ObservationReferenceRangeComponent convertRange(OpenHR001Range sourceRange) throws SourceDocumentInvalidException, TransformFeatureNotSupportedException {
         if (sourceRange == null)
             return null;
 
@@ -215,7 +221,7 @@ class ObservationTransformer implements ClinicalResourceTransformer {
         return rangeComponent;
     }
 
-    private static Quantity convertNumericRange(OpenHR001RangeValue rangeValue, String units) throws SourceDocumentInvalidException {
+    private Quantity convertNumericRange(OpenHR001RangeValue rangeValue, String units) throws SourceDocumentInvalidException {
         if (rangeValue == null)
             return null;
 
@@ -225,7 +231,7 @@ class ObservationTransformer implements ClinicalResourceTransformer {
                 .setComparator(convertQuantityComparator(rangeValue.getOperator()));
     }
 
-    private static void addRelatedObservations(OpenHR001ComplexObservation complexObservation, DtCodeQualified sourceCode, Observation target) {
+    private void addRelatedObservations(OpenHR001ComplexObservation complexObservation, DtCodeQualified sourceCode, Observation target) {
         if (complexObservation == null)
             return;
 
@@ -239,4 +245,17 @@ class ObservationTransformer implements ClinicalResourceTransformer {
                     .setType(relationshipType));
         }
     }
+
+    private void addEpisodicity(VocEpisodicity episodicity, Observation target) {
+        if (episodicity == null || episodicity == VocEpisodicity.NONE)
+            return;
+
+        target.addExtension(new Extension()
+                .setUrl(EPISODICITY_EXTENSION)
+                .setValue(new CodeableConcept()
+                    .addCoding(new Coding()
+                        .setSystem(EPISODICITY_SYSTEM)
+                        .setCode(episodicity.toString()))));
+    }
+
 }

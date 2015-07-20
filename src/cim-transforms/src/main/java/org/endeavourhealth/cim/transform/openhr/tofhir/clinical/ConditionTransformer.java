@@ -13,8 +13,16 @@ import org.hl7.fhir.instance.model.*;
 
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 class ConditionTransformer implements ClinicalResourceTransformer {
+    private final static String CONDITION_LINK_EXTENSION = "urn:fhir.nhs.uk:extension/ConditionLink";
+    private final static String CONDITION_LINK_TYPE_SYSTEM = "urn:fhir.nhs.uk:vs/ConditionLinkType";
+    private final static String CONDITION_LINK_TYPE_EPISODE_CODE = "is-episode";
+    private final static String CONDITION_LINK_TYPE_EPISODE_DISPLAY = "Episode follow on";
+    private final static String CONDITION_LINK_TYPE_ASSOCIATION_CODE = "has-association";
+    private final static String CONDITION_LINK_TYPE_ASSOCIATION_DISPLAY = "Has association";
+
     public Condition transform(OpenHR001HealthDomain healthDomain, FHIRContainer container, OpenHR001HealthDomain.Event source) throws TransformException {
         OpenHR001Problem problem = getProblem(healthDomain.getProblem(), convertId(source.getId()));
 
@@ -28,7 +36,7 @@ class ConditionTransformer implements ClinicalResourceTransformer {
         target.setCategory(convertCategory());
         target.setSeverity(convertSeverity(problem.getSignificance()));
 
-        handleAssociatedText(source, target);
+        convertAssociatedText(source, target);
 
         return target;
     }
@@ -46,19 +54,19 @@ class ConditionTransformer implements ClinicalResourceTransformer {
         return problem;
     }
 
-    private static String convertId(String sourceId) throws SourceDocumentInvalidException {
+    private String convertId(String sourceId) throws SourceDocumentInvalidException {
         if (StringUtils.isBlank(sourceId))
             throw new SourceDocumentInvalidException("Invalid Event Id");
         return sourceId;
     }
 
-    private static Reference convertPatient(String sourcePatientId) throws SourceDocumentInvalidException {
+    private Reference convertPatient(String sourcePatientId) throws SourceDocumentInvalidException {
         if (StringUtils.isBlank(sourcePatientId))
             throw new SourceDocumentInvalidException("Invalid Patient Id");
         return ReferenceHelper.createReference(ResourceType.Patient, sourcePatientId);
     }
 
-    private static Reference getEncounter(FHIRContainer container, String eventId) {
+    private Reference getEncounter(FHIRContainer container, String eventId) {
         OpenHR001Encounter encounter = container.getEncounterFromEventId(eventId);
         if (encounter == null)
             return null;
@@ -66,21 +74,21 @@ class ConditionTransformer implements ClinicalResourceTransformer {
         return ReferenceHelper.createReference(ResourceType.Encounter, encounter.getId());
     }
 
-    private static Reference convertUserInRole(String userInRoleId) throws SourceDocumentInvalidException {
+    private Reference convertUserInRole(String userInRoleId) throws SourceDocumentInvalidException {
         if (StringUtils.isBlank(userInRoleId))
             throw new SourceDocumentInvalidException("UserInRoleId not found");
 
         return ReferenceHelper.createReference(ResourceType.Practitioner, userInRoleId);
     }
 
-    private static DateType convertEffectiveDateTime(DtDatePart source) throws TransformException {
+    private DateType convertEffectiveDateTime(DtDatePart source) throws TransformException {
         if (source == null)
             throw new SourceDocumentInvalidException("Invalid DateTime");
 
         return ToFHIRHelper.convertPartialDateTimeToDateType(source);
     }
 
-    private static CodeableConcept convertCategory() throws TransformFeatureNotSupportedException {
+    private CodeableConcept convertCategory() throws TransformFeatureNotSupportedException {
         return new CodeableConcept()
                 .addCoding(new Coding()
                                 .setSystem("http://hl7.org/fhir/condition-status")
@@ -89,7 +97,7 @@ class ConditionTransformer implements ClinicalResourceTransformer {
                 );
     }
 
-    private static CodeableConcept convertSeverity(VocProblemSignificance sourceSignificance) throws TransformFeatureNotSupportedException {
+    private CodeableConcept convertSeverity(VocProblemSignificance sourceSignificance) throws TransformFeatureNotSupportedException {
         Coding coding = new Coding();
         coding.setSystem("http://hl7.org/fhir/vs/condition-severity");
 
@@ -109,7 +117,7 @@ class ConditionTransformer implements ClinicalResourceTransformer {
         return new CodeableConcept().addCoding(coding);
     }
 
-    private static void handleAssociatedText(OpenHR001Event source, Condition target) throws SourceDocumentInvalidException {
+    private void convertAssociatedText(OpenHR001Event source, Condition target) throws SourceDocumentInvalidException {
 
         List<OpenHR001Event.AssociatedText> associatedTextList = source.getAssociatedText();
 
@@ -139,4 +147,60 @@ class ConditionTransformer implements ClinicalResourceTransformer {
             }
         }
     }
+
+    public static void buildConditionLinks(List<Condition> conditions, List<OpenHR001Problem> problems, FHIRContainer container) throws TransformException {
+        for (Condition targetCondition: conditions) {
+            OpenHR001Problem sourceProblems = problems
+                    .stream()
+                    .filter(p -> p.getId().equals(targetCondition.getId()))
+                    .collect(StreamExtension.singleCollector());
+            addEventLinks(targetCondition, sourceProblems, container);
+        }
+    }
+
+    private static void addEventLinks(Condition target, OpenHR001Problem problem, FHIRContainer container) throws SourceDocumentInvalidException {
+        if (problem.getEventLink().isEmpty())
+            return;
+
+        List_ conditionLinkList = createConditionLinkList(problem.getEventLink(), container);
+        target.getContained().add(conditionLinkList);
+
+        target.addExtension(new Extension()
+            .setUrl(CONDITION_LINK_EXTENSION)
+            .setValue(ReferenceHelper.createInternalReference(conditionLinkList.getId())));
+    }
+
+    private static List_ createConditionLinkList(List<OpenHR001ProblemEventLink> eventLinks, FHIRContainer container) throws SourceDocumentInvalidException {
+        List_ conditionLinkList = new List_();
+        conditionLinkList.setId("condition-links");
+        conditionLinkList.setStatus(List_.ListStatus.CURRENT);
+        conditionLinkList.setMode(List_.ListMode.WORKING);
+
+        for (OpenHR001ProblemEventLink eventLink: eventLinks) {
+            conditionLinkList.addEntry(new List_.ListEntryComponent()
+                    .addFlag(new CodeableConcept()
+                            .addCoding(eventLink.getEventLinkType() == VocProblemEventLinkType.FOL
+                                    ? new Coding()
+                                        .setSystem(CONDITION_LINK_TYPE_SYSTEM)
+                                        .setCode(CONDITION_LINK_TYPE_EPISODE_CODE)
+                                        .setDisplay(CONDITION_LINK_TYPE_EPISODE_DISPLAY)
+                                    : new Coding()
+                                        .setSystem(CONDITION_LINK_TYPE_SYSTEM)
+                                        .setCode(CONDITION_LINK_TYPE_ASSOCIATION_CODE)
+                                        .setDisplay(CONDITION_LINK_TYPE_ASSOCIATION_DISPLAY)))
+                    .setItem(createResourceReferenceFromEvent(container, eventLink.getId())));
+        }
+
+        return conditionLinkList;
+    }
+
+    private static Reference createResourceReferenceFromEvent(FHIRContainer container, String eventId) throws SourceDocumentInvalidException {
+        // find event resource in container
+        Resource resource = container.getResourceById(eventId);
+        if (resource == null)
+            throw new SourceDocumentInvalidException("Condition Link Event not found in container. EventId:" + eventId);
+
+        return ReferenceHelper.createReference(resource.getResourceType(), resource.getId());
+    }
+
 }
