@@ -17,7 +17,7 @@ import java.util.List;
 class OrganisationTransformer {
     public static void transform(FHIRContainer container, OpenHR001AdminDomain adminDomain) throws TransformException {
         for (OpenHR001Organisation source: adminDomain.getOrganisation()) {
-            addOrganisationToResults(container, createOrganisation(adminDomain, source));
+            container.addResource(createOrganisation(adminDomain, source));
         }
     }
 
@@ -44,10 +44,6 @@ class OrganisationTransformer {
         target.setActive(source.getCloseDate() == null);
 
         return target;
-    }
-
-    private static void addOrganisationToResults(FHIRContainer container, Organization organisation) throws SourceDocumentInvalidException {
-        container.getAdminResources().put(organisation.getId(), organisation);
     }
 
     private static void addIdentifiers(OpenHR001Organisation source, Organization target) throws SourceDocumentInvalidException {

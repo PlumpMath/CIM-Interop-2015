@@ -17,8 +17,7 @@ import java.util.List;
 class PractitionerTransformer {
     public static void transform(FHIRContainer container, OpenHR001AdminDomain adminDomain) throws TransformException {
         for (OpenHR001UserInRole userInRole: adminDomain.getUserInRole()) {
-            Practitioner practitioner = createPractitioner(adminDomain, userInRole);
-            addPractitionerToResults(container, practitioner);
+            container.addResource(createPractitioner(adminDomain, userInRole));
         }
     }
 
@@ -65,11 +64,6 @@ class PractitionerTransformer {
 
         return practitioner;
     }
-
-    private static void addPractitionerToResults(FHIRContainer container, Practitioner practitioner) throws SourceDocumentInvalidException {
-        container.getAdminResources().put(practitioner.getId(), practitioner);
-    }
-
 
     private static OpenHR001User getUser(List<OpenHR001User> userList, String userId) throws SourceDocumentInvalidException {
         if (userList == null)

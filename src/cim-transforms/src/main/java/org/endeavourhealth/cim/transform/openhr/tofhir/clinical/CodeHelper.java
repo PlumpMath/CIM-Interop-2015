@@ -39,7 +39,7 @@ class CodeHelper {
     private static String convertCodeSystem(String sourceCodeSystem) throws TransformFeatureNotSupportedException {
         switch (sourceCodeSystem) {
             case "2.16.840.1.113883.2.1.6.2":
-                return "READ2";
+                return FHIRConstants.CODE_SYSTEM_READ2;
             case "2.16.840.1.113883.2.1.3.2.4.15":
                 return FHIRConstants.CODE_SYSTEM_SNOMED_CT;
             case "2.16.840.1.113883.2.1.6.3":

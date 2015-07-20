@@ -10,6 +10,7 @@ class MedicationTransformer implements ClinicalResourceTransformer {
         MedicationPrescription target = new MedicationPrescription();
         target.setId(source.getId());
 
+
         return target;
     }
 }

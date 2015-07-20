@@ -28,7 +28,7 @@ class ObservationTransformer implements ClinicalResourceTransformer {
         target.setReliability(convertReliability(source.getCode()));
         target.setSubject(convertPatient(source.getPatient()));
         target.addPerformer(convertUserInRole(source.getAuthorisingUserInRole()));
-        target.setEncounter(getEncounter(container.getEventEncounterMap(), source.getId()));
+        target.setEncounter(getEncounter(container, source.getId()));
 
         convertAssociatedText(source, target);
 
@@ -63,12 +63,12 @@ class ObservationTransformer implements ClinicalResourceTransformer {
         return ReferenceHelper.createReference(ResourceType.Practitioner, userInRoleId);
     }
 
-    private static Reference getEncounter(Map<String, String> eventEncounterMap, String eventId) {
-        String encounterId = eventEncounterMap.get(eventId);
-        if (StringUtils.isBlank(encounterId))
+    private static Reference getEncounter(FHIRContainer container, String eventId) {
+        OpenHR001Encounter encounter = container.getEncounterFromEventId(eventId);
+        if (encounter == null)
             return null;
 
-        return ReferenceHelper.createReference(ResourceType.Encounter, encounterId);
+        return ReferenceHelper.createReference(ResourceType.Encounter, encounter.getId());
     }
 
     private static Observation.ObservationReliability convertReliability(DtCodeQualified sourceCode) {

@@ -1,73 +1,49 @@
 package org.endeavourhealth.cim.transform.openhr.tofhir;
 
+import org.endeavourhealth.cim.common.StreamExtension;
+import org.endeavourhealth.cim.transform.schemas.openhr.OpenHR001Encounter;
 import org.hl7.fhir.instance.model.*;
 
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class FHIRContainer {
-    private Patient patient;
-    private Map<String, Resource> adminResources;
-    private Map<String, Resource> clinicalResources;
-    private Map<String, String> eventEncounterMap;
+    private final List<Resource> _resources = new ArrayList<>();
+    private final Map<String, Resource> _resourceMap = new HashMap<>();
+    private final Map<String, OpenHR001Encounter> _eventEncounterMap = new HashMap<>();
 
-    public Patient getPatient() {
-        return patient;
+    public void addResource(Resource resource) {
+        _resourceMap.put(resource.getId(), resource);
+        _resources.add(resource);
     }
 
-    public void setPatient(Patient patient) {
-        this.patient = patient;
+    public void addEventEncounterMap(String eventId, OpenHR001Encounter encounter) {
+        _eventEncounterMap.putIfAbsent(eventId, encounter);
     }
 
-    public Map<String, Resource> getAdminResources() {
-        if (adminResources == null) adminResources = new HashMap<>();
-        return adminResources;
+    public Iterable<Resource> getResources() {
+        return _resources;
     }
 
-    public void setAdminResources(Map<String, Resource> adminResources) {
-        this.adminResources = adminResources;
+    public Resource getResourceById(String id) {
+        return _resourceMap.get(id);
     }
 
-    public Map<String, Resource> getClinicalResources() {
-        if (clinicalResources == null) clinicalResources = new HashMap<>();
-        return clinicalResources;
+    public OpenHR001Encounter getEncounterFromEventId(String eventId) {
+        return _eventEncounterMap.get(eventId);
     }
 
-    public void setClinicalResources(Map<String, Resource> clinicalResources) {
-        this.clinicalResources = clinicalResources;
-    }
-
-    public Map<String, String> getEventEncounterMap() {
-        if (eventEncounterMap == null) eventEncounterMap = new HashMap<>();
-        return eventEncounterMap;
-    }
-
-    public void setEventEncounterMap(Map<String, String> eventEncounterMap) {
-        this.eventEncounterMap = eventEncounterMap;
-    }
-
-    public List<Resource> getSortedAdminResources() {
-        return getAdminResources().values()
+    public <T extends Resource> List<T> getResourcesOfType(Class<T> resourceType) {
+        return _resources
                 .stream()
-                .sorted(new ResourceComparator())
+                .filter(resourceType::isInstance)
+                .map(resourceType::cast)
                 .collect(Collectors.toList());
     }
 
-    public List<Resource> getSortedClinicalResources() {
-        return getClinicalResources().values()
+    public Patient getPatientResource() {
+        return getResourcesOfType(Patient.class)
                 .stream()
-                .sorted(new ResourceComparator())
-                .collect(Collectors.toList());
-    }
-
-    private static class ResourceComparator implements Comparator<Resource>
-    {
-        public int compare(Resource r1, Resource r2)
-        {
-            return r1.getResourceType().toString().compareTo(r2.getResourceType().toString());
-        }
+                .collect(StreamExtension.singleOrNullCollector());
     }
 }

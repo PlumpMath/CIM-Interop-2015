@@ -48,7 +48,7 @@ class PatientTransformer {
         List<Address> addressList = AddressConverter.convertFromPersonAddress(sourcePerson.getAddress());
         if (addressList != null) addressList.forEach(targetPatient::addAddress);
 
-        container.setPatient(targetPatient);
+        container.addResource(targetPatient);
     }
 
     private static Patient.AdministrativeGender convertSex(VocSex sex) throws TransformFeatureNotSupportedException {

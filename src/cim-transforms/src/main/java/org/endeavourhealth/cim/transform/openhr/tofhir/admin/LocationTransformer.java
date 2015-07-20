@@ -21,7 +21,7 @@ class LocationTransformer {
 
     public static void transform(FHIRContainer container, OpenHR001AdminDomain adminDomain) throws TransformException {
         for (OpenHR001Location source: adminDomain.getLocation()) {
-            addLocationToResults(container, createLocation(adminDomain, source));
+            container.addResource(createLocation(adminDomain, source));
         }
     }
 
@@ -43,10 +43,6 @@ class LocationTransformer {
         addLocationTypeExtension(source.getLocationType(), target);
 
         return target;
-    }
-
-    private static void addLocationToResults(FHIRContainer container, Location location) throws SourceDocumentInvalidException {
-        container.getAdminResources().put(location.getId(), location);
     }
 
     private static void addTelecoms(List<DtContact> sourceContacts, Location target) throws TransformFeatureNotSupportedException {

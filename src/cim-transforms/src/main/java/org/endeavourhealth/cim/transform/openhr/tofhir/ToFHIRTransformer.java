@@ -12,22 +12,24 @@ public class ToFHIRTransformer {
 
     public Bundle transformToBundle(OpenHR001OpenHealthRecord openHR) throws TransformException {
         FHIRContainer container = transform(openHR);
-        return createBundleFromContainer(openHR, container);
+        return createBundle(openHR, container.getResources());
     }
 
     public Patient transformToPatient(OpenHR001OpenHealthRecord openHR) throws TransformException {
         FHIRContainer container = transform(openHR);
-        return container.getPatient();
+        return container.getPatientResource();
     }
 
     private FHIRContainer transform(OpenHR001OpenHealthRecord openHR) throws TransformException {
         FHIRContainer container = new FHIRContainer();
+
         AdminDomainTransformer.transform(container, openHR);
         HealthDomainTransformer.transform(container, openHR);
+
         return container;
     }
 
-    private Bundle createBundleFromContainer(OpenHR001OpenHealthRecord openHR, FHIRContainer container) {
+    private Bundle createBundle(OpenHR001OpenHealthRecord openHR, Iterable<Resource> resources) {
         Bundle bundle = new Bundle()
                 .setType(Bundle.BundleType.SEARCHSET);
         bundle.setId(openHR.getId());
@@ -35,13 +37,7 @@ public class ToFHIRTransformer {
         bundle.setMeta(new Meta()
                 .setLastUpdated(TransformHelper.toDate(openHR.getCreationTime())));
 
-        bundle.addEntry(new Bundle.BundleEntryComponent().setResource(container.getPatient()));
-
-        for (Resource adminResource: container.getSortedAdminResources())
-            bundle.addEntry(new Bundle.BundleEntryComponent().setResource(adminResource));
-
-        for (Resource clinicalResource: container.getSortedClinicalResources())
-            bundle.addEntry(new Bundle.BundleEntryComponent().setResource(clinicalResource));
+        resources.forEach(t -> bundle.addEntry(new Bundle.BundleEntryComponent().setResource(t)));
 
         return bundle;
     }

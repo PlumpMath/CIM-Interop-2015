@@ -27,7 +27,7 @@ public class HealthDomainTransformer {
         for (OpenHR001Encounter encounter : healthDomain.getEncounter()) {
             for (OpenHR001Component component : encounter.getComponent()) {
                 ToFHIRHelper.ensureDboNotDelete(component);
-                container.getEventEncounterMap().putIfAbsent(component.getEvent(), encounter.getId());
+                container.addEventEncounterMap(component.getEvent(), encounter);
             }
         }
     }

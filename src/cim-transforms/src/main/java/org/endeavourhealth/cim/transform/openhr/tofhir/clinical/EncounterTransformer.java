@@ -66,13 +66,8 @@ class EncounterTransformer {
 
     public static void transform(FHIRContainer container, OpenHR001HealthDomain healthDomain) throws TransformException {
         for (OpenHR001Encounter source: healthDomain.getEncounter()) {
-            addResourceToResults(container, createEncounter(healthDomain, container, source));
+            container.addResource(createEncounter(healthDomain, container, source));
         }
-    }
-
-    private static void addResourceToResults(FHIRContainer container, Resource resource) throws SourceDocumentInvalidException {
-        if (resource != null)
-            container.getClinicalResources().put(resource.getId(), resource);
     }
 
     private static Encounter createEncounter(OpenHR001HealthDomain healthDomain, FHIRContainer container, OpenHR001Encounter source) throws TransformException {
@@ -270,7 +265,7 @@ class EncounterTransformer {
                 String eventId = section.events.stream()
                         .collect(StreamExtension.singleOrNullCollector());
                 if (StringUtils.isNotBlank(eventId)) {
-                    topicCode = getCodeFromResource(container.getClinicalResources().get(eventId));
+                    topicCode = getCodeFromResource(container.getResourceById(eventId));
                 }
 
                 break;
@@ -410,7 +405,7 @@ class EncounterTransformer {
 
     private static Reference createResourceReferenceFromEvent(FHIRContainer container, String eventId) throws SourceDocumentInvalidException {
         // find event resource in container
-        Resource resource = container.getClinicalResources().get(eventId);
+        Resource resource = container.getResourceById(eventId);
         if (resource == null)
             throw new SourceDocumentInvalidException("Encounter component event resource not found in container. EventId:" + eventId);
 

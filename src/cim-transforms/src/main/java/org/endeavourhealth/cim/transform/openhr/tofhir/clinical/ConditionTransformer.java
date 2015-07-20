@@ -21,7 +21,7 @@ class ConditionTransformer implements ClinicalResourceTransformer {
         Condition target = new Condition();
         target.setId(convertId(source.getId()));
         target.setPatient(convertPatient(source.getPatient()));
-        target.setEncounter(getEncounter(container.getEventEncounterMap(), source.getId()));
+        target.setEncounter(getEncounter(container, source.getId()));
         target.setAsserter(convertUserInRole(source.getAuthorisingUserInRole()));
         target.setDateAssertedElement(convertEffectiveDateTime(source.getEffectiveTime()));
         target.setCode(CodeHelper.convertCode(source.getCode(), source.getDisplayTerm()));
@@ -58,12 +58,12 @@ class ConditionTransformer implements ClinicalResourceTransformer {
         return ReferenceHelper.createReference(ResourceType.Patient, sourcePatientId);
     }
 
-    private static Reference getEncounter(Map<String, String> eventEncouterMap, String eventId) {
-        String encounterId = eventEncouterMap.get(eventId);
-        if (StringUtils.isBlank(encounterId))
+    private static Reference getEncounter(FHIRContainer container, String eventId) {
+        OpenHR001Encounter encounter = container.getEncounterFromEventId(eventId);
+        if (encounter == null)
             return null;
 
-        return ReferenceHelper.createReference(ResourceType.Encounter, encounterId);
+        return ReferenceHelper.createReference(ResourceType.Encounter, encounter.getId());
     }
 
     private static Reference convertUserInRole(String userInRoleId) throws SourceDocumentInvalidException {
