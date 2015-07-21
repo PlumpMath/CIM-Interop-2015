@@ -188,16 +188,8 @@ public class TestDataAdapter extends EmisDataAdapter {
 	public String getSlots(String odsCode, String scheduleId) {
         return "";
     }
-	@Override
-	public Boolean bookSlot(String odsCode, String slotId, UUID patientId) {
-		return null;
-	}
 
 	// Admin
-	@Override
-	public String getUserById(String odsCode, String userId) {
-		return "";
-	}
 	@Override
 	public String getOrganisationInformation(String odsCode) {
 		return "<?xml version=\"1.0\" encoding=\"utf-16\"?>\n" +
