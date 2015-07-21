@@ -11,6 +11,7 @@ import java.util.UUID;
 
 public class EmisDataAdapter {
     private final String _soapUri = "http://localhost:9001/GPApiService/Soap";
+	// private final String _soapUri = "http://endeavour-gp.cloudapp.net:9001/GPApiService/Soap";
     private final String _actionUri = "http://tempuri.org/IGPApiService";
 
     // System

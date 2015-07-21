@@ -10,6 +10,6 @@ public class CIMAudit extends RouteBuilder {
         from("direct:CIMAudit")
             .routeId("CIMAudit")
             .process(new CqlAuditParamsProcessor())
-            .to("cql://endeavour-cim.cloudapp.net/CIM?cql=insert into Audit (rowkey, message) values (?, ?)");
+            .to("cql://endeavour-cim.cloudapp.net/CIM?username=cassandra&password=cassandra&cql=insert into Audit (rowkey, message) values (?, ?)");
     }
 }
