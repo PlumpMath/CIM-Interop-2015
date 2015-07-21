@@ -5,13 +5,12 @@ import org.endeavourhealth.cim.common.HeaderKey;
 
 import javax.xml.soap.*;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.UUID;
+import java.util.*;
 
 public class EmisDataAdapter {
-    private final String _soapUri = "http://localhost:9001/GPApiService/Soap";
-    private final String _actionUri = "http://tempuri.org/IGPApiService";
+    private static final String _soapUri = "http://localhost:9001/GPApiService/Soap";
+    private static final String _soapMethodUri = "http://tempuri.org/";
+    private static final String _actionUri = "http://tempuri.org/IGPApiService";
 
     // System
     public String getTransformerTypeName() {
@@ -20,159 +19,98 @@ public class EmisDataAdapter {
 
     // Demographics
     public String getPatientRecordByPatientId(String odsCode, UUID patientId) {
-        SOAPConnection soapConnection = null;
         try {
-            try {
-                soapConnection = createSOAPConnection();
+            final String soapMethod = "GetPatient";
 
-                // Create basic message
-                SOAPMessage requestMessage = createSOAPRequestMessage("GetPatient");
+            Map<String, String> parameters = createParameterMap();
+            parameters.put("odsCode", odsCode);
+            parameters.put("patientGuid", patientId.toString());
 
-                // SOAP Body
-                SOAPElement soapMethodElement = createSOAPMethodElement(requestMessage, "GetPatient", "http://tempuri.org/");
+            SOAPMessage responseMessage = performSOAPCall(soapMethod, parameters);
 
-                createChildTextElement(soapMethodElement, "odsCode", odsCode);
-                createChildTextElement(soapMethodElement, "patientGuid", patientId.toString());
-
-                requestMessage.saveChanges();
-
-                // Send SOAP Message to SOAP Server
-                SOAPMessage soapResponse = soapConnection.call(requestMessage, _soapUri + "/GetPatient");
-                return soapResponse.getSOAPBody().getElementsByTagName("GetPatientResult").item(0).getTextContent();
-            } finally {
-                if (soapConnection != null)
-                    soapConnection.close();
-            }
+            return getSOAPResult(responseMessage, soapMethod);
         }
         catch (Exception e) {
             e.printStackTrace();
             return null;
         }
     }
+
     public String getPatientDemographicsByNHSNumber(String odsCode, String nhsNumber) {
-        SOAPConnection soapConnection = null;
         try {
-            try {
-                soapConnection = createSOAPConnection();
+            final String soapMethod = "GetPatientDemographics";
 
-                // Create basic message
-                SOAPMessage requestMessage = createSOAPRequestMessage("GetPatientDemographics");
+            Map<String, String> parameters = createParameterMap();
+            parameters.put("odsCode", odsCode);
+            parameters.put("nhsNumber", nhsNumber);
 
-                // SOAP Body
-                SOAPElement soapMethodElement = requestMessage.getSOAPBody().addChildElement("GetPatientDemographics", "", "http://tempuri.org/");
+            SOAPMessage responseMessage = performSOAPCall(soapMethod, parameters);
 
-                createChildTextElement(soapMethodElement, "odsCode", odsCode);
-                createChildTextElement(soapMethodElement, "nhsNumber", nhsNumber);
-
-                requestMessage.saveChanges();
-
-                // Send SOAP Message to SOAP Server
-                SOAPMessage soapResponse = soapConnection.call(requestMessage, _soapUri + "/GetPatientDemographics");
-                return soapResponse.getSOAPBody().getElementsByTagName("GetPatientDemographicsResult").item(0).getTextContent();
-            } finally {
-                if (soapConnection != null)
-                    soapConnection.close();
-            }
+            return getSOAPResult(responseMessage, soapMethod);
         }
         catch (Exception e) {
             e.printStackTrace();
             return null;
         }
     }
+
     public String tracePatientByDemographics(String surname, Date dateOfBirth, String gender, String forename, String postcode) {
-        SOAPConnection soapConnection = null;
         try {
-            try {
-                soapConnection = createSOAPConnection();
+            final String soapMethod = "TracePatientByDemographics";
 
-                // Create basic message
-                SOAPMessage requestMessage = createSOAPRequestMessage("TracePatientByDemographics");
+            Map<String, String> parameters = createParameterMap();
+            parameters.put("surname", surname);
+            parameters.put("sex", gender.substring(0, 1).toUpperCase());
+            parameters.put("dateOfBirth", new SimpleDateFormat("yyyy-MM-dd").format(dateOfBirth));
+            parameters.put("forename", forename);
+            parameters.put("postcode", postcode);
 
-                // SOAP Body
-                SOAPElement soapMethodElement = createSOAPMethodElement(requestMessage, "TracePatientByDemographics", "http://tempuri.org/");
+            SOAPMessage responseMessage = performSOAPCall(soapMethod, parameters);
 
-                createChildTextElement(soapMethodElement, "surname", surname);
-                createChildTextElement(soapMethodElement, "sex", gender.substring(0, 1).toUpperCase());
-                createChildTextElement(soapMethodElement, "dateOfBirth", new SimpleDateFormat("yyyy-MM-dd").format(dateOfBirth));
-                createChildTextElement(soapMethodElement, "forename", null);
-                createChildTextElement(soapMethodElement, "postcode", null);
-
-                requestMessage.saveChanges();
-
-                // Send SOAP Message to SOAP Server
-                SOAPMessage soapResponse = soapConnection.call(requestMessage, _soapUri + "/TracePatientByDemographics");
-                return soapResponse.getSOAPBody().getElementsByTagName("TracePatientByDemographicsResult").item(0).getTextContent();
-            } finally {
-                if (soapConnection != null)
-                    soapConnection.close();
-            }
+            return getSOAPResult(responseMessage, soapMethod);
         }
         catch (Exception e) {
             e.printStackTrace();
             return null;
         }
     }
+
     public String tracePatientByNhsNumber(String nhsNumber) {
-        SOAPConnection soapConnection = null;
         try {
-            try {
-                soapConnection = createSOAPConnection();
+            final String soapMethod = "TracePatientByNhsNumber";
 
-                // Create basic message
-                SOAPMessage requestMessage = createSOAPRequestMessage("TracePatientByNhsNumber");
+            Map<String, String> parameters = createParameterMap();
+            parameters.put("nhsNumber", nhsNumber);
 
-                // SOAP Body
-                SOAPElement soapMethodElement = createSOAPMethodElement(requestMessage, "TracePatientByNhsNumber", "http://tempuri.org/");
+            SOAPMessage responseMessage = performSOAPCall(soapMethod, parameters);
 
-                createChildTextElement(soapMethodElement, "nhsNumber", nhsNumber);
-
-                requestMessage.saveChanges();
-
-                // Send SOAP Message to SOAP Server
-                SOAPMessage soapResponse = soapConnection.call(requestMessage, _soapUri + "/" + "TracePatientByNhsNumber");
-                return soapResponse.getSOAPBody().getElementsByTagName("TracePatientByNhsNumberResult").item(0).getTextContent();
-            } finally {
-                if (soapConnection != null)
-                    soapConnection.close();
-            }
+            return getSOAPResult(responseMessage, soapMethod);
         }
         catch (Exception e) {
             e.printStackTrace();
             return null;
         }
     }
+
     public ArrayList<UUID> getChangedPatients(String odsCode, Date date) {
-        SOAPConnection soapConnection = null;
         try {
-            try {
-                soapConnection = createSOAPConnection();
+            final String soapMethod = "GetChangedPatients";
 
-                // Create basic message
-                SOAPMessage requestMessage = createSOAPRequestMessage("GetChangedPatients");
+            Map<String, String> parameters = createParameterMap();
+            parameters.put("odsCode", odsCode);
+            parameters.put("sinceDateTime", DateUtils.formatDateAsISO8601(date));
 
-                // SOAP Body
-                SOAPElement soapMethodElement = createSOAPMethodElement(requestMessage, "GetChangedPatients", "http://tempuri.org/");
+            SOAPMessage responseMessage = performSOAPCall(soapMethod, parameters);
 
-                createChildTextElement(soapMethodElement, "odsCode", odsCode);
-                createChildTextElement(soapMethodElement, "sinceDateTime", DateUtils.formatDateAsISO8601(date));
+            String responseText = getSOAPResult(responseMessage, soapMethod);
 
-                requestMessage.saveChanges();
+            ArrayList<UUID> uuids = new ArrayList<>();
+            if (!responseText.isEmpty())
+                for (String uuidString : responseText.split("(?<=\\G.{36})"))
+                    uuids.add(UUID.fromString(uuidString));
 
-                // Send SOAP Message to SOAP Server
-                SOAPMessage soapResponse = soapConnection.call(requestMessage, _soapUri + "/GetChangedPatients");
-                String responseText = soapResponse.getSOAPBody().getElementsByTagName("GetChangedPatientsResult").item(0).getTextContent();
+            return uuids;
 
-                ArrayList<UUID> uuids = new ArrayList<>();
-                if (!responseText.isEmpty())
-                    for (String uuidString : responseText.split("(?<=\\G.{36})"))
-                        uuids.add(UUID.fromString(uuidString));
-
-                return uuids;
-
-            } finally {
-                if (soapConnection != null)
-                    soapConnection.close();
-            }
         }
         catch (Exception e) {
             e.printStackTrace();
@@ -181,39 +119,24 @@ public class EmisDataAdapter {
     }
 
     // Medical record
-    public String createCondition(String odsCode, String requestData) {
-        SOAPConnection soapConnection = null;
+    public String createCondition(String odsCode, String openHRXml) {
         try {
-            try {
-                soapConnection = createSOAPConnection();
+            final String soapMethod = "UpdatePatient";
 
-                // Create basic message
-                SOAPMessage requestMessage = createSOAPRequestMessage("UpdatePatient");
+            Map<String, String> parameters = createParameterMap();
+            parameters.put("odsCode", odsCode);
+            parameters.put("openHRXml", openHRXml);
 
-                // SOAP Body
-                SOAPElement soapMethodElement = createSOAPMethodElement(requestMessage, "UpdatePatient", "http://tempuri.org/");
+            SOAPMessage responseMessage = performSOAPCall(soapMethod, parameters);
 
-                createChildTextElement(soapMethodElement, "odsCode", odsCode);
-                createChildTextElement(soapMethodElement, "openHRXml", requestData);
-
-                requestMessage.saveChanges();
-
-                // Send SOAP Message to SOAP Server
-                SOAPMessage soapResponse = soapConnection.call(requestMessage, _soapUri + "/UpdatePatient");
-
-                soapResponse.writeTo(System.out);
-
-                return soapResponse.getSOAPBody().getElementsByTagName("UpdatePatientResult").item(0).getTextContent();
-
-            } finally {
-                if (soapConnection != null)
-                    soapConnection.close();
-            }
+            return getSOAPResult(responseMessage, soapMethod);
         }
         catch (Exception e) {
+            e.printStackTrace();
             return null;
         }
     }
+
     public String getConditionsByPatientId(String odsCode, UUID patientId) {
         return getPatientRecordByPatientId(odsCode, patientId);
     }
@@ -229,31 +152,18 @@ public class EmisDataAdapter {
 
     // Appointments
     public String getAppointmentsForPatient(String odsCode, UUID patientId, Date dateFrom, Date dateTo) {
-        SOAPConnection soapConnection = null;
         try {
-            try {
-                soapConnection = createSOAPConnection();
+            final String soapMethod = "GetPatientAppointments";
 
-                // Create basic message
-                SOAPMessage requestMessage = createSOAPRequestMessage("GetPatientAppointments");
+            Map<String, String> parameters = createParameterMap();
+            parameters.put("odsCode", odsCode);
+            parameters.put("patientGuid", patientId.toString());
+            parameters.put("fromDate", DateUtils.formatDateAsISO8601(dateFrom));
+            parameters.put("toDate", DateUtils.formatDateAsISO8601(dateTo));
 
-                // SOAP Body
-                SOAPElement soapMethodElement = createSOAPMethodElement(requestMessage, "GetPatientAppointments", "http://tempuri.org/");
+            SOAPMessage responseMessage = performSOAPCall(soapMethod, parameters);
 
-                createChildTextElement(soapMethodElement, "odsCode", odsCode);
-                createChildTextElement(soapMethodElement, "patientGuid", patientId.toString());
-                createChildTextElement(soapMethodElement, "fromDate", DateUtils.formatDateAsISO8601(dateFrom));
-                createChildTextElement(soapMethodElement, "toDate", DateUtils.formatDateAsISO8601(dateTo));
-
-                requestMessage.saveChanges();
-
-                // Send SOAP Message to SOAP Server
-                SOAPMessage soapResponse = soapConnection.call(requestMessage, _soapUri + "/GetPatientAppointments");
-                return soapResponse.getSOAPBody().getElementsByTagName("GetPatientAppointmentsResult").item(0).getTextContent();
-            } finally {
-                if (soapConnection != null)
-                    soapConnection.close();
-            }
+            return getSOAPResult(responseMessage, soapMethod);
         }
         catch (Exception e) {
             e.printStackTrace();
@@ -262,31 +172,19 @@ public class EmisDataAdapter {
     }
 
     public Boolean bookSlot(String odsCode, String slotId, UUID patientId) {
-        SOAPConnection soapConnection = null;
         try {
-            try {
-                soapConnection = createSOAPConnection();
+            final String soapMethod = "BookAppointment";
 
-                // Create basic message
-                SOAPMessage requestMessage = createSOAPRequestMessage("BookAppointment");
+            Map<String, String> parameters = createParameterMap();
+            parameters.put("odsCode", odsCode);
+            parameters.put("slotId", slotId);
+            parameters.put("patientGuid", patientId.toString());
+            parameters.put("reason", "");
 
-                // SOAP Body
-                SOAPElement soapMethodElement = createSOAPMethodElement(requestMessage, "BookAppointment", "http://tempuri.org/");
+            SOAPMessage responseMessage = performSOAPCall(soapMethod, parameters);
 
-                createChildTextElement(soapMethodElement, "odsCode", odsCode);
-                createChildTextElement(soapMethodElement, "slotId", slotId);
-                createChildTextElement(soapMethodElement, "patientGuid", patientId.toString());
-                createChildTextElement(soapMethodElement, "reason", "");
-
-                requestMessage.saveChanges();
-
-                // Send SOAP Message to SOAP Server
-                SOAPMessage soapResponse = soapConnection.call(requestMessage, _soapUri + "/BookAppointment");
-                return true; //soapResponse.getSOAPBody().getElementsByTagName("BookAppointmentResult").item(0).getTextContent();
-            } finally {
-                if (soapConnection != null)
-                    soapConnection.close();
-            }
+            getSOAPResult(responseMessage, soapMethod);
+            return true;
         }
         catch (Exception e) {
             e.printStackTrace();
@@ -295,30 +193,18 @@ public class EmisDataAdapter {
     }
 
     public Boolean cancelSlot(String odsCode, String slotId, UUID patientId) {
-        SOAPConnection soapConnection = null;
         try {
-            try {
-                soapConnection = createSOAPConnection();
+            final String soapMethod = "CancelAppointment";
 
-                // Create basic message
-                SOAPMessage requestMessage = createSOAPRequestMessage("CancelAppointment");
+            Map<String, String> parameters = createParameterMap();
+            parameters.put("odsCode", odsCode);
+            parameters.put("slotId", slotId);
+            parameters.put("patientGuid", patientId.toString());
 
-                // SOAP Body
-                SOAPElement soapMethodElement = createSOAPMethodElement(requestMessage, "CancelAppointment", "http://tempuri.org/");
+            SOAPMessage responseMessage = performSOAPCall(soapMethod, parameters);
 
-                createChildTextElement(soapMethodElement, "odsCode", odsCode);
-                createChildTextElement(soapMethodElement, "slotId", slotId);
-                createChildTextElement(soapMethodElement, "patientGuid", patientId.toString());
-
-                requestMessage.saveChanges();
-
-                // Send SOAP Message to SOAP Server
-                SOAPMessage soapResponse = soapConnection.call(requestMessage, _soapUri + "/CancelAppointment");
-                return true; //soapResponse.getSOAPBody().getElementsByTagName("BookAppointmentResult").item(0).getTextContent();
-            } finally {
-                if (soapConnection != null)
-                    soapConnection.close();
-            }
+            getSOAPResult(responseMessage, soapMethod);
+            return true;
         }
         catch (Exception e) {
             e.printStackTrace();
@@ -327,30 +213,17 @@ public class EmisDataAdapter {
     }
 
     public String getSchedules(String odsCode, Date dateFrom, Date dateTo, String practitionerId) {
-        SOAPConnection soapConnection = null;
         try {
-            try {
-                soapConnection = createSOAPConnection();
+            final String soapMethod = "GetAppointmentSessions";
 
-                // Create basic message
-                SOAPMessage requestMessage = createSOAPRequestMessage("GetAppointmentSessions");
+            Map<String, String> parameters = createParameterMap();
+            parameters.put("odsCode", odsCode);
+            parameters.put("fromDate", DateUtils.formatDateAsISO8601(dateFrom));
+            parameters.put("toDate", DateUtils.formatDateAsISO8601(dateTo));
 
-                // SOAP Body
-                SOAPElement soapMethodElement = createSOAPMethodElement(requestMessage, "GetAppointmentSessions", "http://tempuri.org/");
+            SOAPMessage responseMessage = performSOAPCall(soapMethod, parameters);
 
-                createChildTextElement(soapMethodElement, "odsCode", odsCode);
-                createChildTextElement(soapMethodElement, "fromDate", DateUtils.formatDateAsISO8601(dateFrom));
-                createChildTextElement(soapMethodElement, "toDate", DateUtils.formatDateAsISO8601(dateTo));
-
-                requestMessage.saveChanges();
-
-                // Send SOAP Message to SOAP Server
-                SOAPMessage soapResponse = soapConnection.call(requestMessage, _soapUri + "/GetAppointmentSessions");
-                return soapResponse.getSOAPBody().getElementsByTagName("GetAppointmentSessionsResult").item(0).getTextContent();
-            } finally {
-                if (soapConnection != null)
-                    soapConnection.close();
-            }
+            return getSOAPResult(responseMessage, soapMethod);
         }
         catch (Exception e) {
             e.printStackTrace();
@@ -359,29 +232,16 @@ public class EmisDataAdapter {
     }
 
     public String getSlots(String odsCode, String scheduleId) {
-        SOAPConnection soapConnection = null;
         try {
-            try {
-                soapConnection = createSOAPConnection();
+            final String soapMethod = "GetSlotsForSession";
 
-                // Create basic message
-                SOAPMessage requestMessage = createSOAPRequestMessage("GetSlotsForSession");
+            Map<String, String> parameters = createParameterMap();
+            parameters.put("odsCode", odsCode);
+            parameters.put("sessionId", scheduleId);
 
-                // SOAP Body
-                SOAPElement soapMethodElement = createSOAPMethodElement(requestMessage, "GetSlotsForSession", "http://tempuri.org/");
+            SOAPMessage responseMessage = performSOAPCall(soapMethod, parameters);
 
-                createChildTextElement(soapMethodElement, "odsCode", odsCode);
-                createChildTextElement(soapMethodElement, "sessionId", scheduleId);
-
-                requestMessage.saveChanges();
-
-                // Send SOAP Message to SOAP Server
-                SOAPMessage soapResponse = soapConnection.call(requestMessage, _soapUri + "/GetSlotsForSession");
-                return soapResponse.getSOAPBody().getElementsByTagName("GetSlotsForSessionResult").item(0).getTextContent();
-            } finally {
-                if (soapConnection != null)
-                    soapConnection.close();
-            }
+            return getSOAPResult(responseMessage, soapMethod);
         }
         catch (Exception e) {
             e.printStackTrace();
@@ -389,54 +249,16 @@ public class EmisDataAdapter {
         }
     }
 
-    // Admin
     public String getOrganisationInformation(String odsCode) {
-        SOAPConnection soapConnection = null;
         try {
-            try {
-                soapConnection = createSOAPConnection();
+            final String soapMethod = "GetOrganisationInformation";
 
-                SOAPMessage requestMessage = createSOAPRequestMessage("GetOrganisationInformation");
+            Map<String, String> parameters = createParameterMap();
+            parameters.put("odsCode", odsCode);
 
-                SOAPElement soapMethodElement = createSOAPMethodElement(requestMessage, "GetOrganisationInformation", "http://tempuri.org/");
+            SOAPMessage responseMessage = performSOAPCall(soapMethod, parameters);
 
-                createChildTextElement(soapMethodElement, "odsCode", odsCode);
-
-                requestMessage.saveChanges();
-
-                SOAPMessage soapResponse = soapConnection.call(requestMessage, _soapUri + "/GetOrganisationInformation");
-                return soapResponse.getSOAPBody().getElementsByTagName("GetOrganisationInformationResult").item(0).getTextContent();
-            } finally {
-                if (soapConnection != null)
-                    soapConnection.close();
-            }
-        }
-        catch (Exception e){
-            e.printStackTrace();
-            return null;
-        }
-    }
-    public String getUserById(String odsCode, String userId) {
-        SOAPConnection soapConnection = null;
-        try {
-            try {
-                soapConnection = createSOAPConnection();
-
-                SOAPMessage requestMessage = createSOAPRequestMessage("GetUserByID");
-
-                SOAPElement soapMethodElement = createSOAPMethodElement(requestMessage, "GetUserByID", "http://tempuri.org/");
-
-                createChildTextElement(soapMethodElement, "odsCode", odsCode);
-                createChildTextElement(soapMethodElement, "userInRoleId", userId);
-
-                requestMessage.saveChanges();
-
-                SOAPMessage soapResponse = soapConnection.call(requestMessage, _soapUri + "/GetUserByID");
-                return soapResponse.getSOAPBody().getElementsByTagName("GetUserByIDResult").item(0).getTextContent();
-            } finally {
-                if (soapConnection != null)
-                    soapConnection.close();
-            }
+            return getSOAPResult(responseMessage, soapMethod);
         }
         catch (Exception e){
             e.printStackTrace();
@@ -445,26 +267,43 @@ public class EmisDataAdapter {
     }
 
     // Utility methods
-    private static SOAPConnection createSOAPConnection() throws SOAPException {
-        SOAPConnectionFactory soapConnectionFactory = SOAPConnectionFactory.newInstance();
-        return soapConnectionFactory.createConnection();
+    private static Map<String, String> createParameterMap() {
+        return new LinkedHashMap<>();
     }
-    private static SOAPElement createSOAPMethodElement(SOAPMessage message, String name, String namespace) throws SOAPException {
-        return message.getSOAPBody().addChildElement(name, "", namespace);
-    }
-    private static void createChildTextElement(SOAPElement element, String childElementName, String childElementValue) throws javax.xml.soap.SOAPException {
-        SOAPElement childElement = element.addChildElement(childElementName);
-
-        if (childElementValue != null)
-            childElement.addTextNode(childElementValue);
-    }
-    private SOAPMessage createSOAPRequestMessage(String methodCall) throws Exception {
+    private static SOAPMessage createSOAPMessage(String soapMethod, Map<String, String> parameters) throws Exception {
         MessageFactory messageFactory = MessageFactory.newInstance();
         SOAPMessage soapMessage = messageFactory.createMessage();
-
         MimeHeaders headers = soapMessage.getMimeHeaders();
-        headers.addHeader(HeaderKey.SOAPAction, _actionUri + "/" + methodCall);
+        headers.addHeader(HeaderKey.SOAPAction, _actionUri + "/" + soapMethod);
+
+        SOAPElement soapMethodElement = soapMessage.getSOAPBody().addChildElement(soapMethod, "", _soapMethodUri);
+
+        for (String key : parameters.keySet()) {
+            SOAPElement childElement = soapMethodElement.addChildElement(key);
+
+            if (parameters.get(key) != null)
+                childElement.addTextNode(parameters.get(key));
+        }
+
+        soapMessage.saveChanges();
 
         return soapMessage;
+    }
+    private static SOAPMessage performSOAPCall(String soapMethod, Map<String, String> parameters) throws Exception {
+        SOAPConnection soapConnection = null;
+        try {
+            SOAPMessage requestMessage = createSOAPMessage(soapMethod, parameters);
+
+            SOAPConnectionFactory soapConnectionFactory = SOAPConnectionFactory.newInstance();
+            soapConnection = soapConnectionFactory.createConnection();
+
+            return soapConnection.call(requestMessage, _soapUri + "/" + soapMethod);
+        } finally {
+            if (soapConnection != null)
+                soapConnection.close();
+        }
+    }
+    private static String getSOAPResult(SOAPMessage soapResponse, String soapMethod) throws Exception {
+        return soapResponse.getSOAPBody().getElementsByTagName(soapMethod + "Result").item(0).getTextContent();
     }
 }
