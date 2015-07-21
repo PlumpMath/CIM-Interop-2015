@@ -105,10 +105,14 @@ public class AppointmentTransformer {
     }
 
     private static void updateAppointmentParticipantIds(ArrayList<Appointment> appointments, ResourceType participantResourceType, Map<String, String> idGuidMap) {
-        appointments.forEach(t ->
-                t
-                        .getParticipant()
-                        .forEach(s -> ReferenceHelper.updateReferenceFromMap(s.getActor(), participantResourceType, idGuidMap)));
+        for (Appointment appointment : appointments) {
+            for (Appointment.AppointmentParticipantComponent appointmentParticipantComponent : appointment.getParticipant()) {
+                String id = ReferenceHelper.getReferenceId(appointmentParticipantComponent.getActor(), participantResourceType);
 
+                if (!TextUtils.isNullOrTrimmedEmpty(id))
+                    if (idGuidMap.containsKey(id))
+                        appointmentParticipantComponent.setActor(ReferenceHelper.createReference(participantResourceType, idGuidMap.get(id)));
+            }
+        }
     }
 }
