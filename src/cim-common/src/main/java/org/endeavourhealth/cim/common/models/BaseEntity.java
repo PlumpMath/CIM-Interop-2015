@@ -1,7 +1,5 @@
 package org.endeavourhealth.cim.common.models;
 
-import org.endeavourhealth.cim.common.models.EntityIdentifier;
-
 import java.util.List;
 import java.util.UUID;
 

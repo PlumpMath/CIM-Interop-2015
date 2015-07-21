@@ -12,7 +12,7 @@ public class SharingAgreement extends BaseEntity {
 	private String name;
 	private List<EntityIdentifier> identifiers;
 	private Integer serviceId;
-	private Integer technicalInterfaceId;
+	private UUID technicalInterfaceId;
 	private Boolean active;
 
 	public UUID getId() {
@@ -43,10 +43,10 @@ public class SharingAgreement extends BaseEntity {
 		this.serviceId = serviceId;
 	}
 
-	public Integer getTechnicalInterfaceId() {
+	public UUID getTechnicalInterfaceId() {
 		return technicalInterfaceId;
 	}
-	public void setTechnicalInterfaceId(Integer technicalInterfaceId) {
+	public void setTechnicalInterfaceId(UUID technicalInterfaceId) {
 		this.technicalInterfaceId = technicalInterfaceId;
 	}
 	public TechnicalInterface getTechnicalInterface() {

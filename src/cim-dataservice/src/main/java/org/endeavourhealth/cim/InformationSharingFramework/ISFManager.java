@@ -29,12 +29,12 @@ public class ISFManager {
 		serviceRepository = new ServiceRepository();
 	}
 
-	public InformationSharingProtocol getInformationSharingProtocol(Integer id) { return null; }
+	public InformationSharingProtocol getInformationSharingProtocol(UUID id) { return null; }
 	public SharingAgreement getSharingAgreement(UUID id) throws RepositoryException {
 		return sharingAgreementRepository.getById(id);
 	}
-	public TechnicalInterface getTechnicalInterface(Integer id) { return null; }
-	public System getSystem(Integer id) { return null; }
+	public TechnicalInterface getTechnicalInterface(UUID id) { return null; }
+	public System getSystem(UUID id) { return null; }
 	public PublisherProfile getPublisherProfile(Integer id) { return null; }
 	public SubscriberProfile getSubscriberProfile(Integer id) { return null; }
 	public Service getService(Integer id) { return null; }

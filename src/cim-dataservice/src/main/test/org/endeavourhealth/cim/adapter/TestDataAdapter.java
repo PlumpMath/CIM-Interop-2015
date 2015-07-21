@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.UUID;
 
-public class TestDataAdapter extends MockDataAdapter {
+public class TestDataAdapter extends EmisDataAdapter {
      // Demographics
 	@Override
     public String getPatientRecordByPatientId(String odsCode, UUID patientId) {

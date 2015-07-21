@@ -2,16 +2,18 @@ package org.endeavourhealth.cim.InformationSharingFramework.model;
 
 import org.endeavourhealth.cim.InformationSharingFramework.ISFManager;
 
+import java.util.UUID;
+
 public class System {
-	private Integer id;
+	private UUID id;
 	private String name;
 	private Boolean enabled;
-	private Integer technicalInterfaceId;
+	private UUID technicalInterfaceId;
 
-	public Integer getId() {
+	public UUID getId() {
 		return id;
 	}
-	public void setId(Integer id) {
+	public void setId(UUID id) {
 		this.id = id;
 	}
 
@@ -29,10 +31,10 @@ public class System {
 		this.enabled = enabled;
 	}
 
-	public Integer getTechnicalInterfaceId() {
+	public UUID getTechnicalInterfaceId() {
 		return technicalInterfaceId;
 	}
-	public void setTechnicalInterfaceId(Integer technicalInterfaceId) {
+	public void setTechnicalInterfaceId(UUID technicalInterfaceId) {
 		this.technicalInterfaceId = technicalInterfaceId;
 	}
 	public TechnicalInterface getTechnicalInterface() {

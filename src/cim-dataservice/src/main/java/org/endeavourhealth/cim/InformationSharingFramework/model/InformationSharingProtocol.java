@@ -14,11 +14,11 @@ public class InformationSharingProtocol extends BaseEntity {
 	private String description;
 	private Boolean enabled;
 	private ConsentModel consentModel;
-	private Integer derivedFromId;
+	private UUID derivedFromId;
 	private ArrayList<Integer> publisherProfiles = new ArrayList<>();
 	private ArrayList<Integer> subscriberProfiles = new ArrayList<>();
-	private ArrayList<Integer> publisherSharingAgreement = new ArrayList<>();
-	private ArrayList<Integer> subscriberSharingAgreement = new ArrayList<>();
+	private ArrayList<Integer> publisherSharingAgreements = new ArrayList<>();
+	private ArrayList<Integer> subscriberSharingAgreements = new ArrayList<>();
 
 	public UUID getId() { return id; }
 	public void setId(UUID id) { this.id = id; }
@@ -60,10 +60,10 @@ public class InformationSharingProtocol extends BaseEntity {
 		this.consentModel = consentModel;
 	}
 
-	public Integer getDerivedFromId() {
+	public UUID getDerivedFromId() {
 		return derivedFromId;
 	}
-	public void setDerivedFromId(Integer derivedFromId) {
+	public void setDerivedFromId(UUID derivedFromId) {
 		this.derivedFromId = derivedFromId;
 	}
 	public InformationSharingProtocol getDerivedFrom() { return ISFManager.Instance().getInformationSharingProtocol(derivedFromId); }
@@ -76,11 +76,11 @@ public class InformationSharingProtocol extends BaseEntity {
 		return subscriberProfiles;
 	}
 
-	public ArrayList<Integer> getPublisherSharingAgreement() {
-		return publisherSharingAgreement;
+	public ArrayList<Integer> getPublisherSharingAgreemens() {
+		return publisherSharingAgreements;
 	}
 
-	public ArrayList<Integer> getSubscriberSharingAgreement() {
-		return subscriberSharingAgreement;
+	public ArrayList<Integer> getSubscriberSharingAgreements() {
+		return subscriberSharingAgreements;
 	}
 }

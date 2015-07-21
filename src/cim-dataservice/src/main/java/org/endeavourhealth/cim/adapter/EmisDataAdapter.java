@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.UUID;
 
-public class MockDataAdapter {
+public class EmisDataAdapter {
     private final String _soapUri = "http://localhost:9001/GPApiService/Soap";
     private final String _actionUri = "http://tempuri.org/IGPApiService";
 

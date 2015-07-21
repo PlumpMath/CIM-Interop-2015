@@ -12,7 +12,7 @@ public class Service extends BaseEntity{
 	private String name;
 	private Boolean enabled;
 	private ArrayList<Integer> serviceCategory = new ArrayList<>();
-	private Integer organisationId;
+	private String organisationId;
 
 	public UUID getId() {
 		return id;
@@ -48,10 +48,10 @@ public class Service extends BaseEntity{
 		return serviceCategory;
 	}
 
-	public Integer getOrganisationId() {
+	public String getOrganisationId() {
 		return organisationId;
 	}
-	public void setOrganisationId(Integer organisationId) {
+	public void setOrganisationId(String organisationId) {
 		this.organisationId = organisationId;
 	}
 }
