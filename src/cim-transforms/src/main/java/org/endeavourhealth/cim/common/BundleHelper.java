@@ -4,10 +4,11 @@ import org.hl7.fhir.instance.model.Bundle;
 import org.hl7.fhir.instance.model.Resource;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.stream.Collectors;
 
 public class BundleHelper {
-    public static Bundle createBundle(String id, String namespace, ArrayList<Resource> resources) {
+    public static Bundle createBundle(String id, String namespace, List<Resource> resources) {
         Bundle bundle = new Bundle()
                 .setType(Bundle.BundleType.COLLECTION)
                 .setBase(namespace);
@@ -20,7 +21,7 @@ public class BundleHelper {
         return bundle;
     }
 
-    public static <T extends Resource> ArrayList<T> getResourcesOfType(Bundle bundle, Class<T> resourceType) {
+    public static <T extends Resource> List<T> getResourcesOfType(Bundle bundle, Class<T> resourceType) {
         return bundle
                 .getEntry()
                 .stream()

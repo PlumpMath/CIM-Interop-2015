@@ -2,6 +2,7 @@ package org.endeavourhealth.cim.transform.emisopen.tofhir.admin;
 
 import org.endeavourhealth.cim.common.ReferenceHelper;
 import org.endeavourhealth.cim.common.StreamExtension;
+import org.endeavourhealth.cim.common.TextUtils;
 import org.endeavourhealth.cim.transform.SerializationException;
 import org.endeavourhealth.cim.transform.TransformFeatureNotSupportedException;
 import org.endeavourhealth.cim.transform.emisopen.EmisOpenCommon;
@@ -16,8 +17,6 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 public class ScheduleTransformer {
-
-    public final static String SCHEDULEADDITIONALACTOR_EXTENSION_URL = "http://www.e-mis.com/emisopen/extension/Schedule/AdditionalActor";
 
     public static ArrayList<Resource> transformToScheduleResources(AppointmentSessionList appointmentSessionList, OrganisationInformation organisationInformation) throws SerializationException, TransformFeatureNotSupportedException {
         ArrayList<Practitioner> practitioners = new ArrayList<>();
@@ -64,13 +63,13 @@ public class ScheduleTransformer {
                 schedule.setActor(reference);
             } else {
                 schedule.addExtension(new Extension()
-                        .setUrl(SCHEDULEADDITIONALACTOR_EXTENSION_URL)
+                        .setUrl(EmisOpenCommon.SCHEDULEADDITIONALACTOR_EXTENSION_URL)
                         .setValue(reference));
             }
         }
 
         schedule.addExtension(new Extension()
-                .setUrl(SCHEDULEADDITIONALACTOR_EXTENSION_URL)
+                .setUrl(EmisOpenCommon.SCHEDULEADDITIONALACTOR_EXTENSION_URL)
                 .setValue(ReferenceHelper.createReference(ResourceType.Location, location.getId())));
 
         return schedule;
@@ -112,13 +111,25 @@ public class ScheduleTransformer {
     }
 
     private static void updateScheduleActorIds(List<Schedule> schedules, ResourceType actorResourceType, Map<String, String> idGuidMap) {
-        schedules.forEach(t -> ReferenceHelper.updateReferenceFromMap(t.getActor(), actorResourceType, idGuidMap));
+        for (Schedule schedule : schedules) {
+            String id = ReferenceHelper.getReferenceId(schedule.getActor(), actorResourceType);
 
-        schedules.forEach(t ->
-                t
-                        .getExtension()
-                        .stream()
-                        .filter(s -> s.getUrl().equals(ScheduleTransformer.SCHEDULEADDITIONALACTOR_EXTENSION_URL))
-                        .forEach(s -> ReferenceHelper.updateReferenceFromMap((Reference) s.getValue(), actorResourceType, idGuidMap)));
+            if (!TextUtils.isNullOrTrimmedEmpty(id))
+                if (idGuidMap.containsKey(id))
+                    schedule.setActor(ReferenceHelper.createReference(actorResourceType, idGuidMap.get(id)));
+
+            for (Extension extension : schedule.getExtension()) {
+                if (EmisOpenCommon.SCHEDULEADDITIONALACTOR_EXTENSION_URL.equals(extension.getUrl())) {
+                    if (extension.getValue() instanceof Reference) {
+
+                    String id2 = ReferenceHelper.getReferenceId((Reference)extension.getValue(), actorResourceType);
+
+                    if (!TextUtils.isNullOrTrimmedEmpty(id2))
+                        if (idGuidMap.containsKey(id2))
+                            schedule.setActor(ReferenceHelper.createReference(actorResourceType, idGuidMap.get(id2)));
+                    }
+                }
+            }
+        }
     }
 }

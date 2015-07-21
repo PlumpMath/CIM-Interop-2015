@@ -36,15 +36,12 @@ public class ReferenceHelper {
         return parts[1];
     }
 
-    public static void updateReferenceFromMap(Reference reference, ResourceType resourceType, Map<String, String> updateMap) {
-        if (reference == null)
-            return;
+    public static Boolean referenceEquals(Reference reference, ResourceType resourceType, String id) {
+        if (TextUtils.isNullOrTrimmedEmpty(id))
+            return false;
 
         String referenceId = getReferenceId(reference, resourceType);
 
-        if (!TextUtils.isNullOrTrimmedEmpty(referenceId))
-            if (updateMap.containsKey(referenceId))
-                reference.setReference(ReferenceHelper.createResourceReference(resourceType, updateMap.get(referenceId)));
-
+        return id.equals(referenceId);
     }
 }
