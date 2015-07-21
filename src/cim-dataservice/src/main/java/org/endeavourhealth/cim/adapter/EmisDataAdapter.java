@@ -171,7 +171,7 @@ public class EmisDataAdapter {
         }
     }
 
-    public Boolean bookSlot(String odsCode, String slotId, UUID patientId) {
+    public Boolean bookSlot(String odsCode, String slotId, UUID patientId, String reason) {
         try {
             final String soapMethod = "BookAppointment";
 
@@ -179,7 +179,7 @@ public class EmisDataAdapter {
             parameters.put("odsCode", odsCode);
             parameters.put("slotId", slotId);
             parameters.put("patientGuid", patientId.toString());
-            parameters.put("reason", "");
+            parameters.put("reason", reason);
 
             SOAPMessage responseMessage = performSOAPCall(soapMethod, parameters);
 
