@@ -11,7 +11,7 @@ import org.endeavourhealth.cim.processor.CIMProcessor;
 import java.util.Date;
 
 public class GetSchedulesProcessor extends CIMProcessor {
-	public static final String EITHER_ACTOR_OR_OR_BOTH_MUST_BE_SUPPLIED = "Either actor or date, or both must be supplied.";
+	public static final String EITHER_ACTOR_OR_DATE_OR_BOTH_MUST_BE_SUPPLIED = "Either actor or date, or both must be supplied.";
 
 	public void process(Exchange exchange) throws Exception {
 
@@ -20,7 +20,7 @@ public class GetSchedulesProcessor extends CIMProcessor {
 		String practitioner = getInHeaderString(exchange, HeaderKey.ActorPractitioner);
 
 		if (practitioner == null && date == null)
-			throw new IllegalArgumentException(EITHER_ACTOR_OR_OR_BOTH_MUST_BE_SUPPLIED);
+			throw new IllegalArgumentException(EITHER_ACTOR_OR_DATE_OR_BOTH_MUST_BE_SUPPLIED);
 
 		Date fromDate = (date != null) ? date.getIntervalStart() : DateUtils.DOTNET_MINIMUM_DATE;
 		Date toDate = (date != null) ? date.getIntervalEnd() : DateUtils.DOTNET_MAXIMUM_DATE;

@@ -56,7 +56,133 @@ public class TestDataAdapter extends EmisDataAdapter {
     }
 	@Override
 	public String getSchedules(String odsCode, Date dateFrom, Date dateTo, String practitionerId) {
-		return null;
+		return "<?xml version=\"1.0\" encoding=\"utf-16\"?>\n" +
+				"<AppointmentSessionList xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns=\"http://www.e-mis.com/emisopen/MedicalRecord\">\n" +
+				"  <AppointmentSession>\n" +
+				"    <DBID>1</DBID>\n" +
+				"    <Date>21/07/2015</Date>\n" +
+				"    <StartTime>09:00</StartTime>\n" +
+				"    <EndTime>17:00</EndTime>\n" +
+				"    <SlotLength>60</SlotLength>\n" +
+				"    <SlotTypeList>\n" +
+				"      <SlotType>\n" +
+				"        <TypeID />\n" +
+				"        <Description />\n" +
+				"        <Total>9</Total>\n" +
+				"        <Booked>0</Booked>\n" +
+				"        <Blocked>0</Blocked>\n" +
+				"        <Embargoed>0</Embargoed>\n" +
+				"        <Available>9</Available>\n" +
+				"      </SlotType>\n" +
+				"    </SlotTypeList>\n" +
+				"    <Site>\n" +
+				"      <DBID>1</DBID>\n" +
+				"      <Name>Alpha Surgery</Name>\n" +
+				"    </Site>\n" +
+				"    <HolderList>\n" +
+				"      <Holder>\n" +
+				"        <DBID>1</DBID>\n" +
+				"        <RefID>1</RefID>\n" +
+				"        <Title>Dr</Title>\n" +
+				"        <FirstNames>Robert</FirstNames>\n" +
+				"        <LastName>Burns</LastName>\n" +
+				"      </Holder>\n" +
+				"    </HolderList>\n" +
+				"  </AppointmentSession>\n" +
+				"  <AppointmentSession>\n" +
+				"    <DBID>2</DBID>\n" +
+				"    <Date>21/07/2015</Date>\n" +
+				"    <StartTime>09:00</StartTime>\n" +
+				"    <EndTime>17:00</EndTime>\n" +
+				"    <SlotLength>60</SlotLength>\n" +
+				"    <SlotTypeList>\n" +
+				"      <SlotType>\n" +
+				"        <TypeID />\n" +
+				"        <Description />\n" +
+				"        <Total>9</Total>\n" +
+				"        <Booked>0</Booked>\n" +
+				"        <Blocked>0</Blocked>\n" +
+				"        <Embargoed>0</Embargoed>\n" +
+				"        <Available>9</Available>\n" +
+				"      </SlotType>\n" +
+				"    </SlotTypeList>\n" +
+				"    <Site>\n" +
+				"      <DBID>1</DBID>\n" +
+				"      <Name>Alpha Surgery</Name>\n" +
+				"    </Site>\n" +
+				"    <HolderList>\n" +
+				"      <Holder>\n" +
+				"        <DBID>2</DBID>\n" +
+				"        <RefID>2</RefID>\n" +
+				"        <Title>Mrs</Title>\n" +
+				"        <FirstNames>Sharon</FirstNames>\n" +
+				"        <LastName>Cook</LastName>\n" +
+				"      </Holder>\n" +
+				"    </HolderList>\n" +
+				"  </AppointmentSession>\n" +
+				"  <AppointmentSession>\n" +
+				"    <DBID>3</DBID>\n" +
+				"    <Date>21/07/2015</Date>\n" +
+				"    <StartTime>09:00</StartTime>\n" +
+				"    <EndTime>17:00</EndTime>\n" +
+				"    <SlotLength>60</SlotLength>\n" +
+				"    <SlotTypeList>\n" +
+				"      <SlotType>\n" +
+				"        <TypeID />\n" +
+				"        <Description />\n" +
+				"        <Total>9</Total>\n" +
+				"        <Booked>0</Booked>\n" +
+				"        <Blocked>0</Blocked>\n" +
+				"        <Embargoed>0</Embargoed>\n" +
+				"        <Available>9</Available>\n" +
+				"      </SlotType>\n" +
+				"    </SlotTypeList>\n" +
+				"    <Site>\n" +
+				"      <DBID>1</DBID>\n" +
+				"      <Name>Alpha Surgery</Name>\n" +
+				"    </Site>\n" +
+				"    <HolderList>\n" +
+				"      <Holder>\n" +
+				"        <DBID>3</DBID>\n" +
+				"        <RefID>3</RefID>\n" +
+				"        <Title>Mrs</Title>\n" +
+				"        <FirstNames>Kathleen</FirstNames>\n" +
+				"        <LastName>Bray</LastName>\n" +
+				"      </Holder>\n" +
+				"    </HolderList>\n" +
+				"  </AppointmentSession>\n" +
+				"  <AppointmentSession>\n" +
+				"    <DBID>4</DBID>\n" +
+				"    <Date>21/07/2015</Date>\n" +
+				"    <StartTime>09:00</StartTime>\n" +
+				"    <EndTime>17:00</EndTime>\n" +
+				"    <SlotLength>60</SlotLength>\n" +
+				"    <SlotTypeList>\n" +
+				"      <SlotType>\n" +
+				"        <TypeID />\n" +
+				"        <Description />\n" +
+				"        <Total>9</Total>\n" +
+				"        <Booked>0</Booked>\n" +
+				"        <Blocked>0</Blocked>\n" +
+				"        <Embargoed>0</Embargoed>\n" +
+				"        <Available>9</Available>\n" +
+				"      </SlotType>\n" +
+				"    </SlotTypeList>\n" +
+				"    <Site>\n" +
+				"      <DBID>1</DBID>\n" +
+				"      <Name>Alpha Surgery</Name>\n" +
+				"    </Site>\n" +
+				"    <HolderList>\n" +
+				"      <Holder>\n" +
+				"        <DBID>4</DBID>\n" +
+				"        <RefID>4</RefID>\n" +
+				"        <Title>Mr</Title>\n" +
+				"        <FirstNames>Anonymous</FirstNames>\n" +
+				"        <LastName>User</LastName>\n" +
+				"      </Holder>\n" +
+				"    </HolderList>\n" +
+				"  </AppointmentSession>\n" +
+				"</AppointmentSessionList>";
 	}
 	@Override
 	public String getSlots(String odsCode, String scheduleId) {

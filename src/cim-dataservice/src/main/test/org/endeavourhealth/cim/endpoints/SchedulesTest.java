@@ -61,7 +61,7 @@ public class SchedulesTest extends CamelTestSupport {
 		errorEndpoint.expectedMessageCount(1);
 
 		errorEndpoint.expectedHeaderReceived("CamelHttpResponseCode", HttpStatus.SC_BAD_REQUEST);
-		errorEndpoint.expectedBodiesReceived(GetSchedulesProcessor.EITHER_ACTOR_OR_OR_BOTH_MUST_BE_SUPPLIED);
+		errorEndpoint.expectedBodiesReceived(GetSchedulesProcessor.EITHER_ACTOR_OR_DATE_OR_BOTH_MUST_BE_SUPPLIED);
 
 		template.sendBodyAndHeaders(null, headerParams);
 
@@ -78,11 +78,8 @@ public class SchedulesTest extends CamelTestSupport {
 		dates.add("2015-06-30T00:00:00Z");
 		headerParams.put("date", dates);
 
-		resultEndpoint.expectedMessageCount(0);
-		errorEndpoint.expectedMessageCount(1);
-
-		errorEndpoint.expectedHeaderReceived("CamelHttpResponseCode", HttpStatus.SC_BAD_REQUEST);
-		errorEndpoint.expectedBodiesReceived(GetSchedulesProcessor.EITHER_ACTOR_OR_OR_BOTH_MUST_BE_SUPPLIED);
+		resultEndpoint.expectedMessageCount(1);
+		errorEndpoint.expectedMessageCount(0);
 
 		template.sendBodyAndHeaders(null, headerParams);
 
@@ -91,16 +88,13 @@ public class SchedulesTest extends CamelTestSupport {
 	}
 
 	@Test
-	public void WrongDateType() throws Exception {
+	public void SingleDate() throws Exception {
 		Map<String, Object> headerParams = new HashMap<>();
 		headerParams.put("odsCode", "A99999");
 		headerParams.put("date", "2015-06-22T00:00:00Z");
 
-		resultEndpoint.expectedMessageCount(0);
-		errorEndpoint.expectedMessageCount(1);
-
-		errorEndpoint.expectedHeaderReceived("CamelHttpResponseCode", HttpStatus.SC_BAD_REQUEST);
-		errorEndpoint.expectedBodiesReceived(GetSchedulesProcessor.EITHER_ACTOR_OR_OR_BOTH_MUST_BE_SUPPLIED);
+		resultEndpoint.expectedMessageCount(1);
+		errorEndpoint.expectedMessageCount(0);
 
 		template.sendBodyAndHeaders(null, headerParams);
 
@@ -118,9 +112,6 @@ public class SchedulesTest extends CamelTestSupport {
 
 		resultEndpoint.expectedMessageCount(0);
 		errorEndpoint.expectedMessageCount(1);
-
-		errorEndpoint.expectedHeaderReceived("CamelHttpResponseCode", HttpStatus.SC_BAD_REQUEST);
-		errorEndpoint.expectedBodiesReceived(DateSearchParameter.DATE_TIMES_MUST_CONTAIN_ONE_OR_TWO_ELEMENTS);
 
 		template.sendBodyAndHeaders(null, headerParams);
 

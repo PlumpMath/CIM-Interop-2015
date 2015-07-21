@@ -1,6 +1,7 @@
 package org.endeavourhealth.cim.InformationSharingFramework;
 
 import org.endeavourhealth.cim.InformationSharingFramework.data.InformationSharingProtocolRepository;
+import org.endeavourhealth.cim.InformationSharingFramework.data.ServiceByOrganisationRepository;
 import org.endeavourhealth.cim.InformationSharingFramework.data.ServiceRepository;
 import org.endeavourhealth.cim.InformationSharingFramework.data.SharingAgreementRepository;
 import org.endeavourhealth.cim.InformationSharingFramework.model.*;
@@ -22,11 +23,13 @@ public class ISFManager {
 	private SharingAgreementRepository sharingAgreementRepository;
 	private InformationSharingProtocolRepository protocolRepository;
 	private ServiceRepository serviceRepository;
+	private ServiceByOrganisationRepository serviceByOrganisationRepository;
 
 	public ISFManager() {
 		sharingAgreementRepository = new SharingAgreementRepository();
 		protocolRepository = new InformationSharingProtocolRepository();
 		serviceRepository = new ServiceRepository();
+		serviceByOrganisationRepository = new ServiceByOrganisationRepository();
 	}
 
 	public InformationSharingProtocol getInformationSharingProtocol(UUID id) { return null; }
@@ -41,19 +44,14 @@ public class ISFManager {
 	public DataSetCollection getDataSetCollection(Integer id) { return null; }
 	public DataSet getDataSet(Integer id) { return null; }
 	public List<InformationSharingProtocol> getRelevantProtocols(String publisherOdsCode, String subscriberApiKey) throws RepositoryException {
-		Service publisherService = serviceRepository.getByOdsCode(publisherOdsCode);
-		Service subscriberService = serviceRepository.getByPublicApiKey(subscriberApiKey);
+		/*UUID publisherServiceId = serviceByOrganisationRepository.getById(publisherOdsCode).getServices().get(0);
+		UUID subscriberServiceId = serviceByOrganisationRepository.getById(subscriberApiKey).getServices().get(0);
 
-		SharingAgreement publisherAgreement = sharingAgreementRepository.getByServiceId(publisherService.getId());
-		SharingAgreement subscriberAgreement = sharingAgreementRepository.getByServiceId(subscriberService.getId());
+		SharingAgreement publisherAgreement = sharingAgreementRepository.getByServiceId(publisherServiceId);
+		SharingAgreement subscriberAgreement = sharingAgreementRepository.getByServiceId(subscriberServiceId);
 
-		return protocolRepository.getByPublisherAndSubscriberAgreementId(publisherAgreement.getId(), subscriberAgreement.getId());
-	}
-	public Map<String, List<String>> getLegitimateRelationships() {
-			// TODO : Implement full DP logic
-			Map<String, List<String>> _legitimateRelationships = new HashMap<>();
-			_legitimateRelationships.put("swagger", Arrays.asList("A99999", "B99999"));
-			_legitimateRelationships.put("subsidiary", Arrays.asList("Y99999", "Z99999"));
-			return _legitimateRelationships;
+		return protocolRepository.getByPublisherAndSubscriberAgreementId(publisherAgreement.getId(), subscriberAgreement.getId()); */
+
+		return protocolRepository.getByPublisherAndSubscriberAgreementId(UUID.randomUUID(), UUID.randomUUID());
 	}
 }
