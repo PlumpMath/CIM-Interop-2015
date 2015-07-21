@@ -253,6 +253,28 @@ namespace DotNetGPSystem
             return false;
         }
 
+        public static bool CancelAppointment(string odsCode, int slotId, Guid patientGuid)
+        {
+            Slot slot = DataStore.GetSlot(odsCode, slotId);
+
+            if (slot != null)
+            {
+                if (slot.Patient != null)
+                {
+                    if (new Guid(slot.Patient.Patient.id) == patientGuid)
+                    {
+                        slot.Patient = null;
+
+                        OnExternalAppointmentBookChangeMade();
+
+                        return true;
+                    }
+                }
+            }
+
+            return false;
+        }
+
         private static OpenHRPatient[] LoadOpenHRPatients()
         {
             int patientId = 1;

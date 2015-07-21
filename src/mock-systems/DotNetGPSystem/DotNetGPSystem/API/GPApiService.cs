@@ -139,6 +139,11 @@ namespace DotNetGPSystem
             return DataStore.BookAppointment(odsCode, slotId, patientGuid);
         }
 
+        public bool CancelAppointment(string odsCode, int slotId, Guid patientGuid)
+        {
+            return DataStore.CancelAppointment(odsCode, slotId, patientGuid);
+        }
+
         public string GetOrganisationInformation(string odsCode)
         {
             OpenHROrganisation organisation = DataStore

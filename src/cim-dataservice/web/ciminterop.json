@@ -905,7 +905,7 @@
                 "tags": [
                     "administrative"
                 ],
-                "summary":"Get Available Appointment Schedules",
+                "summary":"Get appointment schedules",
                 "description": "Get Available Appointment Schedules.<br/><br/>When checking availability for an appointment, first check what schedules are applicable, then check for available slots within these schedules.<br/><br/><u>Examples</u>:<br/><br/>https://endeavour-cim.cloudapp.net/CIM_war/v0.1/Z99999/Schedule?date=2015-04-01&date=2015-05-30<br/>https://endeavour-cim.cloudapp.net/CIM_war/v0.1/Z99999/Schedule?actor:Practitioner=G12345",
                 "produces": [
                     "application/json"
@@ -968,7 +968,7 @@
                 "tags": [
                     "administrative"
                 ],
-                "summary":"Get Available Appointment Slots",
+                "summary":"Get appointment slots",
                 "description": "Get slots of time on a schedule that may be available for booking appointments.<br/><br/><u>Examples</u>:<br/><br/>https://endeavour-cim.cloudapp.net/CIM_war/v0.1/Z99999/Slot?schedule=1234&start=2015-06-01T00:00:00",
                 "produces": [
                     "application/json"
@@ -1031,7 +1031,95 @@
                 "tags": [
                     "administrative"
                 ],
-                "summary":"Book an Appointment Slot",
+                "summary":"Book an appointment slot",
+                "description": "",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "api_key",
+                        "in": "header",
+                        "description": "Client API key",
+                        "type": "string",
+                        "enum": [
+                            "swagger"
+                        ]
+                    },
+                    {
+                        "name": "hash",
+                        "in": "header",
+                        "description": "Message hash value",
+                        "type": "string",
+                        "enum": [
+                            "vGsa0MM8wPUCLzq0l0xATEeq0a6Ckcgfs25mtU1S/v4="
+                        ]
+                    },
+                    {
+                        "name": "odsCode",
+                        "in": "path",
+                        "description": "Organisational code that uniquely identifies the owner of the patient record",
+                        "required":true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Slot identifier",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in":"body",
+                        "name":"body",
+                        "description":"FHIR Parameters Resource. See FHIR specification at: <a target='_blank'  href='http://hl7.org/fhir/2015May/parameters.html'>http://hl7.org/fhir/2015May/parameters.html</a>",
+                        "required":true,
+                        "schema":{
+                            "type":"object",
+                            "properties": {
+                                "resourceType": {
+                                    "type": "string",
+                                    "example": "Parameters"
+                                },
+                                "parameter": {
+                                    "type": "array",
+                                    "items": [{
+                                        "type": "object",
+                                        "properties": {
+                                            "name": {
+                                                "type": "string",
+                                                "example": "patient"
+                                            },
+                                            "valueString": {
+                                                "type": "string",
+                                                "example": "00000000-0000-0000-0000-000000000000"
+                                            }
+                                        }
+                                    }]
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description":"Created - successful operation"
+                    },
+                    "400":{
+                        "description":"Bad request - resource could not be parsed or failed basic FHIR validation rules"
+                    },
+                    "404":{
+                        "description":"Not found - resource type not supported, or not a FHIR end point"
+                    }
+                }
+            }
+        },
+        "/{odsCode}/Slot/{id}/$cancel": {
+            "post": {
+                "tags": [
+                    "administrative"
+                ],
+                "summary":"Cancel an appointment slot",
                 "description": "",
                 "produces": [
                     "application/json"
@@ -1119,7 +1207,7 @@
                 "tags": [
                     "administrative"
                 ],
-                "summary":"Get Appointments By Patient ID",
+                "summary":"Get appointments by patient",
                 "description": "Get Patient Appointments By Patient ID<br/><br/><u>Examples</u>:<br/><br/>https://endeavour-cim.cloudapp.net/CIM_war/v0.1/Z99999/Appointment?patient=1234&date=2015",
                 "produces": [
                     "application/json"

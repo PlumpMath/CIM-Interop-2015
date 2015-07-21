@@ -48,9 +48,12 @@ namespace DotNetGPSystem
         bool BookAppointment(string odsCode, int slotId, Guid patientGuid, string reason);
 
         [OperationContract]
+        bool CancelAppointment(string odsCode, int slotId, Guid patientGuid);
+
+        [OperationContract]
         string GetUserByID(string odsCode, int userInRoleId);
 
         [OperationContract]
         string GetOrganisationInformation(string odsCode);
-    }       
+    }
 }

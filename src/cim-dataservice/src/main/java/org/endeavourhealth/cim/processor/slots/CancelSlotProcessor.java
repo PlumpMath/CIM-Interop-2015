@@ -1,0 +1,28 @@
+package org.endeavourhealth.cim.processor.slots;
+
+import org.apache.camel.Exchange;
+import org.endeavourhealth.cim.common.HeaderKey;
+import org.endeavourhealth.cim.common.ParametersHelper;
+import org.endeavourhealth.cim.dataManager.DataManagerFactory;
+import org.endeavourhealth.cim.dataManager.IDataManager;
+import org.endeavourhealth.cim.processor.CIMProcessor;
+import org.hl7.fhir.instance.model.Parameters;
+
+import java.util.UUID;
+
+public class CancelSlotProcessor extends CIMProcessor {
+
+    public void process(Exchange exchange) throws Exception {
+
+        String odsCode = getInHeaderString(exchange, HeaderKey.OdsCode);
+        String slotId = getInHeaderString(exchange, HeaderKey.Id);
+        Parameters parameters = getInBodyResource(exchange, Parameters.class);
+
+        UUID patientId = UUID.fromString(ParametersHelper.getStringParameter(parameters, "patient"));
+
+        IDataManager dataManager = DataManagerFactory.getDataManagerForService(odsCode);
+        dataManager.cancelSlot(odsCode, slotId, patientId);
+
+        setInBodyString(exchange, "");
+    }
+}

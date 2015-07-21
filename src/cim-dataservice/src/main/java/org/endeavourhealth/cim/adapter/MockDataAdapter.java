@@ -294,6 +294,38 @@ public class MockDataAdapter {
         }
     }
 
+    public Boolean cancelSlot(String odsCode, String slotId, UUID patientId) {
+        SOAPConnection soapConnection = null;
+        try {
+            try {
+                soapConnection = createSOAPConnection();
+
+                // Create basic message
+                SOAPMessage requestMessage = createSOAPRequestMessage("CancelAppointment");
+
+                // SOAP Body
+                SOAPElement soapMethodElement = createSOAPMethodElement(requestMessage, "CancelAppointment", "http://tempuri.org/");
+
+                createChildTextElement(soapMethodElement, "odsCode", odsCode);
+                createChildTextElement(soapMethodElement, "slotId", slotId);
+                createChildTextElement(soapMethodElement, "patientGuid", patientId.toString());
+
+                requestMessage.saveChanges();
+
+                // Send SOAP Message to SOAP Server
+                SOAPMessage soapResponse = soapConnection.call(requestMessage, _soapUri + "/CancelAppointment");
+                return true; //soapResponse.getSOAPBody().getElementsByTagName("BookAppointmentResult").item(0).getTextContent();
+            } finally {
+                if (soapConnection != null)
+                    soapConnection.close();
+            }
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
     public String getSchedules(String odsCode, Date dateFrom, Date dateTo, String practitionerId) {
         SOAPConnection soapConnection = null;
         try {
