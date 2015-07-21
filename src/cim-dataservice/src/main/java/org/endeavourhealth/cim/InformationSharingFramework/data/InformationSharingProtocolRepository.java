@@ -4,6 +4,7 @@ import org.endeavourhealth.cim.InformationSharingFramework.model.InformationShar
 import org.endeavourhealth.cim.InformationSharingFramework.model.SharingAgreement;
 import org.endeavourhealth.cim.common.data.GenericRepository;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -14,6 +15,10 @@ public class InformationSharingProtocolRepository extends GenericRepository<Info
 	}
 
 	public List<InformationSharingProtocol> getByPublisherAndSubscriberAgreementId(UUID publisherAgreementId, UUID subscriberAgreementId) {
-		return null;
+		List<InformationSharingProtocol> relevantProtocols = new ArrayList<>();
+
+		relevantProtocols.add(new InformationSharingProtocol());
+
+		return relevantProtocols;
 	}
 }
