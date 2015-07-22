@@ -3,6 +3,8 @@ package org.endeavourhealth.cim.routes.config;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.model.rest.RestBindingMode;
 import org.apache.camel.processor.interceptor.Tracer;
+import org.apache.camel.spi.ManagementAgent;
+import org.apache.camel.spi.ManagementStrategy;
 
 @SuppressWarnings("WeakerAccess")
 public class RestConfiguration extends RouteBuilder {
@@ -16,7 +18,14 @@ public class RestConfiguration extends RouteBuilder {
         // enable debug output
         getContext().setTracing(true);
         getContext().setAllowUseOriginalMessage(false);
+		ManagementStrategy strat = getContext().getManagementStrategy();
+		ManagementAgent agt = strat.getManagementAgent();
+		if (agt != null) {
+			agt.setRegistryPort(8888);
+			agt.setCreateConnector(true);
+		}
 
+		/*
         Tracer tracer = new Tracer();
         tracer.getDefaultTraceFormatter().setShowBreadCrumb(false);
         tracer.getDefaultTraceFormatter().setShowExchangePattern(false);
@@ -25,8 +34,7 @@ public class RestConfiguration extends RouteBuilder {
         tracer.getDefaultTraceFormatter().setShowBodyType(false);
         tracer.getDefaultTraceFormatter().setShowNode(false);
 
-
-        // getContext().addInterceptStrategy(tracer);
+        getContext().addInterceptStrategy(tracer); */
 
         restConfiguration().component("servlet")
                 .bindingMode(RestBindingMode.off)
