@@ -1,9 +1,6 @@
 package org.endeavourhealth.cim.InformationSharingFramework;
 
-import org.endeavourhealth.cim.InformationSharingFramework.data.InformationSharingProtocolRepository;
-import org.endeavourhealth.cim.InformationSharingFramework.data.ServiceByOrganisationRepository;
-import org.endeavourhealth.cim.InformationSharingFramework.data.ServiceRepository;
-import org.endeavourhealth.cim.InformationSharingFramework.data.SharingAgreementRepository;
+import org.endeavourhealth.cim.InformationSharingFramework.data.*;
 import org.endeavourhealth.cim.InformationSharingFramework.model.*;
 import org.endeavourhealth.cim.InformationSharingFramework.model.System;
 import org.endeavourhealth.cim.common.data.RepositoryException;
@@ -22,14 +19,16 @@ public class ISFManager {
 
 	private SharingAgreementRepository sharingAgreementRepository;
 	private InformationSharingProtocolRepository protocolRepository;
-	private ServiceRepository serviceRepository;
 	private ServiceByOrganisationRepository serviceByOrganisationRepository;
+	private AgreementByServiceRepository agreementByServiceRepository;
+	private ProtocolByPublisherSubscriberAgreementRepository protocolByPublisherSubscriberAgreementRepository;
 
 	public ISFManager() {
 		sharingAgreementRepository = new SharingAgreementRepository();
 		protocolRepository = new InformationSharingProtocolRepository();
-		serviceRepository = new ServiceRepository();
 		serviceByOrganisationRepository = new ServiceByOrganisationRepository();
+		agreementByServiceRepository = new AgreementByServiceRepository();
+		protocolByPublisherSubscriberAgreementRepository = new ProtocolByPublisherSubscriberAgreementRepository();
 	}
 
 	public InformationSharingProtocol getInformationSharingProtocol(UUID id) { return null; }
@@ -44,14 +43,14 @@ public class ISFManager {
 	public DataSetCollection getDataSetCollection(Integer id) { return null; }
 	public DataSet getDataSet(Integer id) { return null; }
 	public List<InformationSharingProtocol> getRelevantProtocols(String publisherOdsCode, String subscriberApiKey) throws RepositoryException {
-		/*UUID publisherServiceId = serviceByOrganisationRepository.getById(publisherOdsCode).getServices().get(0);
+		UUID publisherServiceId = serviceByOrganisationRepository.getById(publisherOdsCode).getServices().get(0);
 		UUID subscriberServiceId = serviceByOrganisationRepository.getById(subscriberApiKey).getServices().get(0);
 
-		SharingAgreement publisherAgreement = sharingAgreementRepository.getByServiceId(publisherServiceId);
-		SharingAgreement subscriberAgreement = sharingAgreementRepository.getByServiceId(subscriberServiceId);
+		UUID publisherAgreementId = agreementByServiceRepository.getById(publisherServiceId).getAgreements().get(0);
+		UUID subscriberAgreementId = agreementByServiceRepository.getById(subscriberServiceId).getAgreements().get(0);
 
-		return protocolRepository.getByPublisherAndSubscriberAgreementId(publisherAgreement.getId(), subscriberAgreement.getId()); */
+		ProtocolByPublisherSubscriberAgreement protocolByPublisherSubscriberAgreement = protocolByPublisherSubscriberAgreementRepository.getById(publisherAgreementId, subscriberAgreementId);
 
-		return protocolRepository.getByPublisherAndSubscriberAgreementId(UUID.randomUUID(), UUID.randomUUID());
+		return protocolRepository.getMultipleById(protocolByPublisherSubscriberAgreement.getProtocols());
 	}
 }

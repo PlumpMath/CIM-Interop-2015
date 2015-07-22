@@ -24,7 +24,7 @@ public class GenericRepository<T extends BaseEntity> extends Repository {
 
 	public GenericRepository(Class<T> tClass) {
 		super(DataConfiguration.DATASERVICE_KEYSPACE);
-		className = tClass.getName();
+		className = tClass.getSimpleName().replaceAll("([a-z])([A-Z]+)", "$1_$2").toLowerCase();
 		this.tClass = tClass;
 	}
 

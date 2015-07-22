@@ -16,6 +16,7 @@ public class DbClient {
     private DbClient() {
         cluster = Cluster.builder()
                 .addContactPoints(DataConfiguration.getHosts())
+				.withCredentials(DataConfiguration.getUsername(), DataConfiguration.getPassword())
                 .build();
     }
 

@@ -13,12 +13,4 @@ public class InformationSharingProtocolRepository extends GenericRepository<Info
 	public InformationSharingProtocolRepository() {
 		super(InformationSharingProtocol.class);
 	}
-
-	public List<InformationSharingProtocol> getByPublisherAndSubscriberAgreementId(UUID publisherAgreementId, UUID subscriberAgreementId) {
-		List<InformationSharingProtocol> relevantProtocols = new ArrayList<>();
-
-		relevantProtocols.add(new InformationSharingProtocol());
-
-		return relevantProtocols;
-	}
 }

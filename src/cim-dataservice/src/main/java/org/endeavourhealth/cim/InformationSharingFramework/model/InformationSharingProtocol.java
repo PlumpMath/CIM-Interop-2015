@@ -17,8 +17,8 @@ public class InformationSharingProtocol extends BaseEntity {
 	private UUID derivedFromId;
 	private ArrayList<Integer> publisherProfiles = new ArrayList<>();
 	private ArrayList<Integer> subscriberProfiles = new ArrayList<>();
-	private ArrayList<Integer> publisherSharingAgreements = new ArrayList<>();
-	private ArrayList<Integer> subscriberSharingAgreements = new ArrayList<>();
+	private ArrayList<UUID> publisherSharingAgreements = new ArrayList<>();
+	private ArrayList<UUID> subscriberSharingAgreements = new ArrayList<>();
 
 	public UUID getId() { return id; }
 	public void setId(UUID id) { this.id = id; }
@@ -76,11 +76,11 @@ public class InformationSharingProtocol extends BaseEntity {
 		return subscriberProfiles;
 	}
 
-	public ArrayList<Integer> getPublisherSharingAgreemens() {
+	public ArrayList<UUID> getPublisherSharingAgreements() {
 		return publisherSharingAgreements;
 	}
 
-	public ArrayList<Integer> getSubscriberSharingAgreements() {
+	public ArrayList<UUID> getSubscriberSharingAgreements() {
 		return subscriberSharingAgreements;
 	}
 }

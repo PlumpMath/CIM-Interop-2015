@@ -11,18 +11,4 @@ public class ServiceRepository extends GenericRepository<Service> {
 	public ServiceRepository() {
 		super(Service.class);
 	}
-
-	public Service getByOdsCode(String OdsCode) {
-		Service publisherService = new Service();
-		publisherService.setName("Publisher Service");
-		publisherService.setId(UUID.randomUUID());
-		return publisherService;
-	}
-
-	public Service getByPublicApiKey(String subscriberApiKey) {
-		Service subscriberService = new Service();
-		subscriberService.setName("Subscriber Service");
-		subscriberService.setId(UUID.randomUUID());
-		return subscriberService;
-	}
 }

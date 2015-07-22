@@ -6,4 +6,7 @@ public class DataConfiguration {
     public static String[] getHosts() {
         return new String[] {"127.0.0.1", "endeavour-cim.cloudapp.net"};
     }
+
+	public static String getUsername() { return "cassandra"; }
+	public static String getPassword() { return "cassandra"; }
 }
