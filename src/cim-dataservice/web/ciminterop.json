@@ -1,9 +1,9 @@
 {
     "swagger": "2.0",
     "info": {
-        "description": "This is a RESTful test server with API documentation for the Endeavour Common Interface Mechanism, which can be used to send requests to, and receive example responses.<br><br><b>NOTE:</b> All dates should be provided in the standard ISO-8601 format (yyyy-MM-dd'T'HH:mm:ss'Z')",
+        "description": "This is a RESTful test server with API documentation for the Endeavour Common Interface Mechanism, which can be used to send requests to, and receive example responses.<br><br><b>NOTE:</b> All dates should be provided in the full ISO-8601 format (yyyy-MM-dd'T'HH:mm:ss'Z'), or partial derivations of.",
         "version": "0.1",
-        "title": "Endeavour CIM Interop 2015",
+        "title": "Common Interface Mechanism",
         "contact": {
             "email": "support@endeavour.com"
         },
@@ -25,7 +25,7 @@
         },
         {
             "name": "administrative",
-            "description": "Operations on scheduling and ordering. Includes creation and management of appointments and workflow."
+            "description": "Operations on scheduling and ordering. Includes appointments and workflow."
         }
 
     ],
@@ -35,7 +35,7 @@
                 "tags": [
                     "demographics"
                 ],
-                "summary":"Trace Person by NHS Number",
+                "summary":"Trace person by NHS number",
                 "description": "Trace registered patients linked to a person <br/><br/><u>Examples</u>:<br/><br/>https://endeavour-cim.cloudapp.net/CIM_war/v0.1/Person/$trace?identifier=NHS|6980086397",
                 "produces": [
                     "application/json"
@@ -85,7 +85,7 @@
                 "tags": [
                     "demographics"
                 ],
-                "summary":"Trace Person by demographics",
+                "summary":"Trace person by demographics",
                 "description": "Trace registered patients linked to a person <br/><br/><u>Examples</u>:<br/><br/>https://endeavour-cim.cloudapp.net/CIM_war/v0.1/Person/$trace?surname=Smith&dob=01/01/1980&gender=male",
                 "produces": [
                     "application/json"
@@ -152,7 +152,7 @@
                 "tags": [
                     "demographics"
                 ],
-                "summary":"Get Patient By ID",
+                "summary":"Get patient by ID",
                 "description": "Get Patient Demographic Record By ID<br/><br/><u>Examples</u>:<br/><br/>https://endeavour-cim.cloudapp.net/CIM_war/v0.1/Z99999/Patient/99d30432-33fe-4c93-84f9-92cc1961f417<br/>http://endeavour-cim.cloudapp.net/CIM_war/v0.1/Z99999/Patient/1234",
                 "produces": [
                     "application/json"
@@ -209,7 +209,7 @@
                 "tags": [
                     "demographics"
                 ],
-                "summary":"Get Patient By NHS Number",
+                "summary":"Get patient by NHS number",
                 "description": "Get Patient Demographic Record By NHS Number<br/><br/><u>Examples</u>:<br/><br/>https://endeavour-cim.cloudapp.net/CIM_war/v0.1/Z99999/Patient?identifier=NHS|6980086397",
                 "produces": [
                     "application/json"
@@ -263,7 +263,7 @@
                 "tags": [
                     "demographics"
                 ],
-                "summary":"Get All Patients",
+                "summary":"Get all patients",
                 "description": "Get Patient Demographic Records for All Patients<br/><br/><u>Examples</u>:<br/><br/>https://endeavour-cim.cloudapp.net/CIM_war/v0.1/Z99999/Patient",
                 "produces": [
                     "application/json"
@@ -310,7 +310,7 @@
                 "tags": [
                     "demographics"
                 ],
-                "summary":"Get All Active Patients",
+                "summary":"Get all active patients",
                 "description": "Get Patient Demographic Records for All ACTIVE Patients<br/><br/><u>Examples</u>:<br/><br/>https://endeavour-cim.cloudapp.net/CIM_war/v0.1/Z99999/Patient?active=true",
                 "produces": [
                     "application/json"
@@ -357,7 +357,7 @@
                 "tags": [
                     "demographics"
                 ],
-                "summary":"Get Changed Patients",
+                "summary":"Get changed patients",
                 "description": "Get Patient Demographic Records for All ACTIVE Patients that have had a record update since the date specified.<br/><br/><u>Examples</u>:<br/><br/>https://endeavour-cim.cloudapp.net/CIM_war/v0.1/Z99999/Patient?_lastUpdated=>2015-05-20&active=true",
                 "produces": [
                     "application/json"
@@ -411,7 +411,7 @@
                 "tags": [
                     "demographics"
                 ],
-                "summary":"Patient Subscription",
+                "summary":"Subscribe to patient changes",
                 "description": "The subscription resource is used to define a push based subscription from a server to another system. Once a subscription is registered with the server, the server checks every resource that is created or updated, and if the resource matches the given criteria, it sends a message on the defined 'channel' so that another system is able to take an appropriate action.<br/><br/><u>Examples</u>:<br/><br/>https://endeavour-cim.cloudapp.net/CIM_war/v0.1/Z99999/Subscription/99d30432-33fe-4c93-84f9-92cc1961f417",
                 "produces": [
                     "application/json"
@@ -477,7 +477,7 @@
                 "tags": [
                     "clinical"
                 ],
-                "summary":"Get Clinical Record By Patient ID",
+                "summary":"Get clinical record by patient ID",
                 "description": "This operation is used to return all the information related to the patient described in the resource on which this operation is invoked. Returns all resources that it has that are in the patient compartment for the identified patient, and any resource referenced from those, excluding binaries and attachments.<br/><br/><u>Examples</u>:<br/><br/>https://endeavour-cim.cloudapp.net/CIM_war/v0.1/Z99999/Patient/1234/$everythingnobinary",
                 "produces": [
                     "application/json"
@@ -531,7 +531,7 @@
                 "tags": [
                     "clinical"
                 ],
-                "summary":"Get Clinical Document by ID",
+                "summary":"Get clinical document by ID",
                 "description": "Get Binary Document by Document ID<br/><br/><u>Examples</u>:<br/><br/>https://endeavour-cim.cloudapp.net/CIM_war/v0.1/Z99999/Binary/99d30432-33fe-4c93-84f9-92cc1961f417",
                 "produces": [
                     "application/json"
@@ -588,7 +588,7 @@
                 "tags": [
                     "clinical"
                 ],
-                "summary":"Get Medication Prescriptions By Patient ID",
+                "summary":"Get medication prescriptions by patient ID",
                 "description": "Get Patient Medication Prescriptions By Patient ID<br/><br/><u>Examples</u>:<br/><br/>https://endeavour-cim.cloudapp.net/CIM_war/v0.1/Z99999/Patient/1234/MedicationPrescription<br/>https://endeavour-cim.cloudapp.net/CIM_war/v0.1/Z99999/Patient/1234/MedicationPrescription?datewritten=2015-04-01&datewritten=2015-05-30",
                 "produces": [
                     "application/json"
@@ -649,7 +649,7 @@
                 "tags": [
                     "clinical"
                 ],
-                "summary":"Get Conditions By Patient ID",
+                "summary":"Get conditions by patient ID",
                 "description": "Get Patient Conditions (Problems) By Patient ID<br/><br/><u>Examples</u>:<br/><br/>https://endeavour-cim.cloudapp.net/CIM_war/v0.1/Z99999/Patient/1234/Condition<br/>https://endeavour-cim.cloudapp.net/CIM_war/v0.1/Z99999/Patient/1234/Condition?code=snomed|39065001",
                 "produces": [
                     "application/json"
@@ -708,7 +708,7 @@
                 "tags": [
                     "clinical"
                 ],
-                "summary":"Add Condition To Patient",
+                "summary":"Add condition to patient",
                 "description": "Add New Condition To Patient Record<br/><br/><u>Examples</u>:<br/><br/>https://endeavour-cim.cloudapp.net/CIM_war/v0.1/Z99999/Patient/1234/Condition",
                 "produces": [
                     "application/json"
@@ -774,7 +774,7 @@
                 "tags": [
                     "clinical"
                 ],
-                "summary":"Get Immunisations By Patient ID",
+                "summary":"Get immunisations by patient ID",
                 "description": "Get Patient Immunisations By Patient ID<br/><br/><u>Examples</u>:<br/><br/>https://endeavour-cim.cloudapp.net/CIM_war/v0.1/Z99999/Patient/1234/Immunization<br/>https://endeavour-cim.cloudapp.net/CIM_war/v0.1/Z99999/Patient/1234/Immunization?date=2015-04-01&date=2015-05-30",
                 "produces": [
                     "application/json"
@@ -835,7 +835,7 @@
                 "tags": [
                     "clinical"
                 ],
-                "summary":"Get Allergies By Patient ID",
+                "summary":"Get allergies by patient ID",
                 "description": "Get Patient Allergies By Patient ID<br/><br/><u>Examples</u>:<br/><br/>https://endeavour-cim.cloudapp.net/CIM_war/v0.1/Z99999/Patient/1234/AllergyIntolerance<br/>https://endeavour-cim.cloudapp.net/CIM_war/v0.1/Z99999/Patient/1234/AllergyIntolerance?criticality=high",
                 "produces": [
                     "application/json"
