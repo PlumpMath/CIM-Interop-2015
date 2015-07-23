@@ -17,10 +17,9 @@ import java.util.List;
 import java.util.UUID;
 
 public class GenericRepository<T extends BaseEntity> extends Repository {
-	private String className;
-	private Class<T> tClass;
-	private HelperForKeyAndBlobTables<T> lazyLoadedTableHelper;
-	private HelperForSearchTermTables lazyLoadedSearchTermTableHelper;
+	protected String className;
+	protected Class<T> tClass;
+	protected HelperForKeyAndBlobTables<T> lazyLoadedTableHelper;
 
 	public GenericRepository(Class<T> tClass) {
 		super(DataConfiguration.DATASERVICE_KEYSPACE);
@@ -37,7 +36,6 @@ public class GenericRepository<T extends BaseEntity> extends Repository {
 			BatchStatement batch = new BatchStatement();
 
 			addInsertToBatch(batch, object);
-			insertSearchTerms(batch, object);
 			addAuditToBatch(batch, object, userId, AuditMode.add);
 
 			getSession().execute(batch);
@@ -63,7 +61,6 @@ public class GenericRepository<T extends BaseEntity> extends Repository {
 			BatchStatement batch = new BatchStatement();
 
 			addUpdateToBatch(batch, object);
-			updateSearchTerms(batch, objectBeforeUpdate, object);
 			addAuditToBatch(batch, object, userId, AuditMode.edit);
 
 			getSession().execute(batch);
@@ -84,7 +81,7 @@ public class GenericRepository<T extends BaseEntity> extends Repository {
 		return getTableHelper().getAll();
 	}
 
-	private void addInsertToBatch(BatchStatement batch, T object) throws JsonProcessingException {
+	protected void addInsertToBatch(BatchStatement batch, T object) throws JsonProcessingException {
 
 		BoundStatement boundStatement = new InsertStatementBuilder(getStatementCache(), className)
 				.addColumnUUID("id", object.getId())
@@ -95,7 +92,7 @@ public class GenericRepository<T extends BaseEntity> extends Repository {
 		batch.add(boundStatement);
 	}
 
-	private void addUpdateToBatch(BatchStatement batch, T object) throws JsonProcessingException {
+	protected void addUpdateToBatch(BatchStatement batch, T object) throws JsonProcessingException {
 
 		Clause clause = QueryBuilder.eq("id", QueryBuilder.bindMarker("id"));
 
@@ -108,47 +105,7 @@ public class GenericRepository<T extends BaseEntity> extends Repository {
 		batch.add(boundStatement);
 	}
 
-	private void insertSearchTerms(BatchStatement batch, T object) {
-		List<SearchPair> searchPairs = getSearchTerms(object);
-
-		getSearchTermTableHelper().insert(
-				batch,
-				object.getId(),
-				searchPairs);
-	}
-
-	private void updateSearchTerms(BatchStatement batch, T object, T updatedObject) {
-		if (object.getId() != updatedObject.getId())
-			throw new IllegalArgumentException("IDs do not match");
-
-		List<SearchPair> currentIdentifiers = getSearchTerms(object);
-		List<SearchPair> updatedIdentifiers = getSearchTerms(updatedObject);
-
-		getSearchTermTableHelper().updateSearchTerms(
-				batch,
-				object.getId(),
-				currentIdentifiers,
-				updatedIdentifiers);
-	}
-
-	private List<SearchPair> getSearchTerms(T object) {
-
-		List<SearchPair> pairs = new ArrayList<>();
-
-		if (object.getIdentifiers() != null) {
-			for (EntityIdentifier id : object.getIdentifiers()) {
-				SearchPair pair = new SearchPair(id.getType().name(), id.getValue());
-				pairs.add(pair);
-			}
-		}
-
-		List<SearchPair> splitName = getSearchTermTableHelper().splitText("name", object.getName());
-		pairs.addAll(splitName);
-
-		return pairs;
-	}
-
-	private HelperForKeyAndBlobTables<T> getTableHelper() {
+	protected HelperForKeyAndBlobTables<T> getTableHelper() {
 		if (lazyLoadedTableHelper == null) {
 			lazyLoadedTableHelper = new HelperForKeyAndBlobTables<>(
 					getSession(),
@@ -160,19 +117,7 @@ public class GenericRepository<T extends BaseEntity> extends Repository {
 		return lazyLoadedTableHelper;
 	}
 
-	private HelperForSearchTermTables getSearchTermTableHelper() {
-		if (lazyLoadedSearchTermTableHelper == null) {
-			lazyLoadedSearchTermTableHelper = new HelperForSearchTermTables(
-					getSession(),
-					getStatementCache(),
-					className +"_search_terms",
-					"id");
-		}
-
-		return lazyLoadedSearchTermTableHelper;
-	}
-
-	private T convert(String version, String data) throws RepositoryException {
+	protected T convert(String version, String data) throws RepositoryException {
 		try {
 			return JsonSerializer.deserialize(tClass, data);
 		} catch (DeserializationException e) {
@@ -180,12 +125,7 @@ public class GenericRepository<T extends BaseEntity> extends Repository {
 		}
 	}
 
-	public List<T> searchByName(List<String> searchTerms) throws RepositoryException {
-		List<UUID> ids = getSearchTermTableHelper().search("name", searchTerms);
-		return getMultipleById(ids);
-	}
-
-	private void addAuditToBatch(BatchStatement batch, T object, UUID userId, AuditMode mode) throws JsonProcessingException {
+	protected void addAuditToBatch(BatchStatement batch, T object, UUID userId, AuditMode mode) throws JsonProcessingException {
 		BoundStatement boundStatement = AuditHelper.buildAuditStatement(
 				getStatementCache(),
 				className,

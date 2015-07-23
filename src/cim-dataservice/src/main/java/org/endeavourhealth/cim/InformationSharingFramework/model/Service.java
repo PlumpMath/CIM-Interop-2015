@@ -8,18 +8,10 @@ import java.util.List;
 import java.util.UUID;
 
 public class Service extends BaseEntity{
-	private UUID id;
 	private String name;
 	private Boolean enabled;
 	private ArrayList<Integer> serviceCategory = new ArrayList<>();
 	private String organisationId;
-
-	public UUID getId() {
-		return id;
-	}
-	public void setId(UUID id) {
-		this.id = id;
-	}
 
 	public String getName() {
 		return name;
@@ -27,10 +19,6 @@ public class Service extends BaseEntity{
 
 	public String getSchemaVersion() {
 		return "1.0";
-	}
-
-	public List<EntityIdentifier> getIdentifiers() {
-		return null;
 	}
 
 	public void setName(String name) {

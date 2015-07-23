@@ -1,20 +1,14 @@
 package org.endeavourhealth.cim.InformationSharingFramework.model;
 
+import org.endeavourhealth.cim.common.models.BaseEntity;
+
 import java.util.ArrayList;
 
-public class DataSetCollection {
-	private Integer id;
+public class DatasetCollection extends BaseEntity {
 	private String name;
 	private String description;
 	private ArrayList<String> searchTerms = new ArrayList<>();
 	private ArrayList<Integer> dataSets = new ArrayList<>();
-
-	public Integer getId() {
-		return id;
-	}
-	public void setId(Integer id) {
-		this.id = id;
-	}
 
 	public String getName() {
 		return name;
@@ -36,5 +30,10 @@ public class DataSetCollection {
 
 	public ArrayList<Integer> getDataSets() {
 		return dataSets;
+	}
+
+	@Override
+	public String getSchemaVersion() {
+		return "1.0";
 	}
 }

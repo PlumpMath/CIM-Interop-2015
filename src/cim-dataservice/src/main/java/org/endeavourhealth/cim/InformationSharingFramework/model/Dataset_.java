@@ -2,7 +2,7 @@ package org.endeavourhealth.cim.InformationSharingFramework.model;
 
 import java.util.ArrayList;
 
-public class DataSet {
+public class Dataset {
 	private Integer id;
 	private String name;
 	private String description;

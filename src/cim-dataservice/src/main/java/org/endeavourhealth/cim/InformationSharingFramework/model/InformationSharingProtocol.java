@@ -9,19 +9,15 @@ import java.util.List;
 import java.util.UUID;
 
 public class InformationSharingProtocol extends BaseEntity {
-	private UUID id;
 	private String name;
 	private String description;
 	private Boolean enabled;
 	private ConsentModel consentModel;
 	private UUID derivedFromId;
-	private ArrayList<Integer> publisherProfiles = new ArrayList<>();
-	private ArrayList<Integer> subscriberProfiles = new ArrayList<>();
+	private ArrayList<UUID> publisherProfiles = new ArrayList<>();
+	private ArrayList<UUID> subscriberProfiles = new ArrayList<>();
 	private ArrayList<UUID> publisherSharingAgreements = new ArrayList<>();
 	private ArrayList<UUID> subscriberSharingAgreements = new ArrayList<>();
-
-	public UUID getId() { return id; }
-	public void setId(UUID id) { this.id = id; }
 
 	public String getName() {
 		return name;
@@ -29,10 +25,6 @@ public class InformationSharingProtocol extends BaseEntity {
 
 	public String getSchemaVersion() {
 		return "1.0";
-	}
-
-	public List<EntityIdentifier> getIdentifiers() {
-		return null;
 	}
 
 	public void setName(String name) {
@@ -68,11 +60,11 @@ public class InformationSharingProtocol extends BaseEntity {
 	}
 	public InformationSharingProtocol getDerivedFrom() { return ISFManager.Instance().getInformationSharingProtocol(derivedFromId); }
 
-	public ArrayList<Integer> getPublisherProfiles() {
+	public ArrayList<UUID> getPublisherProfiles() {
 		return publisherProfiles;
 	}
 
-	public ArrayList<Integer> getSubscriberProfiles() {
+	public ArrayList<UUID> getSubscriberProfiles() {
 		return subscriberProfiles;
 	}
 

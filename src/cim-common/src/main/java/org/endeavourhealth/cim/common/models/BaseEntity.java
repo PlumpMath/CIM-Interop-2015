@@ -1,11 +1,17 @@
 package org.endeavourhealth.cim.common.models;
 
-import java.util.List;
 import java.util.UUID;
 
 public abstract class BaseEntity {
-	public abstract UUID getId();
-	public abstract String getName();
+	private UUID id;
 	public abstract String getSchemaVersion();
-	public abstract List<EntityIdentifier> getIdentifiers();
+
+	public UUID getId() {
+		return id;
+	}
+
+	public void setId(UUID id) {
+		this.id = id;
+	}
+
 }

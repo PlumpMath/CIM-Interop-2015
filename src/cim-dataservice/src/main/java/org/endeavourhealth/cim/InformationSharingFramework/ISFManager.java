@@ -40,8 +40,7 @@ public class ISFManager {
 	public PublisherProfile getPublisherProfile(Integer id) { return null; }
 	public SubscriberProfile getSubscriberProfile(Integer id) { return null; }
 	public Service getService(Integer id) { return null; }
-	public DataSetCollection getDataSetCollection(Integer id) { return null; }
-	public DataSet getDataSet(Integer id) { return null; }
+	public Dataset getDataSet(Integer id) { return null; }
 	public List<InformationSharingProtocol> getRelevantProtocols(String publisherOdsCode, String subscriberApiKey) throws RepositoryException {
 		UUID publisherServiceId = serviceByOrganisationRepository.getById(publisherOdsCode).getServices().get(0);
 		UUID subscriberServiceId = serviceByOrganisationRepository.getById(subscriberApiKey).getServices().get(0);

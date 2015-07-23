@@ -8,19 +8,11 @@ import java.util.List;
 import java.util.UUID;
 
 public class SharingAgreement extends BaseEntity {
-	private UUID id;
 	private String name;
 	private List<EntityIdentifier> identifiers;
 	private Integer serviceId;
 	private UUID technicalInterfaceId;
 	private Boolean active;
-
-	public UUID getId() {
-		return id;
-	}
-	public void setId(UUID id) {
-		this.id = id;
-	}
 
 	public String getName() {
 		return name;
@@ -30,11 +22,6 @@ public class SharingAgreement extends BaseEntity {
 	}
 
 	public String getSchemaVersion() { return "1.0"; }
-
-	public List<EntityIdentifier> getIdentifiers() {
-		return identifiers;
-	}
-	public void setIdentifiers(List<EntityIdentifier> identifiers) { this.identifiers = identifiers; }
 
 	public Integer getServiceId() {
 		return serviceId;
