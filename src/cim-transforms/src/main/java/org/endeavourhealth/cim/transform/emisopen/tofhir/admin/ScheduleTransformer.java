@@ -126,7 +126,7 @@ public class ScheduleTransformer {
 
                     if (!TextUtils.isNullOrTrimmedEmpty(id2))
                         if (idGuidMap.containsKey(id2))
-                            schedule.setActor(ReferenceHelper.createReference(actorResourceType, idGuidMap.get(id2)));
+                            extension.setValue(ReferenceHelper.createReference(actorResourceType, idGuidMap.get(id2)));
                     }
                 }
             }
