@@ -36,7 +36,7 @@
                     "demographics"
                 ],
                 "summary":"Trace person by NHS number",
-                "description": "Trace registered patients linked to a person <br/><br/><u>Examples</u>:<br/><br/>https://endeavour-cim.cloudapp.net/CIM_war/v0.1/Person/$trace?identifier=NHS|6980086397",
+                "description": "Trace registered patients linked to a person.",
                 "produces": [
                     "application/json"
                 ],
@@ -86,7 +86,7 @@
                     "demographics"
                 ],
                 "summary":"Trace person by demographics",
-                "description": "Trace registered patients linked to a person <br/><br/><u>Examples</u>:<br/><br/>https://endeavour-cim.cloudapp.net/CIM_war/v0.1/Person/$trace?surname=Smith&dob=01/01/1980&gender=male",
+                "description": "Trace registered patients linked to a person.",
                 "produces": [
                     "application/json"
                 ],
@@ -153,7 +153,7 @@
                     "demographics"
                 ],
                 "summary":"Get patient by ID",
-                "description": "Get Patient Demographic Record By ID<br/><br/><u>Examples</u>:<br/><br/>https://endeavour-cim.cloudapp.net/CIM_war/v0.1/Z99999/Patient/99d30432-33fe-4c93-84f9-92cc1961f417<br/>http://endeavour-cim.cloudapp.net/CIM_war/v0.1/Z99999/Patient/1234",
+                "description": "Get Patient Demographic Record By ID",
                 "produces": [
                     "application/json"
                 ],
@@ -210,7 +210,7 @@
                     "demographics"
                 ],
                 "summary":"Get patient by NHS number",
-                "description": "Get Patient Demographic Record By NHS Number<br/><br/><u>Examples</u>:<br/><br/>https://endeavour-cim.cloudapp.net/CIM_war/v0.1/Z99999/Patient?identifier=NHS|6980086397",
+                "description": "Get Patient Demographic Record By NHS Number",
                 "produces": [
                     "application/json"
                 ],
@@ -264,7 +264,7 @@
                     "demographics"
                 ],
                 "summary":"Get all patients",
-                "description": "Get Patient Demographic Records for All Patients<br/><br/><u>Examples</u>:<br/><br/>https://endeavour-cim.cloudapp.net/CIM_war/v0.1/Z99999/Patient",
+                "description": "Get Patient Demographic Records for All Patients",
                 "produces": [
                     "application/json"
                 ],
@@ -311,7 +311,7 @@
                     "demographics"
                 ],
                 "summary":"Get all active patients",
-                "description": "Get Patient Demographic Records for All ACTIVE Patients<br/><br/><u>Examples</u>:<br/><br/>https://endeavour-cim.cloudapp.net/CIM_war/v0.1/Z99999/Patient?active=true",
+                "description": "Get Patient Demographic Records for All ACTIVE Patients",
                 "produces": [
                     "application/json"
                 ],
@@ -358,7 +358,7 @@
                     "demographics"
                 ],
                 "summary":"Get changed patients",
-                "description": "Get Patient Demographic Records for All ACTIVE Patients that have had a record update since the date specified.<br/><br/><u>Examples</u>:<br/><br/>https://endeavour-cim.cloudapp.net/CIM_war/v0.1/Z99999/Patient?_lastUpdated=>2015-05-20&active=true",
+                "description": "Get Patient Demographic Records for All ACTIVE Patients that have had a record update since the date specified.",
                 "produces": [
                     "application/json"
                 ],
@@ -412,7 +412,7 @@
                     "demographics"
                 ],
                 "summary":"Subscribe to patient changes",
-                "description": "The subscription resource is used to define a push based subscription from a server to another system. Once a subscription is registered with the server, the server checks every resource that is created or updated, and if the resource matches the given criteria, it sends a message on the defined 'channel' so that another system is able to take an appropriate action.<br/><br/><u>Examples</u>:<br/><br/>https://endeavour-cim.cloudapp.net/CIM_war/v0.1/Z99999/Subscription/99d30432-33fe-4c93-84f9-92cc1961f417",
+                "description": "The subscription resource is used to define a push based subscription from a server to another system. Once a subscription is registered with the server, the server checks every resource that is created or updated, and if the resource matches the given criteria, it sends a message on the defined 'channel' so that another system is able to take an appropriate action.",
                 "produces": [
                     "application/json"
                 ],
@@ -478,7 +478,7 @@
                     "clinical"
                 ],
                 "summary":"Get clinical record by patient ID",
-                "description": "This operation is used to return all the information related to the patient described in the resource on which this operation is invoked. Returns all resources that it has that are in the patient compartment for the identified patient, and any resource referenced from those, excluding binaries and attachments.<br/><br/><u>Examples</u>:<br/><br/>https://endeavour-cim.cloudapp.net/CIM_war/v0.1/Z99999/Patient/1234/$everythingnobinary",
+                "description": "This operation is used to return all the information related to the patient described in the resource on which this operation is invoked. Returns all resources that it has that are in the patient compartment for the identified patient, and any resource referenced from those, excluding binaries and attachments.",
                 "produces": [
                     "application/json"
                 ],
@@ -532,7 +532,7 @@
                     "clinical"
                 ],
                 "summary":"Get clinical document by ID",
-                "description": "Get Binary Document by Document ID<br/><br/><u>Examples</u>:<br/><br/>https://endeavour-cim.cloudapp.net/CIM_war/v0.1/Z99999/Binary/99d30432-33fe-4c93-84f9-92cc1961f417",
+                "description": "Get Binary Document by Document ID",
                 "produces": [
                     "application/json"
                 ],
@@ -589,7 +589,7 @@
                     "clinical"
                 ],
                 "summary":"Get medication prescriptions by patient ID",
-                "description": "Get Patient Medication Prescriptions By Patient ID<br/><br/><u>Examples</u>:<br/><br/>https://endeavour-cim.cloudapp.net/CIM_war/v0.1/Z99999/Patient/1234/MedicationPrescription<br/>https://endeavour-cim.cloudapp.net/CIM_war/v0.1/Z99999/Patient/1234/MedicationPrescription?datewritten=2015-04-01&datewritten=2015-05-30",
+                "description": "Get Patient Medication Prescriptions By Patient ID",
                 "produces": [
                     "application/json"
                 ],
@@ -650,7 +650,7 @@
                     "clinical"
                 ],
                 "summary":"Get conditions by patient ID",
-                "description": "Get Patient Conditions (Problems) By Patient ID<br/><br/><u>Examples</u>:<br/><br/>https://endeavour-cim.cloudapp.net/CIM_war/v0.1/Z99999/Patient/1234/Condition<br/>https://endeavour-cim.cloudapp.net/CIM_war/v0.1/Z99999/Patient/1234/Condition?code=snomed|39065001",
+                "description": "Get Patient Conditions (Problems) By Patient ID",
                 "produces": [
                     "application/json"
                 ],
@@ -709,7 +709,7 @@
                     "clinical"
                 ],
                 "summary":"Add condition to patient",
-                "description": "Add New Condition To Patient Record<br/><br/><u>Examples</u>:<br/><br/>https://endeavour-cim.cloudapp.net/CIM_war/v0.1/Z99999/Patient/1234/Condition",
+                "description": "Add New Condition To Patient Record",
                 "produces": [
                     "application/json"
                 ],
@@ -775,7 +775,7 @@
                     "clinical"
                 ],
                 "summary":"Get immunisations by patient ID",
-                "description": "Get Patient Immunisations By Patient ID<br/><br/><u>Examples</u>:<br/><br/>https://endeavour-cim.cloudapp.net/CIM_war/v0.1/Z99999/Patient/1234/Immunization<br/>https://endeavour-cim.cloudapp.net/CIM_war/v0.1/Z99999/Patient/1234/Immunization?date=2015-04-01&date=2015-05-30",
+                "description": "Get Patient Immunisations By Patient ID",
                 "produces": [
                     "application/json"
                 ],
@@ -836,7 +836,7 @@
                     "clinical"
                 ],
                 "summary":"Get allergies by patient ID",
-                "description": "Get Patient Allergies By Patient ID<br/><br/><u>Examples</u>:<br/><br/>https://endeavour-cim.cloudapp.net/CIM_war/v0.1/Z99999/Patient/1234/AllergyIntolerance<br/>https://endeavour-cim.cloudapp.net/CIM_war/v0.1/Z99999/Patient/1234/AllergyIntolerance?criticality=high",
+                "description": "Get Patient Allergies By Patient ID",
                 "produces": [
                     "application/json"
                 ],
@@ -906,7 +906,7 @@
                     "administrative"
                 ],
                 "summary":"Get appointment schedules",
-                "description": "Get Available Appointment Schedules.<br/><br/>When checking availability for an appointment, first check what schedules are applicable, then check for available slots within these schedules.<br/><br/><u>Examples</u>:<br/><br/>https://endeavour-cim.cloudapp.net/CIM_war/v0.1/Z99999/Schedule?date=2015-04-01&date=2015-05-30<br/>https://endeavour-cim.cloudapp.net/CIM_war/v0.1/Z99999/Schedule?actor:Practitioner=G12345",
+                "description": "Get Available Appointment Schedules.",
                 "produces": [
                     "application/json"
                 ],
@@ -969,7 +969,7 @@
                     "administrative"
                 ],
                 "summary":"Get appointment slots",
-                "description": "Get slots of time on a schedule that may be available for booking appointments.<br/><br/><u>Examples</u>:<br/><br/>https://endeavour-cim.cloudapp.net/CIM_war/v0.1/Z99999/Slot?schedule=1234&start=2015-06-01T00:00:00",
+                "description": "Get slots of time on a schedule that may be available for booking appointments.",
                 "produces": [
                     "application/json"
                 ],
@@ -1208,7 +1208,7 @@
                     "administrative"
                 ],
                 "summary":"Get appointments by patient",
-                "description": "Get Patient Appointments By Patient ID<br/><br/><u>Examples</u>:<br/><br/>https://endeavour-cim.cloudapp.net/CIM_war/v0.1/Z99999/Appointment?patient=1234&date=2015",
+                "description": "Get Patient Appointments By Patient ID",
                 "produces": [
                     "application/json"
                 ],
