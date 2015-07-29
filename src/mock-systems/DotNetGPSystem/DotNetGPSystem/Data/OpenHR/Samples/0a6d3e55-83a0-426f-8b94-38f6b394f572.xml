@@ -1,12 +1,12 @@
-<?xml version="1.0"?>
-<openHealthRecord xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" schemaVersion="1.3.0" xmlns="http://www.e-mis.com/emisopen">
+<?xml version="1.0" encoding="utf-16"?>
+<openHealthRecord xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.e-mis.com/emisopen">
   <id>0a6d3e55-83a0-426f-8b94-38f6b394f572</id>
   <creationTime>2010-05-09T00:00:00+01:00</creationTime>
   <author>
     <system>
       <systemType>EMISWEB</systemType>
     </system>
-    <organisation>07187750-1F3B-4438-887A-9A842F63B5D0</organisation>
+    <organisation>07187750-1f3b-4438-887a-9a842f63b5d0</organisation>
   </author>
   <contentSpecification>
     <specification>37241000000102</specification>
@@ -97,7 +97,7 @@
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <caseloadPatient updateMode="add">
         <id>0a6d3e55-83a0-426f-8b94-38f6b394f572</id>
-        <organisation>07187750-1F3B-4438-887A-9A842F63B5D0</organisation>
+        <organisation>07187750-1f3b-4438-887a-9a842f63b5d0</organisation>
         <dateRecorded>2006-03-31T00:00:00</dateRecorded>
         <patientStatus>
           <status>6</status>
@@ -120,7 +120,7 @@
       </caseloadPatient>
       <caseloadPatientHistory updateMode="add">
         <id>b09c690e-2054-4fc7-bd30-e37155bd7856</id>
-        <organisation>07187750-1F3B-4438-887A-9A842F63B5D0</organisation>
+        <organisation>07187750-1f3b-4438-887a-9a842f63b5d0</organisation>
         <dateRecorded>2006-03-23T00:00:00</dateRecorded>
         <patientStatus>
           <status>5</status>
@@ -142,7 +142,7 @@
       </caseloadPatientHistory>
       <caseloadPatientHistory updateMode="add">
         <id>f2f9696c-5233-49df-bb6e-5217e479db5c</id>
-        <organisation>07187750-1F3B-4438-887A-9A842F63B5D0</organisation>
+        <organisation>07187750-1f3b-4438-887a-9a842f63b5d0</organisation>
         <dateRecorded>2006-03-07T00:00:00</dateRecorded>
         <patientStatus>
           <status>4</status>
@@ -164,7 +164,7 @@
       </caseloadPatientHistory>
       <caseloadPatientHistory updateMode="add">
         <id>288357e8-6aa6-48af-9279-cc723429cc8f</id>
-        <organisation>07187750-1F3B-4438-887A-9A842F63B5D0</organisation>
+        <organisation>07187750-1f3b-4438-887a-9a842f63b5d0</organisation>
         <dateRecorded>2006-02-24T14:54:23</dateRecorded>
         <patientStatus>
           <status>3</status>
@@ -186,7 +186,7 @@
       </caseloadPatientHistory>
       <caseloadPatientHistory updateMode="add">
         <id>2577fb49-24cb-4ce4-964c-40818abbaa9c</id>
-        <organisation>07187750-1F3B-4438-887A-9A842F63B5D0</organisation>
+        <organisation>07187750-1f3b-4438-887a-9a842f63b5d0</organisation>
         <dateRecorded>2006-02-10T00:00:00</dateRecorded>
         <patientStatus>
           <status>3</status>
@@ -224,7 +224,7 @@
       <openDate>2006-10-01T00:00:00</openDate>
     </organisation>
     <organisation updateMode="add">
-      <id>07187750-1F3B-4438-887A-9A842F63B5D0</id>
+      <id>07187750-1f3b-4438-887a-9a842f63b5d0</id>
       <name>Yankee Surgery</name>
       <organisationType codeSystem="2.16.840.1.113883.2.1.6.2" displayName="General Practice" code="" />
       <speciality codeSystem="2.16.840.1.113883.2.1.6.2" displayName="General Medical Practice" code="" />
@@ -344,30 +344,30 @@
     </user>
     <role updateMode="add">
       <id>ea801c6a-425c-083f-6b9e-83123fcb829c</id>
-      <name>Receptionist Al-shifa</name>
+      <name>Receptionist</name>
       <userCategory codeSystem="2.16.840.1.113883.2.1.6.2" displayName="Includes 'Administrative Assistant'. 'Ward Clerk' (an NCRS type role) is also available." code="" />
-      <organisation>07187750-1F3B-4438-887A-9A842F63B5D0</organisation>
+      <organisation>07187750-1f3b-4438-887a-9a842f63b5d0</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
     </role>
     <role updateMode="add">
       <id>2fbeb298-d2a1-4398-a5c8-0e98c36ffc0f</id>
       <name>Practice Nurse</name>
       <userCategory codeSystem="2.16.840.1.113883.2.1.6.2" displayName="Include only those who are Registered and practicing as a 'District Nurse', 'Health Visitor', 'School Nurse', 'Practice Nurse', 'Occupational Health Nurse', 'Community Learning Disabilities Nurse', 'Community Mental Health Nurse', 'Community Paediatric Nurse', and 'Community Nurse' (for generic Community Nurses)." code="" />
-      <organisation>07187750-1F3B-4438-887A-9A842F63B5D0</organisation>
+      <organisation>07187750-1f3b-4438-887a-9a842f63b5d0</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
     </role>
     <role updateMode="add">
       <id>63115222-7fad-9016-12ed-1091def75a50</id>
       <name>Locum</name>
       <userCategory codeSystem="2.16.840.1.113883.2.1.6.2" displayName="General Medical Practitioner" code="" />
-      <organisation>07187750-1F3B-4438-887A-9A842F63B5D0</organisation>
+      <organisation>07187750-1f3b-4438-887a-9a842f63b5d0</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
     </role>
     <role updateMode="add">
       <id>63115222-7fad-9016-12ed-1091def75a50</id>
       <name>Principal</name>
       <userCategory codeSystem="2.16.840.1.113883.2.1.6.2" displayName="General Medical Practitioner" code="" />
-      <organisation>07187750-1F3B-4438-887A-9A842F63B5D0</organisation>
+      <organisation>07187750-1f3b-4438-887a-9a842f63b5d0</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
     </role>
     <userInRole updateMode="add">
@@ -475,7 +475,7 @@
       <availabilityTimeStamp>2006-03-07T00:00:00</availabilityTimeStamp>
       <authorisingUserInRole>cf1a5b91-d02d-49e4-9f52-9bc961628aaa</authorisingUserInRole>
       <enteredByUserInRole>cf1a5b91-d02d-49e4-9f52-9bc961628aaa</enteredByUserInRole>
-      <organisation>07187750-1F3B-4438-887A-9A842F63B5D0</organisation>
+      <organisation>07187750-1f3b-4438-887a-9a842f63b5d0</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <consultationType>GP</consultationType>
       <locationType codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Main Surgery" code="1503371000006105" />
@@ -594,7 +594,7 @@
       <availabilityTimeStamp>2006-03-07T00:00:00</availabilityTimeStamp>
       <authorisingUserInRole>cf1a5b91-d02d-49e4-9f52-9bc961628aaa</authorisingUserInRole>
       <enteredByUserInRole>cf1a5b91-d02d-49e4-9f52-9bc961628aaa</enteredByUserInRole>
-      <organisation>07187750-1F3B-4438-887A-9A842F63B5D0</organisation>
+      <organisation>07187750-1f3b-4438-887a-9a842f63b5d0</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <consultationType>GP</consultationType>
       <locationType codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Main Surgery" code="1503371000006105" />
@@ -643,7 +643,7 @@
       <availabilityTimeStamp>2006-04-11T00:00:00</availabilityTimeStamp>
       <authorisingUserInRole>316d34eb-f495-4c91-b814-364c69b1a541</authorisingUserInRole>
       <enteredByUserInRole>316d34eb-f495-4c91-b814-364c69b1a541</enteredByUserInRole>
-      <organisation>07187750-1F3B-4438-887A-9A842F63B5D0</organisation>
+      <organisation>07187750-1f3b-4438-887a-9a842f63b5d0</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <consultationType>GP</consultationType>
       <locationType codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Externally Entered" code="37291000000107" />
@@ -662,7 +662,7 @@
       <availabilityTimeStamp>2006-09-26T00:00:00</availabilityTimeStamp>
       <authorisingUserInRole>cf1a5b91-d02d-49e4-9f52-9bc961628aaa</authorisingUserInRole>
       <enteredByUserInRole>cf1a5b91-d02d-49e4-9f52-9bc961628aaa</enteredByUserInRole>
-      <organisation>07187750-1F3B-4438-887A-9A842F63B5D0</organisation>
+      <organisation>07187750-1f3b-4438-887a-9a842f63b5d0</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <consultationType>GP</consultationType>
       <locationType codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Main Surgery" code="1503371000006105" />
@@ -711,7 +711,7 @@
       <availabilityTimeStamp>2006-10-27T00:00:00</availabilityTimeStamp>
       <authorisingUserInRole>316d34eb-f495-4c91-b814-364c69b1a541</authorisingUserInRole>
       <enteredByUserInRole>316d34eb-f495-4c91-b814-364c69b1a541</enteredByUserInRole>
-      <organisation>07187750-1F3B-4438-887A-9A842F63B5D0</organisation>
+      <organisation>07187750-1f3b-4438-887a-9a842f63b5d0</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <consultationType>GP</consultationType>
       <locationType codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Externally Entered" code="37291000000107" />
@@ -730,7 +730,7 @@
       <availabilityTimeStamp>2008-01-29T00:00:00</availabilityTimeStamp>
       <authorisingUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</authorisingUserInRole>
       <enteredByUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</enteredByUserInRole>
-      <organisation>07187750-1F3B-4438-887A-9A842F63B5D0</organisation>
+      <organisation>07187750-1f3b-4438-887a-9a842f63b5d0</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <consultationType>GP</consultationType>
       <locationType codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Main Surgery" code="1503371000006105" />
@@ -759,7 +759,7 @@
       <availabilityTimeStamp>2008-01-31T00:00:00</availabilityTimeStamp>
       <authorisingUserInRole>893001d7-07fa-42d8-a303-c61fd99c874b</authorisingUserInRole>
       <enteredByUserInRole>893001d7-07fa-42d8-a303-c61fd99c874b</enteredByUserInRole>
-      <organisation>07187750-1F3B-4438-887A-9A842F63B5D0</organisation>
+      <organisation>07187750-1f3b-4438-887a-9a842f63b5d0</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <consultationType>GP</consultationType>
       <locationType codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Main Surgery" code="1503371000006105" />
@@ -778,7 +778,7 @@
       <availabilityTimeStamp>2008-09-25T00:00:00</availabilityTimeStamp>
       <authorisingUserInRole>bdd39c67-dee0-474c-a3fe-2dcd09810aaf</authorisingUserInRole>
       <enteredByUserInRole>bdd39c67-dee0-474c-a3fe-2dcd09810aaf</enteredByUserInRole>
-      <organisation>07187750-1F3B-4438-887A-9A842F63B5D0</organisation>
+      <organisation>07187750-1f3b-4438-887a-9a842f63b5d0</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <consultationType>GP</consultationType>
       <locationType codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Externally Entered" code="37291000000107" />
@@ -802,7 +802,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Asthma not disturbing sleep" code="170635006" />
       </code>
       <displayTerm>Asthma not disturbing sleep</displayTerm>
-      <organisation>07187750-1F3B-4438-887A-9A842F63B5D0</organisation>
+      <organisation>07187750-1f3b-4438-887a-9a842f63b5d0</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation />
     </event>
@@ -818,7 +818,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="New patient health check" code="171324002" />
       </code>
       <displayTerm>New patient health check</displayTerm>
-      <organisation>07187750-1F3B-4438-887A-9A842F63B5D0</organisation>
+      <organisation>07187750-1f3b-4438-887a-9a842f63b5d0</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation />
     </event>
@@ -834,7 +834,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Systolic blood pressure" code="163030003" />
       </code>
       <displayTerm>Systolic blood pressure</displayTerm>
-      <organisation>07187750-1F3B-4438-887A-9A842F63B5D0</organisation>
+      <organisation>07187750-1f3b-4438-887a-9a842f63b5d0</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation>
         <value>
@@ -860,7 +860,7 @@
       <associatedText associatedTextType="POST">
         <value> Generalised non-specific abdominal tenderness</value>
       </associatedText>
-      <organisation>07187750-1F3B-4438-887A-9A842F63B5D0</organisation>
+      <organisation>07187750-1f3b-4438-887a-9a842f63b5d0</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation />
     </event>
@@ -876,7 +876,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Diastolic blood pressure" code="163031004" />
       </code>
       <displayTerm>Diastolic blood pressure</displayTerm>
-      <organisation>07187750-1F3B-4438-887A-9A842F63B5D0</organisation>
+      <organisation>07187750-1f3b-4438-887a-9a842f63b5d0</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation>
         <value>
@@ -899,7 +899,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Teetotaller" code="105542008" />
       </code>
       <displayTerm>Teetotaller</displayTerm>
-      <organisation>07187750-1F3B-4438-887A-9A842F63B5D0</organisation>
+      <organisation>07187750-1f3b-4438-887a-9a842f63b5d0</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation />
     </event>
@@ -915,7 +915,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Enjoys heavy exercise" code="160633003" />
       </code>
       <displayTerm>Enjoys heavy exercise</displayTerm>
-      <organisation>07187750-1F3B-4438-887A-9A842F63B5D0</organisation>
+      <organisation>07187750-1f3b-4438-887a-9a842f63b5d0</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation />
     </event>
@@ -931,7 +931,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Peak exp. flow rate: PEFR/PFR" code="29893006" />
       </code>
       <displayTerm>Peak exp. flow rate: PEFR/PFR</displayTerm>
-      <organisation>07187750-1F3B-4438-887A-9A842F63B5D0</organisation>
+      <organisation>07187750-1f3b-4438-887a-9a842f63b5d0</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation>
         <value>
@@ -954,7 +954,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Not using inhaled steroids" code="170660006" />
       </code>
       <displayTerm>Not using inhaled steroids</displayTerm>
-      <organisation>07187750-1F3B-4438-887A-9A842F63B5D0</organisation>
+      <organisation>07187750-1f3b-4438-887a-9a842f63b5d0</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation />
     </event>
@@ -970,7 +970,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="O/E - weight" code="162763007" />
       </code>
       <displayTerm>O/E - weight</displayTerm>
-      <organisation>07187750-1F3B-4438-887A-9A842F63B5D0</organisation>
+      <organisation>07187750-1f3b-4438-887a-9a842f63b5d0</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation>
         <value>
@@ -993,7 +993,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="O/E - height" code="162755006" />
       </code>
       <displayTerm>O/E - height</displayTerm>
-      <organisation>07187750-1F3B-4438-887A-9A842F63B5D0</organisation>
+      <organisation>07187750-1f3b-4438-887a-9a842f63b5d0</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation>
         <value>
@@ -1016,7 +1016,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Urine glucose test negative" code="167261002" />
       </code>
       <displayTerm>Urine glucose test negative</displayTerm>
-      <organisation>07187750-1F3B-4438-887A-9A842F63B5D0</organisation>
+      <organisation>07187750-1f3b-4438-887a-9a842f63b5d0</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation />
     </event>
@@ -1032,7 +1032,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Asthma not limiting activities" code="170638008" />
       </code>
       <displayTerm>Asthma not limiting activities</displayTerm>
-      <organisation>07187750-1F3B-4438-887A-9A842F63B5D0</organisation>
+      <organisation>07187750-1f3b-4438-887a-9a842f63b5d0</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation />
     </event>
@@ -1048,7 +1048,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Urine protein test negative" code="167273002" />
       </code>
       <displayTerm>Urine protein test negative</displayTerm>
-      <organisation>07187750-1F3B-4438-887A-9A842F63B5D0</organisation>
+      <organisation>07187750-1f3b-4438-887a-9a842f63b5d0</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation />
     </event>
@@ -1067,7 +1067,7 @@
       <associatedText associatedTextType="POST">
         <value> Chest clear</value>
       </associatedText>
-      <organisation>07187750-1F3B-4438-887A-9A842F63B5D0</organisation>
+      <organisation>07187750-1f3b-4438-887a-9a842f63b5d0</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation />
     </event>
@@ -1083,7 +1083,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Never smoked tobacco" code="266919005" />
       </code>
       <displayTerm>Never smoked tobacco</displayTerm>
-      <organisation>07187750-1F3B-4438-887A-9A842F63B5D0</organisation>
+      <organisation>07187750-1f3b-4438-887a-9a842f63b5d0</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation />
     </event>
@@ -1099,7 +1099,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Asthma never causes daytime symptoms" code="370208006" />
       </code>
       <displayTerm>Asthma never causes daytime symptoms</displayTerm>
-      <organisation>07187750-1F3B-4438-887A-9A842F63B5D0</organisation>
+      <organisation>07187750-1f3b-4438-887a-9a842f63b5d0</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation />
     </event>
@@ -1115,7 +1115,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="O/E - blood pressure reading" code="163020007" />
       </code>
       <displayTerm>O/E Blood Pressure Reading</displayTerm>
-      <organisation>07187750-1F3B-4438-887A-9A842F63B5D0</organisation>
+      <organisation>07187750-1f3b-4438-887a-9a842f63b5d0</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation>
         <complexObservation>
@@ -1136,7 +1136,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Alcohol intake" code="284621000006108" />
       </code>
       <displayTerm>Alcohol intake</displayTerm>
-      <organisation>07187750-1F3B-4438-887A-9A842F63B5D0</organisation>
+      <organisation>07187750-1f3b-4438-887a-9a842f63b5d0</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation>
         <value>
@@ -1159,7 +1159,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Asthma monitoring check done" code="270442000" />
       </code>
       <displayTerm>Asthma monitoring check done</displayTerm>
-      <organisation>07187750-1F3B-4438-887A-9A842F63B5D0</organisation>
+      <organisation>07187750-1f3b-4438-887a-9a842f63b5d0</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation />
     </event>
@@ -1175,7 +1175,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Body mass index" code="60621009" />
       </code>
       <displayTerm>Body Mass Index</displayTerm>
-      <organisation>07187750-1F3B-4438-887A-9A842F63B5D0</organisation>
+      <organisation>07187750-1f3b-4438-887a-9a842f63b5d0</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation>
         <value>
@@ -1197,7 +1197,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Bronchodilators used a maximum of once daily" code="170630001" />
       </code>
       <displayTerm>Bronchodilators used a maximum of once daily</displayTerm>
-      <organisation>07187750-1F3B-4438-887A-9A842F63B5D0</organisation>
+      <organisation>07187750-1f3b-4438-887a-9a842f63b5d0</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation />
     </event>
@@ -1213,7 +1213,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Inhaler technique - good" code="170625000" />
       </code>
       <displayTerm>Inhaler technique - good</displayTerm>
-      <organisation>07187750-1F3B-4438-887A-9A842F63B5D0</organisation>
+      <organisation>07187750-1f3b-4438-887a-9a842f63b5d0</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation />
     </event>
@@ -1229,7 +1229,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Last menstrual period -1st day" code="161713000" />
       </code>
       <displayTerm>Last menstrual period -1st day</displayTerm>
-      <organisation>07187750-1F3B-4438-887A-9A842F63B5D0</organisation>
+      <organisation>07187750-1f3b-4438-887a-9a842f63b5d0</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation />
     </event>
@@ -1245,7 +1245,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Diastolic blood pressure" code="163031004" />
       </code>
       <displayTerm>Diastolic blood pressure</displayTerm>
-      <organisation>07187750-1F3B-4438-887A-9A842F63B5D0</organisation>
+      <organisation>07187750-1f3b-4438-887a-9a842f63b5d0</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation>
         <value>
@@ -1268,7 +1268,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Cervical smear taken" code="439958008" />
       </code>
       <displayTerm>Cervical smear taken</displayTerm>
-      <organisation>07187750-1F3B-4438-887A-9A842F63B5D0</organisation>
+      <organisation>07187750-1f3b-4438-887a-9a842f63b5d0</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation />
     </event>
@@ -1287,7 +1287,7 @@
       <associatedText associatedTextType="POST">
         <value> To come in 1 week time</value>
       </associatedText>
-      <organisation>07187750-1F3B-4438-887A-9A842F63B5D0</organisation>
+      <organisation>07187750-1f3b-4438-887a-9a842f63b5d0</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation />
     </event>
@@ -1303,7 +1303,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Systolic blood pressure" code="163030003" />
       </code>
       <displayTerm>Systolic blood pressure</displayTerm>
-      <organisation>07187750-1F3B-4438-887A-9A842F63B5D0</organisation>
+      <organisation>07187750-1f3b-4438-887a-9a842f63b5d0</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation>
         <value>
@@ -1329,7 +1329,7 @@
       <associatedText associatedTextType="POST">
         <value> Frusemide Tablets 40 mg od 28 tablets</value>
       </associatedText>
-      <organisation>07187750-1F3B-4438-887A-9A842F63B5D0</organisation>
+      <organisation>07187750-1f3b-4438-887a-9a842f63b5d0</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation>
         <referenceDocument>f18d8006-0fc0-4baf-bac2-afb986c04bd3</referenceDocument>
@@ -1347,7 +1347,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="O/E - blood pressure reading" code="163020007" />
       </code>
       <displayTerm>O/E Blood Pressure Reading</displayTerm>
-      <organisation>07187750-1F3B-4438-887A-9A842F63B5D0</organisation>
+      <organisation>07187750-1f3b-4438-887a-9a842f63b5d0</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation>
         <complexObservation>
@@ -1368,7 +1368,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Cx. smear: repeat 6 months" code="168433008" />
       </code>
       <displayTerm>Cx. smear: repeat 6 months</displayTerm>
-      <organisation>07187750-1F3B-4438-887A-9A842F63B5D0</organisation>
+      <organisation>07187750-1f3b-4438-887a-9a842f63b5d0</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation />
     </event>
@@ -1384,7 +1384,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Cerv.smear: borderline changes" code="168410007" />
       </code>
       <displayTerm>Cerv.smear: borderline changes</displayTerm>
-      <organisation>07187750-1F3B-4438-887A-9A842F63B5D0</organisation>
+      <organisation>07187750-1f3b-4438-887a-9a842f63b5d0</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation />
     </event>
@@ -1400,7 +1400,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="O/E-vaginal speculum exam. NAD" code="163413007" />
       </code>
       <displayTerm>O/E-vaginal speculum exam. NAD</displayTerm>
-      <organisation>07187750-1F3B-4438-887A-9A842F63B5D0</organisation>
+      <organisation>07187750-1f3b-4438-887a-9a842f63b5d0</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation />
     </event>
@@ -1416,7 +1416,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="O/E - no vaginal discharge" code="163423003" />
       </code>
       <displayTerm>O/E - no vaginal discharge</displayTerm>
-      <organisation>07187750-1F3B-4438-887A-9A842F63B5D0</organisation>
+      <organisation>07187750-1f3b-4438-887a-9a842f63b5d0</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation />
     </event>
@@ -1432,7 +1432,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="O/E Cervix: transitional zone seen" code="14631000006101" />
       </code>
       <displayTerm>O/E Cervix: transitional zone seen</displayTerm>
-      <organisation>07187750-1F3B-4438-887A-9A842F63B5D0</organisation>
+      <organisation>07187750-1f3b-4438-887a-9a842f63b5d0</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation />
     </event>
@@ -1448,7 +1448,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Cerv.smear: borderline changes" code="168410007" />
       </code>
       <displayTerm>Cerv.smear: borderline changes</displayTerm>
-      <organisation>07187750-1F3B-4438-887A-9A842F63B5D0</organisation>
+      <organisation>07187750-1f3b-4438-887a-9a842f63b5d0</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation />
     </event>
@@ -1467,7 +1467,7 @@
       <associatedText associatedTextType="POST">
         <value> Indigestion still very bothersome</value>
       </associatedText>
-      <organisation>07187750-1F3B-4438-887A-9A842F63B5D0</organisation>
+      <organisation>07187750-1f3b-4438-887a-9a842f63b5d0</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation />
     </event>
@@ -1483,7 +1483,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Notes summary on computer" code="184229000" />
       </code>
       <displayTerm>Notes summary on computer</displayTerm>
-      <organisation>07187750-1F3B-4438-887A-9A842F63B5D0</organisation>
+      <organisation>07187750-1f3b-4438-887a-9a842f63b5d0</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation />
     </event>
@@ -1499,7 +1499,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Last menstrual period -1st day" code="161713000" />
       </code>
       <displayTerm>Last menstrual period -1st day</displayTerm>
-      <organisation>07187750-1F3B-4438-887A-9A842F63B5D0</organisation>
+      <organisation>07187750-1f3b-4438-887a-9a842f63b5d0</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation />
     </event>
@@ -1515,7 +1515,7 @@
       <associatedText associatedTextType="POST">
         <value> Review 10 days with results or see sooner if pains worse</value>
       </associatedText>
-      <organisation>07187750-1F3B-4438-887A-9A842F63B5D0</organisation>
+      <organisation>07187750-1f3b-4438-887a-9a842f63b5d0</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation />
     </event>
@@ -1531,7 +1531,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Cervical smear result" code="269957009" />
       </code>
       <displayTerm>Advance Directive</displayTerm>
-      <organisation>07187750-1F3B-4438-887A-9A842F63B5D0</organisation>
+      <organisation>07187750-1f3b-4438-887a-9a842f63b5d0</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation>
         <referenceDocument>a164f431-136f-409a-b7e8-28edff80b573</referenceDocument>
@@ -1549,7 +1549,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Cervical smear: negative" code="269958004" />
       </code>
       <displayTerm>Cervical smear: negative</displayTerm>
-      <organisation>07187750-1F3B-4438-887A-9A842F63B5D0</organisation>
+      <organisation>07187750-1f3b-4438-887a-9a842f63b5d0</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation />
     </event>
@@ -1565,7 +1565,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="O/E Cervix: transitional zone seen" code="14631000006101" />
       </code>
       <displayTerm>O/E Cervix: transitional zone seen</displayTerm>
-      <organisation>07187750-1F3B-4438-887A-9A842F63B5D0</organisation>
+      <organisation>07187750-1f3b-4438-887a-9a842f63b5d0</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation />
     </event>
@@ -1581,7 +1581,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Cx. smear: repeat 6 months" code="168433008" />
       </code>
       <displayTerm>Cx. smear: repeat 6 months</displayTerm>
-      <organisation>07187750-1F3B-4438-887A-9A842F63B5D0</organisation>
+      <organisation>07187750-1f3b-4438-887a-9a842f63b5d0</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation />
     </event>
@@ -1597,7 +1597,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="O/E-vaginal speculum exam. NAD" code="163413007" />
       </code>
       <displayTerm>O/E-vaginal speculum exam. NAD</displayTerm>
-      <organisation>07187750-1F3B-4438-887A-9A842F63B5D0</organisation>
+      <organisation>07187750-1f3b-4438-887a-9a842f63b5d0</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation />
     </event>
@@ -1613,7 +1613,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Cervical smear taken" code="439958008" />
       </code>
       <displayTerm>Cervical smear taken</displayTerm>
-      <organisation>07187750-1F3B-4438-887A-9A842F63B5D0</organisation>
+      <organisation>07187750-1f3b-4438-887a-9a842f63b5d0</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation />
     </event>
@@ -1629,7 +1629,7 @@
       <associatedText associatedTextType="POST">
         <value> Chest clear</value>
       </associatedText>
-      <organisation>07187750-1F3B-4438-887A-9A842F63B5D0</organisation>
+      <organisation>07187750-1f3b-4438-887a-9a842f63b5d0</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation />
     </event>
@@ -1645,7 +1645,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="O/E - no vaginal discharge" code="163423003" />
       </code>
       <displayTerm>O/E - no vaginal discharge</displayTerm>
-      <organisation>07187750-1F3B-4438-887A-9A842F63B5D0</organisation>
+      <organisation>07187750-1f3b-4438-887a-9a842f63b5d0</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation />
     </event>
@@ -1664,7 +1664,7 @@
       <associatedText associatedTextType="POST">
         <value> Slime and diarrhoea continue</value>
       </associatedText>
-      <organisation>07187750-1F3B-4438-887A-9A842F63B5D0</organisation>
+      <organisation>07187750-1f3b-4438-887a-9a842f63b5d0</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation />
     </event>
@@ -1680,7 +1680,7 @@
       <associatedText associatedTextType="POST">
         <value>Pseudoephedrine Hydrochloride  Elixir  30 mg /5 ml 200 ml 10MLS TDS</value>
       </associatedText>
-      <organisation>07187750-1F3B-4438-887A-9A842F63B5D0</organisation>
+      <organisation>07187750-1f3b-4438-887a-9a842f63b5d0</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation />
     </event>
@@ -1696,7 +1696,7 @@
       <associatedText associatedTextType="POST">
         <value>Co-Codamol 8/500  Tablets   50 tablet TWO TO BE TAKEN THREE TIMES A DAY</value>
       </associatedText>
-      <organisation>07187750-1F3B-4438-887A-9A842F63B5D0</organisation>
+      <organisation>07187750-1f3b-4438-887a-9a842f63b5d0</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation />
     </event>
@@ -1712,7 +1712,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Failed encounter" code="185324002" />
       </code>
       <displayTerm>Failed encounter</displayTerm>
-      <organisation>07187750-1F3B-4438-887A-9A842F63B5D0</organisation>
+      <organisation>07187750-1f3b-4438-887a-9a842f63b5d0</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation />
     </event>
@@ -1731,7 +1731,7 @@
       <associatedText associatedTextType="POST">
         <value> Chest OK. Pretty good at the moment</value>
       </associatedText>
-      <organisation>07187750-1F3B-4438-887A-9A842F63B5D0</organisation>
+      <organisation>07187750-1f3b-4438-887a-9a842f63b5d0</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation />
     </event>
@@ -1747,7 +1747,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Cx. smear: repeat 3 months" code="168431005" />
       </code>
       <displayTerm>Cx. smear: repeat 3 months</displayTerm>
-      <organisation>07187750-1F3B-4438-887A-9A842F63B5D0</organisation>
+      <organisation>07187750-1f3b-4438-887a-9a842f63b5d0</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation />
     </event>
@@ -1766,7 +1766,7 @@
       <associatedText associatedTextType="POST">
         <value> Oral symptoms are unchanged - unable to eat etc</value>
       </associatedText>
-      <organisation>07187750-1F3B-4438-887A-9A842F63B5D0</organisation>
+      <organisation>07187750-1f3b-4438-887a-9a842f63b5d0</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation>
         <referenceDocument>ed64d002-ee20-44f6-9108-34747a8a34ea</referenceDocument>
@@ -1784,7 +1784,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Cervical smear:inadequate spec" code="168402006" />
       </code>
       <displayTerm>Cervical smear:inadequate spec</displayTerm>
-      <organisation>07187750-1F3B-4438-887A-9A842F63B5D0</organisation>
+      <organisation>07187750-1f3b-4438-887a-9a842f63b5d0</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation />
     </event>
@@ -1800,7 +1800,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Cervical smear:inadequate spec" code="168402006" />
       </code>
       <displayTerm>Cervical smear:inadequate spec</displayTerm>
-      <organisation>07187750-1F3B-4438-887A-9A842F63B5D0</organisation>
+      <organisation>07187750-1f3b-4438-887a-9a842f63b5d0</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation />
     </event>
@@ -1816,7 +1816,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Cervical neoplasia screen" code="416107004" />
       </code>
       <displayTerm>Cervical neoplasia screen</displayTerm>
-      <organisation>07187750-1F3B-4438-887A-9A842F63B5D0</organisation>
+      <organisation>07187750-1f3b-4438-887a-9a842f63b5d0</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation />
     </event>
@@ -1832,7 +1832,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Cervical neoplasia screen" code="416107004" />
       </code>
       <displayTerm>Cervical neoplasia screen</displayTerm>
-      <organisation>07187750-1F3B-4438-887A-9A842F63B5D0</organisation>
+      <organisation>07187750-1f3b-4438-887a-9a842f63b5d0</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <diary>
         <locationType codeSystem="2.16.840.1.113883.2.1.6.2" displayName="" code="" />
@@ -1850,7 +1850,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="MMR pre-school booster vaccination" code="170432003" />
       </code>
       <displayTerm>MMR pre-school booster vaccination</displayTerm>
-      <organisation>07187750-1F3B-4438-887A-9A842F63B5D0</organisation>
+      <organisation>07187750-1f3b-4438-887a-9a842f63b5d0</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <diary>
         <locationType codeSystem="2.16.840.1.113883.2.1.6.2" displayName="" code="" />
@@ -1868,7 +1868,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Co-codamol 8mg/500mg tablets" code="322307006" />
       </code>
       <displayTerm>Co-codamol 8mg/500mg tablets</displayTerm>
-      <organisation>07187750-1F3B-4438-887A-9A842F63B5D0</organisation>
+      <organisation>07187750-1f3b-4438-887a-9a842f63b5d0</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <medication>
         <expiryDate>2005-10-30</expiryDate>
@@ -1900,7 +1900,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Pseudoephedrine 30mg/5ml oral solution" code="321082007" />
       </code>
       <displayTerm>Pseudoephedrine 30mg/5ml oral solution</displayTerm>
-      <organisation>07187750-1F3B-4438-887A-9A842F63B5D0</organisation>
+      <organisation>07187750-1f3b-4438-887a-9a842f63b5d0</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <medication>
         <expiryDate>2005-10-30</expiryDate>
@@ -1932,7 +1932,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Pseudoephedrine 30mg/5ml oral solution" code="321082007" />
       </code>
       <displayTerm>Pseudoephedrine Hydrochloride  Elixir  30 mg /5 ml</displayTerm>
-      <organisation>07187750-1F3B-4438-887A-9A842F63B5D0</organisation>
+      <organisation>07187750-1f3b-4438-887a-9a842f63b5d0</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <medicationIssue>
         <medication>d4b24708-aa38-40f2-a4f2-be82de61d8bd</medication>
@@ -1961,7 +1961,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Co-codamol 8mg/500mg tablets" code="322307006" />
       </code>
       <displayTerm>Co-Codamol 8/500  Tablets  </displayTerm>
-      <organisation>07187750-1F3B-4438-887A-9A842F63B5D0</organisation>
+      <organisation>07187750-1f3b-4438-887a-9a842f63b5d0</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <medicationIssue>
         <medication>ff30dfba-19db-4e61-bb31-a88da7d1d8f0</medication>

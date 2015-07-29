@@ -1,12 +1,12 @@
-<?xml version="1.0"?>
-<openHealthRecord xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" schemaVersion="1.3.0" xmlns="http://www.e-mis.com/emisopen">
+<?xml version="1.0" encoding="utf-16"?>
+<openHealthRecord xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.e-mis.com/emisopen">
   <id>00f31b7f-424d-4478-a07c-3ec60b898916</id>
   <creationTime>2010-05-09T00:00:00+01:00</creationTime>
   <author>
     <system>
       <systemType>EMISWEB</systemType>
     </system>
-    <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+    <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
   </author>
   <contentSpecification>
     <specification>37241000000102</specification>
@@ -89,7 +89,7 @@
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <caseloadPatient updateMode="add">
         <id>00f31b7f-424d-4478-a07c-3ec60b898916</id>
-        <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+        <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
         <dateRecorded>1991-02-04T00:00:00</dateRecorded>
         <patientStatus>
           <status>6</status>
@@ -120,7 +120,7 @@
       <openDate>2006-10-01T00:00:00</openDate>
     </organisation>
     <organisation updateMode="add">
-      <id>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</id>
+      <id>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</id>
       <name>Bravo Surgery</name>
       <organisationType codeSystem="2.16.840.1.113883.2.1.6.2" displayName="General Practice" code="" />
       <speciality codeSystem="2.16.840.1.113883.2.1.6.2" displayName="General Medical Practice" code="" />
@@ -233,30 +233,30 @@
     </user>
     <role updateMode="add">
       <id>ea801c6a-425c-083f-6b9e-83123fcb829c</id>
-      <name>Receptionist Al-shifa</name>
+      <name>Receptionist</name>
       <userCategory codeSystem="2.16.840.1.113883.2.1.6.2" displayName="Includes 'Administrative Assistant'. 'Ward Clerk' (an NCRS type role) is also available." code="" />
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
     </role>
     <role updateMode="add">
       <id>2fbeb298-d2a1-4398-a5c8-0e98c36ffc0f</id>
       <name>Practice Nurse</name>
       <userCategory codeSystem="2.16.840.1.113883.2.1.6.2" displayName="Include only those who are Registered and practicing as a 'District Nurse', 'Health Visitor', 'School Nurse', 'Practice Nurse', 'Occupational Health Nurse', 'Community Learning Disabilities Nurse', 'Community Mental Health Nurse', 'Community Paediatric Nurse', and 'Community Nurse' (for generic Community Nurses)." code="" />
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
     </role>
     <role updateMode="add">
       <id>63115222-7fad-9016-12ed-1091def75a50</id>
       <name>Locum</name>
       <userCategory codeSystem="2.16.840.1.113883.2.1.6.2" displayName="General Medical Practitioner" code="" />
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
     </role>
     <role updateMode="add">
       <id>63115222-7fad-9016-12ed-1091def75a50</id>
       <name>Principal</name>
       <userCategory codeSystem="2.16.840.1.113883.2.1.6.2" displayName="General Medical Practitioner" code="" />
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
     </role>
     <userInRole updateMode="add">
@@ -352,7 +352,7 @@
       <availabilityTimeStamp>2004-10-26T00:00:00</availabilityTimeStamp>
       <authorisingUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</authorisingUserInRole>
       <enteredByUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</enteredByUserInRole>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <consultationType>GP</consultationType>
       <locationType codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Main Surgery" code="1503371000006105" />
@@ -411,7 +411,7 @@
       <availabilityTimeStamp>2005-02-21T00:00:00</availabilityTimeStamp>
       <authorisingUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</authorisingUserInRole>
       <enteredByUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</enteredByUserInRole>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <consultationType>GP</consultationType>
       <locationType codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Main Surgery" code="1503371000006105" />
@@ -435,7 +435,7 @@
       <availabilityTimeStamp>2005-06-14T00:00:00</availabilityTimeStamp>
       <authorisingUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</authorisingUserInRole>
       <enteredByUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</enteredByUserInRole>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <consultationType>GP</consultationType>
       <locationType codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Main Surgery" code="1503371000006105" />
@@ -459,7 +459,7 @@
       <availabilityTimeStamp>2005-06-15T00:00:00</availabilityTimeStamp>
       <authorisingUserInRole>cf1a5b91-d02d-49e4-9f52-9bc961628aaa</authorisingUserInRole>
       <enteredByUserInRole>cf1a5b91-d02d-49e4-9f52-9bc961628aaa</enteredByUserInRole>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <consultationType>GP</consultationType>
       <locationType codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="General Practice Surgery" code="1503371000006105" />
@@ -478,7 +478,7 @@
       <availabilityTimeStamp>2005-06-15T00:00:00</availabilityTimeStamp>
       <authorisingUserInRole>cf1a5b91-d02d-49e4-9f52-9bc961628aaa</authorisingUserInRole>
       <enteredByUserInRole>cf1a5b91-d02d-49e4-9f52-9bc961628aaa</enteredByUserInRole>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <consultationType>GP</consultationType>
       <locationType codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="General Practice Surgery" code="1503371000006105" />
@@ -507,7 +507,7 @@
       <availabilityTimeStamp>2005-06-15T00:00:00</availabilityTimeStamp>
       <authorisingUserInRole>cf1a5b91-d02d-49e4-9f52-9bc961628aaa</authorisingUserInRole>
       <enteredByUserInRole>cf1a5b91-d02d-49e4-9f52-9bc961628aaa</enteredByUserInRole>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <consultationType>GP</consultationType>
       <locationType codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="General Practice Surgery" code="1503371000006105" />
@@ -526,7 +526,7 @@
       <availabilityTimeStamp>2005-06-14T00:00:00</availabilityTimeStamp>
       <authorisingUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</authorisingUserInRole>
       <enteredByUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</enteredByUserInRole>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <consultationType>GP</consultationType>
       <locationType codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Main Surgery" code="1503371000006105" />
@@ -550,7 +550,7 @@
       <availabilityTimeStamp>2005-07-11T00:00:00</availabilityTimeStamp>
       <authorisingUserInRole>cf1a5b91-d02d-49e4-9f52-9bc961628aaa</authorisingUserInRole>
       <enteredByUserInRole>cf1a5b91-d02d-49e4-9f52-9bc961628aaa</enteredByUserInRole>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <consultationType>GP</consultationType>
       <locationType codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Main Surgery" code="1503371000006105" />
@@ -584,7 +584,7 @@
       <availabilityTimeStamp>2005-07-11T00:00:00</availabilityTimeStamp>
       <authorisingUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</authorisingUserInRole>
       <enteredByUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</enteredByUserInRole>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <consultationType>GP</consultationType>
       <locationType codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Main Surgery" code="1503371000006105" />
@@ -618,7 +618,7 @@
       <availabilityTimeStamp>2005-09-08T00:00:00</availabilityTimeStamp>
       <authorisingUserInRole>316d34eb-f495-4c91-b814-364c69b1a541</authorisingUserInRole>
       <enteredByUserInRole>316d34eb-f495-4c91-b814-364c69b1a541</enteredByUserInRole>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <consultationType>GP</consultationType>
       <locationType codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Externally Entered" code="37291000000107" />
@@ -637,7 +637,7 @@
       <availabilityTimeStamp>2005-07-13T00:00:00</availabilityTimeStamp>
       <authorisingUserInRole>cf1a5b91-d02d-49e4-9f52-9bc961628aaa</authorisingUserInRole>
       <enteredByUserInRole>cf1a5b91-d02d-49e4-9f52-9bc961628aaa</enteredByUserInRole>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <consultationType>GP</consultationType>
       <locationType codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="General Practice Surgery" code="1503371000006105" />
@@ -656,7 +656,7 @@
       <availabilityTimeStamp>2006-03-23T00:00:00</availabilityTimeStamp>
       <authorisingUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</authorisingUserInRole>
       <enteredByUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</enteredByUserInRole>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <consultationType>GP</consultationType>
       <locationType codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Main Surgery" code="1503371000006105" />
@@ -685,7 +685,7 @@
       <availabilityTimeStamp>2006-03-23T00:00:00</availabilityTimeStamp>
       <authorisingUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</authorisingUserInRole>
       <enteredByUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</enteredByUserInRole>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <consultationType>GP</consultationType>
       <locationType codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Main Surgery" code="1503371000006105" />
@@ -704,7 +704,7 @@
       <availabilityTimeStamp>2006-03-31T00:00:00</availabilityTimeStamp>
       <authorisingUserInRole>cf1a5b91-d02d-49e4-9f52-9bc961628aaa</authorisingUserInRole>
       <enteredByUserInRole>cf1a5b91-d02d-49e4-9f52-9bc961628aaa</enteredByUserInRole>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <consultationType>GP</consultationType>
       <locationType codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="General Practice Surgery" code="1503371000006105" />
@@ -723,7 +723,7 @@
       <availabilityTimeStamp>2006-03-31T00:00:00</availabilityTimeStamp>
       <authorisingUserInRole>cf1a5b91-d02d-49e4-9f52-9bc961628aaa</authorisingUserInRole>
       <enteredByUserInRole>cf1a5b91-d02d-49e4-9f52-9bc961628aaa</enteredByUserInRole>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <consultationType>GP</consultationType>
       <locationType codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="General Practice Surgery" code="1503371000006105" />
@@ -747,7 +747,7 @@
       <availabilityTimeStamp>2006-03-31T00:00:00</availabilityTimeStamp>
       <authorisingUserInRole>cf1a5b91-d02d-49e4-9f52-9bc961628aaa</authorisingUserInRole>
       <enteredByUserInRole>cf1a5b91-d02d-49e4-9f52-9bc961628aaa</enteredByUserInRole>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <consultationType>GP</consultationType>
       <locationType codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="General Practice Surgery" code="1503371000006105" />
@@ -766,7 +766,7 @@
       <availabilityTimeStamp>2006-04-04T00:00:00</availabilityTimeStamp>
       <authorisingUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</authorisingUserInRole>
       <enteredByUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</enteredByUserInRole>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <consultationType>GP</consultationType>
       <locationType codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Main Surgery" code="1503371000006105" />
@@ -790,7 +790,7 @@
       <availabilityTimeStamp>2007-03-06T00:00:00</availabilityTimeStamp>
       <authorisingUserInRole>316d34eb-f495-4c91-b814-364c69b1a541</authorisingUserInRole>
       <enteredByUserInRole>316d34eb-f495-4c91-b814-364c69b1a541</enteredByUserInRole>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <consultationType>GP</consultationType>
       <locationType codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Externally Entered" code="37291000000107" />
@@ -809,7 +809,7 @@
       <availabilityTimeStamp>2007-03-01T00:00:00</availabilityTimeStamp>
       <authorisingUserInRole>893001d7-07fa-42d8-a303-c61fd99c874b</authorisingUserInRole>
       <enteredByUserInRole>893001d7-07fa-42d8-a303-c61fd99c874b</enteredByUserInRole>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <consultationType>GP</consultationType>
       <locationType codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Main Surgery" code="1503371000006105" />
@@ -828,7 +828,7 @@
       <availabilityTimeStamp>2007-03-09T00:00:00</availabilityTimeStamp>
       <authorisingUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</authorisingUserInRole>
       <enteredByUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</enteredByUserInRole>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <consultationType>GP</consultationType>
       <locationType codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Main Surgery" code="1503371000006105" />
@@ -852,7 +852,7 @@
       <availabilityTimeStamp>2007-10-26T00:00:00</availabilityTimeStamp>
       <authorisingUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</authorisingUserInRole>
       <enteredByUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</enteredByUserInRole>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <consultationType>GP</consultationType>
       <locationType codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Main Surgery" code="1503371000006105" />
@@ -926,7 +926,7 @@
       <availabilityTimeStamp>2007-11-01T00:00:00</availabilityTimeStamp>
       <authorisingUserInRole>cf1a5b91-d02d-49e4-9f52-9bc961628aaa</authorisingUserInRole>
       <enteredByUserInRole>cf1a5b91-d02d-49e4-9f52-9bc961628aaa</enteredByUserInRole>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <consultationType>GP</consultationType>
       <locationType codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="General Practice Surgery" code="1503371000006105" />
@@ -945,7 +945,7 @@
       <availabilityTimeStamp>2007-10-31T00:00:00</availabilityTimeStamp>
       <authorisingUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</authorisingUserInRole>
       <enteredByUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</enteredByUserInRole>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <consultationType>GP</consultationType>
       <locationType codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="General Practice Surgery" code="1503371000006105" />
@@ -974,7 +974,7 @@
       <availabilityTimeStamp>2007-11-01T00:00:00</availabilityTimeStamp>
       <authorisingUserInRole>cf1a5b91-d02d-49e4-9f52-9bc961628aaa</authorisingUserInRole>
       <enteredByUserInRole>cf1a5b91-d02d-49e4-9f52-9bc961628aaa</enteredByUserInRole>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <consultationType>GP</consultationType>
       <locationType codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="General Practice Surgery" code="1503371000006105" />
@@ -993,7 +993,7 @@
       <availabilityTimeStamp>2007-10-31T00:00:00</availabilityTimeStamp>
       <authorisingUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</authorisingUserInRole>
       <enteredByUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</enteredByUserInRole>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <consultationType>GP</consultationType>
       <locationType codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="General Practice Surgery" code="1503371000006105" />
@@ -1012,7 +1012,7 @@
       <availabilityTimeStamp>2007-11-20T00:00:00</availabilityTimeStamp>
       <authorisingUserInRole>cf1a5b91-d02d-49e4-9f52-9bc961628aaa</authorisingUserInRole>
       <enteredByUserInRole>cf1a5b91-d02d-49e4-9f52-9bc961628aaa</enteredByUserInRole>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <consultationType>GP</consultationType>
       <locationType codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Main Surgery" code="1503371000006105" />
@@ -1056,7 +1056,7 @@
       <availabilityTimeStamp>2007-11-20T00:00:00</availabilityTimeStamp>
       <authorisingUserInRole>cf1a5b91-d02d-49e4-9f52-9bc961628aaa</authorisingUserInRole>
       <enteredByUserInRole>cf1a5b91-d02d-49e4-9f52-9bc961628aaa</enteredByUserInRole>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <consultationType>GP</consultationType>
       <locationType codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Main Surgery" code="1503371000006105" />
@@ -1075,7 +1075,7 @@
       <availabilityTimeStamp>2007-12-17T00:00:00</availabilityTimeStamp>
       <authorisingUserInRole>cf1a5b91-d02d-49e4-9f52-9bc961628aaa</authorisingUserInRole>
       <enteredByUserInRole>cf1a5b91-d02d-49e4-9f52-9bc961628aaa</enteredByUserInRole>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <consultationType>GP</consultationType>
       <locationType codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Main Surgery" code="1503371000006105" />
@@ -1094,7 +1094,7 @@
       <availabilityTimeStamp>2007-12-28T00:00:00</availabilityTimeStamp>
       <authorisingUserInRole>cf1a5b91-d02d-49e4-9f52-9bc961628aaa</authorisingUserInRole>
       <enteredByUserInRole>cf1a5b91-d02d-49e4-9f52-9bc961628aaa</enteredByUserInRole>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <consultationType>GP</consultationType>
       <locationType codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Main Surgery" code="1503371000006105" />
@@ -1153,7 +1153,7 @@
       <availabilityTimeStamp>2008-01-04T00:00:00</availabilityTimeStamp>
       <authorisingUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</authorisingUserInRole>
       <enteredByUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</enteredByUserInRole>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <consultationType>GP</consultationType>
       <locationType codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Main Surgery" code="1503371000006105" />
@@ -1217,7 +1217,7 @@
       <availabilityTimeStamp>2008-06-17T00:00:00</availabilityTimeStamp>
       <authorisingUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</authorisingUserInRole>
       <enteredByUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</enteredByUserInRole>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <consultationType>GP</consultationType>
       <locationType codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Main Surgery" code="1503371000006105" />
@@ -1244,7 +1244,7 @@
       <associatedText associatedTextType="POST">
         <value> Gradually improving, still some blood (ENT exam next week)</value>
       </associatedText>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation />
     </event>
@@ -1260,7 +1260,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Psoriasis NOS" code="692651000000101" />
       </code>
       <displayTerm>Psoriasis NOS</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation />
     </event>
@@ -1279,7 +1279,7 @@
       <associatedText associatedTextType="POST">
         <value> Try 10 days oral steroids and see friday week</value>
       </associatedText>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation />
     </event>
@@ -1298,7 +1298,7 @@
       <associatedText associatedTextType="POST">
         <value> Still feels like thick mucous from chest - causing choking</value>
       </associatedText>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation />
     </event>
@@ -1317,7 +1317,7 @@
       <associatedText associatedTextType="POST">
         <value> To come in 1 week time</value>
       </associatedText>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation />
     </event>
@@ -1333,7 +1333,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Cervical smear: negative" code="269958004" />
       </code>
       <displayTerm>Cervical smear: negative</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation />
     </event>
@@ -1349,7 +1349,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Health ed. - alcohol" code="408947007" />
       </code>
       <displayTerm>Health ed. - alcohol</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation />
     </event>
@@ -1365,7 +1365,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Diastolic blood pressure" code="163031004" />
       </code>
       <displayTerm>O/E - Diastolic BP reading, 76 mm Hg</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation>
         <value>
@@ -1388,7 +1388,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Alcohol consumption" code="160573003" />
       </code>
       <displayTerm>Alcohol consumption</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation>
         <value>
@@ -1411,7 +1411,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Never smoked tobacco" code="266919005" />
       </code>
       <displayTerm>Never smoked tobacco</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation />
     </event>
@@ -1427,7 +1427,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Health ed. - exercise" code="304507003" />
       </code>
       <displayTerm>Health ed. - exercise</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation />
     </event>
@@ -1443,7 +1443,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Health ed. - smoking" code="225324006" />
       </code>
       <displayTerm>Health ed. - smoking</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation />
     </event>
@@ -1462,7 +1462,7 @@
       <associatedText associatedTextType="POST">
         <value> Please repeat ENT exam in view of blood</value>
       </associatedText>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation />
     </event>
@@ -1481,7 +1481,7 @@
       <associatedText associatedTextType="POST">
         <value> Needs bloods etc</value>
       </associatedText>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation>
         <episodicity>FIRST</episodicity>
@@ -1499,7 +1499,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Systolic blood pressure" code="163030003" />
       </code>
       <displayTerm>O/E - Systolic BP reading, 140 mm Hg</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation>
         <value>
@@ -1522,7 +1522,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Health ed. - diet" code="11816003" />
       </code>
       <displayTerm>Health ed. - diet</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation />
     </event>
@@ -1538,7 +1538,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="O/E - blood pressure reading" code="163020007" />
       </code>
       <displayTerm>O/E Blood Pressure Reading</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation>
         <complexObservation>
@@ -1559,7 +1559,7 @@
       <associatedText associatedTextType="POST">
         <value> Follow up Medication Review</value>
       </associatedText>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation />
     </event>
@@ -1575,7 +1575,7 @@
       <associatedText associatedTextType="POST">
         <value>Havrix Monodose  Vaccine  1440 units/1 ml pre-filled syringe 1 pre-filled syrg(s) 1</value>
       </associatedText>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation />
     </event>
@@ -1594,7 +1594,7 @@
       <associatedText associatedTextType="POST">
         <value> BT taken</value>
       </associatedText>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation />
     </event>
@@ -1610,7 +1610,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Systolic blood pressure" code="163030003" />
       </code>
       <displayTerm>Systolic blood pressure</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation>
         <value>
@@ -1633,7 +1633,7 @@
       <associatedText associatedTextType="POST">
         <value>FBC, U and E, Glucose, LFTs, Serum Lipids</value>
       </associatedText>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation />
     </event>
@@ -1649,7 +1649,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Diastolic blood pressure" code="163031004" />
       </code>
       <displayTerm>Diastolic blood pressure</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation>
         <value>
@@ -1672,7 +1672,7 @@
       <associatedText associatedTextType="POST">
         <value>Hydrocortisone  Ointment  1 % 50 gram(s) USE BD.</value>
       </associatedText>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation />
     </event>
@@ -1688,7 +1688,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="O/E - blood pressure reading" code="163020007" />
       </code>
       <displayTerm>O/E Blood Pressure Reading</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation>
         <complexObservation>
@@ -1709,7 +1709,7 @@
       <associatedText associatedTextType="POST">
         <value> Generally OK, remains SOB</value>
       </associatedText>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation />
     </event>
@@ -1728,7 +1728,7 @@
       <associatedText associatedTextType="UC">
         <value>Make appointment with practice nurse</value>
       </associatedText>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation>
         <complexObservation>
@@ -1748,7 +1748,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Serum total bilirubin level" code="313840000" />
       </code>
       <displayTerm>Serum total bilirubin level</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation>
         <value>
@@ -1781,7 +1781,7 @@
       <associatedText associatedTextType="UC">
         <value>Normal - No Action</value>
       </associatedText>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation>
         <complexObservation>
@@ -1804,7 +1804,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Serum sodium" code="104934005" />
       </code>
       <displayTerm>Serum sodium</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation>
         <value>
@@ -1834,7 +1834,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Serum creatinine" code="113075003" />
       </code>
       <displayTerm>Serum creatinine</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation>
         <value>
@@ -1867,7 +1867,7 @@
       <associatedText associatedTextType="UC">
         <value>Just out of normal range - Ok</value>
       </associatedText>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation>
         <abnormal value="true" description="" />
@@ -1896,7 +1896,7 @@
       <associatedText associatedTextType="UC">
         <value>Normal - No Action</value>
       </associatedText>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation>
         <complexObservation>
@@ -1916,7 +1916,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="ALT/SGPT serum level" code="34608000" />
       </code>
       <displayTerm>ALT/SGPT serum level</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation>
         <value>
@@ -1946,7 +1946,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Serum total protein" code="270992008" />
       </code>
       <displayTerm>Serum total protein</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation>
         <value>
@@ -1977,7 +1977,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Serum potassium" code="271236005" />
       </code>
       <displayTerm>Serum potassium</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation>
         <value>
@@ -2007,7 +2007,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Serum alkaline phosphatase" code="271234008" />
       </code>
       <displayTerm>Serum alkaline phosphatase</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation>
         <value>
@@ -2037,7 +2037,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Plasma glucose level" code="72191006" />
       </code>
       <displayTerm>Plasma glucose level</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation>
         <value>
@@ -2060,7 +2060,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Serum albumin" code="104485008" />
       </code>
       <displayTerm>Serum albumin</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation>
         <value>
@@ -2090,7 +2090,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Serum cholesterol" code="270996006" />
       </code>
       <displayTerm>Serum cholesterol</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation>
         <value>
@@ -2113,7 +2113,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Serum globulin" code="270994009" />
       </code>
       <displayTerm>Serum globulin</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation>
         <value>
@@ -2143,7 +2143,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Serum urea level" code="273967009" />
       </code>
       <displayTerm>Serum urea level</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation>
         <value>
@@ -2173,7 +2173,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Neutrophil count" code="30630007" />
       </code>
       <displayTerm>Neutrophil count</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation>
         <value>
@@ -2203,7 +2203,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Total white cell count" code="767002" />
       </code>
       <displayTerm>Total white cell count</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation>
         <value>
@@ -2233,7 +2233,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Red blood cell (RBC) count" code="14089001" />
       </code>
       <displayTerm>Red blood cell (RBC) count</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation>
         <value>
@@ -2263,7 +2263,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Monocyte count" code="67776007" />
       </code>
       <displayTerm>Monocyte count</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation>
         <value>
@@ -2293,7 +2293,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Mean corpuscular volume (MCV)" code="104133003" />
       </code>
       <displayTerm>Mean corpuscular volume (MCV)</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation>
         <value>
@@ -2323,7 +2323,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Basophil count" code="42351005" />
       </code>
       <displayTerm>Basophil count</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation>
         <value>
@@ -2353,7 +2353,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Red blood cell distribution width" code="66842004" />
       </code>
       <displayTerm>Red blood cell distribution width</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation>
         <value>
@@ -2383,7 +2383,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Eosinophil count" code="71960002" />
       </code>
       <displayTerm>Eosinophil count</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation>
         <value>
@@ -2413,7 +2413,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Mean corpusc. haemoglobin(MCH)" code="54706004" />
       </code>
       <displayTerm>Mean corpusc. haemoglobin(MCH)</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation>
         <value>
@@ -2443,7 +2443,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Haemoglobin estimation" code="275806002" />
       </code>
       <displayTerm>Haemoglobin estimation</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation>
         <value>
@@ -2473,7 +2473,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Platelet count" code="61928009" />
       </code>
       <displayTerm>Platelet count</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation>
         <value>
@@ -2503,7 +2503,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Lymphocyte count" code="74765001" />
       </code>
       <displayTerm>Lymphocyte count</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation>
         <value>
@@ -2536,7 +2536,7 @@
       <associatedText associatedTextType="UC">
         <value>Normal - No Action</value>
       </associatedText>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation>
         <complexObservation>
@@ -2568,7 +2568,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Haematocrit" code="28317006" />
       </code>
       <displayTerm>Haematocrit</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation>
         <value>
@@ -2598,7 +2598,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Cervical smear taken" code="439958008" />
       </code>
       <displayTerm>Cervical smear taken</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation />
     </event>
@@ -2614,7 +2614,7 @@
       <associatedText associatedTextType="POST">
         <value> Indigestion still very bothersome</value>
       </associatedText>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation />
     </event>
@@ -2630,7 +2630,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Cervical smear: negative" code="269958004" />
       </code>
       <displayTerm>Cervical smear: negative</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation />
     </event>
@@ -2646,7 +2646,7 @@
       <associatedText associatedTextType="POST">
         <value> Chest OK. Pretty good at the moment</value>
       </associatedText>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation />
     </event>
@@ -2662,7 +2662,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Cervical smear: negative" code="269958004" />
       </code>
       <displayTerm>General Letter</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation>
         <referenceDocument>ab8bde47-8e0e-4165-890b-4350b24557bd</referenceDocument>
@@ -2680,7 +2680,7 @@
       <associatedText associatedTextType="POST">
         <value> Tired generally. Needs to have bloods etc</value>
       </associatedText>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation />
     </event>
@@ -2696,7 +2696,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="O/E Cervix: transitional zone seen" code="14631000006101" />
       </code>
       <displayTerm>O/E Cervix: transitional zone seen</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation />
     </event>
@@ -2712,7 +2712,7 @@
       <associatedText associatedTextType="POST">
         <value> Feeling weak</value>
       </associatedText>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation />
     </event>
@@ -2728,7 +2728,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="O/E - no vaginal discharge" code="163423003" />
       </code>
       <displayTerm>O/E - no vaginal discharge</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation />
     </event>
@@ -2744,7 +2744,7 @@
       <associatedText associatedTextType="POST">
         <value> Food regurgitation discomfort</value>
       </associatedText>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation />
     </event>
@@ -2760,7 +2760,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Serum HDL cholesterol level" code="166832000" />
       </code>
       <displayTerm>Serum HDL cholesterol level</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation>
         <value>
@@ -2786,7 +2786,7 @@
       <associatedText associatedTextType="UC">
         <value>Make appointment with practice nurse</value>
       </associatedText>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation>
         <complexObservation>
@@ -2809,7 +2809,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Serum cholesterol" code="270996006" />
       </code>
       <displayTerm>Serum cholesterol</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation>
         <value>
@@ -2832,7 +2832,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Serum triglycerides" code="271245006" />
       </code>
       <displayTerm>Serum triglycerides</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation>
         <value>
@@ -2855,7 +2855,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Serum LDL cholesterol level" code="166833005" />
       </code>
       <displayTerm>Serum LDL cholesterol level</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation>
         <value>
@@ -2878,7 +2878,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="10 yr CHD risk (Framingham)" code="150371000006102" />
       </code>
       <displayTerm>10 year CHD risk (Framingham), 4 %</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation>
         <value>
@@ -2901,7 +2901,7 @@
       <associatedText associatedTextType="POST">
         <value>Codeine Phosphate  Linctus  15 mg/5 ml 250 ml 10MLS TDS</value>
       </associatedText>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation />
     </event>
@@ -2917,7 +2917,7 @@
       <associatedText associatedTextType="POST">
         <value>Amoxicillin  Capsules  250 mg 15 capsule(s) 1TDS</value>
       </associatedText>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation />
     </event>
@@ -2933,7 +2933,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Chest infection" code="50417007" />
       </code>
       <displayTerm>Chest infection</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation>
         <episodicity>FIRST</episodicity>
@@ -2951,7 +2951,7 @@
       <associatedText associatedTextType="POST">
         <value>FBC, U and E, LFTs, Serum Lipids</value>
       </associatedText>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation />
     </event>
@@ -2967,7 +2967,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Mean corpusc. haemoglobin(MCH)" code="54706004" />
       </code>
       <displayTerm>Mean corpusc. haemoglobin(MCH)</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation>
         <value>
@@ -2997,7 +2997,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Basophil count" code="42351005" />
       </code>
       <displayTerm>Basophil count</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation>
         <value>
@@ -3027,7 +3027,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Mean corpuscular volume (MCV)" code="104133003" />
       </code>
       <displayTerm>Mean corpuscular volume (MCV)</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation>
         <value>
@@ -3057,7 +3057,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Eosinophil count" code="71960002" />
       </code>
       <displayTerm>Eosinophil count</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation>
         <value>
@@ -3087,7 +3087,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Monocyte count" code="67776007" />
       </code>
       <displayTerm>Monocyte count</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation>
         <value>
@@ -3117,7 +3117,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Lymphocyte count" code="74765001" />
       </code>
       <displayTerm>Lymphocyte count</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation>
         <value>
@@ -3147,7 +3147,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Haemoglobin estimation" code="275806002" />
       </code>
       <displayTerm>Haemoglobin estimation</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation>
         <value>
@@ -3177,7 +3177,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Total white cell count" code="767002" />
       </code>
       <displayTerm>Total white cell count</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation>
         <value>
@@ -3207,7 +3207,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Platelet count" code="61928009" />
       </code>
       <displayTerm>Platelet count</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation>
         <value>
@@ -3237,7 +3237,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Red blood cell distribution width" code="66842004" />
       </code>
       <displayTerm>Red blood cell distribution width</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation>
         <value>
@@ -3270,7 +3270,7 @@
       <associatedText associatedTextType="UC">
         <value>Normal - No Action</value>
       </associatedText>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation>
         <complexObservation>
@@ -3302,7 +3302,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Red blood cell (RBC) count" code="14089001" />
       </code>
       <displayTerm>Red blood cell (RBC) count</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation>
         <value>
@@ -3332,7 +3332,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Haematocrit" code="28317006" />
       </code>
       <displayTerm>Haematocrit</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation>
         <value>
@@ -3362,7 +3362,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Neutrophil count" code="30630007" />
       </code>
       <displayTerm>Neutrophil count</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation>
         <value>
@@ -3392,7 +3392,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Serum total bilirubin level" code="313840000" />
       </code>
       <displayTerm>Serum total bilirubin level</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation>
         <value>
@@ -3422,7 +3422,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="ALT/SGPT serum level" code="34608000" />
       </code>
       <displayTerm>ALT/SGPT serum level</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation>
         <value>
@@ -3455,7 +3455,7 @@
       <associatedText associatedTextType="UC">
         <value>Normal - No Action</value>
       </associatedText>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation>
         <complexObservation>
@@ -3480,7 +3480,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Serum total protein" code="270992008" />
       </code>
       <displayTerm>Serum total protein</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation>
         <value>
@@ -3510,7 +3510,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Serum alkaline phosphatase" code="271234008" />
       </code>
       <displayTerm>Serum alkaline phosphatase</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation>
         <value>
@@ -3540,7 +3540,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Serum HDL cholesterol level" code="166832000" />
       </code>
       <displayTerm>Serum HDL cholesterol level</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation>
         <value>
@@ -3563,7 +3563,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Serum potassium" code="271236005" />
       </code>
       <displayTerm>Serum potassium</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation>
         <value>
@@ -3593,7 +3593,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Serum sodium" code="104934005" />
       </code>
       <displayTerm>Serum sodium</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation>
         <value>
@@ -3623,7 +3623,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Serum albumin" code="104485008" />
       </code>
       <displayTerm>Serum albumin</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation>
         <value>
@@ -3653,7 +3653,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Serum creatinine" code="113075003" />
       </code>
       <displayTerm>Serum creatinine</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation>
         <value>
@@ -3686,7 +3686,7 @@
       <associatedText associatedTextType="UC">
         <value>Normal - No Action</value>
       </associatedText>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation>
         <complexObservation>
@@ -3712,7 +3712,7 @@
       <associatedText associatedTextType="UC">
         <value>Normal - No Action</value>
       </associatedText>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation>
         <complexObservation>
@@ -3735,7 +3735,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Serum urea level" code="273967009" />
       </code>
       <displayTerm>Serum urea level</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation>
         <value>
@@ -3765,7 +3765,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Serum triglycerides" code="271245006" />
       </code>
       <displayTerm>Serum triglycerides</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation>
         <value>
@@ -3788,7 +3788,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Serum globulin" code="270994009" />
       </code>
       <displayTerm>Serum globulin</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation>
         <value>
@@ -3818,7 +3818,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Serum cholesterol" code="270996006" />
       </code>
       <displayTerm>Serum cholesterol</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation>
         <value>
@@ -3841,7 +3841,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Serum LDL cholesterol level" code="166833005" />
       </code>
       <displayTerm>Serum LDL cholesterol level</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation>
         <value>
@@ -3864,7 +3864,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="H/O: penicillin allergy" code="161591004" />
       </code>
       <displayTerm>H/O: penicillin allergy</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation />
     </event>
@@ -3880,7 +3880,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="O/E - dry skin" code="164323008" />
       </code>
       <displayTerm>O/E - dry skin</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation>
         <episodicity>FIRST</episodicity>
@@ -3898,7 +3898,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Breast screen non-attender" code="185713001" />
       </code>
       <displayTerm>Copy of letter</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation>
         <referenceDocument>e46b2ce4-5845-454a-ab00-3978f31d54f2</referenceDocument>
@@ -3916,7 +3916,7 @@
       <associatedText associatedTextType="POST">
         <value> To come in 1 week time</value>
       </associatedText>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation />
     </event>
@@ -3932,7 +3932,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Alcohol consumption" code="160573003" />
       </code>
       <displayTerm>Alcohol consumption</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation>
         <value>
@@ -3955,7 +3955,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Never smoked tobacco" code="266919005" />
       </code>
       <displayTerm>Never smoked tobacco</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation />
     </event>
@@ -3971,7 +3971,7 @@
       <associatedText associatedTextType="POST">
         <value>Co-Codamol 8/500  Tablets   64 tablet TWO TO BE TAKEN THREE TIMES A DAY</value>
       </associatedText>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation />
     </event>
@@ -3990,7 +3990,7 @@
       <associatedText associatedTextType="POST">
         <value> GTT taken</value>
       </associatedText>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation />
     </event>
@@ -4006,7 +4006,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Diastolic blood pressure" code="163031004" />
       </code>
       <displayTerm>O/E - Diastolic BP reading, 71 mm Hg</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation>
         <value>
@@ -4029,7 +4029,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Health ed. - diet" code="11816003" />
       </code>
       <displayTerm>Health ed. - diet</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation />
     </event>
@@ -4045,7 +4045,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Systolic blood pressure" code="163030003" />
       </code>
       <displayTerm>O/E - Systolic BP reading, 192 mm Hg</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation>
         <value>
@@ -4068,7 +4068,7 @@
       <associatedText associatedTextType="POST">
         <value> Chest clear</value>
       </associatedText>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation />
     </event>
@@ -4084,7 +4084,7 @@
       <associatedText associatedTextType="POST">
         <value>FBC, U and E, Glucose, LFTs, Serum Lipids</value>
       </associatedText>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation />
     </event>
@@ -4100,7 +4100,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Body mass index" code="60621009" />
       </code>
       <displayTerm>Body Mass Index</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation>
         <value>
@@ -4122,7 +4122,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Health ed. - exercise" code="304507003" />
       </code>
       <displayTerm>Health ed. - exercise</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation />
     </event>
@@ -4138,7 +4138,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="O/E - weight" code="162763007" />
       </code>
       <displayTerm>O/E - weight</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation>
         <value>
@@ -4161,7 +4161,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Alcohol consumption" code="160573003" />
       </code>
       <displayTerm>Alcohol consumption</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation>
         <value>
@@ -4184,7 +4184,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="O/E - blood pressure reading" code="163020007" />
       </code>
       <displayTerm>O/E Blood Pressure Reading</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation>
         <complexObservation>
@@ -4205,7 +4205,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="O/E - height" code="162755006" />
       </code>
       <displayTerm>O/E - height</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation>
         <value>
@@ -4228,7 +4228,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Never smoked tobacco" code="266919005" />
       </code>
       <displayTerm>Never smoked tobacco</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation />
     </event>
@@ -4244,7 +4244,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Serum HDL cholesterol level" code="166832000" />
       </code>
       <displayTerm>Serum HDL cholesterol level</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation>
         <value>
@@ -4267,7 +4267,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Serum sodium" code="104934005" />
       </code>
       <displayTerm>Serum sodium</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation>
         <value>
@@ -4300,7 +4300,7 @@
       <associatedText associatedTextType="UC">
         <value>make appointment with gp</value>
       </associatedText>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation>
         <complexObservation>
@@ -4323,7 +4323,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Serum urea level" code="273967009" />
       </code>
       <displayTerm>Serum urea level</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation>
         <value>
@@ -4353,7 +4353,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Serum potassium" code="271236005" />
       </code>
       <displayTerm>Serum potassium</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation>
         <value>
@@ -4386,7 +4386,7 @@
       <associatedText associatedTextType="UC">
         <value>Normal - No Action</value>
       </associatedText>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation>
         <complexObservation>
@@ -4406,7 +4406,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Serum globulin" code="270994009" />
       </code>
       <displayTerm>Serum globulin</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation>
         <value>
@@ -4439,7 +4439,7 @@
       <associatedText associatedTextType="UC">
         <value>Normal - No Action</value>
       </associatedText>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation>
         <complexObservation>
@@ -4464,7 +4464,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Serum cholesterol" code="270996006" />
       </code>
       <displayTerm>Serum cholesterol</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation>
         <value>
@@ -4490,7 +4490,7 @@
       <associatedText associatedTextType="UC">
         <value>Normal - No Action</value>
       </associatedText>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation>
         <abnormal value="true" description="" />
@@ -4511,7 +4511,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="ALT/SGPT serum level" code="34608000" />
       </code>
       <displayTerm>ALT/SGPT serum level</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation>
         <value>
@@ -4541,7 +4541,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Serum total bilirubin level" code="313840000" />
       </code>
       <displayTerm>Serum total bilirubin level</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation>
         <value>
@@ -4574,7 +4574,7 @@
       <associatedText associatedTextType="UC">
         <value>Normal - No Action</value>
       </associatedText>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation>
         <complexObservation>
@@ -4597,7 +4597,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Serum albumin" code="104485008" />
       </code>
       <displayTerm>Serum albumin</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation>
         <value>
@@ -4627,7 +4627,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Serum triglycerides" code="271245006" />
       </code>
       <displayTerm>Serum triglycerides</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation>
         <value>
@@ -4650,7 +4650,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Serum total protein" code="270992008" />
       </code>
       <displayTerm>Serum total protein</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation>
         <value>
@@ -4680,7 +4680,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Serum alkaline phosphatase" code="271234008" />
       </code>
       <displayTerm>Serum alkaline phosphatase</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation>
         <value>
@@ -4710,7 +4710,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Plasma fasting glucose level" code="167096006" />
       </code>
       <displayTerm>Plasma fasting glucose level</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation>
         <value>
@@ -4733,7 +4733,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Serum LDL cholesterol level" code="166833005" />
       </code>
       <displayTerm>Serum LDL cholesterol level</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation>
         <value>
@@ -4756,7 +4756,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Serum creatinine" code="113075003" />
       </code>
       <displayTerm>Serum creatinine</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation>
         <value>
@@ -4786,7 +4786,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="GFR calculated abbreviated MDRD" code="166181000000100" />
       </code>
       <displayTerm>GFR calculated abbreviated MDRD</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation>
         <value>
@@ -4810,7 +4810,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Eosinophil count" code="71960002" />
       </code>
       <displayTerm>Eosinophil count</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation>
         <value>
@@ -4840,7 +4840,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Neutrophil count" code="30630007" />
       </code>
       <displayTerm>Neutrophil count</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation>
         <value>
@@ -4870,7 +4870,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Red blood cell distribution width" code="66842004" />
       </code>
       <displayTerm>Red blood cell distribution width</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation>
         <value>
@@ -4903,7 +4903,7 @@
       <associatedText associatedTextType="UC">
         <value>Normal - No Action</value>
       </associatedText>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation>
         <complexObservation>
@@ -4935,7 +4935,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Red blood cell (RBC) count" code="14089001" />
       </code>
       <displayTerm>Red blood cell (RBC) count</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation>
         <value>
@@ -4965,7 +4965,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Basophil count" code="42351005" />
       </code>
       <displayTerm>Basophil count</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation>
         <value>
@@ -4995,7 +4995,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Haemoglobin estimation" code="275806002" />
       </code>
       <displayTerm>Haemoglobin estimation</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation>
         <value>
@@ -5025,7 +5025,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Mean corpuscular volume (MCV)" code="104133003" />
       </code>
       <displayTerm>Mean corpuscular volume (MCV)</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation>
         <value>
@@ -5055,7 +5055,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Mean corpusc. haemoglobin(MCH)" code="54706004" />
       </code>
       <displayTerm>Mean corpusc. haemoglobin(MCH)</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation>
         <value>
@@ -5085,7 +5085,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Lymphocyte count" code="74765001" />
       </code>
       <displayTerm>Lymphocyte count</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation>
         <value>
@@ -5115,7 +5115,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Platelet count" code="61928009" />
       </code>
       <displayTerm>Platelet count</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation>
         <value>
@@ -5145,7 +5145,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Monocyte count" code="67776007" />
       </code>
       <displayTerm>Monocyte count</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation>
         <value>
@@ -5175,7 +5175,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Total white cell count" code="767002" />
       </code>
       <displayTerm>Total white cell count</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation>
         <value>
@@ -5205,7 +5205,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Haematocrit" code="28317006" />
       </code>
       <displayTerm>Haematocrit</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation>
         <value>
@@ -5238,7 +5238,7 @@
       <associatedText associatedTextType="POST">
         <value> Ciprofloxacin Tablets 250 mg 1 bd 10 tablet(s)</value>
       </associatedText>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation>
         <referenceDocument>4378a3d3-3049-482b-a8f2-d53b7ebf2e57</referenceDocument>
@@ -5259,7 +5259,7 @@
       <associatedText associatedTextType="POST">
         <value> Frusemide Tablets 40 mg od 28 tablets</value>
       </associatedText>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation>
         <referenceDocument>4e595748-2e9f-476e-b1e6-f1886ed82589</referenceDocument>
@@ -5280,7 +5280,7 @@
       <associatedText associatedTextType="POST">
         <value> Continue to improve</value>
       </associatedText>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation>
         <value>
@@ -5310,7 +5310,7 @@
       <associatedText associatedTextType="POST">
         <value> Indigestion still very bothersome</value>
       </associatedText>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation />
     </event>
@@ -5326,7 +5326,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Diastolic blood pressure" code="163031004" />
       </code>
       <displayTerm>Diastolic blood pressure</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation>
         <value>
@@ -5349,7 +5349,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Diastolic blood pressure" code="163031004" />
       </code>
       <displayTerm>Diastolic blood pressure</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation>
         <value>
@@ -5372,7 +5372,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="O/E - blood pressure reading" code="163020007" />
       </code>
       <displayTerm>O/E Blood Pressure Reading</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation>
         <complexObservation>
@@ -5394,7 +5394,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Systolic blood pressure" code="163030003" />
       </code>
       <displayTerm>Systolic blood pressure</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation>
         <value>
@@ -5417,7 +5417,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Serum cholesterol" code="270996006" />
       </code>
       <displayTerm>Serum cholesterol</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation>
         <value>
@@ -5440,7 +5440,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Essential hypertension" code="59621000" />
       </code>
       <displayTerm>Essential hypertension</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation>
         <episodicity>FIRST</episodicity>
@@ -5458,7 +5458,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="O/E - blood pressure reading" code="163020007" />
       </code>
       <displayTerm>O/E Blood Pressure Reading</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation>
         <complexObservation>
@@ -5478,7 +5478,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Serum HDL cholesterol level" code="166832000" />
       </code>
       <displayTerm>Serum HDL cholesterol level</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation>
         <value>
@@ -5501,7 +5501,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Pure hypercholesterolaemia" code="267432004" />
       </code>
       <displayTerm>Pure hypercholesterolaemia</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation>
         <episodicity>FIRST</episodicity>
@@ -5519,7 +5519,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Framingham coronary heart disease 10 year risk score" code="315039001" />
       </code>
       <displayTerm>10 year CHD risk (Framingham), 11 %</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation>
         <value>
@@ -5542,7 +5542,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Systolic blood pressure" code="163030003" />
       </code>
       <displayTerm>Systolic blood pressure</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation>
         <value>
@@ -5568,7 +5568,7 @@
       <associatedText associatedTextType="POST">
         <value> Needs bloods etc</value>
       </associatedText>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation />
     </event>
@@ -5584,7 +5584,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Systolic blood pressure" code="163030003" />
       </code>
       <displayTerm>Systolic blood pressure</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation>
         <value>
@@ -5607,7 +5607,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Hypertens.monitor.1st letter" code="185719002" />
       </code>
       <displayTerm>Hypertens.monitor.1st letter</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation />
     </event>
@@ -5623,7 +5623,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Medication review with patient" code="88551000000109" />
       </code>
       <displayTerm>Medication review with patient</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation />
     </event>
@@ -5639,7 +5639,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Diastolic blood pressure" code="163031004" />
       </code>
       <displayTerm>Diastolic blood pressure</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation>
         <value>
@@ -5662,7 +5662,7 @@
       <associatedText associatedTextType="POST">
         <value> Check U&amp;amp;E today please</value>
       </associatedText>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation />
     </event>
@@ -5678,7 +5678,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="O/E - blood pressure reading" code="163020007" />
       </code>
       <displayTerm>O/E Blood Pressure Reading</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation>
         <complexObservation>
@@ -5698,7 +5698,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Essential hypertension" code="59621000" />
       </code>
       <displayTerm>Essential hypertension</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation>
         <episodicity>REV</episodicity>
@@ -5716,7 +5716,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Diastolic blood pressure" code="163031004" />
       </code>
       <displayTerm>Diastolic blood pressure</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation>
         <value>
@@ -5739,7 +5739,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Systolic blood pressure" code="163030003" />
       </code>
       <displayTerm>Systolic blood pressure</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation>
         <value>
@@ -5762,7 +5762,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="O/E - blood pressure reading" code="163020007" />
       </code>
       <displayTerm>O/E Blood Pressure Reading</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation>
         <complexObservation>
@@ -5784,7 +5784,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Serum cholesterol" code="270996006" />
       </code>
       <displayTerm>Serum cholesterol</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation>
         <value>
@@ -5807,7 +5807,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Never smoked tobacco" code="266919005" />
       </code>
       <displayTerm>Never smoked tobacco</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation />
     </event>
@@ -5823,7 +5823,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Framingham coronary heart disease 10 year risk score" code="315039001" />
       </code>
       <displayTerm>10 year CHD risk (Framingham), 9 %</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation>
         <value>
@@ -5846,7 +5846,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Systolic blood pressure" code="163030003" />
       </code>
       <displayTerm>Systolic blood pressure</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation>
         <value>
@@ -5869,7 +5869,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Diastolic blood pressure" code="163031004" />
       </code>
       <displayTerm>Diastolic blood pressure</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation>
         <value>
@@ -5892,7 +5892,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Current non-smoker" code="160618006" />
       </code>
       <displayTerm>Current non-smoker</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation />
     </event>
@@ -5908,7 +5908,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="O/E - blood pressure reading" code="163020007" />
       </code>
       <displayTerm>O/E Blood Pressure Reading</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation>
         <complexObservation>
@@ -5929,7 +5929,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Serum HDL cholesterol level" code="166832000" />
       </code>
       <displayTerm>Serum HDL cholesterol level</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation>
         <value>
@@ -5952,7 +5952,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Never smoked tobacco" code="266919005" />
       </code>
       <displayTerm>Never smoked tobacco</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation />
     </event>
@@ -5968,7 +5968,7 @@
       <associatedText associatedTextType="POST">
         <value>Candesartan Cilexetil  Tablets  8 mg 28 tablet(s) TAKE ONE DAILY</value>
       </associatedText>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation />
     </event>
@@ -5984,7 +5984,7 @@
       <associatedText associatedTextType="POST">
         <value> Erythroped A Tablets 500 mg 1 qds 28 tablets</value>
       </associatedText>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation />
     </event>
@@ -6000,7 +6000,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Current non-smoker" code="160618006" />
       </code>
       <displayTerm>Current non-smoker</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation />
     </event>
@@ -6016,7 +6016,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Hay fever - pollens" code="21719001" />
       </code>
       <displayTerm>Hay fever - pollens</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation>
         <episodicity>FIRST</episodicity>
@@ -6034,7 +6034,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="O/E - blood pressure reading" code="163020007" />
       </code>
       <displayTerm>O/E - blood pressure reading</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <diary>
         <locationType codeSystem="2.16.840.1.113883.2.1.6.2" displayName="" code="" />
@@ -6052,7 +6052,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Medication review" code="182836005" />
       </code>
       <displayTerm>Medication review</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <diary>
         <locationType codeSystem="2.16.840.1.113883.2.1.6.2" displayName="" code="" />
@@ -6075,7 +6075,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Havrix Monodose vaccine suspension for injection 1ml pre-filled syringes (GlaxoSmithKline UK Ltd)" code="3006311000001105" />
       </code>
       <displayTerm>Havrix Monodose vaccine suspension for injection 1ml pre-filled syringes (GlaxoSmithKline UK Ltd)</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <medication>
         <expiryDate>2000-05-07</expiryDate>
@@ -6107,7 +6107,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Hydrocortisone 1% ointment" code="347949006" />
       </code>
       <displayTerm>Hydrocortisone 1% ointment</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <medication>
         <expiryDate>2000-08-30</expiryDate>
@@ -6143,7 +6143,7 @@
       <enteredByUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</enteredByUserInRole>
       <code codeSystem="EMISPREPARATION" displayName="Codeine Phosphate  Linctus  15 mg/5 ml" code="COLI705" />
       <displayTerm>Codeine Phosphate  Linctus  15 mg/5 ml</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <medication>
         <reviewDate>2001-08-13</reviewDate>
@@ -6176,7 +6176,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Amoxicillin 250mg capsules" code="323509004" />
       </code>
       <displayTerm>Amoxicillin 250mg capsules</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <medication>
         <expiryDate>2001-06-06</expiryDate>
@@ -6208,7 +6208,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Soya oil 84.75% bath oil" code="331569003" />
       </code>
       <displayTerm>Soya oil 84.75% bath oil</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <medication>
         <expiryDate>2002-05-15</expiryDate>
@@ -6240,7 +6240,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Amoxicillin 250mg capsules" code="323509004" />
       </code>
       <displayTerm>Amoxicillin 250mg capsules</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <medication>
         <dosage>1TDS</dosage>
@@ -6268,7 +6268,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Erythromycin 250mg gastro-resistant capsules" code="324209006" />
       </code>
       <displayTerm>Erythromycin 250mg gastro-resistant capsules</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <medication>
         <expiryDate>2002-05-15</expiryDate>
@@ -6300,7 +6300,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Balneum Plus cream (Almirall Ltd)" code="2933211000001103" />
       </code>
       <displayTerm>Balneum Plus cream (Almirall Ltd)</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <medication>
         <expiryDate>2002-05-15</expiryDate>
@@ -6332,7 +6332,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Co-codamol 8mg/500mg tablets" code="322307006" />
       </code>
       <displayTerm>Co-codamol 8mg/500mg tablets</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <medication>
         <expiryDate>2003-01-09</expiryDate>
@@ -6364,7 +6364,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Candesartan 4mg tablets" code="318978004" />
       </code>
       <displayTerm>Candesartan 4mg tablets</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <medication>
         <expiryDate>2003-03-09</expiryDate>
@@ -6402,7 +6402,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Simvastatin 40mg tablets" code="320000009" />
       </code>
       <displayTerm>Simvastatin 40mg tablets</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <medication>
         <expiryDate>2003-12-02</expiryDate>
@@ -6440,7 +6440,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Paracetamol 500mg tablets" code="322236009" />
       </code>
       <displayTerm>Paracetamol 500mg tablets</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <medication>
         <expiryDate>2003-03-13</expiryDate>
@@ -6472,7 +6472,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Codeine 15mg/5ml linctus" code="15065911000001106" />
       </code>
       <displayTerm>Codeine 15mg/5ml linctus</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <medication>
         <expiryDate>2003-03-13</expiryDate>
@@ -6504,7 +6504,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Candesartan 8mg tablets" code="318979007" />
       </code>
       <displayTerm>Candesartan 8mg tablets</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <medication>
         <expiryDate>2003-12-02</expiryDate>
@@ -6542,7 +6542,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Cetirizine 10mg tablets" code="320818006" />
       </code>
       <displayTerm>Cetirizine 10mg tablets</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <medication>
         <expiryDate>2003-09-15</expiryDate>
@@ -6574,7 +6574,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Havrix Monodose vaccine suspension for injection 1ml pre-filled syringes (GlaxoSmithKline UK Ltd)" code="3006311000001105" />
       </code>
       <displayTerm>Havrix Monodose  Vaccine  1440 units/1 ml pre-filled syringe</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <medicationIssue>
         <medication>1a46c88d-86dd-419a-bc80-c30df1b37255</medication>
@@ -6603,7 +6603,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Hydrocortisone 1% ointment" code="347949006" />
       </code>
       <displayTerm>Hydrocortisone  Ointment  1 %</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <medicationIssue>
         <medication>fa689917-be02-4a53-beb4-566b62b2e622</medication>
@@ -6630,7 +6630,7 @@
       <enteredByUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</enteredByUserInRole>
       <code codeSystem="EMISPREPARATION" displayName="Codeine Phosphate  Linctus  15 mg/5 ml" code="COLI705" />
       <displayTerm>Codeine Phosphate  Linctus  15 mg/5 ml</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <medicationIssue>
         <medication>405733fe-b7a3-4c4f-acc1-513daeffeb46</medication>
@@ -6659,7 +6659,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Amoxicillin 250mg capsules" code="323509004" />
       </code>
       <displayTerm>Amoxicillin  Capsules  250 mg</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <medicationIssue>
         <medication>b08b3205-57fa-4888-b4b2-f8b12d21c18d</medication>
@@ -6686,7 +6686,7 @@
       <enteredByUserInRole>e93841be-bd3d-469e-a2b3-03f6eea7cd9a</enteredByUserInRole>
       <code codeSystem="EMISPREPARATION" displayName="Codeine Phosphate  Linctus  15 mg/5 ml" code="COLI705" />
       <displayTerm>Codeine Phosphate  Linctus  15 mg/5 ml</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <medicationIssue>
         <medication>405733fe-b7a3-4c4f-acc1-513daeffeb46</medication>
@@ -6715,7 +6715,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Balneum Plus cream (Almirall Ltd)" code="2933211000001103" />
       </code>
       <displayTerm>Balneum Plus  Cream  </displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <medicationIssue>
         <medication>a6da7120-2ca3-40ef-9c87-f3c3343d40b2</medication>
@@ -6744,7 +6744,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Erythromycin 250mg gastro-resistant capsules" code="324209006" />
       </code>
       <displayTerm>Erythromycin  Capsules (Gastro-Resistant)  250 mg</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <medicationIssue>
         <medication>c5526472-09da-4d87-9b64-da73b0b3031f</medication>
@@ -6773,7 +6773,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Soya oil 84.75% bath oil" code="331569003" />
       </code>
       <displayTerm>Soya Oil  Bath oil  84.75 %</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <medicationIssue>
         <medication>0fb04c13-ebc6-4936-a76d-a28b1c7aeb72</medication>
@@ -6802,7 +6802,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Co-codamol 8mg/500mg tablets" code="322307006" />
       </code>
       <displayTerm>Co-Codamol 8/500  Tablets  </displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <medicationIssue>
         <medication>8ebfd686-26a8-4b6e-8b4f-f131e2ae40a8</medication>
@@ -6831,7 +6831,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Simvastatin 40mg tablets" code="320000009" />
       </code>
       <displayTerm>Simvastatin  Tablets  40 mg</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <medicationIssue>
         <medication>38dd88fb-a865-451a-b782-8010c9c43750</medication>
@@ -6860,7 +6860,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Candesartan 4mg tablets" code="318978004" />
       </code>
       <displayTerm>Candesartan Cilexetil  Tablets  4 mg</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <medicationIssue>
         <medication>c318834a-445e-4548-862c-3207843017ef</medication>
@@ -6889,7 +6889,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Candesartan 4mg tablets" code="318978004" />
       </code>
       <displayTerm>Candesartan Cilexetil  Tablets  4 mg</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <medicationIssue>
         <medication>c318834a-445e-4548-862c-3207843017ef</medication>
@@ -6918,7 +6918,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Simvastatin 40mg tablets" code="320000009" />
       </code>
       <displayTerm>Simvastatin  Tablets  40 mg</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <medicationIssue>
         <medication>38dd88fb-a865-451a-b782-8010c9c43750</medication>
@@ -6947,7 +6947,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Codeine 15mg/5ml linctus" code="15065911000001106" />
       </code>
       <displayTerm>Codeine Linctus  Syrup  15 mg/5 ml</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <medicationIssue>
         <medication>163af2fb-9fb2-4369-bbc8-57f9f9ef6153</medication>
@@ -6976,7 +6976,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Paracetamol 500mg tablets" code="322236009" />
       </code>
       <displayTerm>Paracetamol  Tablets  500 mg</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <medicationIssue>
         <medication>ca73699b-2ebe-42cf-aa75-2e2c560c1953</medication>
@@ -7005,7 +7005,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Simvastatin 40mg tablets" code="320000009" />
       </code>
       <displayTerm>Simvastatin  Tablets  40 mg</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <medicationIssue>
         <medication>38dd88fb-a865-451a-b782-8010c9c43750</medication>
@@ -7034,7 +7034,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Candesartan 8mg tablets" code="318979007" />
       </code>
       <displayTerm>Candesartan Cilexetil  Tablets  8 mg</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <medicationIssue>
         <medication>fa91773b-3ee4-4484-8178-91b81deee6f3</medication>
@@ -7063,7 +7063,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Simvastatin 40mg tablets" code="320000009" />
       </code>
       <displayTerm>Simvastatin  Tablets  40 mg</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <medicationIssue>
         <medication>38dd88fb-a865-451a-b782-8010c9c43750</medication>
@@ -7092,7 +7092,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Candesartan 8mg tablets" code="318979007" />
       </code>
       <displayTerm>Candesartan Cilexetil  Tablets  8 mg</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <medicationIssue>
         <medication>fa91773b-3ee4-4484-8178-91b81deee6f3</medication>
@@ -7121,7 +7121,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Candesartan 8mg tablets" code="318979007" />
       </code>
       <displayTerm>Candesartan Cilexetil  Tablets  8 mg</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <medicationIssue>
         <medication>fa91773b-3ee4-4484-8178-91b81deee6f3</medication>
@@ -7150,7 +7150,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Simvastatin 40mg tablets" code="320000009" />
       </code>
       <displayTerm>Simvastatin  Tablets  40 mg</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <medicationIssue>
         <medication>38dd88fb-a865-451a-b782-8010c9c43750</medication>
@@ -7179,7 +7179,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Candesartan 8mg tablets" code="318979007" />
       </code>
       <displayTerm>Candesartan Cilexetil  Tablets  8 mg</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <medicationIssue>
         <medication>fa91773b-3ee4-4484-8178-91b81deee6f3</medication>
@@ -7208,7 +7208,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Simvastatin 40mg tablets" code="320000009" />
       </code>
       <displayTerm>Simvastatin  Tablets  40 mg</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <medicationIssue>
         <medication>38dd88fb-a865-451a-b782-8010c9c43750</medication>
@@ -7237,7 +7237,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Cetirizine 10mg tablets" code="320818006" />
       </code>
       <displayTerm>Cetirizine Hydrochloride  Tablets  10 mg</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <medicationIssue>
         <medication>1adc1817-2275-4086-b0cf-92f13887cb4c</medication>
@@ -7266,7 +7266,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Simvastatin 40mg tablets" code="320000009" />
       </code>
       <displayTerm>Simvastatin  Tablets  40 mg</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <medicationIssue>
         <medication>38dd88fb-a865-451a-b782-8010c9c43750</medication>
@@ -7295,7 +7295,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Candesartan 8mg tablets" code="318979007" />
       </code>
       <displayTerm>Candesartan Cilexetil  Tablets  8 mg</displayTerm>
-      <organisation>2FF1EB3C-88EE-42F6-B00F-CE69917D5535</organisation>
+      <organisation>2ff1eb3c-88ee-42f6-b00f-ce69917d5535</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <medicationIssue>
         <medication>fa91773b-3ee4-4484-8178-91b81deee6f3</medication>

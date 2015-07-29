@@ -1,12 +1,12 @@
-<?xml version="1.0"?>
-<openHealthRecord xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" schemaVersion="1.3.0" xmlns="http://www.e-mis.com/emisopen">
+<?xml version="1.0" encoding="utf-16"?>
+<openHealthRecord xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.e-mis.com/emisopen">
   <id>0b0c2d6a-39cb-412a-9efd-382ecbf26745</id>
   <creationTime>2010-05-09T00:00:00+01:00</creationTime>
   <author>
     <system>
       <systemType>EMISWEB</systemType>
     </system>
-    <organisation>BE624BF9-DAD6-46F4-80CB-B9D98C90B255</organisation>
+    <organisation>be624bf9-dad6-46f4-80cb-b9d98c90b255</organisation>
   </author>
   <contentSpecification>
     <specification>37241000000102</specification>
@@ -76,7 +76,7 @@
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <caseloadPatient updateMode="add">
         <id>0b0c2d6a-39cb-412a-9efd-382ecbf26745</id>
-        <organisation>BE624BF9-DAD6-46F4-80CB-B9D98C90B255</organisation>
+        <organisation>be624bf9-dad6-46f4-80cb-b9d98c90b255</organisation>
         <dateRecorded>2006-08-18T00:00:00</dateRecorded>
         <patientStatus>
           <status>6</status>
@@ -99,7 +99,7 @@
       </caseloadPatient>
       <caseloadPatientHistory updateMode="add">
         <id>bdb3afb2-ba93-42cd-a732-cdeb04a521f6</id>
-        <organisation>BE624BF9-DAD6-46F4-80CB-B9D98C90B255</organisation>
+        <organisation>be624bf9-dad6-46f4-80cb-b9d98c90b255</organisation>
         <dateRecorded>2006-08-14T00:00:00</dateRecorded>
         <patientStatus>
           <status>5</status>
@@ -121,7 +121,7 @@
       </caseloadPatientHistory>
       <caseloadPatientHistory updateMode="add">
         <id>50347b70-6e8d-41f8-9912-d885842250f4</id>
-        <organisation>BE624BF9-DAD6-46F4-80CB-B9D98C90B255</organisation>
+        <organisation>be624bf9-dad6-46f4-80cb-b9d98c90b255</organisation>
         <dateRecorded>2006-07-27T00:00:00</dateRecorded>
         <patientStatus>
           <status>4</status>
@@ -143,7 +143,7 @@
       </caseloadPatientHistory>
       <caseloadPatientHistory updateMode="add">
         <id>dc23d041-c8c6-4dac-b1a3-d6c005c9778c</id>
-        <organisation>BE624BF9-DAD6-46F4-80CB-B9D98C90B255</organisation>
+        <organisation>be624bf9-dad6-46f4-80cb-b9d98c90b255</organisation>
         <dateRecorded>2006-07-25T00:00:00</dateRecorded>
         <patientStatus>
           <status>3</status>
@@ -181,7 +181,7 @@
       <openDate>2006-10-01T00:00:00</openDate>
     </organisation>
     <organisation updateMode="add">
-      <id>BE624BF9-DAD6-46F4-80CB-B9D98C90B255</id>
+      <id>be624bf9-dad6-46f4-80cb-b9d98c90b255</id>
       <name>Zulu Surgery</name>
       <organisationType codeSystem="2.16.840.1.113883.2.1.6.2" displayName="General Practice" code="" />
       <speciality codeSystem="2.16.840.1.113883.2.1.6.2" displayName="General Medical Practice" code="" />
@@ -280,23 +280,23 @@
     </user>
     <role updateMode="add">
       <id>ea801c6a-425c-083f-6b9e-83123fcb829c</id>
-      <name>Receptionist Al-shifa</name>
+      <name>Receptionist</name>
       <userCategory codeSystem="2.16.840.1.113883.2.1.6.2" displayName="Includes 'Administrative Assistant'. 'Ward Clerk' (an NCRS type role) is also available." code="" />
-      <organisation>BE624BF9-DAD6-46F4-80CB-B9D98C90B255</organisation>
+      <organisation>be624bf9-dad6-46f4-80cb-b9d98c90b255</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
     </role>
     <role updateMode="add">
       <id>2fbeb298-d2a1-4398-a5c8-0e98c36ffc0f</id>
       <name>Practice Nurse</name>
       <userCategory codeSystem="2.16.840.1.113883.2.1.6.2" displayName="Include only those who are Registered and practicing as a 'District Nurse', 'Health Visitor', 'School Nurse', 'Practice Nurse', 'Occupational Health Nurse', 'Community Learning Disabilities Nurse', 'Community Mental Health Nurse', 'Community Paediatric Nurse', and 'Community Nurse' (for generic Community Nurses)." code="" />
-      <organisation>BE624BF9-DAD6-46F4-80CB-B9D98C90B255</organisation>
+      <organisation>be624bf9-dad6-46f4-80cb-b9d98c90b255</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
     </role>
     <role updateMode="add">
       <id>63115222-7fad-9016-12ed-1091def75a50</id>
       <name>Principal</name>
       <userCategory codeSystem="2.16.840.1.113883.2.1.6.2" displayName="General Medical Practitioner" code="" />
-      <organisation>BE624BF9-DAD6-46F4-80CB-B9D98C90B255</organisation>
+      <organisation>be624bf9-dad6-46f4-80cb-b9d98c90b255</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
     </role>
     <userInRole updateMode="add">
@@ -368,7 +368,7 @@
       <availabilityTimeStamp>2006-08-01T00:00:00</availabilityTimeStamp>
       <authorisingUserInRole>cf1a5b91-d02d-49e4-9f52-9bc961628aaa</authorisingUserInRole>
       <enteredByUserInRole>cf1a5b91-d02d-49e4-9f52-9bc961628aaa</enteredByUserInRole>
-      <organisation>BE624BF9-DAD6-46F4-80CB-B9D98C90B255</organisation>
+      <organisation>be624bf9-dad6-46f4-80cb-b9d98c90b255</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <consultationType>GP</consultationType>
       <locationType codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Main Surgery" code="1503371000006105" />
@@ -527,7 +527,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Glue ear" code="78868004" />
       </code>
       <displayTerm>Glue ear</displayTerm>
-      <organisation>BE624BF9-DAD6-46F4-80CB-B9D98C90B255</organisation>
+      <organisation>be624bf9-dad6-46f4-80cb-b9d98c90b255</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation />
     </event>
@@ -543,7 +543,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Myringotomy and insertion of long term grommet" code="275001008" />
       </code>
       <displayTerm>Myringotomy and insertion of long term grommet</displayTerm>
-      <organisation>BE624BF9-DAD6-46F4-80CB-B9D98C90B255</organisation>
+      <organisation>be624bf9-dad6-46f4-80cb-b9d98c90b255</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation />
     </event>
@@ -559,7 +559,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Rinne's test negative" code="370377000" />
       </code>
       <displayTerm>Rinne's test negative</displayTerm>
-      <organisation>BE624BF9-DAD6-46F4-80CB-B9D98C90B255</organisation>
+      <organisation>be624bf9-dad6-46f4-80cb-b9d98c90b255</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation />
     </event>
@@ -575,7 +575,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Tonsillectomy and adenoidectomy" code="28913000" />
       </code>
       <displayTerm>Tonsillectomy and adenoidectomy</displayTerm>
-      <organisation>BE624BF9-DAD6-46F4-80CB-B9D98C90B255</organisation>
+      <organisation>be624bf9-dad6-46f4-80cb-b9d98c90b255</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation />
     </event>
@@ -591,7 +591,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Plain wart" code="240539000" />
       </code>
       <displayTerm>Plain wart</displayTerm>
-      <organisation>BE624BF9-DAD6-46F4-80CB-B9D98C90B255</organisation>
+      <organisation>be624bf9-dad6-46f4-80cb-b9d98c90b255</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation />
     </event>
@@ -610,7 +610,7 @@
       <associatedText associatedTextType="POST">
         <value> In pain</value>
       </associatedText>
-      <organisation>BE624BF9-DAD6-46F4-80CB-B9D98C90B255</organisation>
+      <organisation>be624bf9-dad6-46f4-80cb-b9d98c90b255</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation />
     </event>
@@ -629,7 +629,7 @@
       <associatedText associatedTextType="POST">
         <value> See 18 days and review</value>
       </associatedText>
-      <organisation>BE624BF9-DAD6-46F4-80CB-B9D98C90B255</organisation>
+      <organisation>be624bf9-dad6-46f4-80cb-b9d98c90b255</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation />
     </event>
@@ -648,7 +648,7 @@
       <associatedText associatedTextType="POST">
         <value> Food regurgitation discomfort</value>
       </associatedText>
-      <organisation>BE624BF9-DAD6-46F4-80CB-B9D98C90B255</organisation>
+      <organisation>be624bf9-dad6-46f4-80cb-b9d98c90b255</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation />
     </event>
@@ -664,7 +664,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="O/E - blood pressure reading" code="163020007" />
       </code>
       <displayTerm>O/E Blood Pressure Reading</displayTerm>
-      <organisation>BE624BF9-DAD6-46F4-80CB-B9D98C90B255</organisation>
+      <organisation>be624bf9-dad6-46f4-80cb-b9d98c90b255</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation>
         <complexObservation>
@@ -688,7 +688,7 @@
       <associatedText associatedTextType="POST">
         <value> Indigestion still very bothersome</value>
       </associatedText>
-      <organisation>BE624BF9-DAD6-46F4-80CB-B9D98C90B255</organisation>
+      <organisation>be624bf9-dad6-46f4-80cb-b9d98c90b255</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation />
     </event>
@@ -704,7 +704,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Diastolic blood pressure" code="163031004" />
       </code>
       <displayTerm>Diastolic blood pressure</displayTerm>
-      <organisation>BE624BF9-DAD6-46F4-80CB-B9D98C90B255</organisation>
+      <organisation>be624bf9-dad6-46f4-80cb-b9d98c90b255</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation>
         <value>
@@ -730,7 +730,7 @@
       <associatedText associatedTextType="POST">
         <value> Food regurgitation discomfort</value>
       </associatedText>
-      <organisation>BE624BF9-DAD6-46F4-80CB-B9D98C90B255</organisation>
+      <organisation>be624bf9-dad6-46f4-80cb-b9d98c90b255</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation />
     </event>
@@ -746,7 +746,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="H/O: penicillin allergy" code="161591004" />
       </code>
       <displayTerm>H/O: penicillin allergy</displayTerm>
-      <organisation>BE624BF9-DAD6-46F4-80CB-B9D98C90B255</organisation>
+      <organisation>be624bf9-dad6-46f4-80cb-b9d98c90b255</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation />
     </event>
@@ -762,7 +762,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Smoking cessation advice" code="225323000" />
       </code>
       <displayTerm>Smoking cessation advice</displayTerm>
-      <organisation>BE624BF9-DAD6-46F4-80CB-B9D98C90B255</organisation>
+      <organisation>be624bf9-dad6-46f4-80cb-b9d98c90b255</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation />
     </event>
@@ -781,7 +781,7 @@
       <associatedText associatedTextType="POST">
         <value> Scanty coase creps</value>
       </associatedText>
-      <organisation>BE624BF9-DAD6-46F4-80CB-B9D98C90B255</organisation>
+      <organisation>be624bf9-dad6-46f4-80cb-b9d98c90b255</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation />
     </event>
@@ -797,7 +797,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="O/E - weight" code="162763007" />
       </code>
       <displayTerm>O/E - weight</displayTerm>
-      <organisation>BE624BF9-DAD6-46F4-80CB-B9D98C90B255</organisation>
+      <organisation>be624bf9-dad6-46f4-80cb-b9d98c90b255</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation>
         <value>
@@ -820,7 +820,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Enjoys moderate exercise" code="160632008" />
       </code>
       <displayTerm>Enjoys moderate exercise</displayTerm>
-      <organisation>BE624BF9-DAD6-46F4-80CB-B9D98C90B255</organisation>
+      <organisation>be624bf9-dad6-46f4-80cb-b9d98c90b255</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation />
     </event>
@@ -836,7 +836,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Foreign travel advice" code="171071003" />
       </code>
       <displayTerm>Foreign travel advice</displayTerm>
-      <organisation>BE624BF9-DAD6-46F4-80CB-B9D98C90B255</organisation>
+      <organisation>be624bf9-dad6-46f4-80cb-b9d98c90b255</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation />
     </event>
@@ -852,7 +852,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Urine protein test negative" code="167273002" />
       </code>
       <displayTerm>Urine protein test negative</displayTerm>
-      <organisation>BE624BF9-DAD6-46F4-80CB-B9D98C90B255</organisation>
+      <organisation>be624bf9-dad6-46f4-80cb-b9d98c90b255</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation />
     </event>
@@ -871,7 +871,7 @@
       <associatedText associatedTextType="POST">
         <value> Erythrocyte sedimentation rate, No action</value>
       </associatedText>
-      <organisation>BE624BF9-DAD6-46F4-80CB-B9D98C90B255</organisation>
+      <organisation>be624bf9-dad6-46f4-80cb-b9d98c90b255</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation />
     </event>
@@ -890,7 +890,7 @@
       <associatedText associatedTextType="POST">
         <value> Please repeat ENT exam in view of blood</value>
       </associatedText>
-      <organisation>BE624BF9-DAD6-46F4-80CB-B9D98C90B255</organisation>
+      <organisation>be624bf9-dad6-46f4-80cb-b9d98c90b255</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation />
     </event>
@@ -906,7 +906,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Health ed. - alcohol" code="408947007" />
       </code>
       <displayTerm>Health ed. - alcohol</displayTerm>
-      <organisation>BE624BF9-DAD6-46F4-80CB-B9D98C90B255</organisation>
+      <organisation>be624bf9-dad6-46f4-80cb-b9d98c90b255</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation />
     </event>
@@ -922,7 +922,7 @@
       <associatedText associatedTextType="POST">
         <value> Pale - prob mildly anaemic. Pale and unwell</value>
       </associatedText>
-      <organisation>BE624BF9-DAD6-46F4-80CB-B9D98C90B255</organisation>
+      <organisation>be624bf9-dad6-46f4-80cb-b9d98c90b255</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation />
     </event>
@@ -938,7 +938,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Up to date with immunisations" code="171258008" />
       </code>
       <displayTerm>Up to date with immunisations</displayTerm>
-      <organisation>BE624BF9-DAD6-46F4-80CB-B9D98C90B255</organisation>
+      <organisation>be624bf9-dad6-46f4-80cb-b9d98c90b255</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation />
     </event>
@@ -954,7 +954,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Cigarette smoker" code="65568007" />
       </code>
       <displayTerm>Cigarette smoker</displayTerm>
-      <organisation>BE624BF9-DAD6-46F4-80CB-B9D98C90B255</organisation>
+      <organisation>be624bf9-dad6-46f4-80cb-b9d98c90b255</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation>
         <value>
@@ -979,7 +979,7 @@
       <associatedText associatedTextType="POST">
         <value> Combivent shaky and giddy</value>
       </associatedText>
-      <organisation>BE624BF9-DAD6-46F4-80CB-B9D98C90B255</organisation>
+      <organisation>be624bf9-dad6-46f4-80cb-b9d98c90b255</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation />
     </event>
@@ -995,7 +995,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Alcohol intake" code="284621000006108" />
       </code>
       <displayTerm>Alcohol intake</displayTerm>
-      <organisation>BE624BF9-DAD6-46F4-80CB-B9D98C90B255</organisation>
+      <organisation>be624bf9-dad6-46f4-80cb-b9d98c90b255</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation>
         <value>
@@ -1018,7 +1018,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Diet average" code="310503003" />
       </code>
       <displayTerm>Diet average</displayTerm>
-      <organisation>BE624BF9-DAD6-46F4-80CB-B9D98C90B255</organisation>
+      <organisation>be624bf9-dad6-46f4-80cb-b9d98c90b255</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation />
     </event>
@@ -1034,7 +1034,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="New patient health check" code="171324002" />
       </code>
       <displayTerm>New patient health check</displayTerm>
-      <organisation>BE624BF9-DAD6-46F4-80CB-B9D98C90B255</organisation>
+      <organisation>be624bf9-dad6-46f4-80cb-b9d98c90b255</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation />
     </event>
@@ -1050,7 +1050,7 @@
       <associatedText associatedTextType="POST">
         <value>Havrix Monodose  Vaccine  1440 units/1 ml pre-filled syringe 1 pre-filled syrg(s) 1</value>
       </associatedText>
-      <organisation>BE624BF9-DAD6-46F4-80CB-B9D98C90B255</organisation>
+      <organisation>be624bf9-dad6-46f4-80cb-b9d98c90b255</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation />
     </event>
@@ -1069,7 +1069,7 @@
       <associatedText associatedTextType="POST">
         <value> Scanty coase creps</value>
       </associatedText>
-      <organisation>BE624BF9-DAD6-46F4-80CB-B9D98C90B255</organisation>
+      <organisation>be624bf9-dad6-46f4-80cb-b9d98c90b255</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation />
     </event>
@@ -1088,7 +1088,7 @@
       <associatedText associatedTextType="POST">
         <value> Tired generally. Needs to have bloods etc</value>
       </associatedText>
-      <organisation>BE624BF9-DAD6-46F4-80CB-B9D98C90B255</organisation>
+      <organisation>be624bf9-dad6-46f4-80cb-b9d98c90b255</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation />
     </event>
@@ -1104,7 +1104,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="O/E - height" code="162755006" />
       </code>
       <displayTerm>O/E - height</displayTerm>
-      <organisation>BE624BF9-DAD6-46F4-80CB-B9D98C90B255</organisation>
+      <organisation>be624bf9-dad6-46f4-80cb-b9d98c90b255</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation>
         <value>
@@ -1126,7 +1126,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Urine glucose test negative" code="167261002" />
       </code>
       <displayTerm>Urine glucose test negative</displayTerm>
-      <organisation>BE624BF9-DAD6-46F4-80CB-B9D98C90B255</organisation>
+      <organisation>be624bf9-dad6-46f4-80cb-b9d98c90b255</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation />
     </event>
@@ -1142,7 +1142,7 @@
       <associatedText associatedTextType="POST">
         <value>Typhoid Vaccine, Vi Capsular Polysaccaride  Vaccine  25 micrograms/0.5 ml pre-filled syringe 1 pre-filled syringe(s) 1</value>
       </associatedText>
-      <organisation>BE624BF9-DAD6-46F4-80CB-B9D98C90B255</organisation>
+      <organisation>be624bf9-dad6-46f4-80cb-b9d98c90b255</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation />
     </event>
@@ -1158,7 +1158,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Systolic blood pressure" code="163030003" />
       </code>
       <displayTerm>Systolic blood pressure</displayTerm>
-      <organisation>BE624BF9-DAD6-46F4-80CB-B9D98C90B255</organisation>
+      <organisation>be624bf9-dad6-46f4-80cb-b9d98c90b255</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation>
         <value>
@@ -1181,7 +1181,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Body mass index" code="60621009" />
       </code>
       <displayTerm>Body Mass Index</displayTerm>
-      <organisation>BE624BF9-DAD6-46F4-80CB-B9D98C90B255</organisation>
+      <organisation>be624bf9-dad6-46f4-80cb-b9d98c90b255</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation>
         <value>
@@ -1203,7 +1203,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="H/O: drug allergy" code="161590003" />
       </code>
       <displayTerm>H/O: drug allergy</displayTerm>
-      <organisation>BE624BF9-DAD6-46F4-80CB-B9D98C90B255</organisation>
+      <organisation>be624bf9-dad6-46f4-80cb-b9d98c90b255</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation />
     </event>
@@ -1219,7 +1219,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Notes summary on computer" code="184229000" />
       </code>
       <displayTerm>Notes summary on computer</displayTerm>
-      <organisation>BE624BF9-DAD6-46F4-80CB-B9D98C90B255</organisation>
+      <organisation>be624bf9-dad6-46f4-80cb-b9d98c90b255</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <observation />
     </event>
@@ -1235,7 +1235,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="First meningitis C vaccination" code="314414007" />
       </code>
       <displayTerm>First meningitis C vaccination</displayTerm>
-      <organisation>BE624BF9-DAD6-46F4-80CB-B9D98C90B255</organisation>
+      <organisation>be624bf9-dad6-46f4-80cb-b9d98c90b255</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <diary>
         <locationType codeSystem="2.16.840.1.113883.2.1.6.2" displayName="" code="" />
@@ -1253,7 +1253,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="MMR pre-school booster vaccination" code="170432003" />
       </code>
       <displayTerm>MMR pre-school booster vaccination</displayTerm>
-      <organisation>BE624BF9-DAD6-46F4-80CB-B9D98C90B255</organisation>
+      <organisation>be624bf9-dad6-46f4-80cb-b9d98c90b255</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <diary>
         <locationType codeSystem="2.16.840.1.113883.2.1.6.2" displayName="" code="" />
@@ -1271,7 +1271,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Typhoid polysaccharide 25micrograms/0.5ml vaccine solution for injection pre-filled syringes" code="348070000" />
       </code>
       <displayTerm>Typhoid polysaccharide 25micrograms/0.5ml vaccine solution for injection pre-filled syringes</displayTerm>
-      <organisation>BE624BF9-DAD6-46F4-80CB-B9D98C90B255</organisation>
+      <organisation>be624bf9-dad6-46f4-80cb-b9d98c90b255</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <medication>
         <expiryDate>2002-10-23</expiryDate>
@@ -1303,7 +1303,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Havrix Monodose vaccine suspension for injection 1ml pre-filled syringes (GlaxoSmithKline UK Ltd)" code="3006311000001105" />
       </code>
       <displayTerm>Havrix Monodose vaccine suspension for injection 1ml pre-filled syringes (GlaxoSmithKline UK Ltd)</displayTerm>
-      <organisation>BE624BF9-DAD6-46F4-80CB-B9D98C90B255</organisation>
+      <organisation>be624bf9-dad6-46f4-80cb-b9d98c90b255</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <medication>
         <expiryDate>2002-10-23</expiryDate>
@@ -1335,7 +1335,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Typhoid polysaccharide 25micrograms/0.5ml vaccine solution for injection pre-filled syringes" code="348070000" />
       </code>
       <displayTerm>Typhoid Vaccine, Vi Capsular Polysaccaride  Vaccine  25 micrograms/0.5 ml pre-filled syringe</displayTerm>
-      <organisation>BE624BF9-DAD6-46F4-80CB-B9D98C90B255</organisation>
+      <organisation>be624bf9-dad6-46f4-80cb-b9d98c90b255</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <medicationIssue>
         <medication>fbc951e3-3043-4b70-bfcd-0eed0128e5ce</medication>
@@ -1364,7 +1364,7 @@
         <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Havrix Monodose vaccine suspension for injection 1ml pre-filled syringes (GlaxoSmithKline UK Ltd)" code="3006311000001105" />
       </code>
       <displayTerm>Havrix Monodose  Vaccine  1440 units/1 ml pre-filled syringe</displayTerm>
-      <organisation>BE624BF9-DAD6-46F4-80CB-B9D98C90B255</organisation>
+      <organisation>be624bf9-dad6-46f4-80cb-b9d98c90b255</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
       <medicationIssue>
         <medication>9fbe18ff-fe6d-401f-8f17-b55dfe96b6e2</medication>

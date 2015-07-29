@@ -1,12 +1,12 @@
-<?xml version="1.0"?>
-<openHealthRecord xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" schemaVersion="1.3.0" xmlns="http://www.e-mis.com/emisopen">
+<?xml version="1.0" encoding="utf-16"?>
+<openHealthRecord xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.e-mis.com/emisopen">
   <id>00b87973-f3a3-4db6-a4d9-a559db2660e7</id>
   <creationTime>2010-05-09T00:00:00+01:00</creationTime>
   <author>
     <system>
       <systemType>EMISWEB</systemType>
     </system>
-    <organisation>4A3EA1CF-7F01-4F61-9654-B07DD51A34F8</organisation>
+    <organisation>4a3ea1cf-7f01-4f61-9654-b07dd51a34f8</organisation>
   </author>
   <contentSpecification>
     <specification>37241000000102</specification>
@@ -225,7 +225,7 @@
     </user>
     <role updateMode="add">
       <id>ea801c6a-425c-083f-6b9e-83123fcb829c</id>
-      <name>Receptionist Al-shifa</name>
+      <name>Receptionist</name>
       <userCategory codeSystem="2.16.840.1.113883.2.1.6.2" displayName="Includes 'Administrative Assistant'. 'Ward Clerk' (an NCRS type role) is also available." code="" />
       <organisation>4a3ea1cf-7f01-4f61-9654-b07dd51a34f8</organisation>
       <confidentialityPolicy>d713d67d-571d-47c4-bacc-0e1d40310326</confidentialityPolicy>
