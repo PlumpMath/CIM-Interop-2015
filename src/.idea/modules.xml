@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/cim-common/cim-common.iml" filepath="$PROJECT_DIR$/cim-common/cim-common.iml" />
       <module fileurl="file://$PROJECT_DIR$/cim-dataservice/cim-dataservice.iml" filepath="$PROJECT_DIR$/cim-dataservice/cim-dataservice.iml" />
+      <module fileurl="file://$PROJECT_DIR$/cim-pds/cim-pds.iml" filepath="$PROJECT_DIR$/cim-pds/cim-pds.iml" />
       <module fileurl="file://$PROJECT_DIR$/cim-transforms/cim-transforms.iml" filepath="$PROJECT_DIR$/cim-transforms/cim-transforms.iml" />
     </modules>
   </component>
