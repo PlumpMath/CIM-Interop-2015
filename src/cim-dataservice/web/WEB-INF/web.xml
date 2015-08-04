@@ -2,7 +2,7 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
 
-    <display-name>CIM Interop 2015</display-name>
+    <display-name>Common Interface Mechanism</display-name>
 
     <!-- list of route builders -->
     <context-param>
@@ -25,6 +25,6 @@
     <!-- Camel servlet mapping -->
     <servlet-mapping>
         <servlet-name>CamelServlet</servlet-name>
-        <url-pattern>/v0.1/*</url-pattern>
+        <url-pattern>/*</url-pattern>
     </servlet-mapping>
 </web-app>

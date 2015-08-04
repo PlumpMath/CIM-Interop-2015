@@ -41,8 +41,16 @@
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
       </profile>
+      <profile default="false" name="Annotation profile for cim-apidoc" enabled="true">
+        <sourceOutputDir name="target\generated-sources\annotations" />
+        <sourceTestOutputDir name="target\generated-test-sources\test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="true" />
+        <module name="cim-apidoc" />
+      </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="cim-apidoc" target="1.8" />
       <module name="cim-common" target="1.8" />
       <module name="cim-dataprotocols" target="1.8" />
       <module name="cim-dataservice" target="1.8" />

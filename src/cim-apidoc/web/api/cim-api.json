@@ -13,7 +13,7 @@
         }
     },
     "host": "localhost:8080",
-    "basePath": "/v0.1",
+    "basePath": "/api/rest",
     "tags": [
         {
             "name": "demographics",
