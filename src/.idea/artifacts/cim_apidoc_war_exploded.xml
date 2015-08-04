@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="cim-apidoc:war exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/cim_apidoc_war_exploded</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="cim-apidoc/web/Web" />
+    </root>
+  </artifact>
+</component>
