@@ -45,11 +45,6 @@
         </dependency>
         <dependency>
             <groupId>org.apache.camel</groupId>
-            <artifactId>camel-cassandraql</artifactId>
-            <version>${camel_version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.camel</groupId>
             <artifactId>camel-test</artifactId>
             <version>${camel_version}</version>
             <scope>test</scope>

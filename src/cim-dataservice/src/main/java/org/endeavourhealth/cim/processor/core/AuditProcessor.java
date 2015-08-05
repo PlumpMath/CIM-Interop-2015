@@ -2,12 +2,13 @@ package org.endeavourhealth.cim.processor.core;
 
 import org.apache.camel.Exchange;
 import org.apache.commons.io.IOUtils;
+import org.endeavourhealth.cim.audit.AuditRepository;
 
 import java.io.InputStream;
 import java.util.Arrays;
 import java.util.Date;
 
-public class CqlAuditParamsProcessor implements org.apache.camel.Processor {
+public class AuditProcessor implements org.apache.camel.Processor {
     @Override
     public void process(Exchange exchange) throws Exception {
 
@@ -19,6 +20,9 @@ public class CqlAuditParamsProcessor implements org.apache.camel.Processor {
             message = IOUtils.toString((InputStream)body);
 
         Date date = new Date();
+
+        AuditRepository auditRepository = new AuditRepository();
+        auditRepository.add(date, message);
 
         exchange.getIn().setBody(Arrays.asList(date, message));
     }
