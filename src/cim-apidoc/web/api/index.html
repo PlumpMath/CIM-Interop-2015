@@ -97,6 +97,9 @@ end custom -->
             window.swaggerUi.api.clientAuthorizations.add("api_key", apiKeyAuth);
             log("added key " + key);
         }
+/* custom	*/				
+				$('input[name=api_key]').val(key);
+/* end custom	*/
       }
 
       $('#input_apiKey').change(addApiKeyAuthorization);

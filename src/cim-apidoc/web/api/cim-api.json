@@ -36,12 +36,10 @@
                 "parameters": [
                     {
                         "name": "api_key",
-                        "in": "header",
-                        "description": "Client API key",
+                        "description": "API key",
+                        "paramType": "header",
                         "type": "string",
-                        "enum": [
-                            "swagger"
-                        ]
+                        "required": true
                     },
                     {
                         "name": "hash",
@@ -86,12 +84,10 @@
                 "parameters": [
                     {
                         "name": "api_key",
-                        "in": "header",
-                        "description": "Client API key",
+                        "description": "API key",
+                        "paramType": "header",
                         "type": "string",
-                        "enum": [
-                            "swagger"
-                        ]
+                        "required": true
                     },
                     {
                         "name": "hash",
@@ -153,12 +149,10 @@
                 "parameters": [
                     {
                         "name": "api_key",
-                        "in": "header",
-                        "description": "Client API key",
+                        "description": "API key",
+                        "paramType": "header",
                         "type": "string",
-                        "enum": [
-                            "swagger"
-                        ]
+                        "required": true
                     },
                     {
                         "name": "hash",
@@ -210,12 +204,10 @@
                 "parameters": [
                     {
                         "name": "api_key",
-                        "in": "header",
-                        "description": "Client API key",
+                        "description": "API key",
+                        "paramType": "header",
                         "type": "string",
-                        "enum": [
-                            "swagger"
-                        ]
+                        "required": true
                     },
                     {
                         "name": "hash",
@@ -264,12 +256,10 @@
                 "parameters": [
                     {
                         "name": "api_key",
-                        "in": "header",
-                        "description": "Client API key",
+                        "description": "API key",
+                        "paramType": "header",
                         "type": "string",
-                        "enum": [
-                            "swagger"
-                        ]
+                        "required": true
                     },
                     {
                         "name": "hash",
@@ -311,12 +301,10 @@
                 "parameters": [
                     {
                         "name": "api_key",
-                        "in": "header",
-                        "description": "Client API key",
+                        "description": "API key",
+                        "paramType": "header",
                         "type": "string",
-                        "enum": [
-                            "swagger"
-                        ]
+                        "required": true
                     },
                     {
                         "name": "hash",
@@ -358,12 +346,10 @@
                 "parameters": [
                     {
                         "name": "api_key",
-                        "in": "header",
-                        "description": "Client API key",
+                        "description": "API key",
+                        "paramType": "header",
                         "type": "string",
-                        "enum": [
-                            "swagger"
-                        ]
+                        "required": true
                     },
                     {
                         "name": "hash",
@@ -412,12 +398,10 @@
                 "parameters": [
                     {
                         "name": "api_key",
-                        "in": "header",
-                        "description": "Client API key",
+                        "description": "API key",
+                        "paramType": "header",
                         "type": "string",
-                        "enum": [
-                            "swagger"
-                        ]
+                        "required": true
                     },
                     {
                         "name": "hash",
@@ -478,12 +462,10 @@
                 "parameters": [
                     {
                         "name": "api_key",
-                        "in": "header",
-                        "description": "Client API key",
+                        "description": "API key",
+                        "paramType": "header",
                         "type": "string",
-                        "enum": [
-                            "swagger"
-                        ]
+                        "required": true
                     },
                     {
                         "name": "hash",
@@ -532,12 +514,10 @@
                 "parameters": [
                     {
                         "name": "api_key",
-                        "in": "header",
-                        "description": "Client API key",
+                        "description": "API key",
+                        "paramType": "header",
                         "type": "string",
-                        "enum": [
-                            "swagger"
-                        ]
+                        "required": true
                     },
                     {
                         "name": "hash",
@@ -589,12 +569,10 @@
                 "parameters": [
                     {
                         "name": "api_key",
-                        "in": "header",
-                        "description": "Client API key",
+                        "description": "API key",
+                        "paramType": "header",
                         "type": "string",
-                        "enum": [
-                            "swagger"
-                        ]
+                        "required": true
                     },
                     {
                         "name": "hash",
@@ -650,12 +628,10 @@
                 "parameters": [
                     {
                         "name": "api_key",
-                        "in": "header",
-                        "description": "Client API key",
+                        "description": "API key",
+                        "paramType": "header",
                         "type": "string",
-                        "enum": [
-                            "swagger"
-                        ]
+                        "required": true
                     },
                     {
                         "name": "hash",
@@ -709,12 +685,10 @@
                 "parameters": [
                     {
                         "name": "api_key",
-                        "in": "header",
-                        "description": "Client API key",
+                        "description": "API key",
+                        "paramType": "header",
                         "type": "string",
-                        "enum": [
-                            "swagger"
-                        ]
+                        "required": true
                     },
                     {
                         "name": "hash",
@@ -775,12 +749,10 @@
                 "parameters": [
                     {
                         "name": "api_key",
-                        "in": "header",
-                        "description": "Client API key",
+                        "description": "API key",
+                        "paramType": "header",
                         "type": "string",
-                        "enum": [
-                            "swagger"
-                        ]
+                        "required": true
                     },
                     {
                         "name": "hash",
@@ -836,12 +808,10 @@
                 "parameters": [
                     {
                         "name": "api_key",
-                        "in": "header",
-                        "description": "Client API key",
+                        "description": "API key",
+                        "paramType": "header",
                         "type": "string",
-                        "enum": [
-                            "swagger"
-                        ]
+                        "required": true
                     },
                     {
                         "name": "hash",
@@ -906,12 +876,10 @@
                 "parameters": [
                     {
                         "name": "api_key",
-                        "in": "header",
-                        "description": "Client API key",
+                        "description": "API key",
+                        "paramType": "header",
                         "type": "string",
-                        "enum": [
-                            "swagger"
-                        ]
+                        "required": true
                     },
                     {
                         "name": "hash",
@@ -969,12 +937,10 @@
                 "parameters": [
                     {
                         "name": "api_key",
-                        "in": "header",
-                        "description": "Client API key",
+                        "description": "API key",
+                        "paramType": "header",
                         "type": "string",
-                        "enum": [
-                            "swagger"
-                        ]
+                        "required": true
                     },
                     {
                         "name": "hash",
@@ -1032,12 +998,10 @@
                 "parameters": [
                     {
                         "name": "api_key",
-                        "in": "header",
-                        "description": "Client API key",
+                        "description": "API key",
+                        "paramType": "header",
                         "type": "string",
-                        "enum": [
-                            "swagger"
-                        ]
+                        "required": true
                     },
                     {
                         "name": "hash",
@@ -1120,12 +1084,10 @@
                 "parameters": [
                     {
                         "name": "api_key",
-                        "in": "header",
-                        "description": "Client API key",
+                        "description": "API key",
+                        "paramType": "header",
                         "type": "string",
-                        "enum": [
-                            "swagger"
-                        ]
+                        "required": true
                     },
                     {
                         "name": "hash",
@@ -1208,12 +1170,10 @@
                 "parameters": [
                     {
                         "name": "api_key",
-                        "in": "header",
-                        "description": "Client API key",
+                        "description": "API key",
+                        "paramType": "header",
                         "type": "string",
-                        "enum": [
-                            "swagger"
-                        ]
+                        "required": true
                     },
                     {
                         "name": "hash",
