@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>Swagger UI</title>
+  <title>Endeavour Health Common Interface Mechanism</title>
 
 <!-- custom -->
 	<link href='https://fonts.googleapis.com/css?family=Droid+Sans:400,700|Open+Sans' rel='stylesheet' type='text/css' />
@@ -87,7 +87,11 @@ end custom -->
         },
         docExpansion: "none",
         apisSorter: "alpha",
-        showRequestHeaders: false
+
+/* custom */
+        showRequestHeaders: true
+/* end custom */
+
       });
 
       function addApiKeyAuthorization(){
@@ -97,9 +101,11 @@ end custom -->
             window.swaggerUi.api.clientAuthorizations.add("api_key", apiKeyAuth);
             log("added key " + key);
         }
-/* custom	*/				
-				$('input[name=api_key]').val(key);
-/* end custom	*/
+
+/* custom */
+        $('input[name=api_key]').val(key);
+/* end custom */
+
       }
 
       $('#input_apiKey').change(addApiKeyAuthorization);
