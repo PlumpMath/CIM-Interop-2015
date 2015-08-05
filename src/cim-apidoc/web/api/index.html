@@ -3,18 +3,26 @@
 <head>
   <meta charset="UTF-8">
   <title>Swagger UI</title>
+
+<!-- custom -->
+	<link href='https://fonts.googleapis.com/css?family=Droid+Sans:400,700|Open+Sans' rel='stylesheet' type='text/css' />
+<!-- end custom -->
+
+<!-- custom
   <link rel="icon" type="image/png" href="swagger/images/favicon-32x32.png" sizes="32x32" />
   <link rel="icon" type="image/png" href="swagger/images/favicon-16x16.png" sizes="16x16" />
   <link href='swagger/css/typography.css' media='screen' rel='stylesheet' type='text/css'/>
+end custom -->
+
   <link href='swagger/css/reset.css' media='screen' rel='stylesheet' type='text/css'/>
   <link href='swagger/css/screen.css' media='screen' rel='stylesheet' type='text/css'/>
   <link href='swagger/css/reset.css' media='print' rel='stylesheet' type='text/css'/>
   <link href='swagger/css/print.css' media='print' rel='stylesheet' type='text/css'/>
-    
-<!-- custom: add localised/overriden css -->
-  <link href='swagger-custom/style.css' media='screen' rel='stylesheet' type='text/css'/>		
+
+<!-- custom -->	
+	<link href='swagger-custom/style.css' media='screen' rel='stylesheet' type='text/css'/>
 <!-- end custom -->
-		
+
   <script src='swagger/lib/jquery-1.8.0.min.js' type='text/javascript'></script>
   <script src='swagger/lib/jquery.slideto.min.js' type='text/javascript'></script>
   <script src='swagger/lib/jquery.wiggle.min.js' type='text/javascript'></script>
@@ -27,10 +35,6 @@
   <script src='swagger/lib/marked.js' type='text/javascript'></script>
   <script src='swagger/lib/swagger-oauth.js' type='text/javascript'></script>
 
-<!-- custom: add localised/overriden javascript -->
-  <script src='swagger-custom/script.js' type='text/javascript'></script>
-<!-- end custom -->
-
   <!-- Some basic translations -->
   <!-- <script src='swagger/lang/translator.js' type='text/javascript'></script> -->
   <!-- <script src='swagger/lang/ru.js' type='text/javascript'></script> -->
@@ -42,7 +46,11 @@
       if (url && url.length > 1) {
         url = decodeURIComponent(url[1]);
       } else {
+			
+/* custom	*/
         url = "cim-api.json";
+/* end custom */
+
       }
 
       // Pre load translate...
@@ -73,22 +81,13 @@
           });
 
           addApiKeyAuthorization();
-
-<!-- custom: onComplete extension -->
-          $('.response').each(function(){
-            var responseBodyHeader = $($(this).find("h4")[1]);
-            var contentClassId = responseBodyHeader.parents('.content').attr('id');
-            responseBodyHeader.wrapInner('<a href="javascript:visualizeJson(\''+ contentClassId + '\');" target="_blank"/>');
-          });
-<!-- end custom -->
-
         },
         onFailure: function(data) {
           log("Unable to Load SwaggerUI");
         },
         docExpansion: "none",
         apisSorter: "alpha",
-        showRequestHeaders: true
+        showRequestHeaders: false
       });
 
       function addApiKeyAuthorization(){
@@ -120,10 +119,13 @@
 </head>
 
 <body class="swagger-section">
-
-<!-- custom: remove swagger header
 <div id='header'>
   <div class="swagger-ui-wrap">
+<!-- custom -->
+    <a href="/">
+			<div id="custom-logo"></div>
+    </a>
+<!-- end custom -->
     <a id="logo" href="http://swagger.io">swagger</a>
     <form id='api_selector'>
       <div class='input'><input placeholder="http://example.com/api" id="input_baseUrl" name="baseUrl" type="text"/></div>
@@ -134,12 +136,6 @@
 </div>
 
 <div id="message-bar" class="swagger-ui-wrap" data-sw-translate>&nbsp;</div>
-end custom -->
-
-<!-- custom: add endeavour logo -->
-<img src="swagger-custom/endeavourlogo.png" style="padding: 10px 10px 10px 10px;"/>
-<!-- end custom -->
-
 <div id="swagger-ui-container" class="swagger-ui-wrap"></div>
 </body>
 </html>

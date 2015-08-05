@@ -1,31 +1,24 @@
 {
     "swagger": "2.0",
     "info": {
-        "description": "This is a RESTful test server with API documentation for the Endeavour Common Interface Mechanism, which can be used to send requests to, and receive example responses.<br><br><b>NOTE:</b> All dates should be provided in the full ISO-8601 format (yyyy-MM-dd'T'HH:mm:ss'Z'), or partial derivations of.",
+        "description": "API documentation for the Endeavour Health Common Interface Mechanism.",
         "version": "0.1",
-        "title": "Common Interface Mechanism",
-        "contact": {
-            "email": "support@endeavour.com"
-        },
-        "license": {
-            "name": "Apache 2.0",
-            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
-        }
+        "title": "Common Interface Mechanism"
     },
     "host": "localhost:8080",
     "basePath": "/api/v0.1",
     "tags": [
         {
             "name": "demographics",
-            "description": "Operations on patient demographic information"
+            "description": ""
         },
         {
             "name": "clinical",
-            "description": "Operations on patient clinical information"
+            "description": ""
         },
         {
             "name": "administrative",
-            "description": "Operations on scheduling and ordering. Includes appointments and workflow."
+            "description": ""
         }
 
     ],

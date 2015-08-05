@@ -46,16 +46,6 @@
   <component name="FrameworkDetectionExcludesConfiguration">
     <file type="web" url="file://$PROJECT_DIR$/cim-transforms/src/main/java/org/endeavourhealth/cim/transform/emisopen/tofhir/ToFHIRTransformer.java" />
   </component>
-  <component name="MavenProjectsManager">
-    <option name="originalFiles">
-      <list>
-        <option value="$PROJECT_DIR$/cim-dataservice/pom.xml" />
-        <option value="$PROJECT_DIR$/cim-common/pom.xml" />
-        <option value="$PROJECT_DIR$/cim-transforms/pom.xml" />
-        <option value="$PROJECT_DIR$/cim-apidoc/pom.xml" />
-      </list>
-    </option>
-  </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
     <OptionsSetting value="true" id="Remove" />
