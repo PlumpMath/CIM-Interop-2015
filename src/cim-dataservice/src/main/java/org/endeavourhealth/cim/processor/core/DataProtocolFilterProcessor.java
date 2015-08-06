@@ -2,11 +2,11 @@ package org.endeavourhealth.cim.processor.core;
 
 import org.apache.camel.Exchange;
 import org.apache.camel.Processor;
-import org.endeavourhealth.cim.InformationSharingFramework.data.DatasetCollectionRepository;
-import org.endeavourhealth.cim.InformationSharingFramework.data.PublisherProfileRepository;
-import org.endeavourhealth.cim.InformationSharingFramework.model.DatasetCollection;
-import org.endeavourhealth.cim.InformationSharingFramework.model.InformationSharingProtocol;
-import org.endeavourhealth.cim.InformationSharingFramework.model.PublisherProfile;
+import org.endeavourhealth.cim.repository.informationSharing.data.DatasetCollectionRepository;
+import org.endeavourhealth.cim.repository.informationSharing.data.PublisherProfileRepository;
+import org.endeavourhealth.cim.repository.informationSharing.model.DatasetCollection;
+import org.endeavourhealth.cim.repository.informationSharing.model.InformationSharingProtocol;
+import org.endeavourhealth.cim.repository.informationSharing.model.PublisherProfile;
 import org.endeavourhealth.cim.common.HeaderKey;
 
 import java.util.ArrayList;

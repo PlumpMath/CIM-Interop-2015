@@ -1,4 +1,4 @@
-package org.endeavourhealth.cim.adapter;
+package org.endeavourhealth.cim.dataManager.emis;
 
 import java.util.ArrayList;
 import java.util.Date;

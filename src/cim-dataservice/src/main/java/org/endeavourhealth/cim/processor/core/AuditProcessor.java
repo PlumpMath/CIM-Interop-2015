@@ -2,7 +2,7 @@ package org.endeavourhealth.cim.processor.core;
 
 import org.apache.camel.Exchange;
 import org.apache.commons.io.IOUtils;
-import org.endeavourhealth.cim.audit.AuditRepository;
+import org.endeavourhealth.cim.repository.audit.AuditRepository;
 
 import java.io.InputStream;
 import java.util.Arrays;

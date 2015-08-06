@@ -15,15 +15,15 @@ public class Registry implements IRegistry {
 	}
 
     public String getDataManagerTypeNameForService(String odsCode) throws ClassNotFoundException {
-        return "org.endeavourhealth.cim.dataManager.EmisDataManager";
+        return "org.endeavourhealth.cim.dataManager.emis.EmisDataManager";
     }
 
 	public ArrayList<String> getAllDataManagerTypes() {
         ArrayList<String> dataManagerTypes = new ArrayList<>();
 
-        dataManagerTypes.add("org.endeavourhealth.cim.dataManager.EmisDataManager");
-        dataManagerTypes.add("org.endeavourhealth.cim.dataManager.EmisDataManager");
-        dataManagerTypes.add("org.endeavourhealth.cim.dataManager.EmisDataManager");
+        dataManagerTypes.add("org.endeavourhealth.cim.dataManager.emis.EmisDataManager");
+        dataManagerTypes.add("org.endeavourhealth.cim.dataManager.emis.EmisDataManager");
+        dataManagerTypes.add("org.endeavourhealth.cim.dataManager.emis.EmisDataManager");
 
         return dataManagerTypes;
     }
