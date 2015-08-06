@@ -1,41 +1,39 @@
-USE cim;
-
-CREATE COLUMNFAMILY service
+CREATE COLUMNFAMILY cim.service
 (
   id UUID PRIMARY KEY,
   schema_version VARCHAR,
   data VARCHAR
 );
 
-CREATE COLUMNFAMILY service_by_organisation
+CREATE COLUMNFAMILY cim.service_by_organisation
 (
   id VARCHAR PRIMARY KEY,
   schema_version VARCHAR,
   data VARCHAR
 );
 
-CREATE COLUMNFAMILY system
+CREATE COLUMNFAMILY cim.system
 (
   id UUID PRIMARY KEY,
   schema_version VARCHAR,
   data VARCHAR
 );
 
-CREATE COLUMNFAMILY technical_interface
+CREATE COLUMNFAMILY cim.technical_interface
 (
   id UUID PRIMARY KEY,
   schema_version VARCHAR,
   data VARCHAR
 );
 
-CREATE COLUMNFAMILY information_sharing_protocol
+CREATE COLUMNFAMILY cim.information_sharing_protocol
 (
   id UUID PRIMARY KEY,
   schema_version VARCHAR,
   data VARCHAR
 );
 
-CREATE COLUMNFAMILY protocol_by_publisher_and_subscriber_agreement
+CREATE COLUMNFAMILY cim.protocol_by_publisher_and_subscriber_agreement
 (
   publisherAgreementId UUID,
   subscriberAgreementId UUID,
@@ -44,42 +42,42 @@ CREATE COLUMNFAMILY protocol_by_publisher_and_subscriber_agreement
   PRIMARY KEY (publisherAgreementId, subscriberAgreementId)
 );
 
-CREATE COLUMNFAMILY sharing_agreement
+CREATE COLUMNFAMILY cim.sharing_agreement
 (
   id UUID PRIMARY KEY,
   schema_version VARCHAR,
   data VARCHAR
 );
 
-CREATE COLUMNFAMILY agreement_by_service
+CREATE COLUMNFAMILY cim.agreement_by_service
 (
   id UUID PRIMARY KEY,
   schema_version VARCHAR,
   data VARCHAR
 );
 
-CREATE COLUMNFAMILY publisher_profile
+CREATE COLUMNFAMILY cim.publisher_profile
 (
   id UUID PRIMARY KEY,
   schema_version VARCHAR,
   data VARCHAR
 );
 
-CREATE COLUMNFAMILY subscriber_profile
+CREATE COLUMNFAMILY cim.subscriber_profile
 (
   id UUID PRIMARY KEY,
   schema_version VARCHAR,
   data VARCHAR
 );
 
-CREATE COLUMNFAMILY dataset_collection
+CREATE COLUMNFAMILY cim.dataset_collection
 (
   id UUID PRIMARY KEY,
   schema_version VARCHAR,
   data VARCHAR
 );
 
-CREATE COLUMNFAMILY dataset
+CREATE COLUMNFAMILY cim.dataset
 (
   id UUID PRIMARY KEY,
   schema_version VARCHAR,

@@ -1,6 +1,4 @@
-USE cim;
-
-CREATE COLUMNFAMILY audit
+CREATE COLUMNFAMILY cim.audit
 (
 	rowkey TIMESTAMP PRIMARY KEY,
 	message VARCHAR
