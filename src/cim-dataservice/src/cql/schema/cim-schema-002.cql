@@ -1,0 +1,7 @@
+USE cim;
+
+CREATE COLUMNFAMILY audit
+(
+	rowkey TIMESTAMP PRIMARY KEY,
+	message VARCHAR
+);
