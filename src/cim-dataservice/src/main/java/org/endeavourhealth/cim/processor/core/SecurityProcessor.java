@@ -7,7 +7,11 @@ import org.apache.commons.httpclient.HttpStatus;
 import org.endeavourhealth.cim.IRegistry;
 import org.endeavourhealth.cim.Registry;
 import org.endeavourhealth.cim.common.HeaderKey;
+import org.endeavourhealth.cim.common.data.Repository;
+import org.endeavourhealth.cim.common.data.RepositoryException;
 import org.endeavourhealth.cim.exceptions.SessionException;
+import org.endeavourhealth.cim.repository.apikey.data.ApiKeyRepository;
+import org.endeavourhealth.cim.repository.apikey.model.ApiKey;
 
 import javax.crypto.Mac;
 import javax.crypto.spec.SecretKeySpec;
@@ -31,7 +35,21 @@ public class SecurityProcessor implements Processor {
     }
 
     private Boolean validateMessage(String publicKey, String method, String body, String inboundHash) {
-        String privateKey = Registry.Instance().getPrivateKey(publicKey);
+
+        ApiKey apikey = null;
+
+        try {
+            ApiKeyRepository apiKeyRepository = new ApiKeyRepository();
+            apikey = apiKeyRepository.getById(publicKey);
+        }
+        catch (RepositoryException re) {
+            return false;
+        }
+
+        if (apikey == null)
+            return false;
+
+        String privateKey = apikey.getSecret();
 
         if (privateKey == null)
             return false;

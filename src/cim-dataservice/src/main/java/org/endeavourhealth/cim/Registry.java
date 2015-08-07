@@ -27,8 +27,4 @@ public class Registry implements IRegistry {
 
         return dataManagerTypes;
     }
-
-    public String getPrivateKey(String publicKey) {
-        return "privateKey";
-    }
 }
