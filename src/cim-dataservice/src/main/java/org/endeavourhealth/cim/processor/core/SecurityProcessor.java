@@ -4,14 +4,11 @@ import org.apache.camel.Exchange;
 import org.apache.camel.Processor;
 import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.httpclient.HttpStatus;
-import org.endeavourhealth.cim.IRegistry;
-import org.endeavourhealth.cim.Registry;
 import org.endeavourhealth.cim.common.HeaderKey;
-import org.endeavourhealth.cim.common.data.Repository;
-import org.endeavourhealth.cim.common.data.RepositoryException;
+import org.endeavourhealth.cim.common.repository.common.data.RepositoryException;
 import org.endeavourhealth.cim.exceptions.SessionException;
-import org.endeavourhealth.cim.repository.apikey.data.ApiKeyRepository;
-import org.endeavourhealth.cim.repository.apikey.model.ApiKey;
+import org.endeavourhealth.cim.common.repository.user.data.UserRepository;
+import org.endeavourhealth.cim.common.repository.user.model.User;
 
 import javax.crypto.Mac;
 import javax.crypto.spec.SecretKeySpec;
@@ -36,11 +33,11 @@ public class SecurityProcessor implements Processor {
 
     private Boolean validateMessage(String publicKey, String method, String body, String inboundHash) {
 
-        ApiKey apikey = null;
+        User apikey = null;
 
         try {
-            ApiKeyRepository apiKeyRepository = new ApiKeyRepository();
-            apikey = apiKeyRepository.getById(publicKey);
+            UserRepository apiKeyRepository = new UserRepository();
+            apikey = apiKeyRepository.getByApiKey(publicKey);
         }
         catch (RepositoryException re) {
             return false;

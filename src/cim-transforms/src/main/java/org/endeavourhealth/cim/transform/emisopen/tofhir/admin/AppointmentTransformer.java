@@ -1,7 +1,7 @@
 package org.endeavourhealth.cim.transform.emisopen.tofhir.admin;
 
 import org.endeavourhealth.cim.common.ReferenceHelper;
-import org.endeavourhealth.cim.common.TextUtils;
+import org.endeavourhealth.cim.common.text.TextUtils;
 import org.endeavourhealth.cim.transform.SerializationException;
 import org.endeavourhealth.cim.transform.TransformFeatureNotSupportedException;
 import org.endeavourhealth.cim.transform.emisopen.EmisOpenCommon;

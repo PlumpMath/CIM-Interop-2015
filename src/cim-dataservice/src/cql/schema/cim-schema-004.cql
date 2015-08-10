@@ -1,7 +1,10 @@
-CREATE COLUMNFAMILY cim.apikey
+CREATE COLUMNFAMILY cim.user
 (
-	apikey VARCHAR PRIMARY KEY,
+	apikey VARCHAR PRIMARY KEY,	
 	secret VARCHAR,
-	userdata VARCHAR,
-	userdata_schema_version VARCHAR
+	email VARCHAR,	
+	data VARCHAR,
+	data_schema_version VARCHAR
 );
+
+CREATE INDEX ON cim.user (email);

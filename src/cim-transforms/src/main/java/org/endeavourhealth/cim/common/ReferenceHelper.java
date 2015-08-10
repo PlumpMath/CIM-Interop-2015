@@ -2,8 +2,7 @@ package org.endeavourhealth.cim.common;
 
 import org.hl7.fhir.instance.model.Reference;
 import org.hl7.fhir.instance.model.ResourceType;
-
-import java.util.Map;
+import org.endeavourhealth.cim.common.text.TextUtils;
 
 public class ReferenceHelper {
     public static String createResourceReference(ResourceType resourceType, String id) {

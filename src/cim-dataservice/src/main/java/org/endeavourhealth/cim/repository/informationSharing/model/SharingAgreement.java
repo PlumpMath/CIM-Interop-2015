@@ -1,8 +1,8 @@
 package org.endeavourhealth.cim.repository.informationSharing.model;
 
 import org.endeavourhealth.cim.repository.informationSharing.ISFManager;
-import org.endeavourhealth.cim.common.models.BaseEntity;
-import org.endeavourhealth.cim.common.models.EntityIdentifier;
+import org.endeavourhealth.cim.common.repository.common.model.BaseEntity;
+import org.endeavourhealth.cim.common.repository.common.model.EntityIdentifier;
 
 import java.util.List;
 import java.util.UUID;

@@ -2,6 +2,7 @@ package org.endeavourhealth.cim.common;
 
 import org.hl7.fhir.instance.model.Bundle;
 import org.hl7.fhir.instance.model.Resource;
+import org.endeavourhealth.cim.common.text.TextUtils;
 
 import java.util.ArrayList;
 import java.util.List;

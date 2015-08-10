@@ -5,7 +5,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.JsonToken;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonDeserializer;
-import org.endeavourhealth.cim.common.models.PartialDateTime;
+import org.endeavourhealth.cim.common.repository.common.model.PartialDateTime;
 
 import java.io.IOException;
 

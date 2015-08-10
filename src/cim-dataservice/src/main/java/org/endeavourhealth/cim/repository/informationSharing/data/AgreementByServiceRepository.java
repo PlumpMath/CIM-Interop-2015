@@ -5,9 +5,9 @@ import com.datastax.driver.core.Row;
 import com.datastax.driver.core.querybuilder.Clause;
 import com.datastax.driver.core.querybuilder.QueryBuilder;
 import com.fasterxml.jackson.core.JsonProcessingException;
+import org.endeavourhealth.cim.common.repository.common.data.*;
 import org.endeavourhealth.cim.repository.informationSharing.model.AgreementByService;
-import org.endeavourhealth.cim.common.configuration.DataConfiguration;
-import org.endeavourhealth.cim.common.data.*;
+import org.endeavourhealth.cim.common.repository.DataConfiguration;
 import org.endeavourhealth.cim.common.serializer.DeserializationException;
 import org.endeavourhealth.cim.common.serializer.JsonSerializer;
 

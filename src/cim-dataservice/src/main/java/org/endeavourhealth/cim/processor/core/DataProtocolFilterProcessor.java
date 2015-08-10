@@ -2,6 +2,7 @@ package org.endeavourhealth.cim.processor.core;
 
 import org.apache.camel.Exchange;
 import org.apache.camel.Processor;
+import org.endeavourhealth.cim.common.repository.common.data.RepositoryException;
 import org.endeavourhealth.cim.repository.informationSharing.data.DatasetCollectionRepository;
 import org.endeavourhealth.cim.repository.informationSharing.data.PublisherProfileRepository;
 import org.endeavourhealth.cim.repository.informationSharing.model.DatasetCollection;
@@ -27,7 +28,7 @@ public class DataProtocolFilterProcessor implements Processor {
 			processDataSetCollections(datasetCollections);
     }
 
-	private List<DatasetCollection> getDataSetCollections(List<InformationSharingProtocol> informationSharingProtocols) throws org.endeavourhealth.cim.common.data.RepositoryException {
+	private List<DatasetCollection> getDataSetCollections(List<InformationSharingProtocol> informationSharingProtocols) throws RepositoryException {
 		// Get profile ids from protocols
 		List<UUID> publisherProfileIds = new ArrayList<>();
 		for(InformationSharingProtocol protocol : informationSharingProtocols)

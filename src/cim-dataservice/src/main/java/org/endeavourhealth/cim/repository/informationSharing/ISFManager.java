@@ -3,7 +3,7 @@ package org.endeavourhealth.cim.repository.informationSharing;
 import org.endeavourhealth.cim.repository.informationSharing.data.*;
 import org.endeavourhealth.cim.repository.informationSharing.model.*;
 import org.endeavourhealth.cim.repository.informationSharing.model.System;
-import org.endeavourhealth.cim.common.data.RepositoryException;
+import org.endeavourhealth.cim.common.repository.common.data.RepositoryException;
 
 import java.util.*;
 

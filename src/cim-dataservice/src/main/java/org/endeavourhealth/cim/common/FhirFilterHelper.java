@@ -1,12 +1,10 @@
 package org.endeavourhealth.cim.common;
 
-import org.apache.camel.util.ResourceHelper;
+import org.endeavourhealth.cim.common.text.TextUtils;
 import org.endeavourhealth.cim.transform.emisopen.EmisOpenCommon;
 import org.hl7.fhir.instance.model.*;
 
 import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
 
 public class FhirFilterHelper {
 	public static Bundle getConditions(Bundle bundle) {

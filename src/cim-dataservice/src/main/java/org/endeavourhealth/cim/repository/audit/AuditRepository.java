@@ -1,9 +1,11 @@
 package org.endeavourhealth.cim.repository.audit;
 
 import com.datastax.driver.core.BoundStatement;
-import org.endeavourhealth.cim.common.TextUtils;
-import org.endeavourhealth.cim.common.configuration.DataConfiguration;
-import org.endeavourhealth.cim.common.data.*;
+import org.endeavourhealth.cim.common.text.TextUtils;
+import org.endeavourhealth.cim.common.repository.DataConfiguration;
+import org.endeavourhealth.cim.common.repository.common.data.InsertStatementBuilder;
+import org.endeavourhealth.cim.common.repository.common.data.Repository;
+import org.endeavourhealth.cim.common.repository.common.data.RepositoryException;
 
 import java.util.Date;
 

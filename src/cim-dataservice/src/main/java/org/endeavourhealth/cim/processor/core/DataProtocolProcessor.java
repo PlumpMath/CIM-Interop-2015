@@ -4,7 +4,7 @@ import org.apache.camel.Exchange;
 import org.endeavourhealth.cim.repository.informationSharing.ISFManager;
 import org.endeavourhealth.cim.repository.informationSharing.model.InformationSharingProtocol;
 import org.endeavourhealth.cim.common.HeaderKey;
-import org.endeavourhealth.cim.common.data.RepositoryException;
+import org.endeavourhealth.cim.common.repository.common.data.RepositoryException;
 import org.endeavourhealth.cim.exceptions.LegitimateRelationshipException;
 
 import java.util.List;

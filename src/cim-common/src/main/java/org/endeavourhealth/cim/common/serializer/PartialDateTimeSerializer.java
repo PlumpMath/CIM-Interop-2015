@@ -3,7 +3,7 @@ package org.endeavourhealth.cim.common.serializer;
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.*;
-import org.endeavourhealth.cim.common.models.PartialDateTime;
+import org.endeavourhealth.cim.common.repository.common.model.PartialDateTime;
 
 import java.io.IOException;
 
