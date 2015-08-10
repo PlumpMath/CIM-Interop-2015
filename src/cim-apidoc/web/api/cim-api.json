@@ -43,12 +43,10 @@
                     },
                     {
                         "name": "hash",
-                        "in": "header",
-                        "description": "Message hash value",
+                        "description": "Message hash",
+                        "paramType": "header",
                         "type": "string",
-                        "enum": [
-                            "z4FZ7w8+vpdgnTvG9vIwJxJhnvzICLtiIvVofOJiPiw="
-                        ]
+                        "required": false
                     },
                     {
                         "name": "nhsNo",
@@ -91,12 +89,10 @@
                     },
                     {
                         "name": "hash",
-                        "in": "header",
-                        "description": "Message hash value",
+                        "description": "Message hash",
+                        "paramType": "header",
                         "type": "string",
-                        "enum": [
-                            "z4FZ7w8+vpdgnTvG9vIwJxJhnvzICLtiIvVofOJiPiw="
-                        ]
+                        "required": false
                     },
                     {
                         "name": "surname",
@@ -156,12 +152,10 @@
                     },
                     {
                         "name": "hash",
-                        "in": "header",
-                        "description": "Message hash value",
+                        "description": "Message hash",
+                        "paramType": "header",
                         "type": "string",
-                        "enum": [
-                            "z4FZ7w8+vpdgnTvG9vIwJxJhnvzICLtiIvVofOJiPiw="
-                        ]
+                        "required": false
                     },
                     {
                         "name": "odsCode",
@@ -211,12 +205,10 @@
                     },
                     {
                         "name": "hash",
-                        "in": "header",
-                        "description": "Message hash value",
+                        "description": "Message hash",
+                        "paramType": "header",
                         "type": "string",
-                        "enum": [
-                            "uuepscTzgFRhJ3Liqd8hW81e2qjfap17baEmG1j6qgs="
-                        ]
+                        "required": false
                     },
                     {
                         "name": "odsCode",
@@ -263,12 +255,10 @@
                     },
                     {
                         "name": "hash",
-                        "in": "header",
-                        "description": "Message hash value",
+                        "description": "Message hash",
+                        "paramType": "header",
                         "type": "string",
-                        "enum": [
-                            "Vb82Z3D59sIm9UX2/0CsO+yEbcvQFyxoWRT2j4HK95Q="
-                        ]
+                        "required": false
                     },
                     {
                         "name": "odsCode",
@@ -308,12 +298,10 @@
                     },
                     {
                         "name": "hash",
-                        "in": "header",
-                        "description": "Message hash value",
+                        "description": "Message hash",
+                        "paramType": "header",
                         "type": "string",
-                        "enum": [
-                            "Vb82Z3D59sIm9UX2/0CsO+yEbcvQFyxoWRT2j4HK95Q="
-                        ]
+                        "required": false
                     },
                     {
                         "name": "odsCode",
@@ -353,12 +341,10 @@
                     },
                     {
                         "name": "hash",
-                        "in": "header",
-                        "description": "Message hash value",
+                        "description": "Message hash",
+                        "paramType": "header",
                         "type": "string",
-                        "enum": [
-                            "uuepscTzgFRhJ3Liqd8hW81e2qjfap17baEmG1j6qgs="
-                        ]
+                        "required": false
                     },
                     {
                         "name": "odsCode",
@@ -405,12 +391,10 @@
                     },
                     {
                         "name": "hash",
-                        "in": "header",
-                        "description": "Message hash value",
+                        "description": "Message hash",
+                        "paramType": "header",
                         "type": "string",
-                        "enum": [
-                            "65vKsBXG+tV9Zh623nePCB6S1Jyvl2UV4JWF9t5Km9k="
-                        ]
+                        "required": false
                     },
                     {
                         "name": "odsCode",
@@ -469,12 +453,10 @@
                     },
                     {
                         "name": "hash",
-                        "in": "header",
-                        "description": "Message hash value",
+                        "description": "Message hash",
+                        "paramType": "header",
                         "type": "string",
-                        "enum": [
-                            "1FUI9k69+4NwKrImAuPgIgMbchG9KAI0TAAkDGcoUDU="
-                        ]
+                        "required": false
                     },
                     {
                         "name": "odsCode",
@@ -521,12 +503,10 @@
                     },
                     {
                         "name": "hash",
-                        "in": "header",
-                        "description": "Message hash value",
+                        "description": "Message hash",
+                        "paramType": "header",
                         "type": "string",
-                        "enum": [
-                            "z4FZ7w8+vpdgnTvG9vIwJxJhnvzICLtiIvVofOJiPiw="
-                        ]
+                        "required": false
                     },
                     {
                         "name": "odsCode",
@@ -576,12 +556,10 @@
                     },
                     {
                         "name": "hash",
-                        "in": "header",
-                        "description": "Message hash value",
+                        "description": "Message hash",
+                        "paramType": "header",
                         "type": "string",
-                        "enum": [
-                            "Vb82Z3D59sIm9UX2/0CsO+yEbcvQFyxoWRT2j4HK95Q="
-                        ]
+                        "required": false
                     },
                     {
                         "name": "odsCode",
@@ -635,12 +613,10 @@
                     },
                     {
                         "name": "hash",
-                        "in": "header",
-                        "description": "Message hash value",
+                        "description": "Message hash",
+                        "paramType": "header",
                         "type": "string",
-                        "enum": [
-                            "mwyMqZZ+aMU1IlJSOUfAl/5fITUazu1fEFSLuoA8wP4="
-                        ]
+                        "required": false
                     },
                     {
                         "name": "odsCode",
@@ -692,12 +668,10 @@
                     },
                     {
                         "name": "hash",
-                        "in": "header",
-                        "description": "Message hash value",
+                        "description": "Message hash",
+                        "paramType": "header",
                         "type": "string",
-                        "enum": [
-                            "vGsa0MM8wPUCLzq0l0xATEeq0a6Ckcgfs25mtU1S/v4="
-                        ]
+                        "required": false
                     },
                     {
                         "name": "odsCode",
@@ -756,12 +730,10 @@
                     },
                     {
                         "name": "hash",
-                        "in": "header",
-                        "description": "Message hash value",
+                        "description": "Message hash",
+                        "paramType": "header",
                         "type": "string",
-                        "enum": [
-                            "Vb82Z3D59sIm9UX2/0CsO+yEbcvQFyxoWRT2j4HK95Q="
-                        ]
+                        "required": false
                     },
                     {
                         "name": "odsCode",
@@ -815,12 +787,10 @@
                     },
                     {
                         "name": "hash",
-                        "in": "header",
-                        "description": "Message hash value",
+                        "description": "Message hash",
+                        "paramType": "header",
                         "type": "string",
-                        "enum": [
-                            "Vb82Z3D59sIm9UX2/0CsO+yEbcvQFyxoWRT2j4HK95Q="
-                        ]
+                        "required": false
                     },
                     {
                         "name": "odsCode",
@@ -883,12 +853,10 @@
                     },
                     {
                         "name": "hash",
-                        "in": "header",
-                        "description": "Message hash value",
+                        "description": "Message hash",
+                        "paramType": "header",
                         "type": "string",
-                        "enum": [
-                            "Vb82Z3D59sIm9UX2/0CsO+yEbcvQFyxoWRT2j4HK95Q="
-                        ]
+                        "required": false
                     },
                     {
                         "name": "odsCode",
@@ -944,12 +912,10 @@
                     },
                     {
                         "name": "hash",
-                        "in": "header",
-                        "description": "Message hash value",
+                        "description": "Message hash",
+                        "paramType": "header",
                         "type": "string",
-                        "enum": [
-                            "Vb82Z3D59sIm9UX2/0CsO+yEbcvQFyxoWRT2j4HK95Q="
-                        ]
+                        "required": false
                     },
                     {
                         "name": "odsCode",
@@ -1005,12 +971,10 @@
                     },
                     {
                         "name": "hash",
-                        "in": "header",
-                        "description": "Message hash value",
+                        "description": "Message hash",
+                        "paramType": "header",
                         "type": "string",
-                        "enum": [
-                            "vGsa0MM8wPUCLzq0l0xATEeq0a6Ckcgfs25mtU1S/v4="
-                        ]
+                        "required": false
                     },
                     {
                         "name": "odsCode",
@@ -1091,12 +1055,10 @@
                     },
                     {
                         "name": "hash",
-                        "in": "header",
-                        "description": "Message hash value",
+                        "description": "Message hash",
+                        "paramType": "header",
                         "type": "string",
-                        "enum": [
-                            "vGsa0MM8wPUCLzq0l0xATEeq0a6Ckcgfs25mtU1S/v4="
-                        ]
+                        "required": false
                     },
                     {
                         "name": "odsCode",
@@ -1177,12 +1139,10 @@
                     },
                     {
                         "name": "hash",
-                        "in": "header",
-                        "description": "Message hash value",
+                        "description": "Message hash",
+                        "paramType": "header",
                         "type": "string",
-                        "enum": [
-                            "Vb82Z3D59sIm9UX2/0CsO+yEbcvQFyxoWRT2j4HK95Q="
-                        ]
+                        "required": false
                     },
                     {
                         "name": "odsCode",
