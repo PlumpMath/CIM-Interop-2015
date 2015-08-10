@@ -25,6 +25,6 @@
     <!-- Camel servlet mapping -->
     <servlet-mapping>
         <servlet-name>CamelServlet</servlet-name>
-        <url-pattern>/*</url-pattern>
+        <url-pattern>/v0.1/*</url-pattern>
     </servlet-mapping>
 </web-app>

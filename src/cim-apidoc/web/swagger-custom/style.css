@@ -37,6 +37,10 @@ form#api_selector div.input {
 	padding-top: 15px;
 }
 
+img#validator {
+    display: none !important;
+}
+
 .swagger-section .swagger-ui-wrap {
   font-family: "Droid Sans", sans-serif;
 }
