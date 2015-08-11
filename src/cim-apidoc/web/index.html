@@ -81,6 +81,15 @@ end custom -->
           });
 
           addApiKeyAuthorization();
+
+/* custom */
+          var customOnReadyScripts = ['swagger-custom/script.js'];
+
+          _.each(customOnReadyScripts, function(script) {
+              $.getScript(script);
+/* end custom */
+
+          });
         },
         onFailure: function(data) {
           log("Unable to Load SwaggerUI");
@@ -130,11 +139,6 @@ end custom -->
 <body class="swagger-section">
 <div id='header'>
   <div class="swagger-ui-wrap">
-<!-- custom -->
-    <a href="/">
-			<div id="custom-logo"></div>
-    </a>
-<!-- end custom -->
     <a id="logo" href="http://swagger.io">swagger</a>
     <form id='api_selector'>
       <div class='input'><input placeholder="http://example.com/api" id="input_baseUrl" name="baseUrl" type="text"/></div>

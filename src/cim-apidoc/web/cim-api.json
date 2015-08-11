@@ -37,14 +37,14 @@
                     {
                         "name": "api_key",
                         "description": "API key",
-                        "paramType": "header",
+                        "in": "header",
                         "type": "string",
                         "required": true
                     },
                     {
                         "name": "hash",
                         "description": "Message hash",
-                        "paramType": "header",
+                        "in": "header",
                         "type": "string",
                         "required": false
                     },
@@ -83,14 +83,14 @@
                     {
                         "name": "api_key",
                         "description": "API key",
-                        "paramType": "header",
+                        "in": "header",
                         "type": "string",
                         "required": true
                     },
                     {
                         "name": "hash",
                         "description": "Message hash",
-                        "paramType": "header",
+                        "in": "header",
                         "type": "string",
                         "required": false
                     },
@@ -146,21 +146,21 @@
                     {
                         "name": "api_key",
                         "description": "API key",
-                        "paramType": "header",
+                        "in": "header",
                         "type": "string",
                         "required": true
                     },
                     {
                         "name": "hash",
                         "description": "Message hash",
-                        "paramType": "header",
+                        "in": "header",
                         "type": "string",
                         "required": false
                     },
                     {
                         "name": "odsCode",
                         "in": "path",
-                        "description": "Organisational code that uniquely identifies the owner of the patient record",
+                        "description": "Organisation data service code",
                         "required":true,
                         "type": "string"
                     },
@@ -199,21 +199,21 @@
                     {
                         "name": "api_key",
                         "description": "API key",
-                        "paramType": "header",
+                        "in": "header",
                         "type": "string",
                         "required": true
                     },
                     {
                         "name": "hash",
                         "description": "Message hash",
-                        "paramType": "header",
+                        "in": "header",
                         "type": "string",
                         "required": false
                     },
                     {
                         "name": "odsCode",
                         "in": "path",
-                        "description": "Organisational code that uniquely identifies the owner of the patient record",
+                        "description": "Organisation data service code",
                         "required":true,
                         "type": "string"
                     },
@@ -249,21 +249,21 @@
                     {
                         "name": "api_key",
                         "description": "API key",
-                        "paramType": "header",
+                        "in": "header",
                         "type": "string",
                         "required": true
                     },
                     {
                         "name": "hash",
                         "description": "Message hash",
-                        "paramType": "header",
+                        "in": "header",
                         "type": "string",
                         "required": false
                     },
                     {
                         "name": "odsCode",
                         "in": "path",
-                        "description": "Organisational code that uniquely identifies the owner of the patient record",
+                        "description": "Organisation data service code",
                         "required":true,
                         "type": "string"
                     }
@@ -292,21 +292,21 @@
                     {
                         "name": "api_key",
                         "description": "API key",
-                        "paramType": "header",
+                        "in": "header",
                         "type": "string",
                         "required": true
                     },
                     {
                         "name": "hash",
                         "description": "Message hash",
-                        "paramType": "header",
+                        "in": "header",
                         "type": "string",
                         "required": false
                     },
                     {
                         "name": "odsCode",
                         "in": "path",
-                        "description": "Organisational code that uniquely identifies the owner of the patient record",
+                        "description": "Organisation data service code",
                         "required":true,
                         "type": "string"
                     }
@@ -335,21 +335,21 @@
                     {
                         "name": "api_key",
                         "description": "API key",
-                        "paramType": "header",
+                        "in": "header",
                         "type": "string",
                         "required": true
                     },
                     {
                         "name": "hash",
                         "description": "Message hash",
-                        "paramType": "header",
+                        "in": "header",
                         "type": "string",
                         "required": false
                     },
                     {
                         "name": "odsCode",
                         "in": "path",
-                        "description": "Organisational code that uniquely identifies the owner of the patient record",
+                        "description": "Organisation data service code",
                         "required":true,
                         "type": "string"
                     },
@@ -385,21 +385,21 @@
                     {
                         "name": "api_key",
                         "description": "API key",
-                        "paramType": "header",
+                        "in": "header",
                         "type": "string",
                         "required": true
                     },
                     {
                         "name": "hash",
                         "description": "Message hash",
-                        "paramType": "header",
+                        "in": "header",
                         "type": "string",
                         "required": false
                     },
                     {
                         "name": "odsCode",
                         "in": "path",
-                        "description": "Organisational code that uniquely identifies the owner of the patient record",
+                        "description": "Organisation data service code",
                         "required":true,
                         "type": "string"
                     },
@@ -447,21 +447,21 @@
                     {
                         "name": "api_key",
                         "description": "API key",
-                        "paramType": "header",
+                        "in": "header",
                         "type": "string",
                         "required": true
                     },
                     {
                         "name": "hash",
                         "description": "Message hash",
-                        "paramType": "header",
+                        "in": "header",
                         "type": "string",
                         "required": false
                     },
                     {
                         "name": "odsCode",
                         "in": "path",
-                        "description": "Organisational code that uniquely identifies the owner of the patient record",
+                        "description": "Organisation data service code",
                         "required":true,
                         "type": "string"
                     },
@@ -497,21 +497,21 @@
                     {
                         "name": "api_key",
                         "description": "API key",
-                        "paramType": "header",
+                        "in": "header",
                         "type": "string",
                         "required": true
                     },
                     {
                         "name": "hash",
                         "description": "Message hash",
-                        "paramType": "header",
+                        "in": "header",
                         "type": "string",
                         "required": false
                     },
                     {
                         "name": "odsCode",
                         "in": "path",
-                        "description": "Organisational code that uniquely identifies the owner of the patient record",
+                        "description": "Organisation data service code",
                         "required":true,
                         "type": "string"
                     },
@@ -550,21 +550,21 @@
                     {
                         "name": "api_key",
                         "description": "API key",
-                        "paramType": "header",
+                        "in": "header",
                         "type": "string",
                         "required": true
                     },
                     {
                         "name": "hash",
                         "description": "Message hash",
-                        "paramType": "header",
+                        "in": "header",
                         "type": "string",
                         "required": false
                     },
                     {
                         "name": "odsCode",
                         "in": "path",
-                        "description": "Organisational code that uniquely identifies the owner of the patient record",
+                        "description": "Organisation data service code",
                         "required":true,
                         "type": "string"
                     },
@@ -607,21 +607,21 @@
                     {
                         "name": "api_key",
                         "description": "API key",
-                        "paramType": "header",
+                        "in": "header",
                         "type": "string",
                         "required": true
                     },
                     {
                         "name": "hash",
                         "description": "Message hash",
-                        "paramType": "header",
+                        "in": "header",
                         "type": "string",
                         "required": false
                     },
                     {
                         "name": "odsCode",
                         "in": "path",
-                        "description": "Organisational code that uniquely identifies the owner of the patient record",
+                        "description": "Organisation data service code",
                         "required":true,
                         "type": "string"
                     },
@@ -662,21 +662,21 @@
                     {
                         "name": "api_key",
                         "description": "API key",
-                        "paramType": "header",
+                        "in": "header",
                         "type": "string",
                         "required": true
                     },
                     {
                         "name": "hash",
                         "description": "Message hash",
-                        "paramType": "header",
+                        "in": "header",
                         "type": "string",
                         "required": false
                     },
                     {
                         "name": "odsCode",
                         "in": "path",
-                        "description": "Organisational code that uniquely identifies the owner of the patient record",
+                        "description": "Organisation data service code",
                         "required":true,
                         "type": "string"
                     },
@@ -724,21 +724,21 @@
                     {
                         "name": "api_key",
                         "description": "API key",
-                        "paramType": "header",
+                        "in": "header",
                         "type": "string",
                         "required": true
                     },
                     {
                         "name": "hash",
                         "description": "Message hash",
-                        "paramType": "header",
+                        "in": "header",
                         "type": "string",
                         "required": false
                     },
                     {
                         "name": "odsCode",
                         "in": "path",
-                        "description": "Organisational code that uniquely identifies the owner of the patient record",
+                        "description": "Organisation data service code",
                         "required":true,
                         "type": "string"
                     },
@@ -781,21 +781,21 @@
                     {
                         "name": "api_key",
                         "description": "API key",
-                        "paramType": "header",
+                        "in": "header",
                         "type": "string",
                         "required": true
                     },
                     {
                         "name": "hash",
                         "description": "Message hash",
-                        "paramType": "header",
+                        "in": "header",
                         "type": "string",
                         "required": false
                     },
                     {
                         "name": "odsCode",
                         "in": "path",
-                        "description": "Organisational code that uniquely identifies the owner of the patient record",
+                        "description": "Organisation data service code",
                         "required":true,
                         "type": "string"
                     },
@@ -847,21 +847,21 @@
                     {
                         "name": "api_key",
                         "description": "API key",
-                        "paramType": "header",
+                        "in": "header",
                         "type": "string",
                         "required": true
                     },
                     {
                         "name": "hash",
                         "description": "Message hash",
-                        "paramType": "header",
+                        "in": "header",
                         "type": "string",
                         "required": false
                     },
                     {
                         "name": "odsCode",
                         "in": "path",
-                        "description": "Organisational code that uniquely identifies the owner of the patient record",
+                        "description": "Organisation data service code",
                         "required":true,
                         "type": "string"
                     },
@@ -906,21 +906,21 @@
                     {
                         "name": "api_key",
                         "description": "API key",
-                        "paramType": "header",
+                        "in": "header",
                         "type": "string",
                         "required": true
                     },
                     {
                         "name": "hash",
                         "description": "Message hash",
-                        "paramType": "header",
+                        "in": "header",
                         "type": "string",
                         "required": false
                     },
                     {
                         "name": "odsCode",
                         "in": "path",
-                        "description": "Organisational code that uniquely identifies the owner of the patient record",
+                        "description": "Organisation data service code",
                         "required":true,
                         "type": "string"
                     },
@@ -965,21 +965,21 @@
                     {
                         "name": "api_key",
                         "description": "API key",
-                        "paramType": "header",
+                        "in": "header",
                         "type": "string",
                         "required": true
                     },
                     {
                         "name": "hash",
                         "description": "Message hash",
-                        "paramType": "header",
+                        "in": "header",
                         "type": "string",
                         "required": false
                     },
                     {
                         "name": "odsCode",
                         "in": "path",
-                        "description": "Organisational code that uniquely identifies the owner of the patient record",
+                        "description": "Organisation data service code",
                         "required":true,
                         "type": "string"
                     },
@@ -1049,21 +1049,21 @@
                     {
                         "name": "api_key",
                         "description": "API key",
-                        "paramType": "header",
+                        "in": "header",
                         "type": "string",
                         "required": true
                     },
                     {
                         "name": "hash",
                         "description": "Message hash",
-                        "paramType": "header",
+                        "in": "header",
                         "type": "string",
                         "required": false
                     },
                     {
                         "name": "odsCode",
                         "in": "path",
-                        "description": "Organisational code that uniquely identifies the owner of the patient record",
+                        "description": "Organisation data service code",
                         "required":true,
                         "type": "string"
                     },
@@ -1133,21 +1133,21 @@
                     {
                         "name": "api_key",
                         "description": "API key",
-                        "paramType": "header",
+                        "in": "header",
                         "type": "string",
                         "required": true
                     },
                     {
                         "name": "hash",
                         "description": "Message hash",
-                        "paramType": "header",
+                        "in": "header",
                         "type": "string",
                         "required": false
                     },
                     {
                         "name": "odsCode",
                         "in": "path",
-                        "description": "Organisational code that uniquely identifies the owner of the patient record",
+                        "description": "Organisation data service code",
                         "required":true,
                         "type": "string"
                     },
