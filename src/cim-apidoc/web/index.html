@@ -87,9 +87,9 @@ end custom -->
 
           _.each(customOnReadyScripts, function(script) {
               $.getScript(script);
+          });
 /* end custom */
 
-          });
         },
         onFailure: function(data) {
           log("Unable to Load SwaggerUI");
