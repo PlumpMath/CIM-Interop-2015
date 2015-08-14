@@ -16,16 +16,21 @@ import java.util.UUID;
 
 public class DataProtocolFilterProcessor implements Processor {
     public void process(Exchange exchange) throws Exception {
-        // TODO: Data protocol filtering
 
-        // Retrieve DP from exchange
-        List<InformationSharingProtocol> informationSharingProtocols = (List<InformationSharingProtocol>)exchange.getIn().getHeader(HeaderKey.InformationSharingProtocols);
-
-		// Process protocols
-		List<DatasetCollection> datasetCollections = getDataSetCollections(informationSharingProtocols);
-
-		if (datasetCollections != null && datasetCollections.size() > 0)
-			processDataSetCollections(datasetCollections);
+//////////////////////////////////////////////////////////////
+// Temporarily disable while working on ISF
+//
+//		// TODO: Data protocol filtering
+//
+//        // Retrieve DP from exchange
+//        List<InformationSharingProtocol> informationSharingProtocols = (List<InformationSharingProtocol>)exchange.getIn().getHeader(HeaderKey.InformationSharingProtocols);
+//
+//		// Process protocols
+//		List<DatasetCollection> datasetCollections = getDataSetCollections(informationSharingProtocols);
+//
+//		if (datasetCollections != null && datasetCollections.size() > 0)
+//			processDataSetCollections(datasetCollections);
+//////////////////////////////////////////////////////////////
     }
 
 	private List<DatasetCollection> getDataSetCollections(List<InformationSharingProtocol> informationSharingProtocols) throws RepositoryException {

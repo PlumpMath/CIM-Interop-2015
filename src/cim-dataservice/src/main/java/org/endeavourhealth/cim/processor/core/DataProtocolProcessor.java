@@ -17,8 +17,12 @@ public class DataProtocolProcessor implements org.apache.camel.Processor {
 		String odsCode = (String)exchange.getIn().getHeader(HeaderKey.OdsCode);
 		String api_key = (String) exchange.getIn().getHeader(HeaderKey.ApiKey);
 
-		if (odsCode != null)
-			LoadDataProtocols(exchange, api_key, odsCode);
+//////////////////////////////////////////////////////////////
+// Temporarily disable while working on ISF
+//
+//		if (odsCode != null)
+//			LoadDataProtocols(exchange, api_key, odsCode);
+//////////////////////////////////////////////////////////////
 	}
 
 	private void LoadDataProtocols(Exchange exchange, String api_key, String odsCode) throws RepositoryException, LegitimateRelationshipException {
