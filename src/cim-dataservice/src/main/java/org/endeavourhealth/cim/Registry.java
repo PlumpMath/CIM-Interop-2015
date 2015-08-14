@@ -22,8 +22,9 @@ public class Registry implements IRegistry {
         ArrayList<String> dataManagerTypes = new ArrayList<>();
 
         dataManagerTypes.add("org.endeavourhealth.cim.dataManager.emis.EmisDataManager");
-        dataManagerTypes.add("org.endeavourhealth.cim.dataManager.emis.EmisDataManager");
-        dataManagerTypes.add("org.endeavourhealth.cim.dataManager.emis.EmisDataManager");
+		// TODO : Move data manager list to db
+        /*dataManagerTypes.add("org.endeavourhealth.cim.dataManager.emis.EmisDataManager");
+        dataManagerTypes.add("org.endeavourhealth.cim.dataManager.emis.EmisDataManager"); */
 
         return dataManagerTypes;
     }
