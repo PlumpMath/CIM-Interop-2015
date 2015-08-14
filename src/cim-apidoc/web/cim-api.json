@@ -1,7 +1,7 @@
 {
     "swagger": "2.0",
     "info": {
-        "description": "API documentation for the Endeavour Health Common Interface Mechanism.",
+        "description": "API documentation for the Endeavour Health Common Interface Mechanism.<br><br>Sample data for this api can be viewed <a href='sampledata.html' target='_blank'>here</a><br><br><b>NOTE:</b> Dates must be provided in the standard REST format (ISO-8601 - '2015-12-31' or '2015-12-31T23:59:59')",
         "version": "0.1",
         "title": "Common Interface Mechanism"
     },
