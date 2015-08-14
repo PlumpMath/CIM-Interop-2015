@@ -51,28 +51,25 @@ public class SecurityProcessor implements Processor {
         if (privateKey == null)
             return false;
 
-        // Ensure private key exists first.  This allows swagger to bypass security
-        // for test servers by adding a key.  Swagger should not be added to live
-        // servers so cannot be used as back door.
-        if ("swagger".equals(publicKey))
-            return true;
+        // disable hmac checking while we add hash checking to the swagger page
+        return true;
 
-        String data = method;
-        if (body != null)
-            data += body;
-
-        // Hash data based on private key
-        try {
-            Mac mac = Mac.getInstance("HmacSHA256");
-            SecretKeySpec secret = new SecretKeySpec(privateKey.getBytes(StandardCharsets.UTF_8), "HmacSHA256");
-            mac.init(secret);
-            byte[] digest = mac.doFinal(data.getBytes(StandardCharsets.UTF_8));
-            String hash = new String(Base64.encodeBase64(digest), StandardCharsets.UTF_8);
-            // Compare to inbound hash
-            return hash.equals(inboundHash);
-        } catch (Exception e) {
-            e.printStackTrace();
-            return false;
-        }
+//        String data = method;
+//        if (body != null)
+//            data += body;
+//
+//        // Hash data based on private key
+//        try {
+//            Mac mac = Mac.getInstance("HmacSHA256");
+//            SecretKeySpec secret = new SecretKeySpec(privateKey.getBytes(StandardCharsets.UTF_8), "HmacSHA256");
+//            mac.init(secret);
+//            byte[] digest = mac.doFinal(data.getBytes(StandardCharsets.UTF_8));
+//            String hash = new String(Base64.encodeBase64(digest), StandardCharsets.UTF_8);
+//            // Compare to inbound hash
+//            return hash.equals(inboundHash);
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//            return false;
+//        }
     }
 }
