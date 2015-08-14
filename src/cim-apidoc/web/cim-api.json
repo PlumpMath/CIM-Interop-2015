@@ -483,59 +483,6 @@
                 }
             }
         },
-        "/{odsCode}/Binary/{id}": {
-            "get": {
-                "tags": [
-                    "clinical"
-                ],
-                "summary":"Get clinical document by ID",
-                "description": "Get Binary Document by Document ID",
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "name": "api_key",
-                        "description": "API key",
-                        "in": "header",
-                        "type": "string",
-                        "required": true
-                    },
-                    {
-                        "name": "hash",
-                        "description": "Message hash",
-                        "in": "header",
-                        "type": "string",
-                        "required": false
-                    },
-                    {
-                        "name": "odsCode",
-                        "in": "path",
-                        "description": "Organisation data service code",
-                        "required":true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "description": "Document unique identifier. Any combination of upper or lower case ASCII letters ('A'..'Z', and 'a'..'z', numerals ('0'..'9'), '-' and '.', with a length limit of 64 characters. (This might be an integer, an un-prefixed OID, UUID or any other identifier pattern that meets these constraints.) regex: [A-Za-z0-9-.]{1,64}",
-                        "required":true,
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description":"Returns a Single FHIR Binary Resource - see schema at: <a target='_blank'  href='http://hl7.org/fhir/2015May/binary.html'>http://hl7.org/fhir/2015May/binary.html</a>"
-                    },
-                    "404":{
-                        "description":"Not Found - resource type not supported, or not a FHIR end point"
-                    },
-                    "410":{
-                        "description":"Gone - the resource has been deleted"
-                    }
-                }
-            }
-        },
         "/{odsCode}/Patient/{id}/MedicationPrescription": {
             "get": {
                 "tags": [
