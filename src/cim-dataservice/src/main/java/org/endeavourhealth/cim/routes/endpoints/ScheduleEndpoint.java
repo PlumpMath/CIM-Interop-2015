@@ -4,7 +4,7 @@ import org.apache.camel.builder.RouteBuilder;
 import org.apache.commons.httpclient.HttpStatus;
 import org.endeavourhealth.cim.common.HeaderKey;
 import org.endeavourhealth.cim.processor.core.CIMError;
-import org.endeavourhealth.cim.processor.schedules.GetSchedulesProcessor;
+import org.endeavourhealth.cim.processor.administrative.GetSchedulesProcessor;
 
 @SuppressWarnings("WeakerAccess")
 public class ScheduleEndpoint extends RouteBuilder {

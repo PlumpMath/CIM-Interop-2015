@@ -2,7 +2,7 @@ package org.endeavourhealth.cim.routes.endpoints;
 
 import org.apache.camel.builder.RouteBuilder;
 import org.endeavourhealth.cim.common.HeaderKey;
-import org.endeavourhealth.cim.processor.event.GetMedicationPrescriptions;
+import org.endeavourhealth.cim.processor.clinical.GetMedicationPrescriptionsProcessor;
 
 @SuppressWarnings("WeakerAccess")
 public class MedicationPrescriptionEndpoint extends RouteBuilder {
@@ -24,6 +24,6 @@ public class MedicationPrescriptionEndpoint extends RouteBuilder {
         // Message router callback routes
         from("direct:GetMedicationPrescriptionsRoute")
             .routeId("GetMedicationPrescriptionsRoute")
-            .process(new GetMedicationPrescriptions());
+            .process(new GetMedicationPrescriptionsProcessor());
     }
 }

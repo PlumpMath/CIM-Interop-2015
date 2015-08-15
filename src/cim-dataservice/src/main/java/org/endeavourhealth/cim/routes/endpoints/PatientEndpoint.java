@@ -2,7 +2,8 @@ package org.endeavourhealth.cim.routes.endpoints;
 
 import org.apache.camel.builder.RouteBuilder;
 import org.endeavourhealth.cim.common.HeaderKey;
-import org.endeavourhealth.cim.processor.patient.*;
+import org.endeavourhealth.cim.processor.clinical.GetFullPatientRecordProcessor;
+import org.endeavourhealth.cim.processor.demographics.*;
 
 @SuppressWarnings("WeakerAccess")
 public class PatientEndpoint extends RouteBuilder {
@@ -34,20 +35,20 @@ public class PatientEndpoint extends RouteBuilder {
             .choice()
                 .when(simple("${header." + HeaderKey.Identifier + "} != null"))
                     .routeId("GetPatientByIdentifier")
-                    .process(new GetPatientByIdentifier())
+                    .process(new GetPatientByIdentifierProcessor())
                 .when(simple("${header." + HeaderKey.LastUpdated + "} != null"))
                     .routeId("GetChangedPatients")
-                    .process(new GetChangedPatients(header(HeaderKey.OdsCode).toString()))
+                    .process(new GetChangedPatientsProcessor(header(HeaderKey.OdsCode).toString()))
                 .when(simple("${header." + HeaderKey.Active + "} == true"))
                     .routeId("GetActivePatients")
-                    .process(new GetAllPatients(true))
+                    .process(new GetAllPatientsProcessor(true))
                 .otherwise()
 					.routeId("GetAllPatients")
-					.process(new GetAllPatients(false))
+					.process(new GetAllPatientsProcessor(false))
             .end();
 
         from("direct:GetPatientRecordById")
             .routeId("GetPatientRecordById")
-            .process(new GetPatientRecordByPatientId());
+            .process(new GetFullPatientRecordProcessor());
     }
 }

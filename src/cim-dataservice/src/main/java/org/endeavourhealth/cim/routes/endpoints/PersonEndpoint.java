@@ -4,8 +4,8 @@ import org.apache.camel.builder.RouteBuilder;
 import org.endeavourhealth.cim.common.HeaderKey;
 import org.endeavourhealth.cim.dataManager.DataManagerFactory;
 import org.endeavourhealth.cim.common.ArrayListAggregationStrategy;
-import org.endeavourhealth.cim.processor.patient.TracePersonProcessor;
-import org.endeavourhealth.cim.processor.patient.TracePersonResultProcessor;
+import org.endeavourhealth.cim.processor.demographics.TracePersonProcessor;
+import org.endeavourhealth.cim.processor.demographics.TracePersonResultProcessor;
 
 @SuppressWarnings("WeakerAccess")
 public class PersonEndpoint extends RouteBuilder {

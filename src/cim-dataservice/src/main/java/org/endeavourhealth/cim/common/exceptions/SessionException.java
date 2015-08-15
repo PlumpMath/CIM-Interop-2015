@@ -1,4 +1,4 @@
-package org.endeavourhealth.cim.exceptions;
+package org.endeavourhealth.cim.common.exceptions;
 
 public class SessionException extends Exception {
 	public SessionException(String message) {

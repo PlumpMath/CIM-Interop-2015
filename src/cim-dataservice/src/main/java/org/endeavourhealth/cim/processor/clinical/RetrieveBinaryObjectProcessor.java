@@ -1,4 +1,4 @@
-package org.endeavourhealth.cim.processor.binary;
+package org.endeavourhealth.cim.processor.clinical;
 
 import org.apache.camel.Exchange;
 

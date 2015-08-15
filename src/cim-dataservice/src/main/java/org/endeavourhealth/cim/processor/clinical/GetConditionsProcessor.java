@@ -1,4 +1,4 @@
-package org.endeavourhealth.cim.processor.event;
+package org.endeavourhealth.cim.processor.clinical;
 
 import org.apache.camel.Exchange;
 import org.apache.camel.Processor;
@@ -8,7 +8,7 @@ import org.endeavourhealth.cim.dataManager.IDataManager;
 
 import java.util.UUID;
 
-public class GetConditions implements Processor {
+public class GetConditionsProcessor implements Processor {
 	public void process(Exchange exchange) throws Exception {
 		String odsCode =(String) exchange.getIn().getHeader(HeaderKey.OdsCode);
 		String patientId =(String) exchange.getIn().getHeader(HeaderKey.Id);

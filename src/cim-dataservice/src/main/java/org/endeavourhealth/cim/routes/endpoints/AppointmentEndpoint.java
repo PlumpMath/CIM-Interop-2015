@@ -4,7 +4,7 @@ import org.apache.camel.builder.RouteBuilder;
 import org.apache.commons.httpclient.HttpStatus;
 import org.endeavourhealth.cim.common.HeaderKey;
 import org.endeavourhealth.cim.processor.core.CIMError;
-import org.endeavourhealth.cim.processor.patient.GetPatientAppointments;
+import org.endeavourhealth.cim.processor.administrative.GetAppointmentsProcessor;
 
 public class AppointmentEndpoint extends RouteBuilder {
     @Override
@@ -26,7 +26,7 @@ public class AppointmentEndpoint extends RouteBuilder {
         from("direct:GetPatientAppointments")
                 .routeId("GetPatientAppointments")
                 .doTry()
-                .process(new GetPatientAppointments())
+                .process(new GetAppointmentsProcessor())
                 .doCatch(IllegalArgumentException.class)
                 .process(new CIMError(HttpStatus.SC_BAD_REQUEST, simple("${exception.message}")))
                 .to("direct:CIMInvalidMessage")

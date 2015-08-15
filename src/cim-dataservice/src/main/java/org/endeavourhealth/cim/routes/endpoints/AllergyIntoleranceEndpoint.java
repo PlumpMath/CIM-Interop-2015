@@ -2,7 +2,7 @@ package org.endeavourhealth.cim.routes.endpoints;
 
 import org.apache.camel.builder.RouteBuilder;
 import org.endeavourhealth.cim.common.HeaderKey;
-import org.endeavourhealth.cim.processor.event.GetAllergyIntolerances;
+import org.endeavourhealth.cim.processor.clinical.GetAllergyIntolerancesProcessor;
 
 @SuppressWarnings({"WeakerAccess", "unused"})
 public class AllergyIntoleranceEndpoint extends RouteBuilder {
@@ -24,7 +24,6 @@ public class AllergyIntoleranceEndpoint extends RouteBuilder {
         // Message router callback routes
         from("direct:GetAllergyIntolerancesRoute")
             .routeId("GetAllergyIntolerancesRoute")
-            .process(new GetAllergyIntolerances());
-
+            .process(new GetAllergyIntolerancesProcessor());
     }
 }

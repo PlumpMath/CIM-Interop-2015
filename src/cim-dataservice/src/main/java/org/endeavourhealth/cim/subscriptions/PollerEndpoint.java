@@ -4,8 +4,8 @@ import org.apache.camel.builder.RouteBuilder;
 import org.endeavourhealth.cim.common.ArrayListAggregationStrategy;
 import org.endeavourhealth.cim.common.HeaderKey;
 import org.endeavourhealth.cim.dataManager.IDataManager;
-import org.endeavourhealth.cim.processor.patient.GetChangedPatients;
-import org.endeavourhealth.cim.processor.subscription.EvaluateSubscriptionsProcessor;
+import org.endeavourhealth.cim.processor.demographics.GetChangedPatientsProcessor;
+import org.endeavourhealth.cim.processor.demographics.EvaluateSubscriptionsProcessor;
 import org.hl7.fhir.instance.model.Subscription;
 
 import java.util.ArrayList;
@@ -28,7 +28,7 @@ public class PollerEndpoint extends RouteBuilder {
 			.setHeader(HeaderKey.OdsCodeList, constant(_odsCodes))
 			.split(header(HeaderKey.OdsCodeList), new ArrayListAggregationStrategy())	// Split the call by single ods code
 				.setHeader(HeaderKey.OdsCode, simple("${header." + HeaderKey.OdsCodeList +"[0]}"))		// Set the odsCode
-            	.process(new GetChangedPatients(_dataManager))				// Call the adapter for each ods code (returns array)
+            	.process(new GetChangedPatientsProcessor(_dataManager))				// Call the adapter for each ods code (returns array)
 			.end()															// Aggregate the results (array of arrays)
 			.choice()
 				.when(simple("${body.size} > 0"))							// When there are changed patients

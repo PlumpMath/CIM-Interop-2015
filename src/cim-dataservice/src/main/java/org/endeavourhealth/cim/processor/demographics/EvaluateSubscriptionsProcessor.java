@@ -1,4 +1,4 @@
-package org.endeavourhealth.cim.processor.subscription;
+package org.endeavourhealth.cim.processor.demographics;
 
 import org.apache.camel.Exchange;
 import org.endeavourhealth.cim.common.HeaderKey;

@@ -1,20 +1,21 @@
-package org.endeavourhealth.cim.processor.patient;
+package org.endeavourhealth.cim.processor.demographics;
 
 import org.apache.camel.Exchange;
-import org.endeavourhealth.cim.Registry;
 import org.endeavourhealth.cim.common.HeaderKey;
 import org.endeavourhealth.cim.dataManager.DataManagerFactory;
 import org.endeavourhealth.cim.dataManager.IDataManager;
 
-import java.util.UUID;
-
-public class GetPatientRecordByPatientId implements org.apache.camel.Processor {
+public class GetPatientByIdentifierProcessor implements org.apache.camel.Processor {
     public void process(Exchange exchange) throws Exception {
-        String patientId = (String)exchange.getIn().getHeader(HeaderKey.Id);
+        // Get data from exchange
+        String nhsNumber = (String)exchange.getIn().getHeader(HeaderKey.Identifier);
+        nhsNumber = nhsNumber.substring(4);
         String odsCode = (String) exchange.getIn().getHeader(HeaderKey.OdsCode);
 
         IDataManager dataManager = DataManagerFactory.getDataManagerForService(odsCode);
-        String body = dataManager.getPatientRecordByPatientId(odsCode, UUID.fromString(patientId));
+
+        // Get patient data by NHS Number
+        String body = dataManager.getPatientDemographicsByNHSNumber(odsCode, nhsNumber);
 
         exchange.getIn().setBody(body);
     }

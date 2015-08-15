@@ -2,17 +2,12 @@ package org.endeavourhealth.cim.processor.core;
 
 import org.apache.camel.Exchange;
 import org.apache.camel.Processor;
-import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.httpclient.HttpStatus;
 import org.endeavourhealth.cim.common.HeaderKey;
 import org.endeavourhealth.cim.common.repository.common.data.RepositoryException;
-import org.endeavourhealth.cim.exceptions.SessionException;
+import org.endeavourhealth.cim.common.exceptions.SessionException;
 import org.endeavourhealth.cim.common.repository.user.data.UserRepository;
 import org.endeavourhealth.cim.common.repository.user.model.User;
-
-import javax.crypto.Mac;
-import javax.crypto.spec.SecretKeySpec;
-import java.nio.charset.StandardCharsets;
 
 public class SecurityProcessor implements Processor {
     public static final String INVALID_SESSION = "Invalid Session";

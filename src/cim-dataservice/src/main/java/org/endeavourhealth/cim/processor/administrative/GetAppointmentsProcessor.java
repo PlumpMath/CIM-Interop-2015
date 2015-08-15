@@ -1,4 +1,4 @@
-package org.endeavourhealth.cim.processor.patient;
+package org.endeavourhealth.cim.processor.administrative;
 
 import org.apache.camel.Exchange;
 import org.endeavourhealth.cim.common.HeaderKey;
@@ -11,7 +11,7 @@ import org.endeavourhealth.cim.processor.CIMProcessor;
 import java.util.Date;
 import java.util.UUID;
 
-public class GetPatientAppointments extends CIMProcessor {
+public class GetAppointmentsProcessor extends CIMProcessor {
 
 	public void process(Exchange exchange) throws Exception {
 

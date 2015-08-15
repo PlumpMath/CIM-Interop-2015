@@ -1,4 +1,4 @@
-package org.endeavourhealth.cim.processor.patient;
+package org.endeavourhealth.cim.processor.demographics;
 
 import org.apache.camel.Exchange;
 import org.hl7.fhir.instance.model.Patient;

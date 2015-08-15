@@ -1,4 +1,4 @@
-package org.endeavourhealth.cim.processor.patient;
+package org.endeavourhealth.cim.processor.demographics;
 
 import org.apache.camel.Exchange;
 import org.endeavourhealth.cim.common.HeaderKey;
@@ -10,15 +10,15 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.UUID;
 
-public class GetChangedPatients implements org.apache.camel.Processor {
+public class GetChangedPatientsProcessor implements org.apache.camel.Processor {
     private final IDataManager _dataManager;
     private Date _lastPoll = null;
 
-    public GetChangedPatients(String odsCode) throws Exception {
+    public GetChangedPatientsProcessor(String odsCode) throws Exception {
         _dataManager = DataManagerFactory.getDataManagerForService(odsCode);
     }
 
-    public GetChangedPatients(IDataManager dataManager) {
+    public GetChangedPatientsProcessor(IDataManager dataManager) {
         _dataManager = dataManager;
     }
 

@@ -2,9 +2,9 @@ package org.endeavourhealth.cim.routes.endpoints;
 
 import org.apache.camel.builder.RouteBuilder;
 import org.endeavourhealth.cim.common.HeaderKey;
-import org.endeavourhealth.cim.processor.slots.BookSlotProcessor;
-import org.endeavourhealth.cim.processor.slots.CancelSlotProcessor;
-import org.endeavourhealth.cim.processor.slots.GetSlotsProcessor;
+import org.endeavourhealth.cim.processor.administrative.BookSlotProcessor;
+import org.endeavourhealth.cim.processor.administrative.CancelSlotProcessor;
+import org.endeavourhealth.cim.processor.administrative.GetSlotsProcessor;
 
 @SuppressWarnings("WeakerAccess")
 public class SlotEndpoint extends RouteBuilder {

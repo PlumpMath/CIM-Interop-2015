@@ -1,4 +1,4 @@
-package org.endeavourhealth.cim.processor.slots;
+package org.endeavourhealth.cim.processor.administrative;
 
 import org.apache.camel.Exchange;
 import org.endeavourhealth.cim.common.DateSearchParameter;

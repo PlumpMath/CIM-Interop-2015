@@ -1,11 +1,11 @@
-package org.endeavourhealth.cim.processor.patient;
+package org.endeavourhealth.cim.processor.demographics;
 
 import org.apache.camel.Exchange;
 import org.apache.camel.Processor;
 
-public class GetAllPatients implements Processor {
+public class GetAllPatientsProcessor implements Processor {
 	private final boolean _activeOnly;
-	public GetAllPatients(boolean activeOnly) {
+	public GetAllPatientsProcessor(boolean activeOnly) {
 		_activeOnly = activeOnly;
 	}
 

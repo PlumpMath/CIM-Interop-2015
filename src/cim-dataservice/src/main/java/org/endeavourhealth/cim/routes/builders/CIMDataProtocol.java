@@ -2,7 +2,7 @@ package org.endeavourhealth.cim.routes.builders;
 
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.commons.httpclient.HttpStatus;
-import org.endeavourhealth.cim.exceptions.LegitimateRelationshipException;
+import org.endeavourhealth.cim.common.exceptions.LegitimateRelationshipException;
 import org.endeavourhealth.cim.processor.core.CIMError;
 import org.endeavourhealth.cim.processor.core.DataProtocolProcessor;
 
