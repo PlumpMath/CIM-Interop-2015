@@ -17,7 +17,7 @@ public class GetFullPatientRecordProcessor implements Processor {
         String odsCode = ExchangeHelper.getInHeaderString(exchange, HeaderKey.OdsCode);
 
         IDataManager dataManager = DataManagerFactory.getDataManagerForService(odsCode);
-        String response = dataManager.getPatientRecordByPatientId(odsCode, patientId);
+        String response = dataManager.getPatientRecord(odsCode, patientId);
 
         ExchangeHelper.setInBodyString(exchange, response);
     }

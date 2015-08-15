@@ -27,7 +27,7 @@ public class EvaluateSubscriptionsProcessor implements org.apache.camel.Processo
 
         if (subscriberCallbacks.size() > 0) {
             IDataManager dataManager = DataManagerFactory.getDataManagerForService(odsCode);
-            String requestBody = dataManager.getPatientRecordByPatientId(odsCode, patientUUID);
+            String requestBody = dataManager.getPatientRecord(odsCode, patientUUID);
 
             ExchangeHelper.setInBodyString(exchange, requestBody);
         }

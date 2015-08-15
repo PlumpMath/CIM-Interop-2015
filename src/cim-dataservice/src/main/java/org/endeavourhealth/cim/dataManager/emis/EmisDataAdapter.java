@@ -39,11 +39,29 @@ public class EmisDataAdapter {
 
     public String getPatientDemographicsByNHSNumber(String odsCode, String nhsNumber) {
         try {
-            final String soapMethod = "GetPatientDemographics";
+            final String soapMethod = "GetPatientDemographicsByNhsNumber";
 
             Map<String, String> parameters = createParameterMap();
             parameters.put("odsCode", odsCode);
             parameters.put("nhsNumber", nhsNumber);
+
+            SOAPMessage responseMessage = performSOAPCall(soapMethod, parameters);
+
+            return getSOAPResult(responseMessage, soapMethod);
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public String getPatientDemographicsByPatientId(String odsCode, UUID patientId) {
+        try {
+            final String soapMethod = "GetPatientDemographics";
+
+            Map<String, String> parameters = createParameterMap();
+            parameters.put("odsCode", odsCode);
+            parameters.put("patientGuid", patientId.toString());
 
             SOAPMessage responseMessage = performSOAPCall(soapMethod, parameters);
 

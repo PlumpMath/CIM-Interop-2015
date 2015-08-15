@@ -7,8 +7,9 @@ import java.util.Date;
 import java.util.UUID;
 
 public interface IDataManager {
-    String getPatientRecordByPatientId(String odsCode, UUID patientId) throws Exception;
-    String getPatientDemographicsByNHSNumber(String odsCode, String nhsNumber) throws Exception;
+    String getPatientRecord(String odsCode, UUID patientId) throws Exception;
+    String getPatientDemographics(String odsCode, UUID patientId) throws Exception;
+    String getPatientDemographics(String odsCode, String nhsNumber) throws Exception;
     String tracePatientByDemographics(String surname, Date dateOfBirth, String gender, String forename, String postcode) throws Exception;
     String tracePatientByNhsNumber(String nhsNumber) throws Exception;
     String createCondition(String odsCode, String request) throws Exception;

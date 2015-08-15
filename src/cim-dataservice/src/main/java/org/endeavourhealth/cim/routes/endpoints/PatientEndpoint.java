@@ -9,9 +9,17 @@ import org.endeavourhealth.cim.processor.demographics.*;
 public class PatientEndpoint extends RouteBuilder {
     @Override
     public void configure() throws Exception {
-        // Endpoint root URI
+
         rest("/{odsCode}/Patient")
             .description("Patient rest service")
+
+        .get("/{id}")
+            .route()
+            .routeId("/{odsCode}/Patient/{id}")
+            .description("Get demographics record by patient ID")
+            .setHeader(HeaderKey.MessageRouterCallback, constant("direct:GetDemographicPatientById"))
+            .to("direct:CIMCore")
+        .endRest()
 
         // Endpoint definitions (GET, PUT, etc)
         .get("?identifier={identifier}&_lastUpdated=>{dateUpdated}&active={active}")
@@ -25,7 +33,7 @@ public class PatientEndpoint extends RouteBuilder {
         .get("/{id}/$everythingnobinary")
             .route()
             .routeId("GetServicePatientRecordById")
-            .description("Direct (patient id) call")
+            .description("Get full record (including clinical) by patient ID")
             .setHeader(HeaderKey.MessageRouterCallback, constant("direct:GetPatientRecordById"))
             .to("direct:CIMCore")
         .endRest();
@@ -46,6 +54,10 @@ public class PatientEndpoint extends RouteBuilder {
 					.routeId("GetAllPatients")
 					.process(new GetAllPatientsProcessor(false))
             .end();
+
+        from("direct:GetDemographicPatientById")
+            .routeId("GetDemographicPatientById")
+            .process(new GetDemographicPatientProcessor());
 
         from("direct:GetPatientRecordById")
             .routeId("GetPatientRecordById")
