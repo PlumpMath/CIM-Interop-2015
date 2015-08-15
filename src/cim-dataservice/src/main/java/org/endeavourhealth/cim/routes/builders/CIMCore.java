@@ -3,53 +3,56 @@ package org.endeavourhealth.cim.routes.builders;
 import org.apache.camel.LoggingLevel;
 import org.apache.camel.builder.RouteBuilder;
 import org.endeavourhealth.cim.common.HeaderKey;
+import org.endeavourhealth.cim.routes.config.CoreRouteName;
 import org.endeavourhealth.cim.routes.config.Route;
 
 @SuppressWarnings("unused")
 public class CIMCore extends RouteBuilder {
+
     @Override
     public void configure() throws Exception {
-        from("direct:CIMCore")
-            .routeId("CIMCore")
+
+        from(Route.direct(CoreRouteName.CIM_CORE))
+            .routeId(CoreRouteName.CIM_CORE)
             .choice()
                 .when(simple("${header." + HeaderKey.MessageRouterCallback + "} == null"))
                     .log(LoggingLevel.ERROR, "No destination for message route")
                     .stop()
                 .otherwise()
-                    .to("direct:CIMHeaderValidation");
+                    .to(Route.direct(CoreRouteName.CIM_HEADER_VALIDATION));
 
-        from("direct:CIMHeaderValidationResult")
-            .routeId("CIMHeaderValidationResult")
-            .wireTap("direct:CIMAudit")
+        from(Route.direct(CoreRouteName.CIM_HEADER_VALIDATION_RESULT))
+            .routeId(CoreRouteName.CIM_HEADER_VALIDATION_RESULT)
+            .wireTap(Route.direct(CoreRouteName.CIM_AUDIT))
                 .newExchangeHeader(HeaderKey.TapLocation, constant("Inbound"))
             .end()
-            .to("direct:CIMSecurity");
+            .to(Route.direct(CoreRouteName.CIM_SECURITY));
 
-        from("direct:CIMSecurityResult")
-            .routeId("CIMSecurityResult")
-            .to("direct:CIMDataProtocol");
+        from(Route.direct(CoreRouteName.CIM_SECURITY_RESULT))
+            .routeId(CoreRouteName.CIM_SECURITY_RESULT)
+            .to(Route.direct(CoreRouteName.CIM_DATA_PROTOCOL));
 
-        from("direct:CIMDataProtocolResult")
-            .routeId("CIMDataProtocolResult")
-            .to("direct:CIMPayloadValidation");
+        from(Route.direct(CoreRouteName.CIM_DATA_PROTOCOL_RESULT))
+            .routeId(CoreRouteName.CIM_DATA_PROTOCOL_RESULT)
+            .to(Route.direct(CoreRouteName.CIM_PAYLOAD_VALIDATION));
 
-        from("direct:CIMPayloadValidationResult")
-            .routeId("CIMPayloadValidationResult")
-            .to("direct:CIMMessageRouter");
+        from(Route.direct(CoreRouteName.CIM_PAYLOAD_VALIDATION_RESULT))
+            .routeId(CoreRouteName.CIM_PAYLOAD_VALIDATION_RESULT)
+            .to(Route.direct(CoreRouteName.CIM_MESSAGE_ROUTER));
 
-        from("direct:CIMMessageRouterResult")
-            .routeId("CIMMessageRouterResult")
-            .to("direct:CIMDataAggregator");
+        from(Route.direct(CoreRouteName.CIM_MESSAGE_ROUTER_RESULT))
+            .routeId(CoreRouteName.CIM_MESSAGE_ROUTER_RESULT)
+            .to(Route.direct(CoreRouteName.CIM_DATA_AGGREGATOR));
 
-        from("direct:CIMDataAggregatorResult")
-            .routeId("CIMDataAggregatorResult")
-                .wireTap("direct:CIMAudit")
+        from(Route.direct(CoreRouteName.CIM_DATA_AGGREGATOR_RESULT))
+            .routeId(CoreRouteName.CIM_DATA_AGGREGATOR_RESULT)
+                .wireTap(Route.direct(CoreRouteName.CIM_AUDIT))
                 .newExchangeHeader(HeaderKey.TapLocation, constant("Outbound"))
             .end()
-            .to("direct:CIMDataProtocolFilter");
+            .to(Route.direct(CoreRouteName.CIM_DATA_PROTOCOL_FILTER));
 
-        from("direct:CIMDataProtocolFilterResult")
-            .routeId("CIMDataProtocolFilterResult")
-            .to("direct:CIMResponse");
+        from(Route.direct(CoreRouteName.CIM_DATA_PROTOCOL_FILTER_RESULT))
+            .routeId(CoreRouteName.CIM_DATA_PROTOCOL_FILTER_RESULT)
+            .to(Route.direct(CoreRouteName.CIM_RESPONSE));
     }
 }

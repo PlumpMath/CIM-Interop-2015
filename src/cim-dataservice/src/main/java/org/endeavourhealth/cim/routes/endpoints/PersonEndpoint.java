@@ -5,9 +5,7 @@ import org.endeavourhealth.cim.common.HeaderKey;
 import org.endeavourhealth.cim.common.HttpVerb;
 import org.endeavourhealth.cim.dataManager.DataManagerFactory;
 import org.endeavourhealth.cim.common.ArrayListAggregationStrategy;
-import org.endeavourhealth.cim.processor.demographics.TracePersonByDemographicsProcessor;
-import org.endeavourhealth.cim.processor.demographics.TracePersonByNhsNumberProcessor;
-import org.endeavourhealth.cim.processor.demographics.TracePersonResultProcessor;
+import org.endeavourhealth.cim.processor.demographics.*;
 import org.endeavourhealth.cim.routes.config.Route;
 
 @SuppressWarnings("WeakerAccess")
@@ -17,27 +15,28 @@ public class PersonEndpoint extends RouteBuilder {
     public void configure() throws Exception {
 
         final String BASE_ROUTE = "/Person";
-        final String TRACE_BY_DEMOGRAPHICS_ROUTE = "/$trace?surname={surname}&dob={dob}&gender={gender}";
-        final String TRACE_BY_NHS_NUMBER_ROUTE = "/$trace?nhsNo={nhsNo}";
+        final String TRACE_ROUTE = "/$trace?identifier=NHS|{nhsNumber}&surname={surname}&dob={dob}&gender={gender}";
 
+        final String TRACE_PROCESSOR_ROUTE = "TracePerson";
         final String TRACE_BY_DEMOGRAPHICS_PROCESSOR_ROUTE = "TraceByDemographics";
         final String TRACE_BY_NHS_NUMBER_PROCESSOR_ROUTE = "TraceByNhsNumber";
 
         rest(BASE_ROUTE)
 
-        .get(TRACE_BY_DEMOGRAPHICS_ROUTE)
+        .get(TRACE_ROUTE)
             .route()
-            .routeId(HttpVerb.GET + BASE_ROUTE + TRACE_BY_DEMOGRAPHICS_ROUTE)
-            .setHeader(HeaderKey.MessageRouterCallback, constant(Route.direct(TRACE_BY_DEMOGRAPHICS_PROCESSOR_ROUTE)))
-            .to(Route.CIM_CORE)
-        .endRest()
-
-        .get(TRACE_BY_NHS_NUMBER_ROUTE)
-            .route()
-            .routeId(HttpVerb.GET + BASE_ROUTE + TRACE_BY_NHS_NUMBER_ROUTE)
-            .setHeader(HeaderKey.MessageRouterCallback, constant(Route.direct(TRACE_BY_NHS_NUMBER_PROCESSOR_ROUTE)))
+            .routeId(HttpVerb.GET + BASE_ROUTE + TRACE_ROUTE)
+            .setHeader(HeaderKey.MessageRouterCallback, constant(Route.direct(TRACE_PROCESSOR_ROUTE)))
             .to(Route.CIM_CORE)
         .endRest();
+
+        from(Route.direct(TRACE_PROCESSOR_ROUTE))
+                .choice()
+                .when(simple("${header." + HeaderKey.Identifier + "} != null"))
+                    .to(Route.direct(TRACE_BY_NHS_NUMBER_PROCESSOR_ROUTE))
+                .otherwise()
+                    .to(Route.direct(TRACE_BY_DEMOGRAPHICS_PROCESSOR_ROUTE))
+                .end();
 
         from(Route.direct(TRACE_BY_DEMOGRAPHICS_PROCESSOR_ROUTE))
             .routeId(TRACE_BY_DEMOGRAPHICS_PROCESSOR_ROUTE)
