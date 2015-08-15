@@ -5,6 +5,7 @@ import org.endeavourhealth.cim.IRegistry;
 import org.endeavourhealth.cim.Registry;
 import org.endeavourhealth.cim.dataManager.DataManagerFactory;
 import org.endeavourhealth.cim.dataManager.IDataManager;
+import org.hl7.fhir.instance.formats.JsonParser;
 import org.hl7.fhir.instance.model.Subscription;
 
 import java.util.HashMap;
@@ -21,6 +22,11 @@ public class SubscriptionManager {
 	private final HashMap<String, Subscription> _subscriptions = new HashMap<>();
 	private final HashMap<String, PollerEndpoint> _pollers = new HashMap<>();
 	private final IRegistry _registry = new Registry();
+
+	public void addSubscription(String odsCode, String subscriptionJson, CamelContext context) throws Exception {
+		Subscription subscription = (Subscription)new JsonParser().parse(subscriptionJson);
+		addSubscription(odsCode, subscription, context);
+	}
 
 	public void addSubscription(String odsCode, Subscription subscription, CamelContext context) throws Exception {
 		if (_subscriptions.containsKey(subscription.getId()))

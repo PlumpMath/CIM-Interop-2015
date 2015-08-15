@@ -19,7 +19,7 @@ public class CancelSlotProcessor implements Processor {
         String slotId = ExchangeHelper.getInHeaderString(exchange, HeaderKey.Id);
         Parameters parameters = ExchangeHelper.getInBodyResource(exchange, Parameters.class);
 
-        UUID patientId = UUID.fromString(ParametersHelper.getStringParameter(parameters, "patient"));
+        UUID patientId = ParametersHelper.getUUIDParameter(parameters, "patient");
 
         IDataManager dataManager = DataManagerFactory.getDataManagerForService(odsCode);
         dataManager.cancelSlot(odsCode, slotId, patientId);

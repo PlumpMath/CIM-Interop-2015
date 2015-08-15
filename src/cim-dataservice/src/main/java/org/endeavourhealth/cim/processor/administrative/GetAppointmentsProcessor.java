@@ -24,8 +24,8 @@ public class GetAppointmentsProcessor implements Processor {
 		Date toDate = (date != null) ? date.getIntervalEnd() : DateUtils.DOTNET_MAXIMUM_DATE;
 
 		IDataManager dataManager = DataManagerFactory.getDataManagerForService(odsCode);
-		String body = dataManager.getAppointmentsForPatient(odsCode, patientId, fromDate, toDate);
+		String responseBody = dataManager.getAppointmentsForPatient(odsCode, patientId, fromDate, toDate);
 
-		ExchangeHelper.setInBodyString(exchange, body);
+		ExchangeHelper.setInBodyString(exchange, responseBody);
 	}
 }

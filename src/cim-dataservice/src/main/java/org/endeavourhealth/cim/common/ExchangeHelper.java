@@ -41,6 +41,10 @@ public class ExchangeHelper {
         return exchange.getIn().getHeader(headerKey);
     }
 
+    public static void setInHeaderString(Exchange exchange, String headerKey, Object headerValue) {
+        exchange.getIn().setHeader(headerKey, headerValue);
+    }
+
     public static void setInBodyString(Exchange exchange, String body) {
         exchange.getIn().setBody(body, String.class);
     }

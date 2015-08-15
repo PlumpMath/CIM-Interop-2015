@@ -27,8 +27,8 @@ public class GetSchedulesProcessor implements Processor {
 		Date toDate = (date != null) ? date.getIntervalEnd() : DateUtils.DOTNET_MAXIMUM_DATE;
 
 		IDataManager dataManager = DataManagerFactory.getDataManagerForService(odsCode);
-		String body = dataManager.getSchedules(odsCode, fromDate, toDate, practitioner);
+		String responseBody = dataManager.getSchedules(odsCode, fromDate, toDate, practitioner);
 
-		ExchangeHelper.setInBodyString(exchange, body);
+		ExchangeHelper.setInBodyString(exchange, responseBody);
 	}
 }

@@ -12,11 +12,11 @@ public class AddConditionProcessor implements Processor {
     public void process(Exchange exchange) throws Exception {
 
         String odsCode = ExchangeHelper.getInHeaderString(exchange, HeaderKey.OdsCode);
-        String fhirRequest = ExchangeHelper.getInBodyString(exchange);
+        String requestBody = ExchangeHelper.getInBodyString(exchange);
 
         IDataManager dataManager = DataManagerFactory.getDataManagerForService(odsCode);
-        String response = dataManager.createCondition(odsCode, fhirRequest);
+        String responseBody = dataManager.createCondition(odsCode, requestBody);
 
-        ExchangeHelper.setInBodyString(exchange, response);
+        ExchangeHelper.setInBodyString(exchange, responseBody);
     }
 }

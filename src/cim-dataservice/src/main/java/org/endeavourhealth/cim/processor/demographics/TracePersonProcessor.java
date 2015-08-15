@@ -8,10 +8,13 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class TracePersonProcessor implements org.apache.camel.Processor {
+
     @Override
     public void process(Exchange exchange) throws Exception {
-		IDataManager dataManager = (IDataManager)exchange.getIn().getBody();
+
 		String identifier = (String)exchange.getIn().getHeader(HeaderKey.Identifier);
+
+		IDataManager dataManager = (IDataManager)exchange.getIn().getBody();
 
 		String traceResult = null;
 		if (identifier != null) {
