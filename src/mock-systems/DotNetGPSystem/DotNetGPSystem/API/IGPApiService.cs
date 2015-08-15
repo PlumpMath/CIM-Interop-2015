@@ -24,7 +24,10 @@ namespace DotNetGPSystem
         // Organisation services
 
         [OperationContract]
-        string GetPatientDemographics(string odsCode, string nhsNumber);
+        string GetPatientDemographics(string odsCode, Guid patientGuid);
+        
+        [OperationContract]
+        string GetPatientDemographicsByNhsNumber(string odsCode, string nhsNumber);
         
         [OperationContract]
         string GetPatient(string odsCode, Guid patientGuid);

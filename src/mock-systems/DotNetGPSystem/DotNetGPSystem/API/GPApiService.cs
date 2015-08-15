@@ -47,7 +47,17 @@ namespace DotNetGPSystem
 
         // Organisation services
 
-        public string GetPatientDemographics(string odsCode, string nhsNumber)
+        public string GetPatientDemographics(string odsCode, Guid patientGuid)
+        {
+            OpenHRPatient patient = DataStore.GetPatient(odsCode, patientGuid);
+
+            if (patient == null)
+                return string.Empty;
+
+            return patient.OpenHRExcludingHealthDomainXml;
+        }
+
+        public string GetPatientDemographicsByNhsNumber(string odsCode, string nhsNumber)
         {
             OpenHRPatient[] patients = DataStore
                 .GetPatients(odsCode)
@@ -58,7 +68,6 @@ namespace DotNetGPSystem
                 return string.Empty;
 
             return patients.FirstOrDefault().OpenHRExcludingHealthDomainXml;
-                
         }
 
         public string GetPatient(string odsCode, Guid patientGuid)
