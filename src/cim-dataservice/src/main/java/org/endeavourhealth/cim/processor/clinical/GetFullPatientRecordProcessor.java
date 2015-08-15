@@ -1,23 +1,24 @@
 package org.endeavourhealth.cim.processor.clinical;
 
 import org.apache.camel.Exchange;
+import org.apache.camel.Processor;
+import org.endeavourhealth.cim.common.ExchangeHelper;
 import org.endeavourhealth.cim.common.HeaderKey;
 import org.endeavourhealth.cim.dataManager.DataManagerFactory;
 import org.endeavourhealth.cim.dataManager.IDataManager;
-import org.endeavourhealth.cim.processor.CIMProcessor;
 
 import java.util.UUID;
 
-public class GetFullPatientRecordProcessor extends CIMProcessor {
+public class GetFullPatientRecordProcessor implements Processor {
 
     public void process(Exchange exchange) throws Exception {
 
-        UUID patientId = getInHeaderUUID(exchange, HeaderKey.Id);
-        String odsCode = getInHeaderString(exchange, HeaderKey.OdsCode);
+        UUID patientId = ExchangeHelper.getInHeaderUUID(exchange, HeaderKey.Id);
+        String odsCode = ExchangeHelper.getInHeaderString(exchange, HeaderKey.OdsCode);
 
         IDataManager dataManager = DataManagerFactory.getDataManagerForService(odsCode);
         String response = dataManager.getPatientRecordByPatientId(odsCode, patientId);
 
-        setInBodyString(exchange, response);
+        ExchangeHelper.setInBodyString(exchange, response);
     }
 }
