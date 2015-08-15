@@ -2,28 +2,32 @@ package org.endeavourhealth.cim.routes.endpoints;
 
 import org.apache.camel.builder.RouteBuilder;
 import org.endeavourhealth.cim.common.HeaderKey;
+import org.endeavourhealth.cim.common.HttpVerb;
+import org.endeavourhealth.cim.routes.config.Route;
 import org.endeavourhealth.cim.processor.clinical.GetImmunizationsProcessor;
 
 @SuppressWarnings("WeakerAccess")
 public class ImmunizationEndpoint extends RouteBuilder {
+
     @Override
     public void configure() throws Exception {
-        // Endpoint root URI
-        rest("/{odsCode}/Patient/{id}/Immunization")
-            .description("Immunization rest service")
 
-        // Endpoint definitions (GET, PUT, etc)
-        .get()
+        final String BASE_ROUTE = "/{odsCode}/Patient";
+        final String IMMUNIZATIONS_ROUTE = "/{id}/Immunization";
+
+        final String GET_IMMUNIZATIONS_PROCESSOR_ROUTE = "GetImmunizations";
+
+        rest(BASE_ROUTE)
+
+        .get(IMMUNIZATIONS_ROUTE)
             .route()
-            .routeId("GetImmunizationsEndPoint")
-            .description("Get patient immunizations")
-            .setHeader(HeaderKey.MessageRouterCallback, constant("direct:GetImmunizationsRoute"))
-            .to("direct:CIMCore")
+            .routeId(HttpVerb.GET + BASE_ROUTE + IMMUNIZATIONS_ROUTE)
+            .setHeader(HeaderKey.MessageRouterCallback, constant(Route.direct(GET_IMMUNIZATIONS_PROCESSOR_ROUTE)))
+            .to(Route.CIM_CORE)
         .endRest();
 
-        // Message router callback routes
-        from("direct:GetImmunizationsRoute")
-            .routeId("GetImmunizationsRoute")
+        from(Route.direct(GET_IMMUNIZATIONS_PROCESSOR_ROUTE))
+            .routeId(GET_IMMUNIZATIONS_PROCESSOR_ROUTE)
             .process(new GetImmunizationsProcessor());
 
     }

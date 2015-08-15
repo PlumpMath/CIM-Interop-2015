@@ -2,28 +2,32 @@ package org.endeavourhealth.cim.routes.endpoints;
 
 import org.apache.camel.builder.RouteBuilder;
 import org.endeavourhealth.cim.common.HeaderKey;
-import org.endeavourhealth.cim.processor.clinical.RetrieveBinaryObjectProcessor;
+import org.endeavourhealth.cim.common.HttpVerb;
+import org.endeavourhealth.cim.processor.clinical.GetBinaryObjectProcessor;
+import org.endeavourhealth.cim.routes.config.Route;
 
 @SuppressWarnings({"WeakerAccess", "unused"})
 public class BinaryEndpoint extends RouteBuilder {
+
     @Override
     public void configure() throws Exception {
-        // Endpoint root URI
-        rest("/Binary")
-            .description("Binary object (e.g. documents) rest service")
 
-        // Endpoint definitions (GET, PUT, etc)
-        .get("/{id}")
+        final String BASE_ROUTE = "/{odsCode}/Binary";
+        final String BINARY_ROUTE = "/{id}";
+
+        final String GET_BINARY_PROCESSOR_ROUTE = "GetBinaryObject";
+
+        rest(BASE_ROUTE)
+
+        .get(BINARY_ROUTE)
             .route()
-            .routeId("GetBinary")
-            .description("Retrieve binary object")
-            .setHeader(HeaderKey.MessageRouterCallback, constant("direct:RetrieveBinaryObject"))
-            .to("direct:CIMCore")
+            .routeId(HttpVerb.GET + BASE_ROUTE + BINARY_ROUTE)
+            .setHeader(HeaderKey.MessageRouterCallback, constant(Route.direct(GET_BINARY_PROCESSOR_ROUTE)))
+            .to(Route.CIM_CORE)
         .endRest();
 
-        // Message router callback routes
-        from("direct:RetrieveBinaryObject")
-            .routeId("RetrieveBinaryObject")
-            .process(new RetrieveBinaryObjectProcessor());                     // Process the results
+        from(Route.direct(GET_BINARY_PROCESSOR_ROUTE))
+            .routeId(GET_BINARY_PROCESSOR_ROUTE)
+            .process(new GetBinaryObjectProcessor());
     }
 }

@@ -10,9 +10,9 @@ import org.apache.camel.spi.ManagementStrategy;
 public class RestConfiguration extends RouteBuilder {
     @Override
     public void configure() throws Exception {
-        // Set critical error handling
+
         onException(Exception.class)
-            .to("direct:CIMCriticalError")
+            .to(Route.direct(CoreRouteName.CIM_CRITICAL_ERROR))
             .stop();
 
         // enable debug output

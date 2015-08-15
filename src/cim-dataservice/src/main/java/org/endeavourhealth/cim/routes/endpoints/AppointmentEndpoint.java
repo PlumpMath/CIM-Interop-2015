@@ -3,33 +3,38 @@ package org.endeavourhealth.cim.routes.endpoints;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.commons.httpclient.HttpStatus;
 import org.endeavourhealth.cim.common.HeaderKey;
+import org.endeavourhealth.cim.common.HttpVerb;
+import org.endeavourhealth.cim.routes.config.CoreRouteName;
+import org.endeavourhealth.cim.routes.config.Route;
 import org.endeavourhealth.cim.processor.core.CIMError;
 import org.endeavourhealth.cim.processor.administrative.GetAppointmentsProcessor;
 
 public class AppointmentEndpoint extends RouteBuilder {
+
     @Override
     public void configure() throws Exception {
-        // Endpoint root URI
-        rest("{odsCode}/Appointment?patient={patient}&date={date}")
-                .description("Appointment rest service")
 
-        // Endpoint definitions (GET, PUT, etc)
-                .get()
+        final String BASE_ROUTE = "/{odsCode}/Appointment";
+        final String APPOINTMENTS_ROUTE = "?patient={patient}&date={date}";
+
+        final String GET_APPOINTMENTS_PROCESSOR_ROUTE = "GetPatientAppointments";
+
+        rest(BASE_ROUTE)
+
+        .get(APPOINTMENTS_ROUTE)
                 .route()
-                .routeId("GetServicePatientAppointments")
-                .description("Get Patient Appointments By Patient ID")
-                .setHeader(HeaderKey.MessageRouterCallback, constant("direct:GetPatientAppointments"))
-                .to("direct:CIMCore")
-                .endRest();
+                .routeId(HttpVerb.GET + BASE_ROUTE + APPOINTMENTS_ROUTE)
+                .setHeader(HeaderKey.MessageRouterCallback, constant(Route.direct(GET_APPOINTMENTS_PROCESSOR_ROUTE)))
+                .to(Route.CIM_CORE)
+        .endRest();
 
-        // Message router callback routes
-        from("direct:GetPatientAppointments")
-                .routeId("GetPatientAppointments")
-                .doTry()
+        from(Route.direct(GET_APPOINTMENTS_PROCESSOR_ROUTE))
+            .routeId(GET_APPOINTMENTS_PROCESSOR_ROUTE)
+            .doTry()
                 .process(new GetAppointmentsProcessor())
-                .doCatch(IllegalArgumentException.class)
+            .doCatch(IllegalArgumentException.class)
                 .process(new CIMError(HttpStatus.SC_BAD_REQUEST, simple("${exception.message}")))
-                .to("direct:CIMInvalidMessage")
-                .end();
+                .to(Route.direct(CoreRouteName.CIM_INVALID_MESSAGE))
+            .end();
     }
 }

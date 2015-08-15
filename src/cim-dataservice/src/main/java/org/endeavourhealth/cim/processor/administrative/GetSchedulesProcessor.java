@@ -12,6 +12,7 @@ import org.endeavourhealth.cim.dataManager.IDataManager;
 import java.util.Date;
 
 public class GetSchedulesProcessor implements Processor {
+
 	public static final String EITHER_ACTOR_OR_DATE_OR_BOTH_MUST_BE_SUPPLIED = "Either actor or date, or both must be supplied.";
 
 	public void process(Exchange exchange) throws Exception {

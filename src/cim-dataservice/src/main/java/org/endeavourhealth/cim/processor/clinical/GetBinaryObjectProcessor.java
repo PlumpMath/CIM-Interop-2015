@@ -2,7 +2,7 @@ package org.endeavourhealth.cim.processor.clinical;
 
 import org.apache.camel.Exchange;
 
-public class RetrieveBinaryObjectProcessor implements org.apache.camel.Processor {
+public class GetBinaryObjectProcessor implements org.apache.camel.Processor {
 	public void process(Exchange exchange) throws Exception {
 		// Get binary object from data adapter
 

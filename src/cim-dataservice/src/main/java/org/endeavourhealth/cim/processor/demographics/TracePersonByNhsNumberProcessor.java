@@ -7,7 +7,7 @@ import org.endeavourhealth.cim.dataManager.IDataManager;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class TracePersonProcessor implements org.apache.camel.Processor {
+public class TracePersonByNhsNumberProcessor implements org.apache.camel.Processor {
 
     @Override
     public void process(Exchange exchange) throws Exception {

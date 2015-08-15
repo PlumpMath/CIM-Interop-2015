@@ -2,6 +2,8 @@ package org.endeavourhealth.cim.routes.endpoints;
 
 import org.apache.camel.builder.RouteBuilder;
 import org.endeavourhealth.cim.common.HeaderKey;
+import org.endeavourhealth.cim.common.HttpVerb;
+import org.endeavourhealth.cim.routes.config.Route;
 import org.endeavourhealth.cim.processor.clinical.GetFullPatientRecordProcessor;
 import org.endeavourhealth.cim.processor.demographics.*;
 
@@ -10,35 +12,45 @@ public class PatientEndpoint extends RouteBuilder {
     @Override
     public void configure() throws Exception {
 
-        rest("/{odsCode}/Patient")
-            .description("Patient rest service")
+        final String BASE_ROUTE = "/{odsCode}/Patient";
+        final String ID_DEMOGRAPHIC_ROUTE = "/{id}";
+        final String ID_EVERYTHING_ROUTE = "/{id}/$everythingnobinary";
+        final String NHS_NUMBER_ROUTE = "?identifier={identifier}&_lastUpdated=>{dateUpdated}&active={active}";
 
-        .get("/{id}")
+        final String ID_DEMOGRAPHIC_PROCESSOR_ROUTE = "GetDemographicPatient";
+        final String ID_EVERYTHING_PROCESSOR_ROUTE = "GetFullPatient";
+
+        rest(BASE_ROUTE)
+
+        .get(ID_DEMOGRAPHIC_ROUTE)
             .route()
-            .routeId("/{odsCode}/Patient/{id}")
-            .description("Get demographics record by patient ID")
-            .setHeader(HeaderKey.MessageRouterCallback, constant("direct:GetDemographicPatientById"))
-            .to("direct:CIMCore")
+            .routeId(HttpVerb.GET + BASE_ROUTE + ID_DEMOGRAPHIC_ROUTE)
+            .setHeader(HeaderKey.MessageRouterCallback, constant(Route.direct(ID_DEMOGRAPHIC_PROCESSOR_ROUTE)))
+            .to(Route.CIM_CORE)
         .endRest()
 
-        // Endpoint definitions (GET, PUT, etc)
-        .get("?identifier={identifier}&_lastUpdated=>{dateUpdated}&active={active}")
+        .get(ID_EVERYTHING_ROUTE)
             .route()
-            .routeId("GetServicePatientByQuery")
-            .description("Query based call")
+            .routeId(HttpVerb.GET + BASE_ROUTE + ID_EVERYTHING_ROUTE)
+            .setHeader(HeaderKey.MessageRouterCallback, constant(Route.direct(ID_EVERYTHING_PROCESSOR_ROUTE)))
+            .to(Route.CIM_CORE)
+        .endRest()
+
+        .get(NHS_NUMBER_ROUTE)
+            .route()
+            .routeId(HttpVerb.GET + BASE_ROUTE + NHS_NUMBER_ROUTE)
             .setHeader(HeaderKey.MessageRouterCallback, constant("direct:GetPatientByQuery"))
-            .to("direct:CIMCore")
-        .endRest()
-
-        .get("/{id}/$everythingnobinary")
-            .route()
-            .routeId("GetServicePatientRecordById")
-            .description("Get full record (including clinical) by patient ID")
-            .setHeader(HeaderKey.MessageRouterCallback, constant("direct:GetPatientRecordById"))
-            .to("direct:CIMCore")
+            .to(Route.CIM_CORE)
         .endRest();
 
-        // Message router callback routes
+        from(Route.direct(ID_DEMOGRAPHIC_PROCESSOR_ROUTE))
+            .routeId(ID_DEMOGRAPHIC_PROCESSOR_ROUTE)
+            .process(new GetDemographicPatientProcessor());
+
+        from(Route.direct(ID_EVERYTHING_PROCESSOR_ROUTE))
+            .routeId(ID_EVERYTHING_PROCESSOR_ROUTE)
+            .process(new GetFullPatientRecordProcessor());
+
         from("direct:GetPatientByQuery")
             .choice()
                 .when(simple("${header." + HeaderKey.Identifier + "} != null"))
@@ -54,13 +66,5 @@ public class PatientEndpoint extends RouteBuilder {
 					.routeId("GetAllPatients")
 					.process(new GetAllPatientsProcessor(false))
             .end();
-
-        from("direct:GetDemographicPatientById")
-            .routeId("GetDemographicPatientById")
-            .process(new GetDemographicPatientProcessor());
-
-        from("direct:GetPatientRecordById")
-            .routeId("GetPatientRecordById")
-            .process(new GetFullPatientRecordProcessor());
     }
 }
