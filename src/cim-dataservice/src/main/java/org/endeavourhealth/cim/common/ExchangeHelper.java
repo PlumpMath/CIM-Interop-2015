@@ -2,6 +2,7 @@ package org.endeavourhealth.cim.common;
 
 import org.apache.camel.Exchange;
 import org.apache.commons.io.IOUtils;
+import org.endeavourhealth.cim.common.exceptions.CIMMissingParamException;
 import org.hl7.fhir.instance.formats.JsonParser;
 import org.hl7.fhir.instance.model.Resource;
 
@@ -14,6 +15,14 @@ public class ExchangeHelper {
 
     public static String getInHeaderString(Exchange exchange, String headerKey) {
         return getInHeader(exchange, headerKey, String.class);
+    }
+
+    public static String getInHeaderString(Exchange exchange, String headerKey, Boolean required) throws CIMMissingParamException {
+        if (required)
+            if (!hasInHeader(exchange, headerKey))
+                throw new CIMMissingParamException(headerKey);
+
+        return getInHeaderString(exchange, headerKey);
     }
 
     public static Boolean hasInHeader(Exchange exchange, String headerKey) {
