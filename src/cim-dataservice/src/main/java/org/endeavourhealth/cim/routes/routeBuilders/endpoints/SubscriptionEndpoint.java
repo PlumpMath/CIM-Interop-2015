@@ -1,15 +1,16 @@
 package org.endeavourhealth.cim.routes.routeBuilders.endpoints;
 
-import org.apache.camel.builder.RouteBuilder;
 import org.endeavourhealth.cim.common.HeaderKey;
 import org.endeavourhealth.cim.common.HttpVerb;
 import org.endeavourhealth.cim.processor.demographics.AddSubscriptionProcessor;
+import org.endeavourhealth.cim.routes.common.CIMRouteBuilder;
 import org.endeavourhealth.cim.routes.common.Route;
 
-@SuppressWarnings("WeakerAccess")
-public class SubscriptionEndpoint extends RouteBuilder {
+@SuppressWarnings({"WeakerAccess", "unused"})
+public class SubscriptionEndpoint extends CIMRouteBuilder {
+
     @Override
-    public void configure() throws Exception {
+    public void configureRoute() throws Exception {
 
         final String BASE_ROUTE = "/{odsCode}/Subscription";
         final String ID_ROUTE = "/{id}";

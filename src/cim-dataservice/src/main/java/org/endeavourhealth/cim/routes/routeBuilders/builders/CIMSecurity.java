@@ -12,8 +12,8 @@ public class CIMSecurity extends CIMRouteBuilder {
     public void configureRoute() throws Exception {
 
         from(Route.direct(CoreRouteName.CIM_SECURITY))
-                .routeId(CoreRouteName.CIM_SECURITY)
-                .process(new SecurityProcessor())
-                .to(Route.direct(CoreRouteName.CIM_SECURITY_RESULT));
+            .routeId(CoreRouteName.CIM_SECURITY)
+            .process(new SecurityProcessor())
+            .to(Route.direct(CoreRouteName.CIM_SECURITY_RESULT));
     }
 }

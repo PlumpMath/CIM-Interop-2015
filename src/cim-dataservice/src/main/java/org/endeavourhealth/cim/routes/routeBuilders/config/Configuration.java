@@ -7,7 +7,7 @@ import org.apache.camel.spi.ManagementStrategy;
 import org.endeavourhealth.cim.routes.common.CoreRouteName;
 import org.endeavourhealth.cim.routes.common.Route;
 
-@SuppressWarnings("WeakerAccess")
+@SuppressWarnings({"WeakerAccess", "unused"})
 public class Configuration extends RouteBuilder {
 
     @Override

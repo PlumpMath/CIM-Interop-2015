@@ -1,18 +1,18 @@
 package org.endeavourhealth.cim.routes.routeBuilders.endpoints;
 
-import org.apache.camel.builder.RouteBuilder;
 import org.endeavourhealth.cim.common.HeaderKey;
 import org.endeavourhealth.cim.common.HttpVerb;
 import org.endeavourhealth.cim.dataManager.DataManagerFactory;
 import org.endeavourhealth.cim.common.ArrayListAggregationStrategy;
 import org.endeavourhealth.cim.processor.demographics.*;
+import org.endeavourhealth.cim.routes.common.CIMRouteBuilder;
 import org.endeavourhealth.cim.routes.common.Route;
 
-@SuppressWarnings("WeakerAccess")
-public class PersonEndpoint extends RouteBuilder {
+@SuppressWarnings({"WeakerAccess", "unused"})
+public class PersonEndpoint extends CIMRouteBuilder {
 
     @Override
-    public void configure() throws Exception {
+    public void configureRoute() throws Exception {
 
         final String BASE_ROUTE = "/Person";
         final String TRACE_ROUTE = "/$trace?identifier=NHS|{nhsNumber}&surname={surname}&dob={dob}&gender={gender}";
@@ -31,7 +31,8 @@ public class PersonEndpoint extends RouteBuilder {
         .endRest();
 
         from(Route.direct(TRACE_PROCESSOR_ROUTE))
-                .choice()
+            .routeId(TRACE_PROCESSOR_ROUTE)
+            .choice()
                 .when(simple("${header." + HeaderKey.Identifier + "} != null"))
                     .to(Route.direct(TRACE_BY_NHS_NUMBER_PROCESSOR_ROUTE))
                 .otherwise()

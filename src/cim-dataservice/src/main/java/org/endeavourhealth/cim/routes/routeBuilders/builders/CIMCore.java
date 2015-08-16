@@ -1,16 +1,16 @@
 package org.endeavourhealth.cim.routes.routeBuilders.builders;
 
 import org.apache.camel.LoggingLevel;
-import org.apache.camel.builder.RouteBuilder;
 import org.endeavourhealth.cim.common.HeaderKey;
+import org.endeavourhealth.cim.routes.common.CIMRouteBuilder;
 import org.endeavourhealth.cim.routes.common.CoreRouteName;
 import org.endeavourhealth.cim.routes.common.Route;
 
 @SuppressWarnings("unused")
-public class CIMCore extends RouteBuilder {
+public class CIMCore extends CIMRouteBuilder {
 
     @Override
-    public void configure() throws Exception {
+    public void configureRoute() throws Exception {
 
         from(Route.direct(CoreRouteName.CIM_CORE))
             .routeId(CoreRouteName.CIM_CORE)

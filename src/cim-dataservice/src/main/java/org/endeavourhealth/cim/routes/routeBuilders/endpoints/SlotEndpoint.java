@@ -1,18 +1,18 @@
 package org.endeavourhealth.cim.routes.routeBuilders.endpoints;
 
-import org.apache.camel.builder.RouteBuilder;
 import org.endeavourhealth.cim.common.HeaderKey;
 import org.endeavourhealth.cim.common.HttpVerb;
+import org.endeavourhealth.cim.routes.common.CIMRouteBuilder;
 import org.endeavourhealth.cim.routes.common.Route;
 import org.endeavourhealth.cim.processor.administrative.BookSlotProcessor;
 import org.endeavourhealth.cim.processor.administrative.CancelSlotProcessor;
 import org.endeavourhealth.cim.processor.administrative.GetSlotsProcessor;
 
-@SuppressWarnings("WeakerAccess")
-public class SlotEndpoint extends RouteBuilder {
+@SuppressWarnings({"WeakerAccess", "unused"})
+public class SlotEndpoint extends CIMRouteBuilder {
 
     @Override
-    public void configure() throws Exception {
+    public void configureRoute() throws Exception {
 
         final String BASE_ROUTE = "/{odsCode}/Slot";
         final String GET_SLOTS_ROUTE = "?schedule={scheduleId}&start={start}";

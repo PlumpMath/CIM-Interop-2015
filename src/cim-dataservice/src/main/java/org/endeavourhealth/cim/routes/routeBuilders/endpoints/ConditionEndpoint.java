@@ -1,17 +1,17 @@
 package org.endeavourhealth.cim.routes.routeBuilders.endpoints;
 
-import org.apache.camel.builder.RouteBuilder;
 import org.endeavourhealth.cim.common.HeaderKey;
 import org.endeavourhealth.cim.common.HttpVerb;
 import org.endeavourhealth.cim.processor.clinical.AddConditionProcessor;
 import org.endeavourhealth.cim.processor.clinical.GetConditionsProcessor;
+import org.endeavourhealth.cim.routes.common.CIMRouteBuilder;
 import org.endeavourhealth.cim.routes.common.Route;
 
 @SuppressWarnings({"WeakerAccess", "unused"})
-public class ConditionEndpoint extends RouteBuilder {
+public class ConditionEndpoint extends CIMRouteBuilder {
 
     @Override
-    public void configure() throws Exception {
+    public void configureRoute() throws Exception {
 
         final String BASE_ROUTE = "/{odsCode}/Patient";
         final String CONDITION_ROUTE = "/{id}/Condition";

@@ -5,6 +5,7 @@ import org.endeavourhealth.cim.processor.core.ExceptionHandlerProcessor;
 import org.endeavourhealth.cim.routes.common.CoreRouteName;
 import org.endeavourhealth.cim.routes.common.Route;
 
+@SuppressWarnings("unused")
 public class CIMExceptionHandler extends RouteBuilder {
 
     @Override
