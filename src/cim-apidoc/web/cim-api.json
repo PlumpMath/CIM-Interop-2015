@@ -1,7 +1,7 @@
 {
     "swagger": "2.0",
     "info": {
-        "description": "API documentation for the Endeavour Health Common Interface Mechanism.<br><br>Sample data for this API can be viewed <a href='sampledata.html' target='_blank'>here</a><br><br><b>NOTE:</b> Dates must be provided in the standard REST format (ISO-8601 - '2015-12-31' or '2015-12-31T23:59:59')",
+        "description": "API documentation for the Endeavour Health Common Interface Mechanism.<div id='notes'><div id='notestitle'>NOTES</div><p>Sample data and notes on usage can be <a href='usage-notes.html' target='_blank'>viewed here</a>.</p><p>Build last updated: 16 August 2015 23:00</p></div>",
         "version": "0.1",
         "title": "Common Interface Mechanism"
     },
@@ -160,7 +160,7 @@
                     {
                         "name": "odsCode",
                         "in": "path",
-                        "description": "Organisation data service code",
+                        "description": "ODS code",
                         "required":true,
                         "type": "string"
                     },
@@ -213,7 +213,7 @@
                     {
                         "name": "odsCode",
                         "in": "path",
-                        "description": "Organisation data service code",
+                        "description": "ODS code",
                         "required":true,
                         "type": "string"
                     },
@@ -263,7 +263,7 @@
                     {
                         "name": "odsCode",
                         "in": "path",
-                        "description": "Organisation data service code",
+                        "description": "ODS code",
                         "required":true,
                         "type": "string"
                     }
@@ -306,7 +306,7 @@
                     {
                         "name": "odsCode",
                         "in": "path",
-                        "description": "Organisation data service code",
+                        "description": "ODS code",
                         "required":true,
                         "type": "string"
                     }
@@ -349,7 +349,7 @@
                     {
                         "name": "odsCode",
                         "in": "path",
-                        "description": "Organisation data service code",
+                        "description": "ODS code",
                         "required":true,
                         "type": "string"
                     },
@@ -399,7 +399,7 @@
                     {
                         "name": "odsCode",
                         "in": "path",
-                        "description": "Organisation data service code",
+                        "description": "ODS code",
                         "required":true,
                         "type": "string"
                     },
@@ -461,7 +461,7 @@
                     {
                         "name": "odsCode",
                         "in": "path",
-                        "description": "Organisation data service code",
+                        "description": "ODS code",
                         "required":true,
                         "type": "string"
                     },
@@ -511,7 +511,7 @@
                     {
                         "name": "odsCode",
                         "in": "path",
-                        "description": "Organisation data service code",
+                        "description": "ODS code",
                         "required":true,
                         "type": "string"
                     },
@@ -568,7 +568,7 @@
                     {
                         "name": "odsCode",
                         "in": "path",
-                        "description": "Organisation data service code",
+                        "description": "ODS code",
                         "required":true,
                         "type": "string"
                     },
@@ -623,7 +623,7 @@
                     {
                         "name": "odsCode",
                         "in": "path",
-                        "description": "Organisation data service code",
+                        "description": "ODS code",
                         "required":true,
                         "type": "string"
                     },
@@ -685,7 +685,7 @@
                     {
                         "name": "odsCode",
                         "in": "path",
-                        "description": "Organisation data service code",
+                        "description": "ODS code",
                         "required":true,
                         "type": "string"
                     },
@@ -742,7 +742,7 @@
                     {
                         "name": "odsCode",
                         "in": "path",
-                        "description": "Organisation data service code",
+                        "description": "ODS code",
                         "required":true,
                         "type": "string"
                     },
@@ -808,14 +808,14 @@
                     {
                         "name": "odsCode",
                         "in": "path",
-                        "description": "Organisation data service code",
+                        "description": "ODS code",
                         "required":true,
                         "type": "string"
                     },
                     {
                         "name":"date",
                         "in":"query",
-                        "description":"Search for Schedule resources that have a period that contains this date specified",
+                        "description":"Search for schedules within the date(s) specified",
                         "required":false,
                         "type":"array",
                         "items" : { "type" : "string" },
@@ -824,18 +824,19 @@
                     {
                         "name":"actor:Practitioner",
                         "in":"query",
-                        "description":"The individual Practitioner to find a Schedule for",
+                        "description":"Search for schedules for the practitioner specified",
                         "required":false,
                         "type":"string"
                     }
                 ],
                 "responses": {
-                    "200": {
-                        "description":"Returns a FHIR Bundle of Schedule Resources. See FHIR specification at: <a target='_blank'  href='http://hl7.org/fhir/2015May/schedule.html'>http://hl7.org/fhir/2015May/schedule.html</a>"
-                    },
-                    "403":{
-                        "description":"Forbidden - Requested operation not permitted"
-                    }
+                    "200": { "description": "OK" },
+                    "400": { "description": "Required parameter missing, Invalid parameter" },
+                    "401": { "description": "Security failed" },
+                    "403": { "description": "No legitimate relationship" },
+                    "401": { "description": "Security failed" },
+                    "500": { "description": "Unexpected error" },
+                    "504": { "description": "Connection timeout to principal system" }
                 }
             }
         },
@@ -867,7 +868,7 @@
                     {
                         "name": "odsCode",
                         "in": "path",
-                        "description": "Organisation data service code",
+                        "description": "ODS code",
                         "required":true,
                         "type": "string"
                     },
@@ -889,12 +890,13 @@
                     }
                 ],
                 "responses": {
-                    "200": {
-                        "description":"Returns a FHIR Bundle of Slot Resources. See FHIR specification at: <a target='_blank'  href='http://hl7.org/fhir/2015May/slot.html'>http://hl7.org/fhir/2015May/slot.html</a>"
-                    },
-                    "403":{
-                        "description":"Forbidden - Requested operation not permitted"
-                    }
+                    "200": { "description": "OK" },
+                    "400": { "description": "Required parameter missing, Invalid parameter" },
+                    "401": { "description": "Security failed" },
+                    "403": { "description": "No legitimate relationship" },
+                    "401": { "description": "Security failed" },
+                    "500": { "description": "Unexpected error" },
+                    "504": { "description": "Connection timeout to principal system" }
                 }
             }
         },
@@ -926,7 +928,7 @@
                     {
                         "name": "odsCode",
                         "in": "path",
-                        "description": "Organisation data service code",
+                        "description": "ODS code",
                         "required":true,
                         "type": "string"
                     },
@@ -1010,7 +1012,7 @@
                     {
                         "name": "odsCode",
                         "in": "path",
-                        "description": "Organisation data service code",
+                        "description": "ODS code",
                         "required":true,
                         "type": "string"
                     },
@@ -1094,7 +1096,7 @@
                     {
                         "name": "odsCode",
                         "in": "path",
-                        "description": "Organisation data service code",
+                        "description": "ODS code",
                         "required":true,
                         "type": "string"
                     },
