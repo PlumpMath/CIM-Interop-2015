@@ -2,28 +2,24 @@ package org.endeavourhealth.cim.processor.core;
 
 import org.apache.camel.Exchange;
 import org.apache.camel.Processor;
-import org.apache.commons.httpclient.HttpStatus;
+import org.endeavourhealth.cim.common.ExchangeHelper;
 import org.endeavourhealth.cim.common.HeaderKey;
+import org.endeavourhealth.cim.common.exceptions.CIMSecurityFailedException;
 import org.endeavourhealth.cim.common.repository.common.data.RepositoryException;
-import org.endeavourhealth.cim.common.exceptions.SessionException;
 import org.endeavourhealth.cim.common.repository.user.data.UserRepository;
 import org.endeavourhealth.cim.common.repository.user.model.User;
 
 public class SecurityProcessor implements Processor {
-    public static final String INVALID_SESSION = "Invalid Session";
 
     public void process(Exchange exchange) throws Exception {
-        String publicKey = (String)exchange.getIn().getHeader(HeaderKey.ApiKey);
-        String inboundHash = (String)exchange.getIn().getHeader(HeaderKey.Hash);
-        String method = exchange.getFromEndpoint().getEndpointConfiguration().getParameter("path");
-        String body = exchange.getIn().getBody(String.class);
 
-        if (!validateMessage(publicKey, method, body, inboundHash)) {
-            exchange.getIn().setHeader(Exchange.HTTP_RESPONSE_CODE, HttpStatus.SC_UNAUTHORIZED);
-            exchange.getIn().setHeader(Exchange.CONTENT_TYPE, "text/plain");
-            exchange.getIn().setBody(INVALID_SESSION);
-            throw new SessionException(INVALID_SESSION);
-        }
+        String publicKey = ExchangeHelper.getInHeaderString(exchange, HeaderKey.ApiKey);
+        String inboundHash = ExchangeHelper.getInHeaderString(exchange, HeaderKey.Hash);
+        String method = ExchangeHelper.getEndpointPath(exchange);
+        String body = ExchangeHelper.getInBodyString(exchange);
+
+        if (!validateMessage(publicKey, method, body, inboundHash))
+            throw new CIMSecurityFailedException();
     }
 
     private Boolean validateMessage(String publicKey, String method, String body, String inboundHash) {

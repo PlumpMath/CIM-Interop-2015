@@ -63,7 +63,11 @@ public class ExchangeHelper {
     }
 
     public static String getInBodyString(Exchange exchange) throws Exception {
-        return IOUtils.toString((InputStream)exchange.getIn().getBody());
+        if (exchange.getIn().getBody() instanceof InputStream)
+            return IOUtils.toString((InputStream)exchange.getIn().getBody());
+
+        return (String)exchange.getIn().getBody();
+
     }
 
     public static Object getInBodyObject(Exchange exchange) throws Exception {

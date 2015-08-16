@@ -10,8 +10,8 @@ import org.endeavourhealth.cim.repository.informationSharing.ISFManager;
 import org.endeavourhealth.cim.informationSharingFramework.TestISFManager;
 import org.endeavourhealth.cim.Registry;
 import org.endeavourhealth.cim.TestRegistry;
-import org.endeavourhealth.cim.routes.builders.CIMHeaderValidation;
-import org.endeavourhealth.cim.routes.config.RestConfiguration;
+import org.endeavourhealth.cim.routes.routeBuilders.builders.CIMHeaderValidation;
+import org.endeavourhealth.cim.routes.routeBuilders.config.RestConfiguration;
 import org.junit.Test;
 
 import java.util.HashMap;

@@ -7,10 +7,13 @@ import com.google.gson.JsonParser;
 import org.apache.camel.Exchange;
 import org.apache.camel.Processor;
 
-public class ResponseProcessor implements Processor{
+public class ResponseProcessor implements Processor {
+
     public void process(Exchange exchange) throws Exception {
-		// Attempt to pretty print JSON
+
 		try {
+			exchange.getOut().setHeaders(exchange.getIn().getHeaders());
+
 			Gson gson = new GsonBuilder().setPrettyPrinting().create();
 			JsonParser parser = new JsonParser();
 			JsonElement jsonElement = parser.parse((String) exchange.getIn().getBody());

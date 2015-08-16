@@ -13,8 +13,8 @@ import org.endeavourhealth.cim.Registry;
 import org.endeavourhealth.cim.TestRegistry;
 import org.endeavourhealth.cim.common.DateSearchParameter;
 import org.endeavourhealth.cim.processor.administrative.GetSchedulesProcessor;
-import org.endeavourhealth.cim.routes.config.RestConfiguration;
-import org.endeavourhealth.cim.routes.endpoints.ScheduleEndpoint;
+import org.endeavourhealth.cim.routes.routeBuilders.config.RestConfiguration;
+import org.endeavourhealth.cim.routes.routeBuilders.endpoints.ScheduleEndpoint;
 import org.junit.Test;
 
 import java.util.ArrayList;

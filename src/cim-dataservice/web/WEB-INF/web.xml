@@ -6,8 +6,8 @@
 
     <!-- list of route builders -->
     <context-param>
-        <param-name>routeBuilder-RouteBuilders</param-name>
-        <param-value>packagescan:org.endeavourhealth.cim.routes</param-value>
+        <param-name>routeBuilder</param-name>
+        <param-value>packagescan:org.endeavourhealth.cim.routes.routeBuilders</param-value>
     </context-param>
 
     <!-- the listener that kick-starts Camel -->
