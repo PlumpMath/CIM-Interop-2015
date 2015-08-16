@@ -5,6 +5,7 @@ import org.endeavourhealth.cim.Registry;
 import java.util.ArrayList;
 
 public class DataManagerFactory {
+
     public static IDataManager getDataManagerForService(String odsCode) throws Exception {
         String dataManagerTypeName = Registry.Instance().getDataManagerTypeNameForService(odsCode);
         return getDataManager(dataManagerTypeName);

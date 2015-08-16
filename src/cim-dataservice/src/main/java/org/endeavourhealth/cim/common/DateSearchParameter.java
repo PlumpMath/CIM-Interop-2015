@@ -20,7 +20,7 @@ public class DateSearchParameter {
 
     public static DateSearchParameter Parse(String dateTime) {
         if (dateTime == null)
-            return null;
+            throw new IllegalArgumentException(DATE_TIMES_MUST_CONTAIN_ONE_OR_TWO_ELEMENTS);
 
         ArrayList<String> arrayList = new ArrayList<String>();
         arrayList.add(dateTime);
@@ -30,7 +30,7 @@ public class DateSearchParameter {
 
     public static DateSearchParameter Parse(ArrayList<String> dateTimes) {
         if (dateTimes == null)
-            return null;
+            throw new IllegalArgumentException(DATE_TIMES_MUST_CONTAIN_ONE_OR_TWO_ELEMENTS);
 
         int size = dateTimes.size();
 

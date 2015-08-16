@@ -69,7 +69,7 @@ public class EmisDataManager implements IDataManager {
 	}
 
 	@Override
-	public ArrayList<UUID> getChangedPatients(String odsCode, Date date) {
+	public ArrayList<UUID> getChangedPatients(String odsCode, Date date) throws Exception {
 
 		return _emisDataAdapter.getChangedPatients(odsCode, date);
 	}
@@ -77,7 +77,7 @@ public class EmisDataManager implements IDataManager {
 	@Override
 	public String getConditionsByPatientId(String odsCode, UUID patientId) throws Exception {
 
-		String patientData = _emisDataAdapter.getConditionsByPatientId(odsCode, patientId);
+		String patientData = _emisDataAdapter.getPatientRecordByPatientId(odsCode, patientId);
 		Bundle bundle = _openHrTransformer.toFHIRBundle(patientData);
 		bundle = FhirFilterHelper.getConditions(bundle);
 
@@ -87,7 +87,7 @@ public class EmisDataManager implements IDataManager {
 	@Override
 	public String getAllergyIntolerancesByPatientId(String odsCode, UUID patientId) throws Exception {
 
-		String patientData = _emisDataAdapter.getAllergyIntolerancesByPatientId(odsCode, patientId);
+		String patientData = _emisDataAdapter.getPatientRecordByPatientId(odsCode, patientId);
 		Bundle bundle = _openHrTransformer.toFHIRBundle(patientData);
 		bundle = FhirFilterHelper.getAllergyIntolerances(bundle);
 
@@ -97,7 +97,7 @@ public class EmisDataManager implements IDataManager {
 	@Override
 	public String getImmunizationsByPatientId(String odsCode, UUID patientId) throws Exception {
 
-		String patientData = _emisDataAdapter.getImmunizationsByPatientId(odsCode, patientId);
+		String patientData = _emisDataAdapter.getPatientRecordByPatientId(odsCode, patientId);
 		Bundle bundle = _openHrTransformer.toFHIRBundle(patientData);
 		bundle = FhirFilterHelper.getImmunizations(bundle);
 
@@ -107,7 +107,7 @@ public class EmisDataManager implements IDataManager {
 	@Override
 	public String getMedicationPrescriptionsByPatientId(String odsCode, UUID patientId) throws Exception {
 
-		String patientData = _emisDataAdapter.getMedicationPrescriptionsByPatientId(odsCode, patientId);
+		String patientData = _emisDataAdapter.getPatientRecordByPatientId(odsCode, patientId);
 		Bundle bundle = _openHrTransformer.toFHIRBundle(patientData);
 		bundle = FhirFilterHelper.getMedicationPrescriptions(bundle);
 
@@ -138,9 +138,9 @@ public class EmisDataManager implements IDataManager {
 	}
 
 	@Override
-	public String getSchedules(String odsCode, Date dateFrom, Date dateTo, String practitionerId) throws Exception {
+	public String getSchedules(String odsCode, Date dateFrom, Date dateTo, UUID practitionerId) throws Exception {
 
-		String schedulesXml = _emisDataAdapter.getSchedules(odsCode, dateFrom, dateTo, practitionerId);
+		String schedulesXml = _emisDataAdapter.getSchedules(odsCode, dateFrom, dateTo);
 		String organisationXml = _emisDataAdapter.getOrganisationInformation(odsCode);
 		Bundle bundle = _emisOpenTransformer.toFHIRScheduleBundle(schedulesXml, organisationXml);
 		bundle = FhirFilterHelper.filterScheduleByPractitioner(bundle, practitionerId);

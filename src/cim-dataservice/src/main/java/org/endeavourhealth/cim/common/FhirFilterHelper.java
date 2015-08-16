@@ -5,6 +5,7 @@ import org.endeavourhealth.cim.transform.emisopen.EmisOpenCommon;
 import org.hl7.fhir.instance.model.*;
 
 import java.util.ArrayList;
+import java.util.UUID;
 
 public class FhirFilterHelper {
 	public static Bundle getConditions(Bundle bundle) {
@@ -55,8 +56,8 @@ public class FhirFilterHelper {
 		return bundle;
 	}
 
-	public static Bundle filterScheduleByPractitioner(Bundle bundle, String practitionerId) {
-		if (TextUtils.isNullOrTrimmedEmpty(practitionerId))
+	public static Bundle filterScheduleByPractitioner(Bundle bundle, UUID practitionerId) {
+		if (practitionerId == null)
 			return bundle;
 
 		ArrayList<Resource> resources = new ArrayList<>();
@@ -65,14 +66,14 @@ public class FhirFilterHelper {
 			if (bundleEntryComponent.getResource() instanceof Schedule) {
 				Schedule schedule = (Schedule) bundleEntryComponent.getResource();
 
-				if (ReferenceHelper.referenceEquals(schedule.getActor(), ResourceType.Practitioner, practitionerId)) {
+				if (ReferenceHelper.referenceEquals(schedule.getActor(), ResourceType.Practitioner, practitionerId.toString())) {
 					resources.add(schedule);
 				}
 				else {
 					for (Extension extension : schedule.getExtension())
 						if (EmisOpenCommon.SCHEDULEADDITIONALACTOR_EXTENSION_URL.equals(extension.getUrl()))
 							if (extension.getValue() instanceof Reference)
-								if (ReferenceHelper.referenceEquals((Reference)extension.getValue(), ResourceType.Practitioner, practitionerId))
+								if (ReferenceHelper.referenceEquals((Reference)extension.getValue(), ResourceType.Practitioner, practitionerId.toString()))
 									resources.add(schedule);
 				}
 			}

@@ -16,6 +16,10 @@ public class ExchangeHelper {
         return getInHeader(exchange, headerKey, String.class);
     }
 
+    public static Boolean hasInHeader(Exchange exchange, String headerKey) {
+        return exchange.getIn().getHeaders().containsKey(headerKey);
+    }
+
     public static UUID getInHeaderUUID(Exchange exchange, String headerKey) {
         return UUID.fromString(getInHeaderString(exchange, headerKey));
     }
