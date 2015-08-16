@@ -1,5 +1,7 @@
 package org.endeavourhealth.cim.common;
 
+import org.hl7.fhir.instance.model.DateTimeType;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -11,5 +13,9 @@ public class DateUtils {
 
     public static String formatDateAsISO8601(Date date) {
         return ISO8601_DATE_FORMAT.format(date);
+    }
+
+    public static Date Parse(String dateTime) {
+        return new DateTimeType(dateTime).getValue();
     }
 }

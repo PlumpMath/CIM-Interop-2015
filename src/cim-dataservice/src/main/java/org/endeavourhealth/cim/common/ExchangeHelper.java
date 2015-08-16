@@ -7,6 +7,7 @@ import org.hl7.fhir.instance.model.Resource;
 
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.UUID;
 
 public class ExchangeHelper {
@@ -33,6 +34,14 @@ public class ExchangeHelper {
         return arrayList;
     }
 
+    public static String getEndpointPath(Exchange exchange) {
+        return exchange.getFromEndpoint().getEndpointConfiguration().getParameter("path");
+    }
+
+    public static Date getInHeaderDate(Exchange exchange, String headerKey) {
+        return DateUtils.Parse(getInHeaderString(exchange, headerKey));
+    }
+
     public static <T> T getInHeader(Exchange exchange, String headerKey, Class<T> type) {
         return exchange.getIn().getHeader(headerKey, type);
     }
@@ -49,8 +58,16 @@ public class ExchangeHelper {
         exchange.getIn().setBody(body, String.class);
     }
 
+    public static void setOutBodyString(Exchange exchange, String body) {
+        exchange.getOut().setBody(body, String.class);
+    }
+
     public static String getInBodyString(Exchange exchange) throws Exception {
         return IOUtils.toString((InputStream)exchange.getIn().getBody());
+    }
+
+    public static Object getInBodyObject(Exchange exchange) throws Exception {
+        return exchange.getIn().getBody();
     }
 
     public static <T extends Resource> T getInBodyResource(Exchange exchange, Class<T> type) throws Exception {
