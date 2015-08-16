@@ -53,8 +53,7 @@ img#validator {
 #notes {
     background-color: #f8f8f8 !important;
     margin-top: 10px;
-    border-top: 1px solid #d3d3d3;
-    border-bottom: 1px solid #d3d3d3;
+    border: 1px solid #d3d3d3;
     padding: 10px 10px 0px 10px;
 }
 

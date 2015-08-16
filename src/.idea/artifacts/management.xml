@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="management">
+    <output-path>$PROJECT_DIR$/out/artifacts/management</output-path>
+    <root id="archive" name="management.war">
+      <element id="artifact" artifact-name="cim-management:war exploded" />
+    </root>
+  </artifact>
+</component>
