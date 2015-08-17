@@ -2,8 +2,9 @@ $(document).ready(function() {
 
   addCustomLogo();
   removeCurl();
-  disableHash(); // temporarily
-    injectVisualizer();
+  disableHash();
+  injectVisualizer();
+  injectHashGeneration();
 
   function addCustomLogo() {
     if ($('#custom-logo').length == 0) {
@@ -31,7 +32,43 @@ $(document).ready(function() {
         });
     }
 
+    function injectHashGeneration() {
+        $("form.sandbox").each(function() {
+            var form = this;
+            $(form).find("input").each(function() {
+                $(this).change(function() {
+                    generateHash(form);
+                });
+            });
+            $(form).find("textarea").each(function() {
+                $(this).change(function() {
+                    generateHash(form);
+                });
+            });
+        });
+    }
+
 });
+
+
+
+function generateHash(form) {
+    var privateKey = $("#input_privateKey").val();
+    var path = $(form).parent().parent().find(".path").text().trim()+"/";
+    var body = $(form).find("[name='body']").val();
+
+    var message = path;
+    if (body != null)
+        message += body;
+
+    // force message into UTF-8
+    message = unescape(encodeURIComponent(message));
+
+    var hash = CryptoJS.HmacSHA256(message, privateKey);
+    var hashInBase64 = CryptoJS.enc.Base64.stringify(hash);
+
+    $(form).find("input[name=hash]").val(hashInBase64);
+}
 
 function visualizeJson(classId)
 {

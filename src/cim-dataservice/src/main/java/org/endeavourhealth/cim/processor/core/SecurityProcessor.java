@@ -2,12 +2,17 @@ package org.endeavourhealth.cim.processor.core;
 
 import org.apache.camel.Exchange;
 import org.apache.camel.Processor;
+import org.apache.commons.codec.binary.Base64;
 import org.endeavourhealth.cim.common.ExchangeHelper;
 import org.endeavourhealth.cim.common.HeaderKey;
 import org.endeavourhealth.cim.common.exceptions.CIMSecurityFailedException;
 import org.endeavourhealth.cim.common.repository.common.data.RepositoryException;
 import org.endeavourhealth.cim.common.repository.user.data.UserRepository;
 import org.endeavourhealth.cim.common.repository.user.model.User;
+
+import javax.crypto.Mac;
+import javax.crypto.spec.SecretKeySpec;
+import java.nio.charset.StandardCharsets;
 
 public class SecurityProcessor implements Processor {
 
@@ -42,25 +47,26 @@ public class SecurityProcessor implements Processor {
         if (privateKey == null)
             return false;
 
-        // disable hmac checking while we add hash checking to the swagger page
-        return true;
+		// Ensure method always has trailing "/" - required to guarantee matching hash with Crypto-JS
+		if (method.endsWith("/") == false)
+			method += "/";
 
-//        String data = method;
-//        if (body != null)
-//            data += body;
-//
-//        // Hash data based on private key
-//        try {
-//            Mac mac = Mac.getInstance("HmacSHA256");
-//            SecretKeySpec secret = new SecretKeySpec(privateKey.getBytes(StandardCharsets.UTF_8), "HmacSHA256");
-//            mac.init(secret);
-//            byte[] digest = mac.doFinal(data.getBytes(StandardCharsets.UTF_8));
-//            String hash = new String(Base64.encodeBase64(digest), StandardCharsets.UTF_8);
-//            // Compare to inbound hash
-//            return hash.equals(inboundHash);
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//            return false;
-//        }
+        String data = method;
+        if (body != null)
+            data += body;
+
+        // Hash data based on private key
+        try {
+            Mac mac = Mac.getInstance("HmacSHA256");
+            SecretKeySpec secret = new SecretKeySpec(privateKey.getBytes(StandardCharsets.UTF_8), "HmacSHA256");
+            mac.init(secret);
+            byte[] digest = mac.doFinal(data.getBytes(StandardCharsets.UTF_8));
+            String hash = new String(Base64.encodeBase64(digest), StandardCharsets.UTF_8);
+            // Compare to inbound hash
+            return hash.equals(inboundHash);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 }
