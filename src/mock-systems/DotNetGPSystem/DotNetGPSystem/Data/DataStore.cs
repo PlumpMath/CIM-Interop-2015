@@ -316,8 +316,8 @@ namespace DotNetGPSystem
         {
             return AppointmentSessions
                 .Where(t => t.Organisation.Organisation.nationalPracticeCode == odsCode
-                            && t.Date >= from.Date 
-                            && t.Date < to.Date.AddDays(1))
+                            && t.Date >= from.Date
+                            && t.Date <= to.Date.AddHours(23).AddMinutes(59).AddSeconds(59).AddMilliseconds(999))
                 .ToArray();
         }
 

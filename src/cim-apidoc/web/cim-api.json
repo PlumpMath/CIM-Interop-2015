@@ -438,6 +438,7 @@
                     "403": { "description": "No legitimate relationship" },
                     "401": { "description": "Security failed" },
                     "500": { "description": "Unexpected error" },
+                    "502": { "description": "Error received from principal system" },
                     "504": { "description": "Connection timeout to principal system" }
                 }
             }
@@ -478,6 +479,7 @@
                     "403": { "description": "No legitimate relationship" },
                     "401": { "description": "Security failed" },
                     "500": { "description": "Unexpected error" },
+                    "502": { "description": "Error received from principal system" },
                     "504": { "description": "Connection timeout to principal system" }
                 }
             }

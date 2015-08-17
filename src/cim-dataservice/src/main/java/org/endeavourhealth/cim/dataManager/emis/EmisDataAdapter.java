@@ -2,6 +2,7 @@ package org.endeavourhealth.cim.dataManager.emis;
 
 import org.endeavourhealth.cim.common.DateUtils;
 import org.endeavourhealth.cim.common.HeaderKey;
+import org.endeavourhealth.cim.common.exceptions.CIMPrincipalSystemException;
 
 import javax.xml.soap.*;
 import java.text.SimpleDateFormat;
@@ -248,6 +249,10 @@ public class EmisDataAdapter {
     }
 
     private static String getSOAPResult(SOAPMessage soapResponse, String soapMethod) throws Exception {
+
+        if (soapResponse.getSOAPBody().hasFault())
+            throw new CIMPrincipalSystemException("SOAP fault received from principal system.\r\n\r\n" + soapResponse.getSOAPBody().getFault().getFaultString());
+
         return soapResponse.getSOAPBody().getElementsByTagName(soapMethod + "Result").item(0).getTextContent();
     }
 }
