@@ -32,30 +32,13 @@ public class TestDataAdapter extends EmisDataAdapter {
     public String createCondition(String odsCode, String requestData) {
         return "";
     }
-	@Override
-    public String getConditionsByPatientId(String odsCode, UUID patientId) {
-        return getPatientRecordByPatientId(odsCode, patientId);
-    }
-	@Override
-    public String getAllergyIntolerancesByPatientId(String odsCode, UUID patientId) {
-        return getPatientRecordByPatientId(odsCode, patientId);
-    }
-	@Override
-    public String getImmunizationsByPatientId(String odsCode, UUID patientId) {
-        return getPatientRecordByPatientId(odsCode, patientId);
-    }
-	@Override
-    public String getMedicationPrescriptionsByPatientId(String odsCode, UUID patientId) {
-        return getPatientRecordByPatientId(odsCode, patientId);
-    }
-
     // Appointments
 	@Override
     public String getAppointmentsForPatient(String odsCode, UUID patientId, Date dateFrom, Date dateTo) {
         return "";
     }
 	@Override
-	public String getSchedules(String odsCode, Date dateFrom, Date dateTo, String practitionerId) {
+	public String getSchedules(String odsCode, Date dateFrom, Date dateTo) {
 		return "<?xml version=\"1.0\" encoding=\"utf-16\"?>\n" +
 				"<AppointmentSessionList xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns=\"http://www.e-mis.com/emisopen/MedicalRecord\">\n" +
 				"  <AppointmentSession>\n" +

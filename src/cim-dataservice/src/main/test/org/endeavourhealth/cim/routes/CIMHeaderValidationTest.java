@@ -6,12 +6,11 @@ import org.apache.camel.ProducerTemplate;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.component.mock.MockEndpoint;
 import org.apache.camel.test.junit4.CamelTestSupport;
-import org.endeavourhealth.cim.repository.informationSharing.ISFManager;
-import org.endeavourhealth.cim.informationSharingFramework.TestISFManager;
 import org.endeavourhealth.cim.Registry;
 import org.endeavourhealth.cim.TestRegistry;
+import org.endeavourhealth.cim.repository.informationSharing.ISFManager;
 import org.endeavourhealth.cim.routes.routeBuilders.builders.CIMHeaderValidation;
-import org.endeavourhealth.cim.routes.routeBuilders.config.RestConfiguration;
+import org.endeavourhealth.cim.routes.routeBuilders.config.Configuration;
 import org.junit.Test;
 
 import java.util.HashMap;
@@ -32,9 +31,9 @@ public class CIMHeaderValidationTest extends CamelTestSupport {
 		return new RouteBuilder() {
 			public void configure() throws Exception {
 				Registry.setInstance(new TestRegistry());
-				ISFManager.setInstance(new TestISFManager());
+				ISFManager.setInstance(new org.endeavourhealth.cim.informationSharingFramework.TestISFManager());
 
-				this.includeRoutes(new RestConfiguration());
+				this.includeRoutes(new Configuration());
 				this.includeRoutes(new CIMHeaderValidation());
 
 				from("direct:start")

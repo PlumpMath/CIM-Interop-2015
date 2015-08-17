@@ -11,9 +11,8 @@ import org.endeavourhealth.cim.repository.informationSharing.ISFManager;
 import org.endeavourhealth.cim.informationSharingFramework.TestISFManager;
 import org.endeavourhealth.cim.Registry;
 import org.endeavourhealth.cim.TestRegistry;
-import org.endeavourhealth.cim.processor.core.SecurityProcessor;
 import org.endeavourhealth.cim.routes.routeBuilders.builders.CIMSecurity;
-import org.endeavourhealth.cim.routes.routeBuilders.config.RestConfiguration;
+import org.endeavourhealth.cim.routes.routeBuilders.config.Configuration;
 import org.junit.Test;
 
 import java.util.HashMap;
@@ -36,7 +35,7 @@ public class CIMSecurityTest extends CamelTestSupport {
 				Registry.setInstance(new TestRegistry());
 				ISFManager.setInstance(new TestISFManager());
 
-				this.includeRoutes(new RestConfiguration());
+				this.includeRoutes(new Configuration());
 				this.includeRoutes(new CIMSecurity());
 
 				from("direct:start")
@@ -63,7 +62,7 @@ public class CIMSecurityTest extends CamelTestSupport {
 
 		errorEndpoint.expectedMessageCount(1);
 		errorEndpoint.expectedHeaderReceived("CamelHttpResponseCode", HttpStatus.SC_UNAUTHORIZED);
-		errorEndpoint.expectedBodiesReceived(SecurityProcessor.INVALID_SESSION);
+		errorEndpoint.expectedBodiesReceived("");
 
 		template.sendBodyAndHeaders(null, headerParams);
 
@@ -81,7 +80,7 @@ public class CIMSecurityTest extends CamelTestSupport {
 
 		errorEndpoint.expectedMessageCount(1);
 		errorEndpoint.expectedHeaderReceived("CamelHttpResponseCode", HttpStatus.SC_UNAUTHORIZED);
-		errorEndpoint.expectedBodiesReceived(SecurityProcessor.INVALID_SESSION);
+		errorEndpoint.expectedBodiesReceived("");
 
 		template.sendBodyAndHeaders(null, headerParams);
 

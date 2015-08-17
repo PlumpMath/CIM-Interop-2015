@@ -8,12 +8,10 @@ import org.apache.camel.component.mock.MockEndpoint;
 import org.apache.camel.test.junit4.CamelTestSupport;
 import org.apache.commons.httpclient.HttpStatus;
 import org.endeavourhealth.cim.repository.informationSharing.ISFManager;
-import org.endeavourhealth.cim.informationSharingFramework.TestISFManager;
 import org.endeavourhealth.cim.Registry;
 import org.endeavourhealth.cim.TestRegistry;
 import org.endeavourhealth.cim.common.DateSearchParameter;
-import org.endeavourhealth.cim.processor.administrative.GetSchedulesProcessor;
-import org.endeavourhealth.cim.routes.routeBuilders.config.RestConfiguration;
+import org.endeavourhealth.cim.routes.routeBuilders.config.Configuration;
 import org.endeavourhealth.cim.routes.routeBuilders.endpoints.ScheduleEndpoint;
 import org.junit.Test;
 
@@ -36,9 +34,9 @@ public class SchedulesTest extends CamelTestSupport {
 		return new RouteBuilder() {
 			public void configure() throws Exception {
 				Registry.setInstance(new TestRegistry());
-				ISFManager.setInstance(new TestISFManager());
+				ISFManager.setInstance(new org.endeavourhealth.cim.informationSharingFramework.TestISFManager());
 
-				this.includeRoutes(new RestConfiguration());
+				this.includeRoutes(new Configuration());
 				this.includeRoutes(new ScheduleEndpoint());
 
 				from("direct:start")
@@ -61,7 +59,7 @@ public class SchedulesTest extends CamelTestSupport {
 		errorEndpoint.expectedMessageCount(1);
 
 		errorEndpoint.expectedHeaderReceived("CamelHttpResponseCode", HttpStatus.SC_BAD_REQUEST);
-		errorEndpoint.expectedBodiesReceived(GetSchedulesProcessor.EITHER_ACTOR_OR_DATE_OR_BOTH_MUST_BE_SUPPLIED);
+		errorEndpoint.expectedBodiesReceived("");
 
 		template.sendBodyAndHeaders(null, headerParams);
 
