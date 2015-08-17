@@ -1,5 +1,6 @@
 package org.endeavourhealth.cim.dataManager.emis;
 
+import org.endeavourhealth.cim.Registry;
 import org.endeavourhealth.cim.dataManager.IDataManager;
 import org.endeavourhealth.cim.dataManager.emis.EmisDataAdapter;
 import org.endeavourhealth.cim.common.FhirFilterHelper;
@@ -20,9 +21,15 @@ public class EmisDataManager implements IDataManager {
 	@Override
 	public String getPatientRecord(String odsCode, UUID patientId) throws Exception {
 
-		String patientData = _emisDataAdapter.getPatientRecordByPatientId(odsCode, patientId);
-		Bundle bundle = _openHrTransformer.toFHIRBundle(patientData);
+		Bundle bundle = getPatientRecordAsBundle(odsCode, patientId);
 		return new JsonParser().composeString(bundle);
+	}
+
+	private Bundle getPatientRecordAsBundle(String odsCode, UUID patientId) throws Exception {
+
+		String openHRXml = _emisDataAdapter.getPatientRecordByPatientId(odsCode, patientId);
+		String baseUri = Registry.Instance().getBaseUri(odsCode);
+		return _openHrTransformer.toFHIRBundle(baseUri, openHRXml);
 	}
 
 	@Override
@@ -77,8 +84,7 @@ public class EmisDataManager implements IDataManager {
 	@Override
 	public String getConditionsByPatientId(String odsCode, UUID patientId) throws Exception {
 
-		String patientData = _emisDataAdapter.getPatientRecordByPatientId(odsCode, patientId);
-		Bundle bundle = _openHrTransformer.toFHIRBundle(patientData);
+		Bundle bundle = getPatientRecordAsBundle(odsCode, patientId);
 		bundle = FhirFilterHelper.getConditions(bundle);
 
 		return new JsonParser().composeString(bundle);
@@ -87,8 +93,7 @@ public class EmisDataManager implements IDataManager {
 	@Override
 	public String getAllergyIntolerancesByPatientId(String odsCode, UUID patientId) throws Exception {
 
-		String patientData = _emisDataAdapter.getPatientRecordByPatientId(odsCode, patientId);
-		Bundle bundle = _openHrTransformer.toFHIRBundle(patientData);
+		Bundle bundle = getPatientRecordAsBundle(odsCode, patientId);
 		bundle = FhirFilterHelper.getAllergyIntolerances(bundle);
 
 		return new JsonParser().composeString(bundle);
@@ -97,8 +102,7 @@ public class EmisDataManager implements IDataManager {
 	@Override
 	public String getImmunizationsByPatientId(String odsCode, UUID patientId) throws Exception {
 
-		String patientData = _emisDataAdapter.getPatientRecordByPatientId(odsCode, patientId);
-		Bundle bundle = _openHrTransformer.toFHIRBundle(patientData);
+		Bundle bundle = getPatientRecordAsBundle(odsCode, patientId);
 		bundle = FhirFilterHelper.getImmunizations(bundle);
 
 		return new JsonParser().composeString(bundle);
@@ -107,8 +111,7 @@ public class EmisDataManager implements IDataManager {
 	@Override
 	public String getMedicationPrescriptionsByPatientId(String odsCode, UUID patientId) throws Exception {
 
-		String patientData = _emisDataAdapter.getPatientRecordByPatientId(odsCode, patientId);
-		Bundle bundle = _openHrTransformer.toFHIRBundle(patientData);
+		Bundle bundle = getPatientRecordAsBundle(odsCode, patientId);
 		bundle = FhirFilterHelper.getMedicationPrescriptions(bundle);
 
 		return new JsonParser().composeString(bundle);
@@ -119,7 +122,8 @@ public class EmisDataManager implements IDataManager {
 
 		String appointmentDataInNativeFormat = _emisDataAdapter.getAppointmentsForPatient(odsCode, patientId, dateFrom, dateTo);
 		String organisationXml = _emisDataAdapter.getOrganisationInformation(odsCode);
-		Bundle bundle = _emisOpenTransformer.toFHIRAppointmentBundle(patientId.toString(), appointmentDataInNativeFormat, organisationXml);
+		String baseUri = Registry.Instance().getBaseUri(odsCode);
+		Bundle bundle = _emisOpenTransformer.toFHIRAppointmentBundle(odsCode, patientId.toString(), appointmentDataInNativeFormat, organisationXml);
 
 		return new JsonParser().composeString(bundle);
 	}
@@ -142,7 +146,8 @@ public class EmisDataManager implements IDataManager {
 
 		String schedulesXml = _emisDataAdapter.getSchedules(odsCode, dateFrom, dateTo);
 		String organisationXml = _emisDataAdapter.getOrganisationInformation(odsCode);
-		Bundle bundle = _emisOpenTransformer.toFHIRScheduleBundle(schedulesXml, organisationXml);
+		String baseUri = Registry.Instance().getBaseUri(odsCode);
+		Bundle bundle = _emisOpenTransformer.toFHIRScheduleBundle(baseUri, schedulesXml, organisationXml);
 		bundle = FhirFilterHelper.filterScheduleByPractitioner(bundle, practitionerId);
 
 		return new JsonParser().composeString(bundle);
@@ -152,7 +157,8 @@ public class EmisDataManager implements IDataManager {
 	public String getSlots(String odsCode, String scheduleId) throws Exception {
 
 		String slotsXml = _emisDataAdapter.getSlots(odsCode, scheduleId);
-		Bundle bundle = _emisOpenTransformer.toFHIRSlotBundle(scheduleId, slotsXml);
+		String baseUri = Registry.Instance().getBaseUri(odsCode);
+		Bundle bundle = _emisOpenTransformer.toFHIRSlotBundle(baseUri, scheduleId, slotsXml);
 		return new JsonParser().composeString(bundle);
 	}
 }

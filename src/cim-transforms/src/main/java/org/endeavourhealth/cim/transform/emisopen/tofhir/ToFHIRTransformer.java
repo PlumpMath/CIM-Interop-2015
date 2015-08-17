@@ -18,21 +18,21 @@ import java.util.ArrayList;
 
 public class ToFHIRTransformer {
 
-    public static Bundle transformToAppointmentBundle(String patientGuid, PatientAppointmentList patientAppointmentList, OrganisationInformation organisationInformation) throws TransformFeatureNotSupportedException, SerializationException {
+    public static Bundle transformToAppointmentBundle(String baseURI, String patientGuid, PatientAppointmentList patientAppointmentList, OrganisationInformation organisationInformation) throws TransformFeatureNotSupportedException, SerializationException {
         ArrayList<Resource> resources = AppointmentTransformer.transformToAppointmentResources(patientGuid, patientAppointmentList, organisationInformation);
 
-        return BundleHelper.createBundle(null, EmisOpenCommon.EMISOPEN_NAMESPACE, resources);
+        return BundleHelper.createBundle(Bundle.BundleType.COLLECTION, null, baseURI, resources);
     }
 
-    public static Bundle transformToScheduleBundle(AppointmentSessionList appointmentSessionList, OrganisationInformation organisationInformation) throws TransformFeatureNotSupportedException, SerializationException {
+    public static Bundle transformToScheduleBundle(String baseURI, AppointmentSessionList appointmentSessionList, OrganisationInformation organisationInformation) throws TransformFeatureNotSupportedException, SerializationException {
         ArrayList<Resource> resources = ScheduleTransformer.transformToScheduleResources(appointmentSessionList, organisationInformation);
 
-        return BundleHelper.createBundle(null, EmisOpenCommon.EMISOPEN_NAMESPACE, resources);
+        return BundleHelper.createBundle(Bundle.BundleType.COLLECTION, null, baseURI, resources);
     }
 
-    public static Bundle transformToSlotBundle(String scheduleId, SlotListStruct appointmentSlotList) throws TransformFeatureNotSupportedException, SerializationException {
+    public static Bundle transformToSlotBundle(String baseURI, String scheduleId, SlotListStruct appointmentSlotList) throws TransformFeatureNotSupportedException, SerializationException {
         ArrayList<Resource> resources = SlotTransformer.transformToSlotResources(scheduleId, appointmentSlotList);
 
-        return BundleHelper.createBundle(null, EmisOpenCommon.EMISOPEN_NAMESPACE, resources);
+        return BundleHelper.createBundle(Bundle.BundleType.COLLECTION, null, baseURI, resources);
     }
 }

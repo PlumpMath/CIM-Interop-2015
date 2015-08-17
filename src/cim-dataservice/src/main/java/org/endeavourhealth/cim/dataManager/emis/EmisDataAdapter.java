@@ -1,5 +1,6 @@
 package org.endeavourhealth.cim.dataManager.emis;
 
+import org.endeavourhealth.cim.Registry;
 import org.endeavourhealth.cim.common.DateUtils;
 import org.endeavourhealth.cim.common.HeaderKey;
 import org.endeavourhealth.cim.common.exceptions.CIMPrincipalSystemException;
@@ -10,13 +11,8 @@ import java.util.*;
 
 public class EmisDataAdapter {
 
-    // private static final String _soapUri = "http://endeavour-gp.cloudapp.net:9001/GPApiService/Soap";
-    private static final String _soapUri = "http://localhost:9001/GPApiService/Soap";
     private static final String _soapMethodUri = "http://tempuri.org/";
     private static final String _actionUri = "http://tempuri.org/IGPApiService";
-    public String getTransformerTypeName() {
-        return "org.endeavourhealth.cim.transform.EmisTransformer";
-    }
 
     // Demographics
     public String getPatientRecordByPatientId(String odsCode, UUID patientId) throws Exception {
@@ -241,7 +237,7 @@ public class EmisDataAdapter {
             SOAPConnectionFactory soapConnectionFactory = SOAPConnectionFactory.newInstance();
             soapConnection = soapConnectionFactory.createConnection();
 
-            return soapConnection.call(requestMessage, _soapUri + "/" + soapMethod);
+            return soapConnection.call(requestMessage, Registry.Instance().getEmisSoapUri() + "/" + soapMethod);
         } finally {
             if (soapConnection != null)
                 soapConnection.close();

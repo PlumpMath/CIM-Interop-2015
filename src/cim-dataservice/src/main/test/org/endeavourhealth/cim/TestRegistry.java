@@ -17,6 +17,16 @@ public class TestRegistry implements IRegistry {
         return adapterTypes;
     }
 
+    @Override
+    public String getEmisSoapUri() {
+        return null;
+    }
+
+    @Override
+    public String getBaseUri(String odsCode) {
+        return null;
+    }
+
     public String getPrivateKey(String publicKey) {
         if ("swagger".equals(publicKey))
             return "privateKey";

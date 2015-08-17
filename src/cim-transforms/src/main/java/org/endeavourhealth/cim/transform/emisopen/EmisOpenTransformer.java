@@ -15,26 +15,26 @@ import java.text.SimpleDateFormat;
 
 public class EmisOpenTransformer {
 
-    public Bundle toFHIRAppointmentBundle(String patientGuid, String appointmentsXml, String organisationXml) throws TransformException {
+    public Bundle toFHIRAppointmentBundle(String baseURI, String patientGuid, String appointmentsXml, String organisationXml) throws TransformException {
         PatientAppointmentList appointmentList = TransformHelper.unmarshall(appointmentsXml, PatientAppointmentList.class);
         OrganisationInformation organisationInformation = TransformHelper.unmarshall(organisationXml, OrganisationInformation.class);
 
         ToFHIRTransformer toFHIRTransformer = new ToFHIRTransformer();
-        return toFHIRTransformer.transformToAppointmentBundle(patientGuid, appointmentList, organisationInformation);
+        return toFHIRTransformer.transformToAppointmentBundle(baseURI, patientGuid, appointmentList, organisationInformation);
     }
 
-    public Bundle toFHIRScheduleBundle(String schedulesXml, String organisationXml) throws TransformException {
+    public Bundle toFHIRScheduleBundle(String baseURI, String schedulesXml, String organisationXml) throws TransformException {
         AppointmentSessionList appointmentSessionList = TransformHelper.unmarshall(schedulesXml, AppointmentSessionList.class);
         OrganisationInformation organisationInformation = TransformHelper.unmarshall(organisationXml, OrganisationInformation.class);
 
         ToFHIRTransformer toFHIRTransformer = new ToFHIRTransformer();
-        return toFHIRTransformer.transformToScheduleBundle(appointmentSessionList, organisationInformation);
+        return toFHIRTransformer.transformToScheduleBundle(baseURI, appointmentSessionList, organisationInformation);
     }
 
-    public Bundle toFHIRSlotBundle(String scheduleId, String slotsXml) throws TransformException {
+    public Bundle toFHIRSlotBundle(String baseURI, String scheduleId, String slotsXml) throws TransformException {
         SlotListStruct slotListStruct = TransformHelper.unmarshall(slotsXml, SlotListStruct.class);
 
         ToFHIRTransformer toFHIRTransformer = new ToFHIRTransformer();
-        return toFHIRTransformer.transformToSlotBundle(scheduleId, slotListStruct);
+        return toFHIRTransformer.transformToSlotBundle(baseURI, scheduleId, slotListStruct);
     }
 }

@@ -1,26 +1,39 @@
 package org.endeavourhealth.cim.common;
 
 import org.hl7.fhir.instance.model.Bundle;
+import org.hl7.fhir.instance.model.Meta;
 import org.hl7.fhir.instance.model.Resource;
 import org.endeavourhealth.cim.common.text.TextUtils;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class BundleHelper {
-    public static Bundle createBundle(String id, String namespace, List<Resource> resources) {
+
+    public static Bundle createBundle(Bundle.BundleType bundleType, String id, String baseUri, List<Resource> resources) {
+
+        return createBundle(bundleType, id, baseUri, null, resources);
+    }
+
+    public static Bundle createBundle(Bundle.BundleType bundleType, String id, String baseUri, Date lastUpdated, List<Resource> resources) {
+
         Bundle bundle = new Bundle()
-                .setType(Bundle.BundleType.COLLECTION)
-                .setBase(namespace);
+            .setType(bundleType)
+            .setBase(baseUri);
 
         if (!TextUtils.isNullOrTrimmedEmpty(id))
             bundle.setId(id);
+
+        if (lastUpdated != null)
+            bundle.setMeta(new Meta().setLastUpdated(lastUpdated));
 
         resources.forEach(t -> bundle.addEntry(new Bundle.BundleEntryComponent().setResource(t)));
 
         return bundle;
     }
+
 
     public static <T extends Resource> List<T> getResourcesOfType(Bundle bundle, Class<T> resourceType) {
         return bundle

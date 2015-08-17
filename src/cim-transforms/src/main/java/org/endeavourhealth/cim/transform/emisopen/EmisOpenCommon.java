@@ -13,7 +13,7 @@ import java.util.*;
 
 public class EmisOpenCommon {
 
-    public final static String EMISOPEN_NAMESPACE = "http://www.e-mis.com/emisopen/MedicalRecord";
+    //public final static String EMISOPEN_NAMESPACE = "http://www.e-mis.com/emisopen/MedicalRecord";
     public final static SimpleDateFormat EMISOPEN_DATEFORMAT = new SimpleDateFormat("dd/MM/yyyy HH:mm");
     public final static SimpleDateFormat EMISOPEN_TIMEFORMAT = new SimpleDateFormat("HH:mm");
     public final static String SCHEDULEADDITIONALACTOR_EXTENSION_URL = "http://www.e-mis.com/emisopen/extension/Schedule/AdditionalActor";

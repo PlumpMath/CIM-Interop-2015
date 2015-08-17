@@ -2,6 +2,7 @@ package org.endeavourhealth.cim.transform.openhr;
 
 import org.endeavourhealth.cim.transform.SerializationException;
 import org.endeavourhealth.cim.transform.TransformException;
+import org.endeavourhealth.cim.transform.TransformHelper;
 import org.endeavourhealth.cim.transform.openhr.fromfhir.FromFHIRTransformer;
 import org.endeavourhealth.cim.transform.openhr.tofhir.ToFHIRTransformer;
 import org.endeavourhealth.cim.transform.schemas.openhr.ObjectFactory;
@@ -11,23 +12,21 @@ import org.hl7.fhir.instance.model.Condition;
 import org.hl7.fhir.instance.model.Patient;
 
 import javax.xml.bind.*;
-import java.io.StringReader;
 import java.io.StringWriter;
 
 public class OpenHRTransformer {
-    public Bundle toFHIRBundle(String sourceData) throws TransformException {
-        OpenHR001OpenHealthRecord openHR = deserializeOpenHR(sourceData);
+
+    public Bundle toFHIRBundle(String baseUri, String openHRXml) throws TransformException {
+        OpenHR001OpenHealthRecord openHR = TransformHelper.unmarshall(openHRXml, OpenHR001OpenHealthRecord.class);
 
         ToFHIRTransformer transformer = new ToFHIRTransformer();
-
-        return transformer.transformToBundle(openHR);
+        return transformer.transformToBundle(baseUri, openHR);
     }
 
     public Patient toFHIRPatient(String sourceData) throws TransformException {
-        OpenHR001OpenHealthRecord openHR = deserializeOpenHR(sourceData);
+        OpenHR001OpenHealthRecord openHR = TransformHelper.unmarshall(sourceData, OpenHR001OpenHealthRecord.class);
 
         ToFHIRTransformer transformer = new ToFHIRTransformer();
-
         return transformer.transformToPatient(openHR);
     }
 
@@ -35,18 +34,6 @@ public class OpenHRTransformer {
         FromFHIRTransformer transformer = new FromFHIRTransformer();
         OpenHR001OpenHealthRecord openHR = transformer.transformFromCondition(condition);
         return serializeOpenHR(openHR);
-    }
-
-    private OpenHR001OpenHealthRecord deserializeOpenHR(String openHRAsString) throws TransformException {
-        try {
-            StringReader reader = new StringReader(openHRAsString);
-            JAXBContext jaxbContext = JAXBContext.newInstance(ObjectFactory.class);
-            Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
-            JAXBElement<OpenHR001OpenHealthRecord> jaxbElement = (JAXBElement<OpenHR001OpenHealthRecord>)jaxbUnmarshaller.unmarshal(reader);
-            return jaxbElement.getValue();
-        } catch (JAXBException e) {
-            throw new SerializationException("Error deserialising OpenHR", e);
-        }
     }
 
     private String serializeOpenHR(OpenHR001OpenHealthRecord openHR) throws TransformException {
@@ -61,5 +48,4 @@ public class OpenHRTransformer {
             throw new SerializationException("Error deserialising OpenHR", e);
         }
     }
-
 }

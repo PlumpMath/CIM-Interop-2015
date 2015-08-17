@@ -79,6 +79,6 @@ public class FhirFilterHelper {
 			}
 		}
 
-		return BundleHelper.createBundle(bundle.getId(), bundle.getBase(), resources);
+		return BundleHelper.createBundle(bundle.getType(), bundle.getId(), bundle.getBase(), resources);
 	}
 }

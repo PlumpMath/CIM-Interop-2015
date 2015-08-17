@@ -21,7 +21,7 @@ public class FHIRContainer {
         _eventEncounterMap.putIfAbsent(eventId, encounter);
     }
 
-    public Iterable<Resource> getResources() {
+    public List<Resource> getResources() {
         return _resources;
     }
 

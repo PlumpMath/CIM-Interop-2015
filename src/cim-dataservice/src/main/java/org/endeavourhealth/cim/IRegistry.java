@@ -6,6 +6,9 @@ import java.util.Map;
 import java.util.UUID;
 
 public interface IRegistry {
+
     String getDataManagerTypeNameForService(String odsCode) throws ClassNotFoundException;
     ArrayList<String> getAllDataManagerTypes();
+    String getEmisSoapUri();
+    String getBaseUri(String odsCode);
 }
