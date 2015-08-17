@@ -16,6 +16,7 @@ import java.util.UUID;
 
 public class GetAppointmentsProcessor implements Processor {
 
+	@SuppressWarnings("unchecked")
 	public void process(Exchange exchange) throws Exception {
 
 		String odsCode;

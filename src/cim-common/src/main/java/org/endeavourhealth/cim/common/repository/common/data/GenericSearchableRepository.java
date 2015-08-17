@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+@SuppressWarnings("unchecked")
 public class GenericSearchableRepository<T extends BaseSearchableEntity> extends GenericRepository {
 	private String className;
 	private Class<T> tClass;

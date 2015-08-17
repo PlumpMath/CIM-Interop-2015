@@ -34,7 +34,7 @@ public class BundleHelper {
         return bundle;
     }
 
-
+    @SuppressWarnings("unchecked")
     public static <T extends Resource> List<T> getResourcesOfType(Bundle bundle, Class<T> resourceType) {
         return bundle
                 .getEntry()

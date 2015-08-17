@@ -33,6 +33,7 @@ public class ExchangeHelper {
         return UUID.fromString(getInHeaderString(exchange, headerKey));
     }
 
+    @SuppressWarnings("unchecked")
     public static ArrayList getInHeaderArray(Exchange exchange, String headerKey) {
         Object object = getInHeader(exchange, headerKey);
 
@@ -87,6 +88,7 @@ public class ExchangeHelper {
         return exchange.getIn().getBody();
     }
 
+    @SuppressWarnings("unchecked")
     public static <T extends Resource> T getInBodyResource(Exchange exchange, Class<T> type) throws Exception {
         String body = getInBodyString(exchange);
         return (T)new JsonParser().parse(body);

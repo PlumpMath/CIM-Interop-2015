@@ -10,6 +10,7 @@ import org.endeavourhealth.cim.dataManager.IDataManager;
 
 public class GetSlotsProcessor implements Processor {
 
+	@SuppressWarnings("unchecked")
 	public void process(Exchange exchange) throws Exception {
 
 		String odsCode = ExchangeHelper.getInHeaderString(exchange, HeaderKey.OdsCode, true);

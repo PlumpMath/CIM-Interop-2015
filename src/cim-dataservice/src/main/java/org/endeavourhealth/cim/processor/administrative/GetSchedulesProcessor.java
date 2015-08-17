@@ -17,6 +17,7 @@ import java.util.UUID;
 
 public class GetSchedulesProcessor implements Processor {
 
+	@SuppressWarnings("unchecked")
 	public void process(Exchange exchange) throws Exception {
 
 		String odsCode = null;

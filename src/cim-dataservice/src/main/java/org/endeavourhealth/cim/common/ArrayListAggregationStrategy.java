@@ -15,6 +15,7 @@ public class ArrayListAggregationStrategy implements AggregationStrategy {
         _includeNullResponses = includeNullResponses;
     }
 
+    @SuppressWarnings("unchecked")
     public Exchange aggregate(Exchange oldExchange, Exchange newExchange) {
         Object newBody = newExchange.getIn().getBody();
         ArrayList<Object> list;
