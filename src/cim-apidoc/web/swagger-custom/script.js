@@ -1,28 +1,28 @@
 $(document).ready(function() {
 
-  addCustomLogo();
-  removeCurl();
-  disableHash();
-  injectVisualizer();
-  injectHashGeneration();
+    addCustomLogo();
+    removeCurl();
+    disableHash();
+    injectVisualizer();
+    injectHashGeneration();
 
-  function addCustomLogo() {
-    if ($('#custom-logo').length == 0) {
-      $('<a href="/"><div id="custom-logo"></div></a>').insertBefore('#logo');
+    function addCustomLogo() {
+        if ($('#custom-logo').length == 0) {
+            $('<a href="/"><div id="custom-logo"></div></a>').insertBefore('#logo');
+        }
     }
-  }
 
-  function removeCurl() {
-    $('h4').filter(function() {
-      return $(this).text() == 'Curl'
-    }).css('display', 'none');
+    function removeCurl() {
+        $('h4').filter(function() {
+            return $(this).text() == 'Curl'
+        }).css('display', 'none');
 
-    $('.block.curl').css('display', 'none');
-  }
+        $('.block.curl').css('display', 'none');
+    }
 
-  function disableHash() {
-    $('input[name=hash]').attr("disabled", "disabled");
-  }
+    function disableHash() {
+        $('input[name=hash]').attr("disabled", "disabled");
+    }
 
     function injectVisualizer() {
         $('.response').each(function(){
@@ -50,11 +50,18 @@ $(document).ready(function() {
 
 });
 
-
-
 function generateHash(form) {
     var privateKey = $("#input_privateKey").val();
-    var path = $(form).parent().parent().find(".path").text().trim()+"/";
+    var path = $(form).parent().parent().find(".path").text().trim();
+
+    if (path.indexOf("?") > -1) {
+        // Strip any query params
+        path = path.substr(0, path.indexOf("?"));
+    }
+
+    // Ensure terminating "/"
+    path += "/";
+
     var body = $(form).find("[name='body']").val();
 
     var message = path;

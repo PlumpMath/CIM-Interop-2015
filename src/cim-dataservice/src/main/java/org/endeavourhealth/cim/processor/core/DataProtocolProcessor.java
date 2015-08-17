@@ -27,16 +27,13 @@ public class DataProtocolProcessor implements org.apache.camel.Processor {
 		//////////////////////////////////////////////////////////////
 
 		// temporary check
-		if (TextUtils.isNullOrTrimmedEmpty(odsCode))
-			throw new CIMNoLegitimateRelationshipException(SUBSIDIARY_SYSTEM_HAS_NO_LEGITIMATE_RELATIONSHIP_WITH_THIS_ORGANISATION);
-
-		else if (odsCode.equals("A99999") || odsCode.equals("B99999") || odsCode.equals("Y99999") || odsCode.equals("Z99999")) {
-			// LR check pass
+ 		if (TextUtils.isNullOrTrimmedEmpty(odsCode) == false) {
+			if (odsCode.equals("A99999") || odsCode.equals("B99999") || odsCode.equals("Y99999") || odsCode.equals("Z99999")) {
+				// LR check pass
+			} else
+				throw new CIMNoLegitimateRelationshipException(SUBSIDIARY_SYSTEM_HAS_NO_LEGITIMATE_RELATIONSHIP_WITH_THIS_ORGANISATION);
+			// end temporary check
 		}
-		else
-			throw new CIMNoLegitimateRelationshipException(SUBSIDIARY_SYSTEM_HAS_NO_LEGITIMATE_RELATIONSHIP_WITH_THIS_ORGANISATION);
-		// end temporary check
-
 	}
 
 	private void LoadDataProtocols(Exchange exchange, String api_key, String odsCode) throws RepositoryException, CIMNoLegitimateRelationshipException {
