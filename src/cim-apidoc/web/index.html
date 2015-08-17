@@ -34,8 +34,11 @@ end custom -->
   <script src='swagger/lib/highlight.7.3.pack.js' type='text/javascript'></script>
   <script src='swagger/lib/marked.js' type='text/javascript'></script>
   <script src='swagger/lib/swagger-oauth.js' type='text/javascript'></script>
+
+<!-- custom -->
   <script src="cryptojs/rollups/hmac-sha256.js"></script>
   <script src="cryptojs/components/enc-base64-min.js"></script>
+<!-- end custom -->
 
   <!-- Some basic translations -->
   <!-- <script src='swagger/lang/translator.js' type='text/javascript'></script> -->
@@ -145,7 +148,11 @@ end custom -->
     <form id='api_selector'>
       <div class='input'><input placeholder="http://example.com/api" id="input_baseUrl" name="baseUrl" type="text"/></div>
       <div class='input'><input placeholder="api key" id="input_apiKey" name="apiKey" type="text"/></div>
-      <div class='input'><input placeholder="private key" id="input_privateKey" name="privateKey" type="text"/></div>
+
+<!-- custom -->
+      <div class='input'><input placeholder="secret" id="input_privateKey" name="privateKey" type="text"/></div>
+<!-- end custom -->
+
       <div class='input'><a id="explore" href="#" data-sw-translate>Explore</a></div>
     </form>
   </div>

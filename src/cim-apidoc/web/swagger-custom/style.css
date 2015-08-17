@@ -61,3 +61,7 @@ img#validator {
     font-weight: bold;
     margin-bottom: 10px;
 }
+
+#input_privateKey {
+    width: 200px;
+}
