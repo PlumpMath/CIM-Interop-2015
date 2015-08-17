@@ -25,14 +25,10 @@
     "paths": {
         "/Person/$trace?identifier=NHS|{nhsNo}": {
             "get": {
-                "tags": [
-                    "demographics"
-                ],
+                "tags": [ "demographics" ],
                 "summary":"Trace person by NHS number",
                 "description": "Trace registered patients linked to a person.",
-                "produces": [
-                    "application/json"
-                ],
+                "produces": [ "application/json" ],
                 "parameters": [
                     { "$ref": "#definitions/parameters/apiKey" },
                     { "$ref": "#definitions/parameters/hash" },
@@ -53,9 +49,7 @@
         },
         "/Person/$trace?surname={surname}&dob={dob}&gender={gender}": {
             "get": {
-                "tags": [
-                    "demographics"
-                ],
+                "tags": [ "demographics" ],
                 "summary":"Trace person by demographics",
                 "description": "Trace registered patients linked to a person.",
                 "produces": [
@@ -98,9 +92,7 @@
         },
         "/{odsCode}/Patient/{id}": {
             "get": {
-                "tags": [
-                    "demographics"
-                ],
+                "tags": [ "demographics" ],
                 "summary":"Get patient by ID",
                 "description": "Get Patient Demographic Record By ID",
                 "produces": [
@@ -110,13 +102,7 @@
                     { "$ref": "#definitions/parameters/apiKey" },
                     { "$ref": "#definitions/parameters/hash" },
                     { "$ref": "#definitions/parameters/odsCode" },
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "description": "Patient unique identifier. Any combination of upper or lower case ASCII letters ('A'..'Z', and 'a'..'z', numerals ('0'..'9'), '-' and '.', with a length limit of 64 characters. (This might be an integer, an un-prefixed OID, UUID or any other identifier pattern that meets these constraints.) regex: [A-Za-z0-9-.]{1,64}",
-                        "required":true,
-                        "type": "string"
-                    }
+                    { "$ref": "#definitions/parameters/patientId" }
                 ],
                 "responses": {
                     "200": {"description":"Returns a Single FHIR Patient Resource - see schema at: <a target='_blank'  href='http://hl7.org/fhir/2015May/patient.html'>http://hl7.org/fhir/2015May/patient.html</a>" },
@@ -127,9 +113,7 @@
         },
         "/{odsCode}/Patient?identifier=NHS|{nhsNo}": {
             "get": {
-                "tags": [
-                    "demographics"
-                ],
+                "tags": [ "demographics" ],
                 "summary":"Get patient by NHS number",
                 "description": "Get Patient Demographic Record By NHS Number",
                 "produces": [
@@ -155,9 +139,7 @@
         },
         "/{odsCode}/Patient": {
             "get": {
-                "tags": [
-                    "demographics"
-                ],
+                "tags": [ "demographics" ],
                 "summary":"Get all patients",
                 "description": "Get Patient Demographic Records for All Patients",
                 "produces": [
@@ -176,9 +158,7 @@
         },
         "/{odsCode}/Patient?active=true": {
             "get": {
-                "tags": [
-                    "demographics"
-                ],
+                "tags": [ "demographics" ],
                 "summary":"Get all active patients",
                 "description": "Get Patient Demographic Records for All ACTIVE Patients",
                 "produces": [
@@ -197,9 +177,7 @@
         },
         "/{odsCode}/Patient?_lastUpdated=>{dateUpdated}&active=true": {
             "get": {
-                "tags": [
-                    "demographics"
-                ],
+                "tags": [ "demographics" ],
                 "summary":"Get changed patients",
                 "description": "Get Patient Demographic Records for All ACTIVE Patients that have had a record update since the date specified.",
                 "produces": [
@@ -225,9 +203,7 @@
         },
         "/{odsCode}/Subscription/{id}": {
             "put": {
-                "tags": [
-                    "demographics"
-                ],
+                "tags": [ "demographics" ],
                 "summary":"Subscribe to patient changes",
                 "description": "The subscription resource is used to define a push based subscription from a server to another system. Once a subscription is registered with the server, the server checks every resource that is created or updated, and if the resource matches the given criteria, it sends a message on the defined 'channel' so that another system is able to take an appropriate action.",
                 "produces": [
@@ -263,9 +239,7 @@
         },
         "/{odsCode}/Patient/{id}/$everythingnobinary": {
             "get": {
-                "tags": [
-                    "clinical"
-                ],
+                "tags": [ "clinical" ],
                 "summary":"Get clinical record by patient ID",
                 "description": "This operation is used to return all the information related to the patient described in the resource on which this operation is invoked. Returns all resources that it has that are in the patient compartment for the identified patient, and any resource referenced from those, excluding binaries and attachments.",
                 "produces": [
@@ -275,13 +249,7 @@
                     { "$ref": "#definitions/parameters/apiKey" },
                     { "$ref": "#definitions/parameters/hash" },
                     { "$ref": "#definitions/parameters/odsCode" },
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "description": "Patient unique identifier. Any combination of upper or lower case ASCII letters ('A'..'Z', and 'a'..'z', numerals ('0'..'9'), '-' and '.', with a length limit of 64 characters. (This might be an integer, an un-prefixed OID, UUID or any other identifier pattern that meets these constraints.) regex: [A-Za-z0-9-.]{1,64}",
-                        "required":true,
-                        "type": "string"
-                    }
+                    { "$ref": "#definitions/parameters/patientId" }
                 ],
                 "responses": {
                     "200": { "description":"Returns a FHIR Bundle of All Resources that are in the Patient Compartment for the identified patient. See FHIR specification at: <a target='_blank'  href='http://hl7.org/fhir/2015May/patient-operations.html#everything'>http://hl7.org/fhir/2015May/patient-operations.html#everything</a>" },
@@ -291,9 +259,7 @@
         },
         "/{odsCode}/Patient/{id}/MedicationPrescription": {
             "get": {
-                "tags": [
-                    "clinical"
-                ],
+                "tags": [ "clinical" ],
                 "summary":"Get medication prescriptions by patient ID",
                 "description": "Get Patient Medication Prescriptions By Patient ID",
                 "produces": [
@@ -303,13 +269,7 @@
                     { "$ref": "#definitions/parameters/apiKey" },
                     { "$ref": "#definitions/parameters/hash" },
                     { "$ref": "#definitions/parameters/odsCode" },
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "description": "Patient unique identifier. Any combination of upper or lower case ASCII letters ('A'..'Z', and 'a'..'z', numerals ('0'..'9'), '-' and '.', with a length limit of 64 characters. (This might be an integer, an un-prefixed OID, UUID or any other identifier pattern that meets these constraints.) regex: [A-Za-z0-9-.]{1,64}",
-                        "required":true,
-                        "type": "string"
-                    },
+                    { "$ref": "#definitions/parameters/patientId" },
                     {
                         "name":"datewritten",
                         "in":"query",
@@ -326,9 +286,7 @@
         },
         "/{odsCode}/Patient/{id}/Condition": {
             "get": {
-                "tags": [
-                    "clinical"
-                ],
+                "tags": [ "clinical" ],
                 "summary":"Get conditions by patient ID",
                 "description": "Get Patient Conditions (Problems) By Patient ID",
                 "produces": [
@@ -338,13 +296,7 @@
                     { "$ref": "#definitions/parameters/apiKey" },
                     { "$ref": "#definitions/parameters/hash" },
                     { "$ref": "#definitions/parameters/odsCode" },
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "description": "Patient unique identifier. Any combination of upper or lower case ASCII letters ('A'..'Z', and 'a'..'z', numerals ('0'..'9'), '-' and '.', with a length limit of 64 characters. (This might be an integer, an un-prefixed OID, UUID or any other identifier pattern that meets these constraints.) regex: [A-Za-z0-9-.]{1,64}",
-                        "required":true,
-                        "type": "string"
-                    },
+                    { "$ref": "#definitions/parameters/patientId" },
                     {
                         "name":"code",
                         "in":"query",
@@ -359,9 +311,7 @@
                 }
             },
             "post": {
-                "tags": [
-                    "clinical"
-                ],
+                "tags": [ "clinical" ],
                 "summary":"Add condition to patient",
                 "description": "Add New Condition To Patient Record",
                 "produces": [
@@ -371,13 +321,7 @@
                     { "$ref": "#definitions/parameters/apiKey" },
                     { "$ref": "#definitions/parameters/hash" },
                     { "$ref": "#definitions/parameters/odsCode" },
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "description": "Patient unique identifier. Any combination of upper or lower case ASCII letters ('A'..'Z', and 'a'..'z', numerals ('0'..'9'), '-' and '.', with a length limit of 64 characters. (This might be an integer, an un-prefixed OID, UUID or any other identifier pattern that meets these constraints.) regex: [A-Za-z0-9-.]{1,64}",
-                        "required":true,
-                        "type": "string"
-                    },
+                    { "$ref": "#definitions/parameters/patientId" },
                     {
                         "in":"body",
                         "name":"body",
@@ -397,9 +341,7 @@
         },
         "/{odsCode}/Patient/{id}/Immunization": {
             "get": {
-                "tags": [
-                    "clinical"
-                ],
+                "tags": [ "clinical" ],
                 "summary":"Get immunisations by patient ID",
                 "description": "Get Patient Immunisations By Patient ID",
                 "produces": [
@@ -409,13 +351,7 @@
                     { "$ref": "#definitions/parameters/apiKey" },
                     { "$ref": "#definitions/parameters/hash" },
                     { "$ref": "#definitions/parameters/odsCode" },
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "description": "Patient unique identifier. Any combination of upper or lower case ASCII letters ('A'..'Z', and 'a'..'z', numerals ('0'..'9'), '-' and '.', with a length limit of 64 characters. (This might be an integer, an un-prefixed OID, UUID or any other identifier pattern that meets these constraints.) regex: [A-Za-z0-9-.]{1,64}",
-                        "required":true,
-                        "type": "string"
-                    },
+                    { "$ref": "#definitions/parameters/patientId" },
                     {
                         "name":"date",
                         "in":"query",
@@ -432,9 +368,7 @@
         },
         "/{odsCode}/Patient/{id}/AllergyIntolerance": {
             "get": {
-                "tags": [
-                    "clinical"
-                ],
+                "tags": [ "clinical" ],
                 "summary":"Get allergies by patient ID",
                 "description": "Get Patient Allergies By Patient ID",
                 "produces": [
@@ -444,13 +378,7 @@
                     { "$ref": "#definitions/parameters/apiKey" },
                     { "$ref": "#definitions/parameters/hash" },
                     { "$ref": "#definitions/parameters/odsCode" },
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "description": "Patient unique identifier. Any combination of upper or lower case ASCII letters ('A'..'Z', and 'a'..'z', numerals ('0'..'9'), '-' and '.', with a length limit of 64 characters. (This might be an integer, an un-prefixed OID, UUID or any other identifier pattern that meets these constraints.) regex: [A-Za-z0-9-.]{1,64}",
-                        "required":true,
-                        "type": "string"
-                    },
+                    { "$ref": "#definitions/parameters/patientId" },
                     {
                         "name":"criticality",
                         "in":"query",
@@ -476,9 +404,7 @@
         },
         "/{odsCode}/Schedule": {
             "get": {
-                "tags": [
-                    "administrative"
-                ],
+                "tags": [ "administrative" ],
                 "summary":"Get appointment schedules",
                 "description": "Get Available Appointment Schedules.",
                 "produces": [
@@ -518,9 +444,7 @@
         },
         "/{odsCode}/Slot": {
             "get": {
-                "tags": [
-                    "administrative"
-                ],
+                "tags": [ "administrative" ],
                 "summary":"Get appointment slots",
                 "description": "Get slots of time on a schedule that may be available for booking appointments.",
                 "produces": [
@@ -560,9 +484,7 @@
         },
         "/{odsCode}/Slot/{id}/$book": {
             "post": {
-                "tags": [
-                    "administrative"
-                ],
+                "tags": [ "administrative" ],
                 "summary":"Book an appointment slot",
                 "description": "",
                 "produces": [
@@ -596,9 +518,7 @@
         },
         "/{odsCode}/Slot/{id}/$cancel": {
             "post": {
-                "tags": [
-                    "administrative"
-                ],
+                "tags": [ "administrative" ],
                 "summary":"Cancel an appointment slot",
                 "description": "",
                 "produces": [
@@ -632,9 +552,7 @@
         },
         "/{odsCode}/Appointment": {
             "get": {
-                "tags": [
-                    "administrative"
-                ],
+                "tags": [ "administrative" ],
                 "summary":"Get appointments by patient",
                 "description": "Get Patient Appointments By Patient ID",
                 "produces": [
@@ -689,6 +607,13 @@
                 "in": "path",
                 "description": "ODS code",
                 "required":true,
+                "type": "string"
+            },
+            "patientId": {
+                "name": "id",
+                "in": "path",
+                "description": "Patient identifier",
+                "required": true,
                 "type": "string"
             }
         },
