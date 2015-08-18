@@ -2,22 +2,27 @@ package org.endeavourhealth.cim.routes.routeBuilders.config;
 
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.model.rest.RestBindingMode;
+import org.apache.camel.processor.interceptor.Tracer;
 import org.apache.camel.spi.ManagementAgent;
 import org.apache.camel.spi.ManagementStrategy;
 import org.endeavourhealth.cim.routes.common.CoreRouteName;
 import org.endeavourhealth.cim.routes.common.Route;
+
 
 @SuppressWarnings({"WeakerAccess", "unused"})
 public class Configuration extends RouteBuilder {
 
     @Override
     public void configure() throws Exception {
-
         onException(Exception.class)
             .to(Route.direct(CoreRouteName.CIM_CRITICAL_ERROR))
             .stop();
 
+		Tracer tracer = new Tracer();
+		tracer.getDefaultTraceFormatter().setShowBreadCrumb(false);
+		getContext().addInterceptStrategy(tracer);
         getContext().setTracing(true);
+
         getContext().setAllowUseOriginalMessage(false);
 
 		ManagementStrategy strat = getContext().getManagementStrategy();
