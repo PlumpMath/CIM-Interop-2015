@@ -25,8 +25,8 @@ public class GetAppointmentsProcessor implements Processor {
 		Date toDate;
 
 		try {
-			odsCode = ExchangeHelper.getInHeaderString(exchange, HeaderKey.OdsCode);
-			patientId = ExchangeHelper.getInHeaderUUID(exchange, HeaderKey.Patient);
+			odsCode = ExchangeHelper.getInHeaderString(exchange, HeaderKey.OdsCode, true);
+			patientId = ExchangeHelper.getInHeaderUUID(exchange, HeaderKey.Patient, true);
 
 			DateSearchParameter date = null;
 
@@ -35,6 +35,9 @@ public class GetAppointmentsProcessor implements Processor {
 
 			fromDate = (date != null) ? date.getIntervalStart() : DateUtils.DOTNET_MINIMUM_DATE;
 			toDate = (date != null) ? date.getIntervalEnd() : DateUtils.DOTNET_MAXIMUM_DATE;
+		}
+		catch (CIMException e) {
+			throw e;
 		}
 		catch (Exception e) {
 			throw new CIMInvalidParamException("Error parsing parameters.", e);

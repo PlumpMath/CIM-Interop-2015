@@ -13,8 +13,8 @@ public class GetConditionsProcessor implements Processor {
 
 	public void process(Exchange exchange) throws Exception {
 
-		String odsCode = ExchangeHelper.getInHeaderString(exchange, HeaderKey.OdsCode);
-		UUID patientId = ExchangeHelper.getInHeaderUUID(exchange, HeaderKey.Id);
+		String odsCode = ExchangeHelper.getInHeaderString(exchange, HeaderKey.OdsCode, true);
+		UUID patientId = ExchangeHelper.getInHeaderUUID(exchange, HeaderKey.Id, true);
 
 		IDataManager dataManager = DataManagerFactory.getDataManagerForService(odsCode);
 		String responseBody = dataManager.getConditionsByPatientId(odsCode, patientId);

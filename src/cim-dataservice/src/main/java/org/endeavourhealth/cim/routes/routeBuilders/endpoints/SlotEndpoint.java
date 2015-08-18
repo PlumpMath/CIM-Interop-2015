@@ -15,7 +15,7 @@ public class SlotEndpoint extends CIMRouteBuilder {
     public void configureRoute() throws Exception {
 
         final String BASE_ROUTE = "/{odsCode}/Slot";
-        final String GET_SLOTS_ROUTE = "?schedule={scheduleId}&start={start}";
+        final String GET_SLOTS_ROUTE = "?schedule={scheduleId}";
         final String BOOK_ROUTE = "/{id}/$book";
         final String CANCEL_ROUTE = "/{id}/$cancel";
 

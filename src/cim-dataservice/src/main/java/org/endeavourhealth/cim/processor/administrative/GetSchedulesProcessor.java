@@ -30,7 +30,7 @@ public class GetSchedulesProcessor implements Processor {
 			DateSearchParameter date = null;
 
 			if (ExchangeHelper.hasInHeader(exchange, HeaderKey.ActorPractitioner))
-				practitioner = ExchangeHelper.getInHeaderUUID(exchange, HeaderKey.ActorPractitioner);
+				practitioner = ExchangeHelper.getInHeaderUUID(exchange, HeaderKey.ActorPractitioner, false);
 			else if (ExchangeHelper.hasInHeader(exchange, HeaderKey.Date))
 				date = DateSearchParameter.Parse(ExchangeHelper.getInHeaderArray(exchange, HeaderKey.Date));
 			else

@@ -29,8 +29,13 @@ public class ExchangeHelper {
         return exchange.getIn().getHeaders().containsKey(headerKey);
     }
 
-    public static UUID getInHeaderUUID(Exchange exchange, String headerKey) {
-        return UUID.fromString(getInHeaderString(exchange, headerKey));
+    public static UUID getInHeaderUUID(Exchange exchange, String headerKey, Boolean required) throws CIMMissingParamException {
+        String value = getInHeaderString(exchange, headerKey, required);
+
+        if (value == null)
+            return null;
+
+        return UUID.fromString(value);
     }
 
     @SuppressWarnings("unchecked")

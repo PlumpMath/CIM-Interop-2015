@@ -13,7 +13,7 @@ public class GetFullPatientRecordProcessor implements Processor {
 
     public void process(Exchange exchange) throws Exception {
 
-        UUID patientId = ExchangeHelper.getInHeaderUUID(exchange, HeaderKey.Id);
+        UUID patientId = ExchangeHelper.getInHeaderUUID(exchange, HeaderKey.Id, true);
         String odsCode = ExchangeHelper.getInHeaderString(exchange, HeaderKey.OdsCode);
 
         IDataManager dataManager = DataManagerFactory.getDataManagerForService(odsCode);
