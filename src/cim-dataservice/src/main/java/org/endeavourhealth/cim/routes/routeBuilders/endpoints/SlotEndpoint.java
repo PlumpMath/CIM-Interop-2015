@@ -35,7 +35,7 @@ public class SlotEndpoint extends CIMRouteBuilder {
         .post(BOOK_ROUTE)
             .route()
             .routeId(HttpVerb.GET + BASE_ROUTE + BOOK_ROUTE)
-            .setHeader(HeaderKey.MessageRouterCallback, constant(Route.direct(BOOK_ROUTE)))
+            .setHeader(HeaderKey.MessageRouterCallback, constant(Route.direct(BOOK_PROCESSOR_ROUTE)))
             .to(Route.CIM_CORE)
         .endRest()
 
