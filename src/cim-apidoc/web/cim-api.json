@@ -93,31 +93,29 @@
             "post": {
                 "tags": [ "administrative" ],
                 "summary":"Book an appointment slot",
-                "description": "",
+                "description": "Book an appointment slot.",
                 "produces": [ "application/json" ],
                 "parameters": [
                     { "$ref": "#definitions/parameters/apiKey" },
                     { "$ref": "#definitions/parameters/hash" },
                     { "$ref": "#definitions/parameters/odsCode" },
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "description": "Slot identifier",
-                        "required": true,
-                        "type": "string"
-                    },
+                    { "$ref": "#definitions/parameters/slotId" },
                     {
                         "name": "body",
                         "in": "body",
-                        "description": "FHIR Parameters Resource. See FHIR specification at: <a target='_blank'  href='http://hl7.org/fhir/2015May/parameters.html'>http://hl7.org/fhir/2015May/parameters.html</a>",
+                        "description": "Patient ID wrapped in <a target='_blank'  href='http://hl7.org/fhir/2015May/parameters.html'>FHIR Parameters Resource</a>.",
                         "required": true,
                         "schema": { "$ref": "#/definitions/parametersResource" }
                     }
                 ],
                 "responses": {
-                    "201": { "description": "Created - successful operation" },
-                    "400": { "description": "Bad request - resource could not be parsed or failed basic FHIR validation rules" },
-                    "404": { "description": "Not found - resource type not supported, or not a FHIR end point" }
+                    "200": { "description": "OK" },
+                    "400": { "description": "Required parameter missing, Invalid parameter" },
+                    "401": { "description": "Security failed" },
+                    "403": { "description": "No legitimate relationship" },
+                    "500": { "description": "Unexpected error" },
+                    "502": { "description": "Error received from principal system" },
+                    "504": { "description": "Connection timeout to principal system" }
                 }
             }
         },
@@ -126,32 +124,28 @@
                 "tags": [ "administrative" ],
                 "summary":"Cancel an appointment slot",
                 "description": "",
-                "produces": [
-                    "application/json"
-                ],
+                "produces": [ "application/json" ],
                 "parameters": [
                     { "$ref": "#/definitions/parameters/apiKey" },
                     { "$ref": "#/definitions/parameters/hash" },
                     { "$ref": "#/definitions/parameters/odsCode" },
+                    { "$ref": "#/definitions/parameters/slotId" },
                     {
-                        "name": "id",
-                        "in": "path",
-                        "description": "Slot identifier",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name":"body",
-                        "in":"body",
-                        "description": "FHIR Parameters Resource. See FHIR specification at: <a target='_blank'  href='http://hl7.org/fhir/2015May/parameters.html'>http://hl7.org/fhir/2015May/parameters.html</a>",
+                        "name": "body",
+                        "in": "body",
+                        "description": "Patient ID wrapped in <a target='_blank'  href='http://hl7.org/fhir/2015May/parameters.html'>FHIR Parameters Resource</a>.",
                         "required": true,
                         "schema": { "$ref": "#/definitions/parametersResource" }
                     }
                 ],
                 "responses": {
-                    "201": { "description": "Created - successful operation" },
-                    "400": { "description": "Bad request - resource could not be parsed or failed basic FHIR validation rules" },
-                    "404": { "description": "Not found - resource type not supported, or not a FHIR end point" }
+                    "200": { "description": "OK" },
+                    "400": { "description": "Required parameter missing, Invalid parameter" },
+                    "401": { "description": "Security failed" },
+                    "403": { "description": "No legitimate relationship" },
+                    "500": { "description": "Unexpected error" },
+                    "502": { "description": "Error received from principal system" },
+                    "504": { "description": "Connection timeout to principal system" }
                 }
             }
         },
@@ -593,13 +587,20 @@
                 "name": "odsCode",
                 "in": "path",
                 "description": "ODS code",
-                "required":true,
+                "required": true,
                 "type": "string"
             },
             "patientId": {
                 "name": "id",
                 "in": "path",
-                "description": "Patient identifier",
+                "description": "Patient ID",
+                "required": true,
+                "type": "string"
+            },
+            "slotId": {
+                "name": "id",
+                "in": "path",
+                "description": "Slot ID",
                 "required": true,
                 "type": "string"
             }

@@ -2,7 +2,9 @@ package org.endeavourhealth.cim.common;
 
 import org.apache.camel.Exchange;
 import org.apache.commons.io.IOUtils;
+import org.endeavourhealth.cim.common.exceptions.CIMInvalidParamException;
 import org.endeavourhealth.cim.common.exceptions.CIMMissingParamException;
+import org.endeavourhealth.cim.common.text.TextUtils;
 import org.hl7.fhir.instance.formats.JsonParser;
 import org.hl7.fhir.instance.model.Resource;
 
@@ -29,13 +31,17 @@ public class ExchangeHelper {
         return exchange.getIn().getHeaders().containsKey(headerKey);
     }
 
-    public static UUID getInHeaderUUID(Exchange exchange, String headerKey, Boolean required) throws CIMMissingParamException {
+    public static UUID getInHeaderUUID(Exchange exchange, String headerKey, Boolean required) throws CIMInvalidParamException, CIMMissingParamException {
         String value = getInHeaderString(exchange, headerKey, required);
 
         if (value == null)
             return null;
 
-        return UUID.fromString(value);
+        try {
+            return UUID.fromString(value);
+        } catch (Exception e) {
+            throw new CIMInvalidParamException(e);
+        }
     }
 
     @SuppressWarnings("unchecked")
@@ -86,7 +92,6 @@ public class ExchangeHelper {
             return IOUtils.toString((InputStream)exchange.getIn().getBody());
 
         return (String)exchange.getIn().getBody();
-
     }
 
     public static Object getInBodyObject(Exchange exchange) throws Exception {
@@ -94,8 +99,21 @@ public class ExchangeHelper {
     }
 
     @SuppressWarnings("unchecked")
-    public static <T extends Resource> T getInBodyResource(Exchange exchange, Class<T> type) throws Exception {
+    public static <T extends Resource> T getInBodyResource(Exchange exchange, Class<T> type, Boolean required) throws Exception {
+
         String body = getInBodyString(exchange);
-        return (T)new JsonParser().parse(body);
+
+        if (TextUtils.isNullOrTrimmedEmpty(body)) {
+            if (required)
+                throw new CIMMissingParamException("body");
+            else
+                return null;
+        }
+
+        try {
+            return (T) new JsonParser().parse(body);
+        } catch (Exception e) {
+            throw new CIMInvalidParamException(e);
+        }
     }
 }
