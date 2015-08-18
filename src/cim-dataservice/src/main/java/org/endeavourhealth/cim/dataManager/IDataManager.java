@@ -1,7 +1,5 @@
 package org.endeavourhealth.cim.dataManager;
 
-import org.endeavourhealth.cim.transform.TransformException;
-
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.UUID;
@@ -22,9 +20,9 @@ public interface IDataManager {
 
     String getMedicationPrescriptionsByPatientId(String odsCode, UUID patientId) throws Exception;
 
-    String getAppointmentsForPatient(String odsCode, UUID patientId, Date dateFrom, Date dateTo) throws Exception;
     String getSchedules(String odsCode, Date dateFrom, Date dateTo, UUID practitionerId) throws Exception;
     String getSlots(String odsCode, String scheduleId) throws Exception;
+    String getAppointmentsForPatient(String odsCode, UUID patientId, Date dateFrom, Date dateTo) throws Exception;
     Boolean bookSlot(String odsCode, String slotId, UUID patientId) throws Exception;
     Boolean cancelSlot(String odsCode, String slotId, UUID patientId) throws Exception;
 }

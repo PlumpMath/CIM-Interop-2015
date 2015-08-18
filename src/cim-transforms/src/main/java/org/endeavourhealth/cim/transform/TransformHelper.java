@@ -1,26 +1,20 @@
 package org.endeavourhealth.cim.transform;
 
-import org.endeavourhealth.cim.transform.schemas.openhr.ObjectFactory;
-import org.endeavourhealth.cim.transform.schemas.openhr.OpenHR001OpenHealthRecord;
-import org.hl7.fhir.instance.model.Reference;
-import org.hl7.fhir.instance.model.Resource;
+import org.endeavourhealth.cim.transform.SerializationException;
 
 import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBException;
-import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 import javax.xml.datatype.DatatypeConfigurationException;
 import javax.xml.datatype.DatatypeFactory;
 import javax.xml.datatype.XMLGregorianCalendar;
 import javax.xml.stream.XMLInputFactory;
-import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamReader;
 import java.io.StringReader;
-import java.io.StringWriter;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
 public class TransformHelper {
+
     public static Date toDate(XMLGregorianCalendar value) {
         if (value == null) {
             return null;

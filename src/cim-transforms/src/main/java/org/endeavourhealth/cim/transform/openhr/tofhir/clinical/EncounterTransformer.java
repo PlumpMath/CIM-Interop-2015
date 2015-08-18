@@ -1,9 +1,13 @@
 package org.endeavourhealth.cim.transform.openhr.tofhir.clinical;
 
 import org.apache.commons.lang3.StringUtils;
+import org.endeavourhealth.cim.common.FHIRConstants;
 import org.endeavourhealth.cim.common.ReferenceHelper;
 import org.endeavourhealth.cim.common.StreamExtension;
-import org.endeavourhealth.cim.transform.*;
+import org.endeavourhealth.cim.transform.TransformHelper;
+import org.endeavourhealth.cim.transform.SourceDocumentInvalidException;
+import org.endeavourhealth.cim.transform.TransformException;
+import org.endeavourhealth.cim.transform.TransformFeatureNotSupportedException;
 import org.endeavourhealth.cim.transform.openhr.tofhir.FHIRContainer;
 import org.endeavourhealth.cim.transform.openhr.tofhir.ToFHIRHelper;
 import org.endeavourhealth.cim.transform.schemas.openhr.*;

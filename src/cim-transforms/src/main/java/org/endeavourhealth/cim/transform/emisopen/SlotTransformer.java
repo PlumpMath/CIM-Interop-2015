@@ -1,10 +1,9 @@
-package org.endeavourhealth.cim.transform.emisopen.tofhir.admin;
+package org.endeavourhealth.cim.transform.emisopen;
 
 import org.endeavourhealth.cim.common.ReferenceHelper;
 import org.endeavourhealth.cim.common.text.TextUtils;
 import org.endeavourhealth.cim.transform.SerializationException;
 import org.endeavourhealth.cim.transform.TransformFeatureNotSupportedException;
-import org.endeavourhealth.cim.transform.emisopen.EmisOpenCommon;
 import org.endeavourhealth.cim.transform.schemas.emisopen.eomslotsforsession.SlotListStruct;
 import org.endeavourhealth.cim.transform.schemas.emisopen.eomslotsforsession.SlotStruct;
 import org.hl7.fhir.instance.model.*;

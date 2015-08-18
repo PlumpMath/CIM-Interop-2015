@@ -1,12 +1,11 @@
-package org.endeavourhealth.cim.transform.emisopen.tofhir.admin;
+package org.endeavourhealth.cim.transform.emisopen;
 
 import org.endeavourhealth.cim.common.ReferenceHelper;
 import org.endeavourhealth.cim.common.StreamExtension;
 import org.endeavourhealth.cim.common.text.TextUtils;
-import org.endeavourhealth.cim.transform.FHIRConstants;
+import org.endeavourhealth.cim.common.FHIRConstants;
 import org.endeavourhealth.cim.transform.SerializationException;
 import org.endeavourhealth.cim.transform.TransformFeatureNotSupportedException;
-import org.endeavourhealth.cim.transform.emisopen.EmisOpenCommon;
 import org.endeavourhealth.cim.transform.openhr.tofhir.admin.NameConverter;
 import org.endeavourhealth.cim.transform.schemas.emisopen.eomappointmentsessions.*;
 import org.endeavourhealth.cim.transform.schemas.emisopen.eomorganisationinformation.OrganisationInformation;

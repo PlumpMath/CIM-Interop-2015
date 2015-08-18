@@ -1,10 +1,7 @@
 package org.endeavourhealth.cim.transform.emisopen;
 
 import org.endeavourhealth.cim.transform.SerializationException;
-import org.endeavourhealth.cim.transform.TransformHelper;
 import org.endeavourhealth.cim.transform.schemas.emisopen.eomorganisationinformation.OrganisationInformation;
-import org.hl7.fhir.instance.model.Reference;
-import org.hl7.fhir.instance.model.Resource;
 
 import java.sql.Time;
 import java.text.ParseException;

@@ -1,7 +1,7 @@
 package org.endeavourhealth.cim.transform.openhr.tofhir.clinical;
 
 import org.apache.commons.lang3.StringUtils;
-import org.endeavourhealth.cim.transform.FHIRConstants;
+import org.endeavourhealth.cim.common.FHIRConstants;
 import org.endeavourhealth.cim.transform.TransformFeatureNotSupportedException;
 import org.endeavourhealth.cim.transform.schemas.openhr.DtCodeQualified;
 import org.hl7.fhir.instance.model.CodeableConcept;

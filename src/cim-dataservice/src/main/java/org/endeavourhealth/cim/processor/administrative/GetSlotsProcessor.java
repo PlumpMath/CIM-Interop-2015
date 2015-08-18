@@ -15,10 +15,6 @@ public class GetSlotsProcessor implements Processor {
 
 		String odsCode = ExchangeHelper.getInHeaderString(exchange, HeaderKey.OdsCode, true);
 		String scheduleId = ExchangeHelper.getInHeaderString(exchange, HeaderKey.Schedule, true);
-		DateSearchParameter dateSearchParameter = null;
-
-		if (ExchangeHelper.hasInHeader(exchange, HeaderKey.Date))
-			dateSearchParameter = DateSearchParameter.Parse(ExchangeHelper.getInHeaderArray(exchange, HeaderKey.Date));
 
 		IDataManager dataManager = DataManagerFactory.getDataManagerForService(odsCode);
 		String responseBody = dataManager.getSlots(odsCode, scheduleId);

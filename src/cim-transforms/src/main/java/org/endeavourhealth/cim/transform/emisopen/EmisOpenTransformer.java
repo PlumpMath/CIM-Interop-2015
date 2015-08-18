@@ -1,40 +1,44 @@
 package org.endeavourhealth.cim.transform.emisopen;
 
+import org.endeavourhealth.cim.common.BundleHelper;
+import org.endeavourhealth.cim.common.BundleProperties;
 import org.endeavourhealth.cim.transform.TransformException;
 import org.endeavourhealth.cim.transform.TransformHelper;
-import org.endeavourhealth.cim.transform.emisopen.tofhir.ToFHIRTransformer;
-import org.endeavourhealth.cim.transform.emisopen.tofhir.admin.AppointmentTransformer;
 import org.endeavourhealth.cim.transform.schemas.emisopen.eomappointmentsessions.AppointmentSessionList;
 import org.endeavourhealth.cim.transform.schemas.emisopen.eomgetpatientappointments.PatientAppointmentList;
 import org.endeavourhealth.cim.transform.schemas.emisopen.eomorganisationinformation.OrganisationInformation;
-import org.endeavourhealth.cim.transform.schemas.emisopen.eomslotsforsession.ObjectFactory;
 import org.endeavourhealth.cim.transform.schemas.emisopen.eomslotsforsession.SlotListStruct;
 import org.hl7.fhir.instance.model.Bundle;
+import org.hl7.fhir.instance.model.Resource;
 
-import java.text.SimpleDateFormat;
+import java.util.List;
 
 public class EmisOpenTransformer {
 
-    public Bundle toFHIRAppointmentBundle(String baseURI, String patientGuid, String appointmentsXml, String organisationXml) throws TransformException {
-        PatientAppointmentList appointmentList = TransformHelper.unmarshall(appointmentsXml, PatientAppointmentList.class);
-        OrganisationInformation organisationInformation = TransformHelper.unmarshall(organisationXml, OrganisationInformation.class);
+    public Bundle toFhirScheduleBundle(BundleProperties bundleProperties, String eopenSchedulesXml, String eopenOrganisationXml) throws TransformException {
 
-        ToFHIRTransformer toFHIRTransformer = new ToFHIRTransformer();
-        return toFHIRTransformer.transformToAppointmentBundle(baseURI, patientGuid, appointmentList, organisationInformation);
+        AppointmentSessionList appointmentSessionList = TransformHelper.unmarshall(eopenSchedulesXml, AppointmentSessionList.class);
+        OrganisationInformation organisationInformation = TransformHelper.unmarshall(eopenOrganisationXml, OrganisationInformation.class);
+
+        List<Resource> resources = ScheduleTransformer.transformToScheduleResources(appointmentSessionList, organisationInformation);
+        return BundleHelper.createBundle(bundleProperties, resources);
     }
 
-    public Bundle toFHIRScheduleBundle(String baseURI, String schedulesXml, String organisationXml) throws TransformException {
-        AppointmentSessionList appointmentSessionList = TransformHelper.unmarshall(schedulesXml, AppointmentSessionList.class);
-        OrganisationInformation organisationInformation = TransformHelper.unmarshall(organisationXml, OrganisationInformation.class);
+    public Bundle toFhirSlotBundle(BundleProperties bundleProperties, String scheduleId, String eopenSlotsXml) throws TransformException {
 
-        ToFHIRTransformer toFHIRTransformer = new ToFHIRTransformer();
-        return toFHIRTransformer.transformToScheduleBundle(baseURI, appointmentSessionList, organisationInformation);
+        SlotListStruct slotListStruct = TransformHelper.unmarshall(eopenSlotsXml, SlotListStruct.class);
+
+        List<Resource> resources = SlotTransformer.transformToSlotResources(scheduleId, slotListStruct);
+        return BundleHelper.createBundle(bundleProperties, resources);
     }
 
-    public Bundle toFHIRSlotBundle(String baseURI, String scheduleId, String slotsXml) throws TransformException {
-        SlotListStruct slotListStruct = TransformHelper.unmarshall(slotsXml, SlotListStruct.class);
+    public Bundle toFhirAppointmentForPatientBundle(BundleProperties bundleProperties, String patientId, String eopenAppointmentsXml, String organisationXml) throws TransformException {
 
-        ToFHIRTransformer toFHIRTransformer = new ToFHIRTransformer();
-        return toFHIRTransformer.transformToSlotBundle(baseURI, scheduleId, slotListStruct);
+        PatientAppointmentList patientAppointmentList = TransformHelper.unmarshall(eopenAppointmentsXml, PatientAppointmentList.class);
+        OrganisationInformation organisationInformation = TransformHelper.unmarshall(organisationXml, OrganisationInformation.class);
+
+        List<Resource> resources = AppointmentTransformer.transformToAppointmentResources(patientId, patientAppointmentList, organisationInformation);
+        return BundleHelper.createBundle(bundleProperties, resources);
+
     }
 }

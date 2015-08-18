@@ -12,6 +12,11 @@ import java.util.stream.Collectors;
 
 public class BundleHelper {
 
+    public static Bundle createBundle(BundleProperties bundleProperties, List<Resource> resources) {
+
+        return createBundle(bundleProperties.getBundleType(), bundleProperties.getBundleId(), bundleProperties.getBaseUri(), resources);
+    }
+
     public static Bundle createBundle(Bundle.BundleType bundleType, String id, String baseUri, List<Resource> resources) {
 
         return createBundle(bundleType, id, baseUri, null, resources);
@@ -30,6 +35,8 @@ public class BundleHelper {
             bundle.setMeta(new Meta().setLastUpdated(lastUpdated));
 
         resources.forEach(t -> bundle.addEntry(new Bundle.BundleEntryComponent().setResource(t)));
+
+        bundle.setTotal(resources.size());
 
         return bundle;
     }
