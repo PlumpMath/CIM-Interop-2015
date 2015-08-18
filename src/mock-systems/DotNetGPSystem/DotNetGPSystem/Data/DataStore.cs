@@ -229,50 +229,54 @@ namespace DotNetGPSystem
                 ExternalAppointmentBookChangeMade(null, new EventArgs());
         }
 
-        public static bool BookAppointment(string odsCode, int slotId, Guid patientGuid)
+        public static AppointmentResponse BookAppointment(string odsCode, int slotId, Guid patientGuid)
         {
             Slot slot = DataStore.GetSlot(odsCode, slotId);
 
-            if (slot != null)
+            if (slot == null)
+                return new AppointmentResponse(AppointmentResponseStatus.SlotNotFound);
+
+            OpenHRPatient patient = DataStore.GetPatient(odsCode, patientGuid);
+
+            if (patient == null)
+                return new AppointmentResponse(AppointmentResponseStatus.PatientNotFound);
+
+            if (slot.Patient != null)
             {
-                if (slot.Patient == null)
-                {
-                    OpenHRPatient patient = DataStore.GetPatient(odsCode, patientGuid);
+                if (new Guid(slot.Patient.Patient.id) == new Guid(patient.Patient.id))
+                    return new AppointmentResponse(AppointmentResponseStatus.SlotAlreadyBookedByThisPatient);
 
-                    if (patient != null)
-                    {
-                        slot.Patient = patient;
-
-                        OnExternalAppointmentBookChangeMade();
-
-                        return true;
-                    }
-                }
+                return new AppointmentResponse(AppointmentResponseStatus.SlotAlreadyBooked);
             }
 
-            return false;
+            slot.Patient = patient;
+            OnExternalAppointmentBookChangeMade();
+
+            return new AppointmentResponse(AppointmentResponseStatus.OperationPerformed);
         }
 
-        public static bool CancelAppointment(string odsCode, int slotId, Guid patientGuid)
+        public static AppointmentResponse CancelAppointment(string odsCode, int slotId, Guid patientGuid)
         {
             Slot slot = DataStore.GetSlot(odsCode, slotId);
 
-            if (slot != null)
-            {
-                if (slot.Patient != null)
-                {
-                    if (new Guid(slot.Patient.Patient.id) == patientGuid)
-                    {
-                        slot.Patient = null;
+            if (slot == null)
+                return new AppointmentResponse(AppointmentResponseStatus.SlotNotFound);
 
-                        OnExternalAppointmentBookChangeMade();
+            OpenHRPatient patient = DataStore.GetPatient(odsCode, patientGuid);
 
-                        return true;
-                    }
-                }
-            }
+            if (patient == null)
+                return new AppointmentResponse(AppointmentResponseStatus.PatientNotFound);
 
-            return false;
+            if (slot.Patient == null)
+                return new AppointmentResponse(AppointmentResponseStatus.SlotNotBookedByThisPatient);
+
+            if (new Guid(slot.Patient.Patient.id) != patientGuid)
+                return new AppointmentResponse(AppointmentResponseStatus.SlotNotBookedByThisPatient);
+
+            slot.Patient = null;
+            OnExternalAppointmentBookChangeMade();
+
+            return new AppointmentResponse(AppointmentResponseStatus.OperationPerformed);
         }
 
         private static OpenHRPatient[] LoadOpenHRPatients()

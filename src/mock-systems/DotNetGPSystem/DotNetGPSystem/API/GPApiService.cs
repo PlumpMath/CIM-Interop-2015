@@ -143,12 +143,12 @@ namespace DotNetGPSystem
             return result;
         }
 
-        public bool BookAppointment(string odsCode, int slotId, Guid patientGuid, string reason)
+        public AppointmentResponse BookAppointment(string odsCode, int slotId, Guid patientGuid, string reason)
         {
             return DataStore.BookAppointment(odsCode, slotId, patientGuid);
         }
 
-        public bool CancelAppointment(string odsCode, int slotId, Guid patientGuid)
+        public AppointmentResponse CancelAppointment(string odsCode, int slotId, Guid patientGuid)
         {
             return DataStore.CancelAppointment(odsCode, slotId, patientGuid);
         }
