@@ -20,14 +20,14 @@ public class ConditionEndpoint extends CIMRouteBuilder {
         final String POST_CONDITION_PROCESSOR_ROUTE = "AddConditionRoute";
 
         rest(BASE_ROUTE)
-            .get(BASE_ROUTE + CONDITION_ROUTE)
+		.get(CONDITION_ROUTE)
             .route()
             .routeId(HttpVerb.GET + BASE_ROUTE + CONDITION_ROUTE)
             .setHeader(HeaderKey.MessageRouterCallback, constant(Route.direct(GET_CONDITION_PROCESSOR_ROUTE)))
             .to(Route.CIM_CORE)
         .endRest()
 
-        .post()
+        .post(CONDITION_ROUTE)
             .route()
             .routeId(HttpVerb.POST + BASE_ROUTE + CONDITION_ROUTE)
             .setHeader(HeaderKey.MessageRouterCallback, constant(Route.direct(POST_CONDITION_PROCESSOR_ROUTE)))
