@@ -1,4 +1,4 @@
-$(document).ready(function() {
+function customScriptInitialize(){
 
     addCustomLogo();
     removeCurl();
@@ -35,20 +35,14 @@ $(document).ready(function() {
     function injectHashGeneration() {
         $("form.sandbox").each(function() {
             var form = this;
-            $(form).find("input").each(function() {
-                $(this).change(function() {
-                    generateHash(form);
-                });
-            });
-            $(form).find("textarea").each(function() {
-                $(this).change(function() {
+            $(form).find("input.submit").each(function() {
+                $(this).click(function() {
                     generateHash(form);
                 });
             });
         });
     }
-
-});
+}
 
 function generateHash(form) {
     var privateKey = $("#input_privateKey").val();

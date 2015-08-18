@@ -36,6 +36,7 @@ end custom -->
   <script src='swagger/lib/swagger-oauth.js' type='text/javascript'></script>
 
 <!-- custom -->
+  <script src="swagger-custom/script.js"></script>
   <script src="cryptojs/rollups/hmac-sha256.js"></script>
   <script src="cryptojs/components/enc-base64-min.js"></script>
 <!-- end custom -->
@@ -88,11 +89,7 @@ end custom -->
           addApiKeyAuthorization();
 
 /* custom */
-          var customOnReadyScripts = ['swagger-custom/script.js'];
-
-          _.each(customOnReadyScripts, function(script) {
-              $.getScript(script);
-          });
+          customScriptInitialize();
 /* end custom */
 
         },
