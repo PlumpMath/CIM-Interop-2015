@@ -132,7 +132,7 @@ public class EmisDataAdapter {
         return getSOAPResult(responseMessage, soapMethod);
     }
 
-    public Boolean bookSlot(String odsCode, String slotId, UUID patientId, String reason) throws Exception {
+    public String bookSlot(String odsCode, String slotId, UUID patientId, String reason) throws Exception {
 
         final String soapMethod = "BookAppointment";
 
@@ -144,11 +144,10 @@ public class EmisDataAdapter {
 
         SOAPMessage responseMessage = performSOAPCall(soapMethod, parameters);
 
-        getSOAPResult(responseMessage, soapMethod);
-        return true;
+        return getSOAPResult(responseMessage, soapMethod);
     }
 
-    public Boolean cancelSlot(String odsCode, String slotId, UUID patientId) throws Exception {
+    public String cancelSlot(String odsCode, String slotId, UUID patientId) throws Exception {
 
         final String soapMethod = "CancelAppointment";
 
@@ -159,8 +158,7 @@ public class EmisDataAdapter {
 
         SOAPMessage responseMessage = performSOAPCall(soapMethod, parameters);
 
-        getSOAPResult(responseMessage, soapMethod);
-        return true;
+        return getSOAPResult(responseMessage, soapMethod);
     }
 
     public String getSchedules(String odsCode, Date dateFrom, Date dateTo) throws Exception {

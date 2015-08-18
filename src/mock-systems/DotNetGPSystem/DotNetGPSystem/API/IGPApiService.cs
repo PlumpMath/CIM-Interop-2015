@@ -48,10 +48,10 @@ namespace DotNetGPSystem
         string GetPatientAppointments(string odsCode, Guid patientGuid, DateTime fromDate, DateTime toDate);
 
         [OperationContract]
-        AppointmentResponse BookAppointment(string odsCode, int slotId, Guid patientGuid, string reason);
+        string BookAppointment(string odsCode, int slotId, Guid patientGuid, string reason);
 
         [OperationContract]
-        AppointmentResponse CancelAppointment(string odsCode, int slotId, Guid patientGuid);
+        string CancelAppointment(string odsCode, int slotId, Guid patientGuid);
 
         [OperationContract]
         string GetUserByID(string odsCode, int userInRoleId);

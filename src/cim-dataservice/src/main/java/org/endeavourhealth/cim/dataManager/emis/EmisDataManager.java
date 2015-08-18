@@ -151,16 +151,14 @@ public class EmisDataManager implements IDataManager {
 	}
 
 	@Override
-	public Boolean bookSlot(String odsCode, String slotId, UUID patientId) throws Exception {
+	public String bookSlot(String odsCode, String slotId, UUID patientId) throws Exception {
 
-		_emisDataAdapter.bookSlot(odsCode, slotId, patientId, "");
-		return true;
+		return _emisDataAdapter.bookSlot(odsCode, slotId, patientId, "");
 	}
 
-	public Boolean cancelSlot(String odsCode, String slotId, UUID patientId) throws Exception {
+	public String cancelSlot(String odsCode, String slotId, UUID patientId) throws Exception {
 
-		_emisDataAdapter.cancelSlot(odsCode, slotId, patientId);
-		return true;
+		return _emisDataAdapter.cancelSlot(odsCode, slotId, patientId);
 	}
 
 	private BundleProperties getBundleProperties(UUID bundleId, String odsCode) {

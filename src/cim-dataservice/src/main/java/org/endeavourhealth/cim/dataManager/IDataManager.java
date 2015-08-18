@@ -23,6 +23,6 @@ public interface IDataManager {
     String getSchedules(String odsCode, Date dateFrom, Date dateTo, UUID practitionerId) throws Exception;
     String getSlots(String odsCode, String scheduleId) throws Exception;
     String getAppointmentsForPatient(String odsCode, UUID patientId, Date dateFrom, Date dateTo) throws Exception;
-    Boolean bookSlot(String odsCode, String slotId, UUID patientId) throws Exception;
-    Boolean cancelSlot(String odsCode, String slotId, UUID patientId) throws Exception;
+    String bookSlot(String odsCode, String slotId, UUID patientId) throws Exception;
+    String cancelSlot(String odsCode, String slotId, UUID patientId) throws Exception;
 }

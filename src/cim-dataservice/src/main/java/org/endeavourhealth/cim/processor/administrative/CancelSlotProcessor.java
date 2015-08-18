@@ -5,7 +5,7 @@ import org.apache.camel.Processor;
 import org.endeavourhealth.cim.common.ExchangeHelper;
 import org.endeavourhealth.cim.common.HeaderKey;
 import org.endeavourhealth.cim.common.ParametersHelper;
-import org.endeavourhealth.cim.common.exceptions.CIMInvalidParamException;
+import org.endeavourhealth.cim.common.exceptions.*;
 import org.endeavourhealth.cim.dataManager.DataManagerFactory;
 import org.endeavourhealth.cim.dataManager.IDataManager;
 import org.hl7.fhir.instance.model.Parameters;
@@ -29,7 +29,19 @@ public class CancelSlotProcessor implements Processor {
         }
 
         IDataManager dataManager = DataManagerFactory.getDataManagerForService(odsCode);
-        dataManager.cancelSlot(odsCode, slotId, patientId);
+        String cancelSlotResponse = dataManager.cancelSlot(odsCode, slotId, patientId);
+
+        if (cancelSlotResponse.equals("SlotNotFound"))
+            throw new CIMNotFoundException("Slot not found");
+
+        if (cancelSlotResponse.equals("PatientNotFound"))
+            throw new CIMNotFoundException("Patient not found");
+
+        if (cancelSlotResponse.equals("SlotNotBookedByThisPatient"))
+            throw new CIMBusinessRuleException("Slot not booked by this patient");
+
+        if (!cancelSlotResponse.equals("Successful"))
+            throw new CIMUnexpectedException("Unexpected response from principal system:\r\n\r\n" + cancelSlotResponse);
 
         ExchangeHelper.setInBodyString(exchange, "");
     }

@@ -143,14 +143,16 @@ namespace DotNetGPSystem
             return result;
         }
 
-        public AppointmentResponse BookAppointment(string odsCode, int slotId, Guid patientGuid, string reason)
+        public string BookAppointment(string odsCode, int slotId, Guid patientGuid, string reason)
         {
-            return DataStore.BookAppointment(odsCode, slotId, patientGuid);
+            AppointmentOperationStatus appointmentOperationStatus = DataStore.BookAppointment(odsCode, slotId, patientGuid);
+            return Enum.GetName(typeof(AppointmentOperationStatus), appointmentOperationStatus);
         }
 
-        public AppointmentResponse CancelAppointment(string odsCode, int slotId, Guid patientGuid)
+        public string CancelAppointment(string odsCode, int slotId, Guid patientGuid)
         {
-            return DataStore.CancelAppointment(odsCode, slotId, patientGuid);
+            AppointmentOperationStatus appointmentOperationStatus = DataStore.CancelAppointment(odsCode, slotId, patientGuid);
+            return Enum.GetName(typeof(AppointmentOperationStatus), appointmentOperationStatus);
         }
 
         public string GetOrganisationInformation(string odsCode)

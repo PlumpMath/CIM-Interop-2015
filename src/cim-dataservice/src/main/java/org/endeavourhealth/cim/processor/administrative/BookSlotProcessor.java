@@ -5,7 +5,7 @@ import org.apache.camel.Processor;
 import org.endeavourhealth.cim.common.ExchangeHelper;
 import org.endeavourhealth.cim.common.HeaderKey;
 import org.endeavourhealth.cim.common.ParametersHelper;
-import org.endeavourhealth.cim.common.exceptions.CIMInvalidParamException;
+import org.endeavourhealth.cim.common.exceptions.*;
 import org.endeavourhealth.cim.dataManager.DataManagerFactory;
 import org.endeavourhealth.cim.dataManager.IDataManager;
 import org.hl7.fhir.instance.model.Parameters;
@@ -29,7 +29,22 @@ public class BookSlotProcessor implements Processor {
         }
 
         IDataManager dataManager = DataManagerFactory.getDataManagerForService(odsCode);
-        dataManager.bookSlot(odsCode, slotId, patientId);
+        String bookSlotResponse = dataManager.bookSlot(odsCode, slotId, patientId);
+
+        if (bookSlotResponse.equals("SlotNotFound"))
+            throw new CIMNotFoundException("Slot not found");
+
+        if (bookSlotResponse.equals("PatientNotFound"))
+            throw new CIMNotFoundException("Patient not found");
+
+        if (bookSlotResponse.equals("SlotAlreadyBooked"))
+            throw new CIMBusinessRuleConflictException("Slot already booked");
+
+        if (bookSlotResponse.equals("SlotAlreadyBookedByThisPatient"))
+            throw new CIMBusinessRuleException("Slot already booked by this patient");
+
+        if (!bookSlotResponse.equals("Successful"))
+            throw new CIMUnexpectedException("Unexpected response from principal system:\r\n\r\n" + bookSlotResponse);
 
         ExchangeHelper.setInBodyString(exchange, "");
     }

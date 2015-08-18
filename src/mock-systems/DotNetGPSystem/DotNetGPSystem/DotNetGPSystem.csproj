@@ -119,7 +119,6 @@
     <Compile Include="Controls\Tasks\TasksControl.Designer.cs">
       <DependentUpon>TasksControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="Data\ClientAPI\Appointments\AppointmentResponse.cs" />
     <Compile Include="Data\ClientAPI\Appointments\AppointmentResponseStatus.cs" />
     <Compile Include="Data\ClientAPI\EomAppointmentTranform.cs" />
     <Compile Include="Data\ClientAPI\Appointments\EomAppointmentSessions.cs">

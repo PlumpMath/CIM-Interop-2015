@@ -51,7 +51,7 @@
                 ],
                 "responses": {
                     "200": { "description": "OK" },
-                    "400": { "description": "Required parameter missing, Invalid parameter" },
+                    "400": { "description": "Required parameter missing; Invalid parameter" },
                     "401": { "description": "Security failed" },
                     "403": { "description": "No legitimate relationship" },
                     "500": { "description": "Unexpected error" },
@@ -80,7 +80,7 @@
                 ],
                 "responses": {
                     "200": { "description": "OK" },
-                    "400": { "description": "Required parameter missing, Invalid parameter" },
+                    "400": { "description": "Required parameter missing; Invalid parameter" },
                     "401": { "description": "Security failed" },
                     "403": { "description": "No legitimate relationship" },
                     "500": { "description": "Unexpected error" },
@@ -92,7 +92,7 @@
         "/{odsCode}/Slot/{id}/$book": {
             "post": {
                 "tags": [ "administrative" ],
-                "summary":"Book an appointment slot",
+                "summary": "Book an appointment slot",
                 "description": "Book an appointment slot.",
                 "produces": [ "application/json" ],
                 "parameters": [
@@ -110,9 +110,12 @@
                 ],
                 "responses": {
                     "200": { "description": "OK" },
-                    "400": { "description": "Required parameter missing, Invalid parameter" },
+                    "400": { "description": "Required parameter missing; Invalid parameter" },
                     "401": { "description": "Security failed" },
                     "403": { "description": "No legitimate relationship" },
+                    "404": { "description": "Slot not found; Patient not found" },
+                    "409": { "description": "Slot already booked" },
+                    "412": { "description": "Slot already booked by this patient" },
                     "500": { "description": "Unexpected error" },
                     "502": { "description": "Error received from principal system" },
                     "504": { "description": "Connection timeout to principal system" }
@@ -123,7 +126,7 @@
             "post": {
                 "tags": [ "administrative" ],
                 "summary":"Cancel an appointment slot",
-                "description": "",
+                "description": "Cancel an appointment slot.",
                 "produces": [ "application/json" ],
                 "parameters": [
                     { "$ref": "#/definitions/parameters/apiKey" },
@@ -140,9 +143,11 @@
                 ],
                 "responses": {
                     "200": { "description": "OK" },
-                    "400": { "description": "Required parameter missing, Invalid parameter" },
+                    "400": { "description": "Required parameter missing; Invalid parameter" },
                     "401": { "description": "Security failed" },
                     "403": { "description": "No legitimate relationship" },
+                    "404": { "description": "Slot not found; Patient not found" },
+                    "412": { "description": "Slot not booked by this patient" },
                     "500": { "description": "Unexpected error" },
                     "502": { "description": "Error received from principal system" },
                     "504": { "description": "Connection timeout to principal system" }
@@ -178,7 +183,7 @@
                 ],
                 "responses": {
                     "200": { "description": "OK" },
-                    "400": { "description": "Required parameter missing, Invalid parameter" },
+                    "400": { "description": "Required parameter missing; Invalid parameter" },
                     "401": { "description": "Security failed" },
                     "403": { "description": "No legitimate relationship" },
                     "500": { "description": "Unexpected error" },

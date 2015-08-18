@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 namespace DotNetGPSystem
 {
     [Serializable]
-    public enum AppointmentResponseStatus : int
+    public enum AppointmentOperationStatus : int
     {
-        OperationPerformed = 0,
+        Successful = 0,
         SlotNotFound = -1,
         PatientNotFound = -2,
         SlotAlreadyBooked = -3,
