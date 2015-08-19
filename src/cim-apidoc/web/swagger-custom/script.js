@@ -5,6 +5,7 @@ function customScriptInitialize(){
     disableHash();
     injectVisualizer();
     injectHashGeneration();
+    hideResponseModels();
 
     function addCustomLogo() {
         if ($('#custom-logo').length == 0) {
@@ -41,6 +42,11 @@ function customScriptInitialize(){
                 });
             });
         });
+    }
+
+    function hideResponseModels() {
+        $('th:contains("Response Model")').css('display','none');
+        $('tbody.operation-status').find('tr').find('td[width="50%"]').css('display','none');
     }
 }
 
