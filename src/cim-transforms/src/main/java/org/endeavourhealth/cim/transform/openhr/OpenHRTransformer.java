@@ -1,5 +1,6 @@
 package org.endeavourhealth.cim.transform.openhr;
 
+import org.endeavourhealth.cim.common.BundleProperties;
 import org.endeavourhealth.cim.transform.SerializationException;
 import org.endeavourhealth.cim.transform.TransformException;
 import org.endeavourhealth.cim.transform.TransformHelper;
@@ -16,11 +17,11 @@ import java.io.StringWriter;
 
 public class OpenHRTransformer {
 
-    public Bundle toFHIRBundle(String baseUri, String openHRXml) throws TransformException {
-        OpenHR001OpenHealthRecord openHR = TransformHelper.unmarshall(openHRXml, OpenHR001OpenHealthRecord.class);
+    public Bundle toFhirBundle(BundleProperties bundleProperties, String openHRXml) throws TransformException {
 
+        OpenHR001OpenHealthRecord openHR = TransformHelper.unmarshall(openHRXml, OpenHR001OpenHealthRecord.class);
         ToFHIRTransformer transformer = new ToFHIRTransformer();
-        return transformer.transformToBundle(baseUri, openHR);
+        return transformer.transformToBundle(bundleProperties, openHR);
     }
 
     public Patient toFHIRPatient(String sourceData) throws TransformException {

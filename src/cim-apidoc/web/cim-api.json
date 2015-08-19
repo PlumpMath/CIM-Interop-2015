@@ -192,6 +192,183 @@
                 }
             }
         },
+        "/{odsCode}/Patient/{id}/$everythingnobinary": {
+            "get": {
+                "tags": [ "clinical" ],
+                "summary":"Get full record by patient ID",
+                "description": "Get full record (demographic and clinical) by patient ID, excluding binaries and attachments.",
+                "produces": [ "application/json" ],
+                "parameters": [
+                    { "$ref": "#definitions/parameters/apiKey" },
+                    { "$ref": "#definitions/parameters/hash" },
+                    { "$ref": "#definitions/parameters/odsCode" },
+                    { "$ref": "#definitions/parameters/patientId" }
+                ],
+                "responses": {
+                    "200": { "description": "OK" },
+                    "400": { "description": "Required parameter missing; Invalid parameter" },
+                    "401": { "description": "Security failed" },
+                    "403": { "description": "No legitimate relationship" },
+                    "404": { "description": "Patient not found" },
+                    "500": { "description": "Unexpected error" },
+                    "502": { "description": "Error received from principal system" },
+                    "504": { "description": "Connection timeout to principal system" }
+                }
+            }
+        },
+        "/{odsCode}/Patient/{id}/MedicationPrescription": {
+            "get": {
+                "tags": [ "clinical" ],
+                "summary":"Get medication prescriptions by patient ID",
+                "description": "Get medication prescriptions by patient ID",
+                "produces": [ "application/json" ],
+                "parameters": [
+                    { "$ref": "#definitions/parameters/apiKey" },
+                    { "$ref": "#definitions/parameters/hash" },
+                    { "$ref": "#definitions/parameters/odsCode" },
+                    { "$ref": "#definitions/parameters/patientId" },
+                    {
+                        "name": "dateWritten",
+                        "in": "query",
+                        "description": "Date of the prescription",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": { "description": "OK" },
+                    "400": { "description": "Required parameter missing; Invalid parameter" },
+                    "401": { "description": "Security failed" },
+                    "403": { "description": "No legitimate relationship" },
+                    "404": { "description": "Patient not found" },
+                    "500": { "description": "Unexpected error" },
+                    "502": { "description": "Error received from principal system" },
+                    "504": { "description": "Connection timeout to principal system" }
+                }
+            }
+        },
+        "/{odsCode}/Patient/{id}/Condition": {
+            "get": {
+                "tags": [ "clinical" ],
+                "summary":"Get conditions by patient ID",
+                "description": "Get conditions by patient ID.",
+                "produces": [ "application/json" ],
+                "parameters": [
+                    { "$ref": "#definitions/parameters/apiKey" },
+                    { "$ref": "#definitions/parameters/hash" },
+                    { "$ref": "#definitions/parameters/odsCode" },
+                    { "$ref": "#definitions/parameters/patientId" },
+                    {
+                        "name": "code",
+                        "in": "query",
+                        "description": "Code reference",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": { "description": "OK" },
+                    "400": { "description": "Required parameter missing; Invalid parameter" },
+                    "401": { "description": "Security failed" },
+                    "403": { "description": "No legitimate relationship" },
+                    "404": { "description": "Patient not found" },
+                    "500": { "description": "Unexpected error" },
+                    "502": { "description": "Error received from principal system" },
+                    "504": { "description": "Connection timeout to principal system" }
+                }
+            },
+            "post": {
+                "tags": [ "clinical" ],
+                "summary":"Add condition to patient",
+                "description": "Add condition to patient.",
+                "produces": [ "application/json" ],
+                "parameters": [
+                    { "$ref": "#definitions/parameters/apiKey" },
+                    { "$ref": "#definitions/parameters/hash" },
+                    { "$ref": "#definitions/parameters/odsCode" },
+                    { "$ref": "#definitions/parameters/patientId" },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "FHIR Condition Resource. See FHIR specification at: <a target='_blank'  href='http://hl7.org/fhir/2015May/condition.html'>http://hl7.org/fhir/2015May/condition.html</a>",
+                        "required": true,
+                        "schema": { "type": "object" }
+                    }
+                ],
+                "responses": {
+                    "201": { "description":"Created - successful operation" },
+                    "400": { "description":"Bad request - resource could not be parsed or failed basic FHIR validation rules" },
+                    "404": { "description":"Not found - resource type not supported, or not a FHIR end point" }
+                }
+            }
+        },
+        "/{odsCode}/Patient/{id}/Immunization": {
+            "get": {
+                "tags": [ "clinical" ],
+                "summary":"Get immunisations by patient ID",
+                "description": "Get immunisations by patient ID.",
+                "produces": [ "application/json" ],
+                "parameters": [
+                    { "$ref": "#definitions/parameters/apiKey" },
+                    { "$ref": "#definitions/parameters/hash" },
+                    { "$ref": "#definitions/parameters/odsCode" },
+                    { "$ref": "#definitions/parameters/patientId" },
+                    {
+                        "name": "date",
+                        "in": "query",
+                        "description": "Date of the immunisation",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": { "description": "OK" },
+                    "400": { "description": "Required parameter missing; Invalid parameter" },
+                    "401": { "description": "Security failed" },
+                    "403": { "description": "No legitimate relationship" },
+                    "404": { "description": "Patient not found" },
+                    "500": { "description": "Unexpected error" },
+                    "502": { "description": "Error received from principal system" },
+                    "504": { "description": "Connection timeout to principal system" }
+                }
+            }
+        },
+        "/{odsCode}/Patient/{id}/AllergyIntolerance": {
+            "get": {
+                "tags": [ "clinical" ],
+                "summary": "Get allergies by patient ID",
+                "description": "Get allergies by patient ID.",
+                "produces": [ "application/json" ],
+                "parameters": [
+                    { "$ref": "#definitions/parameters/apiKey" },
+                    { "$ref": "#definitions/parameters/hash" },
+                    { "$ref": "#definitions/parameters/odsCode" },
+                    { "$ref": "#definitions/parameters/patientId" },
+                    {
+                        "name": "criticality",
+                        "in": "query",
+                        "description": "Estimated potential clinical harm",
+                        "required": false,
+                        "type": "array",
+                        "items":{
+                            "type": "string",
+                            "enum": [ "low", "high", "unassessible" ],
+                            "default": "low"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": { "description": "OK" },
+                    "400": { "description": "Required parameter missing; Invalid parameter" },
+                    "401": { "description": "Security failed" },
+                    "403": { "description": "No legitimate relationship" },
+                    "404": { "description": "Patient not found" },
+                    "500": { "description": "Unexpected error" },
+                    "502": { "description": "Error received from principal system" },
+                    "504": { "description": "Connection timeout to principal system" }
+                }
+            }
+        },
         "/Person/$trace?identifier=NHS|{nhsNumber}": {
             "get": {
                 "tags": [ "demographics" ],
@@ -403,171 +580,6 @@
                     "200": { "description":"successful operation" },
                     "400": { "description":"Bad request - resource could not be parsed or failed basic FHIR validation rules" },
                     "404": { "description":"Not found - resource type not supported, or not a FHIR end point" }
-                }
-            }
-        },
-        "/{odsCode}/Patient/{id}/$everythingnobinary": {
-            "get": {
-                "tags": [ "clinical" ],
-                "summary":"Get clinical record by patient ID",
-                "description": "This operation is used to return all the information related to the patient described in the resource on which this operation is invoked. Returns all resources that it has that are in the patient compartment for the identified patient, and any resource referenced from those, excluding binaries and attachments.",
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [
-                    { "$ref": "#definitions/parameters/apiKey" },
-                    { "$ref": "#definitions/parameters/hash" },
-                    { "$ref": "#definitions/parameters/odsCode" },
-                    { "$ref": "#definitions/parameters/patientId" }
-                ],
-                "responses": {
-                    "200": { "description":"Returns a FHIR Bundle of All Resources that are in the Patient Compartment for the identified patient. See FHIR specification at: <a target='_blank'  href='http://hl7.org/fhir/2015May/patient-operations.html#everything'>http://hl7.org/fhir/2015May/patient-operations.html#everything</a>" },
-                    "403": { "description":"Forbidden - Requested operation not permitted" }
-                }
-            }
-        },
-        "/{odsCode}/Patient/{id}/MedicationPrescription": {
-            "get": {
-                "tags": [ "clinical" ],
-                "summary":"Get medication prescriptions by patient ID",
-                "description": "Get Patient Medication Prescriptions By Patient ID",
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [
-                    { "$ref": "#definitions/parameters/apiKey" },
-                    { "$ref": "#definitions/parameters/hash" },
-                    { "$ref": "#definitions/parameters/odsCode" },
-                    { "$ref": "#definitions/parameters/patientId" },
-                    {
-                        "name":"datewritten",
-                        "in":"query",
-                        "description":"Date of the prescription",
-                        "required":false,
-                        "type":"string"
-                    }
-                ],
-                "responses": {
-                    "200": { "description":"Returns a FHIR Bundle of MedicationPrescription Resources. See FHIR specification at: <a target='_blank'  href='http://hl7.org/fhir/2015May/medicationprescription.html'>http://hl7.org/fhir/2015May/medicationprescription.html</a>" },
-                    "403": { "description":"Forbidden - Requested operation not permitted" }
-                }
-            }
-        },
-        "/{odsCode}/Patient/{id}/Condition": {
-            "get": {
-                "tags": [ "clinical" ],
-                "summary":"Get conditions by patient ID",
-                "description": "Get Patient Conditions (Problems) By Patient ID",
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [
-                    { "$ref": "#definitions/parameters/apiKey" },
-                    { "$ref": "#definitions/parameters/hash" },
-                    { "$ref": "#definitions/parameters/odsCode" },
-                    { "$ref": "#definitions/parameters/patientId" },
-                    {
-                        "name":"code",
-                        "in":"query",
-                        "description":"Code reference",
-                        "required":false,
-                        "type":"string"
-                    }
-                ],
-                "responses": {
-                    "200": { "description":"Returns a FHIR Bundle of Condition Resources. See FHIR specification at: <a target='_blank'  href='http://hl7.org/fhir/2015May/condition.html'>http://hl7.org/fhir/2015May/condition.html</a>" },
-                    "403": { "description":"Forbidden - Requested operation not permitted" }
-                }
-            },
-            "post": {
-                "tags": [ "clinical" ],
-                "summary":"Add condition to patient",
-                "description": "Add New Condition To Patient Record",
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [
-                    { "$ref": "#definitions/parameters/apiKey" },
-                    { "$ref": "#definitions/parameters/hash" },
-                    { "$ref": "#definitions/parameters/odsCode" },
-                    { "$ref": "#definitions/parameters/patientId" },
-                    {
-                        "in":"body",
-                        "name":"body",
-                        "description":"FHIR Condition Resource. See FHIR specification at: <a target='_blank'  href='http://hl7.org/fhir/2015May/condition.html'>http://hl7.org/fhir/2015May/condition.html</a>",
-                        "required":true,
-                        "schema":{
-                            "type": "object"
-                        }
-                    }
-                ],
-                "responses": {
-                    "201": { "description":"Created - successful operation" },
-                    "400": { "description":"Bad request - resource could not be parsed or failed basic FHIR validation rules" },
-                    "404": { "description":"Not found - resource type not supported, or not a FHIR end point" }
-                }
-            }
-        },
-        "/{odsCode}/Patient/{id}/Immunization": {
-            "get": {
-                "tags": [ "clinical" ],
-                "summary":"Get immunisations by patient ID",
-                "description": "Get Patient Immunisations By Patient ID",
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [
-                    { "$ref": "#definitions/parameters/apiKey" },
-                    { "$ref": "#definitions/parameters/hash" },
-                    { "$ref": "#definitions/parameters/odsCode" },
-                    { "$ref": "#definitions/parameters/patientId" },
-                    {
-                        "name":"date",
-                        "in":"query",
-                        "description":"Date of the immunisation",
-                        "required":false,
-                        "type":"string"
-                    }
-                ],
-                "responses": {
-                    "200": { "description": "Returns a FHIR Bundle of Immunization Resources. See FHIR specification at: <a target='_blank'  href='http://hl7.org/fhir/2015May/immunization.html'>http://hl7.org/fhir/2015May/immunization.html</a>" },
-                    "403": { "description": "Forbidden - Requested operation not permitted" }
-                }
-            }
-        },
-        "/{odsCode}/Patient/{id}/AllergyIntolerance": {
-            "get": {
-                "tags": [ "clinical" ],
-                "summary":"Get allergies by patient ID",
-                "description": "Get Patient Allergies By Patient ID",
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [
-                    { "$ref": "#definitions/parameters/apiKey" },
-                    { "$ref": "#definitions/parameters/hash" },
-                    { "$ref": "#definitions/parameters/odsCode" },
-                    { "$ref": "#definitions/parameters/patientId" },
-                    {
-                        "name":"criticality",
-                        "in":"query",
-                        "description":"Estimated potential clinical harm",
-                        "required":false,
-                        "type":"array",
-                        "items":{
-                            "type":"string",
-                            "enum":[
-                                "low",
-                                "high",
-                                "unassessible"
-                            ],
-                            "default":"low"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": { "description": "Returns a FHIR Bundle of AllergyIntolerance Resources. See FHIR specification at: <a target='_blank'  href='http://hl7.org/fhir/2015May/allergyintolerance.html'>http://hl7.org/fhir/2015May/allergyintolerance.html</a>" },
-                    "403": { "description":"Forbidden - Requested operation not permitted" }
                 }
             }
         }

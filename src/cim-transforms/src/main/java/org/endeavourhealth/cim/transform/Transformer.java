@@ -7,12 +7,15 @@ import org.hl7.fhir.instance.model.Patient;
 
 public interface Transformer {
 
-    Bundle toFHIRBundle(String baseURI, String openHRXml) throws TransformException;
+    /* administrative */
+    Bundle eopenToFhirScheduleBundle(BundleProperties bundleProperties, String eopenSchedulesXml, String eopenOrganisationXml) throws TransformException;
+    Bundle eopenToFhirSlotBundle(BundleProperties bundleProperties, String scheduleId, String eopenSlotsXml) throws TransformException;
+    Bundle eopenToFhirAppointmentForPatientBundle(BundleProperties bundleProperties, String patientId, String eopenAppointmentsXml, String organisationXml) throws TransformException;
+
+    /* clinical */
+    Bundle openHRToFhirBundle(BundleProperties bundleProperties, String openHRXml) throws TransformException;
     Patient toFHIRPatient(String sourceData) throws TransformException;
     String fromFHIRCondition(Condition condition) throws TransformException;
 
-    /* administrative */
-    Bundle toFhirScheduleBundle(BundleProperties bundleProperties, String eopenSchedulesXml, String eopenOrganisationXml) throws TransformException;
-    Bundle toFhirSlotBundle(BundleProperties bundleProperties, String scheduleId, String eopenSlotsXml, String eopenOrganisationXml) throws TransformException;
-    Bundle toFhirAppointmentForPatientBundle(BundleProperties bundleProperties, String patientId, String eopenAppointmentsXml, String organisationXml) throws TransformException;
+    /* demographic */
 }
