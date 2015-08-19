@@ -4,6 +4,8 @@ import org.apache.camel.Exchange;
 import org.apache.camel.Processor;
 import org.endeavourhealth.cim.common.ExchangeHelper;
 import org.endeavourhealth.cim.common.HeaderKey;
+import org.endeavourhealth.cim.common.exceptions.CIMNotFoundException;
+import org.endeavourhealth.cim.common.text.TextUtils;
 import org.endeavourhealth.cim.dataManager.DataManagerFactory;
 import org.endeavourhealth.cim.dataManager.IDataManager;
 
@@ -17,7 +19,10 @@ public class GetAllergyIntolerancesProcessor implements Processor {
 		UUID patientId = ExchangeHelper.getInHeaderUUID(exchange, HeaderKey.Id, true);
 
 		IDataManager dataManager = DataManagerFactory.getDataManagerForService(odsCode);
-		String responseBody = dataManager.getAllergyIntolerancesByPatientId(odsCode, patientId);
+		String responseBody = dataManager.getAllergyIntolerances(odsCode, patientId);
+
+		if (TextUtils.isNullOrTrimmedEmpty(responseBody))
+			throw new CIMNotFoundException("patient");
 
 		ExchangeHelper.setInBodyString(exchange, responseBody);
 	}

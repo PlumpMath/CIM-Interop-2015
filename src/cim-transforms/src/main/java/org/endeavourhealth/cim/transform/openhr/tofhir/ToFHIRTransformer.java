@@ -1,6 +1,7 @@
 package org.endeavourhealth.cim.transform.openhr.tofhir;
 
 import org.endeavourhealth.cim.common.BundleHelper;
+import org.endeavourhealth.cim.common.BundleProperties;
 import org.endeavourhealth.cim.transform.TransformException;
 import org.endeavourhealth.cim.transform.TransformHelper;
 import org.endeavourhealth.cim.transform.openhr.tofhir.admin.AdminDomainTransformer;
@@ -12,10 +13,11 @@ import java.util.Date;
 
 public class ToFHIRTransformer {
 
-    public Bundle transformToBundle(String baseUri, OpenHR001OpenHealthRecord openHR) throws TransformException {
+    public Bundle transformToBundle(BundleProperties bundleProperties, OpenHR001OpenHealthRecord openHR) throws TransformException {
+
         FHIRContainer container = transform(openHR);
         Date creationDate = TransformHelper.toDate(openHR.getCreationTime());
-        return BundleHelper.createBundle(Bundle.BundleType.SEARCHSET, openHR.getId(), baseUri, creationDate, container.getResources());
+        return BundleHelper.createBundle(Bundle.BundleType.SEARCHSET, openHR.getId(), bundleProperties.getBaseUri(), creationDate, container.getResources());
     }
 
     public Patient transformToPatient(OpenHR001OpenHealthRecord openHR) throws TransformException {

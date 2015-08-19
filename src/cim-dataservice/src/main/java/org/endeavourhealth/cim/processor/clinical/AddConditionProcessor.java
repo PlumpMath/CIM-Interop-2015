@@ -15,7 +15,7 @@ public class AddConditionProcessor implements Processor {
         String requestBody = ExchangeHelper.getInBodyString(exchange);
 
         IDataManager dataManager = DataManagerFactory.getDataManagerForService(odsCode);
-        String responseBody = dataManager.createCondition(odsCode, requestBody);
+        String responseBody = dataManager.addCondition(odsCode, requestBody);
 
         ExchangeHelper.setInBodyString(exchange, responseBody);
     }
