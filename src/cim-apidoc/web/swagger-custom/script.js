@@ -30,6 +30,7 @@ function customScriptInitialize(){
 
     function disableHash() {
         $('input[name=hash]').attr("disabled", "disabled");
+        $('input[name=api_key]').attr("disabled", "disabled");
     }
 
     function injectVisualizer() {
@@ -79,14 +80,14 @@ function generateHash(form) {
     var privateKey = $("#input_privateKey").val();
 
     if (apiKey == "") {
-        alert("You must enter your API key.");
+        alert("Please enter your API key.");
         $("#input_apiKey").focus();
         event.stopPropagation();
         return;
     }
 
     if (privateKey == "") {
-        alert("You must enter your secret key.");
+        alert("Please enter your secret key.");
         $("#input_privateKey").focus();
         event.stopPropagation();
         return;

@@ -18,8 +18,6 @@ public class TracePersonProcessor implements org.apache.camel.Processor {
 		String surname = ExchangeHelper.getInHeaderString(exchange, HeaderKey.Surname);
 		Date dateOfBirth = ExchangeHelper.getInHeaderDate(exchange, HeaderKey.DOB);
 		String gender = ExchangeHelper.getInHeaderString(exchange, HeaderKey.Gender);
-		String forenames = ExchangeHelper.getInHeaderString(exchange, HeaderKey.Forename);
-		String postcode = ExchangeHelper.getInHeaderString(exchange, HeaderKey.PostCode);
 
 		IDataManager dataManager = (IDataManager)ExchangeHelper.getInBodyObject(exchange);
 
@@ -32,7 +30,7 @@ public class TracePersonProcessor implements org.apache.camel.Processor {
 
 		} else {
 
-			responseBody = dataManager.tracePatientByDemographics(surname, dateOfBirth, gender, forenames, postcode);
+			responseBody = dataManager.tracePatientByDemographics(surname, dateOfBirth, gender, "", "");
 		}
 
 

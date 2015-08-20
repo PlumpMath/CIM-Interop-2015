@@ -195,7 +195,7 @@
         "/{odsCode}/Patient/{id}/$everythingnobinary": {
             "get": {
                 "tags": [ "clinical" ],
-                "summary":"Get full record by patient ID",
+                "summary": "Get full record by patient ID",
                 "description": "Get full record (demographic and clinical) by patient ID, excluding binaries and attachments.",
                 "produces": [ "application/json" ],
                 "parameters": [
@@ -219,7 +219,7 @@
         "/{odsCode}/Patient/{id}/MedicationPrescription": {
             "get": {
                 "tags": [ "clinical" ],
-                "summary":"Get medication prescriptions by patient ID",
+                "summary": "Get medication prescriptions by patient ID",
                 "description": "Get medication prescriptions by patient ID",
                 "produces": [ "application/json" ],
                 "parameters": [
@@ -371,8 +371,8 @@
         "/Person": {
             "get": {
                 "tags": [ "demographics" ],
-                "summary":"Trace person by identifier or demographics",
-                "description": "Trace registered patients linked to a person.<br><br><b>Note:</b>Either an identifier OR all 3 demographics parameters should be provided.",
+                "summary": "Trace persons",
+                "description": "<p>Trace persons.</p><p>Valid trace combinations:</p><ul><li>Person identifier</li><li>Person name AND date of birth AND gender</li></ul>",
                 "produces": [ "application/json" ],
                 "parameters": [
                     { "$ref": "#definitions/apiKeyParameter" },
@@ -380,46 +380,48 @@
                     {
                         "name": "identifier",
                         "in": "query",
-                        "description": "Persons identifier",
-                        "required":false,
+                        "description": "Person identifier",
+                        "required": false,
                         "type": "string"
                     },
                     {
-                        "name": "surname",
+                        "name": "name",
                         "in": "query",
-                        "description": "Persons surname",
-                        "required":false,
+                        "description": "Person name",
+                        "required": false,
                         "type": "string"
                     },
                     {
-                        "name": "dob",
+                        "name": "birthdate",
                         "in": "query",
-                        "description": "Persons date of birth",
-                        "required":false,
+                        "description": "Person date of birth",
+                        "required": false,
                         "type": "string"
                     },
                     {
                         "name": "gender",
                         "in": "query",
-                        "description": "Persons gender",
-                        "required":false,
+                        "description": "Person gender",
+                        "required": false,
                         "type": "string",
-                        "enum": [
-                            "male", "female", "unknown"
-                        ]
+                        "enum": [ "male", "female", "other", "unknown" ]
                     }
                 ],
                 "responses": {
-                    "200": { "description":"Returns a Single FHIR Person bundle, containing the person details and a number of ODS Patient details." },
-                    "404": { "description":"Not Found - resource type not supported, or not a FHIR end point" },
-                    "410": { "description": "Gone - the resource has been deleted" }
+                    "200": { "description": "OK | <a target='_blank' href='http://www.hl7.org/FHIR/2015May/bundle.html'>Bundle</a> containing zero or more <a target='_blank' href='http://www.hl7.org/FHIR/2015May/allergyintolerance.html'>Person</a> resources" },
+                    "400": { "$ref": "#definitions/400Response" },
+                    "401": { "$ref": "#definitions/401Response" },
+                    "403": { "$ref": "#definitions/403Response" },
+                    "500": { "$ref": "#definitions/500Response" },
+                    "502": { "$ref": "#definitions/502Response" },
+                    "504": { "$ref": "#definitions/504Response" }
                 }
             }
         },
         "/{odsCode}/Patient/{id}": {
             "get": {
                 "tags": [ "demographics" ],
-                "summary":"Get patient demographics by ID",
+                "summary":"Get demographics by patient ID",
                 "description": "Get Patient Demographic Record By ID",
                 "produces": [
                     "application/json"
@@ -522,7 +524,7 @@
             "description": "API key",
             "in": "header",
             "type": "string",
-            "required": true
+            "required": false
         },
         "hashParameter": {
             "name": "hash",
@@ -553,7 +555,7 @@
             "type": "string"
         },
 
-        "400Response": { "description": "Required parameter missing; Invalid parameter | <a target='_blank' href='https://www.hl7.org/fhir/2015May/operationoutcome.html'>OperationOutcome</a> with <a href='http://www.hl7.org/FHIR/2015May/issue-type.html'>IssueType</a> of Required element missing" },
+        "400Response": { "description": "Required parameter missing; Invalid parameter | <a target='_blank' href='https://www.hl7.org/fhir/2015May/operationoutcome.html'>OperationOutcome</a> with <a href='http://www.hl7.org/FHIR/2015May/issue-type.html'>IssueType</a> of Required element missing; Element value invalid" },
         "401Response": { "description": "Security failed | <a target='_blank' href='https://www.hl7.org/fhir/2015May/operationoutcome.html'>OperationOutcome</a> with <a href='http://www.hl7.org/FHIR/2015May/issue-type.html'>IssueType</a> of Unknown user" },
         "403Response": { "description": "No legitimate relationship | <a target='_blank' href='https://www.hl7.org/fhir/2015May/operationoutcome.html'>OperationOutcome</a> with <a href='http://www.hl7.org/FHIR/2015May/issue-type.html'>IssueType</a> of Information suppressed" },
         "404PatientNotFoundResponse": { "description": "Patient not found | <a target='_blank' href='https://www.hl7.org/fhir/2015May/operationoutcome.html'>OperationOutcome</a> with <a href='http://www.hl7.org/FHIR/2015May/issue-type.html'>IssueType</a> of Not found" },
