@@ -2,7 +2,7 @@ $(function() {
     $.getScript("cryptojs/rollups/hmac-sha256.js");
     $.getScript("cryptojs/components/enc-base64-min.js");
     $('head').append("<link href='https://fonts.googleapis.com/css?family=Droid+Sans:400,700|Open+Sans' rel='stylesheet' type='text/css' />");
-    $('#input_apiKey').parent().append("<div class='input'><input placeholder='secret' id='input_privateKey' name='privateKey' type='text/></div>");
+    $('#input_apiKey').parent().after("<div class='input'><input placeholder='secret' id='input_privateKey' name='privateKey' type='text' /></div>");
 });
 
 function customScriptInitialize(){
