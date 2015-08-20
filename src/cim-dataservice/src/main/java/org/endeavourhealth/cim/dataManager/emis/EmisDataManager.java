@@ -155,7 +155,11 @@ public class EmisDataManager implements IDataManager {
 	public String getPatientDemographics(String odsCode, UUID patientId) throws Exception {
 
 		String patientDataInNativeFormat = _emisDataAdapter.getPatientDemographicsByPatientId(odsCode, patientId);
-		Patient patient = _emisTransformer.toFHIRPatient(patientDataInNativeFormat);
+
+		if (TextUtils.isNullOrTrimmedEmpty(patientDataInNativeFormat))
+			return null;
+
+		Patient patient = _emisTransformer.toFhirPatient(patientDataInNativeFormat);
 		return new JsonParser().composeString(patient);
 	}
 
@@ -163,7 +167,7 @@ public class EmisDataManager implements IDataManager {
 	public String getPatientDemographics(String odsCode, String nhsNumber) throws Exception {
 
 		String patientDataInNativeFormat = _emisDataAdapter.getPatientDemographicsByNHSNumber(odsCode, nhsNumber);
-		Patient patient = _emisTransformer.toFHIRPatient(patientDataInNativeFormat);
+		Patient patient = _emisTransformer.toFhirPatient(patientDataInNativeFormat);
 		return new JsonParser().composeString(patient);
 	}
 
@@ -171,7 +175,7 @@ public class EmisDataManager implements IDataManager {
 	public String tracePatientByDemographics(String surname, Date dateOfBirth, String gender, String forename, String postcode) throws Exception {
 
 		String patientDataInNativeFormat = _emisDataAdapter.tracePatientByDemographics(surname, dateOfBirth, gender, forename, postcode);
-		Patient patient = _emisTransformer.toFHIRPatient(patientDataInNativeFormat);
+		Patient patient = _emisTransformer.toFhirPatient(patientDataInNativeFormat);
 		return new JsonParser().composeString(patient);
 	}
 
@@ -179,7 +183,7 @@ public class EmisDataManager implements IDataManager {
 	public String tracePatientByNhsNumber(String nhsNumber) throws Exception {
 
 		String patientDataInNativeFormat = _emisDataAdapter.tracePatientByNhsNumber(nhsNumber);
-		Patient patient = _emisTransformer.toFHIRPatient(patientDataInNativeFormat);
+		Patient patient = _emisTransformer.toFhirPatient(patientDataInNativeFormat);
 		return new JsonParser().composeString(patient);
 	}
 

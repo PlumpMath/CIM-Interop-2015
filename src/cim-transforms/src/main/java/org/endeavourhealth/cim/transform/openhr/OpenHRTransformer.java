@@ -24,8 +24,9 @@ public class OpenHRTransformer {
         return transformer.transformToBundle(bundleProperties, openHR);
     }
 
-    public Patient toFHIRPatient(String sourceData) throws TransformException {
-        OpenHR001OpenHealthRecord openHR = TransformHelper.unmarshall(sourceData, OpenHR001OpenHealthRecord.class);
+    public Patient toFhirPatient(String openHRXml) throws TransformException {
+
+        OpenHR001OpenHealthRecord openHR = TransformHelper.unmarshall(openHRXml, OpenHR001OpenHealthRecord.class);
 
         ToFHIRTransformer transformer = new ToFHIRTransformer();
         return transformer.transformToPatient(openHR);

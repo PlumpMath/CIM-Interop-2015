@@ -3,7 +3,7 @@ package org.endeavourhealth.cim.transform.emisopen;
 import org.endeavourhealth.cim.common.ReferenceHelper;
 import org.endeavourhealth.cim.common.StreamExtension;
 import org.endeavourhealth.cim.common.text.TextUtils;
-import org.endeavourhealth.cim.common.FHIRConstants;
+import org.endeavourhealth.cim.common.FhirConstants;
 import org.endeavourhealth.cim.transform.SerializationException;
 import org.endeavourhealth.cim.transform.TransformFeatureNotSupportedException;
 import org.endeavourhealth.cim.transform.openhr.tofhir.admin.NameConverter;
@@ -63,13 +63,13 @@ public class ScheduleTransformer {
                 schedule.setActor(reference);
             } else {
                 schedule.addExtension(new Extension()
-                        .setUrl(FHIRConstants.SCHEDULEADDITIONALACTOR_EXTENSION_URL)
+                        .setUrl(FhirConstants.SCHEDULEADDITIONALACTOR_EXTENSION_URL)
                         .setValue(reference));
             }
         }
 
         schedule.addExtension(new Extension()
-                .setUrl(FHIRConstants.SCHEDULEADDITIONALACTOR_EXTENSION_URL)
+                .setUrl(FhirConstants.SCHEDULEADDITIONALACTOR_EXTENSION_URL)
                 .setValue(ReferenceHelper.createReference(ResourceType.Location, location.getId())));
 
         return schedule;
@@ -119,7 +119,7 @@ public class ScheduleTransformer {
                     schedule.setActor(ReferenceHelper.createReference(actorResourceType, idGuidMap.get(id)));
 
             for (Extension extension : schedule.getExtension()) {
-                if (FHIRConstants.SCHEDULEADDITIONALACTOR_EXTENSION_URL.equals(extension.getUrl())) {
+                if (FhirConstants.SCHEDULEADDITIONALACTOR_EXTENSION_URL.equals(extension.getUrl())) {
                     if (extension.getValue() instanceof Reference) {
 
                     String id2 = ReferenceHelper.getReferenceId((Reference)extension.getValue(), actorResourceType);

@@ -1,6 +1,5 @@
 package org.endeavourhealth.cim.routes.routeBuilders.endpoints;
 
-import org.endeavourhealth.cim.common.FHIRConstants;
 import org.endeavourhealth.cim.common.HeaderKey;
 import org.endeavourhealth.cim.common.HttpVerb;
 import org.endeavourhealth.cim.dataManager.DataManagerFactory;

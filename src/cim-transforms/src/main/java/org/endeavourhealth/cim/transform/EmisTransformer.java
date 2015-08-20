@@ -35,13 +35,15 @@ public class EmisTransformer implements Transformer {
 		return _openHRTransformer.toFhirBundle(bundleProperties, openHRXml);
 	}
 
-	public Patient toFHIRPatient(String sourceData) throws TransformException {
-
-		return _openHRTransformer.toFHIRPatient(sourceData);
-	}
-
 	public String fromFHIRCondition(Condition condition) throws TransformException {
 
 		return _openHRTransformer.fromFHIRCondition(condition);
 	}
+
+	/* demographic */
+	public Patient toFhirPatient(String openHRXml) throws TransformException {
+
+		return _openHRTransformer.toFhirPatient(openHRXml);
+	}
+
 }

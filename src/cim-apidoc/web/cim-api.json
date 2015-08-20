@@ -250,7 +250,7 @@
         "/{odsCode}/Patient/{id}/Condition": {
             "get": {
                 "tags": [ "clinical" ],
-                "summary":"Get conditions by patient ID",
+                "summary": "Get conditions by patient ID",
                 "description": "Get conditions by patient ID.",
                 "produces": [ "application/json" ],
                 "parameters": [
@@ -279,7 +279,7 @@
             },
             "post": {
                 "tags": [ "clinical" ],
-                "summary":"Add condition to patient",
+                "summary": "Add condition to patient",
                 "description": "Add condition to patient.",
                 "produces": [ "application/json" ],
                 "parameters": [
@@ -421,11 +421,9 @@
         "/{odsCode}/Patient/{id}": {
             "get": {
                 "tags": [ "demographics" ],
-                "summary":"Get demographics by patient ID",
-                "description": "Get Patient Demographic Record By ID",
-                "produces": [
-                    "application/json"
-                ],
+                "summary": "Get demographics by patient ID",
+                "description": "Get demographics by patient ID.",
+                "produces": [ "application/json" ],
                 "parameters": [
                     { "$ref": "#definitions/apiKeyParameter" },
                     { "$ref": "#definitions/hashParameter" },
@@ -433,17 +431,22 @@
                     { "$ref": "#definitions/patientIdParameter" }
                 ],
                 "responses": {
-                    "200": {"description":"Returns a Single FHIR Patient Resource - see schema at: <a target='_blank'  href='http://hl7.org/fhir/2015May/patient.html'>http://hl7.org/fhir/2015May/patient.html</a>" },
-                    "404": { "description":"Not Found - resource type not supported, or not a FHIR end point" },
-                    "410": { "description":"Gone - the resource has been deleted" }
+                    "200": { "description": "OK | <a target='_blank' href='http://www.hl7.org/FHIR/2015May/patient.html'>Patient</a> resource" },
+                    "400": { "$ref": "#definitions/400Response" },
+                    "401": { "$ref": "#definitions/401Response" },
+                    "403": { "$ref": "#definitions/403Response" },
+                    "404": { "$ref": "#definitions/404PatientNotFoundResponse" },
+                    "500": { "$ref": "#definitions/500Response" },
+                    "502": { "$ref": "#definitions/502Response" },
+                    "504": { "$ref": "#definitions/504Response" }
                 }
             }
         },
         "/{odsCode}/Patient": {
             "get": {
                 "tags": [ "demographics" ],
-                "summary":"Get patient demographics",
-                "description": "Get Patient Demographic Records",
+                "summary":"Get demographics",
+                "description": "Get demographics.",
                 "produces": [
                     "application/json"
                 ],

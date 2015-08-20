@@ -46,7 +46,7 @@ public class FhirFilterHelper {
 				}
 				else {
 					for (Extension extension : schedule.getExtension())
-						if (FHIRConstants.SCHEDULEADDITIONALACTOR_EXTENSION_URL.equals(extension.getUrl()))
+						if (FhirConstants.SCHEDULEADDITIONALACTOR_EXTENSION_URL.equals(extension.getUrl()))
 							if (extension.getValue() instanceof Reference)
 								if (ReferenceHelper.referenceEquals((Reference)extension.getValue(), ResourceType.Practitioner, practitionerId.toString()))
 									resources.add(schedule);

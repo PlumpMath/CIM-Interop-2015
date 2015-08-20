@@ -30,7 +30,7 @@ public class TracePersonProcessor implements org.apache.camel.Processor {
 				throw new CIMInvalidParamException("Invalid parameter combination");
 
 			if (!TextUtils.isNullOrTrimmedEmpty(identifier.getSystem()))
-				if (!identifier.getSystem().equals(FHIRConstants.CODE_SYSTEM_NHSNUMBER))
+				if (!identifier.getSystem().equals(FhirConstants.CODE_SYSTEM_NHSNUMBER))
 					throw new CIMInvalidParamException("Identifier code system not recognised");
 
 			if (!NhsNumberValidator.IsValidNhsNumber(identifier.getCode()))

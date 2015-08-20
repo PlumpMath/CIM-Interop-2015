@@ -20,8 +20,9 @@ public class ToFHIRTransformer {
         return BundleHelper.createBundle(Bundle.BundleType.SEARCHSET, openHR.getId(), bundleProperties.getBaseUri(), creationDate, container.getResources());
     }
 
-    public Patient transformToPatient(OpenHR001OpenHealthRecord openHR) throws TransformException {
-        FHIRContainer container = transform(openHR);
+    public Patient transformToPatient(OpenHR001OpenHealthRecord openHRXml) throws TransformException {
+
+        FHIRContainer container = transform(openHRXml);
         return container.getPatientResource();
     }
 

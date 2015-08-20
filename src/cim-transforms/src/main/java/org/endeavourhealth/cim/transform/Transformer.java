@@ -14,8 +14,8 @@ public interface Transformer {
 
     /* clinical */
     Bundle openHRToFhirBundle(BundleProperties bundleProperties, String openHRXml) throws TransformException;
-    Patient toFHIRPatient(String sourceData) throws TransformException;
     String fromFHIRCondition(Condition condition) throws TransformException;
 
     /* demographic */
+    Patient toFhirPatient(String openHRXml) throws TransformException;
 }

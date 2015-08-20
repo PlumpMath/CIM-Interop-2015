@@ -1,5 +1,6 @@
 package org.endeavourhealth.cim.transform.openhr.tofhir.admin;
 
+import org.endeavourhealth.cim.common.FhirConstants;
 import org.endeavourhealth.cim.common.StreamExtension;
 import org.endeavourhealth.cim.transform.TransformHelper;
 import org.endeavourhealth.cim.transform.SourceDocumentInvalidException;
@@ -14,7 +15,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 class PatientTransformer {
+
     public static void transform(FHIRContainer container, OpenHR001AdminDomain adminDomain) throws TransformException {
+
         OpenHR001Patient sourcePatient = getPatient(adminDomain);
         OpenHR001Person sourcePerson = getPerson(adminDomain.getPerson(), sourcePatient.getId());
 
@@ -132,7 +135,7 @@ class PatientTransformer {
         switch (openHRType)
         {
             case NHS:
-                return "http://fhir.endeavourhealth.org/identifier#nhsnumber";
+                return FhirConstants.CODE_SYSTEM_NHSNUMBER;
             case ONHS:
                 return "http://fhir.endeavourhealth.org/identifier#oldnhsnumber";
             case CHI:
