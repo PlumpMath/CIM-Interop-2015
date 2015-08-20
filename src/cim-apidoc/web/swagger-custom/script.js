@@ -75,16 +75,26 @@ function customScriptInitialize(){
 }
 
 function generateHash(form) {
+    var apiKey = $("#input_apiKey").val();
     var privateKey = $("#input_privateKey").val();
-    var path = $(form).parent().parent().find(".path").text().trim();
 
-    if (path.indexOf("?") > -1) {
-        // Strip any query params
-        path = path.substr(0, path.indexOf("?"));
+    if (apiKey == "") {
+        alert("You must enter your API key.");
+        $("#input_apiKey").focus();
+        event.stopPropagation();
+        return;
     }
 
-    // Ensure terminating "/"
-    path += "/";
+    if (privateKey == "") {
+        alert("You must enter your secret key.");
+        $("#input_privateKey").focus();
+        event.stopPropagation();
+        return;
+    }
+
+    var path = $(form).parent().parent().find(".path").text().trim();
+    // Populate query params
+    path = buildQuery(path, $(form).find('table'));
 
     var body = $(form).find("[name='body']").val();
 
@@ -99,6 +109,27 @@ function generateHash(form) {
     var hashInBase64 = CryptoJS.enc.Base64.stringify(hash);
 
     $(form).find("input[name=hash]").val(hashInBase64);
+}
+
+function buildQuery(path, table) {
+    var query = "";
+    $(table).find('input,select,textarea').each(function() {
+        if ($(this).val() != "") {
+            if ($($(this).parent().parent().find("td")[3]).text() == "path") {
+                path = path.replace("{"+this.name+"}", $(this).val());
+            }
+            if ($($(this).parent().parent().find("td")[3]).text() == "query") {
+                if (query == "")
+                    query += "?";
+                else
+                    query += "&";
+
+                query += encodeURIComponent(this.name) + '=' + encodeURIComponent($(this).val()).replace('%0A', '&' + this.name + '=');
+            }
+        }
+    });
+
+    return path + query;
 }
 
 function visualizeJson(classId)

@@ -47,10 +47,6 @@ public class SecurityProcessor implements Processor {
         if (privateKey == null)
             return false;
 
-		// Ensure method always has trailing "/" - required to guarantee matching hash with Crypto-JS
-		if (method.endsWith("/") == false)
-			method += "/";
-
         String data = method;
         if (body != null)
             data += body;

@@ -69,7 +69,13 @@ public class ExchangeHelper {
     }
 
     public static String getEndpointPath(Exchange exchange) {
-        return exchange.getFromEndpoint().getEndpointConfiguration().getParameter("path");
+		String path = exchange.getIn().getHeader("CamelHttpPath").toString();
+		Object query = exchange.getIn().getHeader("CamelHttpQuery");
+
+		if (query != null)
+			path += "?" + query.toString();
+
+		return path;
     }
 
     public static Date getInHeaderDate(Exchange exchange, String headerKey) {

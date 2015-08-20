@@ -368,21 +368,45 @@
                 }
             }
         },
-        "/Person/$trace?identifier=NHS|{nhsNumber}": {
+        "/Person": {
             "get": {
                 "tags": [ "demographics" ],
-                "summary":"Trace person by NHS number",
-                "description": "Trace registered patients linked to a person.",
+                "summary":"Trace person by identifier or demographics",
+                "description": "Trace registered patients linked to a person.<br><br><b>Note:</b>Either an identifier OR all 3 demographics parameters should be provided.",
                 "produces": [ "application/json" ],
                 "parameters": [
                     { "$ref": "#definitions/apiKeyParameter" },
                     { "$ref": "#definitions/hashParameter" },
                     {
-                        "name": "nhsNumber",
-                        "in": "path",
-                        "description": "Persons NHS Number",
-                        "required":true,
+                        "name": "identifier",
+                        "in": "query",
+                        "description": "Persons identifier",
+                        "required":false,
                         "type": "string"
+                    },
+                    {
+                        "name": "surname",
+                        "in": "query",
+                        "description": "Persons surname",
+                        "required":false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "dob",
+                        "in": "query",
+                        "description": "Persons date of birth",
+                        "required":false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "gender",
+                        "in": "query",
+                        "description": "Persons gender",
+                        "required":false,
+                        "type": "string",
+                        "enum": [
+                            "male", "female", "unknown"
+                        ]
                     }
                 ],
                 "responses": {
@@ -392,53 +416,10 @@
                 }
             }
         },
-        "/Person/$trace?surname={surname}&dob={dob}&gender={gender}": {
-            "get": {
-                "tags": [ "demographics" ],
-                "summary":"Trace person by demographics",
-                "description": "Trace registered patients linked to a person.",
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [
-                    { "$ref": "#definitions/apiKeyParameter" },
-                    { "$ref": "#definitions/hashParameter" },
-                    {
-                        "name": "surname",
-                        "in": "path",
-                        "description": "Persons surname",
-                        "required":true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "dob",
-                        "in": "path",
-                        "description": "Persons date of birth",
-                        "required":true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "gender",
-                        "in": "path",
-                        "description": "Persons gender",
-                        "required":true,
-                        "type": "string",
-                        "enum": [
-                            "male", "female", "unknown"
-                        ]
-                    }
-                ],
-                "responses": {
-                    "200": {"description":"Returns a Single FHIR Person bundle, containing the person details and a number of ODS Patient details."},
-                    "404": {"description":"Not Found - resource type not supported, or not a FHIR end point"},
-                    "410": {"description":"Gone - the resource has been deleted"}
-                }
-            }
-        },
         "/{odsCode}/Patient/{id}": {
             "get": {
                 "tags": [ "demographics" ],
-                "summary":"Get patient by ID",
+                "summary":"Get patient demographics by ID",
                 "description": "Get Patient Demographic Record By ID",
                 "produces": [
                     "application/json"
@@ -456,11 +437,11 @@
                 }
             }
         },
-        "/{odsCode}/Patient?identifier=NHS|{nhsNo}": {
+        "/{odsCode}/Patient": {
             "get": {
                 "tags": [ "demographics" ],
-                "summary":"Get patient by NHS number",
-                "description": "Get Patient Demographic Record By NHS Number",
+                "summary":"Get patient demographics",
+                "description": "Get Patient Demographic Records",
                 "produces": [
                     "application/json"
                 ],
@@ -469,80 +450,31 @@
                     { "$ref": "#definitions/hashParameter" },
                     { "$ref": "#definitions/odsCodeParameter" },
                     {
-                        "name": "nhsNo",
-                        "in": "path",
-                        "description": "Patient NHS Number",
-                        "required":true,
+                        "name": "identifier",
+                        "in": "query",
+                        "description": "Patient identifier",
+                        "required":false,
                         "type": "string"
+                    },
+                    {
+                        "name": "_lastUpdated",
+                        "in": "query",
+                        "description": "Reference date after which the patient record was last updated",
+                        "required":false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "active",
+                        "in": "query",
+                        "description": "Active patients only",
+                        "required":false,
+                        "type": "string",
+                        "enum": [ "active" ]
                     }
                 ],
                 "responses": {
                     "200": { "description":"Returns a FHIR Bundle of Patient Resource(s) - see schema at: <a target='_blank'  href='http://hl7.org/fhir/2015May/patient.html'>http://hl7.org/fhir/2015May/patient.html</a>" },
                     "403": { "description":"Forbidden - Requested operation not permitted" }
-                }
-            }
-        },
-        "/{odsCode}/Patient": {
-            "get": {
-                "tags": [ "demographics" ],
-                "summary":"Get all patients",
-                "description": "Get Patient Demographic Records for All Patients",
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [
-                    { "$ref": "#definitions/apiKeyParameter" },
-                    { "$ref": "#definitions/hashParameter" },
-                    { "$ref": "#definitions/odsCodeParameter" }
-                ],
-                "responses": {
-                    "200": { "description":"Returns a FHIR Bundle of Patient Resources - see schema at: <a target='_blank'  href='http://hl7.org/fhir/2015May/patient.html'>http://hl7.org/fhir/2015May/patient.html</a>" },
-                    "403": {"description":"Forbidden - Requested operation not permitted" }
-                }
-            }
-        },
-        "/{odsCode}/Patient?active=true": {
-            "get": {
-                "tags": [ "demographics" ],
-                "summary":"Get all active patients",
-                "description": "Get Patient Demographic Records for All ACTIVE Patients",
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [
-                    { "$ref": "#definitions/apiKeyParameter" },
-                    { "$ref": "#definitions/hashParameter" },
-                    { "$ref": "#definitions/odsCodeParameter" }
-                ],
-                "responses": {
-                    "200": { "description":"Returns a FHIR Bundle of Patient Resources - see schema at: <a target='_blank'  href='http://hl7.org/fhir/2015May/patient.html'>http://hl7.org/fhir/2015May/patient.html</a>" },
-                    "403": { "description":"Forbidden - Requested operation not permitted" }
-                }
-            }
-        },
-        "/{odsCode}/Patient?_lastUpdated=>{dateUpdated}&active=true": {
-            "get": {
-                "tags": [ "demographics" ],
-                "summary":"Get changed patients",
-                "description": "Get Patient Demographic Records for All ACTIVE Patients that have had a record update since the date specified.",
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [
-                    { "$ref": "#definitions/apiKeyParameter" },
-                    { "$ref": "#definitions/hashParameter" },
-                    { "$ref": "#definitions/odsCodeParameter" },
-                    {
-                        "name": "dateUpdated",
-                        "in": "path",
-                        "description": "Reference date after which the patient record was last updated",
-                        "required":true,
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": { "description":"Returns a FHIR Bundle of Patient Resources - see schema at: <a target='_blank'  href='http://hl7.org/fhir/2015May/patient.html'>http://hl7.org/fhir/2015May/patient.html</a>" },
-                    "403":{ "description":"Forbidden - Requested operation not permitted" }
                 }
             }
         },
