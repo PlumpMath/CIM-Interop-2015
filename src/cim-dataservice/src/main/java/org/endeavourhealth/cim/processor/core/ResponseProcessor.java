@@ -11,6 +11,7 @@ import org.apache.http.entity.ContentType;
 public class ResponseProcessor implements Processor {
 
     public void process(Exchange exchange) throws Exception {
+		exchange.getOut().setHeader("CamelHttpResponseCode", exchange.getIn().getHeader("CamelHttpResponseCode"));
 		try {
 			Gson gson = new GsonBuilder().setPrettyPrinting().create();
 			JsonParser parser = new JsonParser();
