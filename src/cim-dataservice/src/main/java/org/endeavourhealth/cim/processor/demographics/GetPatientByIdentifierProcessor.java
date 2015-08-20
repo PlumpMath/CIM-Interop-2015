@@ -13,7 +13,7 @@ public class GetPatientByIdentifierProcessor implements org.apache.camel.Process
         String odsCode = ExchangeHelper.getInHeaderString(exchange, HeaderKey.OdsCode);
         String identifier = ExchangeHelper.getInHeaderString(exchange, HeaderKey.Identifier);
 
-        String nhsNumber = identifier.substring(4);
+        String nhsNumber = identifier.substring(identifier.indexOf('|')+1);
 
         IDataManager dataManager = DataManagerFactory.getDataManagerForService(odsCode);
         String requestBody = dataManager.getPatientDemographics(odsCode, nhsNumber);
