@@ -12,7 +12,7 @@ function customScriptInitialize(){
     disableHash();
     injectVisualizer();
     injectHashGeneration();
-    hideResponseModels();
+    customizeResponseModelTable();
 
     function addCustomLogo() {
         if ($('#custom-logo').length == 0) {
@@ -51,9 +51,26 @@ function customScriptInitialize(){
         });
     }
 
-    function hideResponseModels() {
-        $('th:contains("Response Model")').css('display','none');
-        $('tbody.operation-status').find('tr').find('td[width="50%"]').css('display','none');
+
+    function customizeResponseModelTable() {
+        // locate Response Messages table
+        var $responseTable = $('h4:contains("Response Messages") + table[class="fullwidth"]');
+
+        // hide "Response Model" column
+        $responseTable.find('thead > tr > th:contains("Response Model")').css('display', 'none');
+        $responseTable.find('tbody.operation-status > tr > td[width="50%"]').css('display', 'none');
+
+        // change "Headers" column to "Response Body"
+        $responseTable.find('thead > tr > th:contains("Headers")').text("Response Body");
+        var $responseTableBody = $responseTable.find('tbody.operation-status > tr');
+
+        // Split contents of "Reason" column on '|' and copy to the new "Response Body" column
+        $responseTableBody.each(function () {
+            var $reasonText = $(this).find('td.markdown > p').html();
+
+            $(this).find('td.markdown > p').text($reasonText.split('|')[0]);
+            $(this).find('td.headers').html($reasonText.split('|')[1]);
+        });
     }
 }
 

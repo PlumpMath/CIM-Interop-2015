@@ -25,7 +25,7 @@
         "/{odsCode}/Schedule": {
             "get": {
                 "tags": [ "administrative" ],
-                "summary": "Get appointment schedules.",
+                "summary": "Get appointment schedules",
                 "description": "Get appointment schedules by date and/or practitioner ID.",
                 "produces": [ "application/json" ],
                 "parameters": [
@@ -50,13 +50,13 @@
                     }
                 ],
                 "responses": {
-                    "200": { "description": "OK" },
-                    "400": { "description": "Required parameter missing; Invalid parameter" },
-                    "401": { "description": "Security failed" },
-                    "403": { "description": "No legitimate relationship" },
-                    "500": { "description": "Unexpected error" },
-                    "502": { "description": "Error received from principal system" },
-                    "504": { "description": "Connection timeout to principal system" }
+                    "200": { "description": "OK | <a target='_blank' href='http://www.hl7.org/FHIR/2015May/bundle.html'>Bundle</a> containing zero or more <a target='_blank' href='http://www.hl7.org/FHIR/2015May/schedule.html'>Schedule</a> resources" },
+                    "400": { "$ref": "#definitions/400Response" },
+                    "401": { "$ref": "#definitions/401Response" },
+                    "403": { "$ref": "#definitions/403Response" },
+                    "500": { "$ref": "#definitions/500Response" },
+                    "502": { "$ref": "#definitions/502Response" },
+                    "504": { "$ref": "#definitions/504Response" }
                 }
             }
         },
@@ -79,13 +79,13 @@
                     }
                 ],
                 "responses": {
-                    "200": { "description": "OK" },
-                    "400": { "description": "Required parameter missing; Invalid parameter" },
-                    "401": { "description": "Security failed" },
-                    "403": { "description": "No legitimate relationship" },
-                    "500": { "description": "Unexpected error" },
-                    "502": { "description": "Error received from principal system" },
-                    "504": { "description": "Connection timeout to principal system" }
+                    "200": { "description": "OK | <a target='_blank' href='http://www.hl7.org/FHIR/2015May/bundle.html'>Bundle</a> containing zero or more <a target='_blank' href='http://www.hl7.org/FHIR/2015May/slot.html'>Slot</a> resources" },
+                    "400": { "$ref": "#definitions/400Response" },
+                    "401": { "$ref": "#definitions/401Response" },
+                    "403": { "$ref": "#definitions/403Response" },
+                    "500": { "$ref": "#definitions/500Response" },
+                    "502": { "$ref": "#definitions/502Response" },
+                    "504": { "$ref": "#definitions/504Response" }
                 }
             }
         },
@@ -110,15 +110,15 @@
                 ],
                 "responses": {
                     "200": { "description": "OK" },
-                    "400": { "description": "Required parameter missing; Invalid parameter" },
-                    "401": { "description": "Security failed" },
-                    "403": { "description": "No legitimate relationship" },
+                    "400": { "$ref": "#definitions/400Response" },
+                    "401": { "$ref": "#definitions/401Response" },
+                    "403": { "$ref": "#definitions/403Response" },
                     "404": { "description": "Slot not found; Patient not found" },
                     "409": { "description": "Slot already booked" },
                     "412": { "description": "Slot already booked by this patient" },
-                    "500": { "description": "Unexpected error" },
-                    "502": { "description": "Error received from principal system" },
-                    "504": { "description": "Connection timeout to principal system" }
+                    "500": { "$ref": "#definitions/500Response" },
+                    "502": { "$ref": "#definitions/502Response" },
+                    "504": { "$ref": "#definitions/504Response" }
                 }
             }
         },
@@ -143,14 +143,14 @@
                 ],
                 "responses": {
                     "200": { "description": "OK" },
-                    "400": { "description": "Required parameter missing; Invalid parameter" },
-                    "401": { "description": "Security failed" },
-                    "403": { "description": "No legitimate relationship" },
+                    "400": { "$ref": "#definitions/400Response" },
+                    "401": { "$ref": "#definitions/401Response" },
+                    "403": { "$ref": "#definitions/403Response" },
                     "404": { "description": "Slot not found; Patient not found" },
                     "412": { "description": "Slot not booked by this patient" },
-                    "500": { "description": "Unexpected error" },
-                    "502": { "description": "Error received from principal system" },
-                    "504": { "description": "Connection timeout to principal system" }
+                    "500": { "$ref": "#definitions/500Response" },
+                    "502": { "$ref": "#definitions/502Response" },
+                    "504": { "$ref": "#definitions/504Response" }
                 }
             }
         },
@@ -182,13 +182,13 @@
                     }
                 ],
                 "responses": {
-                    "200": { "description": "OK" },
-                    "400": { "description": "Required parameter missing; Invalid parameter" },
-                    "401": { "description": "Security failed" },
-                    "403": { "description": "No legitimate relationship" },
-                    "500": { "description": "Unexpected error" },
-                    "502": { "description": "Error received from principal system" },
-                    "504": { "description": "Connection timeout to principal system" }
+                    "200": { "description": "OK | <a target='_blank' href='http://www.hl7.org/FHIR/2015May/bundle.html'>Bundle</a> containing zero or more <a target='_blank' href='http://www.hl7.org/FHIR/2015May/appointment.html'>Appointment</a> resources" },
+                    "400": { "$ref": "#definitions/400Response" },
+                    "401": { "$ref": "#definitions/401Response" },
+                    "403": { "$ref": "#definitions/403Response" },
+                    "500": { "$ref": "#definitions/500Response" },
+                    "502": { "$ref": "#definitions/502Response" },
+                    "504": { "$ref": "#definitions/504Response" }
                 }
             }
         },
@@ -206,13 +206,13 @@
                 ],
                 "responses": {
                     "200": { "description": "OK" },
-                    "400": { "description": "Required parameter missing; Invalid parameter" },
-                    "401": { "description": "Security failed" },
-                    "403": { "description": "No legitimate relationship" },
+                    "400": { "$ref": "#definitions/400Response" },
+                    "401": { "$ref": "#definitions/401Response" },
+                    "403": { "$ref": "#definitions/403Response" },
                     "404": { "description": "Patient not found" },
-                    "500": { "description": "Unexpected error" },
-                    "502": { "description": "Error received from principal system" },
-                    "504": { "description": "Connection timeout to principal system" }
+                    "500": { "$ref": "#definitions/500Response" },
+                    "502": { "$ref": "#definitions/502Response" },
+                    "504": { "$ref": "#definitions/504Response" }
                 }
             }
         },
@@ -237,13 +237,13 @@
                 ],
                 "responses": {
                     "200": { "description": "OK" },
-                    "400": { "description": "Required parameter missing; Invalid parameter" },
-                    "401": { "description": "Security failed" },
-                    "403": { "description": "No legitimate relationship" },
+                    "400": { "$ref": "#definitions/400Response" },
+                    "401": { "$ref": "#definitions/401Response" },
+                    "403": { "$ref": "#definitions/403Response" },
                     "404": { "description": "Patient not found" },
-                    "500": { "description": "Unexpected error" },
-                    "502": { "description": "Error received from principal system" },
-                    "504": { "description": "Connection timeout to principal system" }
+                    "500": { "$ref": "#definitions/500Response" },
+                    "502": { "$ref": "#definitions/502Response" },
+                    "504": { "$ref": "#definitions/504Response" }
                 }
             }
         },
@@ -268,13 +268,13 @@
                 ],
                 "responses": {
                     "200": { "description": "OK" },
-                    "400": { "description": "Required parameter missing; Invalid parameter" },
-                    "401": { "description": "Security failed" },
-                    "403": { "description": "No legitimate relationship" },
+                    "400": { "$ref": "#definitions/400Response" },
+                    "401": { "$ref": "#definitions/401Response" },
+                    "403": { "$ref": "#definitions/403Response" },
                     "404": { "description": "Patient not found" },
-                    "500": { "description": "Unexpected error" },
-                    "502": { "description": "Error received from principal system" },
-                    "504": { "description": "Connection timeout to principal system" }
+                    "500": { "$ref": "#definitions/500Response" },
+                    "502": { "$ref": "#definitions/502Response" },
+                    "504": { "$ref": "#definitions/504Response" }
                 }
             },
             "post": {
@@ -323,13 +323,13 @@
                 ],
                 "responses": {
                     "200": { "description": "OK" },
-                    "400": { "description": "Required parameter missing; Invalid parameter" },
-                    "401": { "description": "Security failed" },
-                    "403": { "description": "No legitimate relationship" },
+                    "400": { "$ref": "#definitions/400Response" },
+                    "401": { "$ref": "#definitions/401Response" },
+                    "403": { "$ref": "#definitions/403Response" },
                     "404": { "description": "Patient not found" },
-                    "500": { "description": "Unexpected error" },
-                    "502": { "description": "Error received from principal system" },
-                    "504": { "description": "Connection timeout to principal system" }
+                    "500": { "$ref": "#definitions/500Response" },
+                    "502": { "$ref": "#definitions/502Response" },
+                    "504": { "$ref": "#definitions/504Response" }
                 }
             }
         },
@@ -359,13 +359,13 @@
                 ],
                 "responses": {
                     "200": { "description": "OK" },
-                    "400": { "description": "Required parameter missing; Invalid parameter" },
-                    "401": { "description": "Security failed" },
-                    "403": { "description": "No legitimate relationship" },
+                    "400": { "$ref": "#definitions/400Response" },
+                    "401": { "$ref": "#definitions/401Response" },
+                    "403": { "$ref": "#definitions/403Response" },
                     "404": { "description": "Patient not found" },
-                    "500": { "description": "Unexpected error" },
-                    "502": { "description": "Error received from principal system" },
-                    "504": { "description": "Connection timeout to principal system" }
+                    "500": { "$ref": "#definitions/500Response" },
+                    "502": { "$ref": "#definitions/502Response" },
+                    "504": { "$ref": "#definitions/504Response" }
                 }
             }
         },
@@ -622,6 +622,12 @@
                 "type": "string"
             }
         },
+        "400Response": { "description": "Required parameter missing; Invalid parameter | <a target='_blank' href='https://www.hl7.org/fhir/2015May/operationoutcome.html'>OperationOutcome</a> with <a href='http://www.hl7.org/FHIR/2015May/issue-type.html'>IssueType</a> of Required element missing" },
+        "401Response": { "description": "Security failed | <a target='_blank' href='https://www.hl7.org/fhir/2015May/operationoutcome.html'>OperationOutcome</a> with <a href='http://www.hl7.org/FHIR/2015May/issue-type.html'>IssueType</a> of Unknown user" },
+        "403Response": { "description": "No legitimate relationship | <a target='_blank' href='https://www.hl7.org/fhir/2015May/operationoutcome.html'>OperationOutcome</a> with <a href='http://www.hl7.org/FHIR/2015May/issue-type.html'>IssueType</a> of Information suppressed" },
+        "500Response": { "description": "Unexpected error | <a target='_blank' href='https://www.hl7.org/fhir/2015May/operationoutcome.html'>OperationOutcome</a> with <a href='http://www.hl7.org/FHIR/2015May/issue-type.html'>IssueType</a> of Exception" },
+        "502Response": { "description": "Error received from principal system | <a target='_blank' href='https://www.hl7.org/fhir/2015May/operationoutcome.html'>OperationOutcome</a> with <a href='http://www.hl7.org/FHIR/2015May/issue-type.html'>IssueType</a> of Exception" },
+        "504Response": { "description": "Connection timeout to principal system | <a target='_blank' href='https://www.hl7.org/fhir/2015May/operationoutcome.html'>OperationOutcome</a> with <a href='http://www.hl7.org/FHIR/2015May/issue-type.html'>IssueType</a> of Timeout" },
         "parametersResource": {
             "type": "object",
             "properties": {
