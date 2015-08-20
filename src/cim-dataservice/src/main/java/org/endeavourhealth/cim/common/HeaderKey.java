@@ -14,8 +14,8 @@ public class HeaderKey {
 	public static final String LastUpdated = "_lastUpdated";
 	public static final String Date = "date";
 	public static final String Identifier ="identifier";
-	public static final String Surname = "surname";
-	public static final String DOB = "dob";
+	public static final String Name = "name";
+	public static final String BirthDate = "birthDate";
 	public static final String Gender = "gender";
 	public static final String Forename = "forename";
 	public static final String PostCode = "postcode";

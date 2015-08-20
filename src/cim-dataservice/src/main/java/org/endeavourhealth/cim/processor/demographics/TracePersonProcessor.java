@@ -1,9 +1,11 @@
 package org.endeavourhealth.cim.processor.demographics;
 
 import org.apache.camel.Exchange;
-import org.endeavourhealth.cim.common.ExchangeHelper;
-import org.endeavourhealth.cim.common.HeaderKey;
-import org.endeavourhealth.cim.common.TokenSearchParameter;
+import org.endeavourhealth.cim.common.*;
+import org.endeavourhealth.cim.common.exceptions.CIMBusinessRuleException;
+import org.endeavourhealth.cim.common.exceptions.CIMInvalidParamException;
+import org.endeavourhealth.cim.common.exceptions.CIMValidationRuleException;
+import org.endeavourhealth.cim.common.text.TextUtils;
 import org.endeavourhealth.cim.dataManager.IDataManager;
 
 import java.text.SimpleDateFormat;
@@ -15,24 +17,33 @@ public class TracePersonProcessor implements org.apache.camel.Processor {
     public void process(Exchange exchange) throws Exception {
 
 		TokenSearchParameter identifier = ExchangeHelper.getInHeaderToken(exchange, HeaderKey.Identifier);
-		String surname = ExchangeHelper.getInHeaderString(exchange, HeaderKey.Surname);
-		Date dateOfBirth = ExchangeHelper.getInHeaderDate(exchange, HeaderKey.DOB);
+		String name = ExchangeHelper.getInHeaderString(exchange, HeaderKey.Name);
+		Date dateOfBirth = ExchangeHelper.getInHeaderDate(exchange, HeaderKey.BirthDate);
 		String gender = ExchangeHelper.getInHeaderString(exchange, HeaderKey.Gender);
-
 		IDataManager dataManager = (IDataManager)ExchangeHelper.getInBodyObject(exchange);
 
 		String responseBody;
 
 		if (identifier != null) {
 
-			String nhsNumber = identifier.getCode();
-			responseBody = dataManager.tracePatientByNhsNumber(nhsNumber);
+			if ((!TextUtils.isNullOrTrimmedEmpty(name)) || (!TextUtils.isNullOrTrimmedEmpty(gender)) || (dateOfBirth != null))
+				throw new CIMInvalidParamException("Invalid parameter combination");
 
-		} else {
+			if (!TextUtils.isNullOrTrimmedEmpty(identifier.getSystem()))
+				if (!identifier.getSystem().equals(FHIRConstants.CODE_SYSTEM_NHSNUMBER))
+					throw new CIMInvalidParamException("Identifier code system not recognised");
 
-			responseBody = dataManager.tracePatientByDemographics(surname, dateOfBirth, gender, "", "");
+			if (!NhsNumberValidator.IsValidNhsNumber(identifier.getCode()))
+				throw new CIMInvalidParamException("NHS number is not valid");
+
+			responseBody = dataManager.tracePatientByNhsNumber(identifier.getCode());
 		}
+		else {
+			if ((TextUtils.isNullOrTrimmedEmpty(name)) || (TextUtils.isNullOrTrimmedEmpty(gender)) || (dateOfBirth == null))
+				throw new CIMInvalidParamException("Invalid parameter combination");
 
+			responseBody = dataManager.tracePatientByDemographics(name, dateOfBirth, gender, "", "");
+		}
 
 		ExchangeHelper.setOutBodyString(exchange, responseBody);
     }

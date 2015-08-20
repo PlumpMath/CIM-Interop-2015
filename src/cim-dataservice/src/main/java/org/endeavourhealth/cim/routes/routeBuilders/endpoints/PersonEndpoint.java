@@ -1,5 +1,6 @@
 package org.endeavourhealth.cim.routes.routeBuilders.endpoints;
 
+import org.endeavourhealth.cim.common.FHIRConstants;
 import org.endeavourhealth.cim.common.HeaderKey;
 import org.endeavourhealth.cim.common.HttpVerb;
 import org.endeavourhealth.cim.dataManager.DataManagerFactory;
@@ -15,7 +16,7 @@ public class PersonEndpoint extends CIMRouteBuilder {
     public void configureRoute() throws Exception {
 
         final String BASE_ROUTE = "/Person";
-        final String TRACE_ROUTE = "?identifier=urn:fhir.nhs.uk:id/NHSNumber|{nhsNumber}&surname={surname}&dob={dob}&gender={gender}";
+        final String TRACE_ROUTE = "?identifier={nhsNumber}&name={name}&dob={dob}&gender={gender}";
 
         final String TRACE_PROCESSOR_ROUTE = "TracePerson";
 
