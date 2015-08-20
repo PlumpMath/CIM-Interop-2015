@@ -27,6 +27,15 @@ public class ExchangeHelper {
         return getInHeaderString(exchange, headerKey);
     }
 
+    public static TokenSearchParameter getInHeaderToken(Exchange exchange, String headerKey) {
+        String tokenString = getInHeaderString(exchange, headerKey);
+
+        if (TextUtils.isNullOrTrimmedEmpty(tokenString))
+            return null;
+
+        return new TokenSearchParameter(tokenString);
+    }
+
     public static Boolean hasInHeader(Exchange exchange, String headerKey) {
         return exchange.getIn().getHeaders().containsKey(headerKey);
     }
