@@ -1,4 +1,4 @@
-package org.endeavourhealth.cim.common;
+package org.endeavourhealth.cim.common.searchParameters;
 
 import org.hl7.fhir.instance.model.DateTimeType;
 import org.hl7.fhir.instance.model.TemporalPrecisionEnum;

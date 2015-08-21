@@ -9,7 +9,7 @@ import org.endeavourhealth.cim.common.exceptions.CIMException;
 import org.endeavourhealth.cim.common.exceptions.CIMInvalidParamException;
 import org.endeavourhealth.cim.common.exceptions.CIMMissingParamException;
 import org.endeavourhealth.cim.dataManager.DataManagerFactory;
-import org.endeavourhealth.cim.common.DateSearchParameter;
+import org.endeavourhealth.cim.common.searchParameters.DateSearchParameter;
 import org.endeavourhealth.cim.dataManager.IDataManager;
 
 import java.util.Date;

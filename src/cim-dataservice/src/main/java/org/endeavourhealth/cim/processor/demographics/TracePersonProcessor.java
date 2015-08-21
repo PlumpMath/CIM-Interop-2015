@@ -2,13 +2,11 @@ package org.endeavourhealth.cim.processor.demographics;
 
 import org.apache.camel.Exchange;
 import org.endeavourhealth.cim.common.*;
-import org.endeavourhealth.cim.common.exceptions.CIMBusinessRuleException;
 import org.endeavourhealth.cim.common.exceptions.CIMInvalidParamException;
-import org.endeavourhealth.cim.common.exceptions.CIMValidationRuleException;
+import org.endeavourhealth.cim.common.searchParameters.TokenSearchParameter;
 import org.endeavourhealth.cim.common.text.TextUtils;
 import org.endeavourhealth.cim.dataManager.IDataManager;
 
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class TracePersonProcessor implements org.apache.camel.Processor {

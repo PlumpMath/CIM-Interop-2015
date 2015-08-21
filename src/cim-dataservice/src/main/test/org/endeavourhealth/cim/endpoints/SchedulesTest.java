@@ -10,7 +10,7 @@ import org.apache.commons.httpclient.HttpStatus;
 import org.endeavourhealth.cim.repository.informationSharing.ISFManager;
 import org.endeavourhealth.cim.Registry;
 import org.endeavourhealth.cim.TestRegistry;
-import org.endeavourhealth.cim.common.DateSearchParameter;
+import org.endeavourhealth.cim.common.searchParameters.DateSearchParameter;
 import org.endeavourhealth.cim.routes.routeBuilders.config.Configuration;
 import org.endeavourhealth.cim.routes.routeBuilders.endpoints.ScheduleEndpoint;
 import org.junit.Test;

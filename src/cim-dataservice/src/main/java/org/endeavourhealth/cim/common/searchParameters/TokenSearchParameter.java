@@ -1,4 +1,4 @@
-package org.endeavourhealth.cim.common;
+package org.endeavourhealth.cim.common.searchParameters;
 
 public class TokenSearchParameter {
 
@@ -8,7 +8,8 @@ public class TokenSearchParameter {
     public TokenSearchParameter(String queryString) {
 
         if (queryString.contains("|")) {
-            String[] parts = queryString.split("\\|");
+            String[] parts = queryString.split("\\|", -1);
+
             System = parts[0];
             Code = parts[1];
         }

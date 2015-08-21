@@ -7,7 +7,7 @@ import org.endeavourhealth.cim.common.HeaderKey;
 import org.endeavourhealth.cim.common.exceptions.CIMException;
 import org.endeavourhealth.cim.common.exceptions.CIMInvalidParamException;
 import org.endeavourhealth.cim.dataManager.DataManagerFactory;
-import org.endeavourhealth.cim.common.DateSearchParameter;
+import org.endeavourhealth.cim.common.searchParameters.DateSearchParameter;
 import org.endeavourhealth.cim.common.DateUtils;
 import org.endeavourhealth.cim.dataManager.IDataManager;
 
