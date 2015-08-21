@@ -12,6 +12,8 @@ public class NhsNumberValidator {
         if (TextUtils.isNullOrTrimmedEmpty(nhsNumber))
             return false;
 
+		nhsNumber = nhsNumber.replace(" ","");
+
         Pattern tenDigitsPattern = Pattern.compile("^[0-9]{10}$");
         Matcher matcher = tenDigitsPattern.matcher(nhsNumber);
 
