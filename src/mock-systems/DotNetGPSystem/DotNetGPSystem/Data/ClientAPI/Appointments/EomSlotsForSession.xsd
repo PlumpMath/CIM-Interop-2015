@@ -1,6 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- edited with XMLSpy v2006 sp2 U (http://www.altova.com) by developer (EMIS) -->
-<!-- edited with XMLSPY v5 rel. 4 U (http://www.xmlspy.com) by Carolyn  Meakin (Emis) -->
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
 	<xs:complexType name="SlotListStruct">
 		<xs:sequence>
@@ -11,6 +9,7 @@
 		<xs:sequence>
 			<xs:element name="DBID" type="xs:int"/>
 			<xs:element name="RefID" type="xs:int"/>
+      <xs:element name="Date" type="xs:string"/>
 			<xs:element name="StartTime" type="xs:string"/>
 			<xs:element name="SlotLength" type="xs:string"/>
 			<xs:element name="Type" type="TypeStruct"/>

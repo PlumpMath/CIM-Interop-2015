@@ -19,6 +19,7 @@ import javax.xml.bind.annotation.XmlType;
  *       &lt;sequence>
  *         &lt;element name="DBID" type="{http://www.w3.org/2001/XMLSchema}int"/>
  *         &lt;element name="RefID" type="{http://www.w3.org/2001/XMLSchema}int"/>
+ *         &lt;element name="Date" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         &lt;element name="StartTime" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         &lt;element name="SlotLength" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         &lt;element name="Type" type="{}TypeStruct"/>
@@ -38,6 +39,7 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "SlotStruct", propOrder = {
     "dbid",
     "refID",
+    "date",
     "startTime",
     "slotLength",
     "type",
@@ -52,6 +54,8 @@ public class SlotStruct {
     protected int dbid;
     @XmlElement(name = "RefID")
     protected int refID;
+    @XmlElement(name = "Date", required = true)
+    protected String date;
     @XmlElement(name = "StartTime", required = true)
     protected String startTime;
     @XmlElement(name = "SlotLength", required = true)
@@ -97,6 +101,30 @@ public class SlotStruct {
      */
     public void setRefID(int value) {
         this.refID = value;
+    }
+
+    /**
+     * Gets the value of the date property.
+     *
+     * @return
+     *     possible object is
+     *     {@link String }
+     *
+     */
+    public String getDate() {
+        return date;
+    }
+
+    /**
+     * Sets the value of the date property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *
+     */
+    public void setDate(String value) {
+        this.date = value;
     }
 
     /**

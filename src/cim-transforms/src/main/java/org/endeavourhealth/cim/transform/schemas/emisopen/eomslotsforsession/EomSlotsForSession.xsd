@@ -9,6 +9,7 @@
 		<xs:sequence>
 			<xs:element name="DBID" type="xs:int"/>
 			<xs:element name="RefID" type="xs:int"/>
+			<xs:element name="Date" type="xs:string"/>
 			<xs:element name="StartTime" type="xs:string"/>
 			<xs:element name="SlotLength" type="xs:string"/>
 			<xs:element name="Type" type="TypeStruct"/>

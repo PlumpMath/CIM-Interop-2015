@@ -1,6 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- edited with XMLSpy v2006 sp2 U (http://www.altova.com) by John McLusky (EMIS) -->
-<!-- edited with XMLSPY v5 rel. 4 U (http://www.xmlspy.com) by Carolyn  Meakin (Emis) -->
 <xs:schema xmlns="http://www.e-mis.com/emisopen" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.e-mis.com/emisopen" elementFormDefault="qualified" attributeFormDefault="unqualified">
 	<!--Author: Jonathan Homer (jonathan.homer@e-mis.com)-->
 	<!--Created: 01/01/2006-->

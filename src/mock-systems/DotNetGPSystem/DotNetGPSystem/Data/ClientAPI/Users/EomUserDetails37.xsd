@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- edited with XMLSPY v5 rel. 4 U (http://www.xmlspy.com) by Carolyn  Meakin (Emis) -->
 <xs:schema targetNamespace="http://www.e-mis.com/emisopen/MedicalRecord" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.e-mis.com/emisopen/MedicalRecord" elementFormDefault="qualified" attributeFormDefault="unqualified">
 	<xs:include schemaLocation="EomMedicalRecord35.xsd"/>
 	<xs:element name="UserDetails">

@@ -40,7 +40,10 @@ namespace EomSlotsForSession {
         
         /// <remarks/>
         public int RefID;
-        
+
+        /// <remarks/>
+        public string Date;
+
         /// <remarks/>
         public string StartTime;
         

@@ -10,6 +10,7 @@ import org.hl7.fhir.instance.model.*;
 
 import java.sql.Time;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class SlotTransformer {
 
@@ -26,11 +27,14 @@ public class SlotTransformer {
         Slot slot = new Slot();
         slot.setId(Integer.toString(appointmentSlot.getDBID()));
 
-        Time start = EmisOpenCommon.getTime(appointmentSlot.getStartTime());
-        slot.setStart(start);
+        Time startTime = EmisOpenCommon.getTime(appointmentSlot.getStartTime());
+        Time endTime = EmisOpenCommon.addMinutesToTime(startTime, Integer.parseInt(appointmentSlot.getSlotLength()));
 
-        Time end = EmisOpenCommon.addMinutesToTime(start, Integer.parseInt(appointmentSlot.getSlotLength()));
-        slot.setEnd(end);
+        Date startDate = EmisOpenCommon.getDateAndTime(appointmentSlot.getDate(), appointmentSlot.getStartTime());
+        Date endDate = EmisOpenCommon.getDateAndTime(appointmentSlot.getDate(), endTime.toString());
+
+        slot.setStart(startDate);
+        slot.setEnd(endDate);
 
         String slotStatus = appointmentSlot.getStatus();
 

@@ -82,6 +82,7 @@ namespace DotNetGPSystem
                 DBID = slot.SlotId,
                 RefID = slot.SlotId,
                 Status = slot.Status,
+                Date = slot.Session.Date.ToShortDateString(),
                 StartTime = slot.FormattedTime,
                 SlotLength = slot.Length.ToString(),
                 Reason = string.Empty,
