@@ -10,6 +10,7 @@ import org.hl7.fhir.instance.formats.JsonParser;
 import org.hl7.fhir.instance.model.Resource;
 
 import java.io.InputStream;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.UUID;
@@ -69,12 +70,13 @@ public class ExchangeHelper {
         return arrayList;
     }
 
-    public static String getEndpointPath(Exchange exchange) {
+    public static String getEndpointPath(Exchange exchange) throws UnsupportedEncodingException {
 		String path = exchange.getIn().getHeader("CamelHttpPath").toString();
 		Object query = exchange.getIn().getHeader("CamelHttpQuery");
 
-		if (query != null)
-			path += "?" + query.toString();
+		if (query != null) {
+			path += "?" + java.net.URLDecoder.decode(query.toString(), "UTF-8");
+		}
 
 		return path;
     }

@@ -123,7 +123,7 @@ function buildQuery(path, table) {
                 else
                     query += "&";
 
-                query += encodeURIComponent(this.name) + '=' + encodeURIComponent($(this).val()).replace('%0A', '&' + this.name + '=');
+                query += this.name + '=' + $(this).val().replace('\n', '&' + this.name + '=');
             }
         }
     });
