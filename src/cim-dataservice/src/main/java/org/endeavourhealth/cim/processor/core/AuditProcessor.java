@@ -2,6 +2,8 @@ package org.endeavourhealth.cim.processor.core;
 
 import org.apache.camel.Exchange;
 import org.apache.commons.io.IOUtils;
+import org.endeavourhealth.cim.common.ExchangeHelper;
+import org.endeavourhealth.cim.common.HeaderKey;
 import org.endeavourhealth.cim.repository.audit.AuditRepository;
 
 import java.io.InputStream;
@@ -20,9 +22,10 @@ public class AuditProcessor implements org.apache.camel.Processor {
             message = IOUtils.toString((InputStream)body);
 
         Date date = new Date();
+        String apikey = ExchangeHelper.getInHeaderString(exchange, HeaderKey.ApiKey);
 
         AuditRepository auditRepository = new AuditRepository();
-        auditRepository.add(date, message);
+        auditRepository.add(date, apikey, message);
 
         exchange.getIn().setBody(Arrays.asList(date, message));
     }
