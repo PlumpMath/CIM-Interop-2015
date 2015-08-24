@@ -1,0 +1,29 @@
+<project>
+    <target name="Configure for Azure">
+        <tstamp>
+            <format property="BUILD_TIME" pattern="d-MMMM-yyyy HH:mm" locale="en,GB"/>
+        </tstamp>
+        <copy file="cim-apidoc\web\cim-api.json" tofile="cim-api.json.bak" overwrite="true"/>
+        <replace file='cim-apidoc\web\cim-api.json' token='"host": "localhost:8080"' value='"host": "endeavour-cim.cloudapp.net"'/>
+        <replace file='cim-apidoc\web\cim-api.json' token='BUILD_TIME' value='${BUILD_TIME}'/>
+        <copy file="cim-dataservice\src\main\java\org\endeavourhealth\cim\Registry.java" tofile="Registry.java.bak" overwrite="true"/>
+        <replace file="cim-dataservice\src\main\java\org\endeavourhealth\cim\Registry.java" token='EMIS_SOAP_URI = "http://localhost:9001/GPApiService/Soap"' value='EMIS_SOAP_URI = "http://endeavour-gp.cloudapp.net:9001/GPApiService/Soap"'/>
+        <replace file="cim-dataservice\src\main\java\org\endeavourhealth\cim\Registry.java" token='BASE_URI = "http://localhost:8080/api/0.1"' value='BASE_URI = "http://endeavour-cim.cloudapp.net/api/0.1"'/>
+    </target>
+    <target name="Deploy to Azure">
+        <ftp
+            server="endeavour-cim.cloudapp.net"
+            remotedir="/var/lib/tomcat7/webapps"
+            userid="azureuser"
+            password="Azureuser123">
+            <fileset dir="../out/artifacts/">
+                <include name="ROOT.war"/>
+                <include name="api.war"/>
+            </fileset>
+        </ftp>
+    </target>
+    <target name="Revert Azure Config">
+        <move file="cim-api.json.bak" tofile="cim-apidoc\web\cim-api.json" overwrite="true"/>
+        <move file="Registry.java.bak" tofile="cim-dataservice\src\main\java\org\endeavourhealth\cim\Registry.java" overwrite="true"/>
+    </target>
+</project>
