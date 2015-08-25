@@ -19,19 +19,23 @@ public class FhirFilterHelper {
 			);
 
 	public static Bundle getConditions(Bundle bundle) {
-		return removeNonAdminResourcesExcept(bundle, ResourceType.Condition);
+		return getResourcesOfType(bundle, ResourceType.Condition);
+//		return removeNonAdminResourcesExcept(bundle, ResourceType.Condition);
 	}
 
 	public static Bundle getImmunizations(Bundle bundle) {
-		return removeNonAdminResourcesExcept(bundle, ResourceType.Immunization);
+		return getResourcesOfType(bundle, ResourceType.Immunization);
+//		return removeNonAdminResourcesExcept(bundle, ResourceType.Immunization);
 	}
 
 	public static Bundle getMedicationPrescriptions(Bundle bundle) {
-		return removeNonAdminResourcesExcept(bundle, ResourceType.MedicationPrescription);
+		return getResourcesOfType(bundle, ResourceType.MedicationPrescription);
+//		return removeNonAdminResourcesExcept(bundle, ResourceType.MedicationPrescription);
 	}
 
 	public static Bundle getAllergyIntolerances(Bundle bundle) {
-		return removeNonAdminResourcesExcept(bundle, ResourceType.AllergyIntolerance);
+		return getResourcesOfType(bundle, ResourceType.AllergyIntolerance);
+//		return removeNonAdminResourcesExcept(bundle, ResourceType.AllergyIntolerance);
 	}
 
 	public static Bundle filterScheduleByPractitioner(Bundle bundle, UUID practitionerId) {
@@ -60,21 +64,31 @@ public class FhirFilterHelper {
 		return BundleHelper.createBundle(bundle.getType(), bundle.getId(), bundle.getBase(), resources);
 	}
 
-	private static boolean isAdminResource(Resource resource) {
-		return _adminResourceTypes.contains(resource.getResourceType());
+	private static Bundle getResourcesOfType(Bundle bundle, ResourceType resourceType) {
+		List<Resource> resources = new ArrayList<>();
+
+		for(Bundle.BundleEntryComponent component : bundle.getEntry())
+			if (component.getResource().getResourceType() == resourceType)
+				resources.add(component.getResource());
+
+		return BundleHelper.createBundle(bundle.getType(), bundle.getId(), bundle.getBase(), resources);
 	}
 
-	public static Bundle removeNonAdminResourcesExcept(Bundle bundle, ResourceType resourceTypeToKeep) {
-		List<Bundle.BundleEntryComponent> componentsToRemove = new ArrayList<>();
-
-		for(Bundle.BundleEntryComponent component : bundle.getEntry()) {
-			Resource resource = component.getResource();
-			if (isAdminResource(resource) == false && resource.getResourceType() != resourceTypeToKeep)
-				componentsToRemove.add(component);
-		}
-
-		bundle.getEntry().removeAll(componentsToRemove);
-
-		return bundle;
-	}
+//	private static boolean isAdminResource(Resource resource) {
+//		return _adminResourceTypes.contains(resource.getResourceType());
+//	}
+//
+//	public static Bundle removeNonAdminResourcesExcept(Bundle bundle, ResourceType resourceTypeToKeep) {
+//		List<Bundle.BundleEntryComponent> componentsToRemove = new ArrayList<>();
+//
+//		for(Bundle.BundleEntryComponent component : bundle.getEntry()) {
+//			Resource resource = component.getResource();
+//			if (isAdminResource(resource) == false && resource.getResourceType() != resourceTypeToKeep)
+//				componentsToRemove.add(component);
+//		}
+//
+//		bundle.getEntry().removeAll(componentsToRemove);
+//
+//		return bundle;
+//	}
 }
