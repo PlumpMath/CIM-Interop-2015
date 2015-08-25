@@ -2,6 +2,7 @@ package org.endeavourhealth.cim.dataManager;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.UUID;
 
 public interface IDataManager {
@@ -26,6 +27,6 @@ public interface IDataManager {
     String getPatientDemographics(String odsCode, String nhsNumber) throws Exception;
     String tracePersonByDemographics(String surname, Date dateOfBirth, String gender, String forename, String postcode) throws Exception;
     String tracePersonByNhsNumber(String nhsNumber) throws Exception;
-    ArrayList<UUID> getChangedPatients(String odsCode, Date date) throws Exception;
+    List<UUID> getChangedPatients(String odsCode, Date date) throws Exception;
 
 }

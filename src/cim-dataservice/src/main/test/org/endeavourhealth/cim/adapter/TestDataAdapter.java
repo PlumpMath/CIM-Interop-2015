@@ -2,6 +2,7 @@ package org.endeavourhealth.cim.dataManager.emis;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.UUID;
 
 public class TestDataAdapter extends EmisDataAdapter {
@@ -19,8 +20,8 @@ public class TestDataAdapter extends EmisDataAdapter {
         return "";
     }
 	@Override
-    public String tracePatientByNhsNumber(String nhsNumber) {
-        return "";
+    public List<String> tracePatientByNhsNumber(String nhsNumber) {
+        return new ArrayList<>();
     }
 	@Override
     public ArrayList<UUID> getChangedPatients(String odsCode, Date date) {
