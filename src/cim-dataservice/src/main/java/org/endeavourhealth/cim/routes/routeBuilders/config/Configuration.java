@@ -18,6 +18,8 @@ public class Configuration extends RouteBuilder {
             .to(Route.direct(CoreRouteName.CIM_CRITICAL_ERROR))
             .stop();
 
+		getContext().getManagementNameStrategy().setNamePattern("CIM-DataService-#name#");
+
 		Tracer tracer = new Tracer();
 		tracer.getDefaultTraceFormatter().setShowBreadCrumb(false);
 		getContext().addInterceptStrategy(tracer);
