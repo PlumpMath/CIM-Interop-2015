@@ -18,33 +18,36 @@ public class SecurityProcessor implements Processor {
 
     public void process(Exchange exchange) throws Exception {
 
-        String publicKey = ExchangeHelper.getInHeaderString(exchange, HeaderKey.ApiKey);
+        String apiKey = ExchangeHelper.getInHeaderString(exchange, HeaderKey.ApiKey);
         String inboundHash = ExchangeHelper.getInHeaderString(exchange, HeaderKey.Hash);
         String method = ExchangeHelper.getEndpointPath(exchange);
         String body = ExchangeHelper.getInBodyString(exchange);
 
-        if (!validateMessage(publicKey, method, body, inboundHash))
+        if (!validateMessage(apiKey, method, body, inboundHash))
             throw new CIMSecurityFailedException();
     }
 
-    private Boolean validateMessage(String publicKey, String method, String body, String inboundHash) {
+    private Boolean validateMessage(String apiKey, String method, String body, String inboundHash) throws CIMSecurityFailedException {
 
-        User apikey = null;
+		if (apiKey == null || apiKey.isEmpty())
+			throw new CIMSecurityFailedException("Missing Api key");
+
+        User user = null;
 
         try {
             UserRepository apiKeyRepository = new UserRepository();
-            apikey = apiKeyRepository.getByApiKey(publicKey);
+            user = apiKeyRepository.getByApiKey(apiKey);
         }
         catch (RepositoryException re) {
             return false;
         }
 
-        if (apikey == null)
+        if (user == null)
             return false;
 
-        String privateKey = apikey.getSecret();
+        String userSecret = user.getSecret();
 
-        if (privateKey == null)
+        if (userSecret == null)
             return false;
 
         String data = method;
@@ -54,8 +57,8 @@ public class SecurityProcessor implements Processor {
         // Hash data based on private key
         try {
             Mac mac = Mac.getInstance("HmacSHA256");
-            SecretKeySpec secret = new SecretKeySpec(privateKey.getBytes(StandardCharsets.UTF_8), "HmacSHA256");
-            mac.init(secret);
+            SecretKeySpec keySpec = new SecretKeySpec(userSecret.getBytes(StandardCharsets.UTF_8), "HmacSHA256");
+            mac.init(keySpec);
             byte[] digest = mac.doFinal(data.getBytes(StandardCharsets.UTF_8));
             String hash = new String(Base64.encodeBase64(digest), StandardCharsets.UTF_8);
             // Compare to inbound hash
