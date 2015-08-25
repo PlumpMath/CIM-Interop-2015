@@ -1,10 +1,10 @@
 package org.endeavourhealth.cim.transform.openhr.fromfhir.clinical;
 
 import org.apache.commons.lang3.StringUtils;
-import org.endeavourhealth.cim.transform.SourceDocumentInvalidException;
-import org.endeavourhealth.cim.transform.TransformException;
-import org.endeavourhealth.cim.transform.TransformFeatureNotSupportedException;
-import org.endeavourhealth.cim.transform.TransformHelper;
+import org.endeavourhealth.cim.transform.exceptions.SourceDocumentInvalidException;
+import org.endeavourhealth.cim.transform.exceptions.TransformException;
+import org.endeavourhealth.cim.transform.exceptions.TransformFeatureNotSupportedException;
+import org.endeavourhealth.cim.transform.common.TransformHelper;
 import org.endeavourhealth.cim.transform.openhr.fromfhir.OpenHRContainer;
 import org.endeavourhealth.cim.transform.schemas.openhr.*;
 import org.hl7.fhir.instance.model.Coding;

@@ -6,6 +6,7 @@ import org.endeavourhealth.cim.common.exceptions.CIMInvalidParamException;
 import org.endeavourhealth.cim.common.searchParameters.TokenSearchParameter;
 import org.endeavourhealth.cim.common.text.TextUtils;
 import org.endeavourhealth.cim.dataManager.IDataManager;
+import org.endeavourhealth.cim.transform.common.FhirConstants;
 
 import java.util.Date;
 

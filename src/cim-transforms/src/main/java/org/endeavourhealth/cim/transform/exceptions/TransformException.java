@@ -1,4 +1,4 @@
-package org.endeavourhealth.cim.transform;
+package org.endeavourhealth.cim.transform.exceptions;
 
 public abstract class TransformException extends Exception {
     public TransformException(String message) { super(message); }

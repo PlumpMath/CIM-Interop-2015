@@ -1,9 +1,9 @@
 package org.endeavourhealth.cim.transform.emisopen;
 
-import org.endeavourhealth.cim.common.BundleHelper;
-import org.endeavourhealth.cim.common.BundleProperties;
-import org.endeavourhealth.cim.transform.TransformException;
-import org.endeavourhealth.cim.transform.TransformHelper;
+import org.endeavourhealth.cim.transform.common.BundleHelper;
+import org.endeavourhealth.cim.transform.common.BundleProperties;
+import org.endeavourhealth.cim.transform.exceptions.TransformException;
+import org.endeavourhealth.cim.transform.common.TransformHelper;
 import org.endeavourhealth.cim.transform.schemas.emisopen.eomappointmentsessions.AppointmentSessionList;
 import org.endeavourhealth.cim.transform.schemas.emisopen.eomgetpatientappointments.PatientAppointmentList;
 import org.endeavourhealth.cim.transform.schemas.emisopen.eomorganisationinformation.OrganisationInformation;

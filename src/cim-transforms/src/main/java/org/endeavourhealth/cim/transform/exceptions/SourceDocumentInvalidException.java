@@ -1,4 +1,4 @@
-package org.endeavourhealth.cim.transform;
+package org.endeavourhealth.cim.transform.exceptions;
 
 public class SourceDocumentInvalidException extends TransformException {
     public SourceDocumentInvalidException(String message) { super(message); }

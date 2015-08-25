@@ -1,4 +1,4 @@
-package org.endeavourhealth.cim.common;
+package org.endeavourhealth.cim.transform.common;
 
 import org.hl7.fhir.instance.model.Reference;
 import org.hl7.fhir.instance.model.ResourceType;

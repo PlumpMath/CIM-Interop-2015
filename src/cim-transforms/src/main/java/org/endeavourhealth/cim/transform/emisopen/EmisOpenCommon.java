@@ -1,6 +1,6 @@
 package org.endeavourhealth.cim.transform.emisopen;
 
-import org.endeavourhealth.cim.transform.SerializationException;
+import org.endeavourhealth.cim.transform.exceptions.SerializationException;
 import org.endeavourhealth.cim.transform.schemas.emisopen.eomorganisationinformation.OrganisationInformation;
 
 import java.sql.Time;

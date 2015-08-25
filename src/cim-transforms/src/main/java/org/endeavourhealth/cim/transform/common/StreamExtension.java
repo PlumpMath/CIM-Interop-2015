@@ -1,4 +1,4 @@
-package org.endeavourhealth.cim.common;
+package org.endeavourhealth.cim.transform.common;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;

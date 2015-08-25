@@ -1,6 +1,6 @@
 package org.endeavourhealth.cim.transform.openhr.tofhir;
 
-import org.endeavourhealth.cim.common.StreamExtension;
+import org.endeavourhealth.cim.transform.common.StreamExtension;
 import org.endeavourhealth.cim.transform.schemas.openhr.OpenHR001Encounter;
 import org.hl7.fhir.instance.model.*;
 

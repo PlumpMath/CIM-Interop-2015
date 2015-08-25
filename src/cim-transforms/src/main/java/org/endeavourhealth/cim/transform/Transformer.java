@@ -1,6 +1,7 @@
 package org.endeavourhealth.cim.transform;
 
-import org.endeavourhealth.cim.common.BundleProperties;
+import org.endeavourhealth.cim.transform.common.BundleProperties;
+import org.endeavourhealth.cim.transform.exceptions.TransformException;
 import org.hl7.fhir.instance.model.Bundle;
 import org.hl7.fhir.instance.model.Condition;
 import org.hl7.fhir.instance.model.Patient;

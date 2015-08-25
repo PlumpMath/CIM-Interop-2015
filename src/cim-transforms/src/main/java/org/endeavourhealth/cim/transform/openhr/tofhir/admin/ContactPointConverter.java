@@ -1,7 +1,7 @@
 package org.endeavourhealth.cim.transform.openhr.tofhir.admin;
 
 import org.apache.commons.lang3.StringUtils;
-import org.endeavourhealth.cim.transform.TransformFeatureNotSupportedException;
+import org.endeavourhealth.cim.transform.exceptions.TransformFeatureNotSupportedException;
 import org.endeavourhealth.cim.transform.openhr.tofhir.ToFHIRHelper;
 import org.endeavourhealth.cim.transform.schemas.openhr.DtContact;
 import org.endeavourhealth.cim.transform.schemas.openhr.VocContactType;

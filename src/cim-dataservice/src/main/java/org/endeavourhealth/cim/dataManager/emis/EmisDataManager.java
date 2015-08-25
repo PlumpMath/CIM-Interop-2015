@@ -1,13 +1,11 @@
 package org.endeavourhealth.cim.dataManager.emis;
 
 import org.endeavourhealth.cim.Registry;
-import org.endeavourhealth.cim.common.BundleProperties;
+import org.endeavourhealth.cim.transform.common.BundleProperties;
 import org.endeavourhealth.cim.common.text.TextUtils;
 import org.endeavourhealth.cim.dataManager.IDataManager;
 import org.endeavourhealth.cim.common.FhirFilterHelper;
 import org.endeavourhealth.cim.transform.EmisTransformer;
-import org.endeavourhealth.cim.transform.emisopen.EmisOpenTransformer;
-import org.endeavourhealth.cim.transform.openhr.OpenHRTransformer;
 import org.hl7.fhir.instance.formats.JsonParser;
 import org.hl7.fhir.instance.model.*;
 
