@@ -9,6 +9,7 @@ import org.endeavourhealth.cim.dataManager.IDataManager;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.UUID;
 
 public class GetChangedPatientsProcessor implements org.apache.camel.Processor {
@@ -43,7 +44,7 @@ public class GetChangedPatientsProcessor implements org.apache.camel.Processor {
         }
 
         try {
-            ArrayList<UUID> changedPatientIds = _dataManager.getChangedPatients(odsCode, dateUpdated);
+            List<UUID> changedPatientIds = _dataManager.getChangedPatients(odsCode, dateUpdated);
             exchange.getIn().setBody(changedPatientIds);
         } catch (Exception e) {
             // Rollback poll date as this poll failed

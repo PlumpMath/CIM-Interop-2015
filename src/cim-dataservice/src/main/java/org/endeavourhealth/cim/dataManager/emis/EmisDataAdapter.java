@@ -4,8 +4,14 @@ import org.endeavourhealth.cim.Registry;
 import org.endeavourhealth.cim.common.DateUtils;
 import org.endeavourhealth.cim.common.HeaderKey;
 import org.endeavourhealth.cim.common.exceptions.CIMPrincipalSystemException;
+import org.w3c.dom.Node;
 
-import javax.xml.soap.*;
+import javax.xml.soap.SOAPMessage;
+import javax.xml.soap.SOAPConnection;
+import javax.xml.soap.SOAPConnectionFactory;
+import javax.xml.soap.SOAPElement;
+import javax.xml.soap.MessageFactory;
+import javax.xml.soap.MimeHeaders;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
@@ -25,7 +31,7 @@ public class EmisDataAdapter {
 
         SOAPMessage responseMessage = performSOAPCall(soapMethod, parameters);
 
-        return getSOAPResult(responseMessage, soapMethod);
+        return getSOAPResultAsString(responseMessage, soapMethod);
     }
 
     public String getPatientDemographicsByNHSNumber(String odsCode, String nhsNumber) throws Exception {
@@ -38,7 +44,7 @@ public class EmisDataAdapter {
 
         SOAPMessage responseMessage = performSOAPCall(soapMethod, parameters);
 
-        return getSOAPResult(responseMessage, soapMethod);
+        return getSOAPResultAsString(responseMessage, soapMethod);
     }
 
     public String getPatientDemographicsByPatientId(String odsCode, UUID patientId) throws Exception {
@@ -51,7 +57,7 @@ public class EmisDataAdapter {
 
         SOAPMessage responseMessage = performSOAPCall(soapMethod, parameters);
 
-        return getSOAPResult(responseMessage, soapMethod);
+        return getSOAPResultAsString(responseMessage, soapMethod);
     }
 
     public String tracePatientByDemographics(String surname, Date dateOfBirth, String gender, String forename, String postcode) throws Exception {
@@ -67,10 +73,10 @@ public class EmisDataAdapter {
 
         SOAPMessage responseMessage = performSOAPCall(soapMethod, parameters);
 
-        return getSOAPResult(responseMessage, soapMethod);
+        return getSOAPResultAsString(responseMessage, soapMethod);
     }
 
-    public String tracePatientByNhsNumber(String nhsNumber) throws Exception {
+    public List<String> tracePatientByNhsNumber(String nhsNumber) throws Exception {
 
         final String soapMethod = "TracePatientByNhsNumber";
 
@@ -79,10 +85,10 @@ public class EmisDataAdapter {
 
         SOAPMessage responseMessage = performSOAPCall(soapMethod, parameters);
 
-        return getSOAPResult(responseMessage, soapMethod);
+        return getSOAPResultAsStringArray(responseMessage, soapMethod);
     }
 
-    public ArrayList<UUID> getChangedPatients(String odsCode, Date date) throws Exception {
+    public List<UUID> getChangedPatients(String odsCode, Date date) throws Exception {
 
         final String soapMethod = "GetChangedPatients";
 
@@ -92,14 +98,7 @@ public class EmisDataAdapter {
 
         SOAPMessage responseMessage = performSOAPCall(soapMethod, parameters);
 
-        String responseText = getSOAPResult(responseMessage, soapMethod);
-
-        ArrayList<UUID> uuids = new ArrayList<>();
-        if (!responseText.isEmpty())
-            for (String uuidString : responseText.split("(?<=\\G.{36})"))
-                uuids.add(UUID.fromString(uuidString));
-
-        return uuids;
+        return getSOAPResultAsUUIDArray(responseMessage, soapMethod);
     }
 
     // Medical record
@@ -113,7 +112,7 @@ public class EmisDataAdapter {
 
         SOAPMessage responseMessage = performSOAPCall(soapMethod, parameters);
 
-        return getSOAPResult(responseMessage, soapMethod);
+        return getSOAPResultAsString(responseMessage, soapMethod);
     }
 
     // Appointments
@@ -129,7 +128,7 @@ public class EmisDataAdapter {
 
         SOAPMessage responseMessage = performSOAPCall(soapMethod, parameters);
 
-        return getSOAPResult(responseMessage, soapMethod);
+        return getSOAPResultAsString(responseMessage, soapMethod);
     }
 
     public String bookSlot(String odsCode, String slotId, UUID patientId, String reason) throws Exception {
@@ -144,7 +143,7 @@ public class EmisDataAdapter {
 
         SOAPMessage responseMessage = performSOAPCall(soapMethod, parameters);
 
-        return getSOAPResult(responseMessage, soapMethod);
+        return getSOAPResultAsString(responseMessage, soapMethod);
     }
 
     public String cancelSlot(String odsCode, String slotId, UUID patientId) throws Exception {
@@ -158,7 +157,7 @@ public class EmisDataAdapter {
 
         SOAPMessage responseMessage = performSOAPCall(soapMethod, parameters);
 
-        return getSOAPResult(responseMessage, soapMethod);
+        return getSOAPResultAsString(responseMessage, soapMethod);
     }
 
     public String getSchedules(String odsCode, Date dateFrom, Date dateTo) throws Exception {
@@ -172,7 +171,7 @@ public class EmisDataAdapter {
 
         SOAPMessage responseMessage = performSOAPCall(soapMethod, parameters);
 
-        return getSOAPResult(responseMessage, soapMethod);
+        return getSOAPResultAsString(responseMessage, soapMethod);
     }
 
     public String getSlots(String odsCode, String scheduleId) throws Exception {
@@ -185,7 +184,7 @@ public class EmisDataAdapter {
 
         SOAPMessage responseMessage = performSOAPCall(soapMethod, parameters);
 
-        return getSOAPResult(responseMessage, soapMethod);
+        return getSOAPResultAsString(responseMessage, soapMethod);
     }
 
     public String getOrganisationInformation(String odsCode) throws Exception {
@@ -197,7 +196,7 @@ public class EmisDataAdapter {
 
         SOAPMessage responseMessage = performSOAPCall(soapMethod, parameters);
 
-        return getSOAPResult(responseMessage, soapMethod);
+        return getSOAPResultAsString(responseMessage, soapMethod);
     }
 
     // Utility methods
@@ -242,11 +241,57 @@ public class EmisDataAdapter {
         }
     }
 
-    private static String getSOAPResult(SOAPMessage soapResponse, String soapMethod) throws Exception {
+    private static List<String> getSOAPResultAsStringArray(SOAPMessage soapResponse, String soapMethod) throws Exception {
+
+        return getSOAPResultAsArray(soapResponse, soapMethod, "string");
+    }
+
+    private static List<UUID> getSOAPResultAsUUIDArray(SOAPMessage soapResponse, String soapMethod) throws Exception {
+
+        List<String> uuidsAsString = getSOAPResultAsArray(soapResponse, soapMethod, "guid");
+
+        List<UUID> uuids = new ArrayList<>();
+
+        for (String uuidString : uuidsAsString) {
+            try {
+                uuids.add(UUID.fromString(uuidString));
+            } catch (Exception e) {
+                throw new CIMPrincipalSystemException("Unexpected result from principal system.", e);
+            }
+        }
+
+        return uuids;
+    }
+
+    private static List<String> getSOAPResultAsArray(SOAPMessage soapResponse, String soapMethod, String typeName) throws Exception {
+
+        Node soapResult = getSOAPResultAsElement(soapResponse, soapMethod);
+
+        List<String> result = new ArrayList<>();
+
+        for (int i = 0; i < soapResult.getChildNodes().getLength(); i++) {
+
+            Node node = soapResult.getChildNodes().item(i);
+
+            if (!node.getLocalName().equals(typeName))
+                throw new CIMPrincipalSystemException("Unexpected result from principal system.");
+
+            result.add(node.getTextContent());
+        }
+
+        return result;
+    }
+
+    private static Node getSOAPResultAsElement(SOAPMessage soapResponse, String soapMethod) throws Exception {
 
         if (soapResponse.getSOAPBody().hasFault())
             throw new CIMPrincipalSystemException("SOAP fault received from principal system.\r\n\r\n" + soapResponse.getSOAPBody().getFault().getFaultString());
 
-        return soapResponse.getSOAPBody().getElementsByTagName(soapMethod + "Result").item(0).getTextContent();
+        return soapResponse.getSOAPBody().getElementsByTagName(soapMethod + "Result").item(0);
+    }
+
+    private static String getSOAPResultAsString(SOAPMessage soapResponse, String soapMethod) throws Exception {
+
+        return getSOAPResultAsElement(soapResponse, soapMethod).getTextContent();
     }
 }

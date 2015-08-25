@@ -185,14 +185,14 @@ public class EmisDataManager implements IDataManager {
 	@Override
 	public String tracePersonByNhsNumber(String nhsNumber) throws Exception {
 
-		String openHRXml = _emisDataAdapter.tracePatientByNhsNumber(nhsNumber);
+		List<String> openHRXml = _emisDataAdapter.tracePatientByNhsNumber(nhsNumber);
 
-		Bundle bundle = _emisTransformer.toFhirPersonBundle(openHRXml);
+		Bundle bundle = _emisTransformer.toFhirPersonBundle("");
 		return new JsonParser().composeString(bundle);
 	}
 
 	@Override
-	public ArrayList<UUID> getChangedPatients(String odsCode, Date date) throws Exception {
+	public List<UUID> getChangedPatients(String odsCode, Date date) throws Exception {
 
 		return _emisDataAdapter.getChangedPatients(odsCode, date);
 	}
