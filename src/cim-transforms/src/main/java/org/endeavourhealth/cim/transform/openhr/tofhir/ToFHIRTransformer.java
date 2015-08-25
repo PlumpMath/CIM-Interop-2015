@@ -5,6 +5,7 @@ import org.endeavourhealth.cim.transform.common.BundleProperties;
 import org.endeavourhealth.cim.transform.exceptions.TransformException;
 import org.endeavourhealth.cim.transform.common.TransformHelper;
 import org.endeavourhealth.cim.transform.openhr.tofhir.admin.AdminDomainTransformer;
+import org.endeavourhealth.cim.transform.openhr.tofhir.admin.PersonTransformer;
 import org.endeavourhealth.cim.transform.openhr.tofhir.clinical.HealthDomainTransformer;
 import org.endeavourhealth.cim.transform.schemas.openhr.OpenHR001OpenHealthRecord;
 import org.hl7.fhir.instance.model.*;
@@ -28,9 +29,8 @@ public class ToFHIRTransformer {
     }
 
     public Person transformToPerson(OpenHR001OpenHealthRecord openHR) throws TransformException {
-        Person person = new Person();
-        person.setId(UUID.randomUUID().toString());
-        return person;
+
+        return PersonTransformer.transform(openHR.getAdminDomain());
     }
 
     private FHIRContainer transform(OpenHR001OpenHealthRecord openHR) throws TransformException {

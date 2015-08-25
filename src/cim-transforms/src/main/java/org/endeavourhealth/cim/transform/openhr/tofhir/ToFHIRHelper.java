@@ -1,12 +1,17 @@
 package org.endeavourhealth.cim.transform.openhr.tofhir;
 
+import org.endeavourhealth.cim.transform.common.FhirConstants;
+import org.endeavourhealth.cim.transform.common.StreamExtension;
 import org.endeavourhealth.cim.transform.exceptions.SourceDocumentInvalidException;
 import org.endeavourhealth.cim.transform.exceptions.TransformFeatureNotSupportedException;
 import org.endeavourhealth.cim.transform.common.TransformHelper;
+import org.endeavourhealth.cim.transform.openhr.tofhir.admin.NameConverter;
 import org.endeavourhealth.cim.transform.schemas.openhr.*;
 import org.hl7.fhir.instance.model.*;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 public class ToFHIRHelper {
@@ -106,4 +111,81 @@ public class ToFHIRHelper {
         }
     }
 
+    public static OpenHR001Patient getPatient(OpenHR001AdminDomain adminDomain) throws TransformFeatureNotSupportedException {
+
+        List<OpenHR001Patient> patients = adminDomain.getPatient();
+
+        if (patients == null || patients.isEmpty())
+            throw new TransformFeatureNotSupportedException("No AdminDomain.Patients found.");
+
+        if (patients.size() != 1)
+            throw new TransformFeatureNotSupportedException("Only single patient supported in AdminDomain.Patients.");
+
+        OpenHR001Patient patient = patients.get(0);
+
+        ToFHIRHelper.ensureDboNotDelete(patient);
+
+        return patient;
+    }
+
+    public static OpenHR001Person getPerson(List<OpenHR001Person> sourcePeople, String personId) throws TransformFeatureNotSupportedException, SourceDocumentInvalidException {
+
+        if (sourcePeople == null)
+            throw new TransformFeatureNotSupportedException("No AdminDomain.Person found.");
+
+        OpenHR001Person person = sourcePeople.stream()
+                .filter(p -> p.getId().equals(personId))
+                .collect(StreamExtension.singleOrNullCollector());
+
+        //if the person is there multiple times, then it will just throw a general exception.
+
+        if (person == null)
+            throw new SourceDocumentInvalidException("Person not found: " + personId);
+
+        ToFHIRHelper.ensureDboNotDelete(person);
+
+        return person;
+    }
+
+    public static List<HumanName> convertName(OpenHR001Person sourcePerson)
+    {
+        return NameConverter.convert(
+                sourcePerson.getTitle(),
+                sourcePerson.getForenames(),
+                sourcePerson.getSurname(),
+                sourcePerson.getCallingName(),
+                sourcePerson.getBirthSurname(),
+                sourcePerson.getPreviousSurname());
+    }
+
+    public static List<Identifier> convertIdentifiers(List<DtPatientIdentifier> sourceIdentifiers) throws TransformFeatureNotSupportedException {
+        if (sourceIdentifiers == null || sourceIdentifiers.isEmpty())
+            return null;
+
+        List<Identifier> targetIdentifiers = new ArrayList<>();
+
+        for (DtPatientIdentifier source: sourceIdentifiers) {
+            targetIdentifiers.add(new Identifier()
+                    .setSystem(convertIdentifierType(source.getIdentifierType()))
+                    .setValue(source.getValue()));
+        }
+
+        return targetIdentifiers;
+    }
+
+    private static String convertIdentifierType(VocPatientIdentifierType openHRType) throws TransformFeatureNotSupportedException {
+        switch (openHRType)
+        {
+            case NHS:
+                return FhirConstants.CODE_SYSTEM_NHSNUMBER;
+            case ONHS:
+                return "http://fhir.endeavourhealth.org/identifier#oldnhsnumber";
+            case CHI:
+                return "http://fhir.endeavourhealth.org/identifier#chinumber";
+            case HOSP:
+                return "http://fhir.endeavourhealth.org/identifier#hospitalnumber";
+            default:
+                throw new TransformFeatureNotSupportedException("VocPatientIdentifierType not supported: " + openHRType.toString());
+        }
+    }
 }

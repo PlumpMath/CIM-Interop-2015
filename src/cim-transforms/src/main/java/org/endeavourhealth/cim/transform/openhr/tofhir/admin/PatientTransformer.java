@@ -18,25 +18,19 @@ class PatientTransformer {
 
     public static void transform(FHIRContainer container, OpenHR001AdminDomain adminDomain) throws TransformException {
 
-        OpenHR001Patient sourcePatient = getPatient(adminDomain);
-        OpenHR001Person sourcePerson = getPerson(adminDomain.getPerson(), sourcePatient.getId());
+        OpenHR001Patient sourcePatient = ToFHIRHelper.getPatient(adminDomain);
+        OpenHR001Person sourcePerson = ToFHIRHelper.getPerson(adminDomain.getPerson(), sourcePatient.getId());
 
         Patient targetPatient = new Patient();
 
         targetPatient.setId(sourcePatient.getId());
 
-        List<Identifier> identifiers = convertIdentifiers(sourcePatient.getPatientIdentifier());
+        List<Identifier> identifiers = ToFHIRHelper.convertIdentifiers(sourcePatient.getPatientIdentifier());
         if (identifiers != null) {
             identifiers.forEach(targetPatient::addIdentifier);
         }
 
-        List<HumanName> names = NameConverter.convert(
-                sourcePerson.getTitle(),
-                sourcePerson.getForenames(),
-                sourcePerson.getSurname(),
-                sourcePerson.getCallingName(),
-                sourcePerson.getBirthSurname(),
-                sourcePerson.getPreviousSurname());
+        List<HumanName> names = ToFHIRHelper.convertName(sourcePerson);
         if (names != null) names.forEach(targetPatient::addName);
 
         List<ContactPoint> telecoms = ContactPointConverter.convert(sourcePerson.getContact());
@@ -67,84 +61,5 @@ class PatientTransformer {
             default:
                 throw new TransformFeatureNotSupportedException("Sex vocabulary of " + sex.toString());
         }
-    }
-
-    private List<HumanName> convertName(OpenHR001Person sourcePerson)
-    {
-        return NameConverter.convert(
-                sourcePerson.getTitle(),
-                sourcePerson.getForenames(),
-                sourcePerson.getSurname(),
-                sourcePerson.getCallingName(),
-                sourcePerson.getBirthSurname(),
-                sourcePerson.getPreviousSurname());
-    }
-
-    private static OpenHR001Patient getPatient(OpenHR001AdminDomain adminDomain) throws TransformFeatureNotSupportedException {
-
-        List<OpenHR001Patient> patients = adminDomain.getPatient();
-
-        if (patients == null || patients.isEmpty())
-            throw new TransformFeatureNotSupportedException("No AdminDomain.Patients found.");
-
-        if (patients.size() != 1)
-            throw new TransformFeatureNotSupportedException("Only single patient supported in AdminDomain.Patients.");
-
-        OpenHR001Patient patient = patients.get(0);
-
-        ToFHIRHelper.ensureDboNotDelete(patient);
-
-        return patient;
-    }
-
-
-    private static OpenHR001Person getPerson(List<OpenHR001Person> sourcePeople, String personId) throws TransformFeatureNotSupportedException, SourceDocumentInvalidException {
-        if (sourcePeople == null)
-            throw new TransformFeatureNotSupportedException("No AdminDomain.Person found.");
-
-        OpenHR001Person person = sourcePeople.stream()
-                .filter(p -> p.getId().equals(personId))
-                .collect(StreamExtension.singleOrNullCollector());
-
-        //if the person is there multiple times, then it will just throw a general exception.
-
-        if (person == null)
-            throw new SourceDocumentInvalidException("Person not found: " + personId);
-
-        ToFHIRHelper.ensureDboNotDelete(person);
-
-        return person;
-    }
-
-    private static List<Identifier> convertIdentifiers(List<DtPatientIdentifier> sourceIdentifiers) throws TransformFeatureNotSupportedException {
-        if (sourceIdentifiers == null || sourceIdentifiers.isEmpty())
-            return null;
-
-        List<Identifier> targetIdentifiers = new ArrayList<>();
-
-        for (DtPatientIdentifier source: sourceIdentifiers) {
-            targetIdentifiers.add(new Identifier()
-                    .setSystem(convertIdentifierType(source.getIdentifierType()))
-                    .setValue(source.getValue()));
-        }
-
-        return targetIdentifiers;
-    }
-
-    private static String convertIdentifierType(VocPatientIdentifierType openHRType) throws TransformFeatureNotSupportedException {
-        switch (openHRType)
-        {
-            case NHS:
-                return FhirConstants.CODE_SYSTEM_NHSNUMBER;
-            case ONHS:
-                return "http://fhir.endeavourhealth.org/identifier#oldnhsnumber";
-            case CHI:
-                return "http://fhir.endeavourhealth.org/identifier#chinumber";
-            case HOSP:
-                return "http://fhir.endeavourhealth.org/identifier#hospitalnumber";
-            default:
-                throw new TransformFeatureNotSupportedException("VocPatientIdentifierType not supported: " + openHRType.toString());
-        }
-
     }
 }
