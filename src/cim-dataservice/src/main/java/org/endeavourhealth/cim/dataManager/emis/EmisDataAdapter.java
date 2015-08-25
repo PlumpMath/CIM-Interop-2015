@@ -60,7 +60,7 @@ public class EmisDataAdapter {
         return getSOAPResultAsString(responseMessage, soapMethod);
     }
 
-    public String tracePatientByDemographics(String surname, Date dateOfBirth, String gender, String forename, String postcode) throws Exception {
+    public List<String> tracePatientByDemographics(String surname, Date dateOfBirth, String gender, String forename, String postcode) throws Exception {
 
         final String soapMethod = "TracePatientByDemographics";
 
@@ -73,7 +73,7 @@ public class EmisDataAdapter {
 
         SOAPMessage responseMessage = performSOAPCall(soapMethod, parameters);
 
-        return getSOAPResultAsString(responseMessage, soapMethod);
+        return getSOAPResultAsStringArray(responseMessage, soapMethod);
     }
 
     public List<String> tracePatientByNhsNumber(String nhsNumber) throws Exception {

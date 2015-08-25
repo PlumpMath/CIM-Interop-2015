@@ -157,7 +157,7 @@ public class EmisDataManager implements IDataManager {
 		if (TextUtils.isNullOrTrimmedEmpty(openHRXml))
 			return null;
 
-		Patient patient = _emisTransformer.toFhirPatient(openHRXml);
+		Patient patient = _emisTransformer.openHRToFhirPatient(openHRXml);
 		return new JsonParser().composeString(patient);
 	}
 
@@ -169,16 +169,16 @@ public class EmisDataManager implements IDataManager {
 		if (TextUtils.isNullOrTrimmedEmpty(openHRXml))
 			return null;
 
-		Patient patient = _emisTransformer.toFhirPatient(openHRXml);
+		Patient patient = _emisTransformer.openHRToFhirPatient(openHRXml);
 		return new JsonParser().composeString(patient);
 	}
 
 	@Override
 	public String tracePersonByDemographics(String surname, Date dateOfBirth, String gender, String forename, String postcode) throws Exception {
 
-		String openHRXml = _emisDataAdapter.tracePatientByDemographics(surname, dateOfBirth, gender, forename, postcode);
+		List<String> openHRXml = _emisDataAdapter.tracePatientByDemographics(surname, dateOfBirth, gender, forename, postcode);
 
-		Bundle bundle = _emisTransformer.toFhirPersonBundle(openHRXml);
+		Bundle bundle = _emisTransformer.openHRToFhirPersonBundle(openHRXml);
 		return new JsonParser().composeString(bundle);
 	}
 
@@ -187,7 +187,7 @@ public class EmisDataManager implements IDataManager {
 
 		List<String> openHRXml = _emisDataAdapter.tracePatientByNhsNumber(nhsNumber);
 
-		Bundle bundle = _emisTransformer.toFhirPersonBundle("");
+		Bundle bundle = _emisTransformer.openHRToFhirPersonBundle(openHRXml);
 		return new JsonParser().composeString(bundle);
 	}
 

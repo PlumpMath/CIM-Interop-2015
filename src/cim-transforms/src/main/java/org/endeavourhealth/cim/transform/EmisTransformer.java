@@ -8,6 +8,8 @@ import org.hl7.fhir.instance.model.Bundle;
 import org.hl7.fhir.instance.model.Condition;
 import org.hl7.fhir.instance.model.Patient;
 
+import java.util.List;
+
 @SuppressWarnings("unused")
 public class EmisTransformer implements Transformer {
 
@@ -42,12 +44,12 @@ public class EmisTransformer implements Transformer {
 	}
 
 	/* demographic */
-	public Patient toFhirPatient(String openHRXml) throws TransformException {
+	public Patient openHRToFhirPatient(String openHRXml) throws TransformException {
 
 		return _openHRTransformer.toFhirPatient(openHRXml);
 	}
 
-	public Bundle toFhirPersonBundle(String openHRXmlArray) throws TransformException {
+	public Bundle openHRToFhirPersonBundle(List<String> openHRXmlArray) throws TransformException {
 
 		return _openHRTransformer.toFhirPersonBundle(openHRXmlArray);
 	}

@@ -16,8 +16,8 @@ public class TestDataAdapter extends EmisDataAdapter {
         return "";
     }
 	@Override
-    public String tracePatientByDemographics(String surname, Date dateOfBirth, String gender, String forename, String postcode) {
-        return "";
+    public List<String> tracePatientByDemographics(String surname, Date dateOfBirth, String gender, String forename, String postcode) {
+        return new ArrayList<>();
     }
 	@Override
     public List<String> tracePatientByNhsNumber(String nhsNumber) {

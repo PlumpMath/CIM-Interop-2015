@@ -6,6 +6,8 @@ import org.hl7.fhir.instance.model.Bundle;
 import org.hl7.fhir.instance.model.Condition;
 import org.hl7.fhir.instance.model.Patient;
 
+import java.util.List;
+
 public interface Transformer {
 
     /* administrative */
@@ -18,5 +20,6 @@ public interface Transformer {
     String fromFHIRCondition(Condition condition) throws TransformException;
 
     /* demographic */
-    Patient toFhirPatient(String openHRXml) throws TransformException;
+    Patient openHRToFhirPatient(String openHRXml) throws TransformException;
+    Bundle openHRToFhirPersonBundle(List<String> openHRXmlArray) throws TransformException;
 }
