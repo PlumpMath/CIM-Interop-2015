@@ -16,7 +16,7 @@
             remotedir="/var/lib/tomcat7/webapps"
             userid="azureuser"
             password="Azureuser123">
-            <fileset dir="../out/artifacts/">
+            <fileset dir="out/artifacts/">
                 <include name="ROOT.war"/>
                 <include name="api.war"/>
             </fileset>
