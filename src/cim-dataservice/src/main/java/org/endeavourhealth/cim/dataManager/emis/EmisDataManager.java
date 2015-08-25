@@ -154,37 +154,43 @@ public class EmisDataManager implements IDataManager {
 	@Override
 	public String getPatientDemographics(String odsCode, UUID patientId) throws Exception {
 
-		String patientDataInNativeFormat = _emisDataAdapter.getPatientDemographicsByPatientId(odsCode, patientId);
+		String openHRXml = _emisDataAdapter.getPatientDemographicsByPatientId(odsCode, patientId);
 
-		if (TextUtils.isNullOrTrimmedEmpty(patientDataInNativeFormat))
+		if (TextUtils.isNullOrTrimmedEmpty(openHRXml))
 			return null;
 
-		Patient patient = _emisTransformer.toFhirPatient(patientDataInNativeFormat);
+		Patient patient = _emisTransformer.toFhirPatient(openHRXml);
 		return new JsonParser().composeString(patient);
 	}
 
 	@Override
 	public String getPatientDemographics(String odsCode, String nhsNumber) throws Exception {
 
-		String patientDataInNativeFormat = _emisDataAdapter.getPatientDemographicsByNHSNumber(odsCode, nhsNumber);
-		Patient patient = _emisTransformer.toFhirPatient(patientDataInNativeFormat);
+		String openHRXml = _emisDataAdapter.getPatientDemographicsByNHSNumber(odsCode, nhsNumber);
+
+		if (TextUtils.isNullOrTrimmedEmpty(openHRXml))
+			return null;
+
+		Patient patient = _emisTransformer.toFhirPatient(openHRXml);
 		return new JsonParser().composeString(patient);
 	}
 
 	@Override
-	public String tracePatientByDemographics(String surname, Date dateOfBirth, String gender, String forename, String postcode) throws Exception {
+	public String tracePersonByDemographics(String surname, Date dateOfBirth, String gender, String forename, String postcode) throws Exception {
 
-		String patientDataInNativeFormat = _emisDataAdapter.tracePatientByDemographics(surname, dateOfBirth, gender, forename, postcode);
-		Patient patient = _emisTransformer.toFhirPatient(patientDataInNativeFormat);
-		return new JsonParser().composeString(patient);
+		String openHRXml = _emisDataAdapter.tracePatientByDemographics(surname, dateOfBirth, gender, forename, postcode);
+
+		Bundle bundle = _emisTransformer.toFhirPersonBundle(openHRXml);
+		return new JsonParser().composeString(bundle);
 	}
 
 	@Override
-	public String tracePatientByNhsNumber(String nhsNumber) throws Exception {
+	public String tracePersonByNhsNumber(String nhsNumber) throws Exception {
 
-		String patientDataInNativeFormat = _emisDataAdapter.tracePatientByNhsNumber(nhsNumber);
-		Patient patient = _emisTransformer.toFhirPatient(patientDataInNativeFormat);
-		return new JsonParser().composeString(patient);
+		String openHRXml = _emisDataAdapter.tracePatientByNhsNumber(nhsNumber);
+
+		Bundle bundle = _emisTransformer.toFhirPersonBundle(openHRXml);
+		return new JsonParser().composeString(bundle);
 	}
 
 	@Override

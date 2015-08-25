@@ -32,6 +32,10 @@ public class OpenHRTransformer {
         return transformer.transformToPatient(openHR);
     }
 
+    public Bundle toFhirPersonBundle(String openHRXmlArray) throws TransformException {
+        return new Bundle();
+    }
+
     public String fromFHIRCondition(Condition condition) throws TransformException {
         FromFHIRTransformer transformer = new FromFHIRTransformer();
         OpenHR001OpenHealthRecord openHR = transformer.transformFromCondition(condition);

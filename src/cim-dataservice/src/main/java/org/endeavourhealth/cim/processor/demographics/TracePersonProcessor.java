@@ -34,13 +34,13 @@ public class TracePersonProcessor implements org.apache.camel.Processor {
 			if (!NhsNumberValidator.IsValidNhsNumber(identifier.getCode()))
 				throw new CIMInvalidParamException("NHS number is not valid");
 
-			responseBody = dataManager.tracePatientByNhsNumber(identifier.getCode());
+			responseBody = dataManager.tracePersonByNhsNumber(identifier.getCode());
 		}
 		else {
 			if ((TextUtils.isNullOrTrimmedEmpty(name)) || (TextUtils.isNullOrTrimmedEmpty(gender)) || (dateOfBirth == null))
 				throw new CIMInvalidParamException("Invalid parameter combination");
 
-			responseBody = dataManager.tracePatientByDemographics(name, dateOfBirth, gender, "", "");
+			responseBody = dataManager.tracePersonByDemographics(name, dateOfBirth, gender, "", "");
 		}
 
 		ExchangeHelper.setOutBodyString(exchange, responseBody);

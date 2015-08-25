@@ -46,4 +46,8 @@ public class EmisTransformer implements Transformer {
 		return _openHRTransformer.toFhirPatient(openHRXml);
 	}
 
+	public Bundle toFhirPersonBundle(String openHRXmlArray) throws TransformException {
+
+		return _openHRTransformer.toFhirPersonBundle(openHRXmlArray);
+	}
 }
