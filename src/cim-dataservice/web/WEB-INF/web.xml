@@ -9,6 +9,10 @@
         <param-name>routeBuilder</param-name>
         <param-value>packagescan:org.endeavourhealth.cim.routes.routeBuilders</param-value>
     </context-param>
+    <context-param>
+        <param-name>name</param-name>
+        <param-value>CIM-DataService</param-value>
+    </context-param>
 
     <!-- the listener that kick-starts Camel -->
     <listener>
