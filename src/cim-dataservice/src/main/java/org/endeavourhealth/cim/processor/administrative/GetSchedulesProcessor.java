@@ -31,9 +31,11 @@ public class GetSchedulesProcessor implements Processor {
 
 			if (ExchangeHelper.hasInHeader(exchange, HeaderKey.ActorPractitioner))
 				practitioner = ExchangeHelper.getInHeaderUUID(exchange, HeaderKey.ActorPractitioner, false);
-			else if (ExchangeHelper.hasInHeader(exchange, HeaderKey.Date))
+
+			if (ExchangeHelper.hasInHeader(exchange, HeaderKey.Date))
 				date = DateSearchParameter.Parse(ExchangeHelper.getInHeaderArray(exchange, HeaderKey.Date));
-			else
+
+			if (practitioner == null && date == null)
 				throw new CIMMissingParamException("Either actor or date, or both must be supplied.");
 
 			fromDate = (date != null) ? date.getIntervalStart() : DateUtils.DOTNET_MINIMUM_DATE;
