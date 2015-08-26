@@ -19,6 +19,10 @@
         <listener-class>org.apache.camel.component.servletlistener.JndiCamelServletContextListener</listener-class>
     </listener>
 
+    <listener>
+        <listener-class>org.endeavourhealth.cim.CimDataServiceContextListener</listener-class>
+    </listener>
+
     <!-- Camel servlet used in the Camel application -->
     <servlet>
         <servlet-name>CamelServlet</servlet-name>
