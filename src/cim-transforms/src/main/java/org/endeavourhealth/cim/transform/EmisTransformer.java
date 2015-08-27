@@ -11,7 +11,7 @@ import org.hl7.fhir.instance.model.Patient;
 import java.util.List;
 
 @SuppressWarnings("unused")
-public class EmisTransformer implements Transformer {
+public class EmisTransformer {
 
 	private final OpenHRTransformer _openHRTransformer = new OpenHRTransformer();
 	private final EmisOpenTransformer _emisOpenTransformer = new EmisOpenTransformer();
