@@ -16,7 +16,7 @@ public class EvaluateSubscriptionsProcessor implements org.apache.camel.Processo
 
     @Override
     public void process(Exchange exchange) throws Exception {
-        UUID patientUUID = UUID.fromString(ExchangeHelper.getInBodyString(exchange));
+        String patientId = ExchangeHelper.getInBodyString(exchange);
         String odsCode = ExchangeHelper.getInHeaderString(exchange, HeaderKey.OdsCode);
 
         ArrayList<String> subscriberCallbacks = new ArrayList<>();
@@ -27,7 +27,7 @@ public class EvaluateSubscriptionsProcessor implements org.apache.camel.Processo
 
         if (subscriberCallbacks.size() > 0) {
             IDataManager dataManager = DataManagerFactory.getDataManagerForService(odsCode);
-            String requestBody = dataManager.getFullRecord(odsCode, patientUUID);
+            String requestBody = dataManager.getFullRecord(odsCode, patientId);
 
             ExchangeHelper.setInBodyString(exchange, requestBody);
         }

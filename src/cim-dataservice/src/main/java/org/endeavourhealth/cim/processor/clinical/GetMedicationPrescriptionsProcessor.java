@@ -16,7 +16,7 @@ public class GetMedicationPrescriptionsProcessor implements Processor {
 	public void process(Exchange exchange) throws Exception {
 
 		String odsCode = ExchangeHelper.getInHeaderString(exchange, HeaderKey.OdsCode, true);
-		UUID patientId = ExchangeHelper.getInHeaderUUID(exchange, HeaderKey.Id, true);
+		String patientId = ExchangeHelper.getInHeaderString(exchange, HeaderKey.Id, true);
 
 		IDataManager dataManager = DataManagerFactory.getDataManagerForService(odsCode);
 		String responseBody = dataManager.getMedicationPrescriptions(odsCode, patientId);

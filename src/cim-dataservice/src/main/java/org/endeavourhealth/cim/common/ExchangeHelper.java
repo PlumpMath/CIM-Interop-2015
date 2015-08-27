@@ -42,18 +42,18 @@ public class ExchangeHelper {
         return exchange.getIn().getHeaders().containsKey(headerKey);
     }
 
-    public static UUID getInHeaderUUID(Exchange exchange, String headerKey, Boolean required) throws CIMInvalidParamException, CIMMissingParamException {
-        String value = getInHeaderString(exchange, headerKey, required);
-
-        if (value == null)
-            return null;
-
-        try {
-            return UUID.fromString(value);
-        } catch (Exception e) {
-            throw new CIMInvalidParamException(e);
-        }
-    }
+//    public static UUID getInHeaderUUID(Exchange exchange, String headerKey, Boolean required) throws CIMInvalidParamException, CIMMissingParamException {
+//        String value = getInHeaderString(exchange, headerKey, required);
+//
+//        if (value == null)
+//            return null;
+//
+//        try {
+//            return UUID.fromString(value);
+//        } catch (Exception e) {
+//            throw new CIMInvalidParamException(e);
+//        }
+//    }
 
     @SuppressWarnings("unchecked")
     public static ArrayList getInHeaderArray(Exchange exchange, String headerKey) {

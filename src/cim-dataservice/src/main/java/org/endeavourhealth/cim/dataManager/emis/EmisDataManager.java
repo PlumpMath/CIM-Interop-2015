@@ -1,6 +1,7 @@
 package org.endeavourhealth.cim.dataManager.emis;
 
 import org.endeavourhealth.cim.Registry;
+import org.endeavourhealth.cim.common.exceptions.CIMInvalidInternalIdentifier;
 import org.endeavourhealth.cim.transform.common.BundleProperties;
 import org.endeavourhealth.cim.common.text.TextUtils;
 import org.endeavourhealth.cim.dataManager.IDataManager;
@@ -20,14 +21,22 @@ public class EmisDataManager implements IDataManager {
 	/* administrative */
 
 	@Override
-	public String getSchedules(String odsCode, Date dateFrom, Date dateTo, UUID practitionerId) throws Exception {
+	public String getSchedules(String odsCode, Date dateFrom, Date dateTo, String practitionerId) throws Exception {
+
+		UUID practitionerUuid = null;
+		if (practitionerId != null)
+			try {
+				practitionerUuid = UUID.fromString(practitionerId);
+			} catch (IllegalArgumentException e) {
+				throw new CIMInvalidInternalIdentifier("Practitioner Id");
+			}
 
 		String schedulesXml = _emisDataAdapter.getSchedules(odsCode, dateFrom, dateTo);
 		String organisationXml = _emisDataAdapter.getOrganisationInformation(odsCode);
 		BundleProperties bundleProperties = getBundleProperties(odsCode);
 
 		Bundle bundle = _emisTransformer.eopenToFhirScheduleBundle(bundleProperties, schedulesXml, organisationXml);
-		bundle = FhirFilterHelper.filterScheduleByPractitioner(bundle, practitionerId);
+		bundle = FhirFilterHelper.filterScheduleByPractitioner(bundle, practitionerUuid);
 		return new JsonParser().composeString(bundle);
 	}
 
@@ -42,33 +51,50 @@ public class EmisDataManager implements IDataManager {
 	}
 
 	@Override
-	public String getAppointmentsForPatient(String odsCode, UUID patientId, Date dateFrom, Date dateTo) throws Exception {
+	public String getAppointmentsForPatient(String odsCode, String patientId, Date dateFrom, Date dateTo) throws Exception {
+		UUID patientUuid;
+		try {
+			patientUuid = UUID.fromString(patientId);
+		} catch (IllegalArgumentException e) {
+			throw new CIMInvalidInternalIdentifier("Patient Id");
+		}
 
-		String appointmentDataInNativeFormat = _emisDataAdapter.getAppointmentsForPatient(odsCode, patientId, dateFrom, dateTo);
+		String appointmentDataInNativeFormat = _emisDataAdapter.getAppointmentsForPatient(odsCode, patientUuid, dateFrom, dateTo);
 		String organisationXml = _emisDataAdapter.getOrganisationInformation(odsCode);
 		BundleProperties bundleProperties = getBundleProperties(odsCode);
 
-		Bundle bundle = _emisTransformer.eopenToFhirAppointmentForPatientBundle(bundleProperties, patientId.toString(), appointmentDataInNativeFormat, organisationXml);
+		Bundle bundle = _emisTransformer.eopenToFhirAppointmentForPatientBundle(bundleProperties, patientUuid.toString(), appointmentDataInNativeFormat, organisationXml);
 		return new JsonParser().composeString(bundle);
 	}
 
 	@Override
-	public String bookSlot(String odsCode, String slotId, UUID patientId) throws Exception {
+	public String bookSlot(String odsCode, String slotId, String patientId) throws Exception {
+		UUID patientUuid;
+		try {
+			patientUuid = UUID.fromString(patientId);
+		} catch (IllegalArgumentException e) {
+			throw new CIMInvalidInternalIdentifier("Patient Id");
+		}
 
-		return _emisDataAdapter.bookSlot(odsCode, slotId, patientId, "");
+		return _emisDataAdapter.bookSlot(odsCode, slotId, patientUuid, "");
 	}
 
-	public String cancelSlot(String odsCode, String slotId, UUID patientId) throws Exception {
+	public String cancelSlot(String odsCode, String slotId, String patientId) throws Exception {
+		UUID patientUuid;
+		try {
+			patientUuid = UUID.fromString(patientId);
+		} catch (IllegalArgumentException e) {
+			throw new CIMInvalidInternalIdentifier("Patient Id");
+		}
 
-		return _emisDataAdapter.cancelSlot(odsCode, slotId, patientId);
+		return _emisDataAdapter.cancelSlot(odsCode, slotId, patientUuid);
 	}
 
 
 	/* clinical */
 
 	@Override
-	public String getFullRecord(String odsCode, UUID patientId) throws Exception {
-
+	public String getFullRecord(String odsCode, String patientId) throws Exception {
 		Bundle bundle = getPatientRecordAsBundle(odsCode, patientId);
 
 		if (bundle == null)
@@ -77,9 +103,15 @@ public class EmisDataManager implements IDataManager {
 		return new JsonParser().composeString(bundle);
 	}
 
-	private Bundle getPatientRecordAsBundle(String odsCode, UUID patientId) throws Exception {
+	private Bundle getPatientRecordAsBundle(String odsCode, String patientId) throws Exception {
+		UUID patientUuid;
+		try {
+			patientUuid = UUID.fromString(patientId);
+		} catch (IllegalArgumentException e) {
+			throw new CIMInvalidInternalIdentifier("Patient Id");
+		}
 
-		String openHRXml = _emisDataAdapter.getPatientRecordByPatientId(odsCode, patientId);
+		String openHRXml = _emisDataAdapter.getPatientRecordByPatientId(odsCode, patientUuid);
 
 		if (TextUtils.isNullOrTrimmedEmpty(openHRXml))
 			return null;
@@ -88,8 +120,7 @@ public class EmisDataManager implements IDataManager {
 	}
 
 	@Override
-	public String getConditions(String odsCode, UUID patientId) throws Exception {
-
+	public String getConditions(String odsCode, String patientId) throws Exception {
 		Bundle bundle = getPatientRecordAsBundle(odsCode, patientId);
 
 		if (bundle == null)
@@ -111,8 +142,7 @@ public class EmisDataManager implements IDataManager {
 	}
 
 	@Override
-	public String getAllergyIntolerances(String odsCode, UUID patientId) throws Exception {
-
+	public String getAllergyIntolerances(String odsCode, String patientId) throws Exception {
 		Bundle bundle = getPatientRecordAsBundle(odsCode, patientId);
 
 		if (bundle == null)
@@ -123,8 +153,7 @@ public class EmisDataManager implements IDataManager {
 	}
 
 	@Override
-	public String getImmunizations(String odsCode, UUID patientId) throws Exception {
-
+	public String getImmunizations(String odsCode, String patientId) throws Exception {
 		Bundle bundle = getPatientRecordAsBundle(odsCode, patientId);
 
 		if (bundle == null)
@@ -135,7 +164,7 @@ public class EmisDataManager implements IDataManager {
 	}
 
 	@Override
-	public String getMedicationPrescriptions(String odsCode, UUID patientId) throws Exception {
+	public String getMedicationPrescriptions(String odsCode, String patientId) throws Exception {
 
 		Bundle bundle = getPatientRecordAsBundle(odsCode, patientId);
 
@@ -150,9 +179,15 @@ public class EmisDataManager implements IDataManager {
 	/* demographic */
 
 	@Override
-	public String getPatientDemographics(String odsCode, UUID patientId) throws Exception {
+	public String getPatientDemographics(String odsCode, String patientId) throws Exception {
+		UUID patientUuid;
+		try {
+			patientUuid = UUID.fromString(patientId);
+		} catch (IllegalArgumentException e) {
+			throw new CIMInvalidInternalIdentifier("Patient Id");
+		}
 
-		String openHRXml = _emisDataAdapter.getPatientDemographicsByPatientId(odsCode, patientId);
+		String openHRXml = _emisDataAdapter.getPatientDemographicsByPatientId(odsCode, patientUuid);
 
 		if (TextUtils.isNullOrTrimmedEmpty(openHRXml))
 			return null;
@@ -162,7 +197,7 @@ public class EmisDataManager implements IDataManager {
 	}
 
 	@Override
-	public String getPatientDemographics(String odsCode, String nhsNumber) throws Exception {
+	public String getPatientDemographicsByNhsNumber(String odsCode, String nhsNumber) throws Exception {
 
 		String openHRXml = _emisDataAdapter.getPatientDemographicsByNHSNumber(odsCode, nhsNumber);
 
@@ -192,9 +227,14 @@ public class EmisDataManager implements IDataManager {
 	}
 
 	@Override
-	public List<UUID> getChangedPatients(String odsCode, Date date) throws Exception {
+	public List<String> getChangedPatients(String odsCode, Date date) throws Exception {
+		List<UUID> patientUuids = _emisDataAdapter.getChangedPatients(odsCode, date);
 
-		return _emisDataAdapter.getChangedPatients(odsCode, date);
+		List<String> patientIds = new ArrayList<>();
+		for (UUID patientUuid : patientUuids)
+			patientIds.add(patientUuid.toString());
+
+		return patientIds;
 	}
 
 	private BundleProperties getBundleProperties(String odsCode) {

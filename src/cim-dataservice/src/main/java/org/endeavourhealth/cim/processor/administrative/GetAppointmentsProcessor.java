@@ -20,13 +20,13 @@ public class GetAppointmentsProcessor implements Processor {
 	public void process(Exchange exchange) throws Exception {
 
 		String odsCode;
-		UUID patientId;
+		String patientId;
 		Date fromDate;
 		Date toDate;
 
 		try {
 			odsCode = ExchangeHelper.getInHeaderString(exchange, HeaderKey.OdsCode, true);
-			patientId = ExchangeHelper.getInHeaderUUID(exchange, HeaderKey.Patient, true);
+			patientId = ExchangeHelper.getInHeaderString(exchange, HeaderKey.Patient, true);
 
 			DateSearchParameter date = null;
 

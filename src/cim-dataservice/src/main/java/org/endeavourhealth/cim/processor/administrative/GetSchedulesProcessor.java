@@ -23,14 +23,14 @@ public class GetSchedulesProcessor implements Processor {
 		String odsCode = null;
 		Date fromDate = null;
 		Date toDate = null;
-		UUID practitioner = null;
+		String practitioner = null;
 
 		try {
 			odsCode = ExchangeHelper.getInHeaderString(exchange, HeaderKey.OdsCode, true);
 			DateSearchParameter date = null;
 
 			if (ExchangeHelper.hasInHeader(exchange, HeaderKey.ActorPractitioner))
-				practitioner = ExchangeHelper.getInHeaderUUID(exchange, HeaderKey.ActorPractitioner, false);
+				practitioner = ExchangeHelper.getInHeaderString(exchange, HeaderKey.ActorPractitioner, false);
 
 			if (ExchangeHelper.hasInHeader(exchange, HeaderKey.Date))
 				date = DateSearchParameter.Parse(ExchangeHelper.getInHeaderArray(exchange, HeaderKey.Date));

@@ -20,10 +20,10 @@ public class CancelSlotProcessor implements Processor {
         String slotId = ExchangeHelper.getInHeaderString(exchange, HeaderKey.Id, true);
         Parameters parameters = ExchangeHelper.getInBodyResource(exchange, Parameters.class, true);
 
-        UUID patientId = null;
+        String patientId = null;
 
         try {
-            patientId = ParametersHelper.getUUIDParameter(parameters, "patient");
+            patientId = ParametersHelper.getStringParameter(parameters, "patient");
         } catch (Exception e) {
             throw new CIMInvalidParamException(e);
         }
