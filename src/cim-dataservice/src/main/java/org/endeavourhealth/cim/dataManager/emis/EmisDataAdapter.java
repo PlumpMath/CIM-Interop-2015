@@ -199,6 +199,18 @@ public class EmisDataAdapter {
         return getSOAPResultAsString(responseMessage, soapMethod);
     }
 
+	// Admin
+	public String getUserById(String odsCode, UUID userInRoleId) throws Exception {
+		final String soapMethod = "GetUserByGuid";
+
+		Map<String, String> parameters = createParameterMap();
+		parameters.put("odsCode", odsCode);
+		parameters.put("userInRoleId", userInRoleId.toString());
+
+		SOAPMessage responseMessage = performSOAPCall(soapMethod, parameters);
+
+		return getSOAPResultAsString(responseMessage, soapMethod);	}
+
     // Utility methods
     private static Map<String, String> createParameterMap() {
         return new LinkedHashMap<>();

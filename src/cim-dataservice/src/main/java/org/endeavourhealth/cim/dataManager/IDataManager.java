@@ -11,6 +11,7 @@ public interface IDataManager {
     String getAppointmentsForPatient(String odsCode, String patientId, Date dateFrom, Date dateTo) throws Exception;
     String bookSlot(String odsCode, String slotId, String patientId) throws Exception;
     String cancelSlot(String odsCode, String slotId, String patientId) throws Exception;
+	String getUser(String odsCode, String userId) throws Exception;
 
     // clinical
     String getFullRecord(String odsCode, String patientId) throws Exception;

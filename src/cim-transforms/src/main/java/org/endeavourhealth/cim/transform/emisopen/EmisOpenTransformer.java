@@ -8,7 +8,9 @@ import org.endeavourhealth.cim.transform.schemas.emisopen.eomappointmentsessions
 import org.endeavourhealth.cim.transform.schemas.emisopen.eomgetpatientappointments.PatientAppointmentList;
 import org.endeavourhealth.cim.transform.schemas.emisopen.eomorganisationinformation.OrganisationInformation;
 import org.endeavourhealth.cim.transform.schemas.emisopen.eomslotsforsession.SlotListStruct;
+import org.endeavourhealth.cim.transform.schemas.emisopen.eomuserdetails.UserDetails;
 import org.hl7.fhir.instance.model.Bundle;
+import org.hl7.fhir.instance.model.Person;
 import org.hl7.fhir.instance.model.Resource;
 
 import java.util.List;
@@ -41,4 +43,10 @@ public class EmisOpenTransformer {
         return BundleHelper.createBundle(bundleProperties, resources);
 
     }
+
+	public Person toFhirPerson(String eopenMedicalRecordXml) throws TransformException {
+		UserDetails userDetails = TransformHelper.unmarshall(eopenMedicalRecordXml, UserDetails.class);
+		Person person = UserTransformer.transformToPersonResource(userDetails);
+		return person;
+	}
 }

@@ -237,6 +237,21 @@ public class EmisDataManager implements IDataManager {
 		return patientIds;
 	}
 
+	@Override
+	public String getUser(String odsCode, String userId) throws Exception {
+		UUID userUuid;
+		try {
+			userUuid = UUID.fromString(userId);
+		} catch (IllegalArgumentException e) {
+			throw new CIMInvalidInternalIdentifier("User Id");
+		}
+
+		String openHRXml = _emisDataAdapter.getUserById(odsCode, userUuid);
+		Person person = _emisTransformer.openHRToFhirPerson(openHRXml);
+
+		return new JsonParser().composeString(person);
+	}
+
 	private BundleProperties getBundleProperties(String odsCode) {
 		return new BundleProperties()
 				.setBundleId(UUID.randomUUID().toString())
