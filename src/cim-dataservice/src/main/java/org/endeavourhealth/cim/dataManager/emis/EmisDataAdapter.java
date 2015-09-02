@@ -222,6 +222,19 @@ public class EmisDataAdapter {
 
 		return getSOAPResultAsString(responseMessage, soapMethod);
 	}
+
+	public String getLocationById(String odsCode, UUID locationId) throws Exception {
+		final String soapMethod = "GetLocation";
+
+		Map<String, String> parameters = createParameterMap();
+		parameters.put("odsCode", odsCode);
+		parameters.put("locationGuid", locationId.toString());
+
+		SOAPMessage responseMessage = performSOAPCall(soapMethod, parameters);
+
+		return getSOAPResultAsString(responseMessage, soapMethod);
+	}
+
     // Utility methods
     private static Map<String, String> createParameterMap() {
         return new LinkedHashMap<>();

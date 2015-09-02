@@ -14,7 +14,7 @@ import org.hl7.fhir.instance.model.*;
 import javax.xml.datatype.XMLGregorianCalendar;
 import java.util.List;
 
-class LocationTransformer {
+public class LocationTransformer {
     public final static String LOCATIONTYPE_EXTENSION_URL = "http://www.e-mis.com/emisopen/extension/LocationType";
     public final static String LOCATIONTYPE_SYSTEM = "http://www.e-mis.com/emisopen/LocationType";
 
@@ -24,23 +24,28 @@ class LocationTransformer {
         }
     }
 
+	public static Location transform(OpenHR001Location source) throws SourceDocumentInvalidException, TransformFeatureNotSupportedException {
+		ToFHIRHelper.ensureDboNotDelete(source);
+
+		Location target = new Location();
+		target.setId(source.getId());
+		target.setName(source.getName());
+		target.setDescription(source.getNotes());
+		target.setMode(Location.LocationMode.INSTANCE);
+		target.setPartOf(createParentReference(source.getParentLocation()));
+		target.setStatus(convertCloseDateToStatus(source.getCloseDate()));
+
+		addTelecoms(source.getContact(), target);
+		addAddress(source.getAddress(), target);
+
+		addLocationTypeExtension(source.getLocationType(), target);
+
+		return target;
+	}
+
     private static Location createLocation(OpenHR001AdminDomain adminDomain, OpenHR001Location source) throws SourceDocumentInvalidException, TransformFeatureNotSupportedException {
-        ToFHIRHelper.ensureDboNotDelete(source);
-
-        Location target = new Location();
-        target.setId(source.getId());
-        target.setName(source.getName());
-        target.setDescription(source.getNotes());
-        target.setMode(Location.LocationMode.INSTANCE);
-        target.setPartOf(createParentReference(source.getParentLocation()));
-        target.setStatus(convertCloseDateToStatus(source.getCloseDate()));
+        Location target = transform(source);
         target.setManagingOrganization(createOrganisationReference(adminDomain.getOrganisation(), source.getId()));
-
-        addTelecoms(source.getContact(), target);
-        addAddress(source.getAddress(), target);
-
-        addLocationTypeExtension(source.getLocationType(), target);
-
         return target;
     }
 

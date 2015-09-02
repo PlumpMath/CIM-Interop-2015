@@ -44,6 +44,29 @@
           }
         }
       },
+      "/{odsCode}/Location/{id}": {
+        "get": {
+          "tags": [ "administrative" ],
+          "summary": "Get location details",
+          "description": "Get location details by ID.",
+          "produces": [ "application/json" ],
+          "parameters": [
+            { "$ref": "#definitions/apiKeyParameter" },
+            { "$ref": "#definitions/hashParameter" },
+            { "$ref": "#definitions/odsCodeParameter" },
+            { "$ref": "#definitions/locationIdParameter" }
+          ],
+          "responses": {
+            "200": { "description": "OK | <a target='_blank' href='http://hl7.org/fhir/2015May/organisation.html'>Organisation</a> resource" },
+            "400": { "$ref": "#definitions/400Response" },
+            "401": { "$ref": "#definitions/401Response" },
+            "403": { "$ref": "#definitions/403Response" },
+            "500": { "$ref": "#definitions/500Response" },
+            "502": { "$ref": "#definitions/502Response" },
+            "504": { "$ref": "#definitions/504Response" }
+          }
+        }
+      },
       "/{odsCode}/User/{id}": {
         "get": {
           "tags": [ "administrative" ],
@@ -607,6 +630,13 @@
             "description": "Slot ID",
             "required": true,
             "type": "string"
+        },
+        "locationIdParameter": {
+          "name": "id",
+          "in": "path",
+          "description": "Location ID",
+          "required": true,
+          "type": "string"
         },
 
         "400Response": { "description": "Required parameter missing; Invalid parameter | <a target='_blank' href='https://www.hl7.org/fhir/2015May/operationoutcome.html'>OperationOutcome</a> with <a href='http://www.hl7.org/FHIR/2015May/issue-type.html'>IssueType</a> of Required element missing; Element value invalid" },

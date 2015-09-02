@@ -33,16 +33,7 @@ public class OrganisationTransformer {
 	}
 
     private static Organization createOrganisation(OpenHR001AdminDomain adminDomain, OpenHR001Organisation source) throws SourceDocumentInvalidException, TransformFeatureNotSupportedException {
-        ToFHIRHelper.ensureDboNotDelete(source);
-
-        Organization target = new Organization();
-        target.setId(source.getId());
-
-        addIdentifiers(source, target);
-
-        target.setName(source.getName());
-
-        target.setType(convertOrganisationType(source));
+        Organization target = transform(source);
 
         OpenHR001Location mainLocation = getLocation(adminDomain.getLocation(), source.getMainLocation());
         if (mainLocation != null) {
@@ -51,8 +42,6 @@ public class OrganisationTransformer {
         }
 
         target.setPartOf(createParentReference(source.getParentOrganisation()));
-
-        target.setActive(source.getCloseDate() == null);
 
         return target;
     }

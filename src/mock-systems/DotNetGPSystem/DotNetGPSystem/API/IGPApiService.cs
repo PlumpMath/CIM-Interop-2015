@@ -61,5 +61,8 @@ namespace DotNetGPSystem
 
         [OperationContract]
         string GetOrganisation(string odsCode);
+
+        [OperationContract]
+        string GetLocation(string odsCode, Guid locationGuid);
     }
 }

@@ -38,6 +38,10 @@ public class EmisTransformer {
 		return _openHRTransformer.toFhirOrganisation(openHRXml);
 	}
 
+	public Location openHRToFhirLocation(String openHRXml) throws TransformException {
+		return _openHRTransformer.toFhirLocation(openHRXml);
+	}
+
 	/* clinical */
 	public Bundle openHRToFhirBundle(BundleProperties bundleProperties, String openHRXml) throws TransformException {
 

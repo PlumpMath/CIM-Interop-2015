@@ -30,6 +30,7 @@ namespace DotNetGPSystem
         private static OpenHROrganisation[] _organisations;
         private static Session[] _sessions;
         public static readonly int[] AppointmentTimes = new int[] { 9, 10, 11, 12, 13, 14, 15, 16, 17 };
+        private static OpenHR001Location[] _locations;
         public static event ExternalUpdateReceivedHandler ExternalUpdateReceived;
         public static event EventHandler ExternalAppointmentBookChangeMade;
 
@@ -55,6 +56,16 @@ namespace DotNetGPSystem
             }
         }
 
+        public static OpenHR001Location[] Locations
+        {
+            get
+            {
+                if (_locations == null)
+                    _locations = GetLocations();
+
+                return _locations;
+            }
+        }
 
         public static OpenHRPatient[] OpenHRPatients
         {
@@ -116,6 +127,17 @@ namespace DotNetGPSystem
             }
 
             return sessions.ToArray();
+        }
+
+        private static OpenHR001Location[] GetLocations()
+        {
+            OpenHR001Location[] locations = OpenHRPatients
+                .SelectMany(pat => pat.OpenHealthRecord.adminDomain.location)
+                .DistinctBy(loc => loc.id)
+                .OrderBy(loc => loc.name)
+                .ToArray();
+
+            return locations;
         }
 
         private static OpenHROrganisation[] GetOrganisations()

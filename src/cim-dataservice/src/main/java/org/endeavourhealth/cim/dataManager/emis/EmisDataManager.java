@@ -260,6 +260,21 @@ public class EmisDataManager implements IDataManager {
 		return new JsonParser().composeString(organisation);
 	}
 
+	@Override
+	public String getLocation(String odsCode, String locationId) throws Exception {
+		UUID locationUuid;
+		try {
+			locationUuid = UUID.fromString(locationId);
+		} catch (IllegalArgumentException e) {
+			throw new CIMInvalidInternalIdentifier("Location Id");
+		}
+
+		String openHRXml = _emisDataAdapter.getLocationById(odsCode, locationUuid);
+		Location location = _emisTransformer.openHRToFhirLocation(openHRXml);
+
+		return new JsonParser().composeString(location);
+	}
+
 	private BundleProperties getBundleProperties(String odsCode) {
 		return new BundleProperties()
 				.setBundleId(UUID.randomUUID().toString())

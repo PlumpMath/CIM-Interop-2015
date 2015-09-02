@@ -165,9 +165,7 @@ namespace DotNetGPSystem
             string result = string.Empty;
 
             if (organisation != null)
-            {
                 result = Utilities.Serialize(organisation.Organisation);
-            }
 
             return result;
         }
@@ -187,6 +185,26 @@ namespace DotNetGPSystem
 
                 result = Utilities.Serialize<EomOrganisationInformation.OrganisationInformation>(organisationInformation);
             }
+
+            return result;
+        }
+
+        public string GetLocation(String odsCode, Guid locationGuid)
+        {
+            OpenHROrganisation organisation = DataStore
+                .Organisations
+                .FirstOrDefault(t => t.Organisation.nationalPracticeCode == odsCode
+                                     && (!string.IsNullOrEmpty(odsCode)));
+
+            OpenHR001Location location = organisation
+                .Locations
+                .Select(loc => loc.Location)
+                .FirstOrDefault(loc => new Guid(loc.id).Equals(locationGuid));
+
+            string result = string.Empty;
+
+            if (location != null)
+                result = Utilities.Serialize(location);
 
             return result;
         }
