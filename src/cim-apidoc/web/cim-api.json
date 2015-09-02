@@ -34,7 +34,7 @@
             { "$ref": "#definitions/odsCodeParameter" }
           ],
           "responses": {
-            "200": { "description": "OK | <a target='_blank' href='http://hl7.org/fhir/2015May/organisation.html'>Organisation</a> resource" },
+            "200": { "description": "OK | <a target='_blank' href='http://hl7.org/fhir/2015May/organization.html'>Organisation</a> resource" },
             "400": { "$ref": "#definitions/400Response" },
             "401": { "$ref": "#definitions/401Response" },
             "403": { "$ref": "#definitions/403Response" },
@@ -57,7 +57,7 @@
             { "$ref": "#definitions/locationIdParameter" }
           ],
           "responses": {
-            "200": { "description": "OK | <a target='_blank' href='http://hl7.org/fhir/2015May/organisation.html'>Organisation</a> resource" },
+            "200": { "description": "OK | <a target='_blank' href='http://hl7.org/fhir/2015May/location.html'>Location</a> resource" },
             "400": { "$ref": "#definitions/400Response" },
             "401": { "$ref": "#definitions/401Response" },
             "403": { "$ref": "#definitions/403Response" },
