@@ -12,6 +12,7 @@ public interface IDataManager {
     String bookSlot(String odsCode, String slotId, String patientId) throws Exception;
     String cancelSlot(String odsCode, String slotId, String patientId) throws Exception;
 	String getUser(String odsCode, String userId) throws Exception;
+	String getOrganisation(String odsCode) throws Exception;
 
     // clinical
     String getFullRecord(String odsCode, String patientId) throws Exception;

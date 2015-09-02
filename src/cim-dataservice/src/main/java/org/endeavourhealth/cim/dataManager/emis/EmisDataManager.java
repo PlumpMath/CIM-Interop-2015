@@ -252,6 +252,14 @@ public class EmisDataManager implements IDataManager {
 		return new JsonParser().composeString(person);
 	}
 
+	@Override
+	public String getOrganisation(String odsCode) throws Exception {
+		String openHRXml = _emisDataAdapter.getOrganisationById(odsCode);
+		Organization organisation = _emisTransformer.openHRToFhirOrganisation(openHRXml);
+
+		return new JsonParser().composeString(organisation);
+	}
+
 	private BundleProperties getBundleProperties(String odsCode) {
 		return new BundleProperties()
 				.setBundleId(UUID.randomUUID().toString())

@@ -9,6 +9,7 @@ import org.endeavourhealth.cim.transform.openhr.fromfhir.FromFHIRTransformer;
 import org.endeavourhealth.cim.transform.openhr.tofhir.ToFHIRTransformer;
 import org.endeavourhealth.cim.transform.schemas.openhr.ObjectFactory;
 import org.endeavourhealth.cim.transform.schemas.openhr.OpenHR001OpenHealthRecord;
+import org.endeavourhealth.cim.transform.schemas.openhr.OpenHR001Organisation;
 import org.hl7.fhir.instance.model.*;
 
 import javax.xml.bind.*;
@@ -54,6 +55,13 @@ public class OpenHRTransformer {
         OpenHR001OpenHealthRecord openHR = transformer.transformFromCondition(condition);
         return serializeOpenHR(openHR);
     }
+
+	public Organization toFhirOrganisation(String openHRXml) throws TransformException {
+		OpenHR001Organisation openHR = TransformHelper.unmarshall(openHRXml, OpenHR001Organisation.class);
+
+		ToFHIRTransformer transformer = new ToFHIRTransformer();
+		return transformer.transformToOrganisation(openHR);
+	}
 
     private String serializeOpenHR(OpenHR001OpenHealthRecord openHR) throws TransformException {
         try {

@@ -4,10 +4,7 @@ import org.endeavourhealth.cim.transform.common.BundleProperties;
 import org.endeavourhealth.cim.transform.emisopen.EmisOpenTransformer;
 import org.endeavourhealth.cim.transform.exceptions.TransformException;
 import org.endeavourhealth.cim.transform.openhr.OpenHRTransformer;
-import org.hl7.fhir.instance.model.Bundle;
-import org.hl7.fhir.instance.model.Condition;
-import org.hl7.fhir.instance.model.Patient;
-import org.hl7.fhir.instance.model.Person;
+import org.hl7.fhir.instance.model.*;
 
 import java.util.List;
 
@@ -35,6 +32,10 @@ public class EmisTransformer {
 
 	public Person openHRToFhirPerson(String openHRXml) throws TransformException {
 		return _emisOpenTransformer.toFhirPerson(openHRXml);
+	}
+
+	public Organization openHRToFhirOrganisation(String openHRXml) throws TransformException {
+		return _openHRTransformer.toFhirOrganisation(openHRXml);
 	}
 
 	/* clinical */

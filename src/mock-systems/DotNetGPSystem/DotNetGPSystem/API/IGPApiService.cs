@@ -58,5 +58,8 @@ namespace DotNetGPSystem
 
         [OperationContract]
         string GetOrganisationInformation(string odsCode);
+
+        [OperationContract]
+        string GetOrganisation(string odsCode);
     }
 }

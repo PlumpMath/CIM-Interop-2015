@@ -209,8 +209,19 @@ public class EmisDataAdapter {
 
 		SOAPMessage responseMessage = performSOAPCall(soapMethod, parameters);
 
-		return getSOAPResultAsString(responseMessage, soapMethod);	}
+		return getSOAPResultAsString(responseMessage, soapMethod);
+	}
 
+	public String getOrganisationById(String odsCode) throws Exception {
+		final String soapMethod = "GetOrganisation";
+
+		Map<String, String> parameters = createParameterMap();
+		parameters.put("odsCode", odsCode);
+
+		SOAPMessage responseMessage = performSOAPCall(soapMethod, parameters);
+
+		return getSOAPResultAsString(responseMessage, soapMethod);
+	}
     // Utility methods
     private static Map<String, String> createParameterMap() {
         return new LinkedHashMap<>();

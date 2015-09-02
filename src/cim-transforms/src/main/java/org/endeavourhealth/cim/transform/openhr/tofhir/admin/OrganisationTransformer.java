@@ -13,12 +13,24 @@ import org.hl7.fhir.instance.model.*;
 
 import java.util.List;
 
-class OrganisationTransformer {
-    public static void transform(FHIRContainer container, OpenHR001AdminDomain adminDomain) throws TransformException {
+public class OrganisationTransformer {
+	public static void transform(FHIRContainer container, OpenHR001AdminDomain adminDomain) throws TransformException {
         for (OpenHR001Organisation source: adminDomain.getOrganisation()) {
             container.addResource(createOrganisation(adminDomain, source));
         }
     }
+
+	public static Organization transform(OpenHR001Organisation source) throws TransformFeatureNotSupportedException, SourceDocumentInvalidException {
+		ToFHIRHelper.ensureDboNotDelete(source);
+		Organization target = new Organization();
+		target.setId(source.getId());
+		addIdentifiers(source, target);
+		target.setName(source.getName());
+		target.setType(convertOrganisationType(source));
+		target.setActive(source.getCloseDate() == null);
+
+		return target;
+	}
 
     private static Organization createOrganisation(OpenHR001AdminDomain adminDomain, OpenHR001Organisation source) throws SourceDocumentInvalidException, TransformFeatureNotSupportedException {
         ToFHIRHelper.ensureDboNotDelete(source);
