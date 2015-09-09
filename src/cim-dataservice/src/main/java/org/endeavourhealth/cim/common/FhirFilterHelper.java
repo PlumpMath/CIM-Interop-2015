@@ -29,7 +29,7 @@ public class FhirFilterHelper {
 	}
 
 	public static Bundle getMedicationPrescriptions(Bundle bundle) {
-		return getResourcesOfType(bundle, ResourceType.MedicationPrescription);
+		return getResourcesOfType(bundle, ResourceType.MedicationOrder);
 //		return removeNonAdminResourcesExcept(bundle, ResourceType.MedicationPrescription);
 	}
 
@@ -61,7 +61,7 @@ public class FhirFilterHelper {
 			}
 		}
 
-		return BundleHelper.createBundle(bundle.getType(), bundle.getId(), bundle.getBase(), resources);
+		return BundleHelper.createBundle(bundle.getType(), bundle.getId(), resources);
 	}
 
 	private static Bundle getResourcesOfType(Bundle bundle, ResourceType resourceType) {
@@ -71,7 +71,7 @@ public class FhirFilterHelper {
 			if (component.getResource().getResourceType() == resourceType)
 				resources.add(component.getResource());
 
-		return BundleHelper.createBundle(bundle.getType(), bundle.getId(), bundle.getBase(), resources);
+		return BundleHelper.createBundle(bundle.getType(), bundle.getId(), resources);
 	}
 
 //	private static boolean isAdminResource(Resource resource) {

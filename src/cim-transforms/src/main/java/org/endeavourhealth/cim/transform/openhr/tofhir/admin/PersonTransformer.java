@@ -40,16 +40,16 @@ public class PersonTransformer {
         return targetPerson;
     }
 
-    private static Person.AdministrativeGender convertSex(VocSex sex) throws TransformFeatureNotSupportedException {
+    private static Enumerations.AdministrativeGender convertSex(VocSex sex) throws TransformFeatureNotSupportedException {
         switch (sex) {
             case U:
-                return Person.AdministrativeGender.UNKNOWN;
+                return Enumerations.AdministrativeGender.UNKNOWN;
             case M:
-                return Person.AdministrativeGender.MALE;
+                return Enumerations.AdministrativeGender.MALE;
             case F:
-                return Person.AdministrativeGender.FEMALE;
+                return Enumerations.AdministrativeGender.FEMALE;
             case I:
-                return Person.AdministrativeGender.OTHER;
+                return Enumerations.AdministrativeGender.OTHER;
             default:
                 throw new TransformFeatureNotSupportedException("Sex vocabulary of " + sex.toString());
         }

@@ -14,19 +14,20 @@ public class BundleHelper {
 
     public static Bundle createBundle(BundleProperties bundleProperties, List<Resource> resources) {
 
-        return createBundle(bundleProperties.getBundleType(), bundleProperties.getBundleId(), bundleProperties.getBaseUri(), resources);
+        return createBundle(bundleProperties.getBundleType(), bundleProperties.getBundleId(), resources);
     }
 
-    public static Bundle createBundle(Bundle.BundleType bundleType, String id, String baseUri, List<Resource> resources) {
+    public static Bundle createBundle(Bundle.BundleType bundleType, String id, List<Resource> resources) {
 
-        return createBundle(bundleType, id, baseUri, null, resources);
+        return createBundle(bundleType, id, null, resources);
     }
 
-    public static Bundle createBundle(Bundle.BundleType bundleType, String id, String baseUri, Date lastUpdated, List<Resource> resources) {
+    public static Bundle createBundle(Bundle.BundleType bundleType, String id, Date lastUpdated, List<Resource> resources) {
 
         Bundle bundle = new Bundle()
-            .setType(bundleType)
-            .setBase(baseUri);
+            .setType(bundleType);
+
+        //TODO: Consider populating the entry.fullUrl element
 
         if (!TextUtils.isNullOrTrimmedEmpty(id))
             bundle.setId(id);

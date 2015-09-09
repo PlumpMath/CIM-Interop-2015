@@ -13,12 +13,12 @@ import org.hl7.fhir.instance.model.*;
 import java.util.Date;
 
 class MedicationTransformer implements ClinicalResourceTransformer {
-    public MedicationPrescription transform(OpenHR001HealthDomain healthDomain, FHIRContainer container, OpenHR001HealthDomain.Event source) throws TransformException {
-        MedicationPrescription target = new MedicationPrescription();
+    public MedicationOrder transform(OpenHR001HealthDomain healthDomain, FHIRContainer container, OpenHR001HealthDomain.Event source) throws TransformException {
+        MedicationOrder target = new MedicationOrder();
 
         target.setId(source.getId());
         target.setDateWritten(convertEffectiveDateTime(source.getEffectiveTime()));
-        target.setStatus(MedicationPrescription.MedicationPrescriptionStatus.ACTIVE);
+        target.setStatus(MedicationOrder.MedicationOrderStatus.ACTIVE);
         target.setPatient(convertPatient(source.getPatient()));
         target.setPrescriber(convertUserInRole(source.getAuthorisingUserInRole()));
         target.setEncounter(getEncounter(container, source.getId()));
@@ -65,30 +65,29 @@ class MedicationTransformer implements ClinicalResourceTransformer {
         return ReferenceHelper.createReference(ResourceType.Encounter, encounter.getId());
     }
 
-    private Reference createMedication(OpenHR001HealthDomain.Event source, MedicationPrescription target) throws TransformFeatureNotSupportedException {
+    private Reference createMedication(OpenHR001HealthDomain.Event source, MedicationOrder target) throws TransformFeatureNotSupportedException {
         Medication medication = new Medication();
         medication.setId("medication");
-        medication.setName(source.getDisplayTerm());
-        medication.setCode(CodeHelper.convertCode(source.getCode()));
+        medication.setCode(CodeHelper.convertCode(source.getCode(), source.getDisplayTerm()));
 
         target.getContained().add(medication);
         return ReferenceHelper.createInternalReference(medication.getId());
     }
 
-    private void convertMedicationIssue(OpenHR001MedicationIssue medicationIssue, MedicationPrescription target) {
-        target.addDosageInstruction(new MedicationPrescription.MedicationPrescriptionDosageInstructionComponent()
+    private void convertMedicationIssue(OpenHR001MedicationIssue medicationIssue, MedicationOrder target) {
+        target.addDosageInstruction(new MedicationOrder.MedicationOrderDosageInstructionComponent()
                 .setText(medicationIssue.getDosage())
-                .setDose(new Quantity()
+                .setDose(new SimpleQuantity()
                         .setValue(medicationIssue.getQuantity())
-                        .setUnits(medicationIssue.getQuantityUnit())));
+                        .setUnit(medicationIssue.getQuantityUnit())));
     }
 
-    private void convertMedication(OpenHR001Medication medication, MedicationPrescription target) {
-        target.addDosageInstruction(new MedicationPrescription.MedicationPrescriptionDosageInstructionComponent()
+    private void convertMedication(OpenHR001Medication medication, MedicationOrder target) {
+        target.addDosageInstruction(new MedicationOrder.MedicationOrderDosageInstructionComponent()
                 .setText(medication.getDosage())
-                .setDose(new Quantity()
+                .setDose(new SimpleQuantity()
                         .setValue(medication.getQuantity())
-                        .setUnits(medication.getQuantityUnit())));
+                        .setUnit(medication.getQuantityUnit())));
     }
 
 }

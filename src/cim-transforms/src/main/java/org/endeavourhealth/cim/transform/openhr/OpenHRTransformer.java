@@ -47,7 +47,7 @@ public class OpenHRTransformer {
             persons.add(transformer.transformToPerson(openHR));
         }
 
-        return BundleHelper.createBundle(Bundle.BundleType.SEARCHSET, UUID.randomUUID().toString(), "", persons);
+        return BundleHelper.createBundle(Bundle.BundleType.SEARCHSET, UUID.randomUUID().toString(), persons);
     }
 
     public String fromFHIRCondition(Condition condition) throws TransformException {

@@ -29,7 +29,7 @@ class ConditionTransformer implements ClinicalResourceTransformer {
         target.setPatient(convertPatient(source.getPatient()));
         target.setEncounter(getEncounter(container, source.getId()));
         target.setAsserter(convertUserInRole(source.getAuthorisingUserInRole()));
-        target.setDateAssertedElement(convertEffectiveDateTime(source.getEffectiveTime()));
+        target.setDateRecordedElement(convertEffectiveDateTime(source.getEffectiveTime()));
         target.setCode(CodeHelper.convertCode(source.getCode(), source.getDisplayTerm()));
         target.setCategory(convertCategory());
         target.setSeverity(convertSeverity(problem.getSignificance()));
@@ -176,7 +176,7 @@ class ConditionTransformer implements ClinicalResourceTransformer {
 
         for (OpenHR001ProblemEventLink eventLink: eventLinks) {
             conditionLinkList.addEntry(new List_.ListEntryComponent()
-                    .addFlag(new CodeableConcept()
+                    .setFlag(new CodeableConcept()
                             .addCoding(eventLink.getEventLinkType() == VocProblemEventLinkType.FOL
                                     ? new Coding()
                                         .setSystem(CONDITION_LINK_TYPE_SYSTEM)

@@ -105,9 +105,9 @@ class EncounterTransformer {
     private static CodeableConcept convertType(OpenHR001LocationType sourceLocationType) {
         return new CodeableConcept()
                 .addCoding(new Coding()
-                        .setSystem(FhirConstants.CODE_SYSTEM_SNOMED_CT)
-                        .setCode(sourceLocationType.getCode())
-                        .setDisplay(sourceLocationType.getDisplayName())
+                                .setSystem(FhirConstants.CODE_SYSTEM_SNOMED_CT)
+                                .setCode(sourceLocationType.getCode())
+                                .setDisplay(sourceLocationType.getDisplayName())
                 );
     }
 
@@ -146,7 +146,7 @@ class EncounterTransformer {
 
         Duration target = new Duration();
         target.setSystem(FhirConstants.CODE_SYSTEM_SNOMED_CT);
-        target.setUnits("minutes");
+        target.setUnit("minutes");
         target.setCode("258701004");
         target.setValue(new BigDecimal(sourceDuration.getValue()));
         return target;
@@ -223,10 +223,16 @@ class EncounterTransformer {
                                         .setDisplay(sourceSection.getHeading().getDisplayName())
                                         .setCode(sourceSection.getHeading().getCode())));
 
-                List_ sectionComponentList = createSectionComponentList(page, sourceSection, container);
+                categorySection.setOrderedBy(new CodeableConcept()
+                        .addCoding(new Coding()
+                                .setSystem("http://hl7.org/fhir/list-order")
+                                .setDisplay("Sorted by User")
+                                .setCode("user")));
 
-                composition.getContained().add(sectionComponentList);
-                categorySection.setContent(ReferenceHelper.createInternalReference(sectionComponentList.getId()));
+                for (String eventId: sourceSection.getEvents()) {
+                    categorySection.getEntry().add(createResourceReferenceFromEvent(container, eventId));
+                }
+
                 topicSection.addSection(categorySection);
             }
 
@@ -390,21 +396,6 @@ class EncounterTransformer {
                 //A composition with a name that is not the same as any specified composition name. The originalText element specifies a title for the composition.
                 return new Coding().setSystem(FhirConstants.CODE_SYSTEM_SNOMED_CT).setDisplay("Other Report").setCode("24591000000103");
         }
-    }
-
-    private static List_ createSectionComponentList(EncounterPage page, EncounterSection section, FHIRContainer container) throws SourceDocumentInvalidException {
-        List_ componentList = new List_();
-        String id = page.getPageNumber() + "-" + section.getHeading().getDisplayName();
-        componentList.setId(StringUtils.left(id, 64));
-        componentList.setStatus(List_.ListStatus.CURRENT);
-        componentList.setMode(List_.ListMode.WORKING);
-
-        for (String eventId: section.getEvents()) {
-            componentList.addEntry(new List_.ListEntryComponent()
-                    .setItem(createResourceReferenceFromEvent(container, eventId)));
-        }
-
-        return componentList;
     }
 
     private static Reference createResourceReferenceFromEvent(FHIRContainer container, String eventId) throws SourceDocumentInvalidException {

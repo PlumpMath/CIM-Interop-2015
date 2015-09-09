@@ -4,6 +4,7 @@ import org.endeavourhealth.cim.common.FhirIssueType;
 import org.endeavourhealth.cim.common.text.TextUtils;
 import org.hl7.fhir.instance.formats.JsonParser;
 import org.hl7.fhir.instance.model.CodeableConcept;
+import org.hl7.fhir.instance.model.Coding;
 import org.hl7.fhir.instance.model.OperationOutcome;
 
 public abstract class CIMException extends Exception {
@@ -36,8 +37,8 @@ public abstract class CIMException extends Exception {
 
         OperationOutcome.OperationOutcomeIssueComponent issue = new OperationOutcome.OperationOutcomeIssueComponent()
                 .setSeverity(OperationOutcome.IssueSeverity.ERROR)
-                .setDetails(getExceptionMessage(this))
-                .setCode(code);
+                .setDiagnostics(getExceptionMessage(this))
+                .setDetails(code);
 
         OperationOutcome operationOutcome = new OperationOutcome();
         operationOutcome.addIssue(issue);

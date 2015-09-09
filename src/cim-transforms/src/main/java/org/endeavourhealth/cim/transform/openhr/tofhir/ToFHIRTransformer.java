@@ -22,7 +22,7 @@ public class ToFHIRTransformer {
 
         FHIRContainer container = transform(openHR);
         Date creationDate = TransformHelper.toDate(openHR.getCreationTime());
-        return BundleHelper.createBundle(Bundle.BundleType.SEARCHSET, openHR.getId(), bundleProperties.getBaseUri(), creationDate, container.getResources());
+        return BundleHelper.createBundle(Bundle.BundleType.SEARCHSET, openHR.getId(), creationDate, container.getResources());
     }
 
     public Patient transformToPatient(OpenHR001OpenHealthRecord openHR) throws TransformException {

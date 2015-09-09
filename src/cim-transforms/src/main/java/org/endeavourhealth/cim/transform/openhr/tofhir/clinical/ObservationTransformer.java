@@ -25,10 +25,9 @@ class ObservationTransformer implements ClinicalResourceTransformer {
         Observation target = new Observation();
         target.setId(source.getId());
         target.setCode(CodeHelper.convertCode(source.getCode(), source.getDisplayTerm()));
-        target.setApplies(convertEffectiveDateTime(source.getEffectiveTime()));
+        target.setEffective(convertEffectiveDateTime(source.getEffectiveTime()));
         target.setIssued(TransformHelper.toDate(source.getAvailabilityTimeStamp()));
         target.setStatus(Observation.ObservationStatus.FINAL);
-        target.setReliability(convertReliability(source.getCode()));
         target.setSubject(convertPatient(source.getPatient()));
         target.addPerformer(convertUserInRole(source.getAuthorisingUserInRole()));
         target.setEncounter(getEncounter(container, source.getId()));
@@ -74,12 +73,6 @@ class ObservationTransformer implements ClinicalResourceTransformer {
             return null;
 
         return ReferenceHelper.createReference(ResourceType.Encounter, encounter.getId());
-    }
-
-    private Observation.ObservationReliability convertReliability(DtCodeQualified sourceCode) {
-        return CodeHelper.hasQualifier(sourceCode, CERTAINTY_QUALIFIER_NAME, UNCERTAIN_QUALIFIER_VALUE)
-                ? Observation.ObservationReliability.QUESTIONABLE
-                : Observation.ObservationReliability.OK;
     }
 
     private void convertAssociatedText(OpenHR001Event source, Observation target) throws SourceDocumentInvalidException {
@@ -167,7 +160,7 @@ class ObservationTransformer implements ClinicalResourceTransformer {
         if (sourceValue.getNumeric() != null) {
             target.setValue(new Quantity()
                     .setValue(sourceValue.getNumeric().getValue())
-                    .setUnits(sourceValue.getNumeric().getUnits())
+                    .setUnit(sourceValue.getNumeric().getUnits())
                     .setComparator(convertQuantityComparator(sourceValue.getNumeric().getOperator())));
             target.addReferenceRange(convertRange(sourceValue.getNumeric().getRange()));
         }
@@ -220,28 +213,30 @@ class ObservationTransformer implements ClinicalResourceTransformer {
         return rangeComponent;
     }
 
-    private Quantity convertNumericRange(OpenHR001RangeValue rangeValue, String units) throws SourceDocumentInvalidException {
+    private SimpleQuantity convertNumericRange(OpenHR001RangeValue rangeValue, String units) throws SourceDocumentInvalidException {
         if (rangeValue == null)
             return null;
 
-        return new Quantity()
-                .setValue(rangeValue.getValue())
-                .setUnits(units)
-                .setComparator(convertQuantityComparator(rangeValue.getOperator()));
+        SimpleQuantity quantity = new SimpleQuantity();
+        quantity.setValue(rangeValue.getValue());
+        quantity.setUnit(units);
+
+        //TODO: Check rangeValue.getOperator() - SimpleQuantity does not allow Comparator
+        //quantity.setComparator(convertQuantityComparator(rangeValue.getOperator()));
+
+        return quantity;
     }
 
     private void addRelatedObservations(OpenHR001ComplexObservation complexObservation, DtCodeQualified sourceCode, Observation target) {
         if (complexObservation == null)
             return;
 
-        Observation.ObservationRelationshiptypes relationshipType = CodeHelper.isBloodPressureCode(sourceCode)
-                ? Observation.ObservationRelationshiptypes.HASCOMPONENT
-                : Observation.ObservationRelationshiptypes.HASMEMBER;
+        //TODO: Blood Pressures (Change from DSTU2 Ballot to DSTU2 QA Preview) - Child Observation should be added as components
 
         for (String relatedObservationId: complexObservation.getChildLink()) {
             target.addRelated(new Observation.ObservationRelatedComponent()
                     .setTarget(ReferenceHelper.createReference(ResourceType.Observation, relatedObservationId))
-                    .setType(relationshipType));
+                    .setType(Observation.ObservationRelationshipType.HASMEMBER));
         }
     }
 

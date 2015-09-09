@@ -46,10 +46,10 @@ public class SlotTransformer {
         return slot;
     }
 
-    private static Slot.Slotstatus getSlotStatus(String slotStatus) throws TransformFeatureNotSupportedException {
+    private static Slot.SlotStatus getSlotStatus(String slotStatus) throws TransformFeatureNotSupportedException {
         switch (slotStatus) {
             case "Slot Available":
-                return Slot.Slotstatus.FREE;
+                return Slot.SlotStatus.FREE;
             case "Arrived":
             case "Send In":
             case "Left":
@@ -63,12 +63,12 @@ public class SlotTransformer {
             case "Start Call":
             case "Cannot Be Seen":
             case "Booked":
-                return Slot.Slotstatus.BUSY;
+                return Slot.SlotStatus.BUSY;
             case "Blocked":
             case "Embargoed":
-                return Slot.Slotstatus.BUSYUNAVAILABLE;
+                return Slot.SlotStatus.BUSYUNAVAILABLE;
             case "Unknown":
-                return Slot.Slotstatus.BUSYTENTATIVE;
+                return Slot.SlotStatus.BUSYTENTATIVE;
             default:
                 throw new TransformFeatureNotSupportedException("SlotStatus not supported: " + slotStatus);
         }

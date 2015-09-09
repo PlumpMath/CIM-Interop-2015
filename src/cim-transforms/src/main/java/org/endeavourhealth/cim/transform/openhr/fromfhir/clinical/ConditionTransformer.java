@@ -29,10 +29,10 @@ public class ConditionTransformer {
 
         targetEvent.setEventType(VocEventType.OBS);
 
-        if (condition.getDateAsserted() != null) {
+        if (condition.getDateRecorded() != null) {
             XMLGregorianCalendar eventDate;
             try {
-                eventDate = TransformHelper.fromDate(condition.getDateAsserted());
+                eventDate = TransformHelper.fromDate(condition.getDateRecorded());
             } catch (DatatypeConfigurationException e) {
                 throw new SourceDocumentInvalidException("Error creating Date", e);
             }

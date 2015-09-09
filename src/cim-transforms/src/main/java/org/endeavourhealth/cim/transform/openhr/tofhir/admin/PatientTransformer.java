@@ -1,17 +1,14 @@
 package org.endeavourhealth.cim.transform.openhr.tofhir.admin;
 
-import org.endeavourhealth.cim.transform.common.FhirConstants;
-import org.endeavourhealth.cim.transform.common.StreamExtension;
 import org.endeavourhealth.cim.transform.common.TransformHelper;
-import org.endeavourhealth.cim.transform.exceptions.SourceDocumentInvalidException;
 import org.endeavourhealth.cim.transform.exceptions.TransformException;
 import org.endeavourhealth.cim.transform.exceptions.TransformFeatureNotSupportedException;
 import org.endeavourhealth.cim.transform.openhr.tofhir.FHIRContainer;
 import org.endeavourhealth.cim.transform.openhr.tofhir.ToFHIRHelper;
 import org.endeavourhealth.cim.transform.schemas.openhr.*;
 import org.hl7.fhir.instance.model.*;
+import org.hl7.fhir.instance.model.Enumerations.AdministrativeGender;
 
-import java.util.ArrayList;
 import java.util.List;
 
 class PatientTransformer {
@@ -36,7 +33,8 @@ class PatientTransformer {
         List<ContactPoint> telecoms = ContactPointConverter.convert(sourcePerson.getContact());
         if (telecoms != null) telecoms.forEach(targetPatient::addTelecom);
 
-        targetPatient.setGender(convertSex(sourcePerson.getSex()));
+        AdministrativeGender gender = convertSex(sourcePerson.getSex());
+        targetPatient.setGender(gender);
 
         targetPatient.setBirthDate(TransformHelper.toDate(sourcePerson.getBirthDate()));
 
@@ -48,16 +46,16 @@ class PatientTransformer {
         container.addResource(targetPatient);
     }
 
-    private static Patient.AdministrativeGender convertSex(VocSex sex) throws TransformFeatureNotSupportedException {
+    private static AdministrativeGender convertSex(VocSex sex) throws TransformFeatureNotSupportedException {
         switch (sex) {
             case U:
-                return Patient.AdministrativeGender.UNKNOWN;
+                return AdministrativeGender.UNKNOWN;
             case M:
-                return Patient.AdministrativeGender.MALE;
+                return AdministrativeGender.MALE;
             case F:
-                return Patient.AdministrativeGender.FEMALE;
+                return AdministrativeGender.FEMALE;
             case I:
-                return Patient.AdministrativeGender.OTHER;
+                return AdministrativeGender.OTHER;
             default:
                 throw new TransformFeatureNotSupportedException("Sex vocabulary of " + sex.toString());
         }

@@ -50,8 +50,8 @@ public class AppointmentTransformer {
         Reference reference = ReferenceHelper.createReference(ResourceType.Slot, Integer.toString(appointmentStruct.getSlotID()));
         appointment.addSlot(reference);
 
-        Appointment.Participantrequired requiredStatus = Appointment.Participantrequired.REQUIRED;
-        Appointment.Participationstatus participationstatus = Appointment.Participationstatus.ACCEPTED;
+        Appointment.ParticipantRequired requiredStatus = Appointment.ParticipantRequired.REQUIRED;
+        Appointment.ParticipationStatus participationstatus = Appointment.ParticipationStatus.ACCEPTED;
 
         appointment.addParticipant(createParticipant(ResourceType.Patient, patientGuid, requiredStatus, participationstatus));
 
@@ -63,35 +63,35 @@ public class AppointmentTransformer {
         return appointment;
     }
 
-    private static Appointment.AppointmentParticipantComponent createParticipant(ResourceType resourceType, String id, Appointment.Participantrequired required, Appointment.Participationstatus status) {
+    private static Appointment.AppointmentParticipantComponent createParticipant(ResourceType resourceType, String id, Appointment.ParticipantRequired required, Appointment.ParticipationStatus status) {
         return new Appointment.AppointmentParticipantComponent()
                 .setActor(ReferenceHelper.createReference(resourceType, id))
                 .setRequired(required)
                 .setStatus(status);
     }
 
-    private static Appointment.Appointmentstatus getAppointmentStatus(String status) {
+    private static Appointment.AppointmentStatus getAppointmentStatus(String status) {
         switch (status) {
             case "Slot Available":
-            case "Booked": return Appointment.Appointmentstatus.BOOKED;
+            case "Booked": return Appointment.AppointmentStatus.BOOKED;
 
             case "Start Call":
             case "Quiet Send In":
             case "Send In":
-            case "Arrived": return Appointment.Appointmentstatus.ARRIVED;
+            case "Arrived": return Appointment.AppointmentStatus.ARRIVED;
 
             case "Cannot Be Seen":
             case "DNA":
             case "Telephone - Not In":
             case "Walked Out":
-            case "Visited - Not In": return Appointment.Appointmentstatus.NOSHOW;
+            case "Visited - Not In": return Appointment.AppointmentStatus.NOSHOW;
 
             case "Left":
             case "Telephone - Complete":
-            case "Visited": return Appointment.Appointmentstatus.FULFILLED;
+            case "Visited": return Appointment.AppointmentStatus.FULFILLED;
 
             case "Unknown":
-            default: return Appointment.Appointmentstatus.NULL;
+            default: return Appointment.AppointmentStatus.NULL;
         }
     }
 

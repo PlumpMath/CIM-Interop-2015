@@ -82,15 +82,17 @@ public class ToFHIRHelper {
         //TODO: Age Unit - Consider coding the unit
 
         if (source.getLow() != null) {
-            target.setLow(new Quantity()
-                    .setValue(new BigDecimal(source.getLow().getValue()))
-                    .setUnits(convertAgeUnit(source.getLow().getUnit())));
+            SimpleQuantity lowQuantity = new SimpleQuantity();
+            lowQuantity.setValue(new BigDecimal(source.getLow().getValue()));
+            lowQuantity.setUnit(convertAgeUnit(source.getLow().getUnit()));
+            target.setLow(lowQuantity);
         }
 
         if (source.getHigh() != null) {
-            target.setHigh(new Quantity()
-                    .setValue(new BigDecimal(source.getHigh().getValue()))
-                    .setUnits(convertAgeUnit(source.getHigh().getUnit())));
+            SimpleQuantity highQuantity = new SimpleQuantity();
+            highQuantity.setValue(new BigDecimal(source.getHigh().getValue()));
+            highQuantity.setUnit(convertAgeUnit(source.getHigh().getUnit()));
+            target.setHigh(highQuantity);
         }
 
         return target;
