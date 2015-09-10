@@ -42,6 +42,14 @@ public class EmisTransformer {
 		return _openHRTransformer.toFhirLocation(openHRXml);
 	}
 
+	public Order openHRToFhirTask(String openHRXml) throws TransformException {
+		return _openHRTransformer.toFhirTask(openHRXml);
+	}
+
+	public String fromFhirTask(Order task) throws TransformException {
+		return _openHRTransformer.fromFhirTask(task);
+	}
+
 	/* clinical */
 	public Bundle openHRToFhirBundle(BundleProperties bundleProperties, String openHRXml) throws TransformException {
 

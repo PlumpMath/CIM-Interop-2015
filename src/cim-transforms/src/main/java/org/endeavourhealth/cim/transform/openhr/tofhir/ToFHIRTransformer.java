@@ -4,14 +4,12 @@ import org.endeavourhealth.cim.transform.common.BundleHelper;
 import org.endeavourhealth.cim.transform.common.BundleProperties;
 import org.endeavourhealth.cim.transform.exceptions.TransformException;
 import org.endeavourhealth.cim.transform.common.TransformHelper;
-import org.endeavourhealth.cim.transform.openhr.tofhir.admin.AdminDomainTransformer;
-import org.endeavourhealth.cim.transform.openhr.tofhir.admin.LocationTransformer;
-import org.endeavourhealth.cim.transform.openhr.tofhir.admin.OrganisationTransformer;
-import org.endeavourhealth.cim.transform.openhr.tofhir.admin.PersonTransformer;
+import org.endeavourhealth.cim.transform.openhr.tofhir.admin.*;
 import org.endeavourhealth.cim.transform.openhr.tofhir.clinical.HealthDomainTransformer;
 import org.endeavourhealth.cim.transform.schemas.openhr.OpenHR001Location;
 import org.endeavourhealth.cim.transform.schemas.openhr.OpenHR001OpenHealthRecord;
 import org.endeavourhealth.cim.transform.schemas.openhr.OpenHR001Organisation;
+import org.endeavourhealth.cim.transform.schemas.openhr.OpenHR001PatientTask;
 import org.hl7.fhir.instance.model.*;
 
 import java.util.Date;
@@ -42,6 +40,10 @@ public class ToFHIRTransformer {
 
 	public Location transformToLocation(OpenHR001Location openHR) throws TransformException {
 		return LocationTransformer.transform(openHR);
+	}
+
+	public Order transformToTask(OpenHR001PatientTask openHR) throws TransformException {
+		return TaskTransformer.transform(openHR);
 	}
 
     private FHIRContainer transform(OpenHR001OpenHealthRecord openHR) throws TransformException {

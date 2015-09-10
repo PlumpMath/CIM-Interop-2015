@@ -7,10 +7,7 @@ import org.endeavourhealth.cim.transform.exceptions.TransformException;
 import org.endeavourhealth.cim.transform.common.TransformHelper;
 import org.endeavourhealth.cim.transform.openhr.fromfhir.FromFHIRTransformer;
 import org.endeavourhealth.cim.transform.openhr.tofhir.ToFHIRTransformer;
-import org.endeavourhealth.cim.transform.schemas.openhr.ObjectFactory;
-import org.endeavourhealth.cim.transform.schemas.openhr.OpenHR001Location;
-import org.endeavourhealth.cim.transform.schemas.openhr.OpenHR001OpenHealthRecord;
-import org.endeavourhealth.cim.transform.schemas.openhr.OpenHR001Organisation;
+import org.endeavourhealth.cim.transform.schemas.openhr.*;
 import org.hl7.fhir.instance.model.*;
 
 import javax.xml.bind.*;
@@ -69,6 +66,19 @@ public class OpenHRTransformer {
 
 		ToFHIRTransformer transformer = new ToFHIRTransformer();
 		return transformer.transformToLocation(openHR);
+	}
+
+	public Order toFhirTask(String openHRXml) throws TransformException {
+		OpenHR001PatientTask openHR = TransformHelper.unmarshall(openHRXml, OpenHR001PatientTask.class);
+
+		ToFHIRTransformer transformer = new ToFHIRTransformer();
+		return transformer.transformToTask(openHR);
+	}
+
+	public String fromFhirTask(Order task) throws TransformException {
+		FromFHIRTransformer transformer = new FromFHIRTransformer();
+		OpenHR001OpenHealthRecord openHR = transformer.transformFromTask(task);
+		return serializeOpenHR(openHR);
 	}
 
     private String serializeOpenHR(OpenHR001OpenHealthRecord openHR) throws TransformException {

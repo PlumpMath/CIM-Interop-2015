@@ -1,6 +1,7 @@
 package org.endeavourhealth.cim.transform.openhr.fromfhir;
 
 import org.endeavourhealth.cim.transform.schemas.openhr.OpenHR001HealthDomain;
+import org.endeavourhealth.cim.transform.schemas.openhr.OpenHR001PatientTask;
 import org.endeavourhealth.cim.transform.schemas.openhr.OpenHR001Problem;
 
 import java.util.ArrayList;
@@ -9,6 +10,7 @@ import java.util.List;
 public class OpenHRContainer {
     private List<OpenHR001HealthDomain.Event> events;
     private List<OpenHR001Problem> problems;
+	private List<OpenHR001PatientTask> patientTasks;
 
     public List<OpenHR001HealthDomain.Event> getEvents() {
         if (events == null)
@@ -29,4 +31,14 @@ public class OpenHRContainer {
     public void setProblems(List<OpenHR001Problem> problems) {
         this.problems = problems;
     }
+
+	public List<OpenHR001PatientTask> getPatientTasks() {
+		if (patientTasks == null)
+			patientTasks = new ArrayList<>();
+		return patientTasks;
+	}
+
+	public void setPatientTasks(List<OpenHR001PatientTask> patientTasks) {
+		this.patientTasks = patientTasks;
+	}
 }

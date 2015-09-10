@@ -235,6 +235,30 @@ public class EmisDataAdapter {
 		return getSOAPResultAsString(responseMessage, soapMethod);
 	}
 
+	public String getTaskById(String odsCode, UUID taskId) throws Exception {
+		final String soapMethod = "GetTask";
+
+		Map<String, String> parameters = createParameterMap();
+		parameters.put("odsCode", odsCode);
+		parameters.put("taskGuid", taskId.toString());
+
+		SOAPMessage responseMessage = performSOAPCall(soapMethod, parameters);
+
+		return  getSOAPResultAsString(responseMessage, soapMethod);
+	}
+
+	public String addTask(String odsCode, String task) throws Exception {
+		final String soapMethod = "AddTask";
+
+		Map<String, String> parameters = createParameterMap();
+		parameters.put("odsCode", odsCode);
+		parameters.put("task", task);
+
+		SOAPMessage responseMessage = performSOAPCall(soapMethod, parameters);
+
+		return  getSOAPResultAsString(responseMessage, soapMethod);
+	}
+
     // Utility methods
     private static Map<String, String> createParameterMap() {
         return new LinkedHashMap<>();

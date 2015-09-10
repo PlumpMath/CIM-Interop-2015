@@ -4,8 +4,10 @@ import org.endeavourhealth.cim.transform.exceptions.SourceDocumentInvalidExcepti
 import org.endeavourhealth.cim.transform.exceptions.TransformException;
 import org.endeavourhealth.cim.transform.common.TransformHelper;
 import org.endeavourhealth.cim.transform.openhr.fromfhir.clinical.ConditionTransformer;
+import org.endeavourhealth.cim.transform.openhr.fromfhir.admin.TaskTransformer;
 import org.endeavourhealth.cim.transform.schemas.openhr.*;
 import org.hl7.fhir.instance.model.Condition;
+import org.hl7.fhir.instance.model.Order;
 
 import javax.xml.datatype.DatatypeConfigurationException;
 import java.util.Date;
@@ -17,6 +19,12 @@ public class FromFHIRTransformer {
         ConditionTransformer.transform(container, condition);
         return createOpenHRFromContainer(container);
     }
+
+	public OpenHR001OpenHealthRecord transformFromTask(Order task) throws TransformException {
+		OpenHRContainer container = new OpenHRContainer();
+		TaskTransformer.transform(container, task);
+		return createOpenHRFromContainer(container);
+	}
 
     private OpenHR001OpenHealthRecord createOpenHRFromContainer(OpenHRContainer container) throws TransformException {
         OpenHR001OpenHealthRecord openHR = new OpenHR001OpenHealthRecord();

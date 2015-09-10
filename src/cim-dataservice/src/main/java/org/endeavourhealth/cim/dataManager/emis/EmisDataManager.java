@@ -90,6 +90,68 @@ public class EmisDataManager implements IDataManager {
 		return _emisDataAdapter.cancelSlot(odsCode, slotId, patientUuid);
 	}
 
+	@Override
+	public String getUser(String odsCode, String userId) throws Exception {
+		UUID userUuid;
+		try {
+			userUuid = UUID.fromString(userId);
+		} catch (IllegalArgumentException e) {
+			throw new CIMInvalidInternalIdentifier("User Id");
+		}
+
+		String openHRXml = _emisDataAdapter.getUserById(odsCode, userUuid);
+		Person person = _emisTransformer.openHRToFhirPerson(openHRXml);
+
+		return new JsonParser().composeString(person);
+	}
+
+	@Override
+	public String getOrganisation(String odsCode) throws Exception {
+		String openHRXml = _emisDataAdapter.getOrganisationById(odsCode);
+		Organization organisation = _emisTransformer.openHRToFhirOrganisation(openHRXml);
+
+		return new JsonParser().composeString(organisation);
+	}
+
+	@Override
+	public String getLocation(String odsCode, String locationId) throws Exception {
+		UUID locationUuid;
+		try {
+			locationUuid = UUID.fromString(locationId);
+		} catch (IllegalArgumentException e) {
+			throw new CIMInvalidInternalIdentifier("Location Id");
+		}
+
+		String openHRXml = _emisDataAdapter.getLocationById(odsCode, locationUuid);
+		Location location = _emisTransformer.openHRToFhirLocation(openHRXml);
+
+		return new JsonParser().composeString(location);
+	}
+
+	@Override
+	public String getTask(String odsCode, String taskId) throws Exception {
+		UUID taskUuid;
+		try {
+			taskUuid = UUID.fromString(taskId);
+		} catch (IllegalArgumentException e) {
+			throw new CIMInvalidInternalIdentifier("Task Id");
+		}
+
+		String openHRXml = _emisDataAdapter.getTaskById(odsCode, taskUuid);
+		Order task = _emisTransformer.openHRToFhirTask(openHRXml);
+
+		return new JsonParser().composeString(task);
+	}
+
+	@Override
+	public String addTask(String odsCode, String fhirRequest) throws Exception {
+		Order task = (Order)new JsonParser().parse(fhirRequest);
+		String request = _emisTransformer.fromFhirTask(task);
+		String response = _emisDataAdapter.addTask(odsCode, request);
+		String fhirResponse = response; // _openHrTransformer.toFhirTask(response);
+
+		return fhirResponse;
+	}
 
 	/* clinical */
 
@@ -235,44 +297,6 @@ public class EmisDataManager implements IDataManager {
 			patientIds.add(patientUuid.toString());
 
 		return patientIds;
-	}
-
-	@Override
-	public String getUser(String odsCode, String userId) throws Exception {
-		UUID userUuid;
-		try {
-			userUuid = UUID.fromString(userId);
-		} catch (IllegalArgumentException e) {
-			throw new CIMInvalidInternalIdentifier("User Id");
-		}
-
-		String openHRXml = _emisDataAdapter.getUserById(odsCode, userUuid);
-		Person person = _emisTransformer.openHRToFhirPerson(openHRXml);
-
-		return new JsonParser().composeString(person);
-	}
-
-	@Override
-	public String getOrganisation(String odsCode) throws Exception {
-		String openHRXml = _emisDataAdapter.getOrganisationById(odsCode);
-		Organization organisation = _emisTransformer.openHRToFhirOrganisation(openHRXml);
-
-		return new JsonParser().composeString(organisation);
-	}
-
-	@Override
-	public String getLocation(String odsCode, String locationId) throws Exception {
-		UUID locationUuid;
-		try {
-			locationUuid = UUID.fromString(locationId);
-		} catch (IllegalArgumentException e) {
-			throw new CIMInvalidInternalIdentifier("Location Id");
-		}
-
-		String openHRXml = _emisDataAdapter.getLocationById(odsCode, locationUuid);
-		Location location = _emisTransformer.openHRToFhirLocation(openHRXml);
-
-		return new JsonParser().composeString(location);
 	}
 
 	private BundleProperties getBundleProperties(String odsCode) {
