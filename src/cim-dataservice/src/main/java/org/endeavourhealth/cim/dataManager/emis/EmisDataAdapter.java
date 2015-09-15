@@ -247,16 +247,16 @@ public class EmisDataAdapter {
 		return  getSOAPResultAsString(responseMessage, soapMethod);
 	}
 
-	public String addTask(String odsCode, String task) throws Exception {
+	public void addTask(String odsCode, String task) throws Exception {
 		final String soapMethod = "AddTask";
 
 		Map<String, String> parameters = createParameterMap();
 		parameters.put("odsCode", odsCode);
-		parameters.put("task", task);
+		parameters.put("openHRXml", task);
 
-		SOAPMessage responseMessage = performSOAPCall(soapMethod, parameters);
+		performSOAPCall(soapMethod, parameters);
 
-		return  getSOAPResultAsString(responseMessage, soapMethod);
+		// return  getSOAPResultAsString(responseMessage, soapMethod);
 	}
 
     // Utility methods

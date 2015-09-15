@@ -208,5 +208,23 @@ namespace DotNetGPSystem
 
             return result;
         }
+
+        public string GetTask(string odsCode, Guid taskGuid)
+        {
+            OpenHR001PatientTask task = DataStore
+                .GetTask(odsCode, taskGuid);
+
+            string result = string.Empty;
+            if (task != null)
+                result = Utilities.Serialize(task);
+
+            return result;
+        }
+
+        public void AddTask(string odsCode, string openHRXml)
+        {
+            OpenHR001OpenHealthRecord record = Utilities.Deserialize<OpenHR001OpenHealthRecord>(openHRXml);
+            DataStore.AddTasks(odsCode, record.healthDomain.task);
+        }
     }
 }

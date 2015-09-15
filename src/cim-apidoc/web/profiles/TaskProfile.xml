@@ -1,0 +1,52 @@
+<StructureDefinition xmlns="http://hl7.org/fhir">
+    <constrainedType value="Order"/>
+    <snapshot>
+        <element>
+            <path value="Order.subject"/>
+            <slicing>
+                <discriminator value="reference"/>
+            </slicing>
+            <min value="1"/>
+            <max value="1"/>
+        </element>
+
+        <element>
+            <path value="Order.subject.reference"/>
+            <min value="1"/>
+            <max value="1"/>
+        </element>
+
+        <element>
+            <path value="Order.extension"/>
+            <name value="TaskType"/>
+            <min value="1"/>
+            <max value="1"/>
+            <type>
+                <code value="Extension"/>
+                <profile value="http://www.e-mis.com/emisopen/extension/TaskType"/>
+            </type>
+        </element>
+        <element>
+            <path value="Order.extension"/>
+            <name value="TaskPriority"/>
+            <min value="1"/>
+            <max value="1"/>
+            <type>
+                <code value="Extension"/>
+                <profile value="http://www.e-mis.com/emisopen/extension/TaskPriority"/>
+            </type>
+        </element>
+        <element>
+            <path value="Order.extension"/>
+            <name value="TaskStatus"/>
+            <min value="1"/>
+            <max value="1"/>
+            <type>
+                <code value="Extension"/>
+                <profile value="http://www.e-mis.com/emisopen/extension/TaskStatus"/>
+            </type>
+        </element>
+    </snapshot>
+</StructureDefinition>
+
+

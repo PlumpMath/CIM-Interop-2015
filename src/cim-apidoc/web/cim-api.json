@@ -1,680 +1,1463 @@
 {
-    "swagger": "2.0",
-    "info": {
-        "description": "API documentation for the Endeavour Health Common Interface Mechanism.<div id='notes'><div id='notestitle'>NOTES</div><p>Sample data and notes on usage can be <a href='usage-notes.html' target='_blank'>viewed here</a>.</p><p>Build last updated: BUILD_TIME</p></div>",
-        "version": "0.1",
-        "title": "Common Interface Mechanism"
+  "swagger": "2.0",
+  "info": {
+    "description": "API documentation for the Endeavour Health Common Interface Mechanism.<div id='notes'><div id='notestitle'>NOTES</div><p>Sample data and notes on usage can be <a href='usage-notes.html' target='_blank'>viewed here</a>.</p><p>Build last updated: BUILD_TIME</p></div>",
+    "version": "0.1",
+    "title": "Common Interface Mechanism"
+  },
+  "host": "localhost:8080",
+  "basePath": "/api/v0.1",
+  "tags": [
+    {
+      "name": "demographics",
+      "description": ""
     },
-    "host": "localhost:8080",
-    "basePath": "/api/v0.1",
-    "tags": [
-        {
-            "name": "demographics",
-            "description": ""
-        },
-        {
-            "name": "clinical",
-            "description": ""
-        },
-        {
-            "name": "administrative",
-            "description": ""
-        }
-    ],
-    "paths": {
-      "/{odsCode}": {
-        "get": {
-          "tags": [ "administrative" ],
-          "summary": "Get organisation details",
-          "description": "Get organisation details by ID.",
-          "produces": [ "application/json" ],
-          "parameters": [
-            { "$ref": "#definitions/apiKeyParameter" },
-            { "$ref": "#definitions/hashParameter" },
-            { "$ref": "#definitions/odsCodeParameter" }
-          ],
-          "responses": {
-            "200": { "description": "OK | <a target='_blank' href='http://hl7.org/fhir/2015May/organization.html'>Organisation</a> resource" },
-            "400": { "$ref": "#definitions/400Response" },
-            "401": { "$ref": "#definitions/401Response" },
-            "403": { "$ref": "#definitions/403Response" },
-            "500": { "$ref": "#definitions/500Response" },
-            "502": { "$ref": "#definitions/502Response" },
-            "504": { "$ref": "#definitions/504Response" }
+    {
+      "name": "clinical",
+      "description": ""
+    },
+    {
+      "name": "administrative",
+      "description": ""
+    }
+  ],
+  "paths": {
+    "/{odsCode}": {
+      "get": {
+        "tags": [
+          "administrative"
+        ],
+        "summary": "Get organisation details",
+        "description": "Get organisation details by ID.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#definitions/apiKeyParameter"
+          },
+          {
+            "$ref": "#definitions/hashParameter"
+          },
+          {
+            "$ref": "#definitions/odsCodeParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK | <a target='_blank' href='http://hl7.org/fhir/2015May/organization.html'>Organisation</a> resource"
+          },
+          "400": {
+            "$ref": "#definitions/400Response"
+          },
+          "401": {
+            "$ref": "#definitions/401Response"
+          },
+          "403": {
+            "$ref": "#definitions/403Response"
+          },
+          "500": {
+            "$ref": "#definitions/500Response"
+          },
+          "502": {
+            "$ref": "#definitions/502Response"
+          },
+          "504": {
+            "$ref": "#definitions/504Response"
           }
         }
-      },
-      "/{odsCode}/Location/{id}": {
-        "get": {
-          "tags": [ "administrative" ],
-          "summary": "Get location details",
-          "description": "Get location details by ID.",
-          "produces": [ "application/json" ],
-          "parameters": [
-            { "$ref": "#definitions/apiKeyParameter" },
-            { "$ref": "#definitions/hashParameter" },
-            { "$ref": "#definitions/odsCodeParameter" },
-            { "$ref": "#definitions/locationIdParameter" }
-          ],
-          "responses": {
-            "200": { "description": "OK | <a target='_blank' href='http://hl7.org/fhir/2015May/location.html'>Location</a> resource" },
-            "400": { "$ref": "#definitions/400Response" },
-            "401": { "$ref": "#definitions/401Response" },
-            "403": { "$ref": "#definitions/403Response" },
-            "500": { "$ref": "#definitions/500Response" },
-            "502": { "$ref": "#definitions/502Response" },
-            "504": { "$ref": "#definitions/504Response" }
+      }
+    },
+    "/{odsCode}/Location/{id}": {
+      "get": {
+        "tags": [
+          "administrative"
+        ],
+        "summary": "Get location details",
+        "description": "Get location details by ID.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#definitions/apiKeyParameter"
+          },
+          {
+            "$ref": "#definitions/hashParameter"
+          },
+          {
+            "$ref": "#definitions/odsCodeParameter"
+          },
+          {
+            "$ref": "#definitions/locationIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK | <a target='_blank' href='http://hl7.org/fhir/2015May/location.html'>Location</a> resource"
+          },
+          "400": {
+            "$ref": "#definitions/400Response"
+          },
+          "401": {
+            "$ref": "#definitions/401Response"
+          },
+          "403": {
+            "$ref": "#definitions/403Response"
+          },
+          "500": {
+            "$ref": "#definitions/500Response"
+          },
+          "502": {
+            "$ref": "#definitions/502Response"
+          },
+          "504": {
+            "$ref": "#definitions/504Response"
           }
         }
-      },
-      "/{odsCode}/User/{id}": {
-        "get": {
-          "tags": [ "administrative" ],
-          "summary": "Get user details",
-          "description": "Get user details by ID.",
-          "produces": [ "application/json" ],
-          "parameters": [
-            { "$ref": "#definitions/apiKeyParameter" },
-            { "$ref": "#definitions/hashParameter" },
-            { "$ref": "#definitions/odsCodeParameter" },
-            {
-              "name": "id",
-              "in": "path",
-              "description": "Internal user identifier",
-              "required": true,
+      }
+    },
+    "/{odsCode}/User/{id}": {
+      "get": {
+        "tags": [
+          "administrative"
+        ],
+        "summary": "Get user details",
+        "description": "Get user details by ID.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#definitions/apiKeyParameter"
+          },
+          {
+            "$ref": "#definitions/hashParameter"
+          },
+          {
+            "$ref": "#definitions/odsCodeParameter"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Internal user identifier",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK | <a target='_blank' href='http://hl7.org/fhir/2015May/person.html'>Person</a> resource"
+          },
+          "400": {
+            "$ref": "#definitions/400Response"
+          },
+          "401": {
+            "$ref": "#definitions/401Response"
+          },
+          "403": {
+            "$ref": "#definitions/403Response"
+          },
+          "500": {
+            "$ref": "#definitions/500Response"
+          },
+          "502": {
+            "$ref": "#definitions/502Response"
+          },
+          "504": {
+            "$ref": "#definitions/504Response"
+          }
+        }
+      }
+    },
+    "/{odsCode}/Schedule": {
+      "get": {
+        "tags": [
+          "administrative"
+        ],
+        "summary": "Get appointment schedules",
+        "description": "Get appointment schedules by date and/or practitioner ID.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#definitions/apiKeyParameter"
+          },
+          {
+            "$ref": "#definitions/hashParameter"
+          },
+          {
+            "$ref": "#definitions/odsCodeParameter"
+          },
+          {
+            "name": "date",
+            "in": "query",
+            "description": "Search for schedules within the date(s) specified",
+            "required": false,
+            "type": "array",
+            "items": {
               "type": "string"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "actor:Practitioner",
+            "in": "query",
+            "description": "Search for schedules with the practitioner ID specified",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK | <a target='_blank' href='http://www.hl7.org/FHIR/2015May/bundle.html'>Bundle</a> containing zero or more <a target='_blank' href='http://www.hl7.org/FHIR/2015May/schedule.html'>Schedule</a> resources"
+          },
+          "400": {
+            "$ref": "#definitions/400Response"
+          },
+          "401": {
+            "$ref": "#definitions/401Response"
+          },
+          "403": {
+            "$ref": "#definitions/403Response"
+          },
+          "500": {
+            "$ref": "#definitions/500Response"
+          },
+          "502": {
+            "$ref": "#definitions/502Response"
+          },
+          "504": {
+            "$ref": "#definitions/504Response"
+          }
+        }
+      }
+    },
+    "/{odsCode}/Slot": {
+      "get": {
+        "tags": [
+          "administrative"
+        ],
+        "summary": "Get appointment slots",
+        "description": "Get appointment slots by schedule ID.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#definitions/apiKeyParameter"
+          },
+          {
+            "$ref": "#definitions/hashParameter"
+          },
+          {
+            "$ref": "#definitions/odsCodeParameter"
+          },
+          {
+            "name": "schedule",
+            "in": "query",
+            "description": "Search for slots with the schedule ID specified",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK | <a target='_blank' href='http://www.hl7.org/FHIR/2015May/bundle.html'>Bundle</a> containing zero or more <a target='_blank' href='http://www.hl7.org/FHIR/2015May/slot.html'>Slot</a> resources"
+          },
+          "400": {
+            "$ref": "#definitions/400Response"
+          },
+          "401": {
+            "$ref": "#definitions/401Response"
+          },
+          "403": {
+            "$ref": "#definitions/403Response"
+          },
+          "500": {
+            "$ref": "#definitions/500Response"
+          },
+          "502": {
+            "$ref": "#definitions/502Response"
+          },
+          "504": {
+            "$ref": "#definitions/504Response"
+          }
+        }
+      }
+    },
+    "/{odsCode}/Slot/{id}/$book": {
+      "post": {
+        "tags": [
+          "administrative"
+        ],
+        "summary": "Book an appointment slot",
+        "description": "Book an appointment slot.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#definitions/apiKeyParameter"
+          },
+          {
+            "$ref": "#definitions/hashParameter"
+          },
+          {
+            "$ref": "#definitions/odsCodeParameter"
+          },
+          {
+            "$ref": "#definitions/slotIdParameter"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Patient ID wrapped in <a target='_blank'  href='http://hl7.org/fhir/2015May/parameters.html'>Parameters resource</a>.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/parametersResource"
             }
-          ],
-          "responses": {
-            "200": { "description": "OK | <a target='_blank' href='http://hl7.org/fhir/2015May/person.html'>Person</a> resource" },
-            "400": { "$ref": "#definitions/400Response" },
-            "401": { "$ref": "#definitions/401Response" },
-            "403": { "$ref": "#definitions/403Response" },
-            "500": { "$ref": "#definitions/500Response" },
-            "502": { "$ref": "#definitions/502Response" },
-            "504": { "$ref": "#definitions/504Response" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK | TBD"
+          },
+          "400": {
+            "$ref": "#definitions/400Response"
+          },
+          "401": {
+            "$ref": "#definitions/401Response"
+          },
+          "403": {
+            "$ref": "#definitions/403Response"
+          },
+          "404": {
+            "$ref": "#definitions/404SlotOrPatientNotFoundResponse"
+          },
+          "409": {
+            "$ref": "#definitions/409SlotAlreadyBookedResponse"
+          },
+          "412": {
+            "$ref": "#definitions/412SlotAlreadyBookedByThisPatientResponse"
+          },
+          "500": {
+            "$ref": "#definitions/500Response"
+          },
+          "502": {
+            "$ref": "#definitions/502Response"
+          },
+          "504": {
+            "$ref": "#definitions/504Response"
+          }
+        }
+      }
+    },
+    "/{odsCode}/Slot/{id}/$cancel": {
+      "post": {
+        "tags": [
+          "administrative"
+        ],
+        "summary": "Cancel an appointment slot",
+        "description": "Cancel an appointment slot.",
+        "parameters": [
+          {
+            "$ref": "#/definitions/apiKeyParameter"
+          },
+          {
+            "$ref": "#/definitions/hashParameter"
+          },
+          {
+            "$ref": "#/definitions/odsCodeParameter"
+          },
+          {
+            "$ref": "#/definitions/slotIdParameter"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Patient ID wrapped in <a target='_blank'  href='http://hl7.org/fhir/2015May/parameters.html'>FHIR Parameters Resource</a>.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/parametersResource"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK | TBD"
+          },
+          "400": {
+            "$ref": "#definitions/400Response"
+          },
+          "401": {
+            "$ref": "#definitions/401Response"
+          },
+          "403": {
+            "$ref": "#definitions/403Response"
+          },
+          "404": {
+            "$ref": "#definitions/404SlotOrPatientNotFoundResponse"
+          },
+          "412": {
+            "$ref": "#definitions/412SlotNotBookedByThisPatientResponse"
+          },
+          "500": {
+            "$ref": "#definitions/500Response"
+          },
+          "502": {
+            "$ref": "#definitions/502Response"
+          },
+          "504": {
+            "$ref": "#definitions/504Response"
+          }
+        }
+      }
+    },
+    "/{odsCode}/Appointment": {
+      "get": {
+        "tags": [
+          "administrative"
+        ],
+        "summary": "Get appointments by patient",
+        "description": "Get appointments by patient ID.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#definitions/apiKeyParameter"
+          },
+          {
+            "$ref": "#definitions/hashParameter"
+          },
+          {
+            "$ref": "#definitions/odsCodeParameter"
+          },
+          {
+            "name": "patient",
+            "in": "query",
+            "description": "Search for appointments with the patient ID specified",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "date",
+            "in": "query",
+            "description": "Search for appointments within the date(s) specified",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "multi"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK | <a target='_blank' href='http://www.hl7.org/FHIR/2015May/bundle.html'>Bundle</a> containing zero or more <a target='_blank' href='http://www.hl7.org/FHIR/2015May/appointment.html'>Appointment</a> resources"
+          },
+          "400": {
+            "$ref": "#definitions/400Response"
+          },
+          "401": {
+            "$ref": "#definitions/401Response"
+          },
+          "403": {
+            "$ref": "#definitions/403Response"
+          },
+          "500": {
+            "$ref": "#definitions/500Response"
+          },
+          "502": {
+            "$ref": "#definitions/502Response"
+          },
+          "504": {
+            "$ref": "#definitions/504Response"
+          }
+        }
+      }
+    },
+    "/{odsCode}/Task": {
+      "post": {
+        "tags": [
+          "administrative"
+        ],
+        "summary": "Add a task",
+        "description": "Add a task at a given organisation",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/definitions/apiKeyParameter"
+          },
+          {
+            "$ref": "#/definitions/hashParameter"
+          },
+          {
+            "$ref": "#/definitions/odsCodeParameter"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "<a target='_blank'  href='http://hl7.org/fhir/2015May/order.html'>Order Resource</a> (with task extensions).",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/taskResource"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK | TBD"
+          },
+          "400": {
+            "$ref": "#definitions/400Response"
+          },
+          "401": {
+            "$ref": "#definitions/401Response"
+          },
+          "403": {
+            "$ref": "#definitions/403Response"
+          },
+          "404": {
+            "$ref": "#definitions/404SlotOrPatientNotFoundResponse"
+          },
+          "412": {
+            "$ref": "#definitions/412SlotNotBookedByThisPatientResponse"
+          },
+          "500": {
+            "$ref": "#definitions/500Response"
+          },
+          "502": {
+            "$ref": "#definitions/502Response"
+          },
+          "504": {
+            "$ref": "#definitions/504Response"
+          }
+        }
+      }
+    },
+    "/{odsCode}/Task/{id}": {
+      "get": {
+        "tags": [
+          "administrative"
+        ],
+        "summary": "Get a task",
+        "description": "Retrieve a task from a given organisation",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/definitions/apiKeyParameter"
+          },
+          {
+            "$ref": "#/definitions/hashParameter"
+          },
+          {
+            "$ref": "#/definitions/odsCodeParameter"
+          },
+          {
+            "$ref": "#/definitions/taskIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK | TBD"
+          },
+          "400": {
+            "$ref": "#definitions/400Response"
+          },
+          "401": {
+            "$ref": "#definitions/401Response"
+          },
+          "403": {
+            "$ref": "#definitions/403Response"
+          },
+          "404": {
+            "$ref": "#definitions/404SlotOrPatientNotFoundResponse"
+          },
+          "412": {
+            "$ref": "#definitions/412SlotNotBookedByThisPatientResponse"
+          },
+          "500": {
+            "$ref": "#definitions/500Response"
+          },
+          "502": {
+            "$ref": "#definitions/502Response"
+          },
+          "504": {
+            "$ref": "#definitions/504Response"
+          }
+        }
+      }
+    },
+    "/{odsCode}/Patient/{id}/$everythingnobinary": {
+      "get": {
+        "tags": [
+          "clinical"
+        ],
+        "summary": "Get full record by patient ID",
+        "description": "Get full record (demographic and clinical) by patient ID, excluding binaries and attachments.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#definitions/apiKeyParameter"
+          },
+          {
+            "$ref": "#definitions/hashParameter"
+          },
+          {
+            "$ref": "#definitions/odsCodeParameter"
+          },
+          {
+            "$ref": "#definitions/patientIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK | <a target='_blank' href='http://www.hl7.org/FHIR/2015May/bundle.html'>Bundle</a> containing multiple resource types constituting the patients full record"
+          },
+          "400": {
+            "$ref": "#definitions/400Response"
+          },
+          "401": {
+            "$ref": "#definitions/401Response"
+          },
+          "403": {
+            "$ref": "#definitions/403Response"
+          },
+          "404": {
+            "$ref": "#definitions/404PatientNotFoundResponse"
+          },
+          "500": {
+            "$ref": "#definitions/500Response"
+          },
+          "502": {
+            "$ref": "#definitions/502Response"
+          },
+          "504": {
+            "$ref": "#definitions/504Response"
+          }
+        }
+      }
+    },
+    "/{odsCode}/Patient/{id}/MedicationPrescription": {
+      "get": {
+        "tags": [
+          "clinical"
+        ],
+        "summary": "Get medication prescriptions by patient ID",
+        "description": "Get medication prescriptions by patient ID",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#definitions/apiKeyParameter"
+          },
+          {
+            "$ref": "#definitions/hashParameter"
+          },
+          {
+            "$ref": "#definitions/odsCodeParameter"
+          },
+          {
+            "$ref": "#definitions/patientIdParameter"
+          },
+          {
+            "name": "dateWritten",
+            "in": "query",
+            "description": "Date of the prescription",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK | <a target='_blank' href='http://www.hl7.org/FHIR/2015May/bundle.html'>Bundle</a> containing zero or more <a target='_blank' href='http://www.hl7.org/FHIR/2015May/medicationprescription.html'>MedicationPrescription</a> resources"
+          },
+          "400": {
+            "$ref": "#definitions/400Response"
+          },
+          "401": {
+            "$ref": "#definitions/401Response"
+          },
+          "403": {
+            "$ref": "#definitions/403Response"
+          },
+          "404": {
+            "$ref": "#definitions/404PatientNotFoundResponse"
+          },
+          "500": {
+            "$ref": "#definitions/500Response"
+          },
+          "502": {
+            "$ref": "#definitions/502Response"
+          },
+          "504": {
+            "$ref": "#definitions/504Response"
+          }
+        }
+      }
+    },
+    "/{odsCode}/Patient/{id}/Condition": {
+      "get": {
+        "tags": [
+          "clinical"
+        ],
+        "summary": "Get conditions by patient ID",
+        "description": "Get conditions by patient ID.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#definitions/apiKeyParameter"
+          },
+          {
+            "$ref": "#definitions/hashParameter"
+          },
+          {
+            "$ref": "#definitions/odsCodeParameter"
+          },
+          {
+            "$ref": "#definitions/patientIdParameter"
+          },
+          {
+            "name": "code",
+            "in": "query",
+            "description": "Code reference",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK | <a target='_blank' href='http://www.hl7.org/FHIR/2015May/bundle.html'>Bundle</a> containing zero or more <a target='_blank' href='http://www.hl7.org/FHIR/2015May/condition.html'>Condition</a> resources"
+          },
+          "400": {
+            "$ref": "#definitions/400Response"
+          },
+          "401": {
+            "$ref": "#definitions/401Response"
+          },
+          "403": {
+            "$ref": "#definitions/403Response"
+          },
+          "404": {
+            "$ref": "#definitions/404PatientNotFoundResponse"
+          },
+          "500": {
+            "$ref": "#definitions/500Response"
+          },
+          "502": {
+            "$ref": "#definitions/502Response"
+          },
+          "504": {
+            "$ref": "#definitions/504Response"
           }
         }
       },
-        "/{odsCode}/Schedule": {
-            "get": {
-                "tags": [ "administrative" ],
-                "summary": "Get appointment schedules",
-                "description": "Get appointment schedules by date and/or practitioner ID.",
-                "produces": [ "application/json" ],
-                "parameters": [
-                    { "$ref": "#definitions/apiKeyParameter" },
-                    { "$ref": "#definitions/hashParameter" },
-                    { "$ref": "#definitions/odsCodeParameter" },
-                    {
-                        "name": "date",
-                        "in": "query",
-                        "description": "Search for schedules within the date(s) specified",
-                        "required": false,
-                        "type": "array",
-                        "items" : { "type" : "string" },
-                        "collectionFormat": "multi"
-                    },
-                    {
-                        "name": "actor:Practitioner",
-                        "in": "query",
-                        "description": "Search for schedules with the practitioner ID specified",
-                        "required": false,
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": { "description": "OK | <a target='_blank' href='http://www.hl7.org/FHIR/2015May/bundle.html'>Bundle</a> containing zero or more <a target='_blank' href='http://www.hl7.org/FHIR/2015May/schedule.html'>Schedule</a> resources" },
-                    "400": { "$ref": "#definitions/400Response" },
-                    "401": { "$ref": "#definitions/401Response" },
-                    "403": { "$ref": "#definitions/403Response" },
-                    "500": { "$ref": "#definitions/500Response" },
-                    "502": { "$ref": "#definitions/502Response" },
-                    "504": { "$ref": "#definitions/504Response" }
-                }
+      "post": {
+        "tags": [
+          "clinical"
+        ],
+        "summary": "Add condition to patient",
+        "description": "Add condition to patient.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#definitions/apiKeyParameter"
+          },
+          {
+            "$ref": "#definitions/hashParameter"
+          },
+          {
+            "$ref": "#definitions/odsCodeParameter"
+          },
+          {
+            "$ref": "#definitions/patientIdParameter"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "<a target='_blank'  href='http://hl7.org/fhir/2015May/condition.html'>Condition resource</a>",
+            "required": true,
+            "schema": {
+              "type": "object"
             }
-        },
-        "/{odsCode}/Slot": {
-            "get": {
-                "tags": [ "administrative" ],
-                "summary": "Get appointment slots",
-                "description": "Get appointment slots by schedule ID.",
-                "produces": [ "application/json" ],
-                "parameters": [
-                    { "$ref": "#definitions/apiKeyParameter" },
-                    { "$ref": "#definitions/hashParameter" },
-                    { "$ref": "#definitions/odsCodeParameter" },
-                    {
-                        "name": "schedule",
-                        "in": "query",
-                        "description": "Search for slots with the schedule ID specified",
-                        "required": false,
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": { "description": "OK | <a target='_blank' href='http://www.hl7.org/FHIR/2015May/bundle.html'>Bundle</a> containing zero or more <a target='_blank' href='http://www.hl7.org/FHIR/2015May/slot.html'>Slot</a> resources" },
-                    "400": { "$ref": "#definitions/400Response" },
-                    "401": { "$ref": "#definitions/401Response" },
-                    "403": { "$ref": "#definitions/403Response" },
-                    "500": { "$ref": "#definitions/500Response" },
-                    "502": { "$ref": "#definitions/502Response" },
-                    "504": { "$ref": "#definitions/504Response" }
-                }
-            }
-        },
-        "/{odsCode}/Slot/{id}/$book": {
-            "post": {
-                "tags": [ "administrative" ],
-                "summary": "Book an appointment slot",
-                "description": "Book an appointment slot.",
-                "produces": [ "application/json" ],
-                "parameters": [
-                    { "$ref": "#definitions/apiKeyParameter" },
-                    { "$ref": "#definitions/hashParameter" },
-                    { "$ref": "#definitions/odsCodeParameter" },
-                    { "$ref": "#definitions/slotIdParameter" },
-                    {
-                        "name": "body",
-                        "in": "body",
-                        "description": "Patient ID wrapped in <a target='_blank'  href='http://hl7.org/fhir/2015May/parameters.html'>Parameters resource</a>.",
-                        "required": true,
-                        "schema": { "$ref": "#/definitions/parametersResource" }
-                    }
-                ],
-                "responses": {
-                    "200": { "description": "OK | TBD" },
-                    "400": { "$ref": "#definitions/400Response" },
-                    "401": { "$ref": "#definitions/401Response" },
-                    "403": { "$ref": "#definitions/403Response" },
-                    "404": { "$ref": "#definitions/404SlotOrPatientNotFoundResponse" },
-                    "409": { "$ref": "#definitions/409SlotAlreadyBookedResponse" },
-                    "412": { "$ref": "#definitions/412SlotAlreadyBookedByThisPatientResponse" },
-                    "500": { "$ref": "#definitions/500Response" },
-                    "502": { "$ref": "#definitions/502Response" },
-                    "504": { "$ref": "#definitions/504Response" }
-                }
-            }
-        },
-        "/{odsCode}/Slot/{id}/$cancel": {
-            "post": {
-                "tags": [ "administrative" ],
-                "summary":"Cancel an appointment slot",
-                "description": "Cancel an appointment slot.",
-                "produces": [ "application/json" ],
-                "parameters": [
-                    { "$ref": "#/definitions/apiKeyParameter" },
-                    { "$ref": "#/definitions/hashParameter" },
-                    { "$ref": "#/definitions/odsCodeParameter" },
-                    { "$ref": "#/definitions/slotIdParameter" },
-                    {
-                        "name": "body",
-                        "in": "body",
-                        "description": "Patient ID wrapped in <a target='_blank'  href='http://hl7.org/fhir/2015May/parameters.html'>FHIR Parameters Resource</a>.",
-                        "required": true,
-                        "schema": { "$ref": "#/definitions/parametersResource" }
-                    }
-                ],
-                "responses": {
-                    "200": { "description": "OK | TBD" },
-                    "400": { "$ref": "#definitions/400Response" },
-                    "401": { "$ref": "#definitions/401Response" },
-                    "403": { "$ref": "#definitions/403Response" },
-                    "404": { "$ref": "#definitions/404SlotOrPatientNotFoundResponse" },
-                    "412": { "$ref": "#definitions/412SlotNotBookedByThisPatientResponse" },
-                    "500": { "$ref": "#definitions/500Response" },
-                    "502": { "$ref": "#definitions/502Response" },
-                    "504": { "$ref": "#definitions/504Response" }
-                }
-            }
-        },
-        "/{odsCode}/Appointment": {
-            "get": {
-                "tags": [ "administrative" ],
-                "summary": "Get appointments by patient",
-                "description": "Get appointments by patient ID.",
-                "produces": [ "application/json" ],
-                "parameters": [
-                    { "$ref": "#definitions/apiKeyParameter" },
-                    { "$ref": "#definitions/hashParameter" },
-                    { "$ref": "#definitions/odsCodeParameter" },
-                    {
-                        "name": "patient",
-                        "in": "query",
-                        "description": "Search for appointments with the patient ID specified",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "date",
-                        "in": "query",
-                        "description": "Search for appointments within the date(s) specified",
-                        "required": false,
-                        "type": "array",
-                        "items" : { "type" : "string" },
-                        "collectionFormat": "multi"
-                    }
-                ],
-                "responses": {
-                    "200": { "description": "OK | <a target='_blank' href='http://www.hl7.org/FHIR/2015May/bundle.html'>Bundle</a> containing zero or more <a target='_blank' href='http://www.hl7.org/FHIR/2015May/appointment.html'>Appointment</a> resources" },
-                    "400": { "$ref": "#definitions/400Response" },
-                    "401": { "$ref": "#definitions/401Response" },
-                    "403": { "$ref": "#definitions/403Response" },
-                    "500": { "$ref": "#definitions/500Response" },
-                    "502": { "$ref": "#definitions/502Response" },
-                    "504": { "$ref": "#definitions/504Response" }
-                }
-            }
-        },
-        "/{odsCode}/Patient/{id}/$everythingnobinary": {
-            "get": {
-                "tags": [ "clinical" ],
-                "summary": "Get full record by patient ID",
-                "description": "Get full record (demographic and clinical) by patient ID, excluding binaries and attachments.",
-                "produces": [ "application/json" ],
-                "parameters": [
-                    { "$ref": "#definitions/apiKeyParameter" },
-                    { "$ref": "#definitions/hashParameter" },
-                    { "$ref": "#definitions/odsCodeParameter" },
-                    { "$ref": "#definitions/patientIdParameter" }
-                ],
-                "responses": {
-                    "200": { "description": "OK | <a target='_blank' href='http://www.hl7.org/FHIR/2015May/bundle.html'>Bundle</a> containing multiple resource types constituting the patients full record" },
-                    "400": { "$ref": "#definitions/400Response" },
-                    "401": { "$ref": "#definitions/401Response" },
-                    "403": { "$ref": "#definitions/403Response" },
-                    "404": { "$ref": "#definitions/404PatientNotFoundResponse" },
-                    "500": { "$ref": "#definitions/500Response" },
-                    "502": { "$ref": "#definitions/502Response" },
-                    "504": { "$ref": "#definitions/504Response" }
-                }
-            }
-        },
-        "/{odsCode}/Patient/{id}/MedicationPrescription": {
-            "get": {
-                "tags": [ "clinical" ],
-                "summary": "Get medication prescriptions by patient ID",
-                "description": "Get medication prescriptions by patient ID",
-                "produces": [ "application/json" ],
-                "parameters": [
-                    { "$ref": "#definitions/apiKeyParameter" },
-                    { "$ref": "#definitions/hashParameter" },
-                    { "$ref": "#definitions/odsCodeParameter" },
-                    { "$ref": "#definitions/patientIdParameter" },
-                    {
-                        "name": "dateWritten",
-                        "in": "query",
-                        "description": "Date of the prescription",
-                        "required": false,
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": { "description": "OK | <a target='_blank' href='http://www.hl7.org/FHIR/2015May/bundle.html'>Bundle</a> containing zero or more <a target='_blank' href='http://www.hl7.org/FHIR/2015May/medicationprescription.html'>MedicationPrescription</a> resources" },
-                    "400": { "$ref": "#definitions/400Response" },
-                    "401": { "$ref": "#definitions/401Response" },
-                    "403": { "$ref": "#definitions/403Response" },
-                    "404": { "$ref": "#definitions/404PatientNotFoundResponse" },
-                    "500": { "$ref": "#definitions/500Response" },
-                    "502": { "$ref": "#definitions/502Response" },
-                    "504": { "$ref": "#definitions/504Response" }
-                }
-            }
-        },
-        "/{odsCode}/Patient/{id}/Condition": {
-            "get": {
-                "tags": [ "clinical" ],
-                "summary": "Get conditions by patient ID",
-                "description": "Get conditions by patient ID.",
-                "produces": [ "application/json" ],
-                "parameters": [
-                    { "$ref": "#definitions/apiKeyParameter" },
-                    { "$ref": "#definitions/hashParameter" },
-                    { "$ref": "#definitions/odsCodeParameter" },
-                    { "$ref": "#definitions/patientIdParameter" },
-                    {
-                        "name": "code",
-                        "in": "query",
-                        "description": "Code reference",
-                        "required": false,
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": { "description": "OK | <a target='_blank' href='http://www.hl7.org/FHIR/2015May/bundle.html'>Bundle</a> containing zero or more <a target='_blank' href='http://www.hl7.org/FHIR/2015May/condition.html'>Condition</a> resources" },
-                    "400": { "$ref": "#definitions/400Response" },
-                    "401": { "$ref": "#definitions/401Response" },
-                    "403": { "$ref": "#definitions/403Response" },
-                    "404": { "$ref": "#definitions/404PatientNotFoundResponse" },
-                    "500": { "$ref": "#definitions/500Response" },
-                    "502": { "$ref": "#definitions/502Response" },
-                    "504": { "$ref": "#definitions/504Response" }
-                }
-            },
-            "post": {
-                "tags": [ "clinical" ],
-                "summary": "Add condition to patient",
-                "description": "Add condition to patient.",
-                "produces": [ "application/json" ],
-                "parameters": [
-                    { "$ref": "#definitions/apiKeyParameter" },
-                    { "$ref": "#definitions/hashParameter" },
-                    { "$ref": "#definitions/odsCodeParameter" },
-                    { "$ref": "#definitions/patientIdParameter" },
-                    {
-                        "in": "body",
-                        "name": "body",
-                        "description": "<a target='_blank'  href='http://hl7.org/fhir/2015May/condition.html'>Condition resource</a>",
-                        "required": true,
-                        "schema": { "type": "object" }
-                    }
-                ],
-                "responses": {
-                    "201": { "description": "TBD | TBD" },
-                    "Other": { "description": "TBD | TBD" }
-                }
-            }
-        },
-        "/{odsCode}/Patient/{id}/Immunization": {
-            "get": {
-                "tags": [ "clinical" ],
-                "summary":"Get immunisations by patient ID",
-                "description": "Get immunisations by patient ID.",
-                "produces": [ "application/json" ],
-                "parameters": [
-                    { "$ref": "#definitions/apiKeyParameter" },
-                    { "$ref": "#definitions/hashParameter" },
-                    { "$ref": "#definitions/odsCodeParameter" },
-                    { "$ref": "#definitions/patientIdParameter" },
-                    {
-                        "name": "date",
-                        "in": "query",
-                        "description": "Date of the immunisation",
-                        "required": false,
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": { "description": "OK | <a target='_blank' href='http://www.hl7.org/FHIR/2015May/bundle.html'>Bundle</a> containing zero or more <a target='_blank' href='http://www.hl7.org/FHIR/2015May/immunization.html'>Immunization</a> resources" },
-                    "400": { "$ref": "#definitions/400Response" },
-                    "401": { "$ref": "#definitions/401Response" },
-                    "403": { "$ref": "#definitions/403Response" },
-                    "404": { "$ref": "#definitions/404PatientNotFoundResponse" },
-                    "500": { "$ref": "#definitions/500Response" },
-                    "502": { "$ref": "#definitions/502Response" },
-                    "504": { "$ref": "#definitions/504Response" }
-                }
-            }
-        },
-        "/{odsCode}/Patient/{id}/AllergyIntolerance": {
-            "get": {
-                "tags": [ "clinical" ],
-                "summary": "Get allergies by patient ID",
-                "description": "Get allergies by patient ID.",
-                "produces": [ "application/json" ],
-                "parameters": [
-                    { "$ref": "#definitions/apiKeyParameter" },
-                    { "$ref": "#definitions/hashParameter" },
-                    { "$ref": "#definitions/odsCodeParameter" },
-                    { "$ref": "#definitions/patientIdParameter" },
-                    {
-                        "name": "criticality",
-                        "in": "query",
-                        "description": "Estimated potential clinical harm",
-                        "required": false,
-                        "type": "array",
-                        "items": {
-                            "type": "string",
-                            "enum": [ "low", "high", "unassessible" ],
-                            "default": "low"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": { "description": "OK | <a target='_blank' href='http://www.hl7.org/FHIR/2015May/bundle.html'>Bundle</a> containing zero or more <a target='_blank' href='http://www.hl7.org/FHIR/2015May/allergyintolerance.html'>AllergyIntolerance</a> resources" },
-                    "400": { "$ref": "#definitions/400Response" },
-                    "401": { "$ref": "#definitions/401Response" },
-                    "403": { "$ref": "#definitions/403Response" },
-                    "404": { "$ref": "#definitions/404PatientNotFoundResponse" },
-                    "500": { "$ref": "#definitions/500Response" },
-                    "502": { "$ref": "#definitions/502Response" },
-                    "504": { "$ref": "#definitions/504Response" }
-                }
-            }
-        },
-        "/Person": {
-            "get": {
-                "tags": [ "demographics" ],
-                "summary": "Trace persons",
-                "description": "<p>Trace persons.</p><p>Valid trace combinations:</p><ul><li>Person identifier</li><li>Person name AND date of birth AND gender</li></ul>",
-                "produces": [ "application/json" ],
-                "parameters": [
-                    { "$ref": "#definitions/apiKeyParameter" },
-                    { "$ref": "#definitions/hashParameter" },
-                    {
-                        "name": "identifier",
-                        "in": "query",
-                        "description": "Person identifier",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "name",
-                        "in": "query",
-                        "description": "Person name",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "birthdate",
-                        "in": "query",
-                        "description": "Person date of birth",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "gender",
-                        "in": "query",
-                        "description": "Person gender",
-                        "required": false,
-                        "type": "string",
-                        "enum": [ "male", "female", "other", "unknown" ]
-                    }
-                ],
-                "responses": {
-                    "200": { "description": "OK | <a target='_blank' href='http://www.hl7.org/FHIR/2015May/bundle.html'>Bundle</a> containing zero or more <a target='_blank' href='http://www.hl7.org/FHIR/2015May/allergyintolerance.html'>Person</a> resources" },
-                    "400": { "$ref": "#definitions/400Response" },
-                    "401": { "$ref": "#definitions/401Response" },
-                    "403": { "$ref": "#definitions/403Response" },
-                    "500": { "$ref": "#definitions/500Response" },
-                    "502": { "$ref": "#definitions/502Response" },
-                    "504": { "$ref": "#definitions/504Response" }
-                }
-            }
-        },
-        "/{odsCode}/Patient/{id}": {
-            "get": {
-                "tags": [ "demographics" ],
-                "summary": "Get demographics by patient ID",
-                "description": "Get demographics by patient ID.",
-                "produces": [ "application/json" ],
-                "parameters": [
-                    { "$ref": "#definitions/apiKeyParameter" },
-                    { "$ref": "#definitions/hashParameter" },
-                    { "$ref": "#definitions/odsCodeParameter" },
-                    { "$ref": "#definitions/patientIdParameter" }
-                ],
-                "responses": {
-                    "200": { "description": "OK | <a target='_blank' href='http://www.hl7.org/FHIR/2015May/patient.html'>Patient</a> resource" },
-                    "400": { "$ref": "#definitions/400Response" },
-                    "401": { "$ref": "#definitions/401Response" },
-                    "403": { "$ref": "#definitions/403Response" },
-                    "404": { "$ref": "#definitions/404PatientNotFoundResponse" },
-                    "500": { "$ref": "#definitions/500Response" },
-                    "502": { "$ref": "#definitions/502Response" },
-                    "504": { "$ref": "#definitions/504Response" }
-                }
-            }
-        },
-        "/{odsCode}/Patient": {
-            "get": {
-                "tags": [ "demographics" ],
-                "summary":"Get demographics",
-                "description": "Get demographics.",
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [
-                    { "$ref": "#definitions/apiKeyParameter" },
-                    { "$ref": "#definitions/hashParameter" },
-                    { "$ref": "#definitions/odsCodeParameter" },
-                    {
-                        "name": "identifier",
-                        "in": "query",
-                        "description": "Patient identifier",
-                        "required":false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "_lastUpdated",
-                        "in": "query",
-                        "description": "Reference date after which the patient record was last updated",
-                        "required":false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "active",
-                        "in": "query",
-                        "description": "Active patients only",
-                        "required":false,
-                        "type": "string",
-                        "enum": [ "active" ]
-                    }
-                ],
-                "responses": {
-                    "200": { "description":"Returns a FHIR Bundle of Patient Resource(s) - see schema at: <a target='_blank'  href='http://hl7.org/fhir/2015May/patient.html'>http://hl7.org/fhir/2015May/patient.html</a>" },
-                    "403": { "description":"Forbidden - Requested operation not permitted" }
-                }
-            }
-        },
-        "/{odsCode}/Subscription/{id}": {
-            "put": {
-                "tags": [ "demographics" ],
-                "summary":"Subscribe to patient changes",
-                "description": "The subscription resource is used to define a push based subscription from a server to another system. Once a subscription is registered with the server, the server checks every resource that is created or updated, and if the resource matches the given criteria, it sends a message on the defined 'channel' so that another system is able to take an appropriate action.",
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [
-                    { "$ref": "#definitions/apiKeyParameter" },
-                    { "$ref": "#definitions/hashParameter" },
-                    { "$ref": "#definitions/odsCodeParameter" },
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "description": "Subscription unique reference",
-                        "required":true,
-                        "type": "string"
-                    },
-                    {
-                        "in":"body",
-                        "name":"body",
-                        "description":"FHIR Subscription Resource.<br/><br/>Example:<br/><br/>{<br/>&nbsp;&nbsp;'resourceType':&nbsp;'Subscription',<br/>&nbsp;&nbsp;'id':&nbsp;'917c53fd-058a-4e8b-8a64-344b3fcc00b9',<br/>&nbsp;&nbsp;'criteria':&nbsp;'/Patient?&nbsp;?identifier=NHS|6980086397',<br/>&nbsp;&nbsp;'reason':&nbsp;'Monitor&nbsp;new&nbsp;neonatal&nbsp;function',<br/>&nbsp;&nbsp;'status':&nbsp;'requested',<br/>&nbsp;&nbsp;'channel':&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;'type':&nbsp;'rest-hook',<br/>&nbsp;&nbsp;&nbsp;&nbsp;'endpoint':&nbsp;'https://example.com/patients/update-result',<br/>&nbsp;&nbsp;&nbsp;&nbsp;'payload':&nbsp;'application/json',<br/>&nbsp;&nbsp;&nbsp;&nbsp;'header':&nbsp;'Authorization:&nbsp;Bearer&nbsp;secret-token-abc-123'<br/>&nbsp;&nbsp;}<br/>}",
-                        "required":true,
-                        "schema":{
-                            "type": "object"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": { "description":"successful operation" },
-                    "400": { "description":"Bad request - resource could not be parsed or failed basic FHIR validation rules" },
-                    "404": { "description":"Not found - resource type not supported, or not a FHIR end point" }
-                }
-            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "TBD | TBD"
+          },
+          "Other": {
+            "description": "TBD | TBD"
+          }
         }
+      }
     },
-    "definitions": {
-        
-        "apiKeyParameter": {
-            "name": "api_key",
-            "description": "API key",
-            "in": "header",
-            "type": "string",
-            "required": false
-        },
-        "hashParameter": {
-            "name": "hash",
-            "description": "HMAC message hash",
-            "in": "header",
-            "type": "string",
-            "required": false
-        },
-        "odsCodeParameter": {
-            "name": "odsCode",
-            "in": "path",
-            "description": "ODS code",
-            "required": true,
+    "/{odsCode}/Patient/{id}/Immunization": {
+      "get": {
+        "tags": [
+          "clinical"
+        ],
+        "summary": "Get immunisations by patient ID",
+        "description": "Get immunisations by patient ID.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#definitions/apiKeyParameter"
+          },
+          {
+            "$ref": "#definitions/hashParameter"
+          },
+          {
+            "$ref": "#definitions/odsCodeParameter"
+          },
+          {
+            "$ref": "#definitions/patientIdParameter"
+          },
+          {
+            "name": "date",
+            "in": "query",
+            "description": "Date of the immunisation",
+            "required": false,
             "type": "string"
-        },
-        "patientIdParameter": {
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK | <a target='_blank' href='http://www.hl7.org/FHIR/2015May/bundle.html'>Bundle</a> containing zero or more <a target='_blank' href='http://www.hl7.org/FHIR/2015May/immunization.html'>Immunization</a> resources"
+          },
+          "400": {
+            "$ref": "#definitions/400Response"
+          },
+          "401": {
+            "$ref": "#definitions/401Response"
+          },
+          "403": {
+            "$ref": "#definitions/403Response"
+          },
+          "404": {
+            "$ref": "#definitions/404PatientNotFoundResponse"
+          },
+          "500": {
+            "$ref": "#definitions/500Response"
+          },
+          "502": {
+            "$ref": "#definitions/502Response"
+          },
+          "504": {
+            "$ref": "#definitions/504Response"
+          }
+        }
+      }
+    },
+    "/{odsCode}/Patient/{id}/AllergyIntolerance": {
+      "get": {
+        "tags": [
+          "clinical"
+        ],
+        "summary": "Get allergies by patient ID",
+        "description": "Get allergies by patient ID.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#definitions/apiKeyParameter"
+          },
+          {
+            "$ref": "#definitions/hashParameter"
+          },
+          {
+            "$ref": "#definitions/odsCodeParameter"
+          },
+          {
+            "$ref": "#definitions/patientIdParameter"
+          },
+          {
+            "name": "criticality",
+            "in": "query",
+            "description": "Estimated potential clinical harm",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "low",
+                "high",
+                "unassessible"
+              ],
+              "default": "low"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK | <a target='_blank' href='http://www.hl7.org/FHIR/2015May/bundle.html'>Bundle</a> containing zero or more <a target='_blank' href='http://www.hl7.org/FHIR/2015May/allergyintolerance.html'>AllergyIntolerance</a> resources"
+          },
+          "400": {
+            "$ref": "#definitions/400Response"
+          },
+          "401": {
+            "$ref": "#definitions/401Response"
+          },
+          "403": {
+            "$ref": "#definitions/403Response"
+          },
+          "404": {
+            "$ref": "#definitions/404PatientNotFoundResponse"
+          },
+          "500": {
+            "$ref": "#definitions/500Response"
+          },
+          "502": {
+            "$ref": "#definitions/502Response"
+          },
+          "504": {
+            "$ref": "#definitions/504Response"
+          }
+        }
+      }
+    },
+    "/Person": {
+      "get": {
+        "tags": [
+          "demographics"
+        ],
+        "summary": "Trace persons",
+        "description": "<p>Trace persons.</p><p>Valid trace combinations:</p><ul><li>Person identifier</li><li>Person name AND date of birth AND gender</li></ul>",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#definitions/apiKeyParameter"
+          },
+          {
+            "$ref": "#definitions/hashParameter"
+          },
+          {
+            "name": "identifier",
+            "in": "query",
+            "description": "Person identifier",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "name",
+            "in": "query",
+            "description": "Person name",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "birthdate",
+            "in": "query",
+            "description": "Person date of birth",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "gender",
+            "in": "query",
+            "description": "Person gender",
+            "required": false,
+            "type": "string",
+            "enum": [
+              "male",
+              "female",
+              "other",
+              "unknown"
+            ]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK | <a target='_blank' href='http://www.hl7.org/FHIR/2015May/bundle.html'>Bundle</a> containing zero or more <a target='_blank' href='http://www.hl7.org/FHIR/2015May/allergyintolerance.html'>Person</a> resources"
+          },
+          "400": {
+            "$ref": "#definitions/400Response"
+          },
+          "401": {
+            "$ref": "#definitions/401Response"
+          },
+          "403": {
+            "$ref": "#definitions/403Response"
+          },
+          "500": {
+            "$ref": "#definitions/500Response"
+          },
+          "502": {
+            "$ref": "#definitions/502Response"
+          },
+          "504": {
+            "$ref": "#definitions/504Response"
+          }
+        }
+      }
+    },
+    "/{odsCode}/Patient/{id}": {
+      "get": {
+        "tags": [
+          "demographics"
+        ],
+        "summary": "Get demographics by patient ID",
+        "description": "Get demographics by patient ID.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#definitions/apiKeyParameter"
+          },
+          {
+            "$ref": "#definitions/hashParameter"
+          },
+          {
+            "$ref": "#definitions/odsCodeParameter"
+          },
+          {
+            "$ref": "#definitions/patientIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK | <a target='_blank' href='http://www.hl7.org/FHIR/2015May/patient.html'>Patient</a> resource"
+          },
+          "400": {
+            "$ref": "#definitions/400Response"
+          },
+          "401": {
+            "$ref": "#definitions/401Response"
+          },
+          "403": {
+            "$ref": "#definitions/403Response"
+          },
+          "404": {
+            "$ref": "#definitions/404PatientNotFoundResponse"
+          },
+          "500": {
+            "$ref": "#definitions/500Response"
+          },
+          "502": {
+            "$ref": "#definitions/502Response"
+          },
+          "504": {
+            "$ref": "#definitions/504Response"
+          }
+        }
+      }
+    },
+    "/{odsCode}/Patient": {
+      "get": {
+        "tags": [
+          "demographics"
+        ],
+        "summary": "Get demographics",
+        "description": "Get demographics.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#definitions/apiKeyParameter"
+          },
+          {
+            "$ref": "#definitions/hashParameter"
+          },
+          {
+            "$ref": "#definitions/odsCodeParameter"
+          },
+          {
+            "name": "identifier",
+            "in": "query",
+            "description": "Patient identifier",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "_lastUpdated",
+            "in": "query",
+            "description": "Reference date after which the patient record was last updated",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "active",
+            "in": "query",
+            "description": "Active patients only",
+            "required": false,
+            "type": "string",
+            "enum": [
+              "active"
+            ]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returns a FHIR Bundle of Patient Resource(s) - see schema at: <a target='_blank'  href='http://hl7.org/fhir/2015May/patient.html'>http://hl7.org/fhir/2015May/patient.html</a>"
+          },
+          "403": {
+            "description": "Forbidden - Requested operation not permitted"
+          }
+        }
+      }
+    },
+    "/{odsCode}/Subscription/{id}": {
+      "put": {
+        "tags": [
+          "demographics"
+        ],
+        "summary": "Subscribe to patient changes",
+        "description": "The subscription resource is used to define a push based subscription from a server to another system. Once a subscription is registered with the server, the server checks every resource that is created or updated, and if the resource matches the given criteria, it sends a message on the defined 'channel' so that another system is able to take an appropriate action.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#definitions/apiKeyParameter"
+          },
+          {
+            "$ref": "#definitions/hashParameter"
+          },
+          {
+            "$ref": "#definitions/odsCodeParameter"
+          },
+          {
             "name": "id",
             "in": "path",
-            "description": "Patient ID",
+            "description": "Subscription unique reference",
             "required": true,
             "type": "string"
-        },
-        "slotIdParameter": {
-            "name": "id",
-            "in": "path",
-            "description": "Slot ID",
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "FHIR Subscription Resource.<br/><br/>Example:<br/><br/>{<br/>&nbsp;&nbsp;'resourceType':&nbsp;'Subscription',<br/>&nbsp;&nbsp;'id':&nbsp;'917c53fd-058a-4e8b-8a64-344b3fcc00b9',<br/>&nbsp;&nbsp;'criteria':&nbsp;'/Patient?&nbsp;?identifier=NHS|6980086397',<br/>&nbsp;&nbsp;'reason':&nbsp;'Monitor&nbsp;new&nbsp;neonatal&nbsp;function',<br/>&nbsp;&nbsp;'status':&nbsp;'requested',<br/>&nbsp;&nbsp;'channel':&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;'type':&nbsp;'rest-hook',<br/>&nbsp;&nbsp;&nbsp;&nbsp;'endpoint':&nbsp;'https://example.com/patients/update-result',<br/>&nbsp;&nbsp;&nbsp;&nbsp;'payload':&nbsp;'application/json',<br/>&nbsp;&nbsp;&nbsp;&nbsp;'header':&nbsp;'Authorization:&nbsp;Bearer&nbsp;secret-token-abc-123'<br/>&nbsp;&nbsp;}<br/>}",
             "required": true,
-            "type": "string"
+            "schema": {
+              "type": "object"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "Bad request - resource could not be parsed or failed basic FHIR validation rules"
+          },
+          "404": {
+            "description": "Not found - resource type not supported, or not a FHIR end point"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "apiKeyParameter": {
+      "name": "api_key",
+      "description": "API key",
+      "in": "header",
+      "type": "string",
+      "required": false
+    },
+    "hashParameter": {
+      "name": "hash",
+      "description": "HMAC message hash",
+      "in": "header",
+      "type": "string",
+      "required": false
+    },
+    "odsCodeParameter": {
+      "name": "odsCode",
+      "in": "path",
+      "description": "ODS code",
+      "required": true,
+      "type": "string"
+    },
+    "patientIdParameter": {
+      "name": "id",
+      "in": "path",
+      "description": "Patient ID",
+      "required": true,
+      "type": "string"
+    },
+    "slotIdParameter": {
+      "name": "id",
+      "in": "path",
+      "description": "Slot ID",
+      "required": true,
+      "type": "string"
+    },
+    "locationIdParameter": {
+      "name": "id",
+      "in": "path",
+      "description": "Location ID",
+      "required": true,
+      "type": "string"
+    },
+    "taskIdParameter": {
+      "name": "id",
+      "in": "path",
+      "description": "Task ID",
+      "required": true,
+      "type": "string"
+    },
+    "400Response": {
+      "description": "Required parameter missing; Invalid parameter | <a target='_blank' href='https://www.hl7.org/fhir/2015May/operationoutcome.html'>OperationOutcome</a> with <a href='http://www.hl7.org/FHIR/2015May/issue-type.html'>IssueType</a> of Required element missing; Element value invalid"
+    },
+    "401Response": {
+      "description": "Security failed | <a target='_blank' href='https://www.hl7.org/fhir/2015May/operationoutcome.html'>OperationOutcome</a> with <a href='http://www.hl7.org/FHIR/2015May/issue-type.html'>IssueType</a> of Unknown user"
+    },
+    "403Response": {
+      "description": "No legitimate relationship | <a target='_blank' href='https://www.hl7.org/fhir/2015May/operationoutcome.html'>OperationOutcome</a> with <a href='http://www.hl7.org/FHIR/2015May/issue-type.html'>IssueType</a> of Information suppressed"
+    },
+    "404PatientNotFoundResponse": {
+      "description": "Patient not found | <a target='_blank' href='https://www.hl7.org/fhir/2015May/operationoutcome.html'>OperationOutcome</a> with <a href='http://www.hl7.org/FHIR/2015May/issue-type.html'>IssueType</a> of Not found"
+    },
+    "404SlotOrPatientNotFoundResponse": {
+      "description": "Slot not found; Patient not found | <a target='_blank' href='https://www.hl7.org/fhir/2015May/operationoutcome.html'>OperationOutcome</a> with <a href='http://www.hl7.org/FHIR/2015May/issue-type.html'>IssueType</a> of Not found"
+    },
+    "409SlotAlreadyBookedResponse": {
+      "description": "Slot already booked | <a target='_blank' href='https://www.hl7.org/fhir/2015May/operationoutcome.html'>OperationOutcome</a> with <a href='http://www.hl7.org/FHIR/2015May/issue-type.html'>IssueType</a> of Edit version conflict"
+    },
+    "412SlotAlreadyBookedByThisPatientResponse": {
+      "description": "Slot already booked by this patient | <a target='_blank' href='https://www.hl7.org/fhir/2015May/operationoutcome.html'>OperationOutcome</a> with <a href='http://www.hl7.org/FHIR/2015May/issue-type.html'>IssueType</a> of Business rule violation"
+    },
+    "412SlotNotBookedByThisPatientResponse": {
+      "description": "Slot not booked by this patient | <a target='_blank' href='https://www.hl7.org/fhir/2015May/operationoutcome.html'>OperationOutcome</a> with <a href='http://www.hl7.org/FHIR/2015May/issue-type.html'>IssueType</a> of Business rule violation"
+    },
+    "500Response": {
+      "description": "Unexpected error | <a target='_blank' href='https://www.hl7.org/fhir/2015May/operationoutcome.html'>OperationOutcome</a> with <a href='http://www.hl7.org/FHIR/2015May/issue-type.html'>IssueType</a> of Exception"
+    },
+    "502Response": {
+      "description": "Error received from principal system | <a target='_blank' href='https://www.hl7.org/fhir/2015May/operationoutcome.html'>OperationOutcome</a> with <a href='http://www.hl7.org/FHIR/2015May/issue-type.html'>IssueType</a> of Exception"
+    },
+    "504Response": {
+      "description": "Connection timeout to principal system | <a target='_blank' href='https://www.hl7.org/fhir/2015May/operationoutcome.html'>OperationOutcome</a> with <a href='http://www.hl7.org/FHIR/2015May/issue-type.html'>IssueType</a> of Timeout"
+    },
+    "parametersResource": {
+      "type": "object",
+      "properties": {
+        "resourceType": {
+          "type": "string",
+          "example": "Parameters"
         },
-        "locationIdParameter": {
-          "name": "id",
-          "in": "path",
-          "description": "Location ID",
-          "required": true,
-          "type": "string"
+        "parameter": {
+          "type": "array",
+          "items": [
+            {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "example": "patient"
+                },
+                "valueString": {
+                  "type": "string",
+                  "example": "00000000-0000-0000-0000-000000000000"
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    "taskResource": {
+      "type": "object",
+      "properties": {
+        "resourceType": {
+          "type": "string",
+          "example": "Order"
         },
-
-        "400Response": { "description": "Required parameter missing; Invalid parameter | <a target='_blank' href='https://www.hl7.org/fhir/2015May/operationoutcome.html'>OperationOutcome</a> with <a href='http://www.hl7.org/FHIR/2015May/issue-type.html'>IssueType</a> of Required element missing; Element value invalid" },
-        "401Response": { "description": "Security failed | <a target='_blank' href='https://www.hl7.org/fhir/2015May/operationoutcome.html'>OperationOutcome</a> with <a href='http://www.hl7.org/FHIR/2015May/issue-type.html'>IssueType</a> of Unknown user" },
-        "403Response": { "description": "No legitimate relationship | <a target='_blank' href='https://www.hl7.org/fhir/2015May/operationoutcome.html'>OperationOutcome</a> with <a href='http://www.hl7.org/FHIR/2015May/issue-type.html'>IssueType</a> of Information suppressed" },
-        "404PatientNotFoundResponse": { "description": "Patient not found | <a target='_blank' href='https://www.hl7.org/fhir/2015May/operationoutcome.html'>OperationOutcome</a> with <a href='http://www.hl7.org/FHIR/2015May/issue-type.html'>IssueType</a> of Not found" },
-        "404SlotOrPatientNotFoundResponse": { "description": "Slot not found; Patient not found | <a target='_blank' href='https://www.hl7.org/fhir/2015May/operationoutcome.html'>OperationOutcome</a> with <a href='http://www.hl7.org/FHIR/2015May/issue-type.html'>IssueType</a> of Not found" },
-        "409SlotAlreadyBookedResponse": { "description": "Slot already booked | <a target='_blank' href='https://www.hl7.org/fhir/2015May/operationoutcome.html'>OperationOutcome</a> with <a href='http://www.hl7.org/FHIR/2015May/issue-type.html'>IssueType</a> of Edit version conflict" },
-        "412SlotAlreadyBookedByThisPatientResponse": { "description": "Slot already booked by this patient | <a target='_blank' href='https://www.hl7.org/fhir/2015May/operationoutcome.html'>OperationOutcome</a> with <a href='http://www.hl7.org/FHIR/2015May/issue-type.html'>IssueType</a> of Business rule violation" },
-        "412SlotNotBookedByThisPatientResponse": { "description": "Slot not booked by this patient | <a target='_blank' href='https://www.hl7.org/fhir/2015May/operationoutcome.html'>OperationOutcome</a> with <a href='http://www.hl7.org/FHIR/2015May/issue-type.html'>IssueType</a> of Business rule violation" },
-        "500Response": { "description": "Unexpected error | <a target='_blank' href='https://www.hl7.org/fhir/2015May/operationoutcome.html'>OperationOutcome</a> with <a href='http://www.hl7.org/FHIR/2015May/issue-type.html'>IssueType</a> of Exception" },
-        "502Response": { "description": "Error received from principal system | <a target='_blank' href='https://www.hl7.org/fhir/2015May/operationoutcome.html'>OperationOutcome</a> with <a href='http://www.hl7.org/FHIR/2015May/issue-type.html'>IssueType</a> of Exception" },
-        "504Response": { "description": "Connection timeout to principal system | <a target='_blank' href='https://www.hl7.org/fhir/2015May/operationoutcome.html'>OperationOutcome</a> with <a href='http://www.hl7.org/FHIR/2015May/issue-type.html'>IssueType</a> of Timeout" },
-
-        "parametersResource": {
+        "id": {
+          "type": "string",
+          "example": "00000000-0000-0000-0000-000000000000"
+        },
+        "date": {
+          "type": "string",
+          "example": "2015-09-01T11:34:05"
+        },
+        "subject": {
+          "type": "object",
+          "properties": {
+            "reference": {
+              "type": "string",
+              "example": "Patient/00000000-0000-0000-0000-000000000000"
+            }
+          }
+        },
+        "source": {
+          "type": "object",
+          "properties": {
+            "reference": {
+              "type": "string",
+              "example": "Practitioner/00000000-0000-0000-0000-000000000000"
+            }
+          }
+        },
+        "target": {
+          "type": "object",
+          "properties": {
+            "reference": {
+              "type": "string",
+              "example": "Practitioner/00000000-0000-0000-0000-000000000000"
+            }
+          }
+        },
+        "reasonReference" : {
+          "type": "object",
+          "properties": {
+            "reference": {
+              "type": "string",
+              "example": "Basic/Subject text"
+            }
+          }
+        },
+        "when" : {
+          "type": "object",
+          "properties": {
+            "schedule": {
+              "type": "object",
+              "properties": {
+                "resourceType": {
+                  "type": "string",
+                  "example": "Timing"
+                },
+                "event": {
+                  "type": "array",
+                  "items": [{
+                    "type": "string",
+                    "example": "2015-08-04T10:00:00"
+                  }]
+                }
+              }
+            }
+          }
+        },
+        "detail": {
+          "type": "array",
+          "items": [{
             "type": "object",
             "properties": {
-                "resourceType": {
-                    "type": "string",
-                    "example": "Parameters"
-                },
-                "parameter": {
-                    "type": "array",
-                    "items": [{
-                        "type": "object",
-                        "properties": {
-                            "name": {
-                                "type": "string",
-                                "example": "patient"
-                            },
-                            "valueString": {
-                                "type": "string",
-                                "example": "00000000-0000-0000-0000-000000000000"
-                            }
-                        }
-                    }]
-                }
+              "reference": {
+                "type": "string",
+                "example": "Basic/Task description text"
+              }
             }
+          }]
+        },
+        "extension" : {
+          "type" : "array",
+          "items" : [
+            {
+              "type" : "object",
+              "properties": {
+                "url" : {
+                  "type" : "string",
+                  "example" : "http://www.e-mis.com/emisopen/extension/TaskType"
+                },
+                "valueCodeableConcept" : {
+                  "type" : "object",
+                  "properties" : {
+                    "coding" : {
+                      "type" : "array",
+                      "items" : [{
+                        "type" : "object",
+                        "properties" : {
+                          "system" : {
+                            "type" : "string",
+                            "example" : "http://www.e-mis.com/emisopen/TaskType"
+                          },
+                          "display" : {
+                            "type" : "string",
+                            "example" : "BOOK_APPOINTMENT"
+                          }
+                        }
+                      }]
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "type" : "object",
+              "properties": {
+                "url" : {
+                  "type" : "string",
+                  "example" : "http://www.e-mis.com/emisopen/extension/TaskPriority"
+                },
+                "valueCodeableConcept" : {
+                  "type" : "object",
+                  "properties" : {
+                    "coding" : {
+                      "type" : "array",
+                      "items" : [{
+                        "type" : "object",
+                        "properties" : {
+                          "system" : {
+                            "type" : "string",
+                            "example" : "http://www.e-mis.com/emisopen/TaskPriority"
+                          },
+                          "display" : {
+                            "type" : "string",
+                            "example" : "NORMAL"
+                          }
+                        }
+                      }]
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "type" : "object",
+              "properties": {
+                "url" : {
+                  "type" : "string",
+                  "example" : "http://www.e-mis.com/emisopen/extension/TaskStatus"
+                },
+                "valueCodeableConcept" : {
+                  "type" : "object",
+                  "properties" : {
+                    "coding" : {
+                      "type" : "array",
+                      "items" : [{
+                        "type" : "object",
+                        "properties" : {
+                          "system" : {
+                            "type" : "string",
+                            "example" : "http://www.e-mis.com/emisopen/TaskStatus"
+                          },
+                          "display" : {
+                            "type" : "string",
+                            "example" : "ACTIVE"
+                          }
+                        }
+                      }]
+                    }
+                  }
+                }
+              }
+            }
+          ]
         }
+      }
     }
+  }
 }

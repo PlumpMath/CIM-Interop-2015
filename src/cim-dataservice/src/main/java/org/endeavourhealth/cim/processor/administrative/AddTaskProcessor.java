@@ -13,9 +13,9 @@ public class AddTaskProcessor implements org.apache.camel.Processor {
 		String taskData = ExchangeHelper.getInBodyString(exchange);
 
 		IDataManager dataManager = DataManagerFactory.getDataManagerForService(odsCode);
-		String responseBody = dataManager.addTask(odsCode, taskData);
+		dataManager.addTask(odsCode, taskData);
 
-		ExchangeHelper.setInBodyString(exchange, responseBody);
+		// ExchangeHelper.setInBodyString(exchange, responseBody);
 
 	}
 }

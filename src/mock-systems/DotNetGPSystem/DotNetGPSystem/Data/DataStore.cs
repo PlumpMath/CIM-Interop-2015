@@ -27,6 +27,8 @@ namespace DotNetGPSystem
         private static OpenHRPatient[] _openHRPatients = null;
         private static List<KeyValuePair<DateTime, OpenHRPatient>> _patientChangeList = new List<KeyValuePair<DateTime, OpenHRPatient>>();
         private static List<KeyValuePair<DateTime, string>> _externalUpdateList = new List<KeyValuePair<DateTime, string>>();
+        private static readonly Dictionary<String, Dictionary<Guid, OpenHR001PatientTask>> _tasksByOdsCode = new Dictionary<string, Dictionary<Guid, OpenHR001PatientTask>>();
+
         private static OpenHROrganisation[] _organisations;
         private static Session[] _sessions;
         public static readonly int[] AppointmentTimes = new int[] { 9, 10, 11, 12, 13, 14, 15, 16, 17 };
@@ -377,6 +379,30 @@ namespace DotNetGPSystem
                 .Where(t => t.Patient != null)
                 .Where(t => new Guid(t.Patient.Patient.id) == patientGuid)
                 .ToArray();
+        }
+
+        public static OpenHR001PatientTask GetTask(string odsCode, Guid taskGuid)
+        {
+            Dictionary<Guid, OpenHR001PatientTask> odsTasks;
+
+            if (!_tasksByOdsCode.TryGetValue(odsCode, out odsTasks))
+                return null;
+
+            return odsTasks[taskGuid];
+        }
+
+        public static void AddTasks(string odsCode, OpenHR001PatientTask[] tasks)
+        {
+            Dictionary<Guid, OpenHR001PatientTask> odsTasks;
+
+            if (!_tasksByOdsCode.TryGetValue(odsCode, out odsTasks))
+            {
+                odsTasks = new Dictionary<Guid, OpenHR001PatientTask>();
+                _tasksByOdsCode.Add(odsCode, odsTasks);
+            }
+
+            foreach (OpenHR001PatientTask patientTask in tasks)
+                odsTasks[new Guid(patientTask.id)] = patientTask;
         }
     }
 }

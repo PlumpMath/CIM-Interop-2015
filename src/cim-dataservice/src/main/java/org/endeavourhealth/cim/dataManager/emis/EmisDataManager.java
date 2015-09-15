@@ -144,13 +144,13 @@ public class EmisDataManager implements IDataManager {
 	}
 
 	@Override
-	public String addTask(String odsCode, String fhirRequest) throws Exception {
+	public void addTask(String odsCode, String fhirRequest) throws Exception {
 		Order task = (Order)new JsonParser().parse(fhirRequest);
 		String request = _emisTransformer.fromFhirTask(task);
-		String response = _emisDataAdapter.addTask(odsCode, request);
-		String fhirResponse = response; // _openHrTransformer.toFhirTask(response);
-
-		return fhirResponse;
+		// String response =
+		_emisDataAdapter.addTask(odsCode, request);
+		// String fhirResponse = response; // _openHrTransformer.toFhirTask(response);
+		//return fhirResponse;
 	}
 
 	/* clinical */

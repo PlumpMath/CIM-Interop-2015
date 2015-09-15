@@ -64,5 +64,11 @@ namespace DotNetGPSystem
 
         [OperationContract]
         string GetLocation(string odsCode, Guid locationGuid);
+
+        [OperationContract]
+        string GetTask(string odsCode, Guid taskGuid);
+
+        [OperationContract]
+        void AddTask(string odsCode, string openHRXml);
     }
 }

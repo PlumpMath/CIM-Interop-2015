@@ -48,6 +48,9 @@ public class TaskTransformer {
 	}
 
 	private static void addTaskTypeExtension(VocTaskType taskType, Order target) {
+		if (taskType == null)
+			return;
+
 		target.addExtension(
 				new Extension()
 						.setUrl(TASKTYPE_EXTENSION_URL)
@@ -58,6 +61,9 @@ public class TaskTransformer {
 	}
 
 	private static void addTaskPriorityExtension(VocTaskPriority taskPriority, Order target) {
+		if (taskPriority == null)
+			return;
+
 		target.addExtension(
 				new Extension()
 						.setUrl(TASKPRIORITY_EXTENSION_URL)
@@ -68,6 +74,9 @@ public class TaskTransformer {
 	}
 
 	private static void addTaskStatusExtension(VocTaskStatus taskStatus, Order target) {
+		if (taskStatus == null)
+			return;
+
 		target.addExtension(
 				new Extension()
 						.setUrl(TASKSTATUS_EXTENSION_URL)

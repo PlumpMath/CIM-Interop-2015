@@ -54,6 +54,9 @@ public class FromFHIRTransformer {
         for (OpenHR001Problem problem: container.getProblems())
             healthDomain.getProblem().add(problem);
 
+		for (OpenHR001PatientTask task: container.getPatientTasks())
+			healthDomain.getTask().add(task);
+
         openHR.setHealthDomain(healthDomain);
 
         return openHR;

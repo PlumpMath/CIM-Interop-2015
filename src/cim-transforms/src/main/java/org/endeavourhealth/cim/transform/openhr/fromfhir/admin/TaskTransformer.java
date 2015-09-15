@@ -56,6 +56,10 @@ public class TaskTransformer {
 			}
 		}
 
+		// Missing mandatory fields
+		targetTask.setExpiryDate(targetTask.getActionByDate());
+		targetTask.setCompletionDate(targetTask.getActionByDate());
+
 		container.getPatientTasks().add(targetTask);
 	}
 }

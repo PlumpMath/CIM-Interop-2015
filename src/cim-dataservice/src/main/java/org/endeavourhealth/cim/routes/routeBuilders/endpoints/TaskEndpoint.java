@@ -32,7 +32,8 @@ public class TaskEndpoint extends CIMRouteBuilder {
 			.route()
 			.routeId(HttpVerb.POST + BASE_ROUTE)
 			.setHeader(HeaderKey.MessageRouterCallback, constant(Route.direct(POST_PROCESSOR_ROUTE)))
-			.to(Route.CIM_CORE);
+			.to(Route.CIM_CORE)
+		.endRest();
 
         from(Route.direct(ID_PROCESSOR_ROUTE))
             .routeId(ID_PROCESSOR_ROUTE)
