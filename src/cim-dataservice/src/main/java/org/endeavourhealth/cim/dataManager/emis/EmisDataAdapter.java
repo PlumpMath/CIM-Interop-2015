@@ -201,11 +201,11 @@ public class EmisDataAdapter {
 
 	// Admin
 	public String getUserById(String odsCode, UUID userInRoleId) throws Exception {
-		final String soapMethod = "GetUserByGuid";
+		final String soapMethod = "GetUserByUserInRoleGuid";
 
 		Map<String, String> parameters = createParameterMap();
 		parameters.put("odsCode", odsCode);
-		parameters.put("userInRoleId", userInRoleId.toString());
+		parameters.put("userInRoleGuid", userInRoleId.toString());
 
 		SOAPMessage responseMessage = performSOAPCall(soapMethod, parameters);
 
@@ -259,7 +259,19 @@ public class EmisDataAdapter {
 		// return  getSOAPResultAsString(responseMessage, soapMethod);
 	}
 
-    // Utility methods
+	public List<String> getTasksByUser(String odsCode, UUID userId) throws Exception {
+		final String soapMethod = "GetTasksByUserInRoleGuid";
+
+		Map<String, String> parameters = createParameterMap();
+		parameters.put("odsCode", odsCode);
+		parameters.put("userInRoleGuid", userId.toString());
+
+		SOAPMessage responseMessage = performSOAPCall(soapMethod, parameters);
+
+		return getSOAPResultAsStringArray(responseMessage, soapMethod);
+	}
+
+	// Utility methods
     private static Map<String, String> createParameterMap() {
         return new LinkedHashMap<>();
     }

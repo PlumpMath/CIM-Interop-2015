@@ -71,4 +71,8 @@ public class EmisTransformer {
 
 		return _openHRTransformer.toFhirPersonBundle(openHRXmlArray);
 	}
+
+	public Bundle openHRToFhirTaskBundle(List<String> openHRXmlArray) throws TransformException {
+		return _openHRTransformer.toFhirTaskBundle(openHRXmlArray);
+	}
 }

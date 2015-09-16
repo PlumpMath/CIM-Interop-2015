@@ -143,6 +143,25 @@ namespace DotNetGPSystem
             return result;
         }
 
+        public string GetUserByUserInRoleGuid(string odsCode, Guid userInRoleGuid)
+        {
+            OpenHRUser user = DataStore
+                .Users
+                .FirstOrDefault(t => t.Organisation.nationalPracticeCode == odsCode
+                                    && userInRoleGuid.Equals(new Guid(t.UserInRole.id)));
+
+            string result = string.Empty;
+
+            if (user != null)
+            {
+                EomUserDetails37.UserDetails userDetails = EomUsersTransform.ToEomUserDetails(user);
+
+                result = Utilities.Serialize<EomUserDetails37.UserDetails>(userDetails);
+            }
+
+            return result;
+        }
+
         public string BookAppointment(string odsCode, int slotId, Guid patientGuid, string reason)
         {
             AppointmentOperationStatus appointmentOperationStatus = DataStore.BookAppointment(odsCode, slotId, patientGuid);
@@ -225,6 +244,19 @@ namespace DotNetGPSystem
         {
             OpenHR001OpenHealthRecord record = Utilities.Deserialize<OpenHR001OpenHealthRecord>(openHRXml);
             DataStore.AddTasks(odsCode, record.healthDomain.task);
+        }
+
+        public string[] GetTasksByUserInRoleGuid(string odsCode, Guid userInRoleGuid)
+        {
+            OpenHR001PatientTask[] tasks = DataStore
+                .GetUserTasks(odsCode, userInRoleGuid);
+
+            if (tasks == null)
+                return null;
+
+            return tasks
+                .Select(Utilities.Serialize)
+                .ToArray();
         }
     }
 }

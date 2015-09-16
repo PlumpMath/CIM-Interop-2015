@@ -93,4 +93,17 @@ public class OpenHRTransformer {
             throw new SerializationException("Error deserialising OpenHR", e);
         }
     }
+
+	public Bundle toFhirTaskBundle(List<String> openHRXmlArray) throws TransformException {
+		List<Resource> tasks = new ArrayList<>();
+
+		for (String openHRXml : openHRXmlArray) {
+			OpenHR001PatientTask task = TransformHelper.unmarshall(openHRXml, OpenHR001PatientTask.class);
+
+			ToFHIRTransformer transformer = new ToFHIRTransformer();
+			tasks.add(transformer.transformToTask(task));
+		}
+
+		return BundleHelper.createBundle(Bundle.BundleType.SEARCHSET, UUID.randomUUID().toString(), tasks);
+	}
 }

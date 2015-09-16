@@ -57,6 +57,9 @@ namespace DotNetGPSystem
         string GetUserByID(string odsCode, int userInRoleId);
 
         [OperationContract]
+        string GetUserByUserInRoleGuid(string odsCode, Guid userInRoleGuid);
+
+        [OperationContract]
         string GetOrganisationInformation(string odsCode);
 
         [OperationContract]
@@ -70,5 +73,8 @@ namespace DotNetGPSystem
 
         [OperationContract]
         void AddTask(string odsCode, string openHRXml);
+
+        [OperationContract]
+        string[] GetTasksByUserInRoleGuid(string odsCode, Guid userInRoleGuid);
     }
 }

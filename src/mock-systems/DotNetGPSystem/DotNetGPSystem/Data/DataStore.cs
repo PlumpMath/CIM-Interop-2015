@@ -404,5 +404,19 @@ namespace DotNetGPSystem
             foreach (OpenHR001PatientTask patientTask in tasks)
                 odsTasks[new Guid(patientTask.id)] = patientTask;
         }
+
+        public static OpenHR001PatientTask[] GetUserTasks(string odsCode, Guid userInRoleGuid)
+        {
+            Dictionary<Guid, OpenHR001PatientTask> odsTasks;
+
+            if (!_tasksByOdsCode.TryGetValue(odsCode, out odsTasks))
+                return null;
+
+            return odsTasks
+                .Values
+                .Where(t => userInRoleGuid.Equals(new Guid(t.creatingUserInRole)))
+                .ToArray();
+        }
+
     }
 }
