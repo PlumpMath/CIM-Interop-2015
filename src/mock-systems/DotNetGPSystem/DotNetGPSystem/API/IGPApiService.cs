@@ -76,5 +76,8 @@ namespace DotNetGPSystem
 
         [OperationContract]
         string[] GetTasksByUserInRoleGuid(string odsCode, Guid userInRoleGuid);
+
+        [OperationContract]
+        string[] GetTasksByOrganisation(string odsCode);
     }
 }

@@ -17,6 +17,7 @@ public interface IDataManager {
 	String getTask(String odsCode, String taskId) throws Exception;
 	void addTask(String odsCode, String taskData) throws Exception;
 	String getUserTasks(String odsCode, String userId) throws Exception;
+	String getOrganisationTasks(String odsCode) throws Exception;
 
     // clinical
     String getFullRecord(String odsCode, String patientId) throws Exception;

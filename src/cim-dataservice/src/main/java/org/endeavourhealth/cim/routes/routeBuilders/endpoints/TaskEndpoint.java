@@ -2,6 +2,7 @@ package org.endeavourhealth.cim.routes.routeBuilders.endpoints;
 
 import org.endeavourhealth.cim.common.HeaderKey;
 import org.endeavourhealth.cim.common.HttpVerb;
+import org.endeavourhealth.cim.processor.administrative.GetOrganisationTasksProcessor;
 import org.endeavourhealth.cim.processor.administrative.GetTaskProcessor;
 import org.endeavourhealth.cim.processor.administrative.AddTaskProcessor;
 import org.endeavourhealth.cim.routes.common.CIMRouteBuilder;
@@ -16,7 +17,8 @@ public class TaskEndpoint extends CIMRouteBuilder {
         final String BASE_ROUTE = "/{odsCode}/Task";
         final String ID_ROUTE = "/{id}";
 
-        final String ID_PROCESSOR_ROUTE = "GetTask";
+		final String ID_PROCESSOR_ROUTE = "GetTask";
+		final String ORGANISATION_TASK_PROCESSOR_ROUTE = "GetOrganisationTasks";
 		final String POST_PROCESSOR_ROUTE = "AddTask";
 
         rest(BASE_ROUTE)
@@ -28,6 +30,13 @@ public class TaskEndpoint extends CIMRouteBuilder {
             .to(Route.CIM_CORE)
         .endRest()
 
+		.get()
+			.route()
+			.routeId(HttpVerb.GET + BASE_ROUTE)
+			.setHeader(HeaderKey.MessageRouterCallback, constant(Route.direct(ORGANISATION_TASK_PROCESSOR_ROUTE)))
+			.to(Route.CIM_CORE)
+		.endRest()
+
 		.post()
 			.route()
 			.routeId(HttpVerb.POST + BASE_ROUTE)
@@ -38,6 +47,10 @@ public class TaskEndpoint extends CIMRouteBuilder {
         from(Route.direct(ID_PROCESSOR_ROUTE))
             .routeId(ID_PROCESSOR_ROUTE)
             .process(new GetTaskProcessor());
+
+		from(Route.direct(ORGANISATION_TASK_PROCESSOR_ROUTE))
+			.routeId(ORGANISATION_TASK_PROCESSOR_ROUTE)
+			.process(new GetOrganisationTasksProcessor());
 
 		from(Route.direct(POST_PROCESSOR_ROUTE))
 			.routeId(POST_PROCESSOR_ROUTE)

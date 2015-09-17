@@ -271,6 +271,17 @@ public class EmisDataAdapter {
 		return getSOAPResultAsStringArray(responseMessage, soapMethod);
 	}
 
+	public List<String> getTasksByOrganisation(String odsCode) throws Exception {
+		final String soapMethod = "GetTasksByOrganisation";
+
+		Map<String, String> parameters = createParameterMap();
+		parameters.put("odsCode", odsCode);
+
+		SOAPMessage responseMessage = performSOAPCall(soapMethod, parameters);
+
+		return getSOAPResultAsStringArray(responseMessage, soapMethod);
+	}
+
 	// Utility methods
     private static Map<String, String> createParameterMap() {
         return new LinkedHashMap<>();

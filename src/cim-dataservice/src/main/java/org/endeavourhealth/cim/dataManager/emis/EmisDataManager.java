@@ -168,6 +168,14 @@ public class EmisDataManager implements IDataManager {
 		return new JsonParser().composeString(tasks);
 	}
 
+	@Override
+	public String getOrganisationTasks(String odsCode) throws Exception{
+		List<String> openHRXml = _emisDataAdapter.getTasksByOrganisation(odsCode);
+		Bundle tasks = _emisTransformer.openHRToFhirTaskBundle(openHRXml);
+
+		return new JsonParser().composeString(tasks);
+	}
+
 	/* clinical */
 
 	@Override

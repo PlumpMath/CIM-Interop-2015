@@ -418,5 +418,16 @@ namespace DotNetGPSystem
                 .ToArray();
         }
 
+        public static OpenHR001PatientTask[] GetOrganisationTasks(string odsCode)
+        {
+            Dictionary<Guid, OpenHR001PatientTask> odsTasks;
+
+            if (!_tasksByOdsCode.TryGetValue(odsCode, out odsTasks))
+                return null;
+
+            return odsTasks
+                .Values
+                .ToArray();
+        }
     }
 }
