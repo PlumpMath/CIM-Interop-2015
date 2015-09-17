@@ -3,6 +3,7 @@ package org.endeavourhealth.cim.routes.routeBuilders.endpoints;
 import org.apache.camel.builder.RouteBuilder;
 import org.endeavourhealth.cim.common.HeaderKey;
 import org.endeavourhealth.cim.common.HttpVerb;
+import org.endeavourhealth.cim.processor.administrative.GetPatientTasksProcessor;
 import org.endeavourhealth.cim.routes.common.CIMRouteBuilder;
 import org.endeavourhealth.cim.routes.common.Route;
 import org.endeavourhealth.cim.processor.clinical.GetFullPatientRecordProcessor;
@@ -17,10 +18,13 @@ public class PatientEndpoint extends CIMRouteBuilder {
         final String BASE_ROUTE = "/{odsCode}/Patient";
         final String ID_DEMOGRAPHIC_ROUTE = "/{id}";
         final String ID_EVERYTHING_ROUTE = "/{id}/$everythingnobinary";
-        final String NHS_NUMBER_ROUTE = "?identifier={identifier}&_lastUpdated=>{dateUpdated}&active={active}";
+		final String TASKS_ROUTE = "/{id}/Task";
+        final String BY_QUERY_ROUTE = "?identifier={identifier}&_lastUpdated=>{dateUpdated}&active={active}";
 
         final String ID_DEMOGRAPHIC_PROCESSOR_ROUTE = "GetDemographicPatient";
         final String ID_EVERYTHING_PROCESSOR_ROUTE = "GetFullPatient";
+		final String BY_QUERY_PROCESSOR_ROUTE = "GetPatientByQuery";
+		final String TASKS_PROCESSOR_ROUTE = "GetPatientTasks";
 
         rest(BASE_ROUTE)
 
@@ -38,12 +42,19 @@ public class PatientEndpoint extends CIMRouteBuilder {
             .to(Route.CIM_CORE)
         .endRest()
 
-        .get(NHS_NUMBER_ROUTE)
+        .get(BY_QUERY_ROUTE)
             .route()
-            .routeId(HttpVerb.GET + BASE_ROUTE + NHS_NUMBER_ROUTE)
-            .setHeader(HeaderKey.MessageRouterCallback, constant("direct:GetPatientByQuery"))
+            .routeId(HttpVerb.GET + BASE_ROUTE + BY_QUERY_ROUTE)
+            .setHeader(HeaderKey.MessageRouterCallback, constant(Route.direct(BY_QUERY_PROCESSOR_ROUTE)))
             .to(Route.CIM_CORE)
-        .endRest();
+        .endRest()
+
+		.get(TASKS_ROUTE)
+			.route()
+			.routeId(HttpVerb.GET + BASE_ROUTE + TASKS_ROUTE)
+			.setHeader(HeaderKey.MessageRouterCallback, constant(Route.direct(TASKS_PROCESSOR_ROUTE)))
+			.to(Route.CIM_CORE)
+		.endRest();
 
         from(Route.direct(ID_DEMOGRAPHIC_PROCESSOR_ROUTE))
             .routeId(ID_DEMOGRAPHIC_PROCESSOR_ROUTE)
@@ -53,7 +64,12 @@ public class PatientEndpoint extends CIMRouteBuilder {
             .routeId(ID_EVERYTHING_PROCESSOR_ROUTE)
             .process(new GetFullPatientRecordProcessor());
 
-        from("direct:GetPatientByQuery")
+		from(Route.direct(TASKS_PROCESSOR_ROUTE))
+			.routeId(TASKS_PROCESSOR_ROUTE)
+			.process(new GetPatientTasksProcessor());
+
+        from(Route.direct(BY_QUERY_PROCESSOR_ROUTE))
+			.routeId(BY_QUERY_PROCESSOR_ROUTE)
             .choice()
                 .when(simple("${header." + HeaderKey.Identifier + "} != null"))
                     .routeId("GetPatientByIdentifier")

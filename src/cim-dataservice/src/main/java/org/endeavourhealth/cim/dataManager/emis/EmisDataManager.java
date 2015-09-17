@@ -176,6 +176,21 @@ public class EmisDataManager implements IDataManager {
 		return new JsonParser().composeString(tasks);
 	}
 
+	@Override
+	public String getPatientTasks(String odsCode, String patientId) throws Exception {
+		UUID patientUuid;
+		try {
+			patientUuid = UUID.fromString(patientId);
+		} catch (IllegalArgumentException e) {
+			throw new CIMInvalidInternalIdentifier("Patient Id");
+		}
+
+		List<String> openHRXml = _emisDataAdapter.getTasksByPatient(odsCode, patientUuid);
+		Bundle tasks = _emisTransformer.openHRToFhirTaskBundle(openHRXml);
+
+		return new JsonParser().composeString(tasks);
+	}
+
 	/* clinical */
 
 	@Override

@@ -170,59 +170,6 @@
         }
       }
     },
-    "/{odsCode}/User/{id}/Task": {
-      "get": {
-        "tags": [
-          "administrative"
-        ],
-        "summary": "Get user tasks",
-        "description": "Get user tasks by ID.",
-        "produces": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "$ref": "#definitions/apiKeyParameter"
-          },
-          {
-            "$ref": "#definitions/hashParameter"
-          },
-          {
-            "$ref": "#definitions/odsCodeParameter"
-          },
-          {
-            "name": "id",
-            "in": "path",
-            "description": "Internal user identifier",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK | A bundle of <a target='_blank' href='http://hl7.org/fhir/2015May/order.html'>Order</a> resources"
-          },
-          "400": {
-            "$ref": "#definitions/400Response"
-          },
-          "401": {
-            "$ref": "#definitions/401Response"
-          },
-          "403": {
-            "$ref": "#definitions/403Response"
-          },
-          "500": {
-            "$ref": "#definitions/500Response"
-          },
-          "502": {
-            "$ref": "#definitions/502Response"
-          },
-          "504": {
-            "$ref": "#definitions/504Response"
-          }
-        }
-      }
-    },
     "/{odsCode}/Schedule": {
       "get": {
         "tags": [
@@ -680,6 +627,104 @@
           },
           "412": {
             "$ref": "#definitions/412SlotNotBookedByThisPatientResponse"
+          },
+          "500": {
+            "$ref": "#definitions/500Response"
+          },
+          "502": {
+            "$ref": "#definitions/502Response"
+          },
+          "504": {
+            "$ref": "#definitions/504Response"
+          }
+        }
+      }
+    },
+    "/{odsCode}/User/{id}/Task": {
+      "get": {
+        "tags": [
+          "administrative"
+        ],
+        "summary": "Get user tasks",
+        "description": "Get tasks by user.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#definitions/apiKeyParameter"
+          },
+          {
+            "$ref": "#definitions/hashParameter"
+          },
+          {
+            "$ref": "#definitions/odsCodeParameter"
+          },
+          {
+            "$ref": "#definitions/userIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK | A bundle of <a target='_blank' href='http://hl7.org/fhir/2015May/order.html'>Order</a> resources"
+          },
+          "400": {
+            "$ref": "#definitions/400Response"
+          },
+          "401": {
+            "$ref": "#definitions/401Response"
+          },
+          "403": {
+            "$ref": "#definitions/403Response"
+          },
+          "500": {
+            "$ref": "#definitions/500Response"
+          },
+          "502": {
+            "$ref": "#definitions/502Response"
+          },
+          "504": {
+            "$ref": "#definitions/504Response"
+          }
+        }
+      }
+    },
+    "/{odsCode}/Patient/{id}/Task": {
+      "get": {
+        "tags": [
+          "administrative"
+        ],
+        "summary": "Get patient tasks",
+        "description": "Get tasks by patient.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#definitions/apiKeyParameter"
+          },
+          {
+            "$ref": "#definitions/hashParameter"
+          },
+          {
+            "$ref": "#definitions/odsCodeParameter"
+          },
+          {
+            "$ref": "#definitions/patientIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK | A bundle of <a target='_blank' href='http://hl7.org/fhir/2015May/order.html'>Order</a> resources"
+          },
+          "400": {
+            "$ref": "#definitions/400Response"
+          },
+          "401": {
+            "$ref": "#definitions/401Response"
+          },
+          "403": {
+            "$ref": "#definitions/403Response"
           },
           "500": {
             "$ref": "#definitions/500Response"
@@ -1292,6 +1337,13 @@
       "name": "id",
       "in": "path",
       "description": "Patient ID",
+      "required": true,
+      "type": "string"
+    },
+    "userIdParameter": {
+      "name": "id",
+      "in": "path",
+      "description": "Internal user identifier",
       "required": true,
       "type": "string"
     },

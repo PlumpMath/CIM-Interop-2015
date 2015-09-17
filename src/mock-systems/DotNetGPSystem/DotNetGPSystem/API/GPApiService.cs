@@ -271,5 +271,18 @@ namespace DotNetGPSystem
                 .Select(Utilities.Serialize)
                 .ToArray();
         }
+
+        public string[] GetTasksByPatientGuid(string odsCode, Guid patientGuid)
+        {
+            OpenHR001PatientTask[] tasks = DataStore
+                .GetPatientTasks(odsCode, patientGuid);
+
+            if (tasks == null)
+                return null;
+
+            return tasks
+                .Select(Utilities.Serialize)
+                .ToArray();
+        }
     }
 }

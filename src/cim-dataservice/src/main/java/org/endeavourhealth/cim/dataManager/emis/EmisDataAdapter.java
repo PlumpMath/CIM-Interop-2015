@@ -282,6 +282,17 @@ public class EmisDataAdapter {
 		return getSOAPResultAsStringArray(responseMessage, soapMethod);
 	}
 
+	public List<String> getTasksByPatient(String odsCode, UUID patientUuid) throws Exception {
+		final String soapMethod = "GetTasksByPatientGuid";
+
+		Map<String, String> parameters = createParameterMap();
+		parameters.put("odsCode", odsCode);
+		parameters.put("patientGuid", patientUuid.toString());
+
+		SOAPMessage responseMessage = performSOAPCall(soapMethod, parameters);
+
+		return getSOAPResultAsStringArray(responseMessage, soapMethod);	}
+
 	// Utility methods
     private static Map<String, String> createParameterMap() {
         return new LinkedHashMap<>();
@@ -377,4 +388,5 @@ public class EmisDataAdapter {
 
         return getSOAPResultAsElement(soapResponse, soapMethod).getTextContent();
     }
+
 }

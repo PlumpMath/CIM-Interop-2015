@@ -18,6 +18,7 @@ public interface IDataManager {
 	void addTask(String odsCode, String taskData) throws Exception;
 	String getUserTasks(String odsCode, String userId) throws Exception;
 	String getOrganisationTasks(String odsCode) throws Exception;
+	String getPatientTasks(String odsCode, String patientId) throws Exception;
 
     // clinical
     String getFullRecord(String odsCode, String patientId) throws Exception;
@@ -33,5 +34,4 @@ public interface IDataManager {
     String tracePersonByDemographics(String surname, Date dateOfBirth, String gender, String forename, String postcode) throws Exception;
     String tracePersonByNhsNumber(String nhsNumber) throws Exception;
     List<String> getChangedPatients(String odsCode, Date date) throws Exception;
-
 }
