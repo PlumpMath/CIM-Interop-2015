@@ -3,9 +3,9 @@
   <meta>
     <lastUpdated value="2015-04-02T14:21:09.718+02:00" />
   </meta>
-  <url value="urn:fhir.endeavour.org:/Tasl" />
+  <url value="urn:fhir.endeavour.org:/Task" />
   <name value="Task" />
-  <description value="Base StructureDefinition for Order Resource" />
+  <description value="Base StructureDefinition for Task Resource" />
   <status value="draft" />
   <date value="2015-04-02T14:21:09+02:00" />
   <mapping>
@@ -31,43 +31,46 @@
     </element>
     <element>
       <path value="Order.extension" />
-      <name value="TaskType" />
-      <short value="Type of task" />
-      <comments value="BookAppointment | BookAppointmentWithDoctor | BookAppointmentWithNurse | TelephonePatient | ScreenMessage | ResultsForInfo | MeetingNotification | PatientNote | AdminNote | FormToComplete | RepeateTest | EscalationNotification | ConfidentialityPolicyOverridden | DtsTransmissionFailure | LegitimateRelationshipNotification | DtsTransmissionReport | OverdueTaskNotification" />
+      <name value="Type" />
+      <label value="Type" />
+      <short value="BookAppointment | BookAppointmentWithDoctor | BookAppointmentWithNurse | TelephonePatient | ScreenMessage | ResultsForInfo | MeetingNotification | PatientNote | AdminNote | FormToComplete | RepeatTest | EscalationNotification | ConfidentialityPoliciesOverridden | DtsTransmissionFailure | LegitimateRelationshipNotification | DtsTransmissionReport | OverdueTaskNotification" />
+      <definition value="Task type" />
       <min value="1" />
       <max value="1" />
       <type>
-        <code value="Reference" />
+        <code value="string" />
       </type>
     </element>
     <element>
       <path value="Order.extension" />
       <name value="Priority" />
-      <short value="Task Priority" />
-      <comments value="Low | Normal | High" />
+      <label value="Priority" />
+      <short value="Low | Normal | High" />
+      <definition value="Task Priority" />
       <min value="1" />
       <max value="1" />
       <type>
-        <code value="Reference" />
+        <code value="string" />
       </type>
     </element>
     <element>
       <path value="Order.extension" />
       <name value="Status" />
+      <label value="Status" />
+      <short value="Active | Complete | Deleted | Archived" />
       <definition value="Task status" />
-      <comments value="Active | Complete | Deleted | Archived" />
       <min value="1" />
       <max value="1" />
       <type>
-        <code value="Reference" />
+        <code value="string" />
       </type>
     </element>
     <element>
       <path value="Order.identifier" />
       <short value="Identifiers assigned to this order by the orderer or by the receiver" />
       <definition value="Identifiers assigned to this order by the orderer or by the receiver." />
-      <min value="1" />
-      <max value="1" />
+      <min value="0" />
+      <max value="0" />
       <type>
         <code value="Identifier" />
       </type>
@@ -100,10 +103,41 @@
       </mapping>
     </element>
     <element>
+      <path value="Order.source.reference" />
+      <short value="Relative, internal or absolute URL reference" />
+      <definition value="A reference to a location at which the other resource is found. The reference may be a relative reference, in which case it is relative to the service base URL, or an absolute URL that resolves to the location where the resource is found. The reference may be version specific or not. If the reference is not to a FHIR RESTful server, then it should be assumed to be version specific. Internal fragment references (start with '#') refer to contained resources." />
+      <comments value="Using absolute URLs provides a stable scalable approach suitable for a cloud/web context, while using relative/logical references provides a flexible approach suitable for use when trading across closed eco-system boundaries.   Absolute URLs do not need to point to a FHIR RESTful server, though this is the preferred approach. If the url conforms to the structure &quot;/[type]/[id]&quot; then it should be assumed that the reference is to a FHIR RESTful server." />
+      <min value="1" />
+      <max value="1" />
+      <type>
+        <code value="string" />
+      </type>
+      <condition value="ref-1" />
+      <mapping>
+        <identity value="rim" />
+        <map value="N/A" />
+      </mapping>
+    </element>
+    <element>
+      <path value="Order.source.display" />
+      <short value="Text alternative for the resource" />
+      <definition value="Plain text narrative that identifies the resource in addition to the resource reference." />
+      <comments value="This is generally not the same as the Resource.text of the referenced resource.  The purpose is to identify what's being referenced, not to fully describe it." />
+      <min value="0" />
+      <max value="0" />
+      <type>
+        <code value="string" />
+      </type>
+      <mapping>
+        <identity value="rim" />
+        <map value="N/A" />
+      </mapping>
+    </element>
+    <element>
       <path value="Order.target" />
       <short value="Who is intended to fulfill the order" />
       <definition value="Who is intended to fulfill the order." />
-      <min value="0" />
+      <min value="1" />
       <max value="1" />
       <type>
         <code value="Reference" />
@@ -120,8 +154,6 @@
     </element>
     <element>
       <path value="Order.reason[x]" />
-      <name value="Subject" />
-      <label value="Subject" />
       <short value="Text - why the order was made" />
       <definition value="Text - why the order was made." />
       <min value="0" />
@@ -170,6 +202,11 @@
         <code value="CodeableConcept" />
       </type>
       <condition value="ord-1" />
+      <binding>
+        <name value="RequestedTime" />
+        <strength value="required" />
+        <description value="When a requested action should be performed  (e.g. STAT, daily, evenings, etc.)" />
+      </binding>
       <mapping>
         <identity value="rim" />
         <map value="GTS is a coded value" />
