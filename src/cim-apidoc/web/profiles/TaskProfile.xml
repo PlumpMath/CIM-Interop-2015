@@ -1,12 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <StructureDefinition xmlns="http://hl7.org/fhir">
+  <id value="urn:fhir.endeavour.org:/Task" />
   <meta>
     <lastUpdated value="2015-04-02T14:21:09.718+02:00" />
   </meta>
   <url value="urn:fhir.endeavour.org:/Task" />
+  <version value="0.1" />
   <name value="Task" />
-  <description value="Base StructureDefinition for Task Resource" />
+  <display value="Task" />
+  <publisher value="Endeavour" />
+  <description value="Base StructureDefinition for Task Resource which can be used to communicate tasks between systems" />
+  <requirements value="Allow the communication of tasks between systems" />
   <status value="draft" />
+  <experimental value="false" />
   <date value="2015-04-02T14:21:09+02:00" />
   <mapping>
     <identity value="rim" />
@@ -100,6 +106,27 @@
       <mapping>
         <identity value="rim" />
         <map value=".participation[typeCode=SBJ].role[classCode=PAT]" />
+      </mapping>
+    </element>
+    <element>
+      <path value="Order.source" />
+      <short value="Who initiated the order" />
+      <definition value="Who initiated the order." />
+      <alias value="Author" />
+      <alias value="Practitioner" />
+      <min value="1" />
+      <max value="1" />
+      <type>
+        <code value="Reference" />
+        <profile value="http://hl7.org/fhir/StructureDefinition/Practitioner" />
+      </type>
+      <mapping>
+        <identity value="v2" />
+        <map value="ORC-12 / OBR-16 / RXO-14 / RXE-13 / PRT-5 (PRT-4-Participation='OP')" />
+      </mapping>
+      <mapping>
+        <identity value="rim" />
+        <map value=".participation[typeCode=AUT].role" />
       </mapping>
     </element>
     <element>

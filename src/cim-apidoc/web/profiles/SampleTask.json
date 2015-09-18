@@ -1,0 +1,65 @@
+{
+  "resourceType": "Order",
+  "id": "00000000-0000-0000-0000-000000000000",
+  "date": "2015-09-01T11:34:05",
+  "subject": {
+    "reference": "Patient/00000000-0000-0000-0000-000000000000"
+  },
+  "source": {
+    "reference": "Practitioner/00000000-0000-0000-0000-000000000000"
+  },
+  "target": {
+    "reference": "Practitioner/00000000-0000-0000-0000-000000000000"
+  },
+  "reasonReference": {
+    "reference": "Basic/Subject text"
+  },
+  "when": {
+    "schedule": {
+      "resourceType": "Timing",
+      "event": [
+        "2015-08-04T10:00:00"
+      ]
+    }
+  },
+  "detail": [
+    {
+      "reference": "Basic/Task description text"
+    }
+  ],
+  "extension": [
+    {
+      "url": "http://www.e-mis.com/emisopen/extension/TaskType",
+      "valueCodeableConcept": {
+        "coding": [
+          {
+            "system": "http://www.e-mis.com/emisopen/TaskType",
+            "display": "BOOK_APPOINTMENT"
+          }
+        ]
+      }
+    },
+    {
+      "url": "http://www.e-mis.com/emisopen/extension/TaskPriority",
+      "valueCodeableConcept": {
+        "coding": [
+          {
+            "system": "http://www.e-mis.com/emisopen/TaskPriority",
+            "display": "NORMAL"
+          }
+        ]
+      }
+    },
+    {
+      "url": "http://www.e-mis.com/emisopen/extension/TaskStatus",
+      "valueCodeableConcept": {
+        "coding": [
+          {
+            "system": "http://www.e-mis.com/emisopen/TaskStatus",
+            "display": "ACTIVE"
+          }
+        ]
+      }
+    }
+  ]
+}
