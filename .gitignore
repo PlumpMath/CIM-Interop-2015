@@ -62,6 +62,7 @@ Maven__*.xml
 *.suo
 /src/mock-systems/DotNetGPSystem/DotNetGPSystem/bin
 /src/mock-systems/DotNetGPSystem/DotNetGPSystem/obj
-/src/mock-systems/DotNetSecondaryCareSystem/DotNetSecondaryCareSystem/bin
-/src/mock-systems/DotNetSecondaryCareSystem/DotNetSecondaryCareSystem/obj
+/src/mock-systems/DotNetConsumerSystem/DotNetSecondaryCareSystem/bin
+/src/mock-systems/DotNetConsumerSystem/DotNetSecondaryCareSystem/obj
 /src/mock-systems/packages
+/src/mock-systems/DotNetConsumerSystem/packages
