@@ -47,11 +47,11 @@ class ObservationTransformer implements ClinicalResourceTransformer {
         return target;
     }
 
-    private DateType convertEffectiveDateTime(DtDatePart source) throws TransformException {
+    private DateTimeType convertEffectiveDateTime(DtDatePart source) throws TransformException {
         if (source == null)
             throw new SourceDocumentInvalidException("Invalid DateTime");
 
-        return ToFHIRHelper.convertPartialDateTimeToDateType(source);
+        return ToFHIRHelper.convertPartialDateTimeToDateTimeType(source);
     }
 
     private Reference convertPatient(String sourcePatientId) throws SourceDocumentInvalidException {
