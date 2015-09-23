@@ -42,9 +42,31 @@ namespace DotNetSecondaryCareSystem
 
         private void btnGetFullRecord_Click(object sender, EventArgs e)
         {
-            string baseUrl = this.tbBaseUrl.Text;
             string odsCode = this.tbOdsCode.Text;
             string patientGuid = this.tbPatientGuid.Text;
+
+            this.tbGetFullRecordResponse.Text = FormatWebRequestResponse(GetFullRecord(odsCode, patientGuid));
+        }
+
+        private void btnGetAndSaveFullRecords_Click(object sender, EventArgs e)
+        {
+            foreach (string line in tbPatientGuids.Lines)
+            {
+                if (string.IsNullOrEmpty(line))
+                    continue;
+
+                string odsCode = line.Split(',').First().Trim();
+                string patientGuid = line.Split(',').Skip(1).First().Trim();
+
+                string fullRecord = Utilities.FormatXml(GetFullRecord(odsCode, patientGuid).Response);
+
+                File.WriteAllText(Path.Combine(tbOutputFolder.Text, patientGuid + ".fhir.xml"), fullRecord);
+            }
+        }
+
+        private WebResponse GetFullRecord(string odsCode, string patientGuid)
+        {
+            string baseUrl = this.tbBaseUrl.Text;
             string relativeUrl = Utilities.FormatRestPath(this.lblGetFullRecordFhirUrl.Text, odsCode, patientGuid);
 
             WebResponse response = Utilities.GetCimUrl(
@@ -53,7 +75,7 @@ namespace DotNetSecondaryCareSystem
                apiKey: tbApiKey.Text,
                hash: Utilities.GenerateHash(relativeUrl, string.Empty, tbSecret.Text));
 
-            this.tbGetFullRecordResponse.Text = FormatWebRequestResponse(response);
+            return response;
         }
 
         private void btnPostCondition_Click(object sender, EventArgs e)

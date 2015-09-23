@@ -7,6 +7,7 @@ using System.Net;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace DotNetSecondaryCareSystem
 {
@@ -158,6 +159,19 @@ namespace DotNetSecondaryCareSystem
                         }
                     }
                 }
+            }
+        }
+
+        public static string FormatXml(string xml)
+        {
+            try
+            {
+                XDocument doc = XDocument.Parse(xml);
+                return doc.ToString();
+            }
+            catch (Exception)
+            {
+                return xml;
             }
         }
     }

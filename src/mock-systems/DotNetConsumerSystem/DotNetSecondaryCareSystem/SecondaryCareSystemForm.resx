@@ -330,12 +330,28 @@
   <metadata name="colDate.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <metadata name="colEmpty.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="colDate.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
+  <data name="tbPatientGuids.Text" xml:space="preserve">
+    <value>A99999, 11af0e7f-be18-431e-9be9-fd1adb2f0742
+Y99999, 15b5a3c5-4551-4a3c-94b3-22fd87cf8893
+Z99999, 2e898338-2fcd-46c6-bb35-2b899bb48ffd
+Z99999, 30a74420-ffd8-4bc6-acc4-aaf845046d6e
+Z99999, 35ea630e-9d57-42da-a97a-b134e9f3fc12
+Y99999, 36000db7-a9f5-48af-9b06-7a2dcec16335
+A99999, 403d97c0-adc6-47ef-80f9-446faa357fc6
+A99999, 46ad9673-3f27-4a84-b7d3-08cfc316500d
+A99999, 53055352-9399-4d2e-b8e7-e77699535c05
+B99999, 57102956-6590-4eeb-abdb-9a24eba90e9c
+Y99999, 57431748-ecf8-409c-b12e-331805e2b651
+Z99999, 72146177-a351-444e-b657-511c86c69250
+A99999, 8c55c625-d987-433d-b34e-219baaef075b
+B99999, b4022034-7559-4426-a28f-95872ab6a504
+B99999, c4fb954c-a65d-4442-a7a5-bd3c57cbcc38
+B99999, e8e30f24-71dd-4984-baf7-786dc8092ef3
+A99999, eb889d15-b50c-4390-bff2-dbe5dcc50593
+Y99999, ed8329b2-d2ac-4c8b-88d1-1ed1b9fb6625
+Z99999, f3e0bb09-b89c-4d4c-8d99-303cbcfdf531
+B99999, fcf9a63a-f5d8-4a61-b467-6e36bf145736</value>
+  </data>
   <metadata name="timer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>202, 17</value>
   </metadata>
