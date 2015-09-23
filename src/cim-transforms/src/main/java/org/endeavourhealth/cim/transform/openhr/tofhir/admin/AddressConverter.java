@@ -63,11 +63,11 @@ class AddressConverter {
     {
         Address.AddressUse use = ConvertAddressType(source.getAddressType());
 
-        if (use == null)
-            return null;
-
         Address target = new Address();
-        target.setUse(use);
+
+        if ((use != null) && (use != Address.AddressUse.NULL))
+            target.setUse(use);
+
         target.setText(createDisplayText(source));
 
         addLines(source, target);
@@ -75,7 +75,7 @@ class AddressConverter {
         if (StringUtils.isNotBlank(source.getTown()))
             target.setCity(source.getTown());
         if (StringUtils.isNotBlank(source.getCounty()))
-            target.setState(source.getCounty());
+            target.setDistrict(source.getCounty());
         if (StringUtils.isNotBlank(source.getPostCode()))
             target.setPostalCode(source.getPostCode());
 
@@ -123,10 +123,6 @@ class AddressConverter {
             target.addLine(source.getStreet());
         if (StringUtils.isNotBlank(source.getVillage()))
             target.addLine(source.getVillage());
-        if (StringUtils.isNotBlank(source.getTown()))
-            target.addLine(source.getTown());
-        if (StringUtils.isNotBlank(source.getCounty()))
-            target.addLine(source.getCounty());
     }
 
     private static Address.AddressUse ConvertAddressType(VocAddressType sourceAddressType)
