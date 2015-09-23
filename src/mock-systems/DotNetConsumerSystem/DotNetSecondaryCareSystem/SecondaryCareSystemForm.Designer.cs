@@ -42,7 +42,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.tbOdsCode = new System.Windows.Forms.TextBox();
+            this.tbSecret = new System.Windows.Forms.TextBox();
             this.tbBaseUrl = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -105,6 +105,8 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label22 = new System.Windows.Forms.Label();
             this.timer = new System.Windows.Forms.Timer(this.components);
+            this.label23 = new System.Windows.Forms.Label();
+            this.tbOdsCode = new System.Windows.Forms.TextBox();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel10.SuspendLayout();
@@ -141,7 +143,7 @@
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
             this.panel2.Padding = new System.Windows.Forms.Padding(0, 0, 0, 1);
-            this.panel2.Size = new System.Drawing.Size(1515, 93);
+            this.panel2.Size = new System.Drawing.Size(1515, 118);
             this.panel2.TabIndex = 2;
             // 
             // panel1
@@ -156,7 +158,7 @@
             this.panel1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1515, 92);
+            this.panel1.Size = new System.Drawing.Size(1515, 117);
             this.panel1.TabIndex = 1;
             // 
             // panel10
@@ -216,16 +218,18 @@
             // 
             // panel6
             // 
+            this.panel6.Controls.Add(this.label23);
+            this.panel6.Controls.Add(this.tbOdsCode);
             this.panel6.Controls.Add(this.tbApiKey);
             this.panel6.Controls.Add(this.label3);
             this.panel6.Controls.Add(this.label18);
             this.panel6.Controls.Add(this.label10);
-            this.panel6.Controls.Add(this.tbOdsCode);
+            this.panel6.Controls.Add(this.tbSecret);
             this.panel6.Controls.Add(this.tbBaseUrl);
             this.panel6.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel6.Location = new System.Drawing.Point(1125, 0);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(390, 92);
+            this.panel6.Size = new System.Drawing.Size(390, 117);
             this.panel6.TabIndex = 15;
             // 
             // tbApiKey
@@ -235,7 +239,7 @@
             this.tbApiKey.Name = "tbApiKey";
             this.tbApiKey.Size = new System.Drawing.Size(260, 23);
             this.tbApiKey.TabIndex = 13;
-            this.tbApiKey.Text = "subsidiary";
+            this.tbApiKey.Text = "swagger";
             // 
             // label3
             // 
@@ -268,16 +272,16 @@
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(58, 15);
             this.label10.TabIndex = 12;
-            this.label10.Text = "ODS code";
+            this.label10.Text = "API secret";
             // 
-            // tbOdsCode
+            // tbSecret
             // 
-            this.tbOdsCode.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.tbOdsCode.Location = new System.Drawing.Point(120, 62);
-            this.tbOdsCode.Name = "tbOdsCode";
-            this.tbOdsCode.Size = new System.Drawing.Size(260, 23);
-            this.tbOdsCode.TabIndex = 11;
-            this.tbOdsCode.Text = "Z99999";
+            this.tbSecret.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbSecret.Location = new System.Drawing.Point(120, 62);
+            this.tbSecret.Name = "tbSecret";
+            this.tbSecret.Size = new System.Drawing.Size(260, 23);
+            this.tbSecret.TabIndex = 11;
+            this.tbSecret.Text = "swagger";
             // 
             // tbBaseUrl
             // 
@@ -286,7 +290,7 @@
             this.tbBaseUrl.Name = "tbBaseUrl";
             this.tbBaseUrl.Size = new System.Drawing.Size(260, 23);
             this.tbBaseUrl.TabIndex = 6;
-            this.tbBaseUrl.Text = "http://localhost:8080/v0.1/";
+            this.tbBaseUrl.Text = "http://localhost:8080/api/v0.1/";
             // 
             // label2
             // 
@@ -320,7 +324,7 @@
             // 
             // toolStrip1
             // 
-            this.toolStrip1.Location = new System.Drawing.Point(0, 93);
+            this.toolStrip1.Location = new System.Drawing.Point(0, 118);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(1515, 25);
             this.toolStrip1.TabIndex = 7;
@@ -334,10 +338,10 @@
             this.tabControl1.Controls.Add(this.tabPage4);
             this.tabControl1.Controls.Add(this.tabPage5);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControl1.Location = new System.Drawing.Point(0, 118);
+            this.tabControl1.Location = new System.Drawing.Point(0, 143);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1515, 742);
+            this.tabControl1.Size = new System.Drawing.Size(1515, 717);
             this.tabControl1.TabIndex = 8;
             // 
             // tabPage1
@@ -347,7 +351,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 24);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1507, 714);
+            this.tabPage1.Size = new System.Drawing.Size(1507, 689);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Get demographics by NHS number";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -360,7 +364,7 @@
             this.panel7.Location = new System.Drawing.Point(3, 85);
             this.panel7.Name = "panel7";
             this.panel7.Padding = new System.Windows.Forms.Padding(13, 0, 0, 0);
-            this.panel7.Size = new System.Drawing.Size(1501, 626);
+            this.panel7.Size = new System.Drawing.Size(1501, 601);
             this.panel7.TabIndex = 13;
             // 
             // tbGetDemographicsResult
@@ -371,7 +375,7 @@
             this.tbGetDemographicsResult.Multiline = true;
             this.tbGetDemographicsResult.Name = "tbGetDemographicsResult";
             this.tbGetDemographicsResult.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.tbGetDemographicsResult.Size = new System.Drawing.Size(1488, 601);
+            this.tbGetDemographicsResult.Size = new System.Drawing.Size(1488, 576);
             this.tbGetDemographicsResult.TabIndex = 14;
             // 
             // label17
@@ -995,6 +999,26 @@
             this.timer.Interval = 1000;
             this.timer.Tick += new System.EventHandler(this.timer_Tick);
             // 
+            // label23
+            // 
+            this.label23.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label23.AutoSize = true;
+            this.label23.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label23.Location = new System.Drawing.Point(22, 90);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(58, 15);
+            this.label23.TabIndex = 16;
+            this.label23.Text = "ODS code";
+            // 
+            // tbOdsCode
+            // 
+            this.tbOdsCode.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbOdsCode.Location = new System.Drawing.Point(120, 87);
+            this.tbOdsCode.Name = "tbOdsCode";
+            this.tbOdsCode.Size = new System.Drawing.Size(260, 23);
+            this.tbOdsCode.TabIndex = 15;
+            this.tbOdsCode.Text = "Z99999";
+            // 
             // SecondaryCareSystemForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -1068,7 +1092,7 @@
         private System.Windows.Forms.Button btnGetFullRecord;
         private System.Windows.Forms.Label lblGetFullRecordFhirUrl;
         private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.TextBox tbOdsCode;
+        private System.Windows.Forms.TextBox tbSecret;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.Label label11;
@@ -1127,6 +1151,8 @@
         private System.Windows.Forms.TextBox tbSubscriptionNhsNumber;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.TextBox tbOdsCode;
     }
 }
 

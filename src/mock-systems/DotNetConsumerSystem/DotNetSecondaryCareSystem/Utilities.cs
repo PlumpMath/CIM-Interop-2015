@@ -80,35 +80,33 @@ namespace DotNetSecondaryCareSystem
                     return reader.ReadToEnd();
         }
 
-        public static string GenerateHash(string restPath, string body)
+        public static string GenerateHash(string restPath, string body, string secret)
         {
-            string privateKey = "privateKey";
+            string data = restPath; 
 
-            string data = FormatRestPathForHashGeneration(restPath);
-            
             if (data != null)
                 data += body;
 
             HMAC mac = HMAC.Create("HmacSHA256");
             ASCIIEncoding encoder = new ASCIIEncoding();
-            mac.Key = encoder.GetBytes(privateKey);
+            mac.Key = encoder.GetBytes(secret);
             mac.Initialize();
             byte[] digest = mac.ComputeHash(encoder.GetBytes(data));
 
             return Convert.ToBase64String(digest);
         }
 
-        private static string FormatRestPathForHashGeneration(string restPath)
-        {
-            string result = restPath;
+        //private static string FormatRestPathForHashGeneration(string restPath)
+        //{
+        //    string result = restPath;
             
-            int questionMarkPosition = restPath.IndexOf('?');
+        //    int questionMarkPosition = restPath.IndexOf('?');
 
-            if (questionMarkPosition >= 0)
-                result = restPath.Substring(0, questionMarkPosition) + "/";
+        //    if (questionMarkPosition >= 0)
+        //        result = restPath.Substring(0, questionMarkPosition) + "/";
 
-            return result;
-        }
+        //    return result;
+        //}
 
         public static string FormatRestPath(string restMethodString, params object[] args)
         {

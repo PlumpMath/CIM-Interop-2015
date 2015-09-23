@@ -27,15 +27,15 @@ namespace DotNetSecondaryCareSystem
             this.tbNhsNumber.Refresh();
 
             string baseUrl = this.tbBaseUrl.Text;
-            string restPath = this.lblGetDemographicsFhirUrl.Text;
             string odsCode = this.tbOdsCode.Text;
             string nhsNumber = this.tbNhsNumber.Text;
+            string relativeUrl = Utilities.FormatRestPath(this.lblGetDemographicsFhirUrl.Text, odsCode, nhsNumber);
 
             WebResponse response = Utilities.GetCimUrl(
                 baseUrl: tbBaseUrl.Text,
-                relativeUrl: Utilities.FormatRestPath(restPath, odsCode, nhsNumber),
+                relativeUrl: relativeUrl,
                 apiKey: tbApiKey.Text,
-                hash: Utilities.GenerateHash(this.lblGetDemographicsFhirUrl.Text, null));
+                hash: Utilities.GenerateHash(relativeUrl, string.Empty, tbSecret.Text));
 
             this.tbGetDemographicsResult.Text = FormatWebRequestResponse(response);
         }
@@ -43,15 +43,15 @@ namespace DotNetSecondaryCareSystem
         private void btnGetFullRecord_Click(object sender, EventArgs e)
         {
             string baseUrl = this.tbBaseUrl.Text;
-            string restPath = this.lblGetFullRecordFhirUrl.Text;
             string odsCode = this.tbOdsCode.Text;
             string patientGuid = this.tbPatientGuid.Text;
+            string relativeUrl = Utilities.FormatRestPath(this.lblGetFullRecordFhirUrl.Text, odsCode, patientGuid);
 
             WebResponse response = Utilities.GetCimUrl(
                baseUrl: baseUrl,
-               relativeUrl: Utilities.FormatRestPath(restPath, odsCode, patientGuid),
+               relativeUrl: relativeUrl,
                apiKey: tbApiKey.Text,
-               hash: Utilities.GenerateHash(restPath, string.Empty));
+               hash: Utilities.GenerateHash(relativeUrl, string.Empty, tbSecret.Text));
 
             this.tbGetFullRecordResponse.Text = FormatWebRequestResponse(response);
         }
@@ -68,7 +68,7 @@ namespace DotNetSecondaryCareSystem
                baseUrl: baseUrl,
                relativeUrl: Utilities.FormatRestPath(restPath, odsCode, patientGuid),
                apiKey: tbApiKey.Text,
-               hash: Utilities.GenerateHash(restPath, payload),
+               hash: Utilities.GenerateHash(restPath, payload, tbSecret.Text),
                payload: payload);
 
             this.tbAddConditionResponse.Text = FormatWebRequestResponse(response);
@@ -89,7 +89,7 @@ namespace DotNetSecondaryCareSystem
                baseUrl: baseUrl,
                relativeUrl: Utilities.FormatRestPath(restPath, odsCode, patientGuid),
                apiKey: tbApiKey.Text,
-               hash: Utilities.GenerateHash(restPath, payload),
+               hash: Utilities.GenerateHash(restPath, payload, tbSecret.Text),
                payload: payload);
 
             this.tbSubscriptionResponse.Text = FormatWebRequestResponse(response);
