@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Composition xmlns="http://hl7.org/fhir">
+  <contained>
+    <List>
+      <id value="a8d9f68012fa4bf58d17e04acd892a3e" />
+      <entry>
+        <item>
+          <reference value="http://www.e-mis.com/emisopen/TaskType" />
+          <display value="TaskTypeValueSet" />
+        </item>
+      </entry>
+      <entry>
+        <item>
+          <reference value="http://www.e-mis.com/emisopen/extension/TaskType" />
+          <display value="TaskType" />
+        </item>
+      </entry>
+      <entry>
+        <item>
+          <reference value="urn:fhir.endeavour.org:/Task" />
+          <display value="Task" />
+        </item>
+      </entry>
+    </List>
+  </contained>
+  <date value="2015-09-18T16:02:29+01:00" />
+  <type>
+    <coding>
+      <system value="http://fhir.furore.com/vs/forge" />
+      <code value="ConformancePackageComposition" />
+    </coding>
+  </type>
+  <title value="MyConformancePackage" />
+  <status value="preliminary" />
+  <subject>
+    <reference value="/" />
+  </subject>
+  <author>
+    <reference value="/" />
+  </author>
+  <section>
+    <code>
+      <coding>
+        <system value="http://fhir.furore.com/vs/forge" />
+        <code value="ConformancePackageResourceReferenceList" />
+      </coding>
+    </code>
+    <content>
+      <reference value="#a8d9f68012fa4bf58d17e04acd892a3e" />
+    </content>
+  </section>
+</Composition>

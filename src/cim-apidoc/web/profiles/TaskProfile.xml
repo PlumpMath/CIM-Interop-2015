@@ -39,36 +39,51 @@
       <path value="Order.extension" />
       <name value="Type" />
       <label value="Type" />
+      <code>
+        <system value="http://www.e-mis.com/emisopen/TaskType" />
+        <version value="0.1" />
+      </code>
       <short value="BookAppointment | BookAppointmentWithDoctor | BookAppointmentWithNurse | TelephonePatient | ScreenMessage | ResultsForInfo | MeetingNotification | PatientNote | AdminNote | FormToComplete | RepeatTest | EscalationNotification | ConfidentialityPoliciesOverridden | DtsTransmissionFailure | LegitimateRelationshipNotification | DtsTransmissionReport | OverdueTaskNotification" />
       <definition value="Task type" />
       <min value="1" />
       <max value="1" />
       <type>
-        <code value="string" />
+        <code value="Extension" />
+        <profile value="http://www.e-mis.com/emisopen/extension/TaskType" />
       </type>
     </element>
     <element>
       <path value="Order.extension" />
       <name value="Priority" />
       <label value="Priority" />
+      <code>
+        <system value="http://www.e-mis.com/emisopen/TaskPriority" />
+        <version value="0.1" />
+      </code>
       <short value="Low | Normal | High" />
       <definition value="Task Priority" />
       <min value="1" />
       <max value="1" />
       <type>
-        <code value="string" />
+        <code value="Extension" />
+        <profile value="http://www.e-mis.com/emisopen/extension/TaskPriority" />
       </type>
     </element>
     <element>
       <path value="Order.extension" />
       <name value="Status" />
       <label value="Status" />
+      <code>
+        <system value="http://www.e-mis.com/emisopen/TaskStatus" />
+        <version value="0.1" />
+      </code>
       <short value="Active | Complete | Deleted | Archived" />
       <definition value="Task status" />
       <min value="1" />
       <max value="1" />
       <type>
-        <code value="string" />
+        <code value="Extension" />
+        <profile value="http://www.e-mis.com/emisopen/extension/TaskStatus" />
       </type>
     </element>
     <element>
