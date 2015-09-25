@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ValueSet xmlns="http://hl7.org/fhir"
           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-          xsi:schemaLocation="http://www.hl7.org/fhir/valueset.xsd">
+          xsi:schemaLocation="http://hl7.org/fhir http://hl7.org/fhir/valueset.xsd">
     <id value="task-status" />
     <meta>
         <lastUpdated value="2015-09-24T15:19:37.151+00:00" />

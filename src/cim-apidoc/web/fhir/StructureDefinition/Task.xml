@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <StructureDefinition xmlns="http://hl7.org/fhir"
                      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-                     xsi:schemaLocation="https://www.hl7.org/fhir/structuredefinition.xsd">
+                     xsi:schemaLocation="http://hl7.org/fhir http://hl7.org/fhir/structuredefinition.xsd">
   <id value="Task" />
   <meta>
     <lastUpdated value="2015-04-02T14:21:09.718+02:00" />
@@ -10,12 +10,12 @@
   <version value="0.1" />
   <name value="Task" />
   <display value="Task" />
-  <publisher value="Endeavour" />
-  <description value="Base StructureDefinition for Task Resource which can be used to communicate tasks between systems" />
-  <requirements value="Allow the communication of tasks between systems" />
   <status value="draft" />
   <experimental value="false" />
+  <publisher value="Endeavour" />
   <date value="2015-04-02T14:21:09+02:00" />
+  <description value="Base StructureDefinition for Task Resource which can be used to communicate tasks between systems" />
+  <requirements value="Allow the communication of tasks between systems" />
   <mapping>
     <identity value="rim" />
     <uri value="http://hl7.org/v3" />
@@ -26,7 +26,7 @@
     <uri value="http://hl7.org/v2" />
     <name value="HL7 v2" />
   </mapping>
-  <type value="constraint" />
+  <kind value="resource" />
   <abstract value="false" />
   <base value="http://hl7.org/fhir/StructureDefinition/Order" />
   <snapshot>
@@ -72,7 +72,6 @@
       </type>
       <isModifier value="true" />
       <binding>
-        <name value="IdentifierUse" />
         <strength value="required" />
         <description value="Identifies the purpose for this identifier, if known" />
         <valueSetReference>
@@ -100,7 +99,6 @@
         <code value="CodeableConcept" />
       </type>
       <binding>
-        <name value="IdentifierType" />
         <strength value="extensible" />
         <description value="A coded type for an identifier that can be used to determine which identifier to use for a specific purpose" />
         <valueSetReference>
@@ -608,7 +606,6 @@
       <max value="1" />
       <constraint>
         <key value="ord-1" />
-        <name value="Scheduling Details" />
         <severity value="error" />
         <human value="Provide a code or a schedule, but not both" />
         <xpath value="exists(f:code) != exists(f:schedule)" />
@@ -634,7 +631,6 @@
       </type>
       <condition value="ord-1" />
       <binding>
-        <name value="RequestedTime" />
         <strength value="required" />
         <description value="When a requested action should be performed  (e.g. STAT, daily, evenings, etc.)" />
       </binding>
@@ -821,35 +817,30 @@
       <max value="0" />
       <constraint>
         <key value="tim-3" />
-        <name value="no frequency with when" />
         <severity value="error" />
         <human value="Either frequency or when can exist, not both" />
         <xpath value="not(exists(f:frequency)) or not(exists(f:when))" />
       </constraint>
       <constraint>
         <key value="tim-1" />
-        <name value="duration units" />
         <severity value="error" />
         <human value="if there's a duration, there needs to be duration units" />
         <xpath value="not(exists(f:duration)) or exists(f:durationUnits)" />
       </constraint>
       <constraint>
         <key value="tim-2" />
-        <name value="Period units" />
         <severity value="error" />
         <human value="if there's a period, there needs to be duration units" />
         <xpath value="not(exists(f:period)) or exists(f:periodUnits)" />
       </constraint>
       <constraint>
         <key value="tim-6" />
-        <name value="periodMax needs period" />
         <severity value="error" />
         <human value="If there's a periodMax, there must be a period" />
         <xpath value="not(exists(f:periodMax)) or exists(period)" />
       </constraint>
       <constraint>
         <key value="tim-7" />
-        <name value="durationMax needs duration" />
         <severity value="error" />
         <human value="If there's a durationMax, there must be a duration" />
         <xpath value="not(exists(f:durationMax)) or exists(duration)" />
@@ -942,7 +933,6 @@
       </type>
       <constraint>
         <key value="tim-4" />
-        <name value="Duration Positive" />
         <severity value="error" />
         <human value="duration SHALL be a non-negative value" />
         <xpath value="@value &gt;= 0 or not(@value)" />
@@ -962,7 +952,6 @@
         <code value="code" />
       </type>
       <binding>
-        <name value="UnitsOfTime" />
         <strength value="required" />
         <description value="A unit of time (units from UCUM)" />
         <valueSetReference>
@@ -1014,7 +1003,6 @@
       </type>
       <constraint>
         <key value="tim-5" />
-        <name value="period positive" />
         <severity value="error" />
         <human value="period SHALL be a non-negative value" />
         <xpath value="@value &gt;= 0 or not(@value)" />
@@ -1048,7 +1036,6 @@
         <code value="code" />
       </type>
       <binding>
-        <name value="UnitsOfTime" />
         <strength value="required" />
         <description value="A unit of time (units from UCUM)" />
         <valueSetReference>
@@ -1071,7 +1058,6 @@
         <code value="code" />
       </type>
       <binding>
-        <name value="EventTiming" />
         <strength value="required" />
         <description value="Real world event that the schedule relates to" />
         <valueSetReference>
@@ -1093,9 +1079,6 @@
       <type>
         <code value="CodeableConcept" />
       </type>
-      <binding>
-        <name value="http://hl7.org/fhir/vs/timing-abbreviation" />
-      </binding>
       <mapping>
         <identity value="rim" />
         <map value="QSC.code" />
@@ -1303,7 +1286,6 @@
         <code value="code" />
       </type>
       <binding>
-        <name value="TaskType" />
         <strength value="required" />
         <valueSetReference>
           <reference value="http://endeavour-cim.cloudapp.net/fhir/ValueSet/task-type" />
@@ -1322,7 +1304,6 @@
         <code value="code" />
       </type>
       <binding>
-        <name value="TaskPriority" />
         <strength value="required" />
         <valueSetReference>
           <reference value="http://endeavour-cim.cloudapp.net/fhir/ValueSet/task-priority" />
@@ -1341,7 +1322,6 @@
         <code value="code" />
       </type>
       <binding>
-        <name value="TaskStatus" />
         <strength value="required" />
         <valueSetReference>
           <reference value="http://endeavour-cim.cloudapp.net/fhir/ValueSet/task-status" />
@@ -1369,7 +1349,6 @@
         <code value="code" />
       </type>
       <binding>
-        <name value="TaskType" />
         <strength value="required" />
         <valueSetReference>
           <reference value="http://endeavour-cim.cloudapp.net/fhir/ValueSet/task-type" />
@@ -1388,7 +1367,6 @@
         <code value="code" />
       </type>
       <binding>
-        <name value="TaskPriority" />
         <strength value="required" />
         <valueSetReference>
           <reference value="http://endeavour-cim.cloudapp.net/fhir/ValueSet/task-priority" />
@@ -1407,7 +1385,6 @@
         <code value="code" />
       </type>
       <binding>
-        <name value="TaskStatus" />
         <strength value="required" />
         <valueSetReference>
           <reference value="http://endeavour-cim.cloudapp.net/fhir/ValueSet/task-status" />
@@ -1559,7 +1536,6 @@
       </type>
       <condition value="ord-1" />
       <binding>
-        <name value="RequestedTime" />
         <strength value="required" />
         <description value="When a requested action should be performed  (e.g. STAT, daily, evenings, etc.)" />
       </binding>
@@ -1609,35 +1585,30 @@
       <max value="0" />
       <constraint>
         <key value="tim-3" />
-        <name value="no frequency with when" />
         <severity value="error" />
         <human value="Either frequency or when can exist, not both" />
         <xpath value="not(exists(f:frequency)) or not(exists(f:when))" />
       </constraint>
       <constraint>
         <key value="tim-1" />
-        <name value="duration units" />
         <severity value="error" />
         <human value="if there's a duration, there needs to be duration units" />
         <xpath value="not(exists(f:duration)) or exists(f:durationUnits)" />
       </constraint>
       <constraint>
         <key value="tim-2" />
-        <name value="Period units" />
         <severity value="error" />
         <human value="if there's a period, there needs to be duration units" />
         <xpath value="not(exists(f:period)) or exists(f:periodUnits)" />
       </constraint>
       <constraint>
         <key value="tim-6" />
-        <name value="periodMax needs period" />
         <severity value="error" />
         <human value="If there's a periodMax, there must be a period" />
         <xpath value="not(exists(f:periodMax)) or exists(period)" />
       </constraint>
       <constraint>
         <key value="tim-7" />
-        <name value="durationMax needs duration" />
         <severity value="error" />
         <human value="If there's a durationMax, there must be a duration" />
         <xpath value="not(exists(f:durationMax)) or exists(duration)" />
@@ -1657,9 +1628,6 @@
       <type>
         <code value="CodeableConcept" />
       </type>
-      <binding>
-        <name value="http://hl7.org/fhir/vs/timing-abbreviation" />
-      </binding>
       <mapping>
         <identity value="rim" />
         <map value="QSC.code" />

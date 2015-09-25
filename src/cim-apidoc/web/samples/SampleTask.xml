@@ -1,66 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Order xmlns="http://hl7.org/fhir">
-    <date>2015-09-01T11:34:05</date>
-    <detail>
-        <element>
-            <reference>Basic/Task description text</reference>
-        </element>
-    </detail>
-    <extension>
-        <element>
-            <url>http://www.e-mis.com/emisopen/extension/TaskType</url>
-            <valueCodeableConcept>
-                <coding>
-                    <element>
-                        <display>BOOK_APPOINTMENT</display>
-                        <system>http://www.e-mis.com/emisopen/TaskType</system>
-                    </element>
-                </coding>
-            </valueCodeableConcept>
-        </element>
-        <element>
-            <url>http://www.e-mis.com/emisopen/extension/TaskPriority</url>
-            <valueCodeableConcept>
-                <coding>
-                    <element>
-                        <display>NORMAL</display>
-                        <system>http://www.e-mis.com/emisopen/TaskPriority</system>
-                    </element>
-                </coding>
-            </valueCodeableConcept>
-        </element>
-        <element>
-            <url>http://www.e-mis.com/emisopen/extension/TaskStatus</url>
-            <valueCodeableConcept>
-                <coding>
-                    <element>
-                        <display>ACTIVE</display>
-                        <system>http://www.e-mis.com/emisopen/TaskStatus</system>
-                    </element>
-                </coding>
-            </valueCodeableConcept>
-        </element>
+<Order xmlns="http://hl7.org/fhir"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://hl7.org/fhir http://hl7.org/fhir/order.xsd">
+    <extension url="http://endeavour-cim.cloudapp.net/fhir/ValueSet/task-type">
+        <valueCodeableConcept>
+            <coding>
+                <system value="http://endeavour-cim.cloudapp.net/fhir/task-type"/>
+                <code value="bookAppointment"/>
+                <display value="Book Appointment"/>
+            </coding>
+        </valueCodeableConcept>
     </extension>
-    <id>00000000-0000-0000-0000-000000000000</id>
-    <reasonReference>
-        <reference>Basic/Subject text</reference>
-    </reasonReference>
-    <resourceType>Order</resourceType>
-    <source>
-        <reference>Practitioner/00000000-0000-0000-0000-000000000000</reference>
-    </source>
+    <extension url="http://endeavour-cim.cloudapp.net/fhir/ValueSet/task-status">
+        <valueCodeableConcept>
+            <coding>
+                <system value="http://endeavour-cim.cloudapp.net/fhir/task-status"/>
+                <code value="active"/>
+                <display value="Active"/>
+            </coding>
+        </valueCodeableConcept>
+    </extension>
+    <extension url="http://endeavour-cim.cloudapp.net/fhir/ValueSet/task-priority">
+        <valueCodeableConcept>
+            <coding>
+                <system value="http://endeavour-cim.cloudapp.net/fhir/task-priority"/>
+                <code value="medium"/>
+                <display value="Medium"/>
+            </coding>
+        </valueCodeableConcept>
+    </extension>
+    <identifier id="00000000-0000-0000-0000-000000000000"/>
+    <date value="2015-09-01T11:34:05"/>
     <subject>
-        <reference>Patient/00000000-0000-0000-0000-000000000000</reference>
+        <reference value="Patient/00000000-0000-0000-0000-000000000000"/>
+        <display value="SMITH, John"/>
     </subject>
+    <source>
+        <reference value="Practitioner/00000000-0000-0000-0000-000000000000"/>
+    </source>
     <target>
-        <reference>Practitioner/00000000-0000-0000-0000-000000000000</reference>
+        <reference value="Practitioner/00000000-0000-0000-0000-000000000000"/>
     </target>
+    <reasonCodeableConcept>
+        <text value="Subject text"/>
+    </reasonCodeableConcept>
     <when>
         <schedule>
-            <event>
-                <element>2015-08-04T10:00:00</element>
-            </event>
-            <resourceType>Timing</resourceType>
+            <event value="2015-08-04T10:00:00"/>
         </schedule>
     </when>
+    <detail>
+        <display value="Task description"/>
+    </detail>
 </Order>
