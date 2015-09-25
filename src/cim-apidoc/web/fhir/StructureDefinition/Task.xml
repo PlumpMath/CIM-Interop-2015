@@ -1,5 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<StructureDefinition xmlns="http://hl7.org/fhir">
+<StructureDefinition xmlns="http://hl7.org/fhir"
+                     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                     xsi:schemaLocation="https://www.hl7.org/fhir/structuredefinition.xsd">
   <id value="Task" />
   <meta>
     <lastUpdated value="2015-04-02T14:21:09.718+02:00" />
