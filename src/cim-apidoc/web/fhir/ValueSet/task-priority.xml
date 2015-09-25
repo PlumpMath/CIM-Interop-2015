@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+<ValueSet xmlns="http://hl7.org/fhir">
+    <id value="task-priority" />
+    <meta>
+        <lastUpdated value="2015-09-24T15:19:37.151+00:00" />
+        <profile value="http://hl7.org/fhir/StructureDefinition/valueset-shareable-definition" />
+    </meta>
+    <text>
+        <status value="extensions" />
+        <div xmlns="http://www.w3.org/1999/xhtml">
+            <h2>TaskPriority</h2>
+            <p>The priority/importance of the task.</p>
+            <p>This value set has an inline code system which defines the following codes:</p>
+            <p>Low | Medium | High</p>
+        </div>
+    </text>
+    <url value="http://endeavour-cim.cloudapp.net/fhir/ValueSet/task-priority" />
+    <version value="1.0.0" />
+    <name value="TaskPriority" />
+    <publisher value="Endeavour Health Charitable Trust" />
+    <contact>
+        <telecom>
+            <system value="url" />
+            <value value="http://www.endeavour-health.org" />
+        </telecom>
+    </contact>
+    <description value="The priority/importance of a task." />
+    <status value="draft" />
+    <codeSystem>
+        <system value="http://endeavour-cim.cloudapp.net/fhir/task-priority"/>
+        <version value="1.0.0"/>
+        <caseSensitive value="true"/>
+        <concept>
+            <extension url="http://hl7.org/fhir/StructureDefinition/valueset-comments">
+                <valueString value="Low"/>
+            </extension>
+            <code value="low"/>
+            <display value="Low"/>
+            <definition value="Low"/>
+        </concept>
+        <concept>
+            <extension url="http://hl7.org/fhir/StructureDefinition/valueset-comments">
+                <valueString value="Medium"/>
+            </extension>
+            <code value="medium"/>
+            <display value="Medium"/>
+            <definition value="Medium"/>
+        </concept>
+        <concept>
+            <extension url="http://hl7.org/fhir/StructureDefinition/valueset-comments">
+                <valueString value="High"/>
+            </extension>
+            <code value="high"/>
+            <display value="High"/>
+            <definition value="High"/>
+        </concept>
+    </codeSystem>
+</ValueSet>
