@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace DotNetGPSystem
 {
-    public partial class TasksControl : UserControl
+    internal partial class TasksControl : UserControl
     {
         public TasksControl()
         {
@@ -27,42 +27,59 @@ namespace DotNetGPSystem
                 return;
             }
 
-            AddTask(dateStamp, openHRXml);
+            Task task = new Task()
+            {
+                OpenHRXml = openHRXml,
+                DateStamp = dateStamp,
+                CanFile = false
+            };
+
+            AddTask(task);
         }
 
-        public void AddTask(DateTime dateStamp, string openHRXml)
+        public void AddTask(Task task)
         {
             string taskName = "External update received";
             string patientName = string.Empty;
             string description = string.Empty;
             Bitmap taskImage = DotNetGPSystem.Properties.Resources.email;
 
-            string taskBody = "Update message:" + Environment.NewLine + Environment.NewLine + Utilities.FormatXml(openHRXml);
-            
             try
             {
-                OpenHR001OpenHealthRecord openHR = Utilities.Deserialize<OpenHR001OpenHealthRecord>(openHRXml);
+                task.Display = "Update message:" + Environment.NewLine + Environment.NewLine + Utilities.FormatXml(task.OpenHRXml);
 
-                var condition = openHR.healthDomain.@event.FirstOrDefault();
-                
-                OpenHRPatient patient = DataStore.OpenHRPatients.FirstOrDefault(t => new Guid(t.Patient.id) == new Guid(condition.patient));
-                patientName = patient.Person.GetCuiDisplayName();
+                OpenHR001OpenHealthRecord openHR = Utilities.Deserialize<OpenHR001OpenHealthRecord>(task.OpenHRXml);
 
-                description = "Add condition '" + condition.code.displayName + "'";
+                task.Event = openHR.healthDomain.@event.FirstOrDefault();
+
+                task.Patient = DataStore.OpenHRPatients.FirstOrDefault(t => new Guid(t.Patient.id) == new Guid(task.Event.patient));
+
+                if (task.Patient != null)
+                {
+                    patientName = task.Patient.Person.GetCuiDisplayName();
+
+                    description = "Add event '" + task.Event.code.displayName + "'";
+
+                    task.CanFile = true;
+                }
+                else
+                {
+                    patientName = "(no patient identified)";
+                }
             }
             catch (Exception e)
             {
                 patientName = "(no patient identified)";
-                taskBody = "Error occurred parsing openHR XML: " + e.Message + Environment.NewLine + Environment.NewLine + taskBody;
+                task.Display = "Error occurred parsing openHR XML: " + e.Message + Environment.NewLine + Environment.NewLine + task.Display;
                 taskImage = DotNetGPSystem.Properties.Resources.email_error;
             }
             
             DataGridViewRow row = (DataGridViewRow)dataGridView.RowTemplate.Clone();
             row.CreateCells(dataGridView);
 
-            row.SetValues(taskImage, dateStamp.ToString("dd-MMM-yyyy HH:mm:ss"), patientName, taskName, description);
+            row.SetValues(taskImage, task.DateStamp.ToString("dd-MMM-yyyy HH:mm:ss"), patientName, taskName, description);
 
-            row.Tag = taskBody;
+            row.Tag = task;
 
             dataGridView.Rows.Add(row);
         }
@@ -71,8 +88,32 @@ namespace DotNetGPSystem
         {
             textBox1.Clear();
 
-            if (dataGridView.SelectedRows.Count > 0)
-                textBox1.Text = (string)dataGridView.SelectedRows.Cast<DataGridViewRow>().First().Tag;
+            btnFile.Enabled = false;
+            lblFiled.Visible = false;
+            bool taskSelected = (dataGridView.SelectedRows.Count > 0);
+
+            if (taskSelected)
+            {
+                Task task = (Task)dataGridView.SelectedRows.Cast<DataGridViewRow>().First().Tag;
+                textBox1.Text = task.Display;
+                btnFile.Enabled = task.CanFile;
+                lblFiled.Visible = task.Filed;
+            }
+        }
+
+        private void btnFile_Click(object sender, EventArgs e)
+        {
+            Task task = (Task)dataGridView.SelectedRows.Cast<DataGridViewRow>().First().Tag;
+            task.CanFile = false;
+            btnFile.Enabled = false;
+            task.Filed = true;
+
+            List<OpenHR001HealthDomainEvent> events = new List<OpenHR001HealthDomainEvent>();
+            events.Add(task.Event);
+            events.AddRange(task.Patient.OpenHealthRecord.healthDomain.@event);
+            task.Patient.OpenHealthRecord.healthDomain.@event = events.ToArray();
+
+            lblFiled.Visible = task.Filed;
         }
     }
 }

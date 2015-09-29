@@ -30,17 +30,21 @@
         {
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.dataGridView = new System.Windows.Forms.DataGridView();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.colImage = new System.Windows.Forms.DataGridViewImageColumn();
             this.colEmpty = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colPatient = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.btnFile = new System.Windows.Forms.Button();
+            this.lblFiled = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -57,6 +61,7 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.textBox1);
+            this.splitContainer1.Panel2.Controls.Add(this.panel1);
             this.splitContainer1.Size = new System.Drawing.Size(1360, 760);
             this.splitContainer1.SplitterDistance = 380;
             this.splitContainer1.TabIndex = 8;
@@ -88,19 +93,6 @@
             this.dataGridView.Size = new System.Drawing.Size(1360, 380);
             this.dataGridView.TabIndex = 8;
             this.dataGridView.SelectionChanged += new System.EventHandler(this.dataGridView_SelectionChanged);
-            // 
-            // textBox1
-            // 
-            this.textBox1.BackColor = System.Drawing.Color.White;
-            this.textBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox1.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(0, 0);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBox1.Size = new System.Drawing.Size(1360, 376);
-            this.textBox1.TabIndex = 0;
             // 
             // colImage
             // 
@@ -144,6 +136,50 @@
             this.colDescription.Name = "colDescription";
             this.colDescription.ReadOnly = true;
             // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.lblFiled);
+            this.panel1.Controls.Add(this.btnFile);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1360, 41);
+            this.panel1.TabIndex = 1;
+            // 
+            // textBox1
+            // 
+            this.textBox1.BackColor = System.Drawing.Color.White;
+            this.textBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBox1.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox1.Location = new System.Drawing.Point(0, 41);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
+            this.textBox1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.textBox1.Size = new System.Drawing.Size(1360, 335);
+            this.textBox1.TabIndex = 2;
+            // 
+            // btnFile
+            // 
+            this.btnFile.Enabled = false;
+            this.btnFile.Location = new System.Drawing.Point(3, 3);
+            this.btnFile.Name = "btnFile";
+            this.btnFile.Size = new System.Drawing.Size(152, 31);
+            this.btnFile.TabIndex = 0;
+            this.btnFile.Text = "File in patient record";
+            this.btnFile.UseVisualStyleBackColor = true;
+            this.btnFile.Click += new System.EventHandler(this.btnFile_Click);
+            // 
+            // lblFiled
+            // 
+            this.lblFiled.AutoSize = true;
+            this.lblFiled.Location = new System.Drawing.Point(173, 11);
+            this.lblFiled.Name = "lblFiled";
+            this.lblFiled.Size = new System.Drawing.Size(130, 15);
+            this.lblFiled.TabIndex = 1;
+            this.lblFiled.Text = "(Filed in patient record)";
+            this.lblFiled.Visible = false;
+            // 
             // TasksControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -158,6 +194,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -166,12 +204,15 @@
 
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.DataGridView dataGridView;
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.DataGridViewImageColumn colImage;
         private System.Windows.Forms.DataGridViewTextBoxColumn colEmpty;
         private System.Windows.Forms.DataGridViewTextBoxColumn colPatient;
         private System.Windows.Forms.DataGridViewTextBoxColumn colDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn colDescription;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button btnFile;
+        private System.Windows.Forms.Label lblFiled;
 
     }
 }

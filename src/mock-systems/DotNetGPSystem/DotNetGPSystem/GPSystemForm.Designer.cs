@@ -45,11 +45,11 @@
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.btnOpenPatientRecord = new System.Windows.Forms.ToolStripButton();
+            this.btnAppointmentBook = new System.Windows.Forms.ToolStripButton();
             this.btnViewTasks = new System.Windows.Forms.ToolStripButton();
             this.btnViewApiLog = new System.Windows.Forms.ToolStripButton();
             this.tcTabControl = new System.Windows.Forms.TabControl();
             this.timer = new System.Windows.Forms.Timer(this.components);
-            this.btnAppointmentBook = new System.Windows.Forms.ToolStripButton();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -132,10 +132,10 @@
             this.llServiceStatus.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.llServiceStatus.Location = new System.Drawing.Point(118, 37);
             this.llServiceStatus.Name = "llServiceStatus";
-            this.llServiceStatus.Size = new System.Drawing.Size(192, 15);
+            this.llServiceStatus.Size = new System.Drawing.Size(182, 15);
             this.llServiceStatus.TabIndex = 9;
             this.llServiceStatus.TabStop = true;
-            this.llServiceStatus.Text = "http://localhost:9001/GPApiService";
+            this.llServiceStatus.Text = "http://localhost:{0}/GPApiService";
             this.llServiceStatus.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llServiceStatus_LinkClicked);
             // 
             // label2
@@ -215,6 +215,14 @@
             this.btnOpenPatientRecord.Size = new System.Drawing.Size(136, 34);
             this.btnOpenPatientRecord.Text = "Open Patient Record";
             // 
+            // btnAppointmentBook
+            // 
+            this.btnAppointmentBook.Image = ((System.Drawing.Image)(resources.GetObject("btnAppointmentBook.Image")));
+            this.btnAppointmentBook.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnAppointmentBook.Name = "btnAppointmentBook";
+            this.btnAppointmentBook.Size = new System.Drawing.Size(128, 34);
+            this.btnAppointmentBook.Text = "Appointment Book";
+            // 
             // btnViewTasks
             // 
             this.btnViewTasks.Image = ((System.Drawing.Image)(resources.GetObject("btnViewTasks.Image")));
@@ -245,14 +253,6 @@
             this.timer.Enabled = true;
             this.timer.Interval = 1000;
             this.timer.Tick += new System.EventHandler(this.timer_Tick);
-            // 
-            // btnAppointmentBook
-            // 
-            this.btnAppointmentBook.Image = ((System.Drawing.Image)(resources.GetObject("btnAppointmentBook.Image")));
-            this.btnAppointmentBook.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnAppointmentBook.Name = "btnAppointmentBook";
-            this.btnAppointmentBook.Size = new System.Drawing.Size(128, 34);
-            this.btnAppointmentBook.Text = "Appointment Book";
             // 
             // GPSystemForm
             // 

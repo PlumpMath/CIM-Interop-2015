@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
@@ -24,6 +25,8 @@ namespace DotNetGPSystem
         private ApiLogTabPage _apiLogTabPage = new ApiLogTabPage();
         private AppointmentBookTabPage _appointmentBookTabPage = new AppointmentBookTabPage();
         private PatientTabPage _patientTabPage = null;
+        private const int _defaultPortNumber = 9001;
+        private int _portNumber = _defaultPortNumber;
 
         public GPSystemForm()
         {
@@ -33,6 +36,11 @@ namespace DotNetGPSystem
             btnViewTasks.Click += (sender, e) => OpenTasks();
             btnViewApiLog.Click += (sender, e) => OpenApiMessageLog();
             btnAppointmentBook.Click += (sender, e) => OpenAppointmentBook();
+
+            if (!int.TryParse(ConfigurationManager.AppSettings.Get("portNumber"), out _portNumber))
+                _portNumber = _defaultPortNumber;
+
+            this.llServiceStatus.Text = string.Format(llServiceStatus.Text, _portNumber);
         }
 
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
@@ -106,7 +114,7 @@ namespace DotNetGPSystem
             try
             {
                 GPApiServiceHost gpApiServiceHost = new GPApiServiceHost();
-                gpApiServiceHost.StartService(_apiLogTabPage.LogMessage);
+                gpApiServiceHost.StartService(_portNumber, _apiLogTabPage.LogMessage);
 
                 lblServiceStatus.Text = "RUNNING";
                 lblServiceStatus.ForeColor = Color.Green;
@@ -123,14 +131,14 @@ namespace DotNetGPSystem
                     message += "Please re-run the GP demonstrator as administrator" + Environment.NewLine
                         + "or execute the following at an administrative command prompt:" + Environment.NewLine 
                         + Environment.NewLine
-                        + "netsh http add urlacl url=http://+:9001/GPApiService user=\"" + Environment.UserName + "\"";
+                        + "netsh http add urlacl url=http://+:{0}/GPApiService user=\"" + Environment.UserName + "\"";
                 }
                 else
                 {
                     message += exception.Message;
                 }
 
-                MessageBox.Show(this, message, MessageBoxIcon.Warning);
+                MessageBox.Show(this, string.Format(message, _portNumber), MessageBoxIcon.Warning);
             }
         }
 

@@ -34,6 +34,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
@@ -110,6 +111,7 @@
       <DependentUpon>OpenHRControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Controls\Patient\PatientControlToolStripRenderer.cs" />
+    <Compile Include="Controls\Tasks\Task.cs" />
     <Compile Include="Controls\Tasks\TasksTabPage.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -235,6 +237,7 @@
     <EmbeddedResource Include="Data\OpenHR\Schema\vocabulary.xsd">
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <None Include="App.config" />
     <None Include="Data\ClientAPI\Appointments\EomAppointmentSessions.xsd">
       <SubType>Designer</SubType>
     </None>
