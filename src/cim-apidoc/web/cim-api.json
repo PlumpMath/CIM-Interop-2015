@@ -1463,11 +1463,11 @@
                           },
                           "code" : {
                             "type" : "string",
-                            "example" : "adminNote"
+                            "example" : "patientNote"
                           },
                           "display" : {
                             "type" : "string",
-                            "example" : "Admin Note"
+                            "example" : "Patient Note"
                           }
                         }
                       }]
@@ -1582,7 +1582,7 @@
           "properties": {
             "display": {
               "type": "string",
-              "example": "Subject text"
+              "example": "BARNEY, Kendrick (Master) - Asthma Review"
             }
           }
         },
@@ -1610,7 +1610,7 @@
             "properties": {
               "display": {
                 "type": "string",
-                "example": "Task description text"
+                "example": "I saw this patient with an asthma attack at the weekend, which are getting increasingly frequent. I noted that he has not had an asthma review for some time. I think a recall for a review would be worthwhile."
               }
             }
           }]

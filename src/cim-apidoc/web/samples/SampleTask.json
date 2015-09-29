@@ -8,8 +8,8 @@
         "coding": [
           {
             "system": "http://cim-api.endeavourhealth.org/fhir/task-type",
-            "code" : "adminNote",
-            "display": "Admin Note"
+            "code" : "patientNote",
+            "display": "Patient Note"
           }
         ]
       }
@@ -50,7 +50,7 @@
     "reference": "Practitioner/0c9bca2b-3a3a-43c3-879f-7552570040d6"
   },
   "reasonCoding": {
-      "display": "Subject text"
+      "display": "BARNEY, Kendrick (Master) - Asthma Review"
   },
   "when": {
     "schedule": {
@@ -61,7 +61,7 @@
   },
   "detail": [
     {
-      "display": "Task description text"
+      "display": "I saw this patient with an asthma attack at the weekend, which are getting increasingly frequent. I noted that he has not had an asthma review for some time. I think a recall for a review would be worthwhile."
     }
   ]
 }
