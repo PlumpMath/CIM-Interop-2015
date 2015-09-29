@@ -1439,6 +1439,113 @@
           "type": "string",
           "example": "00000000-0000-0000-0000-000000000000"
         },
+        "extension" : {
+          "type" : "array",
+          "items" : [
+            {
+              "type" : "object",
+              "properties": {
+                "url" : {
+                  "type" : "string",
+                  "example" : "http://cim-api.endeavourhealth.org/fhir/ValueSet/task-type"
+                },
+                "valueCodeableConcept" : {
+                  "type" : "object",
+                  "properties" : {
+                    "coding" : {
+                      "type" : "array",
+                      "items" : [{
+                        "type" : "object",
+                        "properties" : {
+                          "system" : {
+                            "type" : "string",
+                            "example" : "http://cim-api.endeavourhealth.org/fhir/task-type"
+                          },
+                          "code" : {
+                            "type" : "string",
+                            "example" : "adminNote"
+                          },
+                          "display" : {
+                            "type" : "string",
+                            "example" : "Admin Note"
+                          }
+                        }
+                      }]
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "type" : "object",
+              "properties": {
+                "url" : {
+                  "type" : "string",
+                  "example" : "http://cim-api.endeavourhealth.org/fhir/ValueSet/task-priority"
+                },
+                "valueCodeableConcept" : {
+                  "type" : "object",
+                  "properties" : {
+                    "coding" : {
+                      "type" : "array",
+                      "items" : [{
+                        "type" : "object",
+                        "properties" : {
+                          "system" : {
+                            "type" : "string",
+                            "example" : "http://cim-api.endeavourhealth.org/fhir/task-priority"
+                          },
+                          "code" : {
+                            "type" : "string",
+                            "example" : "medium"
+                          },
+                          "display" : {
+                            "type" : "string",
+                            "example" : "Medium"
+                          }
+                        }
+                      }]
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "type" : "object",
+              "properties": {
+                "url" : {
+                  "type" : "string",
+                  "example" : "http://cim-api.endeavourhealth.org/fhir/ValueSet/task-status"
+                },
+                "valueCodeableConcept" : {
+                  "type" : "object",
+                  "properties" : {
+                    "coding" : {
+                      "type" : "array",
+                      "items" : [{
+                        "type" : "object",
+                        "properties" : {
+                          "system" : {
+                            "type" : "string",
+                            "example" : "http://cim-api.endeavourhealth.org/fhir/task-status"
+                          },
+                          "code" : {
+                            "type" : "string",
+                            "example" : "active"
+                          },
+                          "display" : {
+                            "type" : "string",
+                            "example" : "Active"
+                          }
+                        }
+                      }]
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        },
         "date": {
           "type": "string",
           "example": "2015-09-01T11:34:05"
@@ -1448,7 +1555,7 @@
           "properties": {
             "reference": {
               "type": "string",
-              "example": "Patient/00000000-0000-0000-0000-000000000000"
+              "example": "Patient/11af0e7f-be18-431e-9be9-fd1adb2f0742"
             }
           }
         },
@@ -1457,7 +1564,7 @@
           "properties": {
             "reference": {
               "type": "string",
-              "example": "Practitioner/00000000-0000-0000-0000-000000000000"
+              "example": "Practitioner/967e0240-efd4-43ba-8ad5-9dae20b689d3"
             }
           }
         },
@@ -1466,16 +1573,16 @@
           "properties": {
             "reference": {
               "type": "string",
-              "example": "Practitioner/00000000-0000-0000-0000-000000000000"
+              "example": "Practitioner/0c9bca2b-3a3a-43c3-879f-7552570040d6"
             }
           }
         },
-        "reasonReference" : {
+        "reasonCoding" : {
           "type": "object",
           "properties": {
-            "reference": {
+            "display": {
               "type": "string",
-              "example": "Basic/Subject text"
+              "example": "Subject text"
             }
           }
         },
@@ -1485,10 +1592,6 @@
             "schedule": {
               "type": "object",
               "properties": {
-                "resourceType": {
-                  "type": "string",
-                  "example": "Timing"
-                },
                 "event": {
                   "type": "array",
                   "items": [{
@@ -1505,107 +1608,12 @@
           "items": [{
             "type": "object",
             "properties": {
-              "reference": {
+              "display": {
                 "type": "string",
-                "example": "Basic/Task description text"
+                "example": "Task description text"
               }
             }
           }]
-        },
-        "extension" : {
-          "type" : "array",
-          "items" : [
-            {
-              "type" : "object",
-              "properties": {
-                "url" : {
-                  "type" : "string",
-                  "example" : "http://www.e-mis.com/emisopen/extension/TaskType"
-                },
-                "valueCodeableConcept" : {
-                  "type" : "object",
-                  "properties" : {
-                    "coding" : {
-                      "type" : "array",
-                      "items" : [{
-                        "type" : "object",
-                        "properties" : {
-                          "system" : {
-                            "type" : "string",
-                            "example" : "http://www.e-mis.com/emisopen/TaskType"
-                          },
-                          "display" : {
-                            "type" : "string",
-                            "example" : "BOOK_APPOINTMENT"
-                          }
-                        }
-                      }]
-                    }
-                  }
-                }
-              }
-            },
-            {
-              "type" : "object",
-              "properties": {
-                "url" : {
-                  "type" : "string",
-                  "example" : "http://www.e-mis.com/emisopen/extension/TaskPriority"
-                },
-                "valueCodeableConcept" : {
-                  "type" : "object",
-                  "properties" : {
-                    "coding" : {
-                      "type" : "array",
-                      "items" : [{
-                        "type" : "object",
-                        "properties" : {
-                          "system" : {
-                            "type" : "string",
-                            "example" : "http://www.e-mis.com/emisopen/TaskPriority"
-                          },
-                          "display" : {
-                            "type" : "string",
-                            "example" : "NORMAL"
-                          }
-                        }
-                      }]
-                    }
-                  }
-                }
-              }
-            },
-            {
-              "type" : "object",
-              "properties": {
-                "url" : {
-                  "type" : "string",
-                  "example" : "http://www.e-mis.com/emisopen/extension/TaskStatus"
-                },
-                "valueCodeableConcept" : {
-                  "type" : "object",
-                  "properties" : {
-                    "coding" : {
-                      "type" : "array",
-                      "items" : [{
-                        "type" : "object",
-                        "properties" : {
-                          "system" : {
-                            "type" : "string",
-                            "example" : "http://www.e-mis.com/emisopen/TaskStatus"
-                          },
-                          "display" : {
-                            "type" : "string",
-                            "example" : "ACTIVE"
-                          }
-                        }
-                      }]
-                    }
-                  }
-                }
-              }
-            }
-          ]
         }
       }
     }
