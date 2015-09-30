@@ -92,7 +92,7 @@ namespace DotNetGPSystem
         {
             XmlSerializer serializer = new XmlSerializer(typeof(T));
 
-            using (StringWriter writer = new StringWriter())
+            using (Utf8StringWriter writer = new Utf8StringWriter())
             {
                 serializer.Serialize(writer, item);
                 return writer.ToString();
