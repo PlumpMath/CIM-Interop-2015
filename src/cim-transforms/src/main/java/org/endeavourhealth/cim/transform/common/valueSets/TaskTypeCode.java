@@ -15,7 +15,8 @@ public enum TaskTypeCode {
 	transmissionFailure,
 	legitimateRelationshipNotification,
 	transmissionReport,
-	overdueTaskNotification;
+	overdueTaskNotification,
+	other;
 
 	public String value() {
 		return name();

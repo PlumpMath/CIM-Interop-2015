@@ -16,7 +16,7 @@
             <p>Active | Complete | Deleted | Archived</p>
         </div>
     </text>
-    <url value="http://endeavour-cim.cloudapp.net/fhir/ValueSet/task-status" />
+    <url value="http://cim-api.endeavourhealth.org/fhir/ValueSet/task-status" />
     <version value="1.0.0" />
     <name value="TaskStatus" />
     <publisher value="Endeavour Health Charitable Trust" />
@@ -29,7 +29,7 @@
     <description value="The status of a task." />
     <status value="draft" />
     <codeSystem>
-        <system value="http://endeavour-cim.cloudapp.net/fhir/task-status"/>
+        <system value="http://cim-api.endeavourhealth.org/fhir/task-status"/>
         <version value="1.0.0"/>
         <caseSensitive value="true"/>
         <concept>
