@@ -30297,7 +30297,8 @@
       <observation>
         <value>
           <numeric>
-            <value>72</value>
+						<operator>=</operator>
+						<value>72</value>
             <units>beats/minute</units>
           </numeric>
         </value>

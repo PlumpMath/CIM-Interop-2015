@@ -3462,6 +3462,7 @@
       <observation>
         <value>
           <numeric>
+            <operator>=</operator>
             <value>80</value>
             <units>cm</units>
           </numeric>
