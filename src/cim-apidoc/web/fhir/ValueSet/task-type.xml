@@ -19,6 +19,7 @@
     <url value="http://cim-api.endeavourhealth.org/fhir/ValueSet/task-type" />
     <version value="1.0.0" />
     <name value="TaskType" />
+    <status value="draft" />		
     <publisher value="Endeavour Health Charitable Trust" />
     <contact>
         <telecom>
@@ -27,7 +28,6 @@
         </telecom>
     </contact>
     <description value="The type/purpose of a task." />
-    <status value="draft" />
     <codeSystem>
         <system value="http://cim-api.endeavourhealth.org/fhir/task-type"/>
         <version value="1.0.0"/>
