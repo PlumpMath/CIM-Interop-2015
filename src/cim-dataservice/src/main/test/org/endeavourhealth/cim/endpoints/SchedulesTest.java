@@ -11,8 +11,8 @@ import org.endeavourhealth.cim.repository.informationSharing.ISFManager;
 import org.endeavourhealth.cim.Registry;
 import org.endeavourhealth.cim.TestRegistry;
 import org.endeavourhealth.cim.common.searchParameters.DateSearchParameter;
-import org.endeavourhealth.cim.routes.routeBuilders.config.Configuration;
-import org.endeavourhealth.cim.routes.routeBuilders.endpoints.ScheduleEndpoint;
+import org.endeavourhealth.cim.routes.config.Configuration;
+import org.endeavourhealth.cim.routes.endpoints.rest.ScheduleEndpoints;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -37,7 +37,7 @@ public class SchedulesTest extends CamelTestSupport {
 				ISFManager.setInstance(new org.endeavourhealth.cim.informationSharingFramework.TestISFManager());
 
 				this.includeRoutes(new Configuration());
-				this.includeRoutes(new ScheduleEndpoint());
+				this.includeRoutes(new ScheduleEndpoints());
 
 				from("direct:start")
 					.to("direct:GetSchedules")

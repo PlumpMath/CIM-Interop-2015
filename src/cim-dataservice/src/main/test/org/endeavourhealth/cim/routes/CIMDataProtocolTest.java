@@ -11,8 +11,8 @@ import org.endeavourhealth.cim.repository.informationSharing.ISFManager;
 import org.endeavourhealth.cim.Registry;
 import org.endeavourhealth.cim.TestRegistry;
 import org.endeavourhealth.cim.processor.core.DataProtocolProcessor;
-import org.endeavourhealth.cim.routes.routeBuilders.builders.CIMDataProtocol;
-import org.endeavourhealth.cim.routes.routeBuilders.config.Configuration;
+import org.endeavourhealth.cim.routes.core.CIMDataProtocol;
+import org.endeavourhealth.cim.routes.config.Configuration;
 import org.junit.Test;
 
 import java.util.HashMap;

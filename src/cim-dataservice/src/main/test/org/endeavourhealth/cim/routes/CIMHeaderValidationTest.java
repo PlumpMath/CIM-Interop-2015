@@ -9,8 +9,8 @@ import org.apache.camel.test.junit4.CamelTestSupport;
 import org.endeavourhealth.cim.Registry;
 import org.endeavourhealth.cim.TestRegistry;
 import org.endeavourhealth.cim.repository.informationSharing.ISFManager;
-import org.endeavourhealth.cim.routes.routeBuilders.builders.CIMHeaderValidation;
-import org.endeavourhealth.cim.routes.routeBuilders.config.Configuration;
+import org.endeavourhealth.cim.routes.core.CIMHeaderValidation;
+import org.endeavourhealth.cim.routes.config.Configuration;
 import org.junit.Test;
 
 import java.util.HashMap;
