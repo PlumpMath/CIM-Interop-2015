@@ -59,10 +59,7 @@ namespace DotNetGPSystem
 
         public string GetPatientDemographicsByNhsNumber(string odsCode, string nhsNumber)
         {
-            OpenHRPatient[] patients = DataStore
-                .GetPatients(odsCode)
-                .Where(t => t.Patient.patientIdentifier.GetNhsNumber() == nhsNumber)
-                .ToArray();
+            OpenHRPatient[] patients = GetPatientsByNhsNumber(odsCode, nhsNumber);
 
             if (patients.Length == 0)
                 return string.Empty;
@@ -79,7 +76,24 @@ namespace DotNetGPSystem
                 return string.Empty;
 
             return patient.OpenHRXml;
+        }
 
+        public string GetPatientByNhsNumber(string odsCode, string nhsNumber)
+        {
+            OpenHRPatient[] patients = GetPatientsByNhsNumber(odsCode, nhsNumber);
+
+            if (patients.Length == 0)
+                return string.Empty;
+
+            return patients.FirstOrDefault().OpenHRXml;
+        }
+
+        public OpenHRPatient[] GetPatientsByNhsNumber(string odsCode, string nhsNumber)
+        {
+            return DataStore
+                .GetPatients(odsCode)
+                .Where(t => t.Patient.patientIdentifier.GetNhsNumber() == nhsNumber)
+                .ToArray();
         }
 
         public Guid[] GetChangedPatients(string odsCode, DateTime sinceDateTime)

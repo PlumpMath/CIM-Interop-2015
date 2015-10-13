@@ -33,6 +33,9 @@ namespace DotNetGPSystem
         string GetPatient(string odsCode, Guid patientGuid);
 
         [OperationContract]
+        string GetPatientByNhsNumber(string odsCode, string nhsNumber);
+
+        [OperationContract]
         Guid[] GetChangedPatients(string odsCode, DateTime sinceDateTime);
 
         [OperationContract]
