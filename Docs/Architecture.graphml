@@ -345,8 +345,8 @@ Ch 1 (Live)<y:LabelModel>
           <y:Geometry height="56.231998443603516" width="35.095298767089844" x="-76.9734435081482" y="592.7568168640137"/>
           <y:Fill color="#CCCCFF" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="33.40234375" modelName="custom" textColor="#000000" visible="true" width="83.353515625" x="-24.129108428955078" y="-37.40234375">Endpoints
-Ch 1 (Failover)<y:LabelModel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="33.40234375" modelName="custom" textColor="#FF0000" visible="true" width="84.70703125" x="-24.805866241455078" y="-37.40234375">Endpoints
+Ch 1 (Standby)<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
             </y:LabelModel>
             <y:ModelParameter>
@@ -389,8 +389,8 @@ Ch n (Live)<y:LabelModel>
           <y:Geometry height="56.231998443603516" width="35.095298767089844" x="-76.9734435081482" y="673.5068168640137"/>
           <y:Fill color="#CCCCFF" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="33.40234375" modelName="custom" textColor="#000000" visible="true" width="83.353515625" x="-24.129108428955078" y="60.231998443603516">Endpoints
-Ch n (Failover)<y:LabelModel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="33.40234375" modelName="custom" textColor="#FF0000" visible="true" width="84.70703125" x="-24.805866241455078" y="60.231998443603516">Endpoints
+Ch n (Standby)<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
             </y:LabelModel>
             <y:ModelParameter>
@@ -1054,8 +1054,8 @@ Ch 1 (Standby)<y:LabelModel>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0">
-            <y:Point x="722.4164071083069" y="424.12281608581543"/>
-            <y:Point x="722.4164071083069" y="524.7388153076172"/>
+            <y:Point x="754.4164071083069" y="424.12281608581543"/>
+            <y:Point x="754.4164071083069" y="524.7388153076172"/>
           </y:Path>
           <y:LineStyle color="#000000" type="line" width="1.0"/>
           <y:Arrows source="none" target="standard"/>
@@ -1068,8 +1068,8 @@ Ch 1 (Standby)<y:LabelModel>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0">
-            <y:Point x="722.4164071083069" y="424.12281608581543"/>
-            <y:Point x="722.4164071083069" y="385.62281608581543"/>
+            <y:Point x="754.4164071083069" y="424.12281608581543"/>
+            <y:Point x="754.4164071083069" y="385.62281608581543"/>
           </y:Path>
           <y:LineStyle color="#000000" type="line" width="1.0"/>
           <y:Arrows source="none" target="standard"/>
@@ -1082,8 +1082,8 @@ Ch 1 (Standby)<y:LabelModel>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0">
-            <y:Point x="722.4164071083069" y="424.12281608581543"/>
-            <y:Point x="722.4164071083069" y="255.62281608581543"/>
+            <y:Point x="754.4164071083069" y="424.12281608581543"/>
+            <y:Point x="754.4164071083069" y="255.62281608581543"/>
           </y:Path>
           <y:LineStyle color="#000000" type="line" width="1.0"/>
           <y:Arrows source="none" target="standard"/>
@@ -1096,8 +1096,8 @@ Ch 1 (Standby)<y:LabelModel>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0">
-            <y:Point x="722.4164071083069" y="340.37281608581543"/>
-            <y:Point x="722.4164071083069" y="255.62281608581543"/>
+            <y:Point x="754.4164071083069" y="340.37281608581543"/>
+            <y:Point x="754.4164071083069" y="255.62281608581543"/>
           </y:Path>
           <y:LineStyle color="#000000" type="line" width="1.0"/>
           <y:Arrows source="none" target="standard"/>
@@ -1110,8 +1110,8 @@ Ch 1 (Standby)<y:LabelModel>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0">
-            <y:Point x="722.4164071083069" y="340.37281608581543"/>
-            <y:Point x="722.4164071083069" y="385.62281608581543"/>
+            <y:Point x="754.4164071083069" y="340.37281608581543"/>
+            <y:Point x="754.4164071083069" y="385.62281608581543"/>
           </y:Path>
           <y:LineStyle color="#000000" type="line" width="1.0"/>
           <y:Arrows source="none" target="standard"/>
@@ -1124,8 +1124,8 @@ Ch 1 (Standby)<y:LabelModel>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0">
-            <y:Point x="722.4164071083069" y="340.37281608581543"/>
-            <y:Point x="722.4164071083069" y="524.7388153076172"/>
+            <y:Point x="754.4164071083069" y="340.37281608581543"/>
+            <y:Point x="754.4164071083069" y="524.7388153076172"/>
           </y:Path>
           <y:LineStyle color="#000000" type="line" width="1.0"/>
           <y:Arrows source="none" target="standard"/>
