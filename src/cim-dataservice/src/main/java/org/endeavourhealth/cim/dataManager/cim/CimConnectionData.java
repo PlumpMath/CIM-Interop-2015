@@ -1,6 +1,6 @@
 package org.endeavourhealth.cim.dataManager.cim;
 
-import org.endeavourhealth.cim.common.Util;
+import org.endeavourhealth.common.core.Util;
 
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;

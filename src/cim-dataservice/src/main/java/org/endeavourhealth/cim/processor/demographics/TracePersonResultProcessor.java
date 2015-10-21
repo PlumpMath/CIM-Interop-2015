@@ -1,8 +1,7 @@
 package org.endeavourhealth.cim.processor.demographics;
 
 import org.apache.camel.Exchange;
-import org.endeavourhealth.cim.common.ExchangeHelper;
-import org.hl7.fhir.instance.model.Patient;
+import org.endeavourhealth.common.core.ExchangeHelper;
 
 import java.util.ArrayList;
 import java.util.List;

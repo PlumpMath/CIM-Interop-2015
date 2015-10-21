@@ -1,15 +1,15 @@
 package org.endeavourhealth.cim.routes.routes;
 
 import org.endeavourhealth.cim.processor.clinical.GetBinaryObjectProcessor;
-import org.endeavourhealth.cim.routes.common.CIMRouteBuilder;
+import org.endeavourhealth.common.core.BaseRouteBuilder;
 
 @SuppressWarnings({"WeakerAccess", "unused"})
-public class BinaryRoutes extends CIMRouteBuilder {
+public class BinaryRoutes extends BaseRouteBuilder {
 	public static final String GET_BINARY_ROUTE = "GetBinaryObject";
 
     @Override
     public void configureRoute() throws Exception {
-        buildCimCallbackRoute(GET_BINARY_ROUTE)
+        buildCallbackRoute(GET_BINARY_ROUTE)
             .process(new GetBinaryObjectProcessor());
     }
 }

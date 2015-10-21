@@ -5,8 +5,8 @@ import org.apache.camel.model.rest.RestBindingMode;
 import org.apache.camel.processor.interceptor.Tracer;
 import org.apache.camel.spi.ManagementAgent;
 import org.apache.camel.spi.ManagementStrategy;
-import org.endeavourhealth.cim.routes.common.CoreRouteName;
-import org.endeavourhealth.cim.routes.common.Route;
+import org.endeavourhealth.common.routes.common.CoreRouteName;
+import org.endeavourhealth.common.routes.common.Route;
 
 
 @SuppressWarnings({"WeakerAccess", "unused"})
@@ -15,7 +15,7 @@ public class Configuration extends RouteBuilder {
     @Override
     public void configure() throws Exception {
         onException(Exception.class)
-            .to(Route.direct(CoreRouteName.CIM_CRITICAL_ERROR))
+            .to(Route.direct(CoreRouteName.CRITICAL_ERROR))
             .stop();
 
 		getContext().getManagementNameStrategy().setNamePattern("CIM-DataService-#name#");

@@ -2,17 +2,17 @@ package org.endeavourhealth.cim.processor.administrative;
 
 import org.apache.camel.Exchange;
 import org.apache.camel.Processor;
-import org.endeavourhealth.cim.common.ExchangeHelper;
-import org.endeavourhealth.cim.common.HeaderKey;
-import org.endeavourhealth.cim.common.exceptions.CIMException;
-import org.endeavourhealth.cim.common.exceptions.CIMInvalidParamException;
+import org.endeavourhealth.common.core.ExchangeHelper;
+import org.endeavourhealth.cim.common.CIMHeaderKey;
+import org.endeavourhealth.common.core.HeaderKey;
+import org.endeavourhealth.common.core.exceptions.BaseException;
+import org.endeavourhealth.common.core.exceptions.InvalidParamException;
 import org.endeavourhealth.cim.dataManager.DataManagerFactory;
 import org.endeavourhealth.cim.common.searchParameters.DateSearchParameter;
-import org.endeavourhealth.cim.common.DateUtils;
+import org.endeavourhealth.common.core.DateUtils;
 import org.endeavourhealth.cim.dataManager.IDataManager;
 
 import java.util.Date;
-import java.util.UUID;
 
 public class GetAppointmentsProcessor implements Processor {
 
@@ -26,21 +26,21 @@ public class GetAppointmentsProcessor implements Processor {
 
 		try {
 			odsCode = ExchangeHelper.getInHeaderString(exchange, HeaderKey.OdsCode, true);
-			patientId = ExchangeHelper.getInHeaderString(exchange, HeaderKey.Patient, true);
+			patientId = ExchangeHelper.getInHeaderString(exchange, CIMHeaderKey.Patient, true);
 
 			DateSearchParameter date = null;
 
-			if (ExchangeHelper.hasInHeader(exchange, HeaderKey.Date))
-				date = DateSearchParameter.Parse(ExchangeHelper.getInHeaderArray(exchange, HeaderKey.Date));
+			if (ExchangeHelper.hasInHeader(exchange, CIMHeaderKey.Date))
+				date = DateSearchParameter.Parse(ExchangeHelper.getInHeaderArray(exchange, CIMHeaderKey.Date));
 
 			fromDate = (date != null) ? date.getIntervalStart() : DateUtils.DOTNET_MINIMUM_DATE;
 			toDate = (date != null) ? date.getIntervalEnd() : DateUtils.DOTNET_MAXIMUM_DATE;
 		}
-		catch (CIMException e) {
+		catch (BaseException e) {
 			throw e;
 		}
 		catch (Exception e) {
-			throw new CIMInvalidParamException("Error parsing parameters.", e);
+			throw new InvalidParamException("Error parsing parameters.", e);
 		}
 
 		IDataManager dataManager = DataManagerFactory.getDataManagerForService(odsCode);
