@@ -1,4 +1,4 @@
-package org.endeavourhealth.cim.InformationSharingFramework;
+package org.endeavourhealth.cim.InformationSharingFrameworkCaseRename;
 
 import org.endeavourhealth.common.repository.informationSharing.ISFManager;
 import org.endeavourhealth.common.repository.informationSharing.model.InformationSharingProtocol;

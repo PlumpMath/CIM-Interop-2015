@@ -1,25 +1,17 @@
 package org.endeavourhealth.cim.endpoints;
 
-import org.apache.camel.CamelExchangeException;
 import org.apache.camel.EndpointInject;
 import org.apache.camel.Produce;
 import org.apache.camel.ProducerTemplate;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.component.mock.MockEndpoint;
 import org.apache.camel.test.junit4.CamelTestSupport;
-import org.apache.commons.httpclient.HttpStatus;
 import org.endeavourhealth.cim.processor.administrative.GetSchedulesProcessor;
-import org.endeavourhealth.cim.routes.routes.ScheduleRoutes;
 import org.endeavourhealth.common.core.exceptions.InvalidParamException;
 import org.endeavourhealth.common.core.exceptions.MissingParamException;
 import org.endeavourhealth.common.repository.informationSharing.ISFManager;
 import org.endeavourhealth.cim.Registry;
 import org.endeavourhealth.cim.TestRegistry;
-import org.endeavourhealth.cim.common.searchParameters.DateSearchParameter;
-import org.endeavourhealth.cim.routes.config.Configuration;
-import org.endeavourhealth.cim.routes.endpoints.rest.ScheduleEndpoints;
-import org.endeavourhealth.common.routes.common.CoreRouteName;
-import org.endeavourhealth.common.routes.common.Route;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -41,7 +33,7 @@ public class SchedulesTest extends CamelTestSupport {
 		return new RouteBuilder() {
 			public void configure() throws Exception {
 				Registry.setInstance(new TestRegistry());
-				ISFManager.setInstance(new org.endeavourhealth.cim.InformationSharingFramework.TestISFManager());
+				ISFManager.setInstance(new org.endeavourhealth.cim.InformationSharingFrameworkCaseRename.TestISFManager());
 
 				onException(Exception.class)
 					.to("mock:error")

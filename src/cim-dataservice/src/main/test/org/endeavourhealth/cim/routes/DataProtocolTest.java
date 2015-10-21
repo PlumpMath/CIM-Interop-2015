@@ -6,16 +6,11 @@ import org.apache.camel.ProducerTemplate;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.component.mock.MockEndpoint;
 import org.apache.camel.test.junit4.CamelTestSupport;
-import org.apache.commons.httpclient.HttpStatus;
-import org.endeavourhealth.cim.processor.administrative.GetSchedulesProcessor;
-import org.endeavourhealth.common.core.exceptions.MissingParamException;
 import org.endeavourhealth.common.core.exceptions.NoLegitimateRelationshipException;
 import org.endeavourhealth.common.repository.informationSharing.ISFManager;
 import org.endeavourhealth.cim.Registry;
 import org.endeavourhealth.cim.TestRegistry;
 import org.endeavourhealth.common.processor.DataProtocolProcessor;
-import org.endeavourhealth.common.routes.core.DataProtocol;
-import org.endeavourhealth.cim.routes.config.Configuration;
 import org.junit.Test;
 
 import java.util.HashMap;
@@ -36,7 +31,7 @@ public class DataProtocolTest extends CamelTestSupport {
 		return new RouteBuilder() {
 			public void configure() throws Exception {
 				Registry.setInstance(new TestRegistry());
-				ISFManager.setInstance(new org.endeavourhealth.cim.InformationSharingFramework.TestISFManager());
+				ISFManager.setInstance(new org.endeavourhealth.cim.InformationSharingFrameworkCaseRename.TestISFManager());
 
 				onException(Exception.class)
 						.to("mock:error")

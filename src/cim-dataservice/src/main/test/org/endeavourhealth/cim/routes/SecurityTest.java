@@ -6,17 +6,12 @@ import org.apache.camel.ProducerTemplate;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.component.mock.MockEndpoint;
 import org.apache.camel.test.junit4.CamelTestSupport;
-import org.apache.commons.httpclient.HttpStatus;
-import org.endeavourhealth.common.core.exceptions.NoLegitimateRelationshipException;
 import org.endeavourhealth.common.core.exceptions.SecurityFailedException;
-import org.endeavourhealth.common.processor.DataProtocolProcessor;
 import org.endeavourhealth.common.processor.SecurityProcessor;
 import org.endeavourhealth.common.repository.informationSharing.ISFManager;
-import org.endeavourhealth.cim.InformationSharingFramework.TestISFManager;
+import org.endeavourhealth.cim.InformationSharingFrameworkCaseRename.TestISFManager;
 import org.endeavourhealth.cim.Registry;
 import org.endeavourhealth.cim.TestRegistry;
-import org.endeavourhealth.common.routes.core.Security;
-import org.endeavourhealth.cim.routes.config.Configuration;
 import org.junit.Test;
 
 import java.util.HashMap;
