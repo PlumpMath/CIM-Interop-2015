@@ -1,5 +1,6 @@
 package org.endeavourhealth.cim.endpoints;
 
+import org.apache.camel.CamelExchangeException;
 import org.apache.camel.EndpointInject;
 import org.apache.camel.Produce;
 import org.apache.camel.ProducerTemplate;
@@ -7,12 +8,18 @@ import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.component.mock.MockEndpoint;
 import org.apache.camel.test.junit4.CamelTestSupport;
 import org.apache.commons.httpclient.HttpStatus;
+import org.endeavourhealth.cim.processor.administrative.GetSchedulesProcessor;
+import org.endeavourhealth.cim.routes.routes.ScheduleRoutes;
+import org.endeavourhealth.common.core.exceptions.InvalidParamException;
+import org.endeavourhealth.common.core.exceptions.MissingParamException;
 import org.endeavourhealth.common.repository.informationSharing.ISFManager;
 import org.endeavourhealth.cim.Registry;
 import org.endeavourhealth.cim.TestRegistry;
 import org.endeavourhealth.cim.common.searchParameters.DateSearchParameter;
 import org.endeavourhealth.cim.routes.config.Configuration;
 import org.endeavourhealth.cim.routes.endpoints.rest.ScheduleEndpoints;
+import org.endeavourhealth.common.routes.common.CoreRouteName;
+import org.endeavourhealth.common.routes.common.Route;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -34,18 +41,15 @@ public class SchedulesTest extends CamelTestSupport {
 		return new RouteBuilder() {
 			public void configure() throws Exception {
 				Registry.setInstance(new TestRegistry());
-				ISFManager.setInstance(new org.endeavourhealth.cim.informationSharingFramework.TestISFManager());
+				ISFManager.setInstance(new org.endeavourhealth.cim.InformationSharingFramework.TestISFManager());
 
-				this.includeRoutes(new Configuration());
-				this.includeRoutes(new ScheduleEndpoints());
+				onException(Exception.class)
+					.to("mock:error")
+					.handled(true);
 
 				from("direct:start")
-					.to("direct:GetSchedules")
+					.process(new GetSchedulesProcessor())
 					.to("mock:result");
-
-				from("direct:CIMInvalidMessage")
-					.to("mock:error")
-					.stop();
 			}
 		};
 	}
@@ -58,13 +62,12 @@ public class SchedulesTest extends CamelTestSupport {
 		resultEndpoint.expectedMessageCount(0);
 		errorEndpoint.expectedMessageCount(1);
 
-		errorEndpoint.expectedHeaderReceived("CamelHttpResponseCode", HttpStatus.SC_BAD_REQUEST);
-		errorEndpoint.expectedBodiesReceived("");
-
 		template.sendBodyAndHeaders(null, headerParams);
 
 		resultEndpoint.assertIsSatisfied();
 		errorEndpoint.assertIsSatisfied();
+		Exception exception = (Exception)errorEndpoint.getReceivedExchanges().get(0).getProperty("CamelExceptionCaught");
+		assertIsInstanceOf(MissingParamException.class, exception);
 	}
 
 	@Test
@@ -130,13 +133,12 @@ public class SchedulesTest extends CamelTestSupport {
 		resultEndpoint.expectedMessageCount(0);
 		errorEndpoint.expectedMessageCount(1);
 
-		errorEndpoint.expectedHeaderReceived("CamelHttpResponseCode", HttpStatus.SC_BAD_REQUEST);
-		errorEndpoint.expectedBodiesReceived(DateSearchParameter.DATE_TIMES_MUST_CONTAIN_ONE_OR_TWO_ELEMENTS);
-
 		template.sendBodyAndHeaders(null, headerParams);
 
 		resultEndpoint.assertIsSatisfied();
 		errorEndpoint.assertIsSatisfied();
+		Exception exception = (Exception)errorEndpoint.getReceivedExchanges().get(0).getProperty("CamelExceptionCaught");
+		assertIsInstanceOf(InvalidParamException.class, exception);
 	}
 
 	@Test
@@ -161,7 +163,7 @@ public class SchedulesTest extends CamelTestSupport {
 	public void Practitioner() throws Exception {
 		Map<String, Object> headerParams = new HashMap<>();
 		headerParams.put("odsCode", "A99999");
-		headerParams.put("actor:Practitioner", "G12345");
+		headerParams.put("actor:Practitioner", "2190964b-2d34-4eaa-8c60-9fbc086748a9");
 
 		resultEndpoint.expectedMessageCount(1);
 		errorEndpoint.expectedMessageCount(0);

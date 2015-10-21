@@ -8,6 +8,8 @@ import org.apache.camel.component.mock.MockEndpoint;
 import org.apache.camel.test.junit4.CamelTestSupport;
 import org.endeavourhealth.cim.Registry;
 import org.endeavourhealth.cim.TestRegistry;
+import org.endeavourhealth.common.processor.DataProtocolProcessor;
+import org.endeavourhealth.common.processor.HeaderValidationProcessor;
 import org.endeavourhealth.common.repository.informationSharing.ISFManager;
 import org.endeavourhealth.common.routes.core.HeaderValidation;
 import org.endeavourhealth.cim.routes.config.Configuration;
@@ -31,19 +33,14 @@ public class HeaderValidationTest extends CamelTestSupport {
 		return new RouteBuilder() {
 			public void configure() throws Exception {
 				Registry.setInstance(new TestRegistry());
-				ISFManager.setInstance(new org.endeavourhealth.cim.informationSharingFramework.TestISFManager());
+				ISFManager.setInstance(new org.endeavourhealth.cim.InformationSharingFramework.TestISFManager());
 
-				this.includeRoutes(new Configuration());
-				this.includeRoutes(new HeaderValidation());
+				onException(Exception.class)
+					.to("mock:error")
+					.handled(true);
 
 				from("direct:start")
-					.to("direct:CIMHeaderValidation");
-
-				from("direct:CIMInvalidMessage")
-						.to("mock:error")
-						.stop();
-
-				from("direct:CIMHeaderValidationResult")
+					.process(new HeaderValidationProcessor())
 					.to("mock:result");
 			}
 

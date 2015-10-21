@@ -7,6 +7,9 @@ import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.component.mock.MockEndpoint;
 import org.apache.camel.test.junit4.CamelTestSupport;
 import org.apache.commons.httpclient.HttpStatus;
+import org.endeavourhealth.cim.processor.administrative.GetSchedulesProcessor;
+import org.endeavourhealth.common.core.exceptions.MissingParamException;
+import org.endeavourhealth.common.core.exceptions.NoLegitimateRelationshipException;
 import org.endeavourhealth.common.repository.informationSharing.ISFManager;
 import org.endeavourhealth.cim.Registry;
 import org.endeavourhealth.cim.TestRegistry;
@@ -33,21 +36,15 @@ public class DataProtocolTest extends CamelTestSupport {
 		return new RouteBuilder() {
 			public void configure() throws Exception {
 				Registry.setInstance(new TestRegistry());
-				ISFManager.setInstance(new org.endeavourhealth.cim.informationSharingFramework.TestISFManager());
+				ISFManager.setInstance(new org.endeavourhealth.cim.InformationSharingFramework.TestISFManager());
 
-				this.includeRoutes(new Configuration());
-				this.includeRoutes(new DataProtocol());
+				onException(Exception.class)
+						.to("mock:error")
+						.handled(true);
 
 				from("direct:start")
-					.to("direct:CIMDataProtocol");
-
-				from("direct:CIMInvalidMessage")
-					.to("mock:error")
-					.stop();
-
-				from("direct:CIMDataProtocolResult")
-					.to("mock:result")
-					.stop();
+					.process(new DataProtocolProcessor())
+					.to("mock:result");
 			}
 
 		};
@@ -57,37 +54,18 @@ public class DataProtocolTest extends CamelTestSupport {
 	public void InvalidOrg() throws Exception {
 		Map<String, Object> headerParams = new HashMap<>();
 		headerParams.put("api_key", "invalidOrg");
-		headerParams.put("odsCode", "Z99999");
+		headerParams.put("odsCode", "INVALID_ODS_CODE");
 
 		resultEndpoint.expectedMessageCount(0);
 		errorEndpoint.expectedMessageCount(1);
-
-		errorEndpoint.expectedHeaderReceived("CamelHttpResponseCode", HttpStatus.SC_FORBIDDEN);
-		errorEndpoint.expectedBodiesReceived(DataProtocolProcessor.SUBSIDIARY_SYSTEM_HAS_NO_LEGITIMATE_RELATIONSHIP_WITH_THIS_ORGANISATION);
 
 		template.sendBodyAndHeaders(null, headerParams);
 
 		resultEndpoint.assertIsSatisfied();
 		errorEndpoint.assertIsSatisfied();
-	}
 
-
-	@Test
-	public void LegitOrgNoRelationship() throws Exception {
-		Map<String, Object> headerParams = new HashMap<>();
-		headerParams.put("api_key", "swagger");
-		headerParams.put("odsCode", "Z99999");
-
-		resultEndpoint.expectedMessageCount(0);
-		errorEndpoint.expectedMessageCount(1);
-
-		errorEndpoint.expectedHeaderReceived("CamelHttpResponseCode", HttpStatus.SC_FORBIDDEN);
-		errorEndpoint.expectedBodiesReceived(DataProtocolProcessor.SUBSIDIARY_SYSTEM_HAS_NO_LEGITIMATE_RELATIONSHIP_WITH_THIS_ORGANISATION);
-
-		template.sendBodyAndHeaders(null, headerParams);
-
-		resultEndpoint.assertIsSatisfied();
-		errorEndpoint.assertIsSatisfied();
+		Exception exception = (Exception)errorEndpoint.getReceivedExchanges().get(0).getProperty("CamelExceptionCaught");
+		assertIsInstanceOf(NoLegitimateRelationshipException.class, exception);
 	}
 
 	@Test

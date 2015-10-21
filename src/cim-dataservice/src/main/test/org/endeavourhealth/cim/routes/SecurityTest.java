@@ -7,8 +7,12 @@ import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.component.mock.MockEndpoint;
 import org.apache.camel.test.junit4.CamelTestSupport;
 import org.apache.commons.httpclient.HttpStatus;
+import org.endeavourhealth.common.core.exceptions.NoLegitimateRelationshipException;
+import org.endeavourhealth.common.core.exceptions.SecurityFailedException;
+import org.endeavourhealth.common.processor.DataProtocolProcessor;
+import org.endeavourhealth.common.processor.SecurityProcessor;
 import org.endeavourhealth.common.repository.informationSharing.ISFManager;
-import org.endeavourhealth.cim.informationSharingFramework.TestISFManager;
+import org.endeavourhealth.cim.InformationSharingFramework.TestISFManager;
 import org.endeavourhealth.cim.Registry;
 import org.endeavourhealth.cim.TestRegistry;
 import org.endeavourhealth.common.routes.core.Security;
@@ -35,19 +39,13 @@ public class SecurityTest extends CamelTestSupport {
 				Registry.setInstance(new TestRegistry());
 				ISFManager.setInstance(new TestISFManager());
 
-				this.includeRoutes(new Configuration());
-				this.includeRoutes(new Security());
+				onException(Exception.class)
+					.to("mock:error")
+					.handled(true);
 
 				from("direct:start")
-					.to("direct:CIMSecurity");
-
-				from("direct:CIMInvalidMessage")
-					.to("mock:error")
-					.stop();
-
-				from("direct:CIMSecurityResult")
-					.to("mock:result")
-					.stop();
+					.process(new SecurityProcessor())
+					.to("mock:result");
 			}
 		};
 	}
@@ -55,67 +53,83 @@ public class SecurityTest extends CamelTestSupport {
 	@Test
 	public void InvalidApiKey() throws Exception {
 		Map<String, Object> headerParams = new HashMap<>();
+		headerParams.put("CamelHttpPath", "http://known.uri/path/resource");
+		headerParams.put("CamelHttpQuery", "param1=value1&param2=value2");
 		headerParams.put("api_key", "null");
 		headerParams.put("odsCode", "Z99999");
+		headerParams.put("hash","4AcTI+rE3HZmqUTL+7IyRJ/upMJtcjyNviLYlmf3l2U=");
 
 		resultEndpoint.expectedMessageCount(0);
-
 		errorEndpoint.expectedMessageCount(1);
-		errorEndpoint.expectedHeaderReceived("CamelHttpResponseCode", HttpStatus.SC_UNAUTHORIZED);
-		errorEndpoint.expectedBodiesReceived("");
 
 		template.sendBodyAndHeaders(null, headerParams);
 
 		resultEndpoint.assertIsSatisfied();
 		errorEndpoint.assertIsSatisfied();
+
+		Exception exception = (Exception)errorEndpoint.getReceivedExchanges().get(0).getProperty("CamelExceptionCaught");
+		assertIsInstanceOf(SecurityFailedException.class, exception);
+	}
+
+	@Test
+	public void MissingHash() throws Exception {
+		Map<String, Object> headerParams = new HashMap<>();
+		headerParams.put("CamelHttpPath", "http://known.uri/path/resource");
+		headerParams.put("CamelHttpQuery", "param1=value1&param2=value2");
+		headerParams.put("api_key", "foobar");
+		headerParams.put("odsCode", "Z99999");
+
+		resultEndpoint.expectedMessageCount(0);
+		errorEndpoint.expectedMessageCount(1);
+
+		template.sendBodyAndHeaders(null, headerParams);
+
+		resultEndpoint.assertIsSatisfied();
+		errorEndpoint.assertIsSatisfied();
+
+		Exception exception = (Exception)errorEndpoint.getReceivedExchanges().get(0).getProperty("CamelExceptionCaught");
+		assertIsInstanceOf(SecurityFailedException.class, exception);
 	}
 
 	@Test
 	public void IncorrectHash() throws Exception {
 		Map<String, Object> headerParams = new HashMap<>();
+		headerParams.put("CamelHttpPath", "http://known.uri/path/resource");
+		headerParams.put("CamelHttpQuery", "param1=value1&param2=value2");
 		headerParams.put("api_key", "foobar");
 		headerParams.put("odsCode", "Z99999");
+		headerParams.put("hash","4AcTI+rE3HZmqUTL+7IyRJ/upMJtcjyNviLYlmf3l2U=");
 
 		resultEndpoint.expectedMessageCount(0);
-
 		errorEndpoint.expectedMessageCount(1);
-		errorEndpoint.expectedHeaderReceived("CamelHttpResponseCode", HttpStatus.SC_UNAUTHORIZED);
-		errorEndpoint.expectedBodiesReceived("");
 
 		template.sendBodyAndHeaders(null, headerParams);
 
 		resultEndpoint.assertIsSatisfied();
 		errorEndpoint.assertIsSatisfied();
+
+		Exception exception = (Exception)errorEndpoint.getReceivedExchanges().get(0).getProperty("CamelExceptionCaught");
+		assertIsInstanceOf(SecurityFailedException.class, exception);
 	}
 
 	@Test
-	public void SwaggerApiKey() throws Exception {
+	public void CorrectHashInvalidApiKey() throws Exception {
 		Map<String, Object> headerParams = new HashMap<>();
-		headerParams.put("api_key", "swagger");
-		headerParams.put("odsCode", "A99999");
-
-		resultEndpoint.expectedMessageCount(1);
-		errorEndpoint.expectedMessageCount(0);
-
-		template.sendBodyAndHeaders(null, headerParams);
-
-		resultEndpoint.assertIsSatisfied();
-		errorEndpoint.assertIsSatisfied();
-	}
-
-	@Test
-	public void CorrectHash() throws Exception {
-		Map<String, Object> headerParams = new HashMap<>();
+		headerParams.put("CamelHttpPath", "http://known.uri/path/resource");
+		headerParams.put("CamelHttpQuery", "param1=value1&param2=value2");
 		headerParams.put("api_key", "foobar");
 		headerParams.put("odsCode", "A99999");
-		headerParams.put("hash","K5DOPZBbuiJrPQGHVwcbKoOX2OQtnT27lpyWrYRV3bo=");
+		headerParams.put("hash","4AcTI+rE3HZmqUTL+7IyRJ/upMJtcjyNviLYlmf3l2U=");
 
-		resultEndpoint.expectedMessageCount(1);
-		errorEndpoint.expectedMessageCount(0);
+		resultEndpoint.expectedMessageCount(0);
+		errorEndpoint.expectedMessageCount(1);
 
 		template.sendBodyAndHeaders(null, headerParams);
 
 		resultEndpoint.assertIsSatisfied();
 		errorEndpoint.assertIsSatisfied();
+
+		Exception exception = (Exception)errorEndpoint.getReceivedExchanges().get(0).getProperty("CamelExceptionCaught");
+		assertIsInstanceOf(SecurityFailedException.class, exception);
 	}
 }
