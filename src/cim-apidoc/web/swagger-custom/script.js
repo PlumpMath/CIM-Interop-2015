@@ -123,7 +123,7 @@ function buildQuery(path, table) {
                 else
                     query += "&";
 
-                query += this.name + '=' + $(this).val().replace('\n', '&' + this.name + '=');
+                query += this.name + '=' + $(this).val().replace(/\n/g, '&' + this.name + '=');
             }
         }
     });
