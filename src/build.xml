@@ -12,13 +12,17 @@
         <replace file="cim-dataservice\src\main\java\org\endeavourhealth\cim\Registry.java" token='BASE_URI = "http://localhost:8080/api/0.1"' value='BASE_URI = "http://endeavour-cim.cloudapp.net/api/0.1"'/>
     </target>
     <target name="Deploy to Azure">
+        <input message="FTP Server:" defaultvalue="endeavour-cim.cloudapp.net" addproperty="azure.server"/>
+        <input message="Remote Dir:" defaultvalue="/var/lib/tomcat7/webapps" addproperty="azure.remotedir"/>
+        <input message="Username:" defaultvalue="azureuser" addproperty="azure.user"/>
+        <input message="Password:" defaultvalue="" addproperty="azure.password"/>
         <ftp
-            server="endeavour-cim.cloudapp.net"
-            remotedir="/var/lib/tomcat7/webapps"
+            server="${azure.server}"
+            remotedir="${azure.remotedir}"
             verbose="yes"
             depends="yes"
-            userid="azureuser"
-            password="Azureuser123">
+            userid="${azure.user}"
+            password="${azure.password}">
             <fileset dir="out/artifacts/">
                 <include name="ROOT.war"/>
                 <include name="api.war"/>
@@ -29,5 +33,9 @@
     <target name="Revert Azure Config">
         <move file="cim-api.json.bak" tofile="cim-apidoc\web\cim-api.json" overwrite="true"/>
         <move file="Registry.java.bak" tofile="cim-dataservice\src\main\java\org\endeavourhealth\cim\Registry.java" overwrite="true"/>
+    </target>
+    <target name="Clear Artifact Folder">
+        <fail unless="artifact.output.path" message="artifact.output.path must be set."/>
+        <delete dir="${artifact.output.path}"/>
     </target>
 </project>

@@ -1,9 +1,9 @@
 package org.endeavourhealth.cim.dataManager.emis;
 
 import org.endeavourhealth.cim.Registry;
-import org.endeavourhealth.cim.common.exceptions.CIMInvalidInternalIdentifier;
+import org.endeavourhealth.common.core.exceptions.InvalidInternalIdentifier;
 import org.endeavourhealth.cim.transform.common.BundleProperties;
-import org.endeavourhealth.cim.common.text.TextUtils;
+import org.endeavourhealth.core.text.TextUtils;
 import org.endeavourhealth.cim.dataManager.IDataManager;
 import org.endeavourhealth.cim.common.FhirFilterHelper;
 import org.endeavourhealth.cim.transform.EmisTransformer;
@@ -28,7 +28,7 @@ public class EmisDataManager implements IDataManager {
 			try {
 				practitionerUuid = UUID.fromString(practitionerId);
 			} catch (IllegalArgumentException e) {
-				throw new CIMInvalidInternalIdentifier("Practitioner Id");
+				throw new InvalidInternalIdentifier("Practitioner Id");
 			}
 
 		String schedulesXml = _emisDataAdapter.getSchedules(odsCode, dateFrom, dateTo);
@@ -56,7 +56,7 @@ public class EmisDataManager implements IDataManager {
 		try {
 			patientUuid = UUID.fromString(patientId);
 		} catch (IllegalArgumentException e) {
-			throw new CIMInvalidInternalIdentifier("Patient Id");
+			throw new InvalidInternalIdentifier("Patient Id");
 		}
 
 		String appointmentDataInNativeFormat = _emisDataAdapter.getAppointmentsForPatient(odsCode, patientUuid, dateFrom, dateTo);
@@ -73,7 +73,7 @@ public class EmisDataManager implements IDataManager {
 		try {
 			patientUuid = UUID.fromString(patientId);
 		} catch (IllegalArgumentException e) {
-			throw new CIMInvalidInternalIdentifier("Patient Id");
+			throw new InvalidInternalIdentifier("Patient Id");
 		}
 
 		return _emisDataAdapter.bookSlot(odsCode, slotId, patientUuid, "");
@@ -84,7 +84,7 @@ public class EmisDataManager implements IDataManager {
 		try {
 			patientUuid = UUID.fromString(patientId);
 		} catch (IllegalArgumentException e) {
-			throw new CIMInvalidInternalIdentifier("Patient Id");
+			throw new InvalidInternalIdentifier("Patient Id");
 		}
 
 		return _emisDataAdapter.cancelSlot(odsCode, slotId, patientUuid);
@@ -96,7 +96,7 @@ public class EmisDataManager implements IDataManager {
 		try {
 			userUuid = UUID.fromString(userId);
 		} catch (IllegalArgumentException e) {
-			throw new CIMInvalidInternalIdentifier("User Id");
+			throw new InvalidInternalIdentifier("User Id");
 		}
 
 		String openHRXml = _emisDataAdapter.getUserById(odsCode, userUuid);
@@ -119,7 +119,7 @@ public class EmisDataManager implements IDataManager {
 		try {
 			locationUuid = UUID.fromString(locationId);
 		} catch (IllegalArgumentException e) {
-			throw new CIMInvalidInternalIdentifier("Location Id");
+			throw new InvalidInternalIdentifier("Location Id");
 		}
 
 		String openHRXml = _emisDataAdapter.getLocationById(odsCode, locationUuid);
@@ -134,7 +134,7 @@ public class EmisDataManager implements IDataManager {
 		try {
 			taskUuid = UUID.fromString(taskId);
 		} catch (IllegalArgumentException e) {
-			throw new CIMInvalidInternalIdentifier("Task Id");
+			throw new InvalidInternalIdentifier("Task Id");
 		}
 
 		String openHRXml = _emisDataAdapter.getTaskById(odsCode, taskUuid);
@@ -159,7 +159,7 @@ public class EmisDataManager implements IDataManager {
 		try {
 			userUuid = UUID.fromString(userId);
 		} catch (IllegalArgumentException e) {
-			throw new CIMInvalidInternalIdentifier("User Id");
+			throw new InvalidInternalIdentifier("User Id");
 		}
 
 		List<String> openHRXml = _emisDataAdapter.getTasksByUser(odsCode, userUuid);
@@ -182,7 +182,7 @@ public class EmisDataManager implements IDataManager {
 		try {
 			patientUuid = UUID.fromString(patientId);
 		} catch (IllegalArgumentException e) {
-			throw new CIMInvalidInternalIdentifier("Patient Id");
+			throw new InvalidInternalIdentifier("Patient Id");
 		}
 
 		List<String> openHRXml = _emisDataAdapter.getTasksByPatient(odsCode, patientUuid);
@@ -208,7 +208,7 @@ public class EmisDataManager implements IDataManager {
 		try {
 			patientUuid = UUID.fromString(patientId);
 		} catch (IllegalArgumentException e) {
-			throw new CIMInvalidInternalIdentifier("Patient Id");
+			throw new InvalidInternalIdentifier("Patient Id");
 		}
 
 		String openHRXml = _emisDataAdapter.getPatientRecordByPatientId(odsCode, patientUuid);
@@ -284,7 +284,7 @@ public class EmisDataManager implements IDataManager {
 		try {
 			patientUuid = UUID.fromString(patientId);
 		} catch (IllegalArgumentException e) {
-			throw new CIMInvalidInternalIdentifier("Patient Id");
+			throw new InvalidInternalIdentifier("Patient Id");
 		}
 
 		String openHRXml = _emisDataAdapter.getPatientDemographicsByPatientId(odsCode, patientUuid);

@@ -1,16 +1,16 @@
 package org.endeavourhealth.cim.processor.demographics;
 
 import org.apache.camel.Exchange;
-import org.endeavourhealth.cim.common.ExchangeHelper;
-import org.endeavourhealth.cim.common.HeaderKey;
+import org.endeavourhealth.common.core.ExchangeHelper;
+import org.endeavourhealth.cim.common.CIMHeaderKey;
 import org.endeavourhealth.cim.dataManager.DataManagerFactory;
 import org.endeavourhealth.cim.dataManager.IDataManager;
+import org.endeavourhealth.common.core.HeaderKey;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.UUID;
 
 public class GetChangedPatientsProcessor implements org.apache.camel.Processor {
     private final IDataManager _dataManager;
@@ -28,7 +28,7 @@ public class GetChangedPatientsProcessor implements org.apache.camel.Processor {
     public void process(Exchange exchange) throws Exception {
 
         String odsCode = ExchangeHelper.getInHeaderString(exchange, HeaderKey.OdsCode);
-        String lastUpdate = ExchangeHelper.getInHeaderString(exchange, HeaderKey.LastUpdated);
+        String lastUpdate = ExchangeHelper.getInHeaderString(exchange, CIMHeaderKey.LastUpdated);
 
         Date dateUpdated = null;
 

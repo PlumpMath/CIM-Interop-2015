@@ -1,17 +1,18 @@
 package org.endeavourhealth.cim.processor.demographics;
 
 import org.apache.camel.Exchange;
-import org.endeavourhealth.cim.common.ExchangeHelper;
-import org.endeavourhealth.cim.common.HeaderKey;
+import org.endeavourhealth.common.core.ExchangeHelper;
+import org.endeavourhealth.cim.common.CIMHeaderKey;
 import org.endeavourhealth.cim.dataManager.DataManagerFactory;
 import org.endeavourhealth.cim.dataManager.IDataManager;
+import org.endeavourhealth.common.core.HeaderKey;
 
 public class GetPatientByIdentifierProcessor implements org.apache.camel.Processor {
 
     public void process(Exchange exchange) throws Exception {
 
         String odsCode = ExchangeHelper.getInHeaderString(exchange, HeaderKey.OdsCode);
-        String identifier = ExchangeHelper.getInHeaderString(exchange, HeaderKey.Identifier);
+        String identifier = ExchangeHelper.getInHeaderString(exchange, CIMHeaderKey.Identifier);
 
         String nhsNumber = identifier.substring(identifier.indexOf('|')+1);
 

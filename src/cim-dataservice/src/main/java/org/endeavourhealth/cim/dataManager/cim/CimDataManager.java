@@ -5,7 +5,7 @@ import org.apache.http.HttpStatus;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.*;
 import org.apache.http.impl.client.HttpClientBuilder;
-import org.endeavourhealth.cim.common.HttpVerb;
+import org.endeavourhealth.common.core.HttpVerb;
 import org.endeavourhealth.cim.dataManager.IDataManager;
 import org.hl7.fhir.instance.formats.JsonParser;
 import org.hl7.fhir.instance.model.Condition;

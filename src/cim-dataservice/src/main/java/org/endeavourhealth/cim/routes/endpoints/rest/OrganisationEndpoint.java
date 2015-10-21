@@ -1,12 +1,12 @@
 package org.endeavourhealth.cim.routes.endpoints.rest;
 
-import org.endeavourhealth.cim.common.HttpVerb;
-import org.endeavourhealth.cim.routes.common.CIMRouteBuilder;
-import org.endeavourhealth.cim.routes.common.Route;
+import org.endeavourhealth.common.core.HttpVerb;
+import org.endeavourhealth.common.core.BaseRouteBuilder;
+import org.endeavourhealth.common.routes.common.Route;
 import org.endeavourhealth.cim.routes.routes.OrganisationRoutes;
 
 @SuppressWarnings({"WeakerAccess", "unused"})
-public class OrganisationEndpoint extends CIMRouteBuilder {
+public class OrganisationEndpoint extends BaseRouteBuilder {
 
     @Override
     public void configureRoute() throws Exception {

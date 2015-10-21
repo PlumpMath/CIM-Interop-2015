@@ -1,14 +1,9 @@
 package org.endeavourhealth.cim.processor.demographics;
 
 import org.apache.camel.Exchange;
-import org.apache.commons.io.IOUtils;
-import org.endeavourhealth.cim.common.ExchangeHelper;
-import org.endeavourhealth.cim.common.HeaderKey;
+import org.endeavourhealth.common.core.ExchangeHelper;
 import org.endeavourhealth.cim.subscriptions.SubscriptionManager;
-import org.hl7.fhir.instance.formats.JsonParser;
-import org.hl7.fhir.instance.model.Subscription;
-
-import java.io.InputStream;
+import org.endeavourhealth.common.core.HeaderKey;
 
 public class AddSubscriptionProcessor implements org.apache.camel.Processor {
 

@@ -7,7 +7,7 @@
     <!-- list of route builders -->
     <context-param>
         <param-name>routeBuilder</param-name>
-        <param-value>packagescan:org.endeavourhealth.cim.routes.routeBuilders</param-value>
+        <param-value>packagescan:org.endeavourhealth.common.routes,packagescan:org.endeavourhealth.cim.routes</param-value>
     </context-param>
     <context-param>
         <param-name>name</param-name>

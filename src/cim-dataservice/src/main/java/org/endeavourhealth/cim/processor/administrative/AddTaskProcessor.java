@@ -1,10 +1,10 @@
 package org.endeavourhealth.cim.processor.administrative;
 
 import org.apache.camel.Exchange;
-import org.endeavourhealth.cim.common.ExchangeHelper;
-import org.endeavourhealth.cim.common.HeaderKey;
+import org.endeavourhealth.common.core.ExchangeHelper;
 import org.endeavourhealth.cim.dataManager.DataManagerFactory;
 import org.endeavourhealth.cim.dataManager.IDataManager;
+import org.endeavourhealth.common.core.HeaderKey;
 
 public class AddTaskProcessor implements org.apache.camel.Processor {
 	@Override

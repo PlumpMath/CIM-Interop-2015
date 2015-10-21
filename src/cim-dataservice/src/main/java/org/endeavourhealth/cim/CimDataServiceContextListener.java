@@ -1,6 +1,6 @@
 package org.endeavourhealth.cim;
 
-import org.endeavourhealth.cim.common.repository.common.data.DbClient;
+import org.endeavourhealth.core.repository.common.data.DbClient;
 
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;

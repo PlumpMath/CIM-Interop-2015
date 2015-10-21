@@ -1,9 +1,9 @@
 package org.endeavourhealth.cim.dataManager.emis;
 
 import org.endeavourhealth.cim.Registry;
-import org.endeavourhealth.cim.common.DateUtils;
-import org.endeavourhealth.cim.common.HeaderKey;
-import org.endeavourhealth.cim.common.exceptions.CIMPrincipalSystemException;
+import org.endeavourhealth.common.core.DateUtils;
+import org.endeavourhealth.cim.common.CIMHeaderKey;
+import org.endeavourhealth.common.core.exceptions.PrincipalSystemException;
 import org.w3c.dom.Node;
 
 import javax.xml.soap.SOAPMessage;
@@ -303,7 +303,7 @@ public class EmisDataAdapter {
         MessageFactory messageFactory = MessageFactory.newInstance();
         SOAPMessage soapMessage = messageFactory.createMessage();
         MimeHeaders headers = soapMessage.getMimeHeaders();
-        headers.addHeader(HeaderKey.SOAPAction, _actionUri + "/" + soapMethod);
+        headers.addHeader(CIMHeaderKey.SOAPAction, _actionUri + "/" + soapMethod);
 
         SOAPElement soapMethodElement = soapMessage.getSOAPBody().addChildElement(soapMethod, "", _soapMethodUri);
 
@@ -350,7 +350,7 @@ public class EmisDataAdapter {
             try {
                 uuids.add(UUID.fromString(uuidString));
             } catch (Exception e) {
-                throw new CIMPrincipalSystemException("Unexpected result from principal system.", e);
+                throw new PrincipalSystemException("Unexpected result from principal system.", e);
             }
         }
 
@@ -368,7 +368,7 @@ public class EmisDataAdapter {
             Node node = soapResult.getChildNodes().item(i);
 
             if (!node.getLocalName().equals(typeName))
-                throw new CIMPrincipalSystemException("Unexpected result from principal system.");
+                throw new PrincipalSystemException("Unexpected result from principal system.");
 
             result.add(node.getTextContent());
         }
@@ -379,7 +379,7 @@ public class EmisDataAdapter {
     private static Node getSOAPResultAsElement(SOAPMessage soapResponse, String soapMethod) throws Exception {
 
         if (soapResponse.getSOAPBody().hasFault())
-            throw new CIMPrincipalSystemException("SOAP fault received from principal system.\r\n\r\n" + soapResponse.getSOAPBody().getFault().getFaultString());
+            throw new PrincipalSystemException("SOAP fault received from principal system.\r\n\r\n" + soapResponse.getSOAPBody().getFault().getFaultString());
 
         return soapResponse.getSOAPBody().getElementsByTagName(soapMethod + "Result").item(0);
     }
