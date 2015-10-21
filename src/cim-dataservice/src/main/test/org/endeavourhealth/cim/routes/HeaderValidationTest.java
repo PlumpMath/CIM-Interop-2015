@@ -30,7 +30,7 @@ public class HeaderValidationTest extends CamelTestSupport {
 		return new RouteBuilder() {
 			public void configure() throws Exception {
 				Registry.setInstance(new TestRegistry());
-				ISFManager.setInstance(new org.endeavourhealth.cim.InformationSharingFrameworkCaseRename.TestISFManager());
+				ISFManager.setInstance(new org.endeavourhealth.cim.informationSharingFramework.TestISFManager());
 
 				onException(Exception.class)
 					.to("mock:error")

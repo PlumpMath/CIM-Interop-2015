@@ -9,7 +9,7 @@ import org.apache.camel.test.junit4.CamelTestSupport;
 import org.endeavourhealth.common.core.exceptions.SecurityFailedException;
 import org.endeavourhealth.common.processor.SecurityProcessor;
 import org.endeavourhealth.common.repository.informationSharing.ISFManager;
-import org.endeavourhealth.cim.InformationSharingFrameworkCaseRename.TestISFManager;
+import org.endeavourhealth.cim.informationSharingFramework.TestISFManager;
 import org.endeavourhealth.cim.Registry;
 import org.endeavourhealth.cim.TestRegistry;
 import org.junit.Test;
