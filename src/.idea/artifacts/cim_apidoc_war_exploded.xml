@@ -2,7 +2,7 @@
   <artifact type="exploded-war" name="cim-apidoc:war exploded">
     <output-path>$PROJECT_DIR$/out/artifacts/cim_apidoc_war_exploded</output-path>
     <properties id="ant-preprocessing">
-      <options enabled="true">
+      <options>
         <file>file://$PROJECT_DIR$/build.xml</file>
         <target>Clear Artifact Folder</target>
       </options>

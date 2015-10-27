@@ -27,7 +27,12 @@ public class TestRegistry implements IRegistry {
         return null;
     }
 
-    public String getPrivateKey(String publicKey) {
+	@Override
+	public String getRabbitHost() {
+		return null;
+	}
+
+	public String getPrivateKey(String publicKey) {
         if ("swagger".equals(publicKey))
             return "privateKey";
 

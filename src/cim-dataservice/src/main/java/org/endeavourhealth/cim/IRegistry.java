@@ -11,4 +11,5 @@ public interface IRegistry {
     ArrayList<String> getAllDataManagerTypes();
     String getEmisSoapUri();
     String getBaseUri(String odsCode);
+	String getRabbitHost();
 }
