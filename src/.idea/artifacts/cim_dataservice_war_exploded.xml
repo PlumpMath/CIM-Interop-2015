@@ -1,12 +1,6 @@
 <component name="ArtifactManager">
   <artifact type="exploded-war" name="cim-dataservice:war exploded">
     <output-path>$PROJECT_DIR$/out/artifacts/cim_dataservice_war_exploded</output-path>
-    <properties id="ant-preprocessing">
-      <options>
-        <file>file://$PROJECT_DIR$/build.xml</file>
-        <target>Clear Artifact Folder</target>
-      </options>
-    </properties>
     <root id="root">
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
