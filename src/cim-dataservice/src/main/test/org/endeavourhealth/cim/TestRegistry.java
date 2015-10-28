@@ -1,5 +1,8 @@
 package org.endeavourhealth.cim;
 
+import org.endeavourhealth.cim.transform.IRecordTransformer;
+import org.endeavourhealth.core.dataDistributionProtocols.DataDistributionProtocol;
+
 import java.util.*;
 
 public class TestRegistry implements IRegistry {
@@ -30,6 +33,21 @@ public class TestRegistry implements IRegistry {
 	@Override
 	public String getRabbitHost() {
 		return null;
+	}
+
+	@Override
+	public String getRabbitLogon() {
+		return null;
+	}
+
+	@Override
+	public IRecordTransformer getTransformerForApiKey(String apiKey) {
+		return null;
+	}
+
+	@Override
+	public DataDistributionProtocol[] getDataDistributionProtocolsForApiKey(String apiKey) {
+		return new DataDistributionProtocol[0];
 	}
 
 	public String getPrivateKey(String publicKey) {

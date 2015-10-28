@@ -9,7 +9,7 @@ import org.hl7.fhir.instance.model.*;
 import java.util.List;
 
 @SuppressWarnings("unused")
-public class EmisTransformer {
+public class EmisTransformer implements IRecordTransformer {
 
 	private final OpenHRTransformer _openHRTransformer = new OpenHRTransformer();
 	private final EmisOpenTransformer _emisOpenTransformer = new EmisOpenTransformer();
@@ -74,5 +74,15 @@ public class EmisTransformer {
 
 	public Bundle openHRToFhirTaskBundle(List<String> openHRXmlArray) throws TransformException {
 		return _openHRTransformer.toFhirTaskBundle(openHRXmlArray);
+	}
+
+	@Override
+	public String toFhirCareRecord(String nativeData) {
+		return "<FHIR REPRESENTATION OF OPENHR RECORD>";
+	}
+
+	@Override
+	public String fromFhirCareRecord(String fhirData) {
+		return "<OPENHR REPRESENTATION OF FHIR RECORD>";
 	}
 }

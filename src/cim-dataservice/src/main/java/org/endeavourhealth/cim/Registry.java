@@ -1,5 +1,9 @@
 package org.endeavourhealth.cim;
 
+import org.endeavourhealth.cim.transform.EmisTransformer;
+import org.endeavourhealth.cim.transform.IRecordTransformer;
+import org.endeavourhealth.core.dataDistributionProtocols.DataDistributionProtocol;
+
 import java.util.*;
 
 public class Registry implements IRegistry {
@@ -74,5 +78,20 @@ public class Registry implements IRegistry {
 	@Override
 	public String getRabbitHost() {
 		return RABBIT_URI;
+	}
+
+	@Override
+	public String getRabbitLogon() {
+		return "username=azureuser&password=Azureuser123";
+	}
+
+	@Override
+	public IRecordTransformer getTransformerForApiKey(String apiKey) {
+		return new EmisTransformer();
+	}
+
+	@Override
+	public DataDistributionProtocol[] getDataDistributionProtocolsForApiKey(String apiKey) {
+		return new DataDistributionProtocol[0];
 	}
 }

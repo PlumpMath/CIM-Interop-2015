@@ -1,5 +1,6 @@
 package org.endeavourhealth.async.routes;
 
+import org.endeavourhealth.async.processor.*;
 import org.endeavourhealth.cim.Registry;
 import org.endeavourhealth.common.core.HttpVerb;
 import org.endeavourhealth.common.core.BaseRouteBuilder;
@@ -13,30 +14,29 @@ public class BulkPatient extends BaseRouteBuilder {
 	public void configureRoute() throws Exception {
 		final String BASE_PATH = "/Bulk/Patient";
 		final String RMQ_EXCHANGE = Registry.Instance().getRabbitHost() + "/" + getContext().getName();
-		final String RMQ_OPTIONS = "?autoAck=false&autoDelete=false&automaticRecoveryEnabled=true&durable=true&username=azureuser&password=Azureuser123&queue=" + POST_BULK_PATIENT_ROUTE;
-
-		rest(BASE_PATH)
+		final String RMQ_OPTIONS = "?autoAck=false&autoDelete=false&automaticRecoveryEnabled=true&durable=true&"+Registry.Instance().getRabbitLogon()+"&queue=" + POST_BULK_PATIENT_ROUTE;
 
 		// Rest to Rabbit writer
-		.post()
-				.route()
-		.routeId(HttpVerb.POST + BASE_PATH)
-		.to("rabbitmq://" + RMQ_EXCHANGE + RMQ_OPTIONS)
-				.endRest();
+		rest(BASE_PATH)
+			.post()
+			.route()
+			.routeId(HttpVerb.POST + BASE_PATH)
+			.to("rabbitmq://" + RMQ_EXCHANGE + RMQ_OPTIONS)
+		.endRest();
 
 		// Rabbit reader to route
 		from("rabbitmq://" + RMQ_EXCHANGE + RMQ_OPTIONS)
-		.to(Route.direct(POST_BULK_PATIENT_ROUTE));
+			.convertBodyTo(String.class)
+			.to(Route.direct(POST_BULK_PATIENT_ROUTE));
 
 		// Route
 		buildCallbackRoute(POST_BULK_PATIENT_ROUTE)
-				.to("log:Foo");
-		// Transform
-		// Cache record
-		// Load DDP's
-		// Split by ddp
-			// Filter using ddp
-			// Get ddp subscribers
-			// Multicast subscribers (Rabbit)
+			.process(new TransformationToFhir())
+			.process(new CacheFullRecord())
+			.process(new LoadDataDistributionProtocols())
+			.split(header("protocols"))
+				.process(new ApplyDataDistributionProtocol())
+				.process(new GetProtocolSubscribers())
+				.recipientList(header("subscribers"));
 	}
 }
