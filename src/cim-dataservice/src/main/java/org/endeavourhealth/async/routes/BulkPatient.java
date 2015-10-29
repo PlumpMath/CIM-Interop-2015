@@ -14,7 +14,7 @@ public class BulkPatient extends BaseRouteBuilder {
 	public void configureRoute() throws Exception {
 		final String BASE_PATH = "/Bulk/Patient";
 		final String RMQ_EXCHANGE = Registry.Instance().getRabbitHost() + "/" + getContext().getName();
-		final String RMQ_OPTIONS = "?autoAck=false&autoDelete=false&automaticRecoveryEnabled=true&durable=true&"+Registry.Instance().getRabbitLogon()+"&queue=" + POST_BULK_PATIENT_ROUTE;
+		final String RMQ_OPTIONS = "?autoAck=false&autoDelete=false&automaticRecoveryEnabled=true&durable=true&"+Registry.Instance().getRabbitLogon()+"&queue=m." + POST_BULK_PATIENT_ROUTE;
 
 		// Rest to Rabbit writer
 		rest(BASE_PATH)
