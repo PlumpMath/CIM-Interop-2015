@@ -12,6 +12,18 @@ import org.endeavourhealth.core.text.TextUtils;
 
 public class UserRepository extends Repository {
 	private static final String TableName = "user";
+	private static UserRepository _instance;
+
+	public static UserRepository getInstance() {
+		if (_instance == null)
+			_instance = new UserRepository();
+
+		return _instance;
+	}
+
+	public static void setInstance(UserRepository instance) {
+		_instance = instance;
+	}
 
 	public UserRepository() {
 		super(DataConfiguration.DATASERVICE_KEYSPACE);

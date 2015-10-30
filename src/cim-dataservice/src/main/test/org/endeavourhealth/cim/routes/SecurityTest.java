@@ -6,12 +6,14 @@ import org.apache.camel.ProducerTemplate;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.component.mock.MockEndpoint;
 import org.apache.camel.test.junit4.CamelTestSupport;
+import org.endeavourhealth.cim.TestUserRepository;
 import org.endeavourhealth.common.core.exceptions.SecurityFailedException;
 import org.endeavourhealth.common.processor.SecurityProcessor;
 import org.endeavourhealth.common.repository.informationSharing.ISFManager;
 import org.endeavourhealth.cim.informationSharingFramework.TestISFManager;
 import org.endeavourhealth.cim.Registry;
 import org.endeavourhealth.cim.TestRegistry;
+import org.endeavourhealth.core.repository.user.data.UserRepository;
 import org.junit.Test;
 
 import java.util.HashMap;
@@ -33,6 +35,7 @@ public class SecurityTest extends CamelTestSupport {
 			public void configure() throws Exception {
 				Registry.setInstance(new TestRegistry());
 				ISFManager.setInstance(new TestISFManager());
+				UserRepository.setInstance(new TestUserRepository());
 
 				onException(Exception.class)
 					.to("mock:error")

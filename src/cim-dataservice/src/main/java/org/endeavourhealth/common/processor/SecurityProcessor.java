@@ -31,8 +31,7 @@ public class SecurityProcessor implements Processor {
         User user = null;
 
         try {
-            UserRepository apiKeyRepository = new UserRepository();
-            user = apiKeyRepository.getByApiKey(apiKey);
+            user = UserRepository.getInstance().getByApiKey(apiKey);
         }
         catch (RepositoryException re) {
             return false;
