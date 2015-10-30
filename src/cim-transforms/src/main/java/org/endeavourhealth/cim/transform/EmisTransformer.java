@@ -4,9 +4,11 @@ import org.endeavourhealth.cim.transform.common.BundleProperties;
 import org.endeavourhealth.cim.transform.emisopen.EmisOpenTransformer;
 import org.endeavourhealth.cim.transform.exceptions.TransformException;
 import org.endeavourhealth.cim.transform.openhr.OpenHRTransformer;
+import org.hl7.fhir.instance.formats.JsonParser;
 import org.hl7.fhir.instance.model.*;
 
 import java.util.List;
+import java.util.UUID;
 
 @SuppressWarnings("unused")
 public class EmisTransformer implements IRecordTransformer {
@@ -77,8 +79,10 @@ public class EmisTransformer implements IRecordTransformer {
 	}
 
 	@Override
-	public String toFhirCareRecord(String nativeData) {
-		return "<FHIR REPRESENTATION OF OPENHR RECORD>";
+	public String toFhirCareRecord(String openHRXml) throws Exception {
+		BundleProperties properties = new BundleProperties()
+				.setBundleId(UUID.randomUUID().toString());
+		return new JsonParser().composeString(openHRToFhirBundle(properties, openHRXml));
 	}
 
 	@Override

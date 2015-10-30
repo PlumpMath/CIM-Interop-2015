@@ -11,16 +11,14 @@ import org.apache.http.entity.ContentType;
 public class ResponseProcessor implements Processor {
 
     public void process(Exchange exchange) throws Exception {
-		exchange.getOut().setHeader("CamelHttpResponseCode", exchange.getIn().getHeader("CamelHttpResponseCode"));
 		try {
 			Gson gson = new GsonBuilder().setPrettyPrinting().create();
 			JsonParser parser = new JsonParser();
 			JsonElement jsonElement = parser.parse((String) exchange.getIn().getBody());
-			exchange.getOut().setBody(gson.toJson(jsonElement));
-			exchange.getOut().setHeader("content-type", ContentType.APPLICATION_JSON);
+			exchange.getIn().setBody(gson.toJson(jsonElement));
+			exchange.getIn().setHeader("content-type", ContentType.APPLICATION_JSON);
 		} catch(Exception e) {
-			exchange.getOut().setBody(exchange.getIn().getBody());
-			exchange.getOut().setHeader("content-type", ContentType.TEXT_PLAIN);
+			exchange.getIn().setHeader("content-type", ContentType.TEXT_PLAIN);
 		}
     }
 }

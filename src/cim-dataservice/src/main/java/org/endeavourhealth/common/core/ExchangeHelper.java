@@ -73,7 +73,7 @@ public class ExchangeHelper {
 		String path = exchange.getIn().getHeader("CamelHttpPath").toString();
 		Object query = exchange.getIn().getHeader("CamelHttpQuery");
 
-		if (query != null) {
+		if (query != null && !"".equals(query)) {
 			path += "?" + java.net.URLDecoder.decode(query.toString(), "UTF-8");
 		}
 
