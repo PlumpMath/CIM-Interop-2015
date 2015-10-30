@@ -22,6 +22,7 @@ public class Configuration extends RouteBuilder {
 
 		Tracer tracer = new Tracer();
 		tracer.getDefaultTraceFormatter().setShowBreadCrumb(false);
+		tracer.getDefaultTraceFormatter().setShowBody(false);
 		getContext().addInterceptStrategy(tracer);
         getContext().setTracing(true);
 
