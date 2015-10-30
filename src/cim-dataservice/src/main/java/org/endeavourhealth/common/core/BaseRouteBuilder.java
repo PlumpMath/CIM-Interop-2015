@@ -53,21 +53,21 @@ public abstract class BaseRouteBuilder extends RouteBuilder {
 		restDef
 			.route()
 			.routeId(verb + basePath)
-			.setHeader("rabbitmq.ROUTING_KEY", constant("m." + routeName))
 			.to(rabbitQueue(routeName))
 		.endRest();
 
 		// Rabbit reader to route to rabbit response
 		from(rabbitQueue(routeName))
 				.routeId("RMQ_To_Route")
+				.removeHeaders("rabbitmq.*")	// Needed to prevent overriding routingKey in camel endpoint
 				.convertBodyTo(String.class)
 				.to(Route.direct(routeName))
-				.setHeader("rabbitmq.ROUTING_KEY", constant("m." + routeName + "_Response"))
 				.to(rabbitQueue(routeName + "_Response"));
 
 		// Rabbit response to callback
 		from(rabbitQueue(routeName + "_Response"))
 				.routeId("Route_To_RMQ_Response")
+				.removeHeaders("rabbitmq.*")	// Needed to prevent overriding routingKey in camel endpoint
 				.convertBodyTo(String.class)
 				.recipientList(simple("${header.response_uri}"));
 
