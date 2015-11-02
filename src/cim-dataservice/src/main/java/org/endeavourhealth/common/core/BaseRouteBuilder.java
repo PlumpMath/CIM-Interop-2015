@@ -68,6 +68,7 @@ public abstract class BaseRouteBuilder extends RouteBuilder {
 		from(rabbitQueue(routeName + "_Response"))
 				.routeId("Route_To_RMQ_Response")
 				.removeHeaders("rabbitmq.*")	// Needed to prevent overriding routingKey in camel endpoint
+				.removeHeaders("Camel*")
 				.convertBodyTo(String.class)
 				.recipientList(simple("${header.response_uri}"));
 

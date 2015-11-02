@@ -4,7 +4,7 @@ import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.*;
-import org.apache.http.impl.client.HttpClientBuilder;
+import org.apache.http.impl.client.DefaultHttpClient;
 import org.endeavourhealth.common.core.HttpVerb;
 import org.endeavourhealth.cim.dataManager.IDataManager;
 import org.hl7.fhir.instance.formats.JsonParser;
@@ -204,7 +204,7 @@ public class CimDataManager implements IDataManager {
 
 		HttpUriRequest request = generateRequest(verb, uri);
 
-		HttpClient client = HttpClientBuilder.create().build();
+		HttpClient client = new DefaultHttpClient();
 
 		String data = method;
 		if (body != null)
