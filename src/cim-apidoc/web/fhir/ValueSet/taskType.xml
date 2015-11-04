@@ -150,7 +150,7 @@
             </extension>
             <code value="overdueTaskNotification"/>
             <display value="Overdue Task Notification"/>
-            <definition value="Overdue Task Notification"/>
+            <definition value="OverdueTaskNotification"/>
         </concept>
     </codeSystem>
 </ValueSet>

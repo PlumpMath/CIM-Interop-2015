@@ -6,7 +6,7 @@
   <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
     <valueInteger value="0" />
   </extension>
-  <url value="http://cim-api.endeavourhealth.org/fhir/Task" />
+  <url value="http://cim-api.endeavourhealth.org/fhir/StructureDefinition/task" />
   <name value="Task" />
   <status value="draft" />
   <date value="2015-09-22T20:02:49+10:00" />
@@ -61,35 +61,39 @@
     </element>
     <element>
       <path value="Order.extension" />
-      <name value="Type" />
-      <definition value="Optional Extensions Element - found in all resources." />
+      <name value="type" />
+      <short value="Type of the task" />
+      <definition value="BookAppointment|TelephonePatient|ScreenMessage|ResultsForInformation|MeetingNotification|PatientNote|AdminNote|FormToComplete|RepeatTest|EscalationNotification|ConfidentialityOverridden|TransmissionFailure|TransmissionReport|LegitimateRelationshipNotification|OverdueTaskNotification" />
+      <comments value="test" />
       <min value="1" />
       <max value="1" />
       <type>
         <code value="Extension" />
-        <profile value="http://cim-api.endeavourhealth.org/fhir/TaskType" />
+        <profile value="http://cim-api.endeavourhealth.org/fhir/StructureDefinition/taskType" />
       </type>
     </element>
     <element>
       <path value="Order.extension" />
       <name value="Status" />
-      <definition value="Optional Extensions Element - found in all resources." />
+      <short value="Status of the task" />
+      <definition value="Active|Complete|Deleted|Archived" />
       <min value="1" />
       <max value="1" />
       <type>
         <code value="Extension" />
-        <profile value="http://cim-api.endeavourhealth.org/fhir/TaskStatus" />
+        <profile value="http://cim-api.endeavourhealth.org/fhir/StructureDefinition/taskStatus" />
       </type>
     </element>
     <element>
       <path value="Order.extension" />
       <name value="Priority" />
-      <definition value="Optional Extensions Element - found in all resources." />
+      <short value="Priority of the task" />
+      <definition value="Low|Medium|High" />
       <min value="1" />
       <max value="1" />
       <type>
         <code value="Extension" />
-        <profile value="http://cim-api.endeavourhealth.org/fhir/TaskPriority" />
+        <profile value="http://cim-api.endeavourhealth.org/fhir/StructureDefinition/taskPriority" />
       </type>
     </element>
   </differential>

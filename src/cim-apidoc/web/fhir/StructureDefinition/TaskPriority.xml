@@ -3,26 +3,21 @@
   <meta>
     <lastUpdated value="2015-09-22T20:02:49.724+10:00" />
   </meta>
-  <url value="http://cim-api.endeavourhealth.org/fhir/TaskPriority" />
+  <url value="http://cim-api.endeavourhealth.org/fhir/StructureDefinition/taskPriority" />
   <name value="TaskPriority" />
   <status value="draft" />
   <date value="2015-09-22T20:02:49+10:00" />
-  <description value="Base StructureDefinition for Extension Type" />
-  <requirements value="The ability to add extensions in a structured way is what keeps FHIR resources simple." />
   <fhirVersion value="1.0.1" />
-  <mapping>
-    <identity value="rim" />
-    <uri value="http://hl7.org/v3" />
-    <name value="RIM" />
-  </mapping>
   <kind value="datatype" />
   <constrainedType value="Extension" />
   <abstract value="false" />
+  <contextType value="resource" />
   <base value="http://hl7.org/fhir/StructureDefinition/Extension" />
   <differential>
     <element>
       <path value="Extension" />
-      <definition value="Optional Extensions Element - found in all resources." />
+      <short value="Task priority" />
+      <definition value="A priority code that allows the assignment of a priority to the task" />
       <min value="0" />
       <max value="*" />
       <type>
@@ -44,7 +39,7 @@
       <type>
         <code value="uri" />
       </type>
-      <fixedUri value="http://cim-api.endeavourhealth.org/fhir/TaskPriority" />
+      <fixedUri value="http://cim-api.endeavourhealth.org/fhir/StructureDefinition/taskPriority" />
       <mapping>
         <identity value="rim" />
         <map value="N/A" />
@@ -52,8 +47,9 @@
     </element>
     <element>
       <path value="Extension.value[x]" />
-      <short value="Value of extension" />
-      <definition value="Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list)." />
+      <name value="valueCode" />
+      <short value="Task priority code" />
+      <definition value="Low|Medium|High" />
       <min value="1" />
       <max value="1" />
       <type>
@@ -63,7 +59,7 @@
         <strength value="required" />
         <description value="Task Priority" />
         <valueSetReference>
-          <reference value="http://cim-api.endeavourhealth.org/fhir/ValueSet/task-priority" />
+          <reference value="http://cim-api.endeavourhealth.org/fhir/ValueSet/taskPriority" />
         </valueSetReference>
       </binding>
       <mapping>
