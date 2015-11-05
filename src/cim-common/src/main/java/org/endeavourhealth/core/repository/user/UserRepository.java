@@ -1,4 +1,4 @@
-package org.endeavourhealth.core.repository.user.data;
+package org.endeavourhealth.core.repository.user;
 
 import com.datastax.driver.core.BoundStatement;
 import com.datastax.driver.core.Row;
@@ -7,7 +7,6 @@ import org.endeavourhealth.core.repository.common.data.InsertStatementBuilder;
 import org.endeavourhealth.core.repository.common.data.Repository;
 import org.endeavourhealth.core.repository.common.data.RepositoryException;
 import org.endeavourhealth.core.repository.common.data.StringKeyRepositoryHelper;
-import org.endeavourhealth.core.repository.user.model.User;
 import org.endeavourhealth.core.text.TextUtils;
 
 public class UserRepository extends Repository {

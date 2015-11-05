@@ -1,6 +1,6 @@
 package org.endeavourhealth.cim.dataManager.emis;
 
-import org.endeavourhealth.cim.Registry;
+import org.endeavourhealth.common.Registry;
 import org.endeavourhealth.common.core.DateUtils;
 import org.endeavourhealth.cim.common.CIMHeaderKey;
 import org.endeavourhealth.common.core.exceptions.PrincipalSystemException;

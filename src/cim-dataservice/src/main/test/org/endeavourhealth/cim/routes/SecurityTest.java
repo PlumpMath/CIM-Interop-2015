@@ -11,9 +11,9 @@ import org.endeavourhealth.common.core.exceptions.SecurityFailedException;
 import org.endeavourhealth.common.processor.SecurityProcessor;
 import org.endeavourhealth.common.repository.informationSharing.ISFManager;
 import org.endeavourhealth.cim.informationSharingFramework.TestISFManager;
-import org.endeavourhealth.cim.Registry;
+import org.endeavourhealth.common.Registry;
 import org.endeavourhealth.cim.TestRegistry;
-import org.endeavourhealth.core.repository.user.data.UserRepository;
+import org.endeavourhealth.core.repository.user.UserRepository;
 import org.junit.Test;
 
 import java.util.HashMap;

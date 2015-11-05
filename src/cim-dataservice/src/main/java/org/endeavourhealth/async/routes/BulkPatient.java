@@ -13,10 +13,10 @@ public class BulkPatient extends BaseRouteBuilder {
 		final String BASE_PATH = "/Bulk/Patient";
 
 		buildRabbitCallbackRoute(BASE_PATH, HttpVerb.POST, POST_BULK_PATIENT_ROUTE)
-				.process(new TransformationToFhir())
-				.process(new CacheFullRecord())
-				.process(new LoadDataDistributionProtocols())
-				.split(header("protocols"))
+			.process(new TransformationToFhir())
+			.process(new CacheFullRecord())
+			.process(new LoadDataDistributionProtocols())
+			.split(header("protocols"))
 				.process(new ApplyDataDistributionProtocol())
 				.process(new GetProtocolSubscribers())
 				.recipientList(header("subscribers"))

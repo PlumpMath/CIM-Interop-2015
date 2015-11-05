@@ -1,6 +1,6 @@
 package org.endeavourhealth.cim.dataManager.emis;
 
-import org.endeavourhealth.cim.Registry;
+import org.endeavourhealth.common.Registry;
 import org.endeavourhealth.common.core.exceptions.InvalidInternalIdentifier;
 import org.endeavourhealth.cim.transform.common.BundleProperties;
 import org.endeavourhealth.core.text.TextUtils;

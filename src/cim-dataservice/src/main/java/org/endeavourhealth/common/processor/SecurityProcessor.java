@@ -7,8 +7,8 @@ import org.endeavourhealth.common.core.HeaderKey;
 import org.endeavourhealth.common.core.Util;
 import org.endeavourhealth.common.core.exceptions.SecurityFailedException;
 import org.endeavourhealth.core.repository.common.data.RepositoryException;
-import org.endeavourhealth.core.repository.user.data.UserRepository;
-import org.endeavourhealth.core.repository.user.model.User;
+import org.endeavourhealth.core.repository.user.UserRepository;
+import org.endeavourhealth.core.repository.user.User;
 
 public class SecurityProcessor implements Processor {
 

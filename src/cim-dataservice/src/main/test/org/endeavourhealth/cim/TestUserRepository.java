@@ -1,7 +1,7 @@
 package org.endeavourhealth.cim;
 
-import org.endeavourhealth.core.repository.user.data.UserRepository;
-import org.endeavourhealth.core.repository.user.model.User;
+import org.endeavourhealth.core.repository.user.UserRepository;
+import org.endeavourhealth.core.repository.user.User;
 
 public class TestUserRepository extends UserRepository{
 	@Override

@@ -1,7 +1,7 @@
 package org.endeavourhealth.async.processor;
 
 import org.apache.camel.Exchange;
-import org.endeavourhealth.cim.Registry;
+import org.endeavourhealth.common.Registry;
 import org.endeavourhealth.core.dataDistributionProtocols.DataDistributionProtocol;
 
 public class LoadDataDistributionProtocols implements org.apache.camel.Processor {

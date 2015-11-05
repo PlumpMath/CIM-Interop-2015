@@ -1,8 +1,10 @@
-package org.endeavourhealth.cim;
+package org.endeavourhealth.common;
 
 import org.endeavourhealth.cim.transform.EmisTransformer;
 import org.endeavourhealth.cim.transform.IRecordTransformer;
 import org.endeavourhealth.core.dataDistributionProtocols.DataDistributionProtocol;
+import org.endeavourhealth.core.repository.common.data.RepositoryException;
+import org.endeavourhealth.core.repository.rabbit.RabbitConfigRepository;
 
 import java.util.*;
 
@@ -17,8 +19,6 @@ public class Registry implements IRegistry {
 
         private static final String BASE_URI = "http://localhost:8080/api/0.1";
         // private static final String BASE_URI = "http://endeavour-cim.cloudapp.net/api/0.1";
-
-		private static final String RABBIT_URI = "endeavour-cloud.cloudapp.net:5670";
 
         // ALSO CHANGE cim-apidoc/web/cim-api.json
         //
@@ -76,13 +76,13 @@ public class Registry implements IRegistry {
     }
 
 	@Override
-	public String getRabbitHost() {
-		return RABBIT_URI;
+	public String getRabbitHost(String channelName) throws RepositoryException {
+		return RabbitConfigRepository.getInstance().getByChannelName(channelName).getUri();
 	}
 
 	@Override
-	public String getRabbitLogon() {
-		return "username=azureuser&password=Azureuser123";
+	public String getRabbitLogon(String channelName) throws RepositoryException {
+		return RabbitConfigRepository.getInstance().getByChannelName(channelName).getUsernamePassword();
 	}
 
 	@Override

@@ -1,7 +1,7 @@
 package org.endeavourhealth.async.processor;
 
 import org.apache.camel.Exchange;
-import org.endeavourhealth.cim.Registry;
+import org.endeavourhealth.common.Registry;
 import org.endeavourhealth.cim.transform.IRecordTransformer;
 
 public class TransformationToFhir implements org.apache.camel.Processor {

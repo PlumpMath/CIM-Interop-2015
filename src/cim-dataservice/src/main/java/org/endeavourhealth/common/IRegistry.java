@@ -1,12 +1,10 @@
-package org.endeavourhealth.cim;
+package org.endeavourhealth.common;
 
 import org.endeavourhealth.cim.transform.IRecordTransformer;
 import org.endeavourhealth.core.dataDistributionProtocols.DataDistributionProtocol;
+import org.endeavourhealth.core.repository.common.data.RepositoryException;
 
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.UUID;
 
 public interface IRegistry {
 
@@ -14,9 +12,9 @@ public interface IRegistry {
     ArrayList<String> getAllDataManagerTypes();
     String getEmisSoapUri();
     String getBaseUri(String odsCode);
-	String getRabbitHost();
 
-	String getRabbitLogon();
+	String getRabbitHost(String channelName) throws RepositoryException;
+	String getRabbitLogon(String channelName) throws RepositoryException;
 
 	IRecordTransformer getTransformerForApiKey(String apiKey);
 

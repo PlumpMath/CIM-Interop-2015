@@ -1,8 +1,8 @@
 package org.endeavourhealth.cim.subscriptions;
 
 import org.apache.camel.CamelContext;
-import org.endeavourhealth.cim.IRegistry;
-import org.endeavourhealth.cim.Registry;
+import org.endeavourhealth.common.IRegistry;
+import org.endeavourhealth.common.Registry;
 import org.endeavourhealth.cim.dataManager.DataManagerFactory;
 import org.endeavourhealth.cim.dataManager.IDataManager;
 import org.hl7.fhir.instance.formats.JsonParser;

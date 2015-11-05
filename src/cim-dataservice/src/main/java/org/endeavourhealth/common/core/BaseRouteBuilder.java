@@ -3,9 +3,10 @@ package org.endeavourhealth.common.core;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.model.RouteDefinition;
 import org.apache.camel.model.rest.RestDefinition;
-import org.endeavourhealth.cim.Registry;
+import org.endeavourhealth.common.Registry;
 import org.endeavourhealth.common.routes.common.CoreRouteName;
 import org.endeavourhealth.common.routes.common.Route;
+import org.endeavourhealth.core.repository.common.data.RepositoryException;
 
 public abstract class BaseRouteBuilder extends RouteBuilder {
 
@@ -31,11 +32,11 @@ public abstract class BaseRouteBuilder extends RouteBuilder {
 				.routeId(callbackRoute);
 	}
 
-	public RouteDefinition buildRabbitCallbackRoute(String basePath, String verb, String routeName) {
+	public RouteDefinition buildRabbitCallbackRoute(String basePath, String verb, String routeName) throws RepositoryException {
 		return buildRabbitCallbackRoute(basePath, "", verb, routeName);
 	}
 
-	public RouteDefinition buildRabbitCallbackRoute(String basePath, String uri, String verb, String routeName) {
+	public RouteDefinition buildRabbitCallbackRoute(String basePath, String uri, String verb, String routeName) throws RepositoryException {
 		RestDefinition restDef;
 
 		// Rest endpoint to rabbit
@@ -78,9 +79,10 @@ public abstract class BaseRouteBuilder extends RouteBuilder {
 
     public abstract void configureRoute() throws Exception;
 
-	private String rabbitQueue(String routeName) {
-		final String RMQ_EXCHANGE = Registry.Instance().getRabbitHost() + "/" + getContext().getName();
-		final String RMQ_OPTIONS = "?autoAck=false&autoDelete=false&automaticRecoveryEnabled=true&durable=true&"+Registry.Instance().getRabbitLogon();
+	private String rabbitQueue(String routeName) throws RepositoryException {
+		String contextName = getContext().getName();
+		final String RMQ_EXCHANGE = Registry.Instance().getRabbitHost(contextName) + "/" + getContext().getName();
+		final String RMQ_OPTIONS = "?autoAck=false&autoDelete=false&automaticRecoveryEnabled=true&durable=true&"+Registry.Instance().getRabbitLogon(contextName);
 		final String RMQ_ROUTING = "&queue=m." + routeName + "&routingKey=m." + routeName;
 
 		return "rabbitmq://" + RMQ_EXCHANGE + RMQ_OPTIONS + RMQ_ROUTING;

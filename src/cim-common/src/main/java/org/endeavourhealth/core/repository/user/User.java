@@ -1,4 +1,4 @@
-package org.endeavourhealth.core.repository.user.model;
+package org.endeavourhealth.core.repository.user;
 
 public class User {
     private String email;

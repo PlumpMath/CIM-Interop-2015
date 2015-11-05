@@ -10,7 +10,7 @@ import org.endeavourhealth.cim.processor.administrative.GetSchedulesProcessor;
 import org.endeavourhealth.common.core.exceptions.InvalidParamException;
 import org.endeavourhealth.common.core.exceptions.MissingParamException;
 import org.endeavourhealth.common.repository.informationSharing.ISFManager;
-import org.endeavourhealth.cim.Registry;
+import org.endeavourhealth.common.Registry;
 import org.endeavourhealth.cim.TestRegistry;
 import org.junit.Test;
 
