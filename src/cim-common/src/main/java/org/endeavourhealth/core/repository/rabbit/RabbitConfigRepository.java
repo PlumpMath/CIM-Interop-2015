@@ -27,18 +27,18 @@ public class RabbitConfigRepository extends Repository {
 	}
 
 	public RabbitConfig getByChannelName(String channelName) throws RepositoryException {
-		Row row = StringKeyRepositoryHelper.getSingleRowFromId(getSession(), getStatementCache(), TableName, "channelName", channelName);
-
 		if (TextUtils.isNullOrTrimmedEmpty(channelName))
 			return null;
+
+		Row row = StringKeyRepositoryHelper.getSingleRowFromId(getSession(), getStatementCache(), TableName, "channelName", channelName);
 
 		if (row == null)
 			return null;
 
-		return populateUser(row);
+		return populateRabbitConfig(row);
 	}
 
-	private RabbitConfig populateUser(Row row) {
+	private RabbitConfig populateRabbitConfig(Row row) {
 		RabbitConfig result = new RabbitConfig();
 		result.setChannelName(row.getString("channelName"));
 		result.setUsernamePassword(row.getString("usernamePassword"));

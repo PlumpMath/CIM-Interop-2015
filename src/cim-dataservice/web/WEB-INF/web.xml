@@ -8,9 +8,9 @@
     <context-param>
         <param-name>routeBuilder</param-name>
         <param-value>
-            packagescan:org.endeavourhealth.common.routes,
-            packagescan:org.endeavourhealth.cim.routes,
-            packagescan:org.endeavourhealth.async.routes
+            packagescan:org.endeavourhealth.common.camel,
+            packagescan:org.endeavourhealth.cim.camel,
+            packagescan:org.endeavourhealth.async.camel
         </param-value>
     </context-param>
     <context-param>

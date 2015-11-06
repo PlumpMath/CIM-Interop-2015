@@ -2,7 +2,7 @@ package org.endeavourhealth.cim;
 
 import org.endeavourhealth.cim.transform.IRecordTransformer;
 import org.endeavourhealth.common.IRegistry;
-import org.endeavourhealth.core.dataDistributionProtocols.DataDistributionProtocol;
+import org.endeavourhealth.core.repository.informationSharingProtocols.InformationSharingProtocol;
 
 import java.util.*;
 
@@ -32,32 +32,12 @@ public class TestRegistry implements IRegistry {
     }
 
 	@Override
-	public String getRabbitHost(String channelName) {
-		return null;
-	}
-
-	@Override
-	public String getRabbitLogon(String channelName) {
-		return null;
-	}
-
-	@Override
 	public IRecordTransformer getTransformerForApiKey(String apiKey) {
 		return null;
 	}
 
 	@Override
-	public DataDistributionProtocol[] getDataDistributionProtocolsForApiKey(String apiKey) {
-		return new DataDistributionProtocol[0];
+	public InformationSharingProtocol[] getDataDistributionProtocolsForApiKey(String apiKey) {
+		return new InformationSharingProtocol[0];
 	}
-
-	public String getPrivateKey(String publicKey) {
-        if ("swagger".equals(publicKey))
-            return "privateKey";
-
-        if ("null".equals(publicKey))
-            return null;
-
-        return publicKey;
-    }
 }

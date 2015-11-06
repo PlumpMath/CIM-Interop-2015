@@ -2,7 +2,7 @@ package org.endeavourhealth.common;
 
 import org.endeavourhealth.cim.transform.EmisTransformer;
 import org.endeavourhealth.cim.transform.IRecordTransformer;
-import org.endeavourhealth.core.dataDistributionProtocols.DataDistributionProtocol;
+import org.endeavourhealth.core.repository.informationSharingProtocols.InformationSharingProtocol;
 import org.endeavourhealth.core.repository.common.data.RepositoryException;
 import org.endeavourhealth.core.repository.rabbit.RabbitConfigRepository;
 
@@ -76,22 +76,12 @@ public class Registry implements IRegistry {
     }
 
 	@Override
-	public String getRabbitHost(String channelName) throws RepositoryException {
-		return RabbitConfigRepository.getInstance().getByChannelName(channelName).getUri();
-	}
-
-	@Override
-	public String getRabbitLogon(String channelName) throws RepositoryException {
-		return RabbitConfigRepository.getInstance().getByChannelName(channelName).getUsernamePassword();
-	}
-
-	@Override
 	public IRecordTransformer getTransformerForApiKey(String apiKey) {
 		return new EmisTransformer();
 	}
 
 	@Override
-	public DataDistributionProtocol[] getDataDistributionProtocolsForApiKey(String apiKey) {
-		return new DataDistributionProtocol[0];
+	public InformationSharingProtocol[] getDataDistributionProtocolsForApiKey(String apiKey) {
+		return new InformationSharingProtocol[0];
 	}
 }
