@@ -1,13 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <StructureDefinition xmlns="http://hl7.org/fhir">
+  <id value="endeavour-task" />
   <meta>
     <lastUpdated value="2015-09-22T20:02:49.724+10:00" />
   </meta>
   <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
     <valueInteger value="0" />
   </extension>
-  <url value="http://cim-api.endeavourhealth.org/fhir/StructureDefinition/task" />
-  <name value="Task" />
+  <url value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-task" />
+  <name value="endeavour-task" />
+  <display value="Task" />
   <status value="draft" />
   <date value="2015-09-22T20:02:49+10:00" />
   <description value="Base StructureDefinition for Order Resource" />
@@ -43,14 +45,6 @@
         <code value="Order" />
       </type>
       <isSummary value="true" />
-      <mapping>
-        <identity value="rim" />
-        <map value="ControlAct[classCode=ACTN, moodCode=RQO]" />
-      </mapping>
-      <mapping>
-        <identity value="w5" />
-        <map value="workflow.order" />
-      </mapping>
     </element>
     <element>
       <path value="Order.extension" />
@@ -69,31 +63,31 @@
       <max value="1" />
       <type>
         <code value="Extension" />
-        <profile value="http://cim-api.endeavourhealth.org/fhir/StructureDefinition/taskType" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-task-type" />
       </type>
     </element>
     <element>
       <path value="Order.extension" />
-      <name value="Status" />
+      <name value="status" />
       <short value="Status of the task" />
       <definition value="Active|Complete|Deleted|Archived" />
       <min value="1" />
       <max value="1" />
       <type>
         <code value="Extension" />
-        <profile value="http://cim-api.endeavourhealth.org/fhir/StructureDefinition/taskStatus" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-task-status" />
       </type>
     </element>
     <element>
       <path value="Order.extension" />
-      <name value="Priority" />
+      <name value="priority" />
       <short value="Priority of the task" />
       <definition value="Low|Medium|High" />
       <min value="1" />
       <max value="1" />
       <type>
         <code value="Extension" />
-        <profile value="http://cim-api.endeavourhealth.org/fhir/StructureDefinition/taskPriority" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-task-priority" />
       </type>
     </element>
   </differential>

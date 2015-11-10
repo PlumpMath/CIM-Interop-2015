@@ -16,7 +16,7 @@
             <p>BookAppointment | TelephonePatient | ScreenMessage | ResultsForInfo | MeetingNotification | PatientNote | AdminNote | FormToComplete | RepeatTest | EscalationNotification | ConfidentialityOverridden | TransmissionFailure | LegitimateRelationshipNotification | TransmissionReport | OverdueTaskNotification | Other</p>
         </div>
     </text>
-    <url value="http://cim-api.endeavourhealth.org/fhir/ValueSet/task-type" />
+    <url value="http://endeavourhealth.org/fhir/ValueSet/task-type" />
     <version value="1.0.0" />
     <name value="TaskType" />
     <status value="draft" />		
@@ -29,7 +29,7 @@
     </contact>
     <description value="The type/purpose of a task." />
     <codeSystem>
-        <system value="http://cim-api.endeavourhealth.org/fhir/task-type"/>
+        <system value="http://endeavourhealth.org/fhir/ValueSet/task-type"/>
         <version value="1.0.0"/>
         <caseSensitive value="true"/>
         <concept>

@@ -1,10 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <StructureDefinition xmlns="http://hl7.org/fhir">
+  <id value="endeavour-task-priority" />
   <meta>
     <lastUpdated value="2015-09-22T20:02:49.724+10:00" />
   </meta>
-  <url value="http://cim-api.endeavourhealth.org/fhir/StructureDefinition/taskType" />
-  <name value="TaskType" />
+  <url value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-task-priority" />
+  <name value="endeavour-task-priority" />
+  <display value="Task Priority" />
   <status value="draft" />
   <date value="2015-09-22T20:02:49+10:00" />
   <fhirVersion value="1.0.1" />
@@ -12,12 +14,13 @@
   <constrainedType value="Extension" />
   <abstract value="false" />
   <contextType value="resource" />
+  <context value="task.priority" />
   <base value="http://hl7.org/fhir/StructureDefinition/Extension" />
   <differential>
     <element>
       <path value="Extension" />
-      <short value="Task type" />
-      <definition value="A type code that defines the usage/meaning of the associated task" />
+      <short value="Task priority" />
+      <definition value="A priority code that allows the assignment of a priority to the task" />
       <min value="0" />
       <max value="*" />
       <type>
@@ -39,17 +42,13 @@
       <type>
         <code value="uri" />
       </type>
-      <fixedUri value="http://cim-api.endeavourhealth.org/fhir/StructureDefinition/taskType" />
-      <mapping>
-        <identity value="rim" />
-        <map value="N/A" />
-      </mapping>
+      <fixedUri value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-task-priority" />
     </element>
     <element>
       <path value="Extension.value[x]" />
       <name value="valueCode" />
-      <short value="Task type code" />
-      <definition value="BookAppointment|TelephonePatient|ScreenMessage|ResultsForInformation|MeetingNotification|PatientNote|AdminNote|FormToComplete|RepeatTest|EscalationNotification|ConfidentialityOverridden|TransmissionFailure|TransmissionReport|LegitimateRelationshipNotification|OverdueTaskNotification" />
+      <short value="Task priority code" />
+      <definition value="Low|Medium|High" />
       <min value="1" />
       <max value="1" />
       <type>
@@ -57,15 +56,11 @@
       </type>
       <binding>
         <strength value="required" />
-        <description value="TaskTypeValue" />
+        <description value="Task Priority" />
         <valueSetReference>
-          <reference value="http://cim-api.endeavourhealth.org/fhir/ValueSet/taskType" />
+          <reference value="http://endeavourhealth.org/fhir/ValueSet/endeavour-task-priority" />
         </valueSetReference>
       </binding>
-      <mapping>
-        <identity value="rim" />
-        <map value="N/A" />
-      </mapping>
     </element>
   </differential>
 </StructureDefinition>
