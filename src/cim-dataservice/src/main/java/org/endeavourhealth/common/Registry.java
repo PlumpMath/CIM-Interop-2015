@@ -82,6 +82,6 @@ public class Registry implements IRegistry {
 
 	@Override
 	public InformationSharingProtocol[] getDataDistributionProtocolsForApiKey(String apiKey) {
-		return new InformationSharingProtocol[0];
+		return new InformationSharingProtocol[1];
 	}
 }
