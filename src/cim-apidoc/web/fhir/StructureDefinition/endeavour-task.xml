@@ -11,24 +11,10 @@
   <name value="endeavour-task" />
   <display value="Task" />
   <status value="draft" />
+  <publisher value="Endeavour Health Charitable Trust" />
   <date value="2015-09-22T20:02:49+10:00" />
-  <description value="Base StructureDefinition for Order Resource" />
+  <description value="Structure definition for tasks" />
   <fhirVersion value="1.0.1" />
-  <mapping>
-    <identity value="rim" />
-    <uri value="http://hl7.org/v3" />
-    <name value="RIM" />
-  </mapping>
-  <mapping>
-    <identity value="w5" />
-    <uri value="http://hl7.org/fhir/w5" />
-    <name value="W5 Mapping" />
-  </mapping>
-  <mapping>
-    <identity value="v2" />
-    <uri value="http://hl7.org/v2" />
-    <name value="HL7 v2" />
-  </mapping>
   <kind value="resource" />
   <constrainedType value="Order" />
   <abstract value="false" />
@@ -57,7 +43,6 @@
       <path value="Order.extension" />
       <name value="type" />
       <short value="Type of the task" />
-      <definition value="BookAppointment|TelephonePatient|ScreenMessage|ResultsForInformation|MeetingNotification|PatientNote|AdminNote|FormToComplete|RepeatTest|EscalationNotification|ConfidentialityOverridden|TransmissionFailure|TransmissionReport|LegitimateRelationshipNotification|OverdueTaskNotification" />
       <comments value="test" />
       <min value="1" />
       <max value="1" />
@@ -70,7 +55,6 @@
       <path value="Order.extension" />
       <name value="status" />
       <short value="Status of the task" />
-      <definition value="Active|Complete|Deleted|Archived" />
       <min value="1" />
       <max value="1" />
       <type>
@@ -82,7 +66,6 @@
       <path value="Order.extension" />
       <name value="priority" />
       <short value="Priority of the task" />
-      <definition value="Low|Medium|High" />
       <min value="1" />
       <max value="1" />
       <type>
