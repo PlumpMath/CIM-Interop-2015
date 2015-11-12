@@ -58,7 +58,7 @@ namespace DotNetGPSystem
                 {
                     patientName = task.Patient.Person.GetCuiDisplayName();
 
-                    description = "Add event '" + task.Event.code.displayName + "'";
+                    description = "Add event '" + (task.Event.code.WhenNotNull(t => t.displayName) ?? "(no code found)") + "'";
 
                     task.CanFile = true;
                 }
