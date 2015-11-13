@@ -5,6 +5,7 @@ import com.datastax.driver.core.querybuilder.Insert;
 import com.datastax.driver.core.querybuilder.QueryBuilder;
 
 import java.util.Date;
+import java.util.Map;
 import java.util.UUID;
 
 public class InsertStatementBuilder extends BoundStatementBuilder {
@@ -27,6 +28,11 @@ public class InsertStatementBuilder extends BoundStatementBuilder {
 
     public InsertStatementBuilder addColumnTimestamp(String columnName, Date value) {
         columnValues.add(FieldType.Timestamp, columnName, value);
+        return this;
+    }
+
+    public InsertStatementBuilder addColumnMap(String columnName, Map<String, String> value) {
+        columnValues.add(FieldType.Map, columnName, value);
         return this;
     }
 
