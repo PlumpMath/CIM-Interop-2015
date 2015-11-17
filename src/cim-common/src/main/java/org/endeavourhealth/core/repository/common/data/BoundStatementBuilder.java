@@ -6,6 +6,7 @@ import com.datastax.driver.core.RegularStatement;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Map;
 import java.util.UUID;
 
 abstract class BoundStatementBuilder {
@@ -13,7 +14,8 @@ abstract class BoundStatementBuilder {
     protected enum FieldType {
         String,
         UUID,
-        Timestamp
+        Timestamp,
+        Map
     }
 
     protected static class FieldAndValue {
@@ -75,6 +77,8 @@ abstract class BoundStatementBuilder {
                 return statement.setUUID(value.getColumnName(), (UUID)value.getValue());
             case Timestamp:
                 return statement.setDate(value.getColumnName(), (Date)value.getValue());
+            case Map:
+                return statement.setMap(value.getColumnName(), (Map) value.getValue());
             default:
                 throw new UnsupportedOperationException("FieldType not supported: " + value.fieldType.toString());
         }

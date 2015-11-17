@@ -4,6 +4,7 @@ import com.datastax.driver.core.BoundStatement;
 import com.datastax.driver.core.querybuilder.*;
 
 import java.util.Date;
+import java.util.Map;
 import java.util.UUID;
 
 public class UpdateStatementBuilder extends BoundStatementBuilder {
@@ -39,6 +40,12 @@ public class UpdateStatementBuilder extends BoundStatementBuilder {
         return this;
     }
 
+    public UpdateStatementBuilder addColumnMap(String columnName, Map<String, String> value) {
+        columnValues.add(FieldType.Map, columnName, value);
+        addParameterMap(columnName, value);
+        return this;
+    }
+
     public UpdateStatementBuilder addParameterUUID(String columnName, UUID value) {
         parameters.add(FieldType.UUID, columnName, value);
         return this;
@@ -51,6 +58,11 @@ public class UpdateStatementBuilder extends BoundStatementBuilder {
 
     public UpdateStatementBuilder addParameterTimestamp(String columnName, Date value) {
         parameters.add(FieldType.Timestamp, columnName, value);
+        return this;
+    }
+
+    public UpdateStatementBuilder addParameterMap(String columnName, Map<String, String> value) {
+        parameters.add(FieldType.Map, columnName, value);
         return this;
     }
 
