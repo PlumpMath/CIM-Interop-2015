@@ -1,6 +1,7 @@
 package org.endeavourhealth.common.core;
 
 import org.apache.camel.builder.RouteBuilder;
+import org.apache.camel.component.http.CamelServlet;
 import org.apache.camel.model.RouteDefinition;
 import org.endeavourhealth.common.camel.QueueReader;
 import org.endeavourhealth.core.repository.common.data.RepositoryException;
@@ -70,11 +71,11 @@ public abstract class BaseRouteBuilder extends RouteBuilder {
     public abstract void configureRoute() throws Exception;
 
 	protected String rabbitQueue() throws RepositoryException {
-		String contextName = getContext().getName();
-		RabbitConfig rabbitConfig = RabbitConfigRepository.getInstance().getByChannelName(contextName);
+		String channelName = getContext().getProperty("channelName");
+		RabbitConfig rabbitConfig = RabbitConfigRepository.getInstance().getByChannelName(channelName);
 		final String RMQ_EXCHANGE = rabbitConfig.getUri() + "/Camel";
 		final String RMQ_OPTIONS = "?autoAck=false&autoDelete=false&automaticRecoveryEnabled=true&durable=true&"+rabbitConfig.getUsernamePassword();
-		final String RMQ_ROUTING = "&queue=m." + contextName + "&routingKey=m." + contextName;
+		final String RMQ_ROUTING = "&queue=m." + channelName + "&routingKey=m." + channelName;
 
 		return "rabbitmq://" + RMQ_EXCHANGE + RMQ_OPTIONS + RMQ_ROUTING;
 	}

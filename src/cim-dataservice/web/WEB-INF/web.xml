@@ -17,6 +17,10 @@
         <param-name>name</param-name>
         <param-value>CIM-DataService</param-value>
     </context-param>
+    <context-param>
+        <param-name>properties.channelName</param-name>
+        <param-value>Channel1</param-value>
+    </context-param>
 
     <!-- the listener that kick-starts Camel -->
     <listener>
