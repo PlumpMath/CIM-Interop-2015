@@ -1,4 +1,4 @@
-package org.endeavourhealth.async.camel.routes;
+package org.endeavourhealth.async.camel.endpoints;
 
 import org.endeavourhealth.common.core.BaseRouteBuilder;
 import org.endeavourhealth.common.core.ComponentRouteName;

@@ -1,12 +1,13 @@
 package org.endeavourhealth.common.core;
 
 import org.apache.camel.builder.RouteBuilder;
-import org.apache.camel.component.http.CamelServlet;
 import org.apache.camel.model.RouteDefinition;
 import org.endeavourhealth.common.camel.QueueReader;
+import org.endeavourhealth.common.processor.RabbitDestinationQueueProcessor;
 import org.endeavourhealth.core.repository.common.data.RepositoryException;
 import org.endeavourhealth.core.repository.rabbit.RabbitConfig;
-import org.endeavourhealth.core.repository.rabbit.RabbitConfigRepository;
+import org.endeavourhealth.core.repository.rabbit.ConfigRepository;
+import org.endeavourhealth.core.serializer.DeserializationException;
 
 public abstract class BaseRouteBuilder extends RouteBuilder {
 
@@ -24,13 +25,14 @@ public abstract class BaseRouteBuilder extends RouteBuilder {
 		return "direct:"+routeName;
 	}
 
-	protected String queueWriter(String routeName) throws RepositoryException {
+	protected String queueWriter(String routeName) throws RepositoryException, DeserializationException {
 		String inboundQueueRoute = routeName+"Queue";
 
 		from(direct(inboundQueueRoute))
 			.routeId(inboundQueueRoute)
+			.process(new RabbitDestinationQueueProcessor())
 			.setHeader(QueueReader.DESTINATION_ROUTE, constant(direct(routeName)))
-			.to(rabbitQueue());
+			.to(rabbitQueueWriter());
 
 		return direct(inboundQueueRoute);
 	}
@@ -47,7 +49,7 @@ public abstract class BaseRouteBuilder extends RouteBuilder {
 				.routeId(callbackRoute);
 	}
 
-	public RouteDefinition buildQueuedCallbackRoute(String coreName, String routeName) throws RepositoryException {
+	public RouteDefinition buildQueuedCallbackRoute(String coreName, String routeName) throws RepositoryException, DeserializationException {
 		String callbackRoute = routeName+"Callback";
 		String resultRoute = routeName+"Response";
 
@@ -56,7 +58,8 @@ public abstract class BaseRouteBuilder extends RouteBuilder {
 			.setProperty(HeaderKey.MessageRouterCallback, constant(direct(callbackRoute)))
 			.to(direct(coreName))
 			.setHeader(QueueReader.DESTINATION_ROUTE, constant(direct(resultRoute)))
-			.to(rabbitQueue());
+			.process(new RabbitDestinationQueueProcessor())
+			.to(rabbitQueueWriter());
 
 		from(direct(resultRoute))
 			.routeId(resultRoute)
@@ -70,13 +73,13 @@ public abstract class BaseRouteBuilder extends RouteBuilder {
 
     public abstract void configureRoute() throws Exception;
 
-	protected String rabbitQueue() throws RepositoryException {
-		String channelName = getContext().getProperty("channelName");
-		RabbitConfig rabbitConfig = RabbitConfigRepository.getInstance().getByChannelName(channelName);
-		final String RMQ_EXCHANGE = rabbitConfig.getUri() + "/Camel";
+	protected String rabbitQueueWriter() throws RepositoryException, DeserializationException {
+		RabbitConfig rabbitConfig = ConfigRepository.getInstance().getConfigByName("rabbit", RabbitConfig.class);
+		final String RMQ_EXCHANGE = rabbitConfig.getUri() + "/" + rabbitConfig.getExchange();
 		final String RMQ_OPTIONS = "?autoAck=false&autoDelete=false&automaticRecoveryEnabled=true&durable=true&"+rabbitConfig.getUsernamePassword();
-		final String RMQ_ROUTING = "&queue=m." + channelName + "&routingKey=m." + channelName;
+		final String RMQ_ROUTING = "&queue=DeadLetter&routingKey=DeadLetter";
 
 		return "rabbitmq://" + RMQ_EXCHANGE + RMQ_OPTIONS + RMQ_ROUTING;
 	}
+
 }

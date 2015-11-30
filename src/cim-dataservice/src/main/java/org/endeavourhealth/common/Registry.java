@@ -3,8 +3,6 @@ package org.endeavourhealth.common;
 import org.endeavourhealth.cim.transform.EmisTransformer;
 import org.endeavourhealth.cim.transform.IRecordTransformer;
 import org.endeavourhealth.core.repository.informationSharingProtocols.InformationSharingProtocol;
-import org.endeavourhealth.core.repository.common.data.RepositoryException;
-import org.endeavourhealth.core.repository.rabbit.RabbitConfigRepository;
 
 import java.util.*;
 

@@ -9,8 +9,8 @@
         <param-name>routeBuilder</param-name>
         <param-value>
             packagescan:org.endeavourhealth.common.camel,
-            packagescan:org.endeavourhealth.cim.camel,
-            packagescan:org.endeavourhealth.async.camel
+            packagescan:org.endeavourhealth.async.camel,
+            packagescan:org.endeavourhealth.cim.camel
         </param-value>
     </context-param>
     <context-param>
@@ -18,8 +18,8 @@
         <param-value>CIM-DataService</param-value>
     </context-param>
     <context-param>
-        <param-name>properties.channelName</param-name>
-        <param-value>Channel1</param-value>
+        <param-name>properties.readerQueueName</param-name>
+        <param-value>N-Z</param-value>
     </context-param>
 
     <!-- the listener that kick-starts Camel -->

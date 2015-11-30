@@ -1,7 +1,6 @@
-CREATE COLUMNFAMILY cim.rabbit_config
+CREATE COLUMNFAMILY cim.config
 (
-	channelName VARCHAR PRIMARY KEY,
-	usernamePassword VARCHAR,
-	uri VARCHAR,
+	configName VARCHAR PRIMARY KEY,
+	configData VARCHAR,
 	data_schema_version VARCHAR
 );

@@ -1,6 +1,5 @@
 package org.endeavourhealth.async.camel.endpoints;
 
-import org.endeavourhealth.async.camel.routes.AsyncPreQueue;
 import org.endeavourhealth.async.camel.routes.BulkPatientRoutes;
 import org.endeavourhealth.common.core.BaseRouteBuilder;
 import org.endeavourhealth.common.core.HttpVerb;

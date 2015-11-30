@@ -1,4 +1,4 @@
-package org.endeavourhealth.common.camel;
+package org.endeavourhealth.common.camel.configuration;
 
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.model.rest.RestBindingMode;
