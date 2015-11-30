@@ -28,7 +28,7 @@
     </listener>
 
     <listener>
-        <listener-class>org.endeavourhealth.cim.CimDataServiceContextListener</listener-class>
+        <listener-class>org.endeavourhealth.common.DataServiceContextListener</listener-class>
     </listener>
 
     <!-- Camel servlet used in the Camel application -->

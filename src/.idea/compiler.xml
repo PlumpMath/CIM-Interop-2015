@@ -41,17 +41,25 @@
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
       </profile>
-      <profile default="false" name="Annotation profile for cim-apidoc" enabled="true">
-        <sourceOutputDir name="target/generated-sources/annotations" />
-        <sourceTestOutputDir name="target\generated-test-sources\test-annotations" />
-        <outputRelativeToContentRoot value="true" />
-        <processorPath useClasspath="true" />
-      </profile>
       <profile default="false" name="Annotation profile for cim-management" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target\generated-test-sources\test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
+      </profile>
+      <profile default="false" name="Annotation profile for cim-dataservice-async" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target\generated-test-sources\test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="true" />
+        <module name="cim-dataservice-async" />
+      </profile>
+      <profile default="false" name="Annotation profile for cim-dataservice-cim" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target\generated-test-sources\test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="true" />
+        <module name="cim-dataservice-cim" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -59,6 +67,8 @@
       <module name="cim-common" target="1.8" />
       <module name="cim-dataprotocols" target="1.8" />
       <module name="cim-dataservice" target="1.8" />
+      <module name="cim-dataservice-async" target="1.8" />
+      <module name="cim-dataservice-cim" target="1.8" />
       <module name="cim-management" target="1.8" />
       <module name="cim-transforms" target="1.8" />
     </bytecodeTargetLevel>

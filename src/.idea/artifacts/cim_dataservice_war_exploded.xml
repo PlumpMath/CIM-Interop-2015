@@ -13,6 +13,8 @@
           <element id="module-output" name="cim-dataservice" />
           <element id="module-output" name="cim-common" />
           <element id="module-output" name="cim-transforms" />
+          <element id="module-output" name="cim-dataservice-async" />
+          <element id="module-output" name="cim-dataservice-cim" />
         </element>
         <element id="directory" name="lib">
           <element id="library" level="project" name="Maven: com.codahale.metrics:metrics-core:3.0.2" />
