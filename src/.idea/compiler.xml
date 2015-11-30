@@ -62,15 +62,5 @@
         <module name="cim-dataservice-cim" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="cim-apidoc" target="1.8" />
-      <module name="cim-common" target="1.8" />
-      <module name="cim-dataprotocols" target="1.8" />
-      <module name="cim-dataservice" target="1.8" />
-      <module name="cim-dataservice-async" target="1.8" />
-      <module name="cim-dataservice-cim" target="1.8" />
-      <module name="cim-management" target="1.8" />
-      <module name="cim-transforms" target="1.8" />
-    </bytecodeTargetLevel>
   </component>
 </project>

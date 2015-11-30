@@ -2,15 +2,12 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <parent>
-        <artifactId>cim-apidoc</artifactId>
-        <groupId>org.endeavourhealth.cim</groupId>
-        <version>1.0-SNAPSHOT</version>
-        <relativePath>../cim-apidoc/pom.xml</relativePath>
-    </parent>
     <modelVersion>4.0.0</modelVersion>
 
+    <groupId>org.endeavourhealth.cim</groupId>
     <artifactId>cim-dataservice-cim</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
 
     <properties>
         <camel_version>2.15.4</camel_version>
@@ -42,4 +39,17 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>
