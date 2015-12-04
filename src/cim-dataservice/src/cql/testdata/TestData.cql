@@ -222,3 +222,8 @@ INSERT INTO protocol_by_publisher_and_subscriber_agreement
 (publisherAgreementId, subscriberAgreementId, schema_version, data)
 VALUES
 (44ffdb19-3a38-4293-b3e8-1a897e4d72de, 8d05c8ba-b75d-4096-8252-1b912dbd1b91, '0.1', '{ "publisherAgreementId": "44ffdb19-3a38-4293-b3e8-1a897e4d72de", "subscriberAgreementId": "8d05c8ba-b75d-4096-8252-1b912dbd1b91", "protocols": ["6618b41b-5dfd-40fe-a768-6efc062bd915"] }');
+
+INSERT INTO config
+(configname, data, schema_version)
+VALUES
+('rabbit', '{ "uri": "endeavour-cloud.cloudapp.net:5670", "usernamePassword": "username=azureuser&password=Azureuser123", "exchange": "Camel" }', '0.1');

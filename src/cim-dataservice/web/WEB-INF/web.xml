@@ -18,10 +18,13 @@
         <param-value>CIM-DataService</param-value>
     </context-param>
     <context-param>
+        <param-name>properties.enableCamelTrace</param-name>
+        <param-value>True</param-value>
+    </context-param>
+    <context-param>
         <param-name>properties.readerQueueName</param-name>
         <param-value>N-Z</param-value>
     </context-param>
-
     <!-- the listener that kick-starts Camel -->
     <listener>
         <listener-class>org.apache.camel.component.servletlistener.JndiCamelServletContextListener</listener-class>

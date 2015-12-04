@@ -13,12 +13,12 @@ public class Configuration extends RouteBuilder {
     @Override
     public void configure() throws Exception {
 		getContext().getManagementNameStrategy().setNamePattern("CIM-DataService-#name#");
-
+		Boolean trace = Boolean.parseBoolean(getContext().getProperty("enableCamelTrace"));
 		Tracer tracer = new Tracer();
 		tracer.getDefaultTraceFormatter().setShowBreadCrumb(false);
 		tracer.getDefaultTraceFormatter().setShowBody(false);
 		getContext().addInterceptStrategy(tracer);
-        getContext().setTracing(true);
+        getContext().setTracing(trace);
 
         getContext().setAllowUseOriginalMessage(false);
 
