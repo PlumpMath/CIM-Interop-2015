@@ -9,7 +9,7 @@ public class OrganisationRoutes extends BaseRouteBuilder {
 
     @Override
     public void configureRoute() throws Exception {
-        buildCallbackRoute(CimCore.ROUTE_NAME, GET_ORGANISATION_ROUTE)
+        buildWrappedRoute(CimCore.ROUTE_NAME, GET_ORGANISATION_ROUTE)
             .process(new GetOrganisationProcessor());
     }
 }

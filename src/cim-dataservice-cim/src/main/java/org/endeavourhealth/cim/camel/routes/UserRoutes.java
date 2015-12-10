@@ -11,10 +11,10 @@ public class UserRoutes extends BaseRouteBuilder {
 
     @Override
     public void configureRoute() throws Exception {
-		buildCallbackRoute(CimCore.ROUTE_NAME, GET_USER_ROUTE)
+		buildWrappedRoute(CimCore.ROUTE_NAME, GET_USER_ROUTE)
 				.process(new GetUserProcessor());
 
-		buildCallbackRoute(CimCore.ROUTE_NAME, GET_USER_TASK_ROUTE)
+		buildWrappedRoute(CimCore.ROUTE_NAME, GET_USER_TASK_ROUTE)
 				.process(new GetUserTasksProcessor());
 	}
 }

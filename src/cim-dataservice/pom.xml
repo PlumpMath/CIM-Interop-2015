@@ -9,8 +9,9 @@
     <version>1.0-SNAPSHOT</version>
 
     <properties>
-        <camel_version>2.15.4</camel_version>
+        <camel_version>2.15.5</camel_version>
         <wagon_version>1.0-beta-5</wagon_version>
+        <cucumber_version>1.2.4</cucumber_version>
     </properties>
 
     <distributionManagement>
@@ -84,6 +85,19 @@
             <groupId>log4j</groupId>
             <artifactId>log4j</artifactId>
             <version>1.2.17</version>
+        </dependency>
+
+        <dependency>
+            <groupId>info.cukes</groupId>
+            <artifactId>cucumber-java</artifactId>
+            <scope>test</scope>
+            <version>${cucumber_version}</version>
+        </dependency>
+        <dependency>
+            <groupId>info.cukes</groupId>
+            <artifactId>cucumber-jvm</artifactId>
+            <version>${cucumber_version}</version>
+            <type>pom</type>
         </dependency>
     </dependencies>
 

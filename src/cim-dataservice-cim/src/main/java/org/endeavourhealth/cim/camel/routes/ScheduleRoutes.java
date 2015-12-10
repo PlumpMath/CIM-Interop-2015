@@ -9,7 +9,7 @@ public class ScheduleRoutes extends BaseRouteBuilder {
 
     @Override
     public void configureRoute() throws Exception {
-		buildCallbackRoute(CimCore.ROUTE_NAME, GET_SCHEDULES_ROUTE)
+		buildWrappedRoute(CimCore.ROUTE_NAME, GET_SCHEDULES_ROUTE)
 			.process(new GetSchedulesProcessor());
     }
 }

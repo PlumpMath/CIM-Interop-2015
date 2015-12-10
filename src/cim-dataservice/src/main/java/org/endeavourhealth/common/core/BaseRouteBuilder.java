@@ -3,7 +3,6 @@ package org.endeavourhealth.common.core;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.model.RouteDefinition;
 import org.endeavourhealth.common.camel.QueueReader;
-import org.endeavourhealth.common.processor.RabbitDestinationQueueProcessor;
 import org.endeavourhealth.core.repository.common.data.RepositoryException;
 import org.endeavourhealth.core.repository.rabbit.RabbitConfig;
 import org.endeavourhealth.core.repository.rabbit.ConfigRepository;
@@ -25,50 +24,30 @@ public abstract class BaseRouteBuilder extends RouteBuilder {
 		return "direct:"+routeName;
 	}
 
-	protected String queueWriter(String routeName) throws RepositoryException, DeserializationException {
+	protected String queued(String routeName) throws RepositoryException, DeserializationException {
 		String inboundQueueRoute = routeName+"Queue";
 
 		from(direct(inboundQueueRoute))
 			.routeId(inboundQueueRoute)
-			.process(new RabbitDestinationQueueProcessor())
+			.setHeader("rabbitmq.ROUTING_KEY",
+					xpath("/f:Bundle/f:entry/f:resource/f:MessageHeader/f:source/f:extension[@url=\"http://endeavour-health.org/fhir/StructureDefinition/endeavour-identifier-extension\"]/f:valueString/@value", String.class)
+							.namespace("f", "http://hl7.org/fhir"))
 			.setHeader(QueueReader.DESTINATION_ROUTE, constant(direct(routeName)))
 			.to(rabbitQueueWriter());
 
 		return direct(inboundQueueRoute);
 	}
 
-	public RouteDefinition buildCallbackRoute(String coreName, String routeName) {
-		String callbackRoute = routeName+"Callback";
+	public RouteDefinition buildWrappedRoute(String coreName, String routeName) {
+		String wrappedRoute = routeName + "Internal";
 
 		from(direct(routeName))
 				.routeId(routeName)
-				.setProperty(HeaderKey.MessageRouterCallback, constant(direct(callbackRoute)))
+				.setProperty(HeaderKey.WrappedRouteCallback, constant(direct(wrappedRoute)))
 				.to(direct(coreName));
 
-		return from(direct(callbackRoute))
-				.routeId(callbackRoute);
-	}
-
-	public RouteDefinition buildQueuedCallbackRoute(String coreName, String routeName) throws RepositoryException, DeserializationException {
-		String callbackRoute = routeName+"Callback";
-		String resultRoute = routeName+"Response";
-
-		from(direct(routeName))
-			.routeId(routeName)
-			.setProperty(HeaderKey.MessageRouterCallback, constant(direct(callbackRoute)))
-			.to(direct(coreName))
-			.setHeader(QueueReader.DESTINATION_ROUTE, constant(direct(resultRoute)))
-			.process(new RabbitDestinationQueueProcessor())
-			.to(rabbitQueueWriter());
-
-		from(direct(resultRoute))
-			.routeId(resultRoute)
-			.removeHeaders("camel*")	// Needed to prevent overriding routingKey in camel endpoint
-			.recipientList(simple("${header.response_uri}"));
-
-
-		return from(direct(callbackRoute))
-				.routeId(callbackRoute);
+		return from(direct(wrappedRoute))
+				.routeId(wrappedRoute);
 	}
 
     public abstract void configureRoute() throws Exception;

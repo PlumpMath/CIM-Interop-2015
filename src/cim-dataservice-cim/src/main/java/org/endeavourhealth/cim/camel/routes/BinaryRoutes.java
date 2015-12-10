@@ -9,7 +9,7 @@ public class BinaryRoutes extends BaseRouteBuilder {
 
     @Override
     public void configureRoute() throws Exception {
-        buildCallbackRoute(CimCore.ROUTE_NAME, GET_BINARY_ROUTE)
+        buildWrappedRoute(CimCore.ROUTE_NAME, GET_BINARY_ROUTE)
             .process(new GetBinaryObjectProcessor());
     }
 }

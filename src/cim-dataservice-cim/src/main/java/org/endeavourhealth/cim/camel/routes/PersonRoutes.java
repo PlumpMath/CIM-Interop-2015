@@ -14,7 +14,7 @@ public class PersonRoutes extends BaseRouteBuilder {
     @Override
     public void configureRoute() throws Exception {
 
-        buildCallbackRoute(CimCore.ROUTE_NAME, TRACE_PERSON_ROUTE)
+        buildWrappedRoute(CimCore.ROUTE_NAME, TRACE_PERSON_ROUTE)
             .setBody(constant(DataManagerFactory.getAllDataAdapters()))
             .setHeader(CIMHeaderKey.AdapterCount, simple("${body.size}"))
             .split(body(), new ArrayListAggregationStrategy())

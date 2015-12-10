@@ -19,11 +19,10 @@ public class SecurityProcessor implements Processor {
         String method = ExchangeHelper.getEndpointPath(exchange);
         String body = ExchangeHelper.getInBodyString(exchange);
 
-        if (!validateMessage(apiKey, method, body, inboundHash))
-            throw new SecurityFailedException();
+        validateMessage(apiKey, method, body, inboundHash);
     }
 
-    private Boolean validateMessage(String apiKey, String method, String body, String inboundHash) throws SecurityFailedException {
+    private void validateMessage(String apiKey, String method, String body, String inboundHash) throws SecurityFailedException {
 
 		if (apiKey == null || apiKey.isEmpty())
 			throw new SecurityFailedException("Missing Api key");
@@ -34,29 +33,32 @@ public class SecurityProcessor implements Processor {
             user = UserRepository.getInstance().getByApiKey(apiKey);
         }
         catch (RepositoryException re) {
-            return false;
+            throw new SecurityFailedException("User repository error");
         }
 
         if (user == null)
-            return false;
+			throw new SecurityFailedException("Invalid user");
 
         String userSecret = user.getSecret();
 
         if (userSecret == null)
-            return false;
+			throw new SecurityFailedException("User has no secret");
 
         String data = method;
         if (body != null)
             data += body;
 
         // Hash data based on private key
+		String hash;
         try {
-            String hash = Util.generateHmacSha256Hash(userSecret, data);
-			// Compare to inbound hash
-            return hash.equals(inboundHash);
+            hash = Util.generateHmacSha256Hash(userSecret, data);
         } catch (Exception e) {
             e.printStackTrace();
-            return false;
+			throw new SecurityFailedException("Hash calculation error");
         }
+
+		// Compare to inbound hash
+		if (hash.equals(inboundHash) == false)
+			throw new SecurityFailedException("Incorrect hash");
     }
 }

@@ -13,6 +13,6 @@ public class Response extends BaseRouteBuilder {
         from(direct(ComponentRouteName.RESPONSE))
             .routeId(ComponentRouteName.RESPONSE)
             .process(new ResponseProcessor())
-			.recipientList(simple("${header.response_uri}"));
+			.recipientList(simple("${header.response-url}"));
     }
 }

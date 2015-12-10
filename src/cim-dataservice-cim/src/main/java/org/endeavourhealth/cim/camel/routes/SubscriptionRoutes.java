@@ -9,7 +9,7 @@ public class SubscriptionRoutes extends BaseRouteBuilder {
 
     @Override
     public void configureRoute() throws Exception {
-        buildCallbackRoute(CimCore.ROUTE_NAME, ADD_SUBSCRIPTION_ROUTE)
+        buildWrappedRoute(CimCore.ROUTE_NAME, ADD_SUBSCRIPTION_ROUTE)
             .process(new AddSubscriptionProcessor());
     }
 }

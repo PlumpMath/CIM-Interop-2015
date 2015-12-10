@@ -42,12 +42,6 @@
           <element id="library" level="project" name="Maven: log4j:log4j:1.2.17" />
           <element id="library" level="project" name="Maven: me.fhir:fhir-dstu2:1.0.0.6881" />
           <element id="library" level="project" name="Maven: net.sf.saxon:Saxon-HE:9.5.1-5" />
-          <element id="library" level="project" name="Maven: org.apache.camel:camel-core:2.15.4" />
-          <element id="library" level="project" name="Maven: org.apache.camel:camel-http:2.15.4" />
-          <element id="library" level="project" name="Maven: org.apache.camel:camel-jackson:2.15.4" />
-          <element id="library" level="project" name="Maven: org.apache.camel:camel-rabbitmq:2.15.4" />
-          <element id="library" level="project" name="Maven: org.apache.camel:camel-servlet:2.15.4" />
-          <element id="library" level="project" name="Maven: org.apache.camel:camel-servletlistener:2.15.4" />
           <element id="library" level="project" name="Maven: org.apache.commons:commons-lang3:3.3.2" />
           <element id="library" level="project" name="Maven: org.apache.geronimo.specs:geronimo-servlet_3.0_spec:1.0" />
           <element id="library" level="project" name="Maven: org.hamcrest:hamcrest-core:1.3" />
@@ -62,6 +56,12 @@
           <element id="library" level="project" name="Maven: org.apache.httpcomponents:httpcore:4.2.2" />
           <element id="library" level="project" name="Maven: org.apache.httpcomponents:httpclient:4.2.3" />
           <element id="library" level="project" name="Maven: commons-httpclient:commons-httpclient:3.1" />
+          <element id="library" level="project" name="Maven: org.apache.camel:camel-core:2.15.5" />
+          <element id="library" level="project" name="Maven: org.apache.camel:camel-http:2.15.5" />
+          <element id="library" level="project" name="Maven: org.apache.camel:camel-rabbitmq:2.15.5" />
+          <element id="library" level="project" name="Maven: org.apache.camel:camel-jackson:2.15.5" />
+          <element id="library" level="project" name="Maven: org.apache.camel:camel-servlet:2.15.5" />
+          <element id="library" level="project" name="Maven: org.apache.camel:camel-servletlistener:2.15.5" />
         </element>
       </element>
       <element id="javaee-facet-resources" facet="cim-dataservice/web/Web" />

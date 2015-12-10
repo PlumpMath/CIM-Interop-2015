@@ -4,14 +4,13 @@ import org.endeavourhealth.async.processor.*;
 import org.endeavourhealth.common.core.BaseRouteBuilder;
 
 @SuppressWarnings({"WeakerAccess", "unused"})
-public class BulkPatientRoutes extends BaseRouteBuilder {
-	public static final String POST_BULK_PATIENT_ROUTE = "PostBulkPatient";
+public class ProcessMessageRoute extends BaseRouteBuilder {
+	public static final String ROUTE_NAME = "ProcessMessage";
 
 	@Override
 	public void configureRoute() throws Exception {
-		final String BASE_PATH = "/Bulk/Patient";
-
-		buildQueuedCallbackRoute(AsyncCore.ROUTE_NAME, POST_BULK_PATIENT_ROUTE)
+		// buildWrappedRouteWithQueuedResponse(AsyncCore.ROUTE_NAME, ROUTE_NAME)
+		buildWrappedRoute(RouteWrapper.ROUTE_NAME, ROUTE_NAME)
 			.process(new TransformationToFhir())
 			.process(new CacheFullRecord())
 			.process(new LoadInformationSharingProtocols())
@@ -19,6 +18,6 @@ public class BulkPatientRoutes extends BaseRouteBuilder {
 				.process(new ApplyInformationSharingProtocol())
 				.process(new GetProtocolSubscribers())
 				.recipientList(header("subscribers"))
-				.end();
+			.end();
 	}
 }

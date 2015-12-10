@@ -10,7 +10,7 @@
 
 
     <properties>
-        <camel_version>2.15.4</camel_version>
+        <camel_version>2.15.5</camel_version>
     </properties>
 
     <dependencies>

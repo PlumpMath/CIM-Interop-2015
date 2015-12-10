@@ -13,13 +13,13 @@ public class SlotRoutes extends BaseRouteBuilder {
 
     @Override
     public void configureRoute() throws Exception {
-        buildCallbackRoute(CimCore.ROUTE_NAME, GET_SLOTS_ROUTE)
+        buildWrappedRoute(CimCore.ROUTE_NAME, GET_SLOTS_ROUTE)
             .process(new GetSlotsProcessor());
 
-        buildCallbackRoute(CimCore.ROUTE_NAME, BOOK_SLOT_ROUTE)
+        buildWrappedRoute(CimCore.ROUTE_NAME, BOOK_SLOT_ROUTE)
             .process(new BookSlotProcessor());
 
-        buildCallbackRoute(CimCore.ROUTE_NAME, CANCEL_SLOT_ROUTE)
+        buildWrappedRoute(CimCore.ROUTE_NAME, CANCEL_SLOT_ROUTE)
             .process(new CancelSlotProcessor());
     }
 }

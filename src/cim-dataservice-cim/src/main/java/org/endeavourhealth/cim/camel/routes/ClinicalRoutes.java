@@ -13,19 +13,19 @@ public class ClinicalRoutes extends BaseRouteBuilder {
 
     @Override
     public void configureRoute() throws Exception {
-        buildCallbackRoute(CimCore.ROUTE_NAME, GET_ALLERGY_INTOLERANCES_ROUTE)
+        buildWrappedRoute(CimCore.ROUTE_NAME, GET_ALLERGY_INTOLERANCES_ROUTE)
             .process(new GetAllergyIntolerancesProcessor());
 
-		buildCallbackRoute(CimCore.ROUTE_NAME,GET_CONDITION_ROUTE)
+		buildWrappedRoute(CimCore.ROUTE_NAME,GET_CONDITION_ROUTE)
 			.process(new GetConditionsProcessor());
 
-		buildCallbackRoute(CimCore.ROUTE_NAME,POST_CONDITION_ROUTE)
+		buildWrappedRoute(CimCore.ROUTE_NAME,POST_CONDITION_ROUTE)
 			.process(new AddConditionProcessor());
 
-		buildCallbackRoute(CimCore.ROUTE_NAME,GET_IMMUNIZATIONS_ROUTE)
+		buildWrappedRoute(CimCore.ROUTE_NAME,GET_IMMUNIZATIONS_ROUTE)
 			.process(new GetImmunizationsProcessor());
 
-		buildCallbackRoute(CimCore.ROUTE_NAME,GET_PRESCRIPTIONS_ROUTE)
+		buildWrappedRoute(CimCore.ROUTE_NAME,GET_PRESCRIPTIONS_ROUTE)
 			.process(new GetMedicationPrescriptionsProcessor());
 
     }

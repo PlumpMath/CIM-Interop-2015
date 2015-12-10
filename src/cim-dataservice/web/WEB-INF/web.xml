@@ -23,7 +23,7 @@
     </context-param>
     <context-param>
         <param-name>properties.readerQueueName</param-name>
-        <param-value>N-Z</param-value>
+        <param-value>ODS_CODE_12345</param-value>
     </context-param>
     <!-- the listener that kick-starts Camel -->
     <listener>

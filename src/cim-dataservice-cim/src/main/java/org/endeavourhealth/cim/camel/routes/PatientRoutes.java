@@ -19,16 +19,16 @@ public class PatientRoutes extends BaseRouteBuilder {
 
     @Override
     public void configureRoute() throws Exception {
-		buildCallbackRoute(CimCore.ROUTE_NAME, GET_DEMOGRAPHIC_PATIENT_ROUTE)
+		buildWrappedRoute(CimCore.ROUTE_NAME, GET_DEMOGRAPHIC_PATIENT_ROUTE)
 			.process(new GetDemographicPatientProcessor());
 
-		buildCallbackRoute(CimCore.ROUTE_NAME, GET_FULL_PATIENT_ROUTE)
+		buildWrappedRoute(CimCore.ROUTE_NAME, GET_FULL_PATIENT_ROUTE)
 			.process(new GetFullPatientRecordProcessor());
 
-		buildCallbackRoute(CimCore.ROUTE_NAME, GET_PATIENT_TASKS_ROUTE)
+		buildWrappedRoute(CimCore.ROUTE_NAME, GET_PATIENT_TASKS_ROUTE)
 			.process(new GetPatientTasksProcessor());
 
-		buildCallbackRoute(CimCore.ROUTE_NAME, GET_PATIENT_BY_QUERY_ROUTE)
+		buildWrappedRoute(CimCore.ROUTE_NAME, GET_PATIENT_BY_QUERY_ROUTE)
 			.choice()
 				.when(simple("${header." + CIMHeaderKey.Identifier + "} != null"))
 				.routeId("GetPatientByIdentifier")

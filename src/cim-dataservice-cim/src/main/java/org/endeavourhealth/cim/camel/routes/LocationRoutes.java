@@ -9,7 +9,7 @@ public class LocationRoutes extends BaseRouteBuilder {
 
     @Override
     public void configureRoute() throws Exception {
-        buildCallbackRoute(CimCore.ROUTE_NAME, GET_LOCATION_ROUTE)
+        buildWrappedRoute(CimCore.ROUTE_NAME, GET_LOCATION_ROUTE)
             .process(new GetLocationProcessor());
     }
 }

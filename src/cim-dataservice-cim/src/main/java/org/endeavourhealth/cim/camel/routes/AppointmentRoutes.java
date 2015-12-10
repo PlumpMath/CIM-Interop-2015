@@ -9,7 +9,7 @@ public class AppointmentRoutes extends BaseRouteBuilder {
 
     @Override
     public void configureRoute() throws Exception {
-        buildCallbackRoute(CimCore.ROUTE_NAME, GET_APPOINTMENTS_ROUTE)
+        buildWrappedRoute(CimCore.ROUTE_NAME, GET_APPOINTMENTS_ROUTE)
             .process(new GetAppointmentsProcessor());
     }
 }

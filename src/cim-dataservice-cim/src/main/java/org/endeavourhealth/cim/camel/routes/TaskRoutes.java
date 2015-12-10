@@ -13,13 +13,13 @@ public class TaskRoutes extends BaseRouteBuilder {
 
     @Override
     public void configureRoute() throws Exception {
-		buildCallbackRoute(CimCore.ROUTE_NAME, GET_TASK_ROUTE)
+		buildWrappedRoute(CimCore.ROUTE_NAME, GET_TASK_ROUTE)
             .process(new GetTaskProcessor());
 
-		buildCallbackRoute(CimCore.ROUTE_NAME, GET_ORGANISATION_TASKS_ROUTE)
+		buildWrappedRoute(CimCore.ROUTE_NAME, GET_ORGANISATION_TASKS_ROUTE)
 			.process(new GetOrganisationTasksProcessor());
 
-		buildCallbackRoute(CimCore.ROUTE_NAME, POST_TASK_ROUTE)
+		buildWrappedRoute(CimCore.ROUTE_NAME, POST_TASK_ROUTE)
 			.process(new AddTaskProcessor());
     }
 }
