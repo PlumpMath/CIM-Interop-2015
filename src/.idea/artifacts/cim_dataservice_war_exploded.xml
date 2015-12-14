@@ -62,6 +62,7 @@
           <element id="library" level="project" name="Maven: org.apache.camel:camel-jackson:2.15.5" />
           <element id="library" level="project" name="Maven: org.apache.camel:camel-servlet:2.15.5" />
           <element id="library" level="project" name="Maven: org.apache.camel:camel-servletlistener:2.15.5" />
+          <element id="library" level="project" name="Maven: org.apache.camel:camel-base64:2.15.5" />
         </element>
       </element>
       <element id="javaee-facet-resources" facet="cim-dataservice/web/Web" />

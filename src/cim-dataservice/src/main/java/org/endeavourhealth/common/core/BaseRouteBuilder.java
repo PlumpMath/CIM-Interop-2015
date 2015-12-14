@@ -1,5 +1,6 @@
 package org.endeavourhealth.common.core;
 
+import org.apache.camel.Expression;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.model.RouteDefinition;
 import org.endeavourhealth.common.camel.QueueReader;
@@ -9,7 +10,6 @@ import org.endeavourhealth.core.repository.rabbit.ConfigRepository;
 import org.endeavourhealth.core.serializer.DeserializationException;
 
 public abstract class BaseRouteBuilder extends RouteBuilder {
-
     @Override
     public void configure() throws Exception {
 
@@ -24,15 +24,13 @@ public abstract class BaseRouteBuilder extends RouteBuilder {
 		return "direct:"+routeName;
 	}
 
-	protected String queued(String routeName) throws RepositoryException, DeserializationException {
+	protected String queued(String routeName, Expression queueName) throws RepositoryException, DeserializationException {
 		String inboundQueueRoute = routeName+"Queue";
 
 		from(direct(inboundQueueRoute))
 			.routeId(inboundQueueRoute)
-			.setHeader("rabbitmq.ROUTING_KEY",
-					xpath("/f:Bundle/f:entry/f:resource/f:MessageHeader/f:source/f:extension[@url=\"http://endeavour-health.org/fhir/StructureDefinition/endeavour-identifier-extension\"]/f:valueString/@value", String.class)
-							.namespace("f", "http://hl7.org/fhir"))
 			.setHeader(QueueReader.DESTINATION_ROUTE, constant(direct(routeName)))
+			.setHeader("rabbitmq.ROUTING_KEY", queueName)
 			.to(rabbitQueueWriter());
 
 		return direct(inboundQueueRoute);

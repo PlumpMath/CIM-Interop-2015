@@ -13,7 +13,7 @@ public interface IRegistry {
     String getEmisSoapUri();
     String getBaseUri(String odsCode);
 
-	IRecordTransformer getTransformerForApiKey(String apiKey);
+	IRecordTransformer getTransformerForContentType(String contentType);
 
 	InformationSharingProtocol[] getDataDistributionProtocolsForApiKey(String apiKey);
 }

@@ -14,5 +14,6 @@ public abstract class ComponentRouteName {
     public static final String PAYLOAD_VALIDATION = "PayloadValidation";
     public static final String RESPONSE = "Response";
     public static final String SECURITY = "Security";
+	public static final String TRANSFORM_TO_FHIR = "TransformToFhir";
 	public static final String FHIR_VALIDATION = "FhirValidation";
 }

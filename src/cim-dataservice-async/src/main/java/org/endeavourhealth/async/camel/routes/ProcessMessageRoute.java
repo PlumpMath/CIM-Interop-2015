@@ -1,23 +1,40 @@
 package org.endeavourhealth.async.camel.routes;
 
-import org.endeavourhealth.async.processor.*;
+import org.endeavourhealth.cim.transform.exceptions.SourceDocumentInvalidException;
 import org.endeavourhealth.common.core.BaseRouteBuilder;
+import org.endeavourhealth.common.core.ComponentRouteName;
+import org.endeavourhealth.common.core.HeaderKey;
 
 @SuppressWarnings({"WeakerAccess", "unused"})
 public class ProcessMessageRoute extends BaseRouteBuilder {
 	public static final String ROUTE_NAME = "ProcessMessage";
+	public static final String SENDING_ORGANISATION = "SendingOrganisation";
+	public static final String MESSAGE_EVENT = MessageEventRoutingLogic.MESSAGE_EVENT;
+	public static final String CONTENT_TYPE = TransformToFhir.CONTENT_TYPE;
+	public static final String ASYNC = "async";
 
 	@Override
 	public void configureRoute() throws Exception {
-		// buildWrappedRouteWithQueuedResponse(AsyncCore.ROUTE_NAME, ROUTE_NAME)
-		buildWrappedRoute(RouteWrapper.ROUTE_NAME, ROUTE_NAME)
-			.process(new TransformationToFhir())
-			.process(new CacheFullRecord())
-			.process(new LoadInformationSharingProtocols())
-			.split(header("protocols"))
-				.process(new ApplyInformationSharingProtocol())
-				.process(new GetProtocolSubscribers())
-				.recipientList(header("subscribers"))
+		from(direct(ROUTE_NAME))
+			.routeId(ROUTE_NAME)
+			.wireTap(direct(ComponentRouteName.AUDIT))
+				.newExchangeHeader(HeaderKey.TapLocation, constant("Inbound"))
+			.end()
+			// .to(direct(ComponentRouteName.SECURITY)) api_key based - needs replacing?
+			.choice()
+				.when(simple("${header."+SENDING_ORGANISATION+"} == null || ${header."+SENDING_ORGANISATION+"} == \"\""))
+					.throwException(new SourceDocumentInvalidException("Sending organisation not specified"))
+				.when(simple("${header."+MESSAGE_EVENT+"} == null || ${header."+MESSAGE_EVENT+"} == \"\""))
+					.throwException(new SourceDocumentInvalidException("Message event not specified"))
+				.when(simple("${header."+CONTENT_TYPE+"} == null || ${header."+CONTENT_TYPE+"} == \"\""))
+					.throwException(new SourceDocumentInvalidException("Content type not specified"))
+				.otherwise()
+					.choice()
+						.when(header(ASYNC).isEqualTo("true"))
+							.to(queued(MessageEventRoutingLogic.ROUTE_NAME, header(SENDING_ORGANISATION)))
+						.otherwise()
+							.to(direct(MessageEventRoutingLogic.ROUTE_NAME))
+					.end()
 			.end();
 	}
 }

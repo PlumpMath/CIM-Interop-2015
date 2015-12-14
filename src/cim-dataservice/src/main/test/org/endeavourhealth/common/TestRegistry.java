@@ -32,7 +32,7 @@ public class TestRegistry implements IRegistry {
     }
 
 	@Override
-	public IRecordTransformer getTransformerForApiKey(String apiKey) {
+	public IRecordTransformer getTransformerForContentType(String contentType) {
 		return null;
 	}
 

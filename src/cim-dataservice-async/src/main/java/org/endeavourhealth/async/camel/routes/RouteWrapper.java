@@ -12,6 +12,7 @@ public class RouteWrapper extends BaseRouteBuilder {
     public void configureRoute() throws Exception {
         from(direct(ROUTE_NAME))
             .routeId(ROUTE_NAME)
+			.to(direct(ComponentRouteName.LOAD_DATA_PROTOCOL))
 			.to(direct(ComponentRouteName.PAYLOAD_VALIDATION))
 			.to(direct(ComponentRouteName.WRAPPED_ROUTE_CALLBACK))
 			.to(direct(ComponentRouteName.DATA_AGGREGATOR))
