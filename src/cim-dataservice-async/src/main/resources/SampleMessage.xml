@@ -12,10 +12,7 @@
                     <code value="bulkPatient" />
                 </event>
                 <source>
-                    <extension url="http://endeavour-health.org/fhir/StructureDefinition/endeavour-identifier-extension">
-                        <valueString value="ODS_CODE_12345"/>
-                    </extension>
-                    <endpoint id="EmisWeb"/>
+                    <endpoint value="urn:x-fhir:uk:nhs:id:ODSOrganisationCode:ODS_CODE_12345"/>
                 </source>
                 <data>
                     <reference value="Binary/bd40d2fa-a09c-4525-a576-f30a3031e148" />

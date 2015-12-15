@@ -17,8 +17,12 @@ public class ProcessMessageEndpointREST extends BaseRouteBuilder{
 			.routeId(HttpVerb.POST + BASE_PATH)
 			.streamCaching()
 			.to(direct(ComponentRouteName.FHIR_VALIDATION))
-			.setHeader(ProcessMessageRoute.SENDING_ORGANISATION, xpath("/f:Bundle/f:entry/f:resource/f:MessageHeader/f:source/f:extension[@url=\"http://endeavour-health.org/fhir/StructureDefinition/endeavour-identifier-extension\"]/f:valueString/@value", String.class)
-					.namespace("f", "http://hl7.org/fhir"))
+			.setHeader(
+				ProcessMessageRoute.SENDING_ORGANISATION,
+				xpath(
+					"substring-after(/f:Bundle/f:entry/f:resource/f:MessageHeader/f:source/f:endpoint/@value,\"urn:x-fhir:uk:nhs:id:ODSOrganisationCode:\")",
+					String.class)
+						.namespace("f", "http://hl7.org/fhir"))
 			.setHeader(ProcessMessageRoute.MESSAGE_EVENT, xpath("/f:Bundle/f:entry/f:resource/f:MessageHeader/f:event/f:code/@value", String.class)
 					.namespace("f", "http://hl7.org/fhir"))
 			.setHeader(ProcessMessageRoute.CONTENT_TYPE, xpath("/f:Bundle/f:entry/f:resource/f:Binary/f:contentType/@value", String.class)
