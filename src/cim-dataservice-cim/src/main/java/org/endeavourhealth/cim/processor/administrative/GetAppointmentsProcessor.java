@@ -25,7 +25,7 @@ public class GetAppointmentsProcessor implements Processor {
 		Date toDate;
 
 		try {
-			odsCode = ExchangeHelper.getInHeaderString(exchange, HeaderKey.OdsCode, true);
+			odsCode = ExchangeHelper.getInHeaderString(exchange, HeaderKey.DestinationOdsCode, true);
 			patientId = ExchangeHelper.getInHeaderString(exchange, CIMHeaderKey.Patient, true);
 
 			DateSearchParameter date = null;

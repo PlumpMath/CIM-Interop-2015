@@ -12,7 +12,7 @@ public class GetLocationProcessor implements Processor {
 
 	@SuppressWarnings("unchecked")
 	public void process(Exchange exchange) throws Exception {
-		String odsCode = ExchangeHelper.getInHeaderString(exchange, HeaderKey.OdsCode, true);
+		String odsCode = ExchangeHelper.getInHeaderString(exchange, HeaderKey.DestinationOdsCode, true);
 		String locationId = ExchangeHelper.getInHeaderString(exchange, CIMHeaderKey.Id, true);
 
 		IDataManager dataManager = DataManagerFactory.getDataManagerForService(odsCode);

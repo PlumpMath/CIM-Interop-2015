@@ -11,7 +11,7 @@ public class GetUserTasksProcessor implements org.apache.camel.Processor {
 	@Override
 	public void process(Exchange exchange) throws Exception {
 
-		String odsCode = ExchangeHelper.getInHeaderString(exchange, HeaderKey.OdsCode, true);
+		String odsCode = ExchangeHelper.getInHeaderString(exchange, HeaderKey.DestinationOdsCode, true);
 		String userId = ExchangeHelper.getInHeaderString(exchange, CIMHeaderKey.Id, true);
 
 		IDataManager dataManager = DataManagerFactory.getDataManagerForService(odsCode);

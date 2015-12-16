@@ -26,7 +26,7 @@ public class GetSchedulesProcessor implements Processor {
 		String practitioner = null;
 
 		try {
-			odsCode = ExchangeHelper.getInHeaderString(exchange, HeaderKey.OdsCode, true);
+			odsCode = ExchangeHelper.getInHeaderString(exchange, HeaderKey.DestinationOdsCode, true);
 			DateSearchParameter date = null;
 
 			if (ExchangeHelper.hasInHeader(exchange, CIMHeaderKey.ActorPractitioner))

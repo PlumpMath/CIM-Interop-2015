@@ -35,7 +35,7 @@ public class PatientRoutes extends BaseRouteBuilder {
 				.process(new GetPatientByIdentifierProcessor())
 			.when(simple("${header." + CIMHeaderKey.LastUpdated + "} != null"))
 				.routeId("GetChangedPatients")
-				.process(new GetChangedPatientsProcessor(header(HeaderKey.OdsCode).toString()))
+				.process(new GetChangedPatientsProcessor(header(HeaderKey.DestinationOdsCode).toString()))
 			.when(simple("${header." + CIMHeaderKey.Active + "} == true"))
 				.routeId("GetActivePatients")
 				.process(new GetAllPatientsProcessor(true))

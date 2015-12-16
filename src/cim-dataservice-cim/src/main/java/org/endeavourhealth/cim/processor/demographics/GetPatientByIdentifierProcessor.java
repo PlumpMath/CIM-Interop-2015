@@ -11,7 +11,7 @@ public class GetPatientByIdentifierProcessor implements org.apache.camel.Process
 
     public void process(Exchange exchange) throws Exception {
 
-        String odsCode = ExchangeHelper.getInHeaderString(exchange, HeaderKey.OdsCode);
+        String odsCode = ExchangeHelper.getInHeaderString(exchange, HeaderKey.DestinationOdsCode);
         String identifier = ExchangeHelper.getInHeaderString(exchange, CIMHeaderKey.Identifier);
 
         String nhsNumber = identifier.substring(identifier.indexOf('|')+1);

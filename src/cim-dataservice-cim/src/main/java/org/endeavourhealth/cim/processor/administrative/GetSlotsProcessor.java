@@ -13,7 +13,7 @@ public class GetSlotsProcessor implements Processor {
 	@SuppressWarnings("unchecked")
 	public void process(Exchange exchange) throws Exception {
 
-		String odsCode = ExchangeHelper.getInHeaderString(exchange, HeaderKey.OdsCode, true);
+		String odsCode = ExchangeHelper.getInHeaderString(exchange, HeaderKey.DestinationOdsCode, true);
 		String scheduleId = ExchangeHelper.getInHeaderString(exchange, CIMHeaderKey.Schedule, true);
 
 		IDataManager dataManager = DataManagerFactory.getDataManagerForService(odsCode);

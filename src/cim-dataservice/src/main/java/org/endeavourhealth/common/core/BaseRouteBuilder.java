@@ -41,7 +41,7 @@ public abstract class BaseRouteBuilder extends RouteBuilder {
 
 		from(direct(routeName))
 				.routeId(routeName)
-				.setProperty(HeaderKey.WrappedRouteCallback, constant(direct(wrappedRoute)))
+				.setProperty(PropertyKey.WrappedRouteCallback, constant(direct(wrappedRoute)))
 				.to(direct(coreName));
 
 		return from(direct(wrappedRoute))

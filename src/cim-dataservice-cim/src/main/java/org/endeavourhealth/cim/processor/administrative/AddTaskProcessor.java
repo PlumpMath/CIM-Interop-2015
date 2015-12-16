@@ -9,7 +9,7 @@ import org.endeavourhealth.common.core.HeaderKey;
 public class AddTaskProcessor implements org.apache.camel.Processor {
 	@Override
 	public void process(Exchange exchange) throws Exception {
-		String odsCode = ExchangeHelper.getInHeaderString(exchange, HeaderKey.OdsCode, true);
+		String odsCode = ExchangeHelper.getInHeaderString(exchange, HeaderKey.DestinationOdsCode, true);
 		String taskData = ExchangeHelper.getInBodyString(exchange);
 
 		IDataManager dataManager = DataManagerFactory.getDataManagerForService(odsCode);

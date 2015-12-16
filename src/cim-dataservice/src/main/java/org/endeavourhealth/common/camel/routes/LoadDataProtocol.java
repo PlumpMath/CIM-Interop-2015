@@ -1,6 +1,6 @@
 package org.endeavourhealth.common.camel.routes;
 
-import org.endeavourhealth.common.processor.DataProtocolProcessor;
+import org.endeavourhealth.common.processor.LoadDataProtocols;
 import org.endeavourhealth.common.core.BaseRouteBuilder;
 import org.endeavourhealth.common.core.ComponentRouteName;
 
@@ -12,6 +12,6 @@ public class LoadDataProtocol extends BaseRouteBuilder {
 
         from(direct(ComponentRouteName.LOAD_DATA_PROTOCOL))
             .routeId(ComponentRouteName.LOAD_DATA_PROTOCOL)
-            .process(new DataProtocolProcessor());
+            .process(new LoadDataProtocols());
     }
 }

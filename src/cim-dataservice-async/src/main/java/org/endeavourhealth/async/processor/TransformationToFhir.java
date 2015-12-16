@@ -8,7 +8,7 @@ import org.endeavourhealth.async.camel.routes.TransformToFhir;
 public class TransformationToFhir implements org.apache.camel.Processor {
 	@Override
 	public void process(Exchange exchange) throws Exception {
-		String contentType = (String)exchange.getIn().getHeader(TransformToFhir.CONTENT_TYPE);
+		String contentType = exchange.getIn().getHeader(TransformToFhir.CONTENT_TYPE, String.class);
 		IRecordTransformer transformer = Registry.Instance().getTransformerForContentType(contentType);
 		exchange.getIn().setBody(transformer.toFhirCareRecord(exchange.getIn().getBody(String.class)));
 	}

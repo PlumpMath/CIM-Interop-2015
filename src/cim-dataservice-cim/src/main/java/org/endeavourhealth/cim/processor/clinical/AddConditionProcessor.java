@@ -11,7 +11,7 @@ public class AddConditionProcessor implements Processor {
 
     public void process(Exchange exchange) throws Exception {
 
-        String odsCode = ExchangeHelper.getInHeaderString(exchange, HeaderKey.OdsCode);
+        String odsCode = ExchangeHelper.getInHeaderString(exchange, HeaderKey.DestinationOdsCode);
         String requestBody = ExchangeHelper.getInBodyString(exchange);
 
         IDataManager dataManager = DataManagerFactory.getDataManagerForService(odsCode);

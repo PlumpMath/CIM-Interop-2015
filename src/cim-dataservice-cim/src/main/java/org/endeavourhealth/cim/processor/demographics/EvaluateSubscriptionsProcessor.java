@@ -17,7 +17,7 @@ public class EvaluateSubscriptionsProcessor implements org.apache.camel.Processo
     @Override
     public void process(Exchange exchange) throws Exception {
         String patientId = ExchangeHelper.getInBodyString(exchange);
-        String odsCode = ExchangeHelper.getInHeaderString(exchange, HeaderKey.OdsCode);
+        String odsCode = ExchangeHelper.getInHeaderString(exchange, HeaderKey.DestinationOdsCode);
 
         ArrayList<String> subscriberCallbacks = new ArrayList<>();
 

@@ -27,7 +27,7 @@ public class GetChangedPatientsProcessor implements org.apache.camel.Processor {
     @Override
     public void process(Exchange exchange) throws Exception {
 
-        String odsCode = ExchangeHelper.getInHeaderString(exchange, HeaderKey.OdsCode);
+        String odsCode = ExchangeHelper.getInHeaderString(exchange, HeaderKey.DestinationOdsCode);
         String lastUpdate = ExchangeHelper.getInHeaderString(exchange, CIMHeaderKey.LastUpdated);
 
         Date dateUpdated = null;

@@ -4,11 +4,12 @@ import org.endeavourhealth.cim.transform.exceptions.SourceDocumentInvalidExcepti
 import org.endeavourhealth.common.core.BaseRouteBuilder;
 import org.endeavourhealth.common.core.ComponentRouteName;
 import org.endeavourhealth.common.core.HeaderKey;
+import org.endeavourhealth.common.core.PropertyKey;
 
 @SuppressWarnings({"WeakerAccess", "unused"})
 public class ProcessMessageRoute extends BaseRouteBuilder {
 	public static final String ROUTE_NAME = "ProcessMessage";
-	public static final String SENDING_ORGANISATION = "SendingOrganisation";
+	public static final String SENDING_ORGANISATION = PropertyKey.SourceOdsCode;
 	public static final String MESSAGE_EVENT = MessageEventRoutingLogic.MESSAGE_EVENT;
 	public static final String CONTENT_TYPE = TransformToFhir.CONTENT_TYPE;
 	public static final String ASYNC = "async";
@@ -18,7 +19,7 @@ public class ProcessMessageRoute extends BaseRouteBuilder {
 		from(direct(ROUTE_NAME))
 			.routeId(ROUTE_NAME)
 			.wireTap(direct(ComponentRouteName.AUDIT))
-				.newExchangeHeader(HeaderKey.TapLocation, constant("Inbound"))
+				.setProperty(PropertyKey.TapLocation, constant("Inbound"))
 			.end()
 			// .to(direct(ComponentRouteName.SECURITY)) api_key based - needs replacing?
 			.choice()

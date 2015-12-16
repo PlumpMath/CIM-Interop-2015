@@ -4,6 +4,7 @@ import org.apache.camel.LoggingLevel;
 import org.endeavourhealth.common.core.HeaderKey;
 import org.endeavourhealth.common.core.BaseRouteBuilder;
 import org.endeavourhealth.common.core.ComponentRouteName;
+import org.endeavourhealth.common.core.PropertyKey;
 
 @SuppressWarnings("unused")
 public class CimCore extends BaseRouteBuilder {
@@ -15,10 +16,10 @@ public class CimCore extends BaseRouteBuilder {
         from(BaseRouteBuilder.direct(ROUTE_NAME))
             .routeId(ROUTE_NAME)
             .choice()
-                .when(simple("${exchangeProperty." + HeaderKey.WrappedRouteCallback + "} != null"))
+                .when(simple("${exchangeProperty." + PropertyKey.WrappedRouteCallback + "} != null"))
 					.to(BaseRouteBuilder.direct(ComponentRouteName.HEADER_VALIDATION))
 					.wireTap(BaseRouteBuilder.direct(ComponentRouteName.AUDIT))
-						.newExchangeHeader(HeaderKey.TapLocation, constant("Inbound"))
+						.setProperty(PropertyKey.TapLocation, constant("Inbound"))
 					.end()
 					.to(BaseRouteBuilder.direct(ComponentRouteName.SECURITY))
 					.to(BaseRouteBuilder.direct(ComponentRouteName.LOAD_DATA_PROTOCOL))
@@ -26,7 +27,7 @@ public class CimCore extends BaseRouteBuilder {
 					.to(BaseRouteBuilder.direct(ComponentRouteName.WRAPPED_ROUTE_CALLBACK))
 					.to(BaseRouteBuilder.direct(ComponentRouteName.DATA_AGGREGATOR))
 					.wireTap(BaseRouteBuilder.direct(ComponentRouteName.AUDIT))
-						.newExchangeHeader(HeaderKey.TapLocation, constant("Outbound"))
+						.setProperty(PropertyKey.TapLocation, constant("Outbound"))
 					.end()
 						.to(BaseRouteBuilder.direct(ComponentRouteName.DATA_PROTOCOL_FILTER))
 						.to(BaseRouteBuilder.direct(ComponentRouteName.RESPONSE))
