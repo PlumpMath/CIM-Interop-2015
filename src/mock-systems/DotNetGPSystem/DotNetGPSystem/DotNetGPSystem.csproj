@@ -293,6 +293,16 @@
     <EmbeddedResource Include="Data\OpenHR\Samples\0b6ff8de-117e-4994-bbe8-64a628eeda7d.xml" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Data\OpenHR\Samples\Connectathon-0.xml" />
+    <EmbeddedResource Include="Data\OpenHR\Samples\Connectathon-1.xml" />
+    <EmbeddedResource Include="Data\OpenHR\Samples\Connectathon-2.xml" />
+    <EmbeddedResource Include="Data\OpenHR\Samples\Connectathon-3.xml" />
+    <EmbeddedResource Include="Data\OpenHR\Samples\Connectathon-4.xml" />
+    <EmbeddedResource Include="Data\OpenHR\Samples\Connectathon-5.xml" />
+    <EmbeddedResource Include="Data\OpenHR\Samples\Connectathon-6.xml" />
+    <EmbeddedResource Include="Data\OpenHR\Samples\Connectathon-7.xml" />
+    <EmbeddedResource Include="Data\OpenHR\Samples\Connectathon-8.xml" />
+    <EmbeddedResource Include="Data\OpenHR\Samples\Connectathon-9.xml" />
     <Content Include="Resources\server.ico" />
     <None Include="Resources\email.png" />
     <None Include="Resources\email_error.png" />

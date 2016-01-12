@@ -198,11 +198,11 @@
     </organisation>
     <organisation updateMode="add">
       <id>ada3a0b0-7f14-4fcb-9d3a-f6534359dac0</id>
-      <name>Alpha Surgery</name>
+      <name>Dorset Surgery</name>
       <organisationType codeSystem="2.16.840.1.113883.2.1.6.2" displayName="General Practice" code="" />
       <speciality codeSystem="2.16.840.1.113883.2.1.6.2" displayName="General Medical Practice" code="" />
       <cdb>11400</cdb>
-      <nationalPracticeCode>A99999</nationalPracticeCode>
+      <nationalPracticeCode>D99999</nationalPracticeCode>
       <mainLocation>1f8760ee-8fb5-4e43-b78d-ad50f6880e26</mainLocation>
       <locations updateMode="add">
         <location>1f8760ee-8fb5-4e43-b78d-ad50f6880e26</location>
@@ -218,7 +218,7 @@
     </organisation>
     <location updateMode="add">
       <id>1f8760ee-8fb5-4e43-b78d-ad50f6880e26</id>
-      <name>Alpha Surgery</name>
+      <name>Dorset Surgery</name>
       <locationType codeSystem="2.16.840.1.113883.2.1.6.2" displayName="Main Surgery" code="" />
       <notes />
       <openDate>2009-05-01T15:54:57.88</openDate>
