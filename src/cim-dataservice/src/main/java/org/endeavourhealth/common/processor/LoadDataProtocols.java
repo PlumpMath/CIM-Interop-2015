@@ -7,8 +7,10 @@ import org.endeavourhealth.common.core.PropertyKey;
 import org.endeavourhealth.common.core.exceptions.NoLegitimateRelationshipException;
 import org.endeavourhealth.common.repository.informationSharing.model.InformationSharingProtocol;
 import org.endeavourhealth.core.repository.common.data.RepositoryException;
+import org.endeavourhealth.core.text.TextUtils;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class LoadDataProtocols implements org.apache.camel.Processor {
@@ -16,10 +18,21 @@ public class LoadDataProtocols implements org.apache.camel.Processor {
 
 	@Override
 	public void process(Exchange exchange) throws Exception {
-		String sourceOdsCode = exchange.getIn().getHeader(PropertyKey.SourceOdsCode, String.class);
+		// temporary check
+		List validOdsCodes = Arrays.asList("A99999", "B99999", "D99999", "Y99999", "Z99999");
+		String odsCode = ExchangeHelper.getInHeaderString(exchange, HeaderKey.DestinationOdsCode);
+ 		if (TextUtils.isNullOrTrimmedEmpty(odsCode) == false) {
+			if (validOdsCodes.contains(odsCode)) {
+				// LR check pass
+			} else
+				throw new NoLegitimateRelationshipException(SUBSIDIARY_SYSTEM_HAS_NO_LEGITIMATE_RELATIONSHIP_WITH_THIS_ORGANISATION);
+		}
+		// end temporary check
 
-		if (sourceOdsCode != null)
-			LoadDataProtocols(exchange, sourceOdsCode);
+//		String sourceOdsCode = exchange.getIn().getHeader(PropertyKey.SourceOdsCode, String.class);
+//
+//		if (sourceOdsCode != null)
+//			LoadDataProtocols(exchange, sourceOdsCode);
 	}
 
 	private void LoadDataProtocols(Exchange exchange, String sourceOdsCode) throws RepositoryException, NoLegitimateRelationshipException {
