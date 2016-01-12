@@ -173,6 +173,27 @@ INSERT INTO agreement_by_service
 VALUES
 (2680acc6-2fa7-11e5-a151-feff819cdc9f, '0.1', '{ "id": "2680acc6-2fa7-11e5-a151-feff819cdc9f", "agreements": ["44ffdb19-3a38-4293-b3e8-1a897e4d72de"] }');
 
+--  Mock GP System - Dorset service
+INSERT INTO service
+(id, schema_version, data)
+VALUES
+(bf6faa11-0240-4738-be74-b46a835458a0, '0.1', '{ "id": "bf6faa11-0240-4738-be74-b46a835458a0", "name": "Dorset", "enabled": "true", "serviceCategory": [1,2], "organisationId": "D99999" }');
+
+INSERT INTO service_by_organisation
+(id, schema_version, data)
+VALUES
+('D99999', '0.1', '{ "services": ["bf6faa11-0240-4738-be74-b46a835458a0"] }');
+
+INSERT INTO sharing_agreement
+(id, schema_version, data)
+VALUES
+(62b4e394-ffdc-4d01-bd4e-633a401117f4, '0.1', '{ "id": "62b4e394-ffdc-4d01-bd4e-633a401117f4", "serviceId": "bf6faa11-0240-4738-be74-b46a835458a0", "systemId": "3ee0dfc1-7df1-4d49-9145-2a21135f8f6e", "technicalInterfaceId": "a4cfa902-3de1-42db-99ad-105b31027164", "active": "true" }');
+
+INSERT INTO agreement_by_service
+(id, schema_version, data)
+VALUES
+(bf6faa11-0240-4738-be74-b46a835458a0, '0.1', '{ "id": "bf6faa11-0240-4738-be74-b46a835458a0", "agreements": ["62b4e394-ffdc-4d01-bd4e-633a401117f4"] }');
+
 -- Swagger
 INSERT INTO service
 (id, schema_version, data)
@@ -207,7 +228,7 @@ VALUES
     "consentModel": "OptOut",
     "publisherProfiles": [],
     "subscriberProfiles": [],
-    "publisherSharingAgreements": ["eeb6b511-bc3c-4ec5-9571-bcf9b6fc5cae", "44ffdb19-3a38-4293-b3e8-1a897e4d72de"],
+    "publisherSharingAgreements": ["eeb6b511-bc3c-4ec5-9571-bcf9b6fc5cae", "44ffdb19-3a38-4293-b3e8-1a897e4d72de", "62b4e394-ffdc-4d01-bd4e-633a401117f4"],
     "subscriberSharingAgreements": ["8d05c8ba-b75d-4096-8252-1b912dbd1b91"]
 
   }'
@@ -222,6 +243,11 @@ INSERT INTO protocol_by_publisher_and_subscriber_agreement
 (publisherAgreementId, subscriberAgreementId, schema_version, data)
 VALUES
 (44ffdb19-3a38-4293-b3e8-1a897e4d72de, 8d05c8ba-b75d-4096-8252-1b912dbd1b91, '0.1', '{ "publisherAgreementId": "44ffdb19-3a38-4293-b3e8-1a897e4d72de", "subscriberAgreementId": "8d05c8ba-b75d-4096-8252-1b912dbd1b91", "protocols": ["6618b41b-5dfd-40fe-a768-6efc062bd915"] }');
+
+INSERT INTO protocol_by_publisher_and_subscriber_agreement
+(publisherAgreementId, subscriberAgreementId, schema_version, data)
+VALUES
+(62b4e394-ffdc-4d01-bd4e-633a401117f4, 8d05c8ba-b75d-4096-8252-1b912dbd1b91, '0.1', '{ "publisherAgreementId": "62b4e394-ffdc-4d01-bd4e-633a401117f4", "subscriberAgreementId": "8d05c8ba-b75d-4096-8252-1b912dbd1b91", "protocols": ["6618b41b-5dfd-40fe-a768-6efc062bd915"] }');
 
 INSERT INTO config
 (configname, data, schema_version)
