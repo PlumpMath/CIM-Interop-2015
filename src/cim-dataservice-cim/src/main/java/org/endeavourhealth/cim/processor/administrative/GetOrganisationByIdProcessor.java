@@ -15,7 +15,7 @@ public class GetOrganisationByIdProcessor implements Processor {
 
 		String organisationId = ExchangeHelper.getInHeaderString(exchange, CIMHeaderKey.Id, true);
 
-		IDataManager dataManager = DataManagerFactory.getDataManagerForService("A99999");
+		IDataManager dataManager = DataManagerFactory.getAllDataAdapters().get(0);
 		String responseBody = dataManager.getOrganisationById(organisationId);
 
 		ExchangeHelper.setInBodyString(exchange, responseBody);

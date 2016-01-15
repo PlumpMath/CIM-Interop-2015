@@ -48,6 +48,20 @@ public class OpenHRTransformer {
         return BundleHelper.createBundle(Bundle.BundleType.SEARCHSET, UUID.randomUUID().toString(), result);
     }
 
+    public Bundle toFhirPatientBundle(List<String> openHRXmlArray) throws TransformException {
+
+        List<Resource> result = new ArrayList<>();
+
+        for (String openHRXml : openHRXmlArray) {
+            OpenHR001OpenHealthRecord openHR = TransformHelper.unmarshall(openHRXml, OpenHR001OpenHealthRecord.class);
+
+            ToFHIRTransformer transformer = new ToFHIRTransformer();
+            result.add(transformer.transformToPatient(openHR));
+        }
+
+        return BundleHelper.createBundle(Bundle.BundleType.SEARCHSET, UUID.randomUUID().toString(), result);
+    }
+
     public String fromFHIRCondition(Condition condition) throws TransformException {
 
         FromFHIRTransformer transformer = new FromFHIRTransformer();

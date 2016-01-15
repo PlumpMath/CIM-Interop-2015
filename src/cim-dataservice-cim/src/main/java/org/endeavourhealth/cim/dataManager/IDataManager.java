@@ -34,5 +34,6 @@ public interface IDataManager {
     String getPatientDemographicsByNhsNumber(String odsCode, String nhsNumber) throws Exception;
     String tracePersonByDemographics(String surname, Date dateOfBirth, String gender, String forename, String postcode) throws Exception;
     String tracePersonByNhsNumber(String nhsNumber) throws Exception;
-    List<String> getChangedPatients(String odsCode, Date date) throws Exception;
+    List<String> getChangedPatientIds(String odsCode, Date date) throws Exception;
+    String getChangedPatients(String odsCode, Date date) throws Exception;
 }

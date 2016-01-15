@@ -29,19 +29,6 @@ public class PatientRoutes extends BaseRouteBuilder {
 			.process(new GetPatientTasksProcessor());
 
 		buildWrappedRoute(CimCore.ROUTE_NAME, GET_PATIENT_BY_QUERY_ROUTE)
-			.choice()
-				.when(simple("${header." + CIMHeaderKey.Identifier + "} != null"))
-				.routeId("GetPatientByIdentifier")
-				.process(new GetPatientByIdentifierProcessor())
-			.when(simple("${header." + CIMHeaderKey.LastUpdated + "} != null"))
-				.routeId("GetChangedPatients")
-				.process(new GetChangedPatientsProcessor(header(HeaderKey.DestinationOdsCode).toString()))
-			.when(simple("${header." + CIMHeaderKey.Active + "} == true"))
-				.routeId("GetActivePatients")
-				.process(new GetAllPatientsProcessor(true))
-			.otherwise()
-				.routeId("GetAllPatients")
-				.process(new GetAllPatientsProcessor(false))
-			.end();
+			.process(new GetAllPatientsProcessor());
     }
 }

@@ -74,6 +74,11 @@ public class EmisTransformer implements IRecordTransformer {
 		return _openHRTransformer.toFhirPersonBundle(openHRXmlArray);
 	}
 
+	public Bundle openHRToFhirPatientBundle(List<String> openHRXmlArray) throws TransformException {
+
+		return _openHRTransformer.toFhirPatientBundle(openHRXmlArray);
+	}
+
 	public Bundle openHRToFhirTaskBundle(List<String> openHRXmlArray) throws TransformException {
 		return _openHRTransformer.toFhirTaskBundle(openHRXmlArray);
 	}

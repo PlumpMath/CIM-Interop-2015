@@ -12,6 +12,7 @@ import org.hl7.fhir.instance.formats.JsonParser;
 import org.hl7.fhir.instance.model.*;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 @SuppressWarnings("unused")
 public class EmisDataManager implements IDataManager {
@@ -350,14 +351,21 @@ public class EmisDataManager implements IDataManager {
 	}
 
 	@Override
-	public List<String> getChangedPatients(String odsCode, Date date) throws Exception {
-		List<UUID> patientUuids = _emisDataAdapter.getChangedPatients(odsCode, date);
+	public List<String> getChangedPatientIds(String odsCode, Date date) throws Exception {
+		List<UUID> patientUuids = _emisDataAdapter.getChangedPatientIds(odsCode, date);
 
-		List<String> patientIds = new ArrayList<>();
-		for (UUID patientUuid : patientUuids)
-			patientIds.add(patientUuid.toString());
+		return patientUuids
+				.stream()
+				.map(t -> t.toString())
+				.collect(Collectors.toList());
+	}
 
-		return patientIds;
+	@Override
+	public String getChangedPatients(String odsCode, Date date) throws Exception {
+		List<String> openHRXml = _emisDataAdapter.getChangedPatients(odsCode, date);
+
+		Bundle bundle = _emisTransformer.openHRToFhirPatientBundle(openHRXml);
+		return new JsonParser().composeString(bundle);
 	}
 
 	private BundleProperties getBundleProperties(String odsCode) {

@@ -36,7 +36,10 @@ namespace DotNetGPSystem
         string GetPatientByNhsNumber(string odsCode, string nhsNumber);
 
         [OperationContract]
-        Guid[] GetChangedPatients(string odsCode, DateTime sinceDateTime);
+        Guid[] GetChangedPatientIds(string odsCode, DateTime? sinceDateTime);
+
+        [OperationContract]
+        string[] GetChangedPatients(string odsCode, DateTime? sinceDateTime);
 
         [OperationContract]
         void UpdatePatient(string odsCode, string openHRXml);

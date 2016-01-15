@@ -44,7 +44,7 @@ public class GetChangedPatientsProcessor implements org.apache.camel.Processor {
         }
 
         try {
-            List<String> changedPatientIds = _dataManager.getChangedPatients(odsCode, dateUpdated);
+            List<String> changedPatientIds = _dataManager.getChangedPatientIds(odsCode, dateUpdated);
             exchange.getIn().setBody(changedPatientIds);
         } catch (Exception e) {
             // Rollback poll date as this poll failed

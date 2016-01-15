@@ -14,7 +14,7 @@ public class PatientEndpoints extends BaseRouteBuilder {
         final String ID_DEMOGRAPHIC_URI = "/{id}";
         final String ID_EVERYTHING_URI = "/{id}/$everythingnobinary";
 		final String TASKS_URI = "/{id}/Task";
-        final String BY_QUERY_URI = "?identifier={identifier}&_lastUpdated=>{dateUpdated}&active={active}";
+        final String BY_QUERY_URI = "?active={active}&_lastUpdated=>{dateUpdated}";
 
         rest(BASE_PATH)
 

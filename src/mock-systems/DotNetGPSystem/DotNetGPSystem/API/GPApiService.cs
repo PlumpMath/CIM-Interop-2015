@@ -96,15 +96,46 @@ namespace DotNetGPSystem
                 .ToArray();
         }
 
-        public Guid[] GetChangedPatients(string odsCode, DateTime sinceDateTime)
+        public Guid[] GetChangedPatientIds(string odsCode, DateTime? sinceDateTime)
         {
-            return DataStore
-                .GetPatientChangeList(odsCode)
-                .Where(t => t.Key >= sinceDateTime)
-                .OrderBy(t => t.Key)
-                .Select(t => new Guid(t.Value.Patient.id))
-                .Distinct()
-                .ToArray();
+            if (sinceDateTime == null)
+            {
+                return DataStore
+                    .GetPatients(odsCode)
+                    .Select(t => new Guid(t.Patient.id))
+                    .Distinct()
+                    .ToArray();
+            }
+            else
+            {
+                return DataStore
+                    .GetPatientChangeList(odsCode)
+                    .Where(t => t.Key >= sinceDateTime)
+                    .OrderBy(t => t.Key)
+                    .Select(t => new Guid(t.Value.Patient.id))
+                    .Distinct()
+                    .ToArray();
+            }
+        }
+
+        public string[] GetChangedPatients(string odsCode, DateTime? sinceDateTime)
+        {
+            if (sinceDateTime == null)
+            {
+                return DataStore
+                    .GetPatients(odsCode)
+                    .Select(t => t.OpenHRExcludingHealthDomainXml)
+                    .ToArray();
+            }
+            else
+            {
+                return DataStore
+                    .GetPatientChangeList(odsCode)
+                    .Where(t => t.Key >= sinceDateTime)
+                    .OrderBy(t => t.Key)
+                    .Select(t => t.Value.OpenHRExcludingHealthDomainXml)
+                    .ToArray();
+            }
         }
 
         public void UpdatePatient(string odsCode, string openHRXml)

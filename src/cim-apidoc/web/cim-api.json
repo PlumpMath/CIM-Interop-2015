@@ -71,8 +71,7 @@
         }
       }
     },
-
-    "/Organization?identifier={identifier}": {
+    "/Organization": {
       "get": {
         "tags": [
           "administrative"
@@ -91,7 +90,7 @@
           },
           {
             "name": "identifier",
-            "in": "path",
+            "in": "query",
             "description": "Organization identifier (ODS code)",
             "required": true,
             "type": "string"
@@ -624,12 +623,6 @@
           "403": {
             "$ref": "#definitions/403Response"
           },
-          "404": {
-            "$ref": "#definitions/404SlotOrPatientNotFoundResponse"
-          },
-          "412": {
-            "$ref": "#definitions/412SlotNotBookedByThisPatientResponse"
-          },
           "500": {
             "$ref": "#definitions/500Response"
           },
@@ -678,12 +671,6 @@
           },
           "403": {
             "$ref": "#definitions/403Response"
-          },
-          "404": {
-            "$ref": "#definitions/404SlotOrPatientNotFoundResponse"
-          },
-          "412": {
-            "$ref": "#definitions/412SlotNotBookedByThisPatientResponse"
           },
           "500": {
             "$ref": "#definitions/500Response"
@@ -1267,8 +1254,8 @@
         "tags": [
           "demographics"
         ],
-        "summary": "Get demographics",
-        "description": "Get demographics.",
+        "summary": "Get all patients",
+        "description": "Get all patients.",
         "produces": [
           "application/json"
         ],
@@ -1283,16 +1270,9 @@
             "$ref": "#definitions/odsCodeParameter"
           },
           {
-            "name": "identifier",
-            "in": "query",
-            "description": "Patient identifier",
-            "required": false,
-            "type": "string"
-          },
-          {
             "name": "_lastUpdated",
             "in": "query",
-            "description": "Reference date after which the patient record was last updated",
+            "description": "Date after which the patient record was last updated",
             "required": false,
             "type": "string"
           },
@@ -1309,10 +1289,25 @@
         ],
         "responses": {
           "200": {
-            "description": "Returns a FHIR Bundle of Patient Resource(s) - see schema at: <a target='_blank'  href='http://hl7.org/fhir/DSTU2/patient.html'>http://hl7.org/fhir/DSTU2/patient.html</a>"
+            "description": "OK | <a target='_blank' href='http://www.hl7.org/FHIR/DSTU2/bundle.html'>Bundle</a> containing zero or more <a target='_blank' href='http://www.hl7.org/FHIR/DSTU2/person.html'>Patient</a> resources"
+          },
+          "400": {
+            "$ref": "#definitions/400Response"
+          },
+          "401": {
+            "$ref": "#definitions/401Response"
           },
           "403": {
-            "description": "Forbidden - Requested operation not permitted"
+            "$ref": "#definitions/403Response"
+          },
+          "500": {
+            "$ref": "#definitions/500Response"
+          },
+          "502": {
+            "$ref": "#definitions/502Response"
+          },
+          "504": {
+            "$ref": "#definitions/504Response"
           }
         }
       }

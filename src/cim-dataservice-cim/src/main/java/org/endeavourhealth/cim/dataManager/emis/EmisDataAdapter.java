@@ -88,17 +88,32 @@ public class EmisDataAdapter {
         return getSOAPResultAsStringArray(responseMessage, soapMethod);
     }
 
-    public List<UUID> getChangedPatients(String odsCode, Date date) throws Exception {
+    public List<UUID> getChangedPatientIds(String odsCode, Date date) throws Exception {
+
+        final String soapMethod = "GetChangedPatientIds";
+
+        Map<String, String> parameters = createParameterMap();
+        parameters.put("odsCode", odsCode);
+        parameters.put("sinceDateTime", (date != null) ? DateUtils.formatDateAsISO8601(date) : null);
+
+        SOAPMessage responseMessage = performSOAPCall(soapMethod, parameters);
+
+        return getSOAPResultAsUUIDArray(responseMessage, soapMethod);
+    }
+
+    public List<String> getChangedPatients(String odsCode, Date date) throws Exception {
 
         final String soapMethod = "GetChangedPatients";
 
         Map<String, String> parameters = createParameterMap();
         parameters.put("odsCode", odsCode);
-        parameters.put("sinceDateTime", DateUtils.formatDateAsISO8601(date));
+
+        if (date != null)
+            parameters.put("sinceDateTime", DateUtils.formatDateAsISO8601(date));
 
         SOAPMessage responseMessage = performSOAPCall(soapMethod, parameters);
 
-        return getSOAPResultAsUUIDArray(responseMessage, soapMethod);
+        return getSOAPResultAsStringArray(responseMessage, soapMethod);
     }
 
     // Medical record

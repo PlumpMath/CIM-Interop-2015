@@ -178,10 +178,16 @@ public class CimDataManager implements IDataManager {
 	}
 
 	@Override
-	public List<String> getChangedPatients(String odsCode, Date date) throws Exception {
+	public List<String> getChangedPatientIds(String odsCode, Date date) throws Exception {
 		List<String> params = new ArrayList<>(Collections.singletonList("_lastUpdated=" + date.toString()));
 		String javaStringArray =  executeRequest(odsCode, HttpVerb.GET, odsCode + "/Patient", params, null);
 		return (List<String>)new JsonParser().parse(javaStringArray);
+	}
+
+	@Override
+	public String getChangedPatients(String odsCode, Date date) throws Exception {
+		List<String> params = new ArrayList<>(Collections.singletonList("_lastUpdated=" + date.toString()));
+		return executeRequest(odsCode, HttpVerb.GET, odsCode + "/Patient", params, null);
 	}
 
 	private HttpUriRequest generateRequest(String verb, String uri) {
