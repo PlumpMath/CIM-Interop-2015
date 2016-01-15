@@ -188,12 +188,26 @@ namespace DotNetGPSystem
             return Enum.GetName(typeof(AppointmentOperationStatus), appointmentOperationStatus);
         }
 
-        public string GetOrganisation(string odsCode)
+        public string GetOrganisationByOdsCode(string odsCode)
         {
             OpenHROrganisation organisation = DataStore
                 .Organisations
                 .FirstOrDefault(t => t.Organisation.nationalPracticeCode == odsCode
                                     && (!string.IsNullOrEmpty(odsCode)));
+
+            string result = string.Empty;
+
+            if (organisation != null)
+                result = Utilities.Serialize(organisation.Organisation);
+
+            return result;
+        }
+
+        public string GetOrganisationById(Guid organisationGuid)
+        {
+            OpenHROrganisation organisation = DataStore
+                .Organisations
+                .FirstOrDefault(t => new Guid(t.Organisation.id) == organisationGuid);
 
             string result = string.Empty;
 

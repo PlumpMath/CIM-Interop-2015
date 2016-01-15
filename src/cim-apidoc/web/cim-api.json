@@ -22,12 +22,12 @@
     }
   ],
   "paths": {
-    "/{odsCode}": {
+    "/Organization/{id}": {
       "get": {
         "tags": [
           "administrative"
         ],
-        "summary": "Get organisation details",
+        "summary": "Get organisation by ID",
         "description": "Get organisation details by ID.",
         "produces": [
           "application/json"
@@ -40,7 +40,7 @@
             "$ref": "#definitions/hashParameter"
           },
           {
-            "$ref": "#definitions/odsCodeParameter"
+            "$ref": "#definitions/organisationIdParameter"
           }
         ],
         "responses": {
@@ -55,6 +55,63 @@
           },
           "403": {
             "$ref": "#definitions/403Response"
+          },
+          "404": {
+            "$ref": "#definitions/404OrganizationNotFoundResponse"
+          },
+          "500": {
+            "$ref": "#definitions/500Response"
+          },
+          "502": {
+            "$ref": "#definitions/502Response"
+          },
+          "504": {
+            "$ref": "#definitions/504Response"
+          }
+        }
+      }
+    },
+
+    "/Organization?identifier={identifier}": {
+      "get": {
+        "tags": [
+          "administrative"
+        ],
+        "summary": "Get organisation by ODS code",
+        "description": "Get organisation details by ODS code.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#definitions/apiKeyParameter"
+          },
+          {
+            "$ref": "#definitions/hashParameter"
+          },
+          {
+            "name": "identifier",
+            "in": "path",
+            "description": "Organization identifier (ODS code)",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK | <a target='_blank' href='http://hl7.org/fhir/DSTU2/organization.html'>Organisation</a> resource"
+          },
+          "400": {
+            "$ref": "#definitions/400Response"
+          },
+          "401": {
+            "$ref": "#definitions/401Response"
+          },
+          "403": {
+            "$ref": "#definitions/403Response"
+          },
+          "404": {
+            "$ref": "#definitions/404OrganizationNotFoundResponse"
           },
           "500": {
             "$ref": "#definitions/500Response"
@@ -1354,6 +1411,13 @@
       "required": true,
       "type": "string"
     },
+    "organisationIdParameter": {
+      "name": "id",
+      "in": "path",
+      "description": "Organisation ID",
+      "required": true,
+      "type": "string"
+    },
     "locationIdParameter": {
       "name": "id",
       "in": "path",
@@ -1379,6 +1443,9 @@
     },
     "404PatientNotFoundResponse": {
       "description": "Patient not found | <a target='_blank' href='https://www.hl7.org/fhir/DSTU2/operationoutcome.html'>OperationOutcome</a> with <a href='http://www.hl7.org/FHIR/DSTU2/issue-type.html'>IssueType</a> of Not found"
+    },
+    "404OrganizationNotFoundResponse": {
+      "description": "Organization not found | <a target='_blank' href='https://www.hl7.org/fhir/DSTU2/operationoutcome.html'>OperationOutcome</a> with <a href='http://www.hl7.org/FHIR/DSTU2/issue-type.html'>IssueType</a> of Not found"
     },
     "404SlotOrPatientNotFoundResponse": {
       "description": "Slot not found; Patient not found | <a target='_blank' href='https://www.hl7.org/fhir/DSTU2/operationoutcome.html'>OperationOutcome</a> with <a href='http://www.hl7.org/FHIR/DSTU2/issue-type.html'>IssueType</a> of Not found"

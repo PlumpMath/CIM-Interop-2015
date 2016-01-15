@@ -1,5 +1,6 @@
 package org.endeavourhealth.cim.processor.administrative;
 
+import org.endeavourhealth.cim.common.CIMHeaderKey;
 import org.endeavourhealth.cim.dataManager.IDataManager;
 import org.apache.camel.Exchange;
 import org.apache.camel.Processor;
@@ -12,10 +13,10 @@ public class GetOrganisationProcessor implements Processor {
 	@SuppressWarnings("unchecked")
 	public void process(Exchange exchange) throws Exception {
 
-		String odsCode = ExchangeHelper.getInHeaderString(exchange, HeaderKey.DestinationOdsCode, true);
+		String odsCode = ExchangeHelper.getInHeaderString(exchange, CIMHeaderKey.Identifier, true);
 
 		IDataManager dataManager = DataManagerFactory.getDataManagerForService(odsCode);
-		String responseBody = dataManager.getOrganisation(odsCode);
+		String responseBody = dataManager.getOrganisationByOdsCode(odsCode);
 
 		ExchangeHelper.setInBodyString(exchange, responseBody);
 	}

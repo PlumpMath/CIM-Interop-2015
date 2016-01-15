@@ -3,6 +3,7 @@ package org.endeavourhealth.cim.dataManager.emis;
 import org.endeavourhealth.common.Registry;
 import org.endeavourhealth.common.core.exceptions.InvalidInternalIdentifier;
 import org.endeavourhealth.cim.transform.common.BundleProperties;
+import org.endeavourhealth.common.core.exceptions.NotFoundException;
 import org.endeavourhealth.core.text.TextUtils;
 import org.endeavourhealth.cim.dataManager.IDataManager;
 import org.endeavourhealth.cim.common.FhirFilterHelper;
@@ -106,8 +107,30 @@ public class EmisDataManager implements IDataManager {
 	}
 
 	@Override
-	public String getOrganisation(String odsCode) throws Exception {
-		String openHRXml = _emisDataAdapter.getOrganisationById(odsCode);
+	public String getOrganisationByOdsCode(String odsCode) throws Exception {
+		String openHRXml = _emisDataAdapter.getOrganisationByOdsCode(odsCode);
+
+		if (TextUtils.isNullOrTrimmedEmpty(openHRXml))
+			throw new NotFoundException("");
+
+		Organization organisation = _emisTransformer.openHRToFhirOrganisation(openHRXml);
+
+		return new JsonParser().composeString(organisation);
+	}
+
+	public String getOrganisationById(String organisationId) throws Exception {
+		UUID organisationUuid;
+		try {
+			organisationUuid = UUID.fromString(organisationId);
+		} catch (IllegalArgumentException e) {
+			throw new InvalidInternalIdentifier("Organization Id");
+		}
+
+		String openHRXml = _emisDataAdapter.getOrganisationById(organisationUuid);
+
+		if (TextUtils.isNullOrTrimmedEmpty(openHRXml))
+			throw new NotFoundException("");
+
 		Organization organisation = _emisTransformer.openHRToFhirOrganisation(openHRXml);
 
 		return new JsonParser().composeString(organisation);

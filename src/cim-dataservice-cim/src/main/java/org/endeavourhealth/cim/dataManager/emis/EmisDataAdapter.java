@@ -212,8 +212,8 @@ public class EmisDataAdapter {
 		return getSOAPResultAsString(responseMessage, soapMethod);
 	}
 
-	public String getOrganisationById(String odsCode) throws Exception {
-		final String soapMethod = "GetOrganisation";
+	public String getOrganisationByOdsCode(String odsCode) throws Exception {
+		final String soapMethod = "GetOrganisationByOdsCode";
 
 		Map<String, String> parameters = createParameterMap();
 		parameters.put("odsCode", odsCode);
@@ -222,6 +222,17 @@ public class EmisDataAdapter {
 
 		return getSOAPResultAsString(responseMessage, soapMethod);
 	}
+
+    public String getOrganisationById(UUID organisationGuid) throws Exception {
+        final String soapMethod = "GetOrganisationById";
+
+        Map<String, String> parameters = createParameterMap();
+        parameters.put("organisationGuid", organisationGuid.toString());
+
+        SOAPMessage responseMessage = performSOAPCall(soapMethod, parameters);
+
+        return getSOAPResultAsString(responseMessage, soapMethod);
+    }
 
 	public String getLocationById(String odsCode, UUID locationId) throws Exception {
 		final String soapMethod = "GetLocation";

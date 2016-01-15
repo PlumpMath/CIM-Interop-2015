@@ -63,10 +63,13 @@ namespace DotNetGPSystem
         string GetUserByUserInRoleGuid(string odsCode, Guid userInRoleGuid);
 
         [OperationContract]
-        string GetOrganisationInformation(string odsCode);
+        string GetOrganisationByOdsCode(string odsCode);
 
         [OperationContract]
-        string GetOrganisation(string odsCode);
+        string GetOrganisationById(Guid organisationGuid);
+
+        [OperationContract]
+        string GetOrganisationInformation(string odsCode);
 
         [OperationContract]
         string GetLocation(string odsCode, Guid locationGuid);

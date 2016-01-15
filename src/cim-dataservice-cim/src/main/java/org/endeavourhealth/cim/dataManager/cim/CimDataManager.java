@@ -76,8 +76,13 @@ public class CimDataManager implements IDataManager {
 	}
 
 	@Override
-	public String getOrganisation(String odsCode) throws Exception {
+	public String getOrganisationByOdsCode(String odsCode) throws Exception {
 		return executeRequest(odsCode, HttpVerb.GET, odsCode, null, null);
+	}
+
+	@Override
+	public String getOrganisationById(String organisationId) throws Exception {
+		return executeRequest(organisationId, HttpVerb.GET, organisationId, null, null);
 	}
 
 	@Override
@@ -163,13 +168,13 @@ public class CimDataManager implements IDataManager {
 		if (forename != null)
 			params.add("name="+forename);
 
-		return executeRequest(null, HttpVerb.GET, "/Person", params, null);
+		return executeRequest(null, HttpVerb.GET, "/Person/$trace", params, null);
 	}
 
 	@Override
 	public String tracePersonByNhsNumber(String nhsNumber) throws Exception {
 		List<String> params = new ArrayList<>(Collections.singletonList("identifier=urn:fhir.nhs.uk:id/NHSNumber" + nhsNumber));
-		return executeRequest(null, HttpVerb.GET, "/Person", params, null);
+		return executeRequest(null, HttpVerb.GET, "/Person/$trace", params, null);
 	}
 
 	@Override
