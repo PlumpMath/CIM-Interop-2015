@@ -1,5 +1,6 @@
 package org.endeavourhealth.cim.transform.openhr.tofhir.admin;
 
+import org.endeavourhealth.cim.transform.common.ReferenceHelper;
 import org.endeavourhealth.cim.transform.common.TransformHelper;
 import org.endeavourhealth.cim.transform.exceptions.TransformException;
 import org.endeavourhealth.cim.transform.exceptions.TransformFeatureNotSupportedException;
@@ -11,9 +12,9 @@ import org.hl7.fhir.instance.model.Enumerations.AdministrativeGender;
 
 import java.util.List;
 
-class PatientTransformer {
+public class PatientTransformer {
 
-    public static void transform(FHIRContainer container, OpenHR001AdminDomain adminDomain) throws TransformException {
+    public static Patient transform(OpenHR001AdminDomain adminDomain) throws TransformException {
 
         OpenHR001Patient sourcePatient = ToFHIRHelper.getPatient(adminDomain);
         OpenHR001Person sourcePerson = ToFHIRHelper.getPerson(adminDomain.getPerson(), sourcePatient.getId());
@@ -43,7 +44,11 @@ class PatientTransformer {
         List<Address> addressList = AddressConverter.convertFromPersonAddress(sourcePerson.getAddress());
         if (addressList != null) addressList.forEach(targetPatient::addAddress);
 
-        container.addResource(targetPatient);
+        String organisationGuid = ToFHIRHelper.getPatientOrganisationGuid(sourcePatient);
+
+        targetPatient.setManagingOrganization(ReferenceHelper.createReference(ResourceType.Organization, organisationGuid));
+
+        return targetPatient;
     }
 
     private static AdministrativeGender convertSex(VocSex sex) throws TransformFeatureNotSupportedException {

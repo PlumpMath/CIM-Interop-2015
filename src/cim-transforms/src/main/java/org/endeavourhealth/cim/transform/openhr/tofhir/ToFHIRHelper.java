@@ -7,6 +7,7 @@ import org.endeavourhealth.cim.transform.exceptions.TransformFeatureNotSupported
 import org.endeavourhealth.cim.transform.common.TransformHelper;
 import org.endeavourhealth.cim.transform.openhr.tofhir.admin.NameConverter;
 import org.endeavourhealth.cim.transform.schemas.openhr.*;
+import org.endeavourhealth.core.text.TextUtils;
 import org.hl7.fhir.instance.model.*;
 
 import java.math.BigDecimal;
@@ -147,6 +148,24 @@ public class ToFHIRHelper {
         ToFHIRHelper.ensureDboNotDelete(person);
 
         return person;
+    }
+
+    public static String getPatientOrganisationGuid(OpenHR001Patient patient) throws TransformFeatureNotSupportedException {
+
+        if (patient == null)
+            throw new TransformFeatureNotSupportedException("patient is null");
+
+        if ((patient.getCaseloadPatient() == null) || (patient.getCaseloadPatient().size() == 0))
+            throw new TransformFeatureNotSupportedException("caseloadPatient is null or empty");
+
+        OpenHR001CaseloadPatient caseloadPatient = patient.getCaseloadPatient().get(0);
+
+        String organisationGuid = caseloadPatient.getOrganisation();
+
+        if (TextUtils.isNullOrTrimmedEmpty(organisationGuid))
+            throw new TransformFeatureNotSupportedException("organisationGuid is null or empty");
+
+        return organisationGuid;
     }
 
     public static List<HumanName> convertName(OpenHR001Person sourcePerson)

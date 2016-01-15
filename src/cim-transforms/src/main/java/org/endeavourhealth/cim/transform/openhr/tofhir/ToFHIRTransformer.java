@@ -25,8 +25,7 @@ public class ToFHIRTransformer {
 
     public Patient transformToPatient(OpenHR001OpenHealthRecord openHR) throws TransformException {
 
-        FHIRContainer container = transform(openHR);
-        return container.getPatientResource();
+        return PatientTransformer.transform(openHR.getAdminDomain());
     }
 
     public Person transformToPerson(OpenHR001OpenHealthRecord openHR) throws TransformException {

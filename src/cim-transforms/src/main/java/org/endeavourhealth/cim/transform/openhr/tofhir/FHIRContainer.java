@@ -40,10 +40,4 @@ public class FHIRContainer {
                 .map(resourceType::cast)
                 .collect(Collectors.toList());
     }
-
-    public Patient getPatientResource() {
-        return getResourcesOfType(Patient.class)
-                .stream()
-                .collect(StreamExtension.singleOrNullCollector());
-    }
 }

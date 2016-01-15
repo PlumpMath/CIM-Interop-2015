@@ -1,5 +1,6 @@
 package org.endeavourhealth.cim.transform.openhr.tofhir.admin;
 
+import org.endeavourhealth.cim.transform.common.ReferenceHelper;
 import org.endeavourhealth.cim.transform.common.TransformHelper;
 import org.endeavourhealth.cim.transform.exceptions.TransformException;
 import org.endeavourhealth.cim.transform.exceptions.TransformFeatureNotSupportedException;
@@ -36,6 +37,9 @@ public class PersonTransformer {
 
         targetPerson.setGender(convertSex(sourcePerson.getSex()));
         targetPerson.setBirthDate(TransformHelper.toDate(sourcePerson.getBirthDate()));
+
+        Person.PersonLinkComponent link = targetPerson.addLink();
+        link.setTarget(ReferenceHelper.createReference(ResourceType.Patient, sourcePatient.getId()));
 
         return targetPerson;
     }
