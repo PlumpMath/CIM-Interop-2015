@@ -71,7 +71,7 @@ public class AuditHelper {
             auditItem.setId(row.getUUID("id"));
             auditItem.setTableName(row.getString("table_name"));
             auditItem.setRowKey(row.getUUID("row_key"));
-            auditItem.setAuditDate(row.getDate("audit_date"));
+            auditItem.setAuditDate(row.getTimestamp("audit_date"));
             auditItem.setUserId(row.getUUID("user_id"));
             auditItem.setMode(AuditMode.valueOf(row.getString("mode")));
             auditItem.setData(JsonSerializer.deserialize(valueType, row.getString("data")));

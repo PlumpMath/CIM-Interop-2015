@@ -1,0 +1,204 @@
+.title { height: 16px}
+.title .header { float:left; padding-left: 10px; font-size: 16px; color: white }
+.title .links { float:right; padding-right: 10px; font-size: 14px; color: white }
+
+/*!
+ * StyleSheet for JQuery splitter Plugin
+ * Copyright (C) 2010 Jakub Jankiewicz <http://jcubic.pl>
+ *
+ * Same license as plugin
+ */
+.splitter_panel {
+    position: relative;
+}
+.splitter_panel .vsplitter {
+    background-color: grey;
+    cursor: col-resize;
+    z-index:900;
+    width: 4px;
+}
+
+.splitter_panel .hsplitter {
+    background-color: #5F5F5F;
+    cursor: row-resize;
+    z-index: 800;
+    height: 4px;
+}
+.splitter_panel .vsplitter.splitter-invisible,
+.splitter_panel .hsplitter.splitter-invisible {
+    background: none;
+}
+.splitter_panel .vsplitter, .splitter_panel .left_panel, .splitter_panel .right_panel,
+.splitter_panel .hsplitter, .splitter_panel .top_panel, .splitter_panel .bottom_panel {
+    position: absolute;
+    overflow: auto;
+}
+.splitter_panel .vsplitter, .splitter_panel .left_panel, .splitter_panel .right_panel {
+    height: 100%;
+}
+.splitter_panel .hsplitter, .splitter_panel .top_panel, .splitter_panel .bottom_panel {
+    width: 100%;
+}
+.splitter_panel .top_panel, .splitter_panel .left_panel, .splitter_panel .vsplitter {
+    top: 0;
+}
+.splitter_panel .top_panel, .splitter_panel .bottom_panel, .splitter_panel .left_panel, .splitter_panel .hsplitter {
+    left: 0;
+}
+.splitter_panel .bottom_panel {
+    bottom: 0;
+}
+.splitter_panel .right_panel {
+    right: 0;
+}
+.splitterMask {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1000;
+}
+
+/* solid-blue */
+@import url(https://fonts.googleapis.com/css?family=Roboto);
+
+html{
+    height: 100%;
+}
+
+.solid-blue{
+    font-size: 1em;
+    line-height: 1.231;
+
+    -webkit-border-top-left-radius: 5px;
+    -webkit-border-top-right-radius: 5px;
+    -moz-border-radius-topleft: 5px;
+    -moz-border-radius-topright: 5px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+
+    -webkit-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.65);
+    -moz-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.65);
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.65);
+}
+
+.solid-blue>div{
+
+    margin-left: 0px;
+    margin-right: 5px;
+}
+
+.solid-blue div.title{
+    background-color: #3498DB;
+    border-top: 1px solid #70B6E5;
+    border-bottom: 5px solid #2372A7;
+}
+
+.solid-blue div.title{
+    margin: 0;
+    padding-top: 1em;
+    padding-bottom: 1em;
+}
+
+.solid-blue div.title {
+    -webkit-border-top-left-radius: 5px;
+    -webkit-border-top-right-radius: 5px;
+    -moz-border-radius-topleft: 5px;
+    -moz-border-radius-topright: 5px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+
+.panel-header{
+    background-color: #188E83;
+    border-top: 1px solid #70B6E5;
+    border-bottom: 3px solid #2372A7;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.65);
+    padding: 10px;
+    color: white;
+
+    font-size:16px;
+
+}
+
+.menu-header{
+    background-color: #00A6C1;
+    border-top: 1px solid #70B6E5;
+    border-bottom: 2px solid #00687D;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.65);
+    padding-left:8px;
+    padding-top:4px;
+    padding-bottom:4px;
+    color: white;
+
+}
+
+.grid {
+    stroke: #16a085;
+    stroke-width: 0.5;
+    stroke-opacity: 0;
+    transition-property: stroke-opacity;
+    transition-duration: 1s;
+    pointer-events: none;
+}
+
+.prop-id {
+
+    font-size: 14px;
+    background-color: black;
+    border-top: 1px solid #70B6E5;
+    border-bottom: 3px solid #2372A7;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.65);
+    padding-left:8px;
+    padding-top:4px;
+    padding-bottom:4px;
+    color: white;
+
+}
+
+.prop-label {
+    font-size: 12px;
+    padding-left: 10px;
+    float: left;
+    padding-top: 10px;
+    padding-bottom: 5px;
+}
+
+.prop-input {
+    font-size: 12px;
+    width:200px;
+}
+
+.prop-input-div {
+    font-size: 12px;
+    width:200px;
+    padding: 10px;
+
+}
+
+.xml-viewer {
+    background: none repeat scroll 0 0 #FFFFFF;
+    border: 3px solid #ccc;
+    border-radius: 3px 3px 3px 3px;
+    color: #333333;
+    display: none;
+    left: 25%;
+    margin-left: -410px;
+    position: fixed;
+    top: 20%;
+    height:800px;
+    z-index: 2;
+
+}
+
+.xml-content {
+    padding: 10px;
+    font-size: 10px;
+    font-family: Verdana;
+    background-color: white;
+    overflow: scroll;
+    width:100%;
+    height:100%;
+}
