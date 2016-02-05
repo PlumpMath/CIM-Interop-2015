@@ -288,14 +288,15 @@ public class EmisDataManager implements IDataManager {
 	}
 
 	@Override
-	public String getMedicationPrescriptions(String odsCode, String patientId) throws Exception {
+	public String getMedicationPrescriptions(String odsCode, String patientId, MedicationOrder.MedicationOrderStatus medicationOrderStatus) throws Exception {
 
 		Bundle bundle = getPatientRecordAsBundle(odsCode, patientId);
 
 		if (bundle == null)
 			return null;
 
-		bundle = FhirFilterHelper.getMedicationPrescriptions(bundle);
+		bundle = FhirFilterHelper.getMedicationPrescriptions(bundle, medicationOrderStatus);
+
 		return new JsonParser().composeString(bundle);
 	}
 

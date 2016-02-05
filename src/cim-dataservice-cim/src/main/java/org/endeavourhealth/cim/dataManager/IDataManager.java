@@ -1,5 +1,7 @@
 package org.endeavourhealth.cim.dataManager;
 
+import org.hl7.fhir.instance.model.MedicationOrder;
+
 import java.util.Date;
 import java.util.List;
 
@@ -26,7 +28,7 @@ public interface IDataManager {
     String getConditions(String odsCode, String patientId) throws Exception;
     String getAllergyIntolerances(String odsCode, String patientId) throws Exception;
     String getImmunizations(String odsCode, String patientId) throws Exception;
-    String getMedicationPrescriptions(String odsCode, String patientId) throws Exception;
+    String getMedicationPrescriptions(String odsCode, String patientId, MedicationOrder.MedicationOrderStatus medicationOrderStatus) throws Exception;
     String addCondition(String odsCode, String request) throws Exception;
 
     // demographic

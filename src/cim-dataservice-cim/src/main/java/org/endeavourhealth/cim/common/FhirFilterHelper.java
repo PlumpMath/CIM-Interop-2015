@@ -28,9 +28,29 @@ public class FhirFilterHelper {
 //		return removeNonAdminResourcesExcept(bundle, ResourceType.Immunization);
 	}
 
-	public static Bundle getMedicationPrescriptions(Bundle bundle) {
-		return getResourcesOfType(bundle, ResourceType.MedicationOrder);
-//		return removeNonAdminResourcesExcept(bundle, ResourceType.MedicationPrescription);
+	public static Bundle getMedicationPrescriptions(Bundle bundle, MedicationOrder.MedicationOrderStatus medicationOrderStatus) {
+
+		ArrayList<Resource> resources = new ArrayList<>();
+
+		for (Bundle.BundleEntryComponent bundleEntryComponent : bundle.getEntry())	{
+
+			if (bundleEntryComponent.getResource() instanceof MedicationOrder) {
+
+				MedicationOrder medicationOrder = (MedicationOrder)bundleEntryComponent.getResource();
+
+				boolean include = false;
+
+				if (medicationOrderStatus == null)
+					include = true;
+				else if (medicationOrder.getStatus() != null)
+					include = (medicationOrder.getStatus().equals(medicationOrderStatus));
+
+  				if (include)
+					resources.add(medicationOrder);
+			}
+		}
+
+		return BundleHelper.createBundle(bundle.getType(), bundle.getId(), resources);
 	}
 
 	public static Bundle getAllergyIntolerances(Bundle bundle) {
