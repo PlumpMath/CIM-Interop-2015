@@ -9,6 +9,7 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.endeavourhealth.common.core.HttpVerb;
 import org.hl7.fhir.instance.formats.JsonParser;
 import org.hl7.fhir.instance.model.Condition;
+import org.hl7.fhir.instance.model.MedicationOrder;
 import org.hl7.fhir.instance.model.Parameters;
 import org.hl7.fhir.instance.model.StringType;
 
@@ -136,7 +137,7 @@ public class CimDataManager implements IDataManager {
 	}
 
 	@Override
-	public String getMedicationPrescriptions(String odsCode, String patientId) throws Exception {
+	public String getMedicationPrescriptions(String odsCode, String patientId, MedicationOrder.MedicationOrderStatus medicationOrderStatus) throws Exception {
 		return executeRequest(odsCode, HttpVerb.GET, odsCode + "/Patient/"+patientId+"/MedicationPrescription", null, null);
 	}
 

@@ -858,6 +858,21 @@
             "$ref": "#definitions/patientIdParameter"
           },
           {
+            "name": "status",
+            "in": "query",
+            "description": "Status of the prescription",
+            "required": false,
+            "type": "string",
+            "enum": [
+              "active",
+              "on-hold",
+              "completed",
+              "entered-in-error",
+              "stopped",
+              "draft"
+            ]
+          },
+          {
             "name": "dateWritten",
             "in": "query",
             "description": "Date of the prescription",
@@ -1080,16 +1095,12 @@
             "in": "query",
             "description": "Estimated potential clinical harm",
             "required": false,
-            "type": "array",
-            "items": {
-              "type": "string",
-              "enum": [
-                "low",
-                "high",
-                "unassessible"
-              ],
-              "default": "low"
-            }
+            "type": "string",
+            "enum": [
+              "low",
+              "high",
+              "unassessible"
+            ]
           }
         ],
         "responses": {

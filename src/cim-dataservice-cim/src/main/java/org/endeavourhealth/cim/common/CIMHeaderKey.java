@@ -19,4 +19,5 @@ public class CIMHeaderKey {
 	public static final String Start = "start";
 	public static final String Active = "active";
 	public static final String Patient = "patient";
+	public static final String Status = "status";
 }
