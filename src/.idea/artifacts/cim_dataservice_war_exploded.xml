@@ -4,7 +4,7 @@
     <root id="root">
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
-          <element id="module-output" name="cim-dataservice" />
+          <element id="module-output" name="cim-core" />
           <element id="module-output" name="cim-common" />
           <element id="module-output" name="cim-transforms" />
         </element>
@@ -58,7 +58,7 @@
           <element id="library" level="project" name="Maven: log4j:log4j:1.2.12" />
         </element>
       </element>
-      <element id="javaee-facet-resources" facet="cim-dataservice/web/Web" />
+      <element id="javaee-facet-resources" facet="cim-core/web/Web" />
     </root>
   </artifact>
 </component>

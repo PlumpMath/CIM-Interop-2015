@@ -4,11 +4,8 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/cim-apidoc/cim-apidoc.iml" filepath="$PROJECT_DIR$/cim-apidoc/cim-apidoc.iml" />
       <module fileurl="file://$PROJECT_DIR$/cim-common/cim-common.iml" filepath="$PROJECT_DIR$/cim-common/cim-common.iml" />
-      <module fileurl="file://$PROJECT_DIR$/cim-dataservice/cim-dataservice.iml" filepath="$PROJECT_DIR$/cim-dataservice/cim-dataservice.iml" />
-      <module fileurl="file://$PROJECT_DIR$/cim-dataservice-async/cim-dataservice-async.iml" filepath="$PROJECT_DIR$/cim-dataservice-async/cim-dataservice-async.iml" />
-      <module fileurl="file://$PROJECT_DIR$/cim-dataservice-cim/cim-dataservice-cim.iml" filepath="$PROJECT_DIR$/cim-dataservice-cim/cim-dataservice-cim.iml" />
+      <module fileurl="file://$PROJECT_DIR$/cim-core/cim-core.iml" filepath="$PROJECT_DIR$/cim-core/cim-core.iml" />
       <module fileurl="file://$PROJECT_DIR$/cim-management/cim-management.iml" filepath="$PROJECT_DIR$/cim-management/cim-management.iml" />
-      <module fileurl="file://$PROJECT_DIR$/cim-transforms/cim-transforms.iml" filepath="$PROJECT_DIR$/cim-transforms/cim-transforms.iml" />
     </modules>
   </component>
 </project>
