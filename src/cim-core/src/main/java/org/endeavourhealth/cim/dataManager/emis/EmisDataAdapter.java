@@ -1,9 +1,9 @@
 package org.endeavourhealth.cim.dataManager.emis;
 
-import org.endeavourhealth.common.Registry;
-import org.endeavourhealth.common.core.DateUtils;
-import org.endeavourhealth.cim.common.CIMHeaderKey;
-import org.endeavourhealth.common.core.exceptions.PrincipalSystemException;
+import org.endeavourhealth.cim.dataManager.Registry;
+import org.endeavourhealth.cim.camel.helpers.DateUtils;
+import org.endeavourhealth.cim.camel.helpers.CIMHeaderKey;
+import org.endeavourhealth.cim.exceptions.PrincipalSystemException;
 import org.w3c.dom.Node;
 
 import javax.xml.soap.SOAPMessage;

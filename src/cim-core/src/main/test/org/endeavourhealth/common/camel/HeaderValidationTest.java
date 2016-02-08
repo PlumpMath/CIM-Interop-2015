@@ -6,11 +6,11 @@ import org.apache.camel.ProducerTemplate;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.component.mock.MockEndpoint;
 import org.apache.camel.test.junit4.CamelTestSupport;
-import org.endeavourhealth.common.Registry;
+import org.endeavourhealth.cim.dataManager.Registry;
 import org.endeavourhealth.common.TestRegistry;
 import org.endeavourhealth.common.informationSharingFramework.TestISFManager;
-import org.endeavourhealth.common.processor.HeaderValidationProcessor;
-import org.endeavourhealth.common.repository.informationSharing.ISFManager;
+import org.endeavourhealth.cim.camel.processors.common.HeaderValidationProcessor;
+import org.endeavourhealth.core.repository.informationSharing.ISFManager;
 import org.junit.Test;
 
 import java.util.HashMap;

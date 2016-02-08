@@ -1,13 +1,13 @@
 package org.endeavourhealth.cim.dataManager.emis;
 
-import org.endeavourhealth.common.Registry;
-import org.endeavourhealth.common.core.exceptions.InvalidInternalIdentifier;
-import org.endeavourhealth.transform.common.BundleProperties;
-import org.endeavourhealth.common.core.exceptions.NotFoundException;
+import org.endeavourhealth.cim.dataManager.Registry;
+import org.endeavourhealth.cim.exceptions.InvalidInternalIdentifier;
+import org.endeavourhealth.cim.transform.common.BundleProperties;
+import org.endeavourhealth.cim.exceptions.NotFoundException;
 import org.endeavourhealth.core.utils.TextUtils;
 import org.endeavourhealth.cim.dataManager.IDataManager;
-import org.endeavourhealth.cim.common.FhirFilterHelper;
-import org.endeavourhealth.transform.EmisTransformer;
+import org.endeavourhealth.cim.camel.helpers.FhirFilterHelper;
+import org.endeavourhealth.cim.transform.EmisTransformer;
 import org.hl7.fhir.instance.formats.JsonParser;
 import org.hl7.fhir.instance.model.*;
 

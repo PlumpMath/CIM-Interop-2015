@@ -6,7 +6,7 @@ import org.apache.http.HttpStatus;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.*;
 import org.apache.http.impl.client.DefaultHttpClient;
-import org.endeavourhealth.common.core.HttpVerb;
+import org.endeavourhealth.cim.camel.helpers.HttpVerb;
 import org.hl7.fhir.instance.formats.JsonParser;
 import org.hl7.fhir.instance.model.Condition;
 import org.hl7.fhir.instance.model.MedicationOrder;

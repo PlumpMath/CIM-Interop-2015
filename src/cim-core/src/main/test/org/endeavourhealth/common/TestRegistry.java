@@ -1,11 +1,13 @@
 package org.endeavourhealth.common;
 
-import org.endeavourhealth.transform.IRecordTransformer;
+import org.endeavourhealth.cim.dataManager.IRegistry;
+import org.endeavourhealth.cim.transform.IRecordTransformer;
 import org.endeavourhealth.core.repository.informationSharingProtocols.InformationSharingProtocol;
 
 import java.util.*;
 
-public class TestRegistry implements IRegistry {
+public class TestRegistry implements IRegistry
+{
     public String getDataManagerTypeNameForService(String odsCode) {
         return "org.endeavourhealth.cim.dataManager.EmisTestDataManager";
     }

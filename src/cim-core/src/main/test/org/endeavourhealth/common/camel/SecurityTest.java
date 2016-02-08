@@ -8,11 +8,11 @@ import org.apache.camel.component.mock.MockEndpoint;
 import org.apache.camel.test.junit4.CamelTestSupport;
 import org.endeavourhealth.common.TestUserRepository;
 import org.endeavourhealth.common.TestRegistry;
-import org.endeavourhealth.common.core.exceptions.SecurityFailedException;
+import org.endeavourhealth.cim.exceptions.SecurityFailedException;
 import org.endeavourhealth.common.informationSharingFramework.TestISFManager;
-import org.endeavourhealth.common.processor.SecurityProcessor;
-import org.endeavourhealth.common.repository.informationSharing.ISFManager;
-import org.endeavourhealth.common.Registry;
+import org.endeavourhealth.cim.camel.processors.common.SecurityProcessor;
+import org.endeavourhealth.core.repository.informationSharing.ISFManager;
+import org.endeavourhealth.cim.dataManager.Registry;
 import org.endeavourhealth.core.repository.user.UserRepository;
 import org.junit.Test;
 

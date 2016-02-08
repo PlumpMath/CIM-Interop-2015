@@ -1,7 +1,5 @@
 package org.endeavourhealth.cim.dataManager;
 
-import org.endeavourhealth.common.Registry;
-
 import java.util.ArrayList;
 
 public class DataManagerFactory {

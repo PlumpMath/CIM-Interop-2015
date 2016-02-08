@@ -8,9 +8,10 @@
     <context-param>
         <param-name>routeBuilder</param-name>
         <param-value>
-            packagescan:org.endeavourhealth.common.camel,
-            packagescan:org.endeavourhealth.async.camel,
-            packagescan:org.endeavourhealth.cim.camel
+            packagescan:org.endeavourhealth.cim.camel.configuration,
+            packagescan:org.endeavourhealth.cim.camel.endpoints,
+            packagescan:org.endeavourhealth.cim.camel.processors,
+            packagescan:org.endeavourhealth.cim.camel.routes
         </param-value>
     </context-param>
     <context-param>
@@ -31,7 +32,7 @@
     </listener>
 
     <listener>
-        <listener-class>org.endeavourhealth.common.DataServiceContextListener</listener-class>
+        <listener-class>org.endeavourhealth.cim.camel.helpers.DataServiceContextListener</listener-class>
     </listener>
 
     <!-- Camel servlet used in the Camel application -->

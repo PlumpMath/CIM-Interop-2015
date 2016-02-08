@@ -8,9 +8,8 @@ import org.junit.Assert;
 import org.apache.camel.Exchange;
 import org.apache.camel.impl.DefaultCamelContext;
 import org.apache.camel.impl.DefaultExchange;
-import org.endeavourhealth.common.core.ExchangeHelper;
-import org.endeavourhealth.common.core.HeaderKey;
-import org.endeavourhealth.common.processor.SecurityProcessor;
+import org.endeavourhealth.cim.camel.helpers.ExchangeHelper;
+import org.endeavourhealth.cim.camel.processors.common.SecurityProcessor;
 
 public class SecurityStepDefs {
 	private Exchange _exchange;
