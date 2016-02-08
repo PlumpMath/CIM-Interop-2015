@@ -8,7 +8,7 @@ import org.endeavourhealth.transform.exceptions.TransformFeatureNotSupportedExce
 import org.endeavourhealth.transform.openhr.tofhir.admin.NameConverter;
 import org.endeavourhealth.transform.schemas.emisopen.eomappointmentsessions.*;
 import org.endeavourhealth.transform.schemas.emisopen.eomorganisationinformation.OrganisationInformation;
-import org.endeavourhealth.core.text.TextUtils;
+import org.endeavourhealth.core.utils.TextUtils;
 import org.hl7.fhir.instance.model.*;
 
 import java.util.ArrayList;

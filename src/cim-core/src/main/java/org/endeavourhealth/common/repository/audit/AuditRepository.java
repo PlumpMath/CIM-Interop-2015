@@ -1,7 +1,7 @@
 package org.endeavourhealth.common.repository.audit;
 
 import com.datastax.driver.core.BoundStatement;
-import org.endeavourhealth.core.text.TextUtils;
+import org.endeavourhealth.core.utils.TextUtils;
 import org.endeavourhealth.core.repository.DataConfiguration;
 import org.endeavourhealth.core.repository.common.data.InsertStatementBuilder;
 import org.endeavourhealth.core.repository.common.data.Repository;

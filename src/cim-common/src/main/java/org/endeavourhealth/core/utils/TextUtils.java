@@ -1,4 +1,4 @@
-package org.endeavourhealth.core.text;
+package org.endeavourhealth.core.utils;
 
 public class TextUtils {
 

@@ -7,7 +7,7 @@ import org.endeavourhealth.common.core.PropertyKey;
 import org.endeavourhealth.common.core.exceptions.NoLegitimateRelationshipException;
 import org.endeavourhealth.common.repository.informationSharing.model.InformationSharingProtocol;
 import org.endeavourhealth.core.repository.common.data.RepositoryException;
-import org.endeavourhealth.core.text.TextUtils;
+import org.endeavourhealth.core.utils.TextUtils;
 
 import java.util.ArrayList;
 import java.util.Arrays;

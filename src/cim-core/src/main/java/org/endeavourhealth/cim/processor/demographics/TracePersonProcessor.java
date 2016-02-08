@@ -7,7 +7,7 @@ import org.apache.camel.Exchange;
 import org.endeavourhealth.common.core.ExchangeHelper;
 import org.endeavourhealth.common.core.exceptions.InvalidParamException;
 import org.endeavourhealth.common.core.searchParameters.TokenSearchParameter;
-import org.endeavourhealth.core.text.TextUtils;
+import org.endeavourhealth.core.utils.TextUtils;
 import org.endeavourhealth.transform.common.FhirConstants;
 
 import java.util.Date;

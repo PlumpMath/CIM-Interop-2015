@@ -14,7 +14,7 @@ import org.endeavourhealth.common.repository.informationSharing.model.ProtocolBy
 import org.endeavourhealth.core.repository.DataConfiguration;
 import org.endeavourhealth.core.serializer.DeserializationException;
 import org.endeavourhealth.core.serializer.JsonSerializer;
-import org.endeavourhealth.core.stream.StreamExtension;
+import org.endeavourhealth.core.utils.StreamExtension;
 
 import java.util.UUID;
 

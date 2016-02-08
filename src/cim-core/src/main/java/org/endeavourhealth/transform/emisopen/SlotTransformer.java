@@ -3,7 +3,7 @@ package org.endeavourhealth.transform.emisopen;
 import org.endeavourhealth.transform.exceptions.SerializationException;
 import org.endeavourhealth.transform.schemas.emisopen.eomslotsforsession.SlotListStruct;
 import org.endeavourhealth.transform.common.ReferenceHelper;
-import org.endeavourhealth.core.text.TextUtils;
+import org.endeavourhealth.core.utils.TextUtils;
 import org.endeavourhealth.transform.exceptions.TransformFeatureNotSupportedException;
 import org.endeavourhealth.transform.schemas.emisopen.eomslotsforsession.SlotStruct;
 import org.hl7.fhir.instance.model.*;

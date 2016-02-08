@@ -1,6 +1,6 @@
 package org.endeavourhealth.cim.common;
 
-import org.endeavourhealth.core.text.TextUtils;
+import org.endeavourhealth.core.utils.TextUtils;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

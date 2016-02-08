@@ -1,6 +1,6 @@
 package org.endeavourhealth.core.repository.nodes.models;
 
-import org.endeavourhealth.core.stream.StreamExtension;
+import org.endeavourhealth.core.utils.StreamExtension;
 
 import java.util.ArrayList;
 import java.util.UUID;

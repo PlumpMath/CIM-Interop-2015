@@ -5,7 +5,7 @@ import org.apache.commons.io.IOUtils;
 import org.endeavourhealth.common.core.exceptions.InvalidParamException;
 import org.endeavourhealth.common.core.exceptions.MissingParamException;
 import org.endeavourhealth.common.core.searchParameters.TokenSearchParameter;
-import org.endeavourhealth.core.text.TextUtils;
+import org.endeavourhealth.core.utils.TextUtils;
 import org.hl7.fhir.instance.formats.JsonParser;
 import org.hl7.fhir.instance.model.Resource;
 

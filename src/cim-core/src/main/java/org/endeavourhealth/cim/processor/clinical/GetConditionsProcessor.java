@@ -7,7 +7,7 @@ import org.endeavourhealth.common.core.ExchangeHelper;
 import org.endeavourhealth.cim.common.CIMHeaderKey;
 import org.endeavourhealth.common.core.HeaderKey;
 import org.endeavourhealth.common.core.exceptions.NotFoundException;
-import org.endeavourhealth.core.text.TextUtils;
+import org.endeavourhealth.core.utils.TextUtils;
 import org.endeavourhealth.cim.dataManager.DataManagerFactory;
 
 public class GetConditionsProcessor implements Processor {

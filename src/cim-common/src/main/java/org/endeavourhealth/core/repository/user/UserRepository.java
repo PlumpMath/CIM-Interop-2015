@@ -7,7 +7,7 @@ import org.endeavourhealth.core.repository.common.data.InsertStatementBuilder;
 import org.endeavourhealth.core.repository.common.data.Repository;
 import org.endeavourhealth.core.repository.common.data.RepositoryException;
 import org.endeavourhealth.core.repository.common.data.StringKeyRepositoryHelper;
-import org.endeavourhealth.core.text.TextUtils;
+import org.endeavourhealth.core.utils.TextUtils;
 
 public class UserRepository extends Repository {
 	private static final String TableName = "user";

@@ -6,7 +6,7 @@ import org.endeavourhealth.transform.exceptions.TransformFeatureNotSupportedExce
 import org.endeavourhealth.transform.schemas.emisopen.eomgetpatientappointments.AppointmentStruct;
 import org.endeavourhealth.transform.schemas.emisopen.eomgetpatientappointments.PatientAppointmentList;
 import org.endeavourhealth.transform.schemas.emisopen.eomorganisationinformation.OrganisationInformation;
-import org.endeavourhealth.core.text.TextUtils;
+import org.endeavourhealth.core.utils.TextUtils;
 import org.endeavourhealth.transform.schemas.emisopen.eomgetpatientappointments.HolderStruct;
 import org.hl7.fhir.instance.model.*;
 

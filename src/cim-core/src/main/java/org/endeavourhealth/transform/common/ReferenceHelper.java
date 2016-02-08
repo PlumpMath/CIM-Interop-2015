@@ -2,7 +2,7 @@ package org.endeavourhealth.transform.common;
 
 import org.hl7.fhir.instance.model.Reference;
 import org.hl7.fhir.instance.model.ResourceType;
-import org.endeavourhealth.core.text.TextUtils;
+import org.endeavourhealth.core.utils.TextUtils;
 
 public class ReferenceHelper {
     public static String createResourceReference(ResourceType resourceType, String id) {

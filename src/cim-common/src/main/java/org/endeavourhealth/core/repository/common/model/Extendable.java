@@ -1,6 +1,6 @@
 package org.endeavourhealth.core.repository.common.model;
 
-import org.endeavourhealth.core.stream.StreamExtension;
+import org.endeavourhealth.core.utils.StreamExtension;
 
 import java.io.Serializable;
 import java.util.ArrayList;

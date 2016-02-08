@@ -2,7 +2,7 @@ package org.endeavourhealth.core.repository.common.data;
 
 import com.datastax.driver.core.*;
 import com.datastax.driver.core.querybuilder.QueryBuilder;
-import org.endeavourhealth.core.stream.StreamExtension;
+import org.endeavourhealth.core.utils.StreamExtension;
 
 import java.util.ArrayList;
 import java.util.List;

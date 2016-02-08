@@ -1,7 +1,7 @@
 package org.endeavourhealth.common.core.exceptions;
 
 import org.endeavourhealth.common.core.FhirIssueType;
-import org.endeavourhealth.core.text.TextUtils;
+import org.endeavourhealth.core.utils.TextUtils;
 import org.hl7.fhir.instance.formats.JsonParser;
 import org.hl7.fhir.instance.model.CodeableConcept;
 import org.hl7.fhir.instance.model.OperationOutcome;

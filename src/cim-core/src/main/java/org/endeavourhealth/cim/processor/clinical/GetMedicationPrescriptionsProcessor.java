@@ -8,7 +8,7 @@ import org.endeavourhealth.cim.common.CIMHeaderKey;
 import org.endeavourhealth.common.core.HeaderKey;
 import org.endeavourhealth.common.core.exceptions.InvalidParamException;
 import org.endeavourhealth.common.core.exceptions.NotFoundException;
-import org.endeavourhealth.core.text.TextUtils;
+import org.endeavourhealth.core.utils.TextUtils;
 import org.endeavourhealth.cim.dataManager.DataManagerFactory;
 import org.hl7.fhir.instance.model.MedicationOrder;
 

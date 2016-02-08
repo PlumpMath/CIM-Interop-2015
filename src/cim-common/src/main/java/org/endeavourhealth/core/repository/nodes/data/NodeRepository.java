@@ -11,7 +11,7 @@ import org.endeavourhealth.core.repository.common.data.*;
 import org.endeavourhealth.core.repository.nodes.models.InboundQueueNode;
 import org.endeavourhealth.core.repository.nodes.models.Node;
 import org.endeavourhealth.core.repository.nodes.models.NodePurpose;
-import org.endeavourhealth.core.stream.StreamExtension;
+import org.endeavourhealth.core.utils.StreamExtension;
 import org.endeavourhealth.core.repository.DataConfiguration;
 import org.endeavourhealth.core.repository.common.model.AuditItem;
 import org.endeavourhealth.core.repository.common.model.AuditMode;
