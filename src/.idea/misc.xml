@@ -56,6 +56,12 @@
         <option value="$PROJECT_DIR$/cim-management/pom.xml" />
       </list>
     </option>
+    <option name="ignoredFiles">
+      <set>
+        <option value="$PROJECT_DIR$/cim-dataservice-async/pom.xml" />
+        <option value="$PROJECT_DIR$/cim-dataservice-cim/pom.xml" />
+      </set>
+    </option>
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />

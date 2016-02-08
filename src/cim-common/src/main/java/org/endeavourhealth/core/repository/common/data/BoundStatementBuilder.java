@@ -76,7 +76,7 @@ abstract class BoundStatementBuilder {
             case UUID:
                 return statement.setUUID(value.getColumnName(), (UUID)value.getValue());
             case Timestamp:
-                return statement.setTimestamp(value.getColumnName(), (Date)value.getValue());
+                return statement.setDate(value.getColumnName(), (Date)value.getValue());
             case Map:
                 return statement.setMap(value.getColumnName(), (Map) value.getValue());
             default:
