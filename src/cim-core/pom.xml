@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.endeavourhealth.cim</groupId>
-    <artifactId>cim-dataservice</artifactId>
+    <artifactId>cim-core</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <properties>
