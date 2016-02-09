@@ -1,0 +1,169 @@
+﻿{
+  "id": "primarycare-schedule",
+  "meta": {
+    "lastUpdated": "2015-11-01T10:00:00+00:00"
+  },
+  "url": "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-schedule",
+  "name": "PrimaryCare-Schedule",
+  "display": "Primary Care schedule",
+  "status": "draft",
+  "publisher": "Endeavour Health Charitable Trust",
+  "contact": [
+    {
+      "telecom": [
+        {
+          "system": 4,
+          "value": "http://www.endeavourhealth.org/"
+        }
+      ]
+    }
+  ],
+  "date": "2015-11-01",
+  "description": "Primary Care schedule",
+  "fhirVersion": "1.0.2",
+  "kind": 1,
+  "constrainedType": "Schedule",
+  "abstract": false,
+  "base": "http://hl7.org/fhir/StructureDefinition/Schedule",
+  "differential": {
+    "element": [
+      {
+        "path": "Schedule",
+        "short": "A container for slot(s) of time that may be available for booking appointments",
+        "definition": "A container for slot(s) of time that may be available for booking appointments.",
+        "alias": [
+          "Availability"
+        ],
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "Schedule"
+          }
+        ],
+        "mapping": [
+          {
+            "identity": "ical",
+            "map": "BEGIN:VFREEBUSY  ???  END:VFREEBUSY (If your fhir server provides this information via calDAV, then you may want to include addressing information in a URL section, and with the search, a DTSTART and DTEND component can be included to indicate the range of time that has been covered in the collection of slots, where these overlap the resources period values. For all slots that reference this resource, include a FREEBUSY row for each slot)"
+          },
+          {
+            "identity": "w5",
+            "map": "workflow.scheduling"
+          }
+        ]
+      },
+      {
+        "path": "Schedule.extension",
+        "slicing": {
+          "discriminator": [
+            "url"
+          ],
+          "rules": 2
+        }
+      },
+      {
+        "path": "Schedule.extension",
+        "name": "additionalActors",
+        "definition": "Optional Extensions Element - found in all resources.",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-additional-actor-extension"
+            ]
+          }
+        ]
+      },
+      {
+        "path": "Schedule.identifier.assigner",
+        "short": "Organization that issued id (may be just text)",
+        "definition": "Organization that issued/manages the identifier.",
+        "comments": "The reference may be just a text description of the assigner.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-organization"
+            ]
+          }
+        ],
+        "isSummary": true,
+        "mapping": [
+          {
+            "identity": "v2",
+            "map": "CX.4 / (CX.4,CX.9,CX.10)"
+          },
+          {
+            "identity": "rim",
+            "map": "II.assigningAuthorityName but note that this is an improper use by the definition of the field.  Also Role.scoper"
+          },
+          {
+            "identity": "servd",
+            "map": "./IdentifierIssuingAuthority"
+          }
+        ]
+      },
+      {
+        "path": "Schedule.actor",
+        "short": "The resource this Schedule resource is providing availability information for. These are expected to usually be one of HealthcareService, Location, Practitioner, Device, Patient or RelatedPerson",
+        "definition": "The resource this Schedule resource is providing availability information for. These are expected to usually be one of HealthcareService, Location, Practitioner, Device, Patient or RelatedPerson.",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-patient"
+            ]
+          },
+          {
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-practitioner"
+            ]
+          },
+          {
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-related-person"
+            ]
+          },
+          {
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-device"
+            ]
+          },
+          {
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-healthcare-service"
+            ]
+          },
+          {
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-location"
+            ]
+          }
+        ],
+        "isSummary": true,
+        "mapping": [
+          {
+            "identity": "ical",
+            "map": "ATTENDEE:MAILTO:john_public@host2.com This can be populated with a value from the referenced resource"
+          },
+          {
+            "identity": "w5",
+            "map": "who.focus"
+          }
+        ]
+      }
+    ]
+  },
+  "W5TopLevelGroup": "Workflow"
+}

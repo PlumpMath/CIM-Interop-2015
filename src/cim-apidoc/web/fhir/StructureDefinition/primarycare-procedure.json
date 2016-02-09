@@ -1,0 +1,400 @@
+﻿{
+  "id": "primarycare-procedure",
+  "meta": {
+    "lastUpdated": "2015-09-22T11:02:49.724+01:00"
+  },
+  "extension": [
+    {
+      "Item": 0,
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm"
+    },
+    {
+      "Item": 2,
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm-no-warnings"
+    }
+  ],
+  "url": "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-procedure",
+  "name": "PrimaryCare-Procedure",
+  "display": "Primary Care procedure",
+  "status": "draft",
+  "publisher": "Endeavour Health Charitable Trust",
+  "contact": [
+    {
+      "telecom": [
+        {
+          "system": 4,
+          "value": "http://www.endeavourhealth.org/"
+        }
+      ]
+    }
+  ],
+  "date": "2015-11-01T00:00:00+00:00",
+  "description": "An action that is or was performed on a patient. This can be a physical intervention like an operation, or less invasive like counseling or hypnotherapy.",
+  "fhirVersion": "1.0.1",
+  "kind": 1,
+  "constrainedType": "Procedure",
+  "abstract": false,
+  "base": "http://hl7.org/fhir/StructureDefinition/Procedure",
+  "differential": {
+    "element": [
+      {
+        "path": "Procedure",
+        "short": "An action that is being or was performed on a patient",
+        "definition": "An action that is or was performed on a patient. This can be a physical intervention like an operation, or less invasive like counseling or hypnotherapy.",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "Procedure"
+          }
+        ],
+        "mapping": [
+          {
+            "identity": "rim",
+            "map": "Procedure[moodCode=EVN]"
+          },
+          {
+            "identity": "w5",
+            "map": "clinical.general"
+          }
+        ]
+      },
+      {
+        "path": "Procedure.identifier.assigner",
+        "short": "Organization that issued id (may be just text)",
+        "definition": "Organization that issued/manages the identifier.",
+        "comments": "The reference may be just a text description of the assigner.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-organization"
+            ]
+          }
+        ],
+        "isSummary": true,
+        "mapping": [
+          {
+            "identity": "v2",
+            "map": "CX.4 / (CX.4,CX.9,CX.10)"
+          },
+          {
+            "identity": "rim",
+            "map": "II.assigningAuthorityName but note that this is an improper use by the definition of the field.  Also Role.scoper"
+          },
+          {
+            "identity": "servd",
+            "map": "./IdentifierIssuingAuthority"
+          }
+        ]
+      },
+      {
+        "path": "Procedure.subject",
+        "short": "Who the procedure was performed on",
+        "definition": "The person on which the procedure was performed.",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-patient"
+            ]
+          }
+        ],
+        "isSummary": true,
+        "mapping": [
+          {
+            "identity": "v2",
+            "map": "PID-3"
+          },
+          {
+            "identity": "rim",
+            "map": ".participation[typeCode=SBJ].role"
+          },
+          {
+            "identity": "w5",
+            "map": "who.focus"
+          }
+        ]
+      },
+      {
+        "path": "Procedure.reason[x]",
+        "short": "Reason procedure performed",
+        "definition": "The reason why the procedure was performed. This may be due to a Condition, may be coded entity of some type, or may simply be present as text.",
+        "comments": "e.g. endoscopy for dilatation and biopsy, combination diagnosis and therapeutic.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "CodeableConcept"
+          },
+          {
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-condition"
+            ]
+          }
+        ],
+        "isSummary": true,
+        "binding": {
+          "strength": 3,
+          "description": "A code that identifies the reason a procedure is  required.",
+          "Item": {
+            "reference": "http://hl7.org/fhir/ValueSet/procedure-reason"
+          }
+        },
+        "mapping": [
+          {
+            "identity": "rim",
+            "map": ".reasonCode"
+          }
+        ]
+      },
+      {
+        "path": "Procedure.performer.actor",
+        "short": "The reference to the practitioner",
+        "definition": "The practitioner who was involved in the procedure.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-practitioner"
+            ]
+          },
+          {
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-organization"
+            ]
+          },
+          {
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-patient"
+            ]
+          },
+          {
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-related-person"
+            ]
+          }
+        ],
+        "isSummary": true,
+        "mapping": [
+          {
+            "identity": "v2",
+            "map": "ORC-19/PRT-5"
+          },
+          {
+            "identity": "rim",
+            "map": ".role"
+          },
+          {
+            "identity": "w5",
+            "map": "who.actor"
+          }
+        ]
+      },
+      {
+        "path": "Procedure.encounter",
+        "short": "The encounter associated with the procedure",
+        "definition": "The encounter during which the procedure was performed.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-encounter"
+            ]
+          }
+        ],
+        "isSummary": true,
+        "mapping": [
+          {
+            "identity": "v2",
+            "map": "PV1-19"
+          },
+          {
+            "identity": "rim",
+            "map": ".inboundRelationship[typeCode=COMP].source[classCode=ENC, moodCode=EVN]"
+          },
+          {
+            "identity": "w5",
+            "map": "context"
+          }
+        ]
+      },
+      {
+        "path": "Procedure.location",
+        "short": "Where the procedure happened",
+        "definition": "The location where the procedure actually happened.  E.g. a newborn at home, a tracheostomy at a restaurant.",
+        "requirements": "Ties a procedure to where the records are likely kept.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-location"
+            ]
+          }
+        ],
+        "isSummary": true,
+        "mapping": [
+          {
+            "identity": "w5",
+            "map": "where"
+          }
+        ]
+      },
+      {
+        "path": "Procedure.report",
+        "short": "Any report resulting from the procedure",
+        "definition": "This could be a histology result, pathology report, surgical report, etc..",
+        "comments": "There could potentially be multiple reports - e.g. if this was a procedure which took multiple biopsies resulting in a number of anatomical pathology reports.",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-diagnostic-report"
+            ]
+          }
+        ],
+        "mapping": [
+          {
+            "identity": "rim",
+            "map": ".inboundRelationship[typeCode=SUBJ].source[classCode=OBS, moodCode=EVN]"
+          }
+        ]
+      },
+      {
+        "path": "Procedure.request",
+        "short": "A request for this procedure",
+        "definition": "A reference to a resource that contains details of the request for this procedure.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-care-plan"
+            ]
+          },
+          {
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-diagnostic-order"
+            ]
+          },
+          {
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-procedure-request"
+            ]
+          },
+          {
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-referral-request"
+            ]
+          }
+        ]
+      },
+      {
+        "path": "Procedure.notes.author[x]",
+        "short": "Individual responsible for the annotation",
+        "definition": "The individual responsible for making the annotation.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-practitioner"
+            ]
+          },
+          {
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-patient"
+            ]
+          },
+          {
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-related-person"
+            ]
+          },
+          {
+            "code": "string"
+          }
+        ],
+        "isSummary": true,
+        "mapping": [
+          {
+            "identity": "v2",
+            "map": "N/A"
+          },
+          {
+            "identity": "rim",
+            "map": "Act.participant[typeCode=AUT].role"
+          }
+        ]
+      },
+      {
+        "path": "Procedure.focalDevice.manipulated",
+        "short": "Device that was changed",
+        "definition": "The device that was manipulated (changed) during the procedure.",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-device"
+            ]
+          }
+        ]
+      },
+      {
+        "path": "Procedure.used",
+        "short": "Items used during procedure",
+        "definition": "Identifies medications, devices and any other substance used as part of the procedure.",
+        "comments": "For devices actually implanted or removed, use Procedure.device.",
+        "requirements": "Used for tracking contamination, etc.",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-device"
+            ]
+          },
+          {
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-medication"
+            ]
+          },
+          {
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-substance"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "W5TopLevelGroup": "Clinical"
+}

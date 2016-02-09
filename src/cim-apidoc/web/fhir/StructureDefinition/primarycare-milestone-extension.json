@@ -1,0 +1,356 @@
+﻿{
+  "id": "primarycare-milestone-extension",
+  "url": "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-milestone-extension",
+  "name": "PrimaryCare-Milestone-Extension",
+  "display": "Primary Care milestone",
+  "status": "draft",
+  "publisher": "Endeavour Health Charitable Trust",
+  "date": "2015-11-13",
+  "fhirVersion": "1.0.2",
+  "kind": 0,
+  "constrainedType": "Extension",
+  "abstract": false,
+  "contextType": 0,
+  "context": [
+    "Goal"
+  ],
+  "base": "http://hl7.org/fhir/StructureDefinition/Extension",
+  "differential": {
+    "element": [
+      {
+        "path": "Extension",
+        "short": "Intermediate goal milestone",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "Extension"
+          }
+        ]
+      },
+      {
+        "path": "Extension.extension",
+        "slicing": {
+          "discriminator": [
+            "url"
+          ],
+          "rules": 2
+        }
+      },
+      {
+        "path": "Extension.extension",
+        "name": "measure",
+        "definition": "Whats being measured against the milestone",
+        "requirements": "Allows the specification of the aspect being measured against the milestone.  This could be a coded item such as weight or free text such as walking distance.",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "Extension"
+          }
+        ]
+      },
+      {
+        "path": "Extension.extension.extension",
+        "slicing": {
+          "discriminator": [
+            "url"
+          ],
+          "rules": 2
+        }
+      },
+      {
+        "path": "Extension.extension.extension",
+        "name": "extension",
+        "min": 0,
+        "max": "0"
+      },
+      {
+        "path": "Extension.extension.url",
+        "type": [
+          {
+            "code": "uri"
+          }
+        ],
+        "Item1": "measure"
+      },
+      {
+        "path": "Extension.extension.value[x]",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ]
+      },
+      {
+        "path": "Extension.extension",
+        "name": "value[x]",
+        "short": "The milestone value to achieve",
+        "requirements": "The actual milestone value.  This could be a quantity (such as 10kg for a coded measure of \"weight loss\"), a boolean (for a free-text measure of \"walk up stairs without losing breath\") or free text value (such as \"walk 3 stops before catching bus\")",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "Extension"
+          }
+        ]
+      },
+      {
+        "path": "Extension.extension.extension",
+        "slicing": {
+          "discriminator": [
+            "url"
+          ],
+          "rules": 2
+        }
+      },
+      {
+        "path": "Extension.extension.extension",
+        "name": "extension",
+        "min": 0,
+        "max": "0"
+      },
+      {
+        "path": "Extension.extension.url",
+        "type": [
+          {
+            "code": "uri"
+          }
+        ],
+        "Item1": "value[x]"
+      },
+      {
+        "path": "Extension.extension.value[x]",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "boolean"
+          },
+          {
+            "code": "integer"
+          },
+          {
+            "code": "decimal"
+          },
+          {
+            "code": "base64Binary"
+          },
+          {
+            "code": "instant"
+          },
+          {
+            "code": "string"
+          },
+          {
+            "code": "uri"
+          },
+          {
+            "code": "date"
+          },
+          {
+            "code": "dateTime"
+          },
+          {
+            "code": "time"
+          },
+          {
+            "code": "code"
+          },
+          {
+            "code": "oid"
+          },
+          {
+            "code": "id"
+          },
+          {
+            "code": "unsignedInt"
+          },
+          {
+            "code": "positiveInt"
+          },
+          {
+            "code": "markdown"
+          },
+          {
+            "code": "Annotation"
+          },
+          {
+            "code": "Attachment"
+          },
+          {
+            "code": "Identifier"
+          },
+          {
+            "code": "CodeableConcept"
+          },
+          {
+            "code": "Coding"
+          },
+          {
+            "code": "Quantity"
+          },
+          {
+            "code": "Range"
+          },
+          {
+            "code": "Period"
+          },
+          {
+            "code": "Ratio"
+          },
+          {
+            "code": "SampledData"
+          },
+          {
+            "code": "Signature"
+          },
+          {
+            "code": "HumanName"
+          },
+          {
+            "code": "Address"
+          },
+          {
+            "code": "ContactPoint"
+          },
+          {
+            "code": "Timing"
+          },
+          {
+            "code": "Reference"
+          },
+          {
+            "code": "Meta"
+          }
+        ]
+      },
+      {
+        "path": "Extension.extension",
+        "name": "target",
+        "short": "The target by which the milestone should be met",
+        "requirements": "This could be a specific date or a period of time (duration)",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "Extension"
+          }
+        ]
+      },
+      {
+        "path": "Extension.extension.extension",
+        "slicing": {
+          "discriminator": [
+            "url"
+          ],
+          "rules": 2
+        }
+      },
+      {
+        "path": "Extension.extension.extension",
+        "name": "extension",
+        "min": 0,
+        "max": "0"
+      },
+      {
+        "path": "Extension.extension.url",
+        "type": [
+          {
+            "code": "uri"
+          }
+        ],
+        "Item1": "target"
+      },
+      {
+        "path": "Extension.extension.value[x]",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "date"
+          },
+          {
+            "code": "Quantity",
+            "profile": [
+              "http://hl7.org/fhir/StructureDefinition/Duration"
+            ]
+          }
+        ]
+      },
+      {
+        "path": "Extension.extension",
+        "name": "achievement",
+        "short": "Wheather the milestone was achieved",
+        "requirements": "This could be a specific date or a simple yes/no (boolean)",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "Extension"
+          }
+        ],
+        "meaningWhenMissing": "Milestone has not been met/is still active/in progress"
+      },
+      {
+        "path": "Extension.extension.extension",
+        "slicing": {
+          "discriminator": [
+            "url"
+          ],
+          "rules": 2
+        }
+      },
+      {
+        "path": "Extension.extension.extension",
+        "name": "extension",
+        "min": 0,
+        "max": "0"
+      },
+      {
+        "path": "Extension.extension.url",
+        "type": [
+          {
+            "code": "uri"
+          }
+        ],
+        "Item1": "achievement"
+      },
+      {
+        "path": "Extension.extension.value[x]",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "date"
+          },
+          {
+            "code": "boolean"
+          }
+        ]
+      },
+      {
+        "path": "Extension.url",
+        "representation": [
+          0
+        ],
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "uri"
+          }
+        ],
+        "Item1": "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-milestone-extension"
+      },
+      {
+        "path": "Extension.value[x]",
+        "min": 0,
+        "max": "0"
+      }
+    ]
+  },
+  "W5TopLevelGroup": ""
+}

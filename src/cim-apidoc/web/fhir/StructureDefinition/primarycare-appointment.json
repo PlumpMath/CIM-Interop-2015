@@ -1,0 +1,202 @@
+﻿{
+  "id": "primarycare-appointment",
+  "meta": {
+    "lastUpdated": "2015-09-22T11:02:49.724+01:00"
+  },
+  "extension": [
+    {
+      "Item": 0,
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm"
+    }
+  ],
+  "url": "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-appointment",
+  "name": "PrimaryCare-Appointment",
+  "display": "Primary Care appointment",
+  "status": "draft",
+  "contact": [
+    {
+      "name": "Endeavour Health Charitable Trust",
+      "telecom": [
+        {
+          "system": 4,
+          "value": "http://www.endeavourhealth.org/"
+        }
+      ]
+    }
+  ],
+  "date": "2015-09-22T20:02:49+10:00",
+  "fhirVersion": "1.0.1",
+  "mapping": [
+    {
+      "identity": "rim",
+      "uri": "http://hl7.org/v3",
+      "name": "RIM"
+    },
+    {
+      "identity": "ical",
+      "uri": "http://www.ietf.org/rfc/rfc2445.txt",
+      "name": "iCalendar"
+    },
+    {
+      "identity": "w5",
+      "uri": "http://hl7.org/fhir/w5",
+      "name": "W5 Mapping"
+    },
+    {
+      "identity": "v2",
+      "uri": "http://hl7.org/v2",
+      "name": "HL7 v2"
+    }
+  ],
+  "kind": 1,
+  "constrainedType": "Appointment",
+  "abstract": false,
+  "base": "http://hl7.org/fhir/StructureDefinition/Appointment",
+  "differential": {
+    "element": [
+      {
+        "path": "Appointment",
+        "short": "A booking of a healthcare event among patient(s), practitioner(s), related person(s) and/or device(s) for a specific date/time. This may result in one or more Encounter(s)",
+        "definition": "A booking of a healthcare event among patient(s), practitioner(s), related person(s) and/or device(s) for a specific date/time. This may result in one or more Encounter(s).",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "Appointment"
+          }
+        ],
+        "mapping": [
+          {
+            "identity": "rim",
+            "map": "Act (ActMood = ActMoodAppointment or ActMoodAppointmentRequest)"
+          },
+          {
+            "identity": "ical",
+            "map": "VEVENT"
+          },
+          {
+            "identity": "w5",
+            "map": "workflow.scheduling"
+          }
+        ]
+      },
+      {
+        "path": "Appointment.identifier.assigner",
+        "short": "Organization that issued id (may be just text)",
+        "definition": "Organization that issued/manages the identifier.",
+        "comments": "The reference may be just a text description of the assigner.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-organization"
+            ]
+          }
+        ],
+        "isSummary": true,
+        "mapping": [
+          {
+            "identity": "v2",
+            "map": "CX.4 / (CX.4,CX.9,CX.10)"
+          },
+          {
+            "identity": "rim",
+            "map": "II.assigningAuthorityName but note that this is an improper use by the definition of the field.  Also Role.scoper"
+          },
+          {
+            "identity": "servd",
+            "map": "./IdentifierIssuingAuthority"
+          }
+        ]
+      },
+      {
+        "path": "Appointment.slot",
+        "short": "If provided, then no schedule and start/end values MUST match slot",
+        "definition": "The slot that this appointment is filling. If provided then the schedule will not be provided as slots are not recursive, and the start/end values MUST be the same as from the slot.",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-slot"
+            ]
+          }
+        ],
+        "mapping": [
+          {
+            "identity": "rim",
+            "map": "Schedule-Slot (classCode=ACT, moodCode = SLOT)"
+          }
+        ]
+      },
+      {
+        "path": "Appointment.participant.actor",
+        "short": "Person, Location/HealthcareService or Device",
+        "definition": "A Person, Location/HealthcareService or Device that is participating in the appointment.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-patient"
+            ]
+          },
+          {
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-practitioner"
+            ]
+          },
+          {
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-related-person"
+            ]
+          },
+          {
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-device"
+            ]
+          },
+          {
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-healthcare-service"
+            ]
+          },
+          {
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-location"
+            ]
+          }
+        ],
+        "isSummary": true,
+        "mapping": [
+          {
+            "identity": "v2",
+            "map": "PID-3-Patient ID List | AIL-3 | AIG-3 | AIP-3"
+          },
+          {
+            "identity": "rim",
+            "map": "performer | reusableDevice | subject | location"
+          },
+          {
+            "identity": "ical",
+            "map": "ATTENDEE: (Need to provide the common name CN and also the MAILTO properties from the practitioner resource) where the participant type is not \"information-only\""
+          },
+          {
+            "identity": "w5",
+            "map": "who"
+          }
+        ]
+      }
+    ]
+  },
+  "W5TopLevelGroup": "Workflow"
+}

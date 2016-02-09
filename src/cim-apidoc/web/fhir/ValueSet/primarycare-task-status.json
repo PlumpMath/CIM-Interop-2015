@@ -1,0 +1,99 @@
+﻿{
+  "id": "primarycare-task-status",
+  "meta": {
+    "lastUpdated": "2015-09-24T16:19:37.151+01:00",
+    "profile": [
+      "http://hl7.org/fhir/StructureDefinition/valueset-shareable-definition"
+    ]
+  },
+  "text": {
+    "status": 1,
+    "div": {
+      "Items": [
+        {
+          "Text": [
+            "TaskStatus"
+          ]
+        },
+        {
+          "Text": [
+            "The status of the task."
+          ]
+        },
+        {
+          "Text": [
+            "This value set has an inline code system which defines the following codes:"
+          ]
+        },
+        {
+          "Text": [
+            "Active | Complete | Deleted | Archived"
+          ]
+        }
+      ]
+    }
+  },
+  "extension": [
+    {
+      "Item": 0,
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm"
+    }
+  ],
+  "url": "http://endeavourhealth.org/fhir/ValueSet/primarycare-task-status",
+  "version": "1.0.0",
+  "name": "PrimaryCare-TaskStatus",
+  "status": "draft",
+  "publisher": "Endeavour Health Charitable Trust",
+  "description": "The status of a task.",
+  "codeSystem": {
+    "system": "http://endeavourhealth.org/fhir/ValueSet/primarycare-task-status",
+    "version": "1.0.0",
+    "caseSensitive": true,
+    "concept": [
+      {
+        "extension": [
+          {
+            "Item": "Active",
+            "url": "http://hl7.org/fhir/StructureDefinition/valueset-comments"
+          }
+        ],
+        "code": "active",
+        "display": "Active",
+        "definition": "Active"
+      },
+      {
+        "extension": [
+          {
+            "Item": "Complete",
+            "url": "http://hl7.org/fhir/StructureDefinition/valueset-comments"
+          }
+        ],
+        "code": "complete",
+        "display": "Complete",
+        "definition": "Complete"
+      },
+      {
+        "extension": [
+          {
+            "Item": "Deleted",
+            "url": "http://hl7.org/fhir/StructureDefinition/valueset-comments"
+          }
+        ],
+        "code": "deleted",
+        "display": "Deleted",
+        "definition": "Deleted"
+      },
+      {
+        "extension": [
+          {
+            "Item": "Archived",
+            "url": "http://hl7.org/fhir/StructureDefinition/valueset-comments"
+          }
+        ],
+        "code": "archived",
+        "display": "Archived",
+        "definition": "Archived"
+      }
+    ]
+  }
+}

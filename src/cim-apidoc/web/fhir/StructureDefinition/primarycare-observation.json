@@ -1,0 +1,318 @@
+﻿{
+  "id": "primarycare-observation",
+  "meta": {
+    "lastUpdated": "2015-09-22T11:02:49.724+01:00"
+  },
+  "extension": [
+    {
+      "Item": 0,
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm"
+    }
+  ],
+  "url": "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-observation",
+  "name": "PrimaryCare-Observation",
+  "display": "Primary Care observation",
+  "status": "draft",
+  "publisher": "Endeavour Health Charitable Trust",
+  "contact": [
+    {
+      "telecom": [
+        {
+          "system": 4,
+          "value": "http://www.endeavourhealth.org/"
+        }
+      ]
+    }
+  ],
+  "date": "2015-11-01T00:00:00+00:00",
+  "description": "Placeholder",
+  "requirements": "Observations are a key aspect of healthcare.  This resource is used to capture those that do not require more sophisticated mechanisms.",
+  "fhirVersion": "1.0.1",
+  "kind": 1,
+  "constrainedType": "Observation",
+  "abstract": false,
+  "base": "http://hl7.org/fhir/StructureDefinition/Observation",
+  "differential": {
+    "element": [
+      {
+        "path": "Observation",
+        "short": "Measurements and simple assertions",
+        "definition": "Measurements and simple assertions made about a patient, device or other subject.",
+        "comments": "Used for simple observations such as device measurements, laboratory atomic results, vital signs, height, weight, smoking status, comments, etc.  Other resources are used to provide context for observations such as lab reports, etc.",
+        "alias": [
+          "Vital Signs",
+          "Measurement",
+          "Results",
+          "Tests"
+        ],
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "Observation"
+          }
+        ],
+        "mapping": [
+          {
+            "identity": "v2",
+            "map": "OBX"
+          },
+          {
+            "identity": "rim",
+            "map": "Observation[classCode=OBS, moodCode=EVN]"
+          },
+          {
+            "identity": "w5",
+            "map": "clinical.diagnostics"
+          }
+        ]
+      },
+      {
+        "path": "Observation.identifier.assigner",
+        "short": "Organization that issued id (may be just text)",
+        "definition": "Organization that issued/manages the identifier.",
+        "comments": "The reference may be just a text description of the assigner.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-organization"
+            ]
+          }
+        ],
+        "isSummary": true,
+        "mapping": [
+          {
+            "identity": "v2",
+            "map": "CX.4 / (CX.4,CX.9,CX.10)"
+          },
+          {
+            "identity": "rim",
+            "map": "II.assigningAuthorityName but note that this is an improper use by the definition of the field.  Also Role.scoper"
+          },
+          {
+            "identity": "servd",
+            "map": "./IdentifierIssuingAuthority"
+          }
+        ]
+      },
+      {
+        "path": "Observation.subject",
+        "short": "Who this is about",
+        "definition": "The patient whose characteristics (direct or indirect) are described by the observation and into whose record the observation is placed.  Comments: Indirect characteristics may be those of a specimen, fetus, donor,  other observer (for example a relative or EMT), or any observation made about the subject.",
+        "comments": "One would expect this element to be a cardinality  of 1..1.  The only circumstance in which the subject can be missing is when the observation is made by a device that does not know the patient. In this case, the observation SHALL be matched to a patient through some context/channel matching technique, and at this point, the observation should be updated.  If the target of the observation is different than the subject, the general extension [observation-focal-subject](extension-observation-focal-subject.html).  may be used.  However, the distinction between the patient's own value for an observation versus that of the fetus, or the donor or blood product unit, etc., are often specified in the observation code.",
+        "requirements": "Observations have no value if you don't know who or what they're about.",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-patient"
+            ]
+          },
+          {
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-group"
+            ]
+          },
+          {
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-device"
+            ]
+          },
+          {
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-location"
+            ]
+          }
+        ],
+        "isSummary": true,
+        "mapping": [
+          {
+            "identity": "v2",
+            "map": "PID-3"
+          },
+          {
+            "identity": "rim",
+            "map": "participation[typeCode=SBJ]"
+          },
+          {
+            "identity": "w5",
+            "map": "who.focus"
+          }
+        ]
+      },
+      {
+        "path": "Observation.encounter",
+        "short": "Healthcare event during which this observation is made",
+        "definition": "The healthcare event  (e.g. a patient and healthcare provider interaction) during which this observation is made.",
+        "requirements": "For some observations it may be important to know the link between an observation and a particular encounter.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-encounter"
+            ]
+          }
+        ],
+        "mapping": [
+          {
+            "identity": "v2",
+            "map": "PV1"
+          },
+          {
+            "identity": "rim",
+            "map": "inboundRelationship[typeCode=COMP].source[classCode=ENC, moodCode=EVN]"
+          },
+          {
+            "identity": "w5",
+            "map": "context"
+          }
+        ]
+      },
+      {
+        "path": "Observation.performer",
+        "short": "Who is responsible for the observation",
+        "definition": "Who was responsible for asserting the observed value as \"true\".",
+        "requirements": "May give a degree of confidence in the observation and also indicates where follow-up questions should be directed.",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-practitioner"
+            ]
+          },
+          {
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-organization"
+            ]
+          },
+          {
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-patient"
+            ]
+          },
+          {
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-related-person"
+            ]
+          }
+        ],
+        "isSummary": true,
+        "mapping": [
+          {
+            "identity": "v2",
+            "map": "OBX.15 / (Practitioner)  OBX-16,  PRT-5:PRT-4='RO' /  (Device)  OBX-18 , PRT-10:PRT-4='EQUIP' / (Organization)  OBX-23,  PRT-8:PRT-4='PO'"
+          },
+          {
+            "identity": "rim",
+            "map": "participation[typeCode=PRF]"
+          },
+          {
+            "identity": "w5",
+            "map": "who.actor"
+          }
+        ]
+      },
+      {
+        "path": "Observation.specimen",
+        "short": "Specimen used for this observation",
+        "definition": "The specimen that was used when this observation was made.",
+        "comments": "Observations are not made on specimens themselves; they are made on a subject, but usually by the means of a specimen. Note that although specimens are often involved, they are not always tracked and reported explicitly. Also note that observation resources may be used in contexts that track the specimen explicitly (e.g. Diagnostic Report).",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-specimen"
+            ]
+          }
+        ],
+        "mapping": [
+          {
+            "identity": "v2",
+            "map": "SPM segment"
+          },
+          {
+            "identity": "rim",
+            "map": "participation[typeCode=SPC].specimen"
+          }
+        ]
+      },
+      {
+        "path": "Observation.device",
+        "short": "(Measurement) Device",
+        "definition": "The device used to generate the observation data.",
+        "comments": "An extension should be used if further typing of the device is needed.  Devices used to support obtaining an observation can be represented using either extension or through the Observation.related element.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-device"
+            ]
+          },
+          {
+            "code": "Reference",
+            "profile": [
+              "http://hl7.org/fhir/StructureDefinition/DeviceMetric"
+            ]
+          }
+        ],
+        "mapping": [
+          {
+            "identity": "v2",
+            "map": "OBX-17 / PRT -10"
+          },
+          {
+            "identity": "rim",
+            "map": "participation[typeCode=DEV]"
+          }
+        ]
+      },
+      {
+        "path": "Observation.related.target",
+        "short": "Resource that is related to this one",
+        "definition": "A reference to the observation or [[[QuestionnaireResponse]]] resource that is related to this observation.",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-observation"
+            ]
+          },
+          {
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-questionnaire-response"
+            ]
+          }
+        ],
+        "mapping": [
+          {
+            "identity": "rim",
+            "map": ".targetObservation"
+          }
+        ]
+      }
+    ]
+  },
+  "W5TopLevelGroup": "Clinical"
+}

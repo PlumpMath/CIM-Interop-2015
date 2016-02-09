@@ -1,0 +1,231 @@
+﻿{
+  "id": "primarycare-questionnaire-response",
+  "meta": {
+    "lastUpdated": "2015-09-22T11:02:49.724+01:00"
+  },
+  "extension": [
+    {
+      "Item": 0,
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm"
+    }
+  ],
+  "url": "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-questionnaire-response",
+  "name": "PrimaryCare-QuestionnaireResponse",
+  "display": "Primary Care questionnaire response",
+  "status": "draft",
+  "publisher": "Endeavour Health Charitable Trust",
+  "date": "2015-09-22T20:02:49+10:00",
+  "requirements": "To support structured, hierarchical registration of data gathered using digital forms and other questionnaires.",
+  "fhirVersion": "1.0.1",
+  "kind": 1,
+  "constrainedType": "QuestionnaireResponse",
+  "abstract": false,
+  "base": "http://hl7.org/fhir/StructureDefinition/QuestionnaireResponse",
+  "differential": {
+    "element": [
+      {
+        "path": "QuestionnaireResponse",
+        "short": "A structured set of questions and their answers",
+        "definition": "A structured set of questions and their answers. The questions are ordered and grouped into coherent subsets, corresponding to the structure of the grouping of the underlying questions.",
+        "alias": [
+          "Form"
+        ],
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "QuestionnaireResponse"
+          }
+        ],
+        "mapping": [
+          {
+            "identity": "rim",
+            "map": "Observation[moodCode=EVN]"
+          },
+          {
+            "identity": "w5",
+            "map": "infrastructure.information"
+          }
+        ]
+      },
+      {
+        "path": "QuestionnaireResponse.identifier.assigner",
+        "short": "Organization that issued id (may be just text)",
+        "definition": "Organization that issued/manages the identifier.",
+        "comments": "The reference may be just a text description of the assigner.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-organization"
+            ]
+          }
+        ],
+        "isSummary": true,
+        "mapping": [
+          {
+            "identity": "v2",
+            "map": "CX.4 / (CX.4,CX.9,CX.10)"
+          },
+          {
+            "identity": "rim",
+            "map": "II.assigningAuthorityName but note that this is an improper use by the definition of the field.  Also Role.scoper"
+          },
+          {
+            "identity": "servd",
+            "map": "./IdentifierIssuingAuthority"
+          }
+        ]
+      },
+      {
+        "path": "QuestionnaireResponse.questionnaire",
+        "short": "Form being answered",
+        "definition": "Indicates the Questionnaire resource that defines the form for which answers are being provided.",
+        "requirements": "Needed to allow editing of the questionnaire in a manner that enforces the constraints of the original form.",
+        "alias": [
+          "Form"
+        ],
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-questionnaire"
+            ]
+          }
+        ],
+        "isSummary": true,
+        "mapping": [
+          {
+            "identity": "rim",
+            "map": "./outboundRelationship[typeCode=INST]/target[classCode=OBS, moodCode=DEFN]"
+          }
+        ]
+      },
+      {
+        "path": "QuestionnaireResponse.author",
+        "short": "Person who received and recorded the answers",
+        "definition": "Person who received the answers to the questions in the QuestionnaireResponse and recorded them in the system.",
+        "comments": "Mapping a subject's answers to multiple choice options and determining what to put in the textual answer is a matter of interpretation.  Authoring by device would indicate that some portion of the questionnaire had been auto-populated.",
+        "requirements": "Need to know who interpreted the subject's answers to the questions in the questionnaire, and selected the appropriate options for answers.",
+        "alias": [
+          "Laboratory",
+          "Service",
+          "Practitioner",
+          "Department",
+          "Company"
+        ],
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-device"
+            ]
+          },
+          {
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-practitioner"
+            ]
+          },
+          {
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-patient"
+            ]
+          },
+          {
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-related-person"
+            ]
+          }
+        ],
+        "isSummary": true,
+        "mapping": [
+          {
+            "identity": "rim",
+            "map": ".participation[typeCode=AUT].role"
+          },
+          {
+            "identity": "w5",
+            "map": "who.author"
+          }
+        ]
+      },
+      {
+        "path": "QuestionnaireResponse.source",
+        "short": "The person who answered the questions",
+        "definition": "The person who answered the questions about the subject.",
+        "comments": "If not specified, no inference can be made about who provided the data.",
+        "requirements": "When answering questions about a subject that is minor, incapable of answering or an animal, another human source is used to answer the questions.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-patient"
+            ]
+          },
+          {
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-practitioner"
+            ]
+          },
+          {
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-related-person"
+            ]
+          }
+        ],
+        "isSummary": true,
+        "mapping": [
+          {
+            "identity": "rim",
+            "map": ".participation[typeCode=INF].role"
+          },
+          {
+            "identity": "w5",
+            "map": "who.source"
+          }
+        ]
+      },
+      {
+        "path": "QuestionnaireResponse.encounter",
+        "short": "Primary encounter during which the answers were collected",
+        "definition": "Encounter during which this set of questionnaire response were collected. When there were multiple encounters, this is the one considered most relevant to the context of the answers.",
+        "requirements": "Some institutions track questionnaires under a specific encounter.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-encounter"
+            ]
+          }
+        ],
+        "isSummary": true,
+        "mapping": [
+          {
+            "identity": "rim",
+            "map": ".inboundRelationship[typeCode=COMP].source[classCode=ENC, moodCode=EVN]"
+          },
+          {
+            "identity": "w5",
+            "map": "context"
+          }
+        ]
+      }
+    ]
+  },
+  "W5TopLevelGroup": "Infrastructure"
+}

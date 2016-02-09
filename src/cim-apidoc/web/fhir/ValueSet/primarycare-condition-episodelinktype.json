@@ -1,0 +1,70 @@
+﻿{
+  "id": "primarycare-condition-episodelinktype",
+  "meta": {
+    "lastUpdated": "2015-09-24T16:19:37.151+01:00",
+    "profile": [
+      "http://hl7.org/fhir/StructureDefinition/valueset-shareable-definition"
+    ]
+  },
+  "text": {
+    "status": 1,
+    "div": {
+      "Items": [
+        {
+          "Text": [
+            "Condition Episode Link Type"
+          ]
+        },
+        {
+          "Text": [
+            "The type of relationship that exists between a condition and the target follow-on observation."
+          ]
+        },
+        {
+          "Text": [
+            "This value set has an inline code system which defines the following codes:"
+          ]
+        },
+        {
+          "Text": [
+            "review | flare | end"
+          ]
+        }
+      ]
+    }
+  },
+  "extension": [
+    {
+      "Item": 0,
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm"
+    }
+  ],
+  "url": "http://endeavourhealth.org/fhir/ValueSet/primarycare-condition-episodelinktype",
+  "version": "1.0.0",
+  "name": "PrimaryCare-Condition-EpisodeLinkType",
+  "status": "draft",
+  "publisher": "Endeavour Health Charitable Trust",
+  "description": "The type of relationship that exists between a condition and the target follow-on observation.",
+  "codeSystem": {
+    "system": "http://endeavourhealth.org/fhir/ValueSet/primarycare-condition-episodelinktype",
+    "version": "1.0.0",
+    "caseSensitive": true,
+    "concept": [
+      {
+        "code": "review",
+        "display": "Review",
+        "definition": "The target observation is a review of the condition episode"
+      },
+      {
+        "code": "flare",
+        "display": "Flare",
+        "definition": "The target observation marks a flare-up of the condition episode"
+      },
+      {
+        "code": "end",
+        "display": "End",
+        "definition": "The target observation marks the end of the condition episode"
+      }
+    ]
+  }
+}

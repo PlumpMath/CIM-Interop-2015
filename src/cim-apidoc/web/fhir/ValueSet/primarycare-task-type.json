@@ -1,0 +1,230 @@
+﻿{
+  "id": "primarycare-task-type",
+  "meta": {
+    "lastUpdated": "2015-09-24T16:19:37.151+01:00",
+    "profile": [
+      "http://hl7.org/fhir/StructureDefinition/valueset-shareable-definition"
+    ]
+  },
+  "text": {
+    "status": 1,
+    "div": {
+      "Items": [
+        {
+          "Text": [
+            "TaskType"
+          ]
+        },
+        {
+          "Text": [
+            "The type/purpose of the task."
+          ]
+        },
+        {
+          "Text": [
+            "This value set has an inline code system which defines the following codes:"
+          ]
+        },
+        {
+          "Text": [
+            "BookAppointment | TelephonePatient | ScreenMessage | ResultsForInfo | MeetingNotification | PatientNote | AdminNote | FormToComplete | RepeatTest | EscalationNotification | ConfidentialityOverridden | TransmissionFailure | LegitimateRelationshipNotification | TransmissionReport | OverdueTaskNotification | Other"
+          ]
+        }
+      ]
+    }
+  },
+  "extension": [
+    {
+      "Item": 0,
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm"
+    }
+  ],
+  "url": "http://endeavourhealth.org/fhir/ValueSet/primarycare-task-type",
+  "version": "1.0.0",
+  "name": "PrimaryCare-TaskType",
+  "status": "draft",
+  "publisher": "Endeavour Health Charitable Trust",
+  "contact": [
+    {
+      "telecom": [
+        {
+          "system": 4,
+          "value": "http://www.endeavourhealth.org"
+        }
+      ]
+    }
+  ],
+  "description": "The type/purpose of a task.",
+  "codeSystem": {
+    "system": "http://endeavourhealth.org/fhir/ValueSet/primarycare-task-type",
+    "version": "1.0.0",
+    "caseSensitive": true,
+    "concept": [
+      {
+        "extension": [
+          {
+            "Item": "Book Appointment",
+            "url": "http://hl7.org/fhir/StructureDefinition/valueset-comments"
+          }
+        ],
+        "code": "bookAppointment",
+        "display": "Book Appointment",
+        "definition": "BookAppointment"
+      },
+      {
+        "extension": [
+          {
+            "Item": "Telephone Patient",
+            "url": "http://hl7.org/fhir/StructureDefinition/valueset-comments"
+          }
+        ],
+        "code": "telephonePatient",
+        "display": "Telephone Patient",
+        "definition": "TelephonePatient"
+      },
+      {
+        "extension": [
+          {
+            "Item": "Screen Message",
+            "url": "http://hl7.org/fhir/StructureDefinition/valueset-comments"
+          }
+        ],
+        "code": "screenMessage",
+        "display": "Screen Message",
+        "definition": "ScreenMessage"
+      },
+      {
+        "extension": [
+          {
+            "Item": "Results For Information",
+            "url": "http://hl7.org/fhir/StructureDefinition/valueset-comments"
+          }
+        ],
+        "code": "resultsForInfo",
+        "display": "Results for Information",
+        "definition": "ResultsForInformation"
+      },
+      {
+        "extension": [
+          {
+            "Item": "Meeting Notification",
+            "url": "http://hl7.org/fhir/StructureDefinition/valueset-comments"
+          }
+        ],
+        "code": "meetingNotification",
+        "display": "Meeting Notification",
+        "definition": "MeetingNotification"
+      },
+      {
+        "extension": [
+          {
+            "Item": "Patient Note",
+            "url": "http://hl7.org/fhir/StructureDefinition/valueset-comments"
+          }
+        ],
+        "code": "patientNote",
+        "display": "Patient Note",
+        "definition": "PatientNote"
+      },
+      {
+        "extension": [
+          {
+            "Item": "Admin Note",
+            "url": "http://hl7.org/fhir/StructureDefinition/valueset-comments"
+          }
+        ],
+        "code": "adminNote",
+        "display": "Admin Note",
+        "definition": "AdminNote"
+      },
+      {
+        "extension": [
+          {
+            "Item": "Form To Complete",
+            "url": "http://hl7.org/fhir/StructureDefinition/valueset-comments"
+          }
+        ],
+        "code": "formToComplete",
+        "display": "Form to Complete",
+        "definition": "FormToComplete"
+      },
+      {
+        "extension": [
+          {
+            "Item": "Repeat Test",
+            "url": "http://hl7.org/fhir/StructureDefinition/valueset-comments"
+          }
+        ],
+        "code": "repeatTest",
+        "display": "Repeat Test",
+        "definition": "RepeatTest"
+      },
+      {
+        "extension": [
+          {
+            "Item": "Escalation Notification",
+            "url": "http://hl7.org/fhir/StructureDefinition/valueset-comments"
+          }
+        ],
+        "code": "escalationNotification",
+        "display": "Escalation Notification",
+        "definition": "EscalationNotification"
+      },
+      {
+        "extension": [
+          {
+            "Item": "Confidentiality Overridden",
+            "url": "http://hl7.org/fhir/StructureDefinition/valueset-comments"
+          }
+        ],
+        "code": "confidentialityOverridden",
+        "display": "Confidentiality Overridden",
+        "definition": "ConfidentialityOverridden"
+      },
+      {
+        "extension": [
+          {
+            "Item": "Transmission Failure",
+            "url": "http://hl7.org/fhir/StructureDefinition/valueset-comments"
+          }
+        ],
+        "code": "transmissionFailure",
+        "display": "Transmission Failure",
+        "definition": "TransmissionFailure"
+      },
+      {
+        "extension": [
+          {
+            "Item": "Transmission Report",
+            "url": "http://hl7.org/fhir/StructureDefinition/valueset-comments"
+          }
+        ],
+        "code": "transmissionReport",
+        "display": "Transmission Report",
+        "definition": "TransmissionReport"
+      },
+      {
+        "extension": [
+          {
+            "Item": "Legitimate Relationship Notification",
+            "url": "http://hl7.org/fhir/StructureDefinition/valueset-comments"
+          }
+        ],
+        "code": "legitimateRelationshipNotification",
+        "display": "Legitimate Relationship Notification",
+        "definition": "LegitimateRelationshipNotification"
+      },
+      {
+        "extension": [
+          {
+            "Item": "Overdue Task Notification",
+            "url": "http://hl7.org/fhir/StructureDefinition/valueset-comments"
+          }
+        ],
+        "code": "overdueTaskNotification",
+        "display": "Overdue Task Notification",
+        "definition": "OverdueTaskNotification"
+      }
+    ]
+  }
+}

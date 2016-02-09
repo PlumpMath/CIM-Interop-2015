@@ -1,0 +1,76 @@
+﻿{
+  "id": "primarycare-message-event",
+  "meta": {
+    "lastUpdated": "2015-09-24T16:19:37.151+01:00",
+    "profile": [
+      "http://hl7.org/fhir/StructureDefinition/valueset-shareable-definition"
+    ]
+  },
+  "text": {
+    "status": 1,
+    "div": {
+      "Items": [
+        {
+          "Text": [
+            "MessageEvent"
+          ]
+        },
+        {
+          "Text": [
+            "The operation to perform with the message."
+          ]
+        },
+        {
+          "Text": [
+            "This value set has an inline code system which defines the following codes:"
+          ]
+        },
+        {
+          "Text": [
+            "BulkPatient"
+          ]
+        }
+      ]
+    }
+  },
+  "extension": [
+    {
+      "Item": 0,
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm"
+    }
+  ],
+  "url": "http://endeavourhealth.org/fhir/ValueSet/primarycare-message-event",
+  "version": "1.0.0",
+  "name": "PrimaryCare-MessageEvent",
+  "status": "draft",
+  "publisher": "Endeavour Health Charitable Trust",
+  "contact": [
+    {
+      "telecom": [
+        {
+          "system": 4,
+          "value": "http://www.endeavourhealth.org"
+        }
+      ]
+    }
+  ],
+  "description": "The operation to perform with a message.",
+  "codeSystem": {
+    "system": "http://endeavourhealth.org/fhir/ValueSet/primarycare-message-event",
+    "version": "1.0.0",
+    "caseSensitive": true,
+    "concept": [
+      {
+        "extension": [
+          {
+            "Item": "Bulk Patient",
+            "url": "http://hl7.org/fhir/StructureDefinition/valueset-comments"
+          }
+        ],
+        "code": "bulkPatient",
+        "display": "Bulk Patient",
+        "definition": "BulkPatient"
+      }
+    ]
+  }
+}

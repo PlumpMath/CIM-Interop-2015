@@ -1,7 +1,7 @@
 {
   "swagger": "2.0",
   "info": {
-    "description": "API documentation for the Endeavour Health Common Interface Mechanism.<div id='notes'><div id='notestitle'>NOTES</div><p>Sample data and notes on usage can be <a href='usage-notes.html' target='_blank'>viewed here</a> and FHIR profiles can be <a href='http://endeavourhealth.org/fhir/endeavour-'>viewed here</a>.</p><p>Build last updated: BUILD_TIME</p></div>",
+    "description": "API documentation for the Endeavour Health Common Interface Mechanism.<div id='notes'><div id='notestitle'>NOTES</div><p>Sample data and notes on usage can be <a href='usage-notes.html' target='_blank'>viewed here</a> and FHIR profiles can be <a href='fhir'>viewed here</a>.</p><p>Build last updated: BUILD_TIME</p></div>",
     "version": "0.1",
     "title": "Common Interface Mechanism"
   },
@@ -45,7 +45,7 @@
         ],
         "responses": {
           "200": {
-            "description": "OK | <a target='_blank' href='http://endeavourhealth.org/fhir/endeavour-organization.html'>Organisation</a> resource"
+            "description": "OK | <a target='_blank' href='fhir/primarycare-organization.html'>Organisation</a> resource"
           },
           "400": {
             "$ref": "#definitions/400Response"
@@ -98,7 +98,7 @@
         ],
         "responses": {
           "200": {
-            "description": "OK | <a target='_blank' href='http://endeavourhealth.org/fhir/endeavour-organization.html'>Organisation</a> resource"
+            "description": "OK | <a target='_blank' href='fhir/primarycare-organization.html'>Organisation</a> resource"
           },
           "400": {
             "$ref": "#definitions/400Response"
@@ -150,7 +150,7 @@
         ],
         "responses": {
           "200": {
-            "description": "OK | <a target='_blank' href='http://endeavourhealth.org/fhir/endeavour-location.html'>Location</a> resource"
+            "description": "OK | <a target='_blank' href='fhir/primarycare-location.html'>Location</a> resource"
           },
           "400": {
             "$ref": "#definitions/400Response"
@@ -203,7 +203,7 @@
         ],
         "responses": {
           "200": {
-            "description": "OK | <a target='_blank' href='http://endeavourhealth.org/fhir/endeavour-person.html'>Person</a> resource"
+            "description": "OK | <a target='_blank' href='fhir/primarycare-person.html'>Person</a> resource"
           },
           "400": {
             "$ref": "#definitions/400Response"
@@ -267,7 +267,7 @@
         ],
         "responses": {
           "200": {
-            "description": "OK | <a target='_blank' href='http://endeavourhealth.org/fhir/endeavour-bundle.html'>Bundle</a> containing zero or more <a target='_blank' href='http://endeavourhealth.org/fhir/endeavour-schedule.html'>Schedule</a> resources"
+            "description": "OK | <a target='_blank' href='fhir/primarycare-bundle.html'>Bundle</a> containing zero or more <a target='_blank' href='fhir/primarycare-schedule.html'>Schedule</a> resources"
           },
           "400": {
             "$ref": "#definitions/400Response"
@@ -320,7 +320,7 @@
         ],
         "responses": {
           "200": {
-            "description": "OK | <a target='_blank' href='http://endeavourhealth.org/fhir/endeavour-bundle.html'>Bundle</a> containing zero or more <a target='_blank' href='http://endeavourhealth.org/fhir/endeavour-slot.html'>Slot</a> resources"
+            "description": "OK | <a target='_blank' href='fhir/primarycare-bundle.html'>Bundle</a> containing zero or more <a target='_blank' href='fhir/primarycare-slot.html'>Slot</a> resources"
           },
           "400": {
             "$ref": "#definitions/400Response"
@@ -369,7 +369,7 @@
           {
             "name": "body",
             "in": "body",
-            "description": "Patient ID wrapped in <a target='_blank'  href='http://endeavourhealth.org/fhir/endeavour-parameters.html'>Parameters resource</a>.",
+            "description": "Patient ID wrapped in <a target='_blank'  href='fhir/primarycare-parameters.html'>Parameters resource</a>.",
             "required": true,
             "schema": {
               "$ref": "#/definitions/parametersResource"
@@ -433,7 +433,7 @@
           {
             "name": "body",
             "in": "body",
-            "description": "Patient ID wrapped in <a target='_blank'  href='http://endeavourhealth.org/fhir/endeavour-parameters.html'>FHIR Parameters Resource</a>.",
+            "description": "Patient ID wrapped in <a target='_blank'  href='fhir/primarycare-parameters.html'>FHIR Parameters Resource</a>.",
             "required": true,
             "schema": {
               "$ref": "#/definitions/parametersResource"
@@ -512,7 +512,7 @@
         ],
         "responses": {
           "200": {
-            "description": "OK | <a target='_blank' href='http://endeavourhealth.org/fhir/endeavour-bundle.html'>Bundle</a> containing zero or more <a target='_blank' href='http://endeavourhealth.org/fhir/endeavour-appointment.html'>Appointment</a> resources"
+            "description": "OK | <a target='_blank' href='fhir/primarycare-bundle.html'>Bundle</a> containing zero or more <a target='_blank' href='fhir/primarycare-appointment.html'>Appointment</a> resources"
           },
           "400": {
             "$ref": "#definitions/400Response"
@@ -558,7 +558,7 @@
           ],
           "responses": {
             "200": {
-              "description": "OK | A bundle of <a target='_blank' href='http://endeavourhealth.org/fhir/endeavour-order.html'>Order</a> resources"
+              "description": "OK | A bundle of <a target='_blank' href='fhir/primarycare-order.html'>Order</a> resources"
             },
             "400": {
               "$ref": "#definitions/400Response"
@@ -603,7 +603,7 @@
           {
             "name": "body",
             "in": "body",
-            "description": "<a target='_blank'  href='http://endeavourhealth.org/fhir/endeavour-order.html'>Order Resource</a> (with task extensions).",
+            "description": "<a target='_blank'  href='fhir/primarycare-order.html'>Order Resource</a> (with task extensions).",
             "required": true,
             "schema": {
               "$ref": "#/definitions/taskResource"
@@ -710,7 +710,7 @@
         ],
         "responses": {
           "200": {
-            "description": "OK | A bundle of <a target='_blank' href='http://endeavourhealth.org/fhir/endeavour-order.html'>Order</a> resources"
+            "description": "OK | A bundle of <a target='_blank' href='fhir/primarycare-order.html'>Order</a> resources"
           },
           "400": {
             "$ref": "#definitions/400Response"
@@ -759,7 +759,7 @@
         ],
         "responses": {
           "200": {
-            "description": "OK | A bundle of <a target='_blank' href='http://endeavourhealth.org/fhir/endeavour-order.html'>Order</a> resources"
+            "description": "OK | A bundle of <a target='_blank' href='fhir/primarycare-order.html'>Order</a> resources"
           },
           "400": {
             "$ref": "#definitions/400Response"
@@ -808,7 +808,7 @@
         ],
         "responses": {
           "200": {
-            "description": "OK | <a target='_blank' href='http://endeavourhealth.org/fhir/endeavour-bundle.html'>Bundle</a> containing multiple resource types constituting the patients full record"
+            "description": "OK | <a target='_blank' href='fhir/primarycare-bundle.html'>Bundle</a> containing multiple resource types constituting the patients full record"
           },
           "400": {
             "$ref": "#definitions/400Response"
@@ -882,7 +882,7 @@
         ],
         "responses": {
           "200": {
-            "description": "OK | <a target='_blank' href='http://endeavourhealth.org/fhir/endeavour-bundle.html'>Bundle</a> containing zero or more <a target='_blank' href='http://endeavourhealth.org/fhir/endeavour-medicationprescription.html'>MedicationPrescription</a> resources"
+            "description": "OK | <a target='_blank' href='fhir/primarycare-bundle.html'>Bundle</a> containing zero or more <a target='_blank' href='fhir/primarycare-medicationprescription.html'>MedicationPrescription</a> resources"
           },
           "400": {
             "$ref": "#definitions/400Response"
@@ -941,7 +941,7 @@
         ],
         "responses": {
           "200": {
-            "description": "OK | <a target='_blank' href='http://endeavourhealth.org/fhir/endeavour-bundle.html'>Bundle</a> containing zero or more <a target='_blank' href='http://endeavourhealth.org/fhir/endeavour-condition.html'>Condition</a> resources"
+            "description": "OK | <a target='_blank' href='fhir/primarycare-bundle.html'>Bundle</a> containing zero or more <a target='_blank' href='fhir/primarycare-condition.html'>Condition</a> resources"
           },
           "400": {
             "$ref": "#definitions/400Response"
@@ -991,7 +991,7 @@
           {
             "in": "body",
             "name": "body",
-            "description": "<a target='_blank'  href='http://endeavourhealth.org/fhir/endeavour-condition.html'>Condition resource</a>",
+            "description": "<a target='_blank'  href='fhir/primarycare-condition.html'>Condition resource</a>",
             "required": true,
             "schema": {
               "type": "object"
@@ -1041,7 +1041,7 @@
         ],
         "responses": {
           "200": {
-            "description": "OK | <a target='_blank' href='http://endeavourhealth.org/fhir/endeavour-bundle.html'>Bundle</a> containing zero or more <a target='_blank' href='http://endeavourhealth.org/fhir/endeavour-immunization.html'>Immunization</a> resources"
+            "description": "OK | <a target='_blank' href='fhir/primarycare-bundle.html'>Bundle</a> containing zero or more <a target='_blank' href='fhir/primarycare-immunization.html'>Immunization</a> resources"
           },
           "400": {
             "$ref": "#definitions/400Response"
@@ -1105,7 +1105,7 @@
         ],
         "responses": {
           "200": {
-            "description": "OK | <a target='_blank' href='http://endeavourhealth.org/fhir/endeavour-bundle.html'>Bundle</a> containing zero or more <a target='_blank' href='http://endeavourhealth.org/fhir/endeavour-allergyintolerance.html'>AllergyIntolerance</a> resources"
+            "description": "OK | <a target='_blank' href='fhir/primarycare-bundle.html'>Bundle</a> containing zero or more <a target='_blank' href='fhir/primarycare-allergyintolerance.html'>AllergyIntolerance</a> resources"
           },
           "400": {
             "$ref": "#definitions/400Response"
@@ -1185,7 +1185,7 @@
         ],
         "responses": {
           "200": {
-            "description": "OK | <a target='_blank' href='http://endeavourhealth.org/fhir/endeavour-bundle.html'>Bundle</a> containing zero or more <a target='_blank' href='http://endeavourhealth.org/fhir/endeavour-person.html'>Person</a> resources and zero or more associated <a target='_blank' href='http://endeavourhealth.org/fhir/endeavour-patient.html'>Patient</a> resources"
+            "description": "OK | <a target='_blank' href='fhir/primarycare-bundle.html'>Bundle</a> containing zero or more <a target='_blank' href='fhir/primarycare-person.html'>Person</a> resources and zero or more associated <a target='_blank' href='fhir/primarycare-patient.html'>Patient</a> resources"
           },
           "400": {
             "$ref": "#definitions/400Response"
@@ -1234,7 +1234,7 @@
         ],
         "responses": {
           "200": {
-            "description": "OK | <a target='_blank' href='http://endeavourhealth.org/fhir/endeavour-patient.html'>Patient</a> resource"
+            "description": "OK | <a target='_blank' href='fhir/primarycare-patient.html'>Patient</a> resource"
           },
           "400": {
             "$ref": "#definitions/400Response"
@@ -1300,7 +1300,7 @@
         ],
         "responses": {
           "200": {
-            "description": "OK | <a target='_blank' href='http://endeavourhealth.org/fhir/endeavour-bundle.html'>Bundle</a> containing zero or more <a target='_blank' href='http://endeavourhealth.org/fhir/endeavour-person.html'>Patient</a> resources"
+            "description": "OK | <a target='_blank' href='fhir/primarycare-bundle.html'>Bundle</a> containing zero or more <a target='_blank' href='fhir/primarycare-person.html'>Patient</a> resources"
           },
           "400": {
             "$ref": "#definitions/400Response"
@@ -1439,40 +1439,40 @@
       "type": "string"
     },
     "400Response": {
-      "description": "Required parameter missing; Invalid parameter | <a target='_blank' href='http://endeavourhealth.org/fhir/endeavour-operationoutcome.html'>OperationOutcome</a> with <a href='http://endeavourhealth.org/fhir/endeavour-issue-type.html'>IssueType</a> of Required element missing; Element value invalid"
+      "description": "Required parameter missing; Invalid parameter | <a target='_blank' href='fhir/primarycare-operationoutcome.html'>OperationOutcome</a> with <a href='fhir/primarycare-issue-type.html'>IssueType</a> of Required element missing; Element value invalid"
     },
     "401Response": {
-      "description": "Security failed | <a target='_blank' href='http://endeavourhealth.org/fhir/endeavour-operationoutcome.html'>OperationOutcome</a> with <a href='http://endeavourhealth.org/fhir/endeavour-issue-type.html'>IssueType</a> of Unknown user"
+      "description": "Security failed | <a target='_blank' href='fhir/primarycare-operationoutcome.html'>OperationOutcome</a> with <a href='fhir/primarycare-issue-type.html'>IssueType</a> of Unknown user"
     },
     "403Response": {
-      "description": "No legitimate relationship | <a target='_blank' href='http://endeavourhealth.org/fhir/endeavour-operationoutcome.html'>OperationOutcome</a> with <a href='http://endeavourhealth.org/fhir/endeavour-issue-type.html'>IssueType</a> of Information suppressed"
+      "description": "No legitimate relationship | <a target='_blank' href='fhir/primarycare-operationoutcome.html'>OperationOutcome</a> with <a href='fhir/primarycare-issue-type.html'>IssueType</a> of Information suppressed"
     },
     "404PatientNotFoundResponse": {
-      "description": "Patient not found | <a target='_blank' href='http://endeavourhealth.org/fhir/endeavour-operationoutcome.html'>OperationOutcome</a> with <a href='http://endeavourhealth.org/fhir/endeavour-issue-type.html'>IssueType</a> of Not found"
+      "description": "Patient not found | <a target='_blank' href='fhir/primarycare-operationoutcome.html'>OperationOutcome</a> with <a href='fhir/primarycare-issue-type.html'>IssueType</a> of Not found"
     },
     "404OrganizationNotFoundResponse": {
-      "description": "Organization not found | <a target='_blank' href='http://endeavourhealth.org/fhir/endeavour-operationoutcome.html'>OperationOutcome</a> with <a href='http://endeavourhealth.org/fhir/endeavour-issue-type.html'>IssueType</a> of Not found"
+      "description": "Organization not found | <a target='_blank' href='fhir/primarycare-operationoutcome.html'>OperationOutcome</a> with <a href='fhir/primarycare-issue-type.html'>IssueType</a> of Not found"
     },
     "404SlotOrPatientNotFoundResponse": {
-      "description": "Slot not found; Patient not found | <a target='_blank' href='http://endeavourhealth.org/fhir/endeavour-operationoutcome.html'>OperationOutcome</a> with <a href='http://endeavourhealth.org/fhir/endeavour-issue-type.html'>IssueType</a> of Not found"
+      "description": "Slot not found; Patient not found | <a target='_blank' href='fhir/primarycare-operationoutcome.html'>OperationOutcome</a> with <a href='fhir/primarycare-issue-type.html'>IssueType</a> of Not found"
     },
     "409SlotAlreadyBookedResponse": {
-      "description": "Slot already booked | <a target='_blank' href='http://endeavourhealth.org/fhir/endeavour-operationoutcome.html'>OperationOutcome</a> with <a href='http://endeavourhealth.org/fhir/endeavour-issue-type.html'>IssueType</a> of Edit version conflict"
+      "description": "Slot already booked | <a target='_blank' href='fhir/primarycare-operationoutcome.html'>OperationOutcome</a> with <a href='fhir/primarycare-issue-type.html'>IssueType</a> of Edit version conflict"
     },
     "412SlotAlreadyBookedByThisPatientResponse": {
-      "description": "Slot already booked by this patient | <a target='_blank' href='http://endeavourhealth.org/fhir/endeavour-operationoutcome.html'>OperationOutcome</a> with <a href='http://endeavourhealth.org/fhir/endeavour-issue-type.html'>IssueType</a> of Business rule violation"
+      "description": "Slot already booked by this patient | <a target='_blank' href='fhir/primarycare-operationoutcome.html'>OperationOutcome</a> with <a href='fhir/primarycare-issue-type.html'>IssueType</a> of Business rule violation"
     },
     "412SlotNotBookedByThisPatientResponse": {
-      "description": "Slot not booked by this patient | <a target='_blank' href='http://endeavourhealth.org/fhir/endeavour-operationoutcome.html'>OperationOutcome</a> with <a href='http://endeavourhealth.org/fhir/endeavour-issue-type.html'>IssueType</a> of Business rule violation"
+      "description": "Slot not booked by this patient | <a target='_blank' href='fhir/primarycare-operationoutcome.html'>OperationOutcome</a> with <a href='fhir/primarycare-issue-type.html'>IssueType</a> of Business rule violation"
     },
     "500Response": {
-      "description": "Unexpected error | <a target='_blank' href='http://endeavourhealth.org/fhir/endeavour-operationoutcome.html'>OperationOutcome</a> with <a href='http://endeavourhealth.org/fhir/endeavour-issue-type.html'>IssueType</a> of Exception"
+      "description": "Unexpected error | <a target='_blank' href='fhir/primarycare-operationoutcome.html'>OperationOutcome</a> with <a href='fhir/primarycare-issue-type.html'>IssueType</a> of Exception"
     },
     "502Response": {
-      "description": "Error received from principal system | <a target='_blank' href='http://endeavourhealth.org/fhir/endeavour-operationoutcome.html'>OperationOutcome</a> with <a href='http://endeavourhealth.org/fhir/endeavour-issue-type.html'>IssueType</a> of Exception"
+      "description": "Error received from principal system | <a target='_blank' href='fhir/primarycare-operationoutcome.html'>OperationOutcome</a> with <a href='fhir/primarycare-issue-type.html'>IssueType</a> of Exception"
     },
     "504Response": {
-      "description": "Connection timeout to principal system | <a target='_blank' href='http://endeavourhealth.org/fhir/endeavour-operationoutcome.html'>OperationOutcome</a> with <a href='http://endeavourhealth.org/fhir/endeavour-issue-type.html'>IssueType</a> of Timeout"
+      "description": "Connection timeout to principal system | <a target='_blank' href='fhir/primarycare-operationoutcome.html'>OperationOutcome</a> with <a href='fhir/primarycare-issue-type.html'>IssueType</a> of Timeout"
     },
     "parametersResource": {
       "type": "object",
@@ -1520,7 +1520,7 @@
               "properties": {
                 "url" : {
                   "type" : "string",
-                  "example" : "http://cim-api.endeavourhealth.org/fhir/ValueSet/task-type"
+                  "example" : "fhir/ValueSet/task-type"
                 },
                 "valueCodeableConcept" : {
                   "type" : "object",
@@ -1532,7 +1532,7 @@
                         "properties" : {
                           "system" : {
                             "type" : "string",
-                            "example" : "http://cim-api.endeavourhealth.org/fhir/task-type"
+                            "example" : "fhir/task-type"
                           },
                           "code" : {
                             "type" : "string",
@@ -1554,7 +1554,7 @@
               "properties": {
                 "url" : {
                   "type" : "string",
-                  "example" : "http://cim-api.endeavourhealth.org/fhir/ValueSet/task-priority"
+                  "example" : "fhir/ValueSet/task-priority"
                 },
                 "valueCodeableConcept" : {
                   "type" : "object",
@@ -1566,7 +1566,7 @@
                         "properties" : {
                           "system" : {
                             "type" : "string",
-                            "example" : "http://cim-api.endeavourhealth.org/fhir/task-priority"
+                            "example" : "fhir/task-priority"
                           },
                           "code" : {
                             "type" : "string",
@@ -1588,7 +1588,7 @@
               "properties": {
                 "url" : {
                   "type" : "string",
-                  "example" : "http://cim-api.endeavourhealth.org/fhir/ValueSet/task-status"
+                  "example" : "fhir/ValueSet/task-status"
                 },
                 "valueCodeableConcept" : {
                   "type" : "object",
@@ -1600,7 +1600,7 @@
                         "properties" : {
                           "system" : {
                             "type" : "string",
-                            "example" : "http://cim-api.endeavourhealth.org/fhir/task-status"
+                            "example" : "fhir/task-status"
                           },
                           "code" : {
                             "type" : "string",

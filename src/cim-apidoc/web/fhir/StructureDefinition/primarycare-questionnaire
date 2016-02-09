@@ -1,0 +1,14 @@
+﻿<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="refresh" content="1;url=../primarycare-questionnaire.html">
+        <script type="text/javascript">
+             window.location.href = "../primarycare-questionnaire.html"
+        </script>
+        <title>Page Redirection</title>
+    </head>
+    <body>
+        <p>If you are not redirected automatically, follow <a href='../primarycare-questionnaire.html'>this link</a>.</p>
+    </body>
+</html>

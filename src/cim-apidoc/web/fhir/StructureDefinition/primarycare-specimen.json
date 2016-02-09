@@ -1,0 +1,307 @@
+﻿{
+  "id": "primarycare-specimen",
+  "meta": {
+    "lastUpdated": "2015-09-22T11:02:49.724+01:00"
+  },
+  "extension": [
+    {
+      "Item": 0,
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm"
+    }
+  ],
+  "url": "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-specimen",
+  "name": "PrimaryCare-Specimen",
+  "display": "Primary Care specimen",
+  "status": "draft",
+  "publisher": "Endeavour Health Charitable Trust",
+  "contact": [
+    {
+      "telecom": [
+        {
+          "system": 4,
+          "value": "http://www.endeavourhealth.org/"
+        }
+      ]
+    }
+  ],
+  "date": "2015-11-01T00:00:00+00:00",
+  "description": "Placeholder",
+  "fhirVersion": "1.0.1",
+  "kind": 1,
+  "constrainedType": "Specimen",
+  "abstract": false,
+  "base": "http://hl7.org/fhir/StructureDefinition/Specimen",
+  "differential": {
+    "element": [
+      {
+        "path": "Specimen",
+        "short": "Sample for analysis",
+        "definition": "A sample to be used for analysis.",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "Specimen"
+          }
+        ],
+        "mapping": [
+          {
+            "identity": "rim",
+            "map": "Role[classCode=SPEC]"
+          },
+          {
+            "identity": "w5",
+            "map": "clinical.diagnostics"
+          }
+        ]
+      },
+      {
+        "path": "Specimen.identifier.assigner",
+        "short": "Organization that issued id (may be just text)",
+        "definition": "Organization that issued/manages the identifier.",
+        "comments": "The reference may be just a text description of the assigner.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-organization"
+            ]
+          }
+        ],
+        "isSummary": true,
+        "mapping": [
+          {
+            "identity": "v2",
+            "map": "CX.4 / (CX.4,CX.9,CX.10)"
+          },
+          {
+            "identity": "rim",
+            "map": "II.assigningAuthorityName but note that this is an improper use by the definition of the field.  Also Role.scoper"
+          },
+          {
+            "identity": "servd",
+            "map": "./IdentifierIssuingAuthority"
+          }
+        ]
+      },
+      {
+        "path": "Specimen.parent",
+        "short": "Specimen from which this specimen originated",
+        "definition": "Reference to the parent (source) specimen which is used when the specimen was either derived from or a component of another specimen.",
+        "comments": "The parent specimen could be the source from which the current specimen is derived by some processing step (e.g. an aliquot or isolate or extracted nucleic acids from clinical samples) or one of many specimens that were combined to create a pooled sample.",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-specimen"
+            ]
+          }
+        ],
+        "mapping": [
+          {
+            "identity": "rim",
+            "map": ".scoper (if parent) .player.scopesRole[classCode=SPEC].player (if child)"
+          }
+        ]
+      },
+      {
+        "path": "Specimen.subject",
+        "short": "Where the specimen came from. This may be from the patient(s) or from the environment or a device",
+        "definition": "Where the specimen came from. This may be from the patient(s) or from the environment or a device.",
+        "requirements": "Must know the subject context.",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-patient"
+            ]
+          },
+          {
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-group"
+            ]
+          },
+          {
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-device"
+            ]
+          },
+          {
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-substance"
+            ]
+          }
+        ],
+        "isSummary": true,
+        "mapping": [
+          {
+            "identity": "rim",
+            "map": ".scoper  or  .scoper.playsRole"
+          },
+          {
+            "identity": "w5",
+            "map": "who.focus"
+          }
+        ]
+      },
+      {
+        "path": "Specimen.accessionIdentifier.assigner",
+        "short": "Organization that issued id (may be just text)",
+        "definition": "Organization that issued/manages the identifier.",
+        "comments": "The reference may be just a text description of the assigner.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-organization"
+            ]
+          }
+        ],
+        "isSummary": true,
+        "mapping": [
+          {
+            "identity": "v2",
+            "map": "CX.4 / (CX.4,CX.9,CX.10)"
+          },
+          {
+            "identity": "rim",
+            "map": "II.assigningAuthorityName but note that this is an improper use by the definition of the field.  Also Role.scoper"
+          },
+          {
+            "identity": "servd",
+            "map": "./IdentifierIssuingAuthority"
+          }
+        ]
+      },
+      {
+        "path": "Specimen.collection.collector",
+        "short": "Who collected the specimen",
+        "definition": "Person who collected the specimen.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-practitioner"
+            ]
+          }
+        ],
+        "isSummary": true,
+        "mapping": [
+          {
+            "identity": "v2",
+            "map": "PRT"
+          },
+          {
+            "identity": "rim",
+            "map": ".participation[typeCode=PFM].role"
+          }
+        ]
+      },
+      {
+        "path": "Specimen.treatment.additive",
+        "short": "Material used in the processing step",
+        "definition": "Material used in the processing step.",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-substance"
+            ]
+          }
+        ],
+        "mapping": [
+          {
+            "identity": "v2",
+            "map": "SPM-6"
+          },
+          {
+            "identity": "rim",
+            "map": ".participation[typeCode=CSM].role[classCode=ADTV].code"
+          }
+        ]
+      },
+      {
+        "path": "Specimen.container.identifier.assigner",
+        "short": "Organization that issued id (may be just text)",
+        "definition": "Organization that issued/manages the identifier.",
+        "comments": "The reference may be just a text description of the assigner.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-organization"
+            ]
+          }
+        ],
+        "isSummary": true,
+        "mapping": [
+          {
+            "identity": "v2",
+            "map": "CX.4 / (CX.4,CX.9,CX.10)"
+          },
+          {
+            "identity": "rim",
+            "map": "II.assigningAuthorityName but note that this is an improper use by the definition of the field.  Also Role.scoper"
+          },
+          {
+            "identity": "servd",
+            "map": "./IdentifierIssuingAuthority"
+          }
+        ]
+      },
+      {
+        "path": "Specimen.container.additive[x]",
+        "short": "Additive associated with container",
+        "definition": "Introduced substance to preserve, maintain or enhance the specimen. Examples: Formalin, Citrate, EDTA.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "CodeableConcept"
+          },
+          {
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-substance"
+            ]
+          }
+        ],
+        "binding": {
+          "strength": 3,
+          "description": "Substance added to specimen container",
+          "Item": {
+            "reference": "http://hl7.org/fhir/ValueSet/v2-0371"
+          }
+        },
+        "mapping": [
+          {
+            "identity": "v2",
+            "map": "SAC-27"
+          },
+          {
+            "identity": "rim",
+            "map": ".scopesRole[classCode=ADTV].player"
+          }
+        ]
+      }
+    ]
+  },
+  "W5TopLevelGroup": "Clinical"
+}

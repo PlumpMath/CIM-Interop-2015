@@ -1,0 +1,98 @@
+﻿{
+  "id": "primarycare-slot",
+  "meta": {
+    "lastUpdated": "2015-09-22T11:02:49.724+01:00"
+  },
+  "extension": [
+    {
+      "Item": 0,
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm"
+    }
+  ],
+  "url": "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-slot",
+  "name": "PrimaryCare-Slot",
+  "display": "Primary Care slot",
+  "status": "draft",
+  "publisher": "Endeavour Health Charitable Trust",
+  "date": "2015-09-22T20:02:49+10:00",
+  "description": "Base StructureDefinition for Slot Resource",
+  "fhirVersion": "1.0.1",
+  "kind": 1,
+  "constrainedType": "Slot",
+  "abstract": false,
+  "base": "http://hl7.org/fhir/StructureDefinition/Slot",
+  "differential": {
+    "element": [
+      {
+        "path": "Slot",
+        "short": "A slot of time on a schedule that may be available for booking appointments",
+        "definition": "A slot of time on a schedule that may be available for booking appointments.",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "Slot"
+          }
+        ],
+        "mapping": [
+          {
+            "identity": "ical",
+            "map": "(refer to the Availability resource for the header mapping details)"
+          },
+          {
+            "identity": "w5",
+            "map": "workflow.scheduling"
+          }
+        ]
+      },
+      {
+        "path": "Slot.identifier.assigner",
+        "short": "Organization that issued id (may be just text)",
+        "definition": "Organization that issued/manages the identifier.",
+        "comments": "The reference may be just a text description of the assigner.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-organization"
+            ]
+          }
+        ],
+        "isSummary": true,
+        "mapping": [
+          {
+            "identity": "v2",
+            "map": "CX.4 / (CX.4,CX.9,CX.10)"
+          },
+          {
+            "identity": "rim",
+            "map": "II.assigningAuthorityName but note that this is an improper use by the definition of the field.  Also Role.scoper"
+          },
+          {
+            "identity": "servd",
+            "map": "./IdentifierIssuingAuthority"
+          }
+        ]
+      },
+      {
+        "path": "Slot.schedule",
+        "short": "The schedule resource that this slot defines an interval of status information",
+        "definition": "The schedule resource that this slot defines an interval of status information.",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-schedule"
+            ]
+          }
+        ],
+        "isSummary": true
+      }
+    ]
+  },
+  "W5TopLevelGroup": "Workflow"
+}

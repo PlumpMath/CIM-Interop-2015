@@ -1,0 +1,133 @@
+﻿{
+  "id": "primarycare-healthcare-service",
+  "meta": {
+    "lastUpdated": "2015-09-22T11:02:49.724+01:00"
+  },
+  "extension": [
+    {
+      "Item": 0,
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm"
+    }
+  ],
+  "url": "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-healthcare-service",
+  "name": "PrimaryCare-HealthcareService",
+  "display": "Primary Care healthcare service",
+  "status": "draft",
+  "publisher": "Endeavour Health Charitable Trust",
+  "date": "2015-09-22T20:02:49+10:00",
+  "description": "Base StructureDefinition for HealthcareService Resource",
+  "fhirVersion": "1.0.1",
+  "kind": 1,
+  "constrainedType": "HealthcareService",
+  "abstract": false,
+  "base": "http://hl7.org/fhir/StructureDefinition/HealthcareService",
+  "differential": {
+    "element": [
+      {
+        "path": "HealthcareService",
+        "short": "The details of a healthcare service available at a location",
+        "definition": "The details of a healthcare service available at a location.",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "HealthcareService"
+          }
+        ],
+        "mapping": [
+          {
+            "identity": "w5",
+            "map": "administrative.group"
+          }
+        ]
+      },
+      {
+        "path": "HealthcareService.identifier.assigner",
+        "short": "Organization that issued id (may be just text)",
+        "definition": "Organization that issued/manages the identifier.",
+        "comments": "The reference may be just a text description of the assigner.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-organization"
+            ]
+          }
+        ],
+        "isSummary": true,
+        "mapping": [
+          {
+            "identity": "v2",
+            "map": "CX.4 / (CX.4,CX.9,CX.10)"
+          },
+          {
+            "identity": "rim",
+            "map": "II.assigningAuthorityName but note that this is an improper use by the definition of the field.  Also Role.scoper"
+          },
+          {
+            "identity": "servd",
+            "map": "./IdentifierIssuingAuthority"
+          }
+        ]
+      },
+      {
+        "path": "HealthcareService.providedBy",
+        "short": "Organization that provides this service",
+        "definition": "The organization that provides this healthcare service.",
+        "comments": "This property is recommended to be the same as the Location's managingOrganization, and if not provided should be interpreted as such. If the Location does not have a managing Organization, then this property should be populated.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-organization"
+            ]
+          }
+        ],
+        "isSummary": true
+      },
+      {
+        "path": "HealthcareService.location",
+        "short": "Location where service may be provided",
+        "definition": "The location where this healthcare service may be provided.",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-location"
+            ]
+          }
+        ],
+        "isSummary": true,
+        "mapping": [
+          {
+            "identity": "w5",
+            "map": "where"
+          }
+        ]
+      },
+      {
+        "path": "HealthcareService.coverageArea",
+        "short": "Location(s) service is inteded for/available to",
+        "definition": "The location(s) that this service is available to (not where the service is provided).",
+        "comments": "The locations referenced by the coverage area can include both specific locations, including areas, and also conceptual domains too (mode = kind), such as a physical area (tri-state area) and some other attribute (covered by Example Care Organization). These types of Locations are often not managed by any specific organization. This could also include generic locations such as \"in-home\".",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-location"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "W5TopLevelGroup": "Identification"
+}

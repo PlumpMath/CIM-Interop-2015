@@ -1,0 +1,202 @@
+﻿{
+  "id": "primarycare-episode-of-care",
+  "meta": {
+    "lastUpdated": "2015-09-22T11:02:49.724+01:00"
+  },
+  "extension": [
+    {
+      "Item": 0,
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm"
+    },
+    {
+      "Item": 1,
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm-no-warnings"
+    }
+  ],
+  "url": "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-episode-of-care",
+  "name": "PrimaryCare-EpisodeOfCare",
+  "display": "Primary Care episode of care",
+  "status": "draft",
+  "publisher": "Endeavour Health Charitable Trust",
+  "date": "2015-09-22T20:02:49+10:00",
+  "description": "Base StructureDefinition for EpisodeOfCare Resource",
+  "fhirVersion": "1.0.1",
+  "kind": 1,
+  "constrainedType": "EpisodeOfCare",
+  "abstract": false,
+  "base": "http://hl7.org/fhir/StructureDefinition/EpisodeOfCare",
+  "differential": {
+    "element": [
+      {
+        "path": "EpisodeOfCare",
+        "short": "An association of a Patient with an Organization and  Healthcare Provider(s) for a period of time that the Organization assumes some level of responsibility",
+        "definition": "An association between a patient and an organization / healthcare provider(s) during which time encounters may occur. The managing organization assumes a level of responsibility for the patient during this time.",
+        "alias": [
+          "Case Program Problem"
+        ],
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "EpisodeOfCare"
+          }
+        ],
+        "mapping": [
+          {
+            "identity": "w5",
+            "map": "workflow.encounter"
+          }
+        ]
+      },
+      {
+        "path": "EpisodeOfCare.identifier.assigner",
+        "short": "Organization that issued id (may be just text)",
+        "definition": "Organization that issued/manages the identifier.",
+        "comments": "The reference may be just a text description of the assigner.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-organization"
+            ]
+          }
+        ],
+        "isSummary": true,
+        "mapping": [
+          {
+            "identity": "v2",
+            "map": "CX.4 / (CX.4,CX.9,CX.10)"
+          },
+          {
+            "identity": "rim",
+            "map": "II.assigningAuthorityName but note that this is an improper use by the definition of the field.  Also Role.scoper"
+          },
+          {
+            "identity": "servd",
+            "map": "./IdentifierIssuingAuthority"
+          }
+        ]
+      },
+      {
+        "path": "EpisodeOfCare.condition",
+        "short": "Conditions/problems/diagnoses this episode of care is for",
+        "definition": "A list of conditions/problems/diagnoses that this episode of care is intended to be providing care for.",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-condition"
+            ]
+          }
+        ],
+        "mapping": [
+          {
+            "identity": "w5",
+            "map": "what"
+          }
+        ]
+      },
+      {
+        "path": "EpisodeOfCare.patient",
+        "short": "Patient for this episode of care",
+        "definition": "The patient that this EpisodeOfCare applies to.",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-patient"
+            ]
+          }
+        ],
+        "isSummary": true,
+        "mapping": [
+          {
+            "identity": "w5",
+            "map": "who.focus"
+          }
+        ]
+      },
+      {
+        "path": "EpisodeOfCare.managingOrganization",
+        "short": "Organization that assumes care",
+        "definition": "The organization that has assumed the specific responsibilities for the specified duration.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-organization"
+            ]
+          }
+        ],
+        "isSummary": true
+      },
+      {
+        "path": "EpisodeOfCare.referralRequest",
+        "short": "Originating Referral Request(s)",
+        "definition": "Referral Request(s) that are fulfilled by this EpisodeOfCare, incoming referrals.",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-referral-request"
+            ]
+          }
+        ]
+      },
+      {
+        "path": "EpisodeOfCare.careManager",
+        "short": "Care manager/care co-ordinator for the patient",
+        "definition": "The practitioner that is the care manager/care co-ordinator for this patient.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-practitioner"
+            ]
+          }
+        ]
+      },
+      {
+        "path": "EpisodeOfCare.careTeam.member",
+        "short": "The practitioner (or Organization) within the team",
+        "definition": "The practitioner (or Organization) within the team.",
+        "comments": "Where an Organization is included in the CareTeam, it is really providing some form of services to the EpisodeOfCare (e.g. Jim's Mowing Services) the details of the services would be included on a CarePlan.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-practitioner"
+            ]
+          },
+          {
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-organization"
+            ]
+          }
+        ],
+        "mapping": [
+          {
+            "identity": "w5",
+            "map": "who"
+          }
+        ]
+      }
+    ]
+  },
+  "W5TopLevelGroup": "Workflow"
+}

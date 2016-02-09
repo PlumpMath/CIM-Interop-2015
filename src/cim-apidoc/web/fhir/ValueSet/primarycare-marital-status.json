@@ -1,0 +1,61 @@
+﻿{
+  "id": "primarycare-marital-status",
+  "meta": {
+    "lastUpdated": "2015-11-01T10:00:00"
+  },
+  "extension": [
+    {
+      "Item": 1,
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm"
+    },
+    {
+      "Item": "http://www.datadictionary.nhs.uk/data_dictionary/attributes/p/person/person_marital_status_code_de.asp?shownav=0",
+      "url": "http://hl7.org/fhir/StructureDefinition/valueset-sourceReference"
+    }
+  ],
+  "url": "http://endeavourhealth.org/fhir/ValueSet/primarycare-marital-status",
+  "name": "PrimaryCare-MaritalStatus",
+  "status": "draft",
+  "publisher": "Endeavour Health Charitable Trust",
+  "contact": [
+    {
+      "telecom": [
+        {
+          "system": 4,
+          "value": "http://www.endeavourhealth.org/"
+        }
+      ]
+    }
+  ],
+  "date": "2015-11-01",
+  "description": "An indicator to identify the legal marital status of a person. This valueset references NHS Data Dictionary: Person Marital Status Code.\n\nNote: This valueset defines an inline code system for an NHS code set.  This is a temporary provision while an NHS FHIR defined code system becomes available.",
+  "codeSystem": {
+    "system": "http://endeavourhealth.org/fhir/ValueSet/primarycare-marital-status",
+    "concept": [
+      {
+        "code": "S",
+        "display": "Single"
+      },
+      {
+        "code": "M",
+        "display": "Married/Civil Partner"
+      },
+      {
+        "code": "D",
+        "display": "Divorced/Person whose Civil Partnership has been dissolved"
+      },
+      {
+        "code": "W",
+        "display": "Widowed/Surviving Civil Partner"
+      },
+      {
+        "code": "P",
+        "display": "Separated"
+      },
+      {
+        "code": "N",
+        "display": "Not disclosed"
+      }
+    ]
+  }
+}

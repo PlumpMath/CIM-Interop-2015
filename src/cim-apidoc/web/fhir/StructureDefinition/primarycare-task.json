@@ -1,0 +1,275 @@
+﻿{
+  "id": "primarycare-task",
+  "meta": {
+    "lastUpdated": "2015-09-22T11:02:49.724+01:00"
+  },
+  "extension": [
+    {
+      "Item": 0,
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm"
+    }
+  ],
+  "url": "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-task",
+  "name": "PrimaryCare-Task",
+  "display": "Primary Care task",
+  "status": "draft",
+  "publisher": "Endeavour Health Charitable Trust",
+  "date": "2015-09-22T20:02:49+10:00",
+  "description": "Structure definition for tasks",
+  "fhirVersion": "1.0.1",
+  "kind": 1,
+  "constrainedType": "Order",
+  "abstract": false,
+  "base": "http://hl7.org/fhir/StructureDefinition/Order",
+  "differential": {
+    "element": [
+      {
+        "path": "Order",
+        "short": "A request to perform an action",
+        "definition": "A request to perform an action.",
+        "alias": [
+          "Request"
+        ],
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "Order"
+          }
+        ],
+        "isSummary": true,
+        "mapping": [
+          {
+            "identity": "rim",
+            "map": "ControlAct[classCode=ACTN, moodCode=RQO]"
+          },
+          {
+            "identity": "w5",
+            "map": "workflow.order"
+          }
+        ]
+      },
+      {
+        "path": "Order.extension",
+        "slicing": {
+          "discriminator": [
+            "url"
+          ],
+          "rules": 2
+        }
+      },
+      {
+        "path": "Order.extension",
+        "name": "type",
+        "short": "Type of the task",
+        "comments": "test",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-task-type-extension"
+            ]
+          }
+        ]
+      },
+      {
+        "path": "Order.extension",
+        "name": "status",
+        "short": "Status of the task",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-task-status-extension"
+            ]
+          }
+        ]
+      },
+      {
+        "path": "Order.extension",
+        "name": "priority",
+        "short": "Priority of the task",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-task-priority-extension"
+            ]
+          }
+        ]
+      },
+      {
+        "path": "Order.identifier.assigner",
+        "short": "Organization that issued id (may be just text)",
+        "definition": "Organization that issued/manages the identifier.",
+        "comments": "The reference may be just a text description of the assigner.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-organization"
+            ]
+          }
+        ],
+        "isSummary": true,
+        "mapping": [
+          {
+            "identity": "v2",
+            "map": "CX.4 / (CX.4,CX.9,CX.10)"
+          },
+          {
+            "identity": "rim",
+            "map": "II.assigningAuthorityName but note that this is an improper use by the definition of the field.  Also Role.scoper"
+          },
+          {
+            "identity": "servd",
+            "map": "./IdentifierIssuingAuthority"
+          }
+        ]
+      },
+      {
+        "path": "Order.subject",
+        "short": "Patient this order is about",
+        "definition": "Patient this order is about.",
+        "comments": "May be left blank if the request reference identifies the patient, or if the request is not associated with a patient.",
+        "alias": [
+          "Patient"
+        ],
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-patient"
+            ]
+          },
+          {
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-group"
+            ]
+          },
+          {
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-device"
+            ]
+          },
+          {
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-substance"
+            ]
+          }
+        ],
+        "isSummary": true,
+        "mapping": [
+          {
+            "identity": "v2",
+            "map": "PID-3"
+          },
+          {
+            "identity": "rim",
+            "map": ".participation[typeCode=SBJ].role[classCode=PAT]"
+          },
+          {
+            "identity": "w5",
+            "map": "who.focus"
+          }
+        ]
+      },
+      {
+        "path": "Order.source",
+        "short": "Who initiated the order",
+        "definition": "Who initiated the order.",
+        "alias": [
+          "Author",
+          "Practitioner"
+        ],
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-practitioner"
+            ]
+          },
+          {
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-organization"
+            ]
+          }
+        ],
+        "isSummary": true,
+        "mapping": [
+          {
+            "identity": "v2",
+            "map": "ORC-12 / OBR-16 / RXO-14 / RXE-13 / PRT-5 (PRT-4-Participation='OP')"
+          },
+          {
+            "identity": "rim",
+            "map": ".participation[typeCode=AUT].role"
+          },
+          {
+            "identity": "w5",
+            "map": "who.cause"
+          }
+        ]
+      },
+      {
+        "path": "Order.target",
+        "short": "Who is intended to fulfill the order",
+        "definition": "Who is intended to fulfill the order.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-organization"
+            ]
+          },
+          {
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-device"
+            ]
+          },
+          {
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-practitioner"
+            ]
+          }
+        ],
+        "isSummary": true,
+        "mapping": [
+          {
+            "identity": "v2",
+            "map": "Unclear: MSH-5 / IPC-7 / BPO-8 / RXO-32 / RXE-40 / RXD-30 / RXG-11 / RXG-27 / PRT-8 (PRT-4-participation in { 'AP', 'DP', 'PO', 'RT' })"
+          },
+          {
+            "identity": "rim",
+            "map": ".participation[typeCode=PFM].role"
+          },
+          {
+            "identity": "w5",
+            "map": "who.actor"
+          }
+        ]
+      }
+    ]
+  },
+  "W5TopLevelGroup": "Workflow"
+}

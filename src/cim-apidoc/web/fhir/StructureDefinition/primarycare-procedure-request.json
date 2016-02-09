@@ -1,0 +1,304 @@
+﻿{
+  "id": "primarycare-procedure-request",
+  "meta": {
+    "lastUpdated": "2015-09-22T11:02:49.724+01:00"
+  },
+  "extension": [
+    {
+      "Item": 0,
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm"
+    }
+  ],
+  "url": "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-procedure-request",
+  "name": "PrimaryCare-ProcedureRequest",
+  "display": "Primary Care procedure request",
+  "status": "draft",
+  "publisher": "Endeavour Health Charitable Trust",
+  "contact": [
+    {
+      "telecom": [
+        {
+          "system": 4,
+          "value": "http://www.endeavourhealth.org/"
+        }
+      ]
+    }
+  ],
+  "date": "2015-11-01T00:00:00+00:00",
+  "description": "Placeholder",
+  "fhirVersion": "1.0.1",
+  "kind": 1,
+  "constrainedType": "ProcedureRequest",
+  "abstract": false,
+  "base": "http://hl7.org/fhir/StructureDefinition/ProcedureRequest",
+  "differential": {
+    "element": [
+      {
+        "path": "ProcedureRequest",
+        "short": "A request for a procedure to be performed",
+        "definition": "A request for a procedure to be performed. May be a proposal or an order.",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "ProcedureRequest"
+          }
+        ],
+        "isSummary": true,
+        "mapping": [
+          {
+            "identity": "w5",
+            "map": "clinical.general"
+          }
+        ]
+      },
+      {
+        "path": "ProcedureRequest.identifier.assigner",
+        "short": "Organization that issued id (may be just text)",
+        "definition": "Organization that issued/manages the identifier.",
+        "comments": "The reference may be just a text description of the assigner.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-organization"
+            ]
+          }
+        ],
+        "isSummary": true,
+        "mapping": [
+          {
+            "identity": "v2",
+            "map": "CX.4 / (CX.4,CX.9,CX.10)"
+          },
+          {
+            "identity": "rim",
+            "map": "II.assigningAuthorityName but note that this is an improper use by the definition of the field.  Also Role.scoper"
+          },
+          {
+            "identity": "servd",
+            "map": "./IdentifierIssuingAuthority"
+          }
+        ]
+      },
+      {
+        "path": "ProcedureRequest.subject",
+        "short": "Who the procedure should be done to",
+        "definition": "The person, animal or group that should receive the procedure.",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-patient"
+            ]
+          },
+          {
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-group"
+            ]
+          }
+        ],
+        "isSummary": true,
+        "mapping": [
+          {
+            "identity": "quick",
+            "map": "ClinicalStatement.subject"
+          },
+          {
+            "identity": "w5",
+            "map": "who.focus"
+          }
+        ]
+      },
+      {
+        "path": "ProcedureRequest.reason[x]",
+        "short": "Why procedure should occur",
+        "definition": "The reason why the procedure is being proposed or ordered. This procedure request may be motivated by a Condition for instance.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "CodeableConcept"
+          },
+          {
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-condition"
+            ]
+          }
+        ],
+        "isSummary": true,
+        "binding": {
+          "strength": 3,
+          "description": "A code that explains the reason why a procedure is  required.",
+          "Item": {
+            "reference": "http://hl7.org/fhir/ValueSet/procedure-reason"
+          }
+        },
+        "mapping": [
+          {
+            "identity": "quick",
+            "map": "Action.indication.reason"
+          }
+        ]
+      },
+      {
+        "path": "ProcedureRequest.encounter",
+        "short": "Encounter request created during",
+        "definition": "The encounter within which the procedure proposal or request was created.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-encounter"
+            ]
+          }
+        ],
+        "isSummary": true,
+        "mapping": [
+          {
+            "identity": "quick",
+            "map": "ClinicalStatement.encounter"
+          },
+          {
+            "identity": "w5",
+            "map": "context"
+          }
+        ]
+      },
+      {
+        "path": "ProcedureRequest.performer",
+        "short": "Who should perform the procedure",
+        "definition": "For example, the surgeon, anaethetist, endoscopist, etc.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-practitioner"
+            ]
+          },
+          {
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-organization"
+            ]
+          },
+          {
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-patient"
+            ]
+          },
+          {
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-related-person"
+            ]
+          }
+        ],
+        "isSummary": true,
+        "mapping": [
+          {
+            "identity": "w5",
+            "map": "who.actor"
+          }
+        ]
+      },
+      {
+        "path": "ProcedureRequest.notes.author[x]",
+        "short": "Individual responsible for the annotation",
+        "definition": "The individual responsible for making the annotation.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-practitioner"
+            ]
+          },
+          {
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-patient"
+            ]
+          },
+          {
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-related-person"
+            ]
+          },
+          {
+            "code": "string"
+          }
+        ],
+        "isSummary": true,
+        "mapping": [
+          {
+            "identity": "v2",
+            "map": "N/A"
+          },
+          {
+            "identity": "rim",
+            "map": "Act.participant[typeCode=AUT].role"
+          }
+        ]
+      },
+      {
+        "path": "ProcedureRequest.orderer",
+        "short": "Who made request",
+        "definition": "The healthcare professional responsible for proposing or ordering the procedure.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-practitioner"
+            ]
+          },
+          {
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-patient"
+            ]
+          },
+          {
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-related-person"
+            ]
+          },
+          {
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-device"
+            ]
+          }
+        ],
+        "isSummary": true,
+        "mapping": [
+          {
+            "identity": "quick",
+            "map": "ClinicalStatement.statementAuthor"
+          },
+          {
+            "identity": "w5",
+            "map": "who.author"
+          }
+        ]
+      }
+    ]
+  },
+  "W5TopLevelGroup": "Clinical"
+}

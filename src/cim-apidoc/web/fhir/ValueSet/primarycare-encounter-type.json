@@ -1,0 +1,2075 @@
+﻿{
+  "id": "primarycare-encounter-type",
+  "meta": {
+    "lastUpdated": "2015-10-27T00:00:00+00:00",
+    "profile": [
+      "http://hl7.org/fhir/StructureDefinition/valueset-shareable-definition"
+    ]
+  },
+  "text": {
+    "status": 1,
+    "div": {
+      "Items": [
+        {
+          "Text": [
+            "Encounter Type Codes"
+          ]
+        },
+        {
+          "Text": [
+            "Example list of codes that can be used to indicate the type of encounter: a specific code indicating type of service provided."
+          ]
+        },
+        {
+          "Items": [
+            {
+              "Text": [
+                "Copyright Statement:"
+              ]
+            }
+          ],
+          "Text": [
+            " This value set includes content from SNOMED CT, which is copyright © 2002+ International Health Terminology Standards Development Organisation (IHTSDO), and distributed by agreement between IHTSDO and HL7. Implementer use of SNOMED CT is not covered by this agreement.\n            "
+          ]
+        },
+        {
+          "Text": [
+            "This value set includes codes from the following code systems:"
+          ]
+        },
+        {
+          "li": [
+            {
+              "Items": [
+                {
+                  "Items1": [
+                    {
+                      "Items": [
+                        {
+                          "Items": [
+                            {
+                              "Text": [
+                                "Code"
+                              ]
+                            }
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        },
+                        {
+                          "Items": [
+                            {
+                              "Text": [
+                                "Display"
+                              ]
+                            }
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        }
+                      ]
+                    },
+                    {
+                      "Items": [
+                        {
+                          "Text": [
+                            "182888003"
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        },
+                        {
+                          "Text": [
+                            "Medication requested"
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        }
+                      ]
+                    },
+                    {
+                      "Items": [
+                        {
+                          "Text": [
+                            "709651000000101"
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        },
+                        {
+                          "Text": [
+                            "Seen in L.A. clinic-school"
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        }
+                      ]
+                    },
+                    {
+                      "Items": [
+                        {
+                          "Text": [
+                            "185212007"
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        },
+                        {
+                          "Text": [
+                            "Seen in hospital ward"
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        }
+                      ]
+                    },
+                    {
+                      "Items": [
+                        {
+                          "Text": [
+                            "185221008"
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        },
+                        {
+                          "Text": [
+                            "Seen in gynaecology clinic"
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        }
+                      ]
+                    },
+                    {
+                      "Items": [
+                        {
+                          "Text": [
+                            "185229005"
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        },
+                        {
+                          "Text": [
+                            "Seen in diabetic clinic"
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        }
+                      ]
+                    },
+                    {
+                      "Items": [
+                        {
+                          "Text": [
+                            "185242005"
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        },
+                        {
+                          "Text": [
+                            "Seen in asthma clinic"
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        }
+                      ]
+                    },
+                    {
+                      "Items": [
+                        {
+                          "Text": [
+                            "185317003"
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        },
+                        {
+                          "Text": [
+                            "Telephone encounter"
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        }
+                      ]
+                    },
+                    {
+                      "Items": [
+                        {
+                          "Text": [
+                            "748971000000100"
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        },
+                        {
+                          "Text": [
+                            "Emergency appointment"
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        }
+                      ]
+                    },
+                    {
+                      "Items": [
+                        {
+                          "Text": [
+                            "185469009"
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        },
+                        {
+                          "Text": [
+                            "District nurse visit"
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        }
+                      ]
+                    },
+                    {
+                      "Items": [
+                        {
+                          "Text": [
+                            "313103006"
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        },
+                        {
+                          "Text": [
+                            "Seen in baby clinic"
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        }
+                      ]
+                    },
+                    {
+                      "Items": [
+                        {
+                          "Text": [
+                            "373942005"
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        },
+                        {
+                          "Text": [
+                            "Discharge summary"
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        }
+                      ]
+                    },
+                    {
+                      "Items": [
+                        {
+                          "Text": [
+                            "386473003"
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        },
+                        {
+                          "Text": [
+                            "Telephone follow-up"
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        }
+                      ]
+                    },
+                    {
+                      "Items": [
+                        {
+                          "Text": [
+                            "394808002"
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        },
+                        {
+                          "Text": [
+                            "Genito-urinary medicine"
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        }
+                      ]
+                    },
+                    {
+                      "Items": [
+                        {
+                          "Text": [
+                            "401267002"
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        },
+                        {
+                          "Text": [
+                            "Telephone triage encounter"
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        }
+                      ]
+                    },
+                    {
+                      "Items": [
+                        {
+                          "Text": [
+                            "401270003"
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        },
+                        {
+                          "Text": [
+                            "E-mail received from patient"
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        }
+                      ]
+                    },
+                    {
+                      "Items": [
+                        {
+                          "Text": [
+                            "401271004"
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        },
+                        {
+                          "Text": [
+                            "E-mail sent to patient"
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        }
+                      ]
+                    },
+                    {
+                      "Items": [
+                        {
+                          "Text": [
+                            "24611000000106"
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        },
+                        {
+                          "Text": [
+                            "Radiology result"
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        }
+                      ]
+                    },
+                    {
+                      "Items": [
+                        {
+                          "Text": [
+                            "24631000000103"
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        },
+                        {
+                          "Text": [
+                            "Residential home visit note"
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        }
+                      ]
+                    },
+                    {
+                      "Items": [
+                        {
+                          "Text": [
+                            "24661000000108"
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        },
+                        {
+                          "Text": [
+                            "Hospital inpatient report"
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        }
+                      ]
+                    },
+                    {
+                      "Items": [
+                        {
+                          "Text": [
+                            "24671000000101"
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        },
+                        {
+                          "Text": [
+                            "Telephone call to a patient"
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        }
+                      ]
+                    },
+                    {
+                      "Items": [
+                        {
+                          "Text": [
+                            "24681000000104"
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        },
+                        {
+                          "Text": [
+                            "Telephone consultation"
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        }
+                      ]
+                    },
+                    {
+                      "Items": [
+                        {
+                          "Text": [
+                            "24701000000102"
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        },
+                        {
+                          "Text": [
+                            "Laboratory result"
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        }
+                      ]
+                    },
+                    {
+                      "Items": [
+                        {
+                          "Text": [
+                            "24711000000100"
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        },
+                        {
+                          "Text": [
+                            "Mail to patient"
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        }
+                      ]
+                    },
+                    {
+                      "Items": [
+                        {
+                          "Text": [
+                            "24731000000108"
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        },
+                        {
+                          "Text": [
+                            "Clinic note"
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        }
+                      ]
+                    },
+                    {
+                      "Items": [
+                        {
+                          "Text": [
+                            "24751000000101"
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        },
+                        {
+                          "Text": [
+                            "Nursing home visit note"
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        }
+                      ]
+                    },
+                    {
+                      "Items": [
+                        {
+                          "Text": [
+                            "24761000000103"
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        },
+                        {
+                          "Text": [
+                            "Scanned document"
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        }
+                      ]
+                    },
+                    {
+                      "Items": [
+                        {
+                          "Text": [
+                            "25651000000106"
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        },
+                        {
+                          "Text": [
+                            "Home visit note"
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        }
+                      ]
+                    },
+                    {
+                      "Items": [
+                        {
+                          "Text": [
+                            "25681000000100"
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        },
+                        {
+                          "Text": [
+                            "Hospital outpatient report"
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        }
+                      ]
+                    },
+                    {
+                      "Items": [
+                        {
+                          "Text": [
+                            "25691000000103"
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        },
+                        {
+                          "Text": [
+                            "Telephone call from a patient"
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        }
+                      ]
+                    },
+                    {
+                      "Items": [
+                        {
+                          "Text": [
+                            "25731000000109"
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        },
+                        {
+                          "Text": [
+                            "Mail from patient"
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        }
+                      ]
+                    },
+                    {
+                      "Items": [
+                        {
+                          "Text": [
+                            "25741000000100"
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        },
+                        {
+                          "Text": [
+                            "Third party consultation"
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        }
+                      ]
+                    },
+                    {
+                      "Items": [
+                        {
+                          "Text": [
+                            "25751000000102"
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        },
+                        {
+                          "Text": [
+                            "Children's home visit note"
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        }
+                      ]
+                    },
+                    {
+                      "Items": [
+                        {
+                          "Text": [
+                            "25761000000104"
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        },
+                        {
+                          "Text": [
+                            "Night visit note"
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        }
+                      ]
+                    },
+                    {
+                      "Items": [
+                        {
+                          "Text": [
+                            "25781000000108"
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        },
+                        {
+                          "Text": [
+                            "OOH report"
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        }
+                      ]
+                    },
+                    {
+                      "Items": [
+                        {
+                          "Text": [
+                            "37271000000108"
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        },
+                        {
+                          "Text": [
+                            "Twilight visit note"
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        }
+                      ]
+                    },
+                    {
+                      "Items": [
+                        {
+                          "Text": [
+                            "37291000000107"
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        },
+                        {
+                          "Text": [
+                            "Externally entered note"
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        }
+                      ]
+                    },
+                    {
+                      "Items": [
+                        {
+                          "Text": [
+                            "37351000000107"
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        },
+                        {
+                          "Text": [
+                            "Administration note"
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        }
+                      ]
+                    },
+                    {
+                      "Items": [
+                        {
+                          "Text": [
+                            "38651000000103"
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        },
+                        {
+                          "Text": [
+                            "Other note"
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        }
+                      ]
+                    },
+                    {
+                      "Items": [
+                        {
+                          "Text": [
+                            "165357005"
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        },
+                        {
+                          "Text": [
+                            "Test result to pat.by 'phone"
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        }
+                      ]
+                    },
+                    {
+                      "Items": [
+                        {
+                          "Text": [
+                            "182918009"
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        },
+                        {
+                          "Text": [
+                            "Repeat prescription"
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        }
+                      ]
+                    },
+                    {
+                      "Items": [
+                        {
+                          "Text": [
+                            "270427003"
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        },
+                        {
+                          "Text": [
+                            "Patient initiated enc. NOS"
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        }
+                      ]
+                    },
+                    {
+                      "Items": [
+                        {
+                          "Text": [
+                            "196391000000103"
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        },
+                        {
+                          "Text": [
+                            "Non-consultation medication data"
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        }
+                      ]
+                    },
+                    {
+                      "Items": [
+                        {
+                          "Text": [
+                            "196401000000100"
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        },
+                        {
+                          "Text": [
+                            "Non-consultation data"
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        }
+                      ]
+                    },
+                    {
+                      "Items": [
+                        {
+                          "Text": [
+                            "199281000000101"
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        },
+                        {
+                          "Text": [
+                            "Seen in GP unit"
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        }
+                      ]
+                    },
+                    {
+                      "Items": [
+                        {
+                          "Text": [
+                            "279961000000108"
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        },
+                        {
+                          "Text": [
+                            "Nurse telephone triage"
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        }
+                      ]
+                    },
+                    {
+                      "Items": [
+                        {
+                          "Text": [
+                            "287231000000109"
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        },
+                        {
+                          "Text": [
+                            "Provision of GP intermediate care"
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        }
+                      ]
+                    },
+                    {
+                      "Items": [
+                        {
+                          "Text": [
+                            "352341000000105"
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        },
+                        {
+                          "Text": [
+                            "E-mail received from carer"
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        }
+                      ]
+                    },
+                    {
+                      "Items": [
+                        {
+                          "Text": [
+                            "352371000000104"
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        },
+                        {
+                          "Text": [
+                            "E-mail sent to carer"
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        }
+                      ]
+                    },
+                    {
+                      "Items": [
+                        {
+                          "Text": [
+                            "439708006"
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        },
+                        {
+                          "Text": [
+                            "Home visit"
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        }
+                      ]
+                    },
+                    {
+                      "Items": [
+                        {
+                          "Text": [
+                            "728001000006100"
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        },
+                        {
+                          "Text": [
+                            "Day-case attendance"
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        }
+                      ]
+                    },
+                    {
+                      "Items": [
+                        {
+                          "Text": [
+                            "300601000000107"
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        },
+                        {
+                          "Text": [
+                            "Seen by GP with special interest ear nose & throat disorders"
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        }
+                      ]
+                    },
+                    {
+                      "Items": [
+                        {
+                          "Text": [
+                            "1503121000006107"
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        },
+                        {
+                          "Text": [
+                            "Walk-in clinic"
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        }
+                      ]
+                    },
+                    {
+                      "Items": [
+                        {
+                          "Text": [
+                            "1503351000006100"
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        },
+                        {
+                          "Text": [
+                            "Face to face consultation"
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        }
+                      ]
+                    },
+                    {
+                      "Items": [
+                        {
+                          "Text": [
+                            "1503361000006103"
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        },
+                        {
+                          "Text": [
+                            "Group consultation"
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        }
+                      ]
+                    },
+                    {
+                      "Items": [
+                        {
+                          "Text": [
+                            "1503371000006105"
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        },
+                        {
+                          "Text": [
+                            "GP Surgery"
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        }
+                      ]
+                    },
+                    {
+                      "Items": [
+                        {
+                          "Text": [
+                            "1503381000006108"
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        },
+                        {
+                          "Text": [
+                            "Face to face consultation with relative/carer"
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        }
+                      ]
+                    },
+                    {
+                      "Items": [
+                        {
+                          "Text": [
+                            "1503391000006106"
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        },
+                        {
+                          "Text": [
+                            "Telephone call to relative/carer"
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        }
+                      ]
+                    },
+                    {
+                      "Items": [
+                        {
+                          "Text": [
+                            "1503401000006108"
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        },
+                        {
+                          "Text": [
+                            "Telephone call from relative/carer"
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        }
+                      ]
+                    },
+                    {
+                      "Items": [
+                        {
+                          "Text": [
+                            "1503411000006106"
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        },
+                        {
+                          "Text": [
+                            "Discussion with colleague"
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        }
+                      ]
+                    },
+                    {
+                      "Items": [
+                        {
+                          "Text": [
+                            "1503421000006103"
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        },
+                        {
+                          "Text": [
+                            "Case conference"
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        }
+                      ]
+                    },
+                    {
+                      "Items": [
+                        {
+                          "Text": [
+                            "1763581000006102"
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        },
+                        {
+                          "Text": [
+                            "Hospital ward round"
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        }
+                      ]
+                    },
+                    {
+                      "Items": [
+                        {
+                          "Text": [
+                            "1764451000006106"
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        },
+                        {
+                          "Text": [
+                            "Inbound referral"
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        }
+                      ]
+                    },
+                    {
+                      "Items": [
+                        {
+                          "Text": [
+                            "1764461000006108"
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        },
+                        {
+                          "Text": [
+                            "Outbound referral"
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        }
+                      ]
+                    },
+                    {
+                      "Items": [
+                        {
+                          "Text": [
+                            "1771561000006102"
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        },
+                        {
+                          "Text": [
+                            "In-house andrology first appointment"
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        }
+                      ]
+                    },
+                    {
+                      "Items": [
+                        {
+                          "Text": [
+                            "1771571000006109"
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        },
+                        {
+                          "Text": [
+                            "In-house andrology discharge"
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        }
+                      ]
+                    },
+                    {
+                      "Items": [
+                        {
+                          "Text": [
+                            "1771581000006107"
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        },
+                        {
+                          "Text": [
+                            "In-house andrology follow-up appointment"
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        }
+                      ]
+                    },
+                    {
+                      "Items": [
+                        {
+                          "Text": [
+                            "1773281000006108"
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        },
+                        {
+                          "Text": [
+                            "First outpatient appointment"
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        }
+                      ]
+                    },
+                    {
+                      "Items": [
+                        {
+                          "Text": [
+                            "1773291000006106"
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        },
+                        {
+                          "Text": [
+                            "Follow-up outpatient appointment"
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        }
+                      ]
+                    },
+                    {
+                      "Items": [
+                        {
+                          "Text": [
+                            "1773301000006107"
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        },
+                        {
+                          "Text": [
+                            "E-mail consultation"
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        }
+                      ]
+                    },
+                    {
+                      "Items": [
+                        {
+                          "Text": [
+                            "1778971000006106"
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        },
+                        {
+                          "Text": [
+                            "Consultation via telemedicine web camera"
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        }
+                      ]
+                    },
+                    {
+                      "Items": [
+                        {
+                          "Text": [
+                            "1778981000006109"
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        },
+                        {
+                          "Text": [
+                            "Consultation via Typetalk relay service"
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        }
+                      ]
+                    },
+                    {
+                      "Items": [
+                        {
+                          "Text": [
+                            "1778991000006107"
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        },
+                        {
+                          "Text": [
+                            "Consultation via SMS text message"
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        }
+                      ]
+                    },
+                    {
+                      "Items": [
+                        {
+                          "Text": [
+                            "1779001000006107"
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        },
+                        {
+                          "Text": [
+                            "Other consultation medium used"
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        }
+                      ]
+                    },
+                    {
+                      "Items": [
+                        {
+                          "Text": [
+                            "1807271000006105"
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        },
+                        {
+                          "Text": [
+                            "Inbound document"
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        }
+                      ]
+                    },
+                    {
+                      "Items": [
+                        {
+                          "Text": [
+                            "1809161000006103"
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        },
+                        {
+                          "Text": [
+                            "Urgent consultation"
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        }
+                      ]
+                    },
+                    {
+                      "Items": [
+                        {
+                          "Text": [
+                            "1809171000006105"
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        },
+                        {
+                          "Text": [
+                            "Routine consultation"
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        }
+                      ]
+                    },
+                    {
+                      "Items": [
+                        {
+                          "Text": [
+                            "1809181000006108"
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        },
+                        {
+                          "Text": [
+                            "Emergency consultation"
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        }
+                      ]
+                    },
+                    {
+                      "Items": [
+                        {
+                          "Text": [
+                            "1809191000006106"
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        },
+                        {
+                          "Text": [
+                            "Extended hours consultation"
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        }
+                      ]
+                    },
+                    {
+                      "Items": [
+                        {
+                          "Text": [
+                            "1839321000006104"
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        },
+                        {
+                          "Text": [
+                            "School visit note"
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        }
+                      ]
+                    },
+                    {
+                      "Items": [
+                        {
+                          "Text": [
+                            "1839331000006101"
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        },
+                        {
+                          "Text": [
+                            "Seen in chronic obstructive pulmonary disease clinic"
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        }
+                      ]
+                    },
+                    {
+                      "Items": [
+                        {
+                          "Text": [
+                            "1849981000006103"
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        },
+                        {
+                          "Text": [
+                            "Follow up telephone consultation"
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        }
+                      ]
+                    },
+                    {
+                      "Items": [
+                        {
+                          "Text": [
+                            "1849991000006100"
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        },
+                        {
+                          "Text": [
+                            "First telephone consultation"
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        }
+                      ]
+                    },
+                    {
+                      "Items": [
+                        {
+                          "Text": [
+                            "1850001000006100"
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        },
+                        {
+                          "Text": [
+                            "Follow up attendance face to face"
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        }
+                      ]
+                    },
+                    {
+                      "Items": [
+                        {
+                          "Text": [
+                            "1850011000006102"
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        },
+                        {
+                          "Text": [
+                            "First attendance face to face"
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        }
+                      ]
+                    },
+                    {
+                      "Items": [
+                        {
+                          "Text": [
+                            "1854731000006104"
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        },
+                        {
+                          "Text": [
+                            "Seen in drug misuse clinic"
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        }
+                      ]
+                    },
+                    {
+                      "Items": [
+                        {
+                          "Text": [
+                            "1879181000006100"
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        },
+                        {
+                          "Text": [
+                            "Discussion with other professional"
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        }
+                      ]
+                    },
+                    {
+                      "Items": [
+                        {
+                          "Text": [
+                            "1879191000006102"
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        },
+                        {
+                          "Text": [
+                            "Joint consultation"
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        }
+                      ]
+                    },
+                    {
+                      "Items": [
+                        {
+                          "Text": [
+                            "857661000000104"
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        },
+                        {
+                          "Text": [
+                            "Seen in chronic obstructive pulmonary disease clinic"
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        }
+                      ]
+                    },
+                    {
+                      "Items": [
+                        {
+                          "Text": [
+                            "857681000000108"
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        },
+                        {
+                          "Text": [
+                            "School visit note"
+                          ],
+                          "rowspan": "1",
+                          "colspan": "1"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "Text": [
+                "Include these codes as defined in http://snomed.info/sct\n\t\t\t\t\t"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "extension": [
+    {
+      "Item": 0,
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm"
+    }
+  ],
+  "url": "http://endeavourhealth.org/fhir/ValueSet/primarycare-encounter-type",
+  "version": "1.0.0",
+  "name": "PrimaryCare-EncounterType",
+  "status": "draft",
+  "publisher": "Endeavour Health Charitable Trust",
+  "contact": [
+    {
+      "telecom": [
+        {
+          "system": 4,
+          "value": "http://www.endeavourhealth.org"
+        }
+      ]
+    }
+  ],
+  "date": "2015-10-27T00:00:00+00:00",
+  "description": "Example list of codes that can be used to indicate the type of encounter: a specific code indicating type of service provided.",
+  "copyright": "This value set includes content from SNOMED CT, which is copyright © 2002+ International Health Terminology Standards Development Organisation (IHTSDO), and distributed by agreement between IHTSDO and HL7. Implementer use of SNOMED CT is not covered by this agreement.",
+  "compose": {
+    "include": [
+      {
+        "system": "http://snomed.info/sct",
+        "concept": [
+          {
+            "code": "182888003",
+            "display": "Medication requested"
+          },
+          {
+            "code": "709651000000101",
+            "display": "Seen in L.A. clinic-school"
+          },
+          {
+            "code": "185212007",
+            "display": "Seen in hospital ward"
+          },
+          {
+            "code": "185221008",
+            "display": "Seen in gynaecology clinic"
+          },
+          {
+            "code": "185229005",
+            "display": "Seen in diabetic clinic"
+          },
+          {
+            "code": "185242005",
+            "display": "Seen in asthma clinic"
+          },
+          {
+            "code": "185317003",
+            "display": "Telephone encounter"
+          },
+          {
+            "code": "748971000000100",
+            "display": "Emergency appointment"
+          },
+          {
+            "code": "185469009",
+            "display": "District nurse visit"
+          },
+          {
+            "code": "313103006",
+            "display": "Seen in baby clinic"
+          },
+          {
+            "code": "373942005",
+            "display": "Discharge summary"
+          },
+          {
+            "code": "386473003",
+            "display": "Telephone follow-up"
+          },
+          {
+            "code": "394808002",
+            "display": "Genito-urinary medicine"
+          },
+          {
+            "code": "401267002",
+            "display": "Telephone triage encounter"
+          },
+          {
+            "code": "401270003",
+            "display": "E-mail received from patient"
+          },
+          {
+            "code": "401271004",
+            "display": "E-mail sent to patient"
+          },
+          {
+            "code": "24611000000106",
+            "display": "Radiology result"
+          },
+          {
+            "code": "24631000000103",
+            "display": "Residential home visit note"
+          },
+          {
+            "code": "24661000000108",
+            "display": "Hospital inpatient report"
+          },
+          {
+            "code": "24671000000101",
+            "display": "Telephone call to a patient"
+          },
+          {
+            "code": "24681000000104",
+            "display": "Telephone consultation"
+          },
+          {
+            "code": "24701000000102",
+            "display": "Laboratory result"
+          },
+          {
+            "code": "24711000000100",
+            "display": "Mail to patient"
+          },
+          {
+            "code": "24731000000108",
+            "display": "Clinic note"
+          },
+          {
+            "code": "24751000000101",
+            "display": "Nursing home visit note"
+          },
+          {
+            "code": "24761000000103",
+            "display": "Scanned document"
+          },
+          {
+            "code": "25651000000106",
+            "display": "Home visit note"
+          },
+          {
+            "code": "25681000000100",
+            "display": "Hospital outpatient report"
+          },
+          {
+            "code": "25691000000103",
+            "display": "Telephone call from a patient"
+          },
+          {
+            "code": "25731000000109",
+            "display": "Mail from patient"
+          },
+          {
+            "code": "25741000000100",
+            "display": "Third party consultation"
+          },
+          {
+            "code": "25751000000102",
+            "display": "Children's home visit note"
+          },
+          {
+            "code": "25761000000104",
+            "display": "Night visit note"
+          },
+          {
+            "code": "25781000000108",
+            "display": "OOH report"
+          },
+          {
+            "code": "37271000000108",
+            "display": "Twilight visit note"
+          },
+          {
+            "code": "37291000000107",
+            "display": "Externally entered note"
+          },
+          {
+            "code": "37351000000107",
+            "display": "Administration note"
+          },
+          {
+            "code": "38651000000103",
+            "display": "Other note"
+          },
+          {
+            "code": "165357005",
+            "display": "Test result to pat.by 'phone"
+          },
+          {
+            "code": "182918009",
+            "display": "Repeat prescription"
+          },
+          {
+            "code": "270427003",
+            "display": "Patient initiated enc. NOS"
+          },
+          {
+            "code": "196391000000103",
+            "display": "Non-consultation medication data"
+          },
+          {
+            "code": "196401000000100",
+            "display": "Non-consultation data"
+          },
+          {
+            "code": "199281000000101",
+            "display": "Seen in GP unit"
+          },
+          {
+            "code": "279961000000108",
+            "display": "Nurse telephone triage"
+          },
+          {
+            "code": "287231000000109",
+            "display": "Provision of GP intermediate care"
+          },
+          {
+            "code": "352341000000105",
+            "display": "E-mail received from carer"
+          },
+          {
+            "code": "352371000000104",
+            "display": "E-mail sent to carer"
+          },
+          {
+            "code": "439708006",
+            "display": "Home visit"
+          },
+          {
+            "code": "728001000006100",
+            "display": "Day-case attendance"
+          },
+          {
+            "code": "300601000000107",
+            "display": "Seen by GP with special interest ear nose & throat disorders"
+          },
+          {
+            "code": "1503121000006107",
+            "display": "Walk-in clinic"
+          },
+          {
+            "code": "1503351000006100",
+            "display": "Face to face consultation"
+          },
+          {
+            "code": "1503361000006103",
+            "display": "Group consultation"
+          },
+          {
+            "code": "1503371000006105",
+            "display": "GP Surgery"
+          },
+          {
+            "code": "1503381000006108",
+            "display": "Face to face consultation with relative/carer"
+          },
+          {
+            "code": "1503391000006106",
+            "display": "Telephone call to relative/carer"
+          },
+          {
+            "code": "1503401000006108",
+            "display": "Telephone call from relative/carer"
+          },
+          {
+            "code": "1503411000006106",
+            "display": "Discussion with colleague"
+          },
+          {
+            "code": "1503421000006103",
+            "display": "Case conference"
+          },
+          {
+            "code": "1763581000006102",
+            "display": "Hospital ward round"
+          },
+          {
+            "code": "1764451000006106",
+            "display": "Inbound referral"
+          },
+          {
+            "code": "1764461000006108",
+            "display": "Outbound referral"
+          },
+          {
+            "code": "1771561000006102",
+            "display": "In-house andrology first appointment"
+          },
+          {
+            "code": "1771571000006109",
+            "display": "In-house andrology discharge"
+          },
+          {
+            "code": "1771581000006107",
+            "display": "In-house andrology follow-up appointment"
+          },
+          {
+            "code": "1773281000006108",
+            "display": "First outpatient appointment"
+          },
+          {
+            "code": "1773291000006106",
+            "display": "Follow-up outpatient appointment"
+          },
+          {
+            "code": "1773301000006107",
+            "display": "E-mail consultation"
+          },
+          {
+            "code": "1778971000006106",
+            "display": "Consultation via telemedicine web camera"
+          },
+          {
+            "code": "1778981000006109",
+            "display": "Consultation via Typetalk relay service"
+          },
+          {
+            "code": "1778991000006107",
+            "display": "Consultation via SMS text message"
+          },
+          {
+            "code": "1779001000006107",
+            "display": "Other consultation medium used"
+          },
+          {
+            "code": "1807271000006105",
+            "display": "Inbound document"
+          },
+          {
+            "code": "1809161000006103",
+            "display": "Urgent consultation"
+          },
+          {
+            "code": "1809171000006105",
+            "display": "Routine consultation"
+          },
+          {
+            "code": "1809181000006108",
+            "display": "Emergency consultation"
+          },
+          {
+            "code": "1809191000006106",
+            "display": "Extended hours consultation"
+          },
+          {
+            "code": "1839321000006104",
+            "display": "School visit note"
+          },
+          {
+            "code": "1839331000006101",
+            "display": "Seen in chronic obstructive pulmonary disease clinic"
+          },
+          {
+            "code": "1849981000006103",
+            "display": "Follow up telephone consultation"
+          },
+          {
+            "code": "1849991000006100",
+            "display": "First telephone consultation"
+          },
+          {
+            "code": "1850001000006100",
+            "display": "Follow up attendance face to face"
+          },
+          {
+            "code": "1850011000006102",
+            "display": "First attendance face to face"
+          },
+          {
+            "code": "1854731000006104",
+            "display": "Seen in drug misuse clinic"
+          },
+          {
+            "code": "1879181000006100",
+            "display": "Discussion with other professional"
+          },
+          {
+            "code": "1879191000006102",
+            "display": "Joint consultation"
+          },
+          {
+            "code": "857661000000104",
+            "display": "Seen in chronic obstructive pulmonary disease clinic"
+          },
+          {
+            "code": "857681000000108",
+            "display": "School visit note"
+          }
+        ]
+      }
+    ]
+  }
+}

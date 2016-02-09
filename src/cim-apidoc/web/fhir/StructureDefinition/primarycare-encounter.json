@@ -1,0 +1,516 @@
+﻿{
+  "id": "primarycare-encounter",
+  "meta": {
+    "lastUpdated": "2015-09-22T11:02:49.724+01:00"
+  },
+  "extension": [
+    {
+      "Item": 0,
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm"
+    }
+  ],
+  "url": "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-encounter",
+  "name": "PrimaryCare-Encounter",
+  "display": "Primary Care encounter",
+  "status": "draft",
+  "publisher": "Endeavour Health Charitable Trust",
+  "contact": [
+    {
+      "telecom": [
+        {
+          "system": 4,
+          "value": "http://www.endeavourhealth.org/"
+        }
+      ]
+    }
+  ],
+  "date": "2015-11-01T00:00:00+00:00",
+  "fhirVersion": "1.0.1",
+  "kind": 1,
+  "constrainedType": "Encounter",
+  "abstract": false,
+  "base": "http://hl7.org/fhir/StructureDefinition/Encounter",
+  "differential": {
+    "element": [
+      {
+        "path": "Encounter",
+        "short": "An interaction during which services are provided to the patient",
+        "definition": "An interaction between a patient and healthcare provider(s) for the purpose of providing healthcare service(s) or assessing the health status of a patient.",
+        "alias": [
+          "Visit"
+        ],
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "Encounter"
+          }
+        ],
+        "mapping": [
+          {
+            "identity": "rim",
+            "map": "Encounter[moodCode=EVN]"
+          },
+          {
+            "identity": "w5",
+            "map": "workflow.encounter"
+          }
+        ]
+      },
+      {
+        "path": "Encounter.extension",
+        "slicing": {
+          "discriminator": [
+            "url"
+          ],
+          "rules": 2
+        }
+      },
+      {
+        "path": "Encounter.extension",
+        "name": "purpose",
+        "short": "Clinical purpose of encounter",
+        "definition": "Specific clinical purpose of encounter (e.g. child health, antenatal, assessment).",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-encounter-purpose-extension"
+            ]
+          }
+        ]
+      },
+      {
+        "path": "Encounter.identifier.assigner",
+        "short": "Organization that issued id (may be just text)",
+        "definition": "Organization that issued/manages the identifier.",
+        "comments": "The reference may be just a text description of the assigner.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-organization"
+            ]
+          }
+        ],
+        "isSummary": true,
+        "mapping": [
+          {
+            "identity": "v2",
+            "map": "CX.4 / (CX.4,CX.9,CX.10)"
+          },
+          {
+            "identity": "rim",
+            "map": "II.assigningAuthorityName but note that this is an improper use by the definition of the field.  Also Role.scoper"
+          },
+          {
+            "identity": "servd",
+            "map": "./IdentifierIssuingAuthority"
+          }
+        ]
+      },
+      {
+        "path": "Encounter.type",
+        "short": "Specific type of encounter",
+        "definition": "Specific type of encounter (e.g. telephone consultation, face to face, home visit note).",
+        "comments": "Since there are many ways to further classify encounters, this element is 0..*.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ],
+        "isSummary": true,
+        "binding": {
+          "strength": 3,
+          "description": "The type of encounter",
+          "Item": "http://endeavourhealth.org/fhir/ValueSet/primarycare-encounter-type"
+        },
+        "mapping": [
+          {
+            "identity": "v2",
+            "map": "PV1-4 / PV1-18"
+          },
+          {
+            "identity": "rim",
+            "map": ".code"
+          },
+          {
+            "identity": "w5",
+            "map": "class"
+          }
+        ]
+      },
+      {
+        "path": "Encounter.patient",
+        "short": "The patient present at the encounter",
+        "definition": "The patient present at the encounter.",
+        "comments": "While the encounter is always about the patient, the patient may not actually be known in all contexts of use.",
+        "alias": [
+          "patient"
+        ],
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-patient"
+            ]
+          }
+        ],
+        "isSummary": true,
+        "mapping": [
+          {
+            "identity": "v2",
+            "map": "PID-3"
+          },
+          {
+            "identity": "rim",
+            "map": ".participation[typeCode=SBJ]/role[classCode=PAT]"
+          },
+          {
+            "identity": "w5",
+            "map": "who.focus"
+          }
+        ]
+      },
+      {
+        "path": "Encounter.episodeOfCare",
+        "short": "Episode(s) of care that this encounter should be recorded against",
+        "definition": "Where a specific encounter should be classified as a part of a specific episode(s) of care this field should be used. This association can facilitate grouping of related encounters together for a specific purpose, such as government reporting, issue tracking, association via a common problem.  The association is recorded on the encounter as these are typically created after the episode of care, and grouped on entry rather than editing the episode of care to append another encounter to it (the episode of care could span years).",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-episode-of-care"
+            ]
+          }
+        ],
+        "isSummary": true,
+        "mapping": [
+          {
+            "identity": "v2",
+            "map": "PV1-54, PV1-53"
+          },
+          {
+            "identity": "w5",
+            "map": "context"
+          }
+        ]
+      },
+      {
+        "path": "Encounter.incomingReferral",
+        "short": "The ReferralRequest that initiated this encounter",
+        "definition": "The referral request this encounter satisfies (incoming referral).",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-procedure-request"
+            ]
+          }
+        ]
+      },
+      {
+        "path": "Encounter.participant.individual",
+        "short": "Persons involved in the encounter other than the patient",
+        "definition": "Persons involved in the encounter other than the patient.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-practitioner"
+            ]
+          },
+          {
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-related-person"
+            ]
+          }
+        ],
+        "isSummary": true,
+        "mapping": [
+          {
+            "identity": "v2",
+            "map": "ROL-4"
+          },
+          {
+            "identity": "rim",
+            "map": ".role"
+          },
+          {
+            "identity": "w5",
+            "map": "who"
+          }
+        ]
+      },
+      {
+        "path": "Encounter.appointment",
+        "short": "The appointment that scheduled this encounter",
+        "definition": "The appointment that scheduled this encounter.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-appointment"
+            ]
+          }
+        ],
+        "isSummary": true,
+        "mapping": [
+          {
+            "identity": "v2",
+            "map": "SCH-1 / SCH-2"
+          },
+          {
+            "identity": "rim",
+            "map": ".outboundRelationship[typeCode=FLFS].target[classCode=ENC, moodCode=APT]"
+          }
+        ]
+      },
+      {
+        "path": "Encounter.indication",
+        "short": "Reason the encounter takes place (resource)",
+        "definition": "Reason the encounter takes place, as specified using information from another resource. For admissions, this is the admission diagnosis. The indication will typically be a Condition (with other resources referenced in the evidence.detail), or a Procedure.",
+        "comments": "For systems that need to know which was the primary diagnosis, these will be marked with the standard extension primaryDiagnosis (which is a sequence value rather than a flag, 1 = primary diagnosis).",
+        "alias": [
+          "Admission diagnosis"
+        ],
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-condition"
+            ]
+          },
+          {
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-procedure"
+            ]
+          }
+        ],
+        "mapping": [
+          {
+            "identity": "v2",
+            "map": "Resources that would commonly referenced at Encounter.indication would be Condition and/or Procedure. These most closely align with DG1/PRB and PR1 respectively."
+          },
+          {
+            "identity": "rim",
+            "map": ".outboundRelationship[typeCode=RSON].target"
+          },
+          {
+            "identity": "w5",
+            "map": "why"
+          }
+        ]
+      },
+      {
+        "path": "Encounter.hospitalization.preAdmissionIdentifier.assigner",
+        "short": "Organization that issued id (may be just text)",
+        "definition": "Organization that issued/manages the identifier.",
+        "comments": "The reference may be just a text description of the assigner.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-organization"
+            ]
+          }
+        ],
+        "isSummary": true,
+        "mapping": [
+          {
+            "identity": "v2",
+            "map": "CX.4 / (CX.4,CX.9,CX.10)"
+          },
+          {
+            "identity": "rim",
+            "map": "II.assigningAuthorityName but note that this is an improper use by the definition of the field.  Also Role.scoper"
+          },
+          {
+            "identity": "servd",
+            "map": "./IdentifierIssuingAuthority"
+          }
+        ]
+      },
+      {
+        "path": "Encounter.hospitalization.origin",
+        "short": "The location from which the patient came before admission",
+        "definition": "The location from which the patient came before admission.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-location"
+            ]
+          }
+        ],
+        "mapping": [
+          {
+            "identity": "rim",
+            "map": ".participation[typeCode=ORG].role"
+          }
+        ]
+      },
+      {
+        "path": "Encounter.hospitalization.admittingDiagnosis",
+        "short": "The admitting diagnosis as reported by admitting practitioner",
+        "definition": "The admitting diagnosis field is used to record the diagnosis codes as reported by admitting practitioner. This could be different or in addition to the conditions reported as reason-condition(s) for the encounter.",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-condition"
+            ]
+          }
+        ]
+      },
+      {
+        "path": "Encounter.hospitalization.destination",
+        "short": "Location to which the patient is discharged",
+        "definition": "Location to which the patient is discharged.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-location"
+            ]
+          }
+        ],
+        "mapping": [
+          {
+            "identity": "v2",
+            "map": "PV1-37"
+          },
+          {
+            "identity": "rim",
+            "map": ".participation[typeCode=DST]"
+          }
+        ]
+      },
+      {
+        "path": "Encounter.hospitalization.dischargeDiagnosis",
+        "short": "The final diagnosis given a patient before release from the hospital after all testing, surgery, and workup are complete",
+        "definition": "The final diagnosis given a patient before release from the hospital after all testing, surgery, and workup are complete.",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-condition"
+            ]
+          }
+        ],
+        "mapping": [
+          {
+            "identity": "rim",
+            "map": ".outboundRelationship[typeCode=OUT].target[classCode=OBS, moodCode=EVN, code=ASSERTION].value"
+          }
+        ]
+      },
+      {
+        "path": "Encounter.location.location",
+        "short": "Location the encounter takes place",
+        "definition": "The location where the encounter takes place.",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-location"
+            ]
+          }
+        ],
+        "mapping": [
+          {
+            "identity": "v2",
+            "map": "PV1-3 / PV1-6 / PV1-11 / PV1-42 / PV1-43"
+          },
+          {
+            "identity": "rim",
+            "map": ".role"
+          },
+          {
+            "identity": "w5",
+            "map": "where"
+          }
+        ]
+      },
+      {
+        "path": "Encounter.serviceProvider",
+        "short": "The custodian organization of this Encounter record",
+        "definition": "An organization that is in charge of maintaining the information of this Encounter (e.g. who maintains the report or the master service catalog item, etc.). This MAY be the same as the organization on the Patient record, however it could be different. This MAY not be not the Service Delivery Location's Organization.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-organization"
+            ]
+          }
+        ],
+        "mapping": [
+          {
+            "identity": "v2",
+            "map": "PV1-10 / PL.6  & PL.1  (note: HL7 v2 definition is \"the treatment or type of surgery that the patient is scheduled to receive\"; seems slightly out of alignment with the concept name 'hospital service'. Would not trust that implementations apply this semantic by default)"
+          },
+          {
+            "identity": "rim",
+            "map": ".particiaption[typeCode=PFM].role"
+          }
+        ]
+      },
+      {
+        "path": "Encounter.partOf",
+        "short": "Another Encounter this encounter is part of",
+        "definition": "Another Encounter of which this encounter is a part of (administratively or in time).",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-encounter"
+            ]
+          }
+        ],
+        "mapping": [
+          {
+            "identity": "rim",
+            "map": ".inboundRelationship[typeCode=COMP].source[classCode=COMP, moodCode=EVN]"
+          }
+        ]
+      }
+    ]
+  },
+  "W5TopLevelGroup": "Workflow"
+}

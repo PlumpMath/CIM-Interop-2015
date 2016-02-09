@@ -1,0 +1,594 @@
+﻿{
+  "id": "primarycare-care-plan",
+  "meta": {
+    "lastUpdated": "2015-09-22T11:02:49.724+01:00"
+  },
+  "extension": [
+    {
+      "Item": 0,
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm"
+    }
+  ],
+  "url": "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-care-plan",
+  "name": "PrimaryCare-CarePlan",
+  "display": "Primary Care care plan",
+  "status": "draft",
+  "publisher": "Endeavour Health Charitable Trust",
+  "date": "2015-09-22T20:02:49+10:00",
+  "fhirVersion": "1.0.1",
+  "kind": 1,
+  "constrainedType": "CarePlan",
+  "abstract": false,
+  "base": "http://hl7.org/fhir/StructureDefinition/CarePlan",
+  "differential": {
+    "element": [
+      {
+        "path": "CarePlan",
+        "short": "Healthcare plan for patient or group",
+        "definition": "Describes the intention of how one or more practitioners intend to deliver care for a particular patient, group or community for a period of time, possibly limited to care for a specific condition or set of conditions.",
+        "alias": [
+          "Care Team"
+        ],
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "CarePlan"
+          }
+        ],
+        "mapping": [
+          {
+            "identity": "rim",
+            "map": "Act[classCode=PCPR, moodCode=INT]"
+          },
+          {
+            "identity": "w5",
+            "map": "clinical.careprovision"
+          }
+        ]
+      },
+      {
+        "path": "CarePlan.subject",
+        "short": "Who care plan is for",
+        "definition": "Identifies the patient or group whose intended care is described by the plan.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-patient"
+            ]
+          },
+          {
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-group"
+            ]
+          }
+        ],
+        "isSummary": true,
+        "mapping": [
+          {
+            "identity": "v2",
+            "map": "PID-3"
+          },
+          {
+            "identity": "rim",
+            "map": ".participation[typeCode=PAT].role[classCode=PAT]"
+          }
+        ]
+      },
+      {
+        "path": "CarePlan.context",
+        "short": "Created in context of",
+        "definition": "Identifies the context in which this particular CarePlan is defined.",
+        "comments": "Activities conducted as a result of the care plan may well occur as part of other encounters/episodes.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-encounter"
+            ]
+          },
+          {
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-episode-of-care"
+            ]
+          }
+        ],
+        "isSummary": true,
+        "mapping": [
+          {
+            "identity": "v2",
+            "map": "Associated PV1"
+          },
+          {
+            "identity": "rim",
+            "map": "."
+          },
+          {
+            "identity": "w5",
+            "map": "context"
+          }
+        ]
+      },
+      {
+        "path": "CarePlan.author",
+        "short": "Who is responsible for contents of the plan",
+        "definition": "Identifies the individual(s) or ogranization who is responsible for the content of the care plan.",
+        "comments": "Collaborative care plans may have multiple authors.",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-patient"
+            ]
+          },
+          {
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-practitioner"
+            ]
+          },
+          {
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-related-person"
+            ]
+          },
+          {
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-organization"
+            ]
+          }
+        ],
+        "isSummary": true
+      },
+      {
+        "path": "CarePlan.addresses",
+        "short": "Health issues this plan addresses",
+        "definition": "Identifies the conditions/problems/concerns/diagnoses/etc. whose management and/or mitigation are handled by this plan.",
+        "requirements": "Links plan to the conditions it manages.  Also scopes plans - multiple plans may exist addressing different concerns.",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-condition"
+            ]
+          }
+        ],
+        "isSummary": true,
+        "mapping": [
+          {
+            "identity": "v2",
+            "map": "PRB-4"
+          },
+          {
+            "identity": "rim",
+            "map": ".actRelationship[typeCode=SUBJ].target[classCode=CONC, moodCode=EVN]"
+          }
+        ]
+      },
+      {
+        "path": "CarePlan.relatedPlan.plan",
+        "short": "Plan relationship exists with",
+        "definition": "A reference to the plan to which a relationship is asserted.",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-care-plan"
+            ]
+          }
+        ]
+      },
+      {
+        "path": "CarePlan.participant.member",
+        "short": "Who is involved",
+        "definition": "The specific person or organization who is participating/expected to participate in the care plan.",
+        "comments": "Patient only needs to be listed if they have a role other than \"subject of care\".  Member is optional because some participants may be known only by their role, particularly in draft plans.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-practitioner"
+            ]
+          },
+          {
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-related-person"
+            ]
+          },
+          {
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-patient"
+            ]
+          },
+          {
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-organization"
+            ]
+          }
+        ],
+        "mapping": [
+          {
+            "identity": "v2",
+            "map": "REL.5 (or PRT-5 : ( PRV-4 {provider participations} ) / PRT-5 : ( PRV-4  {non-provider person participations} ) / PRT-5 : ( PRV-4 = (patient non-subject of care) ) / PRT-8?)"
+          },
+          {
+            "identity": "rim",
+            "map": ".role"
+          }
+        ]
+      },
+      {
+        "path": "CarePlan.goal",
+        "short": "Desired outcome of plan",
+        "definition": "Describes the intended objective(s) of carrying out the care plan.",
+        "comments": "Goal can be achieving a particular change or merely maintaining a current state or even slowing a decline.",
+        "requirements": "Provides context for plan.  Allows plan effectiveness to be evaluated by clinicians.",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-goal"
+            ]
+          }
+        ],
+        "mapping": [
+          {
+            "identity": "v2",
+            "map": "GOL.1"
+          },
+          {
+            "identity": "rim",
+            "map": ".outboundRelationship[typeCode<=OBJ]."
+          }
+        ]
+      },
+      {
+        "path": "CarePlan.activity.progress.author[x]",
+        "short": "Individual responsible for the annotation",
+        "definition": "The individual responsible for making the annotation.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-practitioner"
+            ]
+          },
+          {
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-patient"
+            ]
+          },
+          {
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-related-person"
+            ]
+          },
+          {
+            "code": "string"
+          }
+        ],
+        "isSummary": true,
+        "mapping": [
+          {
+            "identity": "v2",
+            "map": "N/A"
+          },
+          {
+            "identity": "rim",
+            "map": "Act.participant[typeCode=AUT].role"
+          }
+        ]
+      },
+      {
+        "path": "CarePlan.activity.reference",
+        "short": "Activity details defined in specific resource",
+        "definition": "The details of the proposed activity represented in a specific resource.",
+        "requirements": "Details in a form consistent with other applications and contexts of use.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-appointment"
+            ]
+          },
+          {
+            "code": "Reference",
+            "profile": [
+              "http://hl7.org/fhir/StructureDefinition/CommunicationRequest"
+            ]
+          },
+          {
+            "code": "Reference",
+            "profile": [
+              "http://hl7.org/fhir/StructureDefinition/DeviceUseRequest"
+            ]
+          },
+          {
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-diagnostic-order"
+            ]
+          },
+          {
+            "code": "Reference",
+            "profile": [
+              "http://hl7.org/fhir/StructureDefinition/MedicationOrder"
+            ]
+          },
+          {
+            "code": "Reference",
+            "profile": [
+              "http://hl7.org/fhir/StructureDefinition/NutritionOrder"
+            ]
+          },
+          {
+            "code": "Reference",
+            "profile": [
+              "http://hl7.org/fhir/StructureDefinition/Order"
+            ]
+          },
+          {
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-procedure-request"
+            ]
+          },
+          {
+            "code": "Reference",
+            "profile": [
+              "http://hl7.org/fhir/StructureDefinition/ProcessRequest"
+            ]
+          },
+          {
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-referral-request"
+            ]
+          },
+          {
+            "code": "Reference",
+            "profile": [
+              "http://hl7.org/fhir/StructureDefinition/SupplyRequest"
+            ]
+          },
+          {
+            "code": "Reference",
+            "profile": [
+              "http://hl7.org/fhir/StructureDefinition/VisionPrescription"
+            ]
+          }
+        ],
+        "condition": [
+          "cpl-3"
+        ],
+        "mapping": [
+          {
+            "identity": "rim",
+            "map": ".outboundRelationship[typeCode=COMP].target"
+          }
+        ]
+      },
+      {
+        "path": "CarePlan.activity.detail.reasonReference",
+        "short": "Condition triggering need for activity",
+        "definition": "Provides the health condition(s) that drove the inclusion of this particular activity as part of the plan.",
+        "comments": "Conditions can be identified at the activity level that are not identified as reasons for the overall plan.",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-condition"
+            ]
+          }
+        ]
+      },
+      {
+        "path": "CarePlan.activity.detail.goal",
+        "short": "Goals this activity relates to",
+        "definition": "Internal reference that identifies the goals that this activity is intended to contribute towards meeting.",
+        "requirements": "So that participants know the link explicitly.",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-goal"
+            ]
+          }
+        ],
+        "mapping": [
+          {
+            "identity": "rim",
+            "map": ".outboundRelationship[typeCode<=OBJ]."
+          }
+        ]
+      },
+      {
+        "path": "CarePlan.activity.detail.location",
+        "short": "Where it should happen",
+        "definition": "Identifies the facility where the activity will occur; e.g. home, hospital, specific clinic, etc.",
+        "comments": "May reference a specific clinical location or may identify a type of location.",
+        "requirements": "Helps in planning of activity.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-location"
+            ]
+          }
+        ],
+        "mapping": [
+          {
+            "identity": "v2",
+            "map": "OBR-24(???!!)"
+          },
+          {
+            "identity": "rim",
+            "map": ".participation[typeCode=LOC].role"
+          }
+        ]
+      },
+      {
+        "path": "CarePlan.activity.detail.performer",
+        "short": "Who will be responsible?",
+        "definition": "Identifies who's expected to be involved in the activity.",
+        "comments": "A performer MAY also be a participant in the care plan.",
+        "requirements": "Helps in planning of activity.",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-practitioner"
+            ]
+          },
+          {
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-organization"
+            ]
+          },
+          {
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-related-person"
+            ]
+          },
+          {
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-patient"
+            ]
+          }
+        ],
+        "mapping": [
+          {
+            "identity": "v2",
+            "map": "PRT-5 : ( PRV-4 e {provider participations} ) / PRT-5 : ( PRV-4 e {non-provider person participations} ) / PRT-5 : ( PRV-4 = (patient non-subject of care) ) / PRT-8"
+          },
+          {
+            "identity": "rim",
+            "map": ".participation[typeCode=PFM]"
+          }
+        ]
+      },
+      {
+        "path": "CarePlan.activity.detail.product[x]",
+        "short": "What is to be administered/supplied",
+        "definition": "Identifies the food, drug or other product to be consumed or supplied in the activity.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "CodeableConcept"
+          },
+          {
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-medication"
+            ]
+          },
+          {
+            "code": "Reference",
+            "profile": [
+              "http://hl7.org/fhir/StructureDefinition/Substance"
+            ]
+          }
+        ],
+        "binding": {
+          "strength": 3,
+          "description": "A product supplied or administered as part of a care plan activity.",
+          "Item": {
+            "reference": "http://hl7.org/fhir/ValueSet/medication-codes"
+          }
+        },
+        "mapping": [
+          {
+            "identity": "v2",
+            "map": "RXE-2 / RXO-1 / RXD-2"
+          },
+          {
+            "identity": "rim",
+            "map": ".participation[typeCode=PRD].role"
+          }
+        ]
+      },
+      {
+        "path": "CarePlan.note.author[x]",
+        "short": "Individual responsible for the annotation",
+        "definition": "The individual responsible for making the annotation.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-practitioner"
+            ]
+          },
+          {
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-patient"
+            ]
+          },
+          {
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-related-person"
+            ]
+          },
+          {
+            "code": "string"
+          }
+        ],
+        "isSummary": true,
+        "mapping": [
+          {
+            "identity": "v2",
+            "map": "N/A"
+          },
+          {
+            "identity": "rim",
+            "map": "Act.participant[typeCode=AUT].role"
+          }
+        ]
+      }
+    ]
+  },
+  "W5TopLevelGroup": "Clinical"
+}

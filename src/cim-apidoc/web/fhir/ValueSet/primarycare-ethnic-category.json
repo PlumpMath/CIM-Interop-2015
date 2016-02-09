@@ -1,0 +1,105 @@
+﻿{
+  "id": "primarycare-ethnic-category",
+  "meta": {
+    "lastUpdated": "2015-11-01T10:00:00"
+  },
+  "extension": [
+    {
+      "Item": 1,
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm"
+    },
+    {
+      "Item": "http://www.datadictionary.nhs.uk/data_dictionary/attributes/e/end/ethnic_category_code_de.asp?shownav=0",
+      "url": "http://hl7.org/fhir/StructureDefinition/valueset-sourceReference"
+    }
+  ],
+  "url": "http://endeavourhealth.org/fhir/ValueSet/primarycare-ethnic-category",
+  "name": "PrimaryCare-EthnicCategory",
+  "status": "draft",
+  "publisher": "Endeavour Health Charitable Trust",
+  "contact": [
+    {
+      "telecom": [
+        {
+          "system": 4,
+          "value": "http://www.endeavourhealth.org/"
+        }
+      ]
+    }
+  ],
+  "date": "2015-11-01",
+  "description": "The ethnicity of a patient, as specified by the patient. This valueset is comprised of codes from references NHS Data Dictionary: Ethnic Category Code.\n\nNote: This valueset defines an inline code system for an NHS code set.  This is a temporary provision while an NHS FHIR defined code system becomes available.",
+  "codeSystem": {
+    "system": "http://endeavourhealth.org/fhir/ValueSet/primarycare-ethnic-category",
+    "concept": [
+      {
+        "code": "A",
+        "display": "British"
+      },
+      {
+        "code": "B",
+        "display": "Irish"
+      },
+      {
+        "code": "C",
+        "display": "Any other White background"
+      },
+      {
+        "code": "D",
+        "display": "White and Black Caribbean"
+      },
+      {
+        "code": "E",
+        "display": "White and Black African"
+      },
+      {
+        "code": "F",
+        "display": "White and Asian"
+      },
+      {
+        "code": "G",
+        "display": "Any other mixed background"
+      },
+      {
+        "code": "H",
+        "display": "Indian"
+      },
+      {
+        "code": "J",
+        "display": "Pakistani"
+      },
+      {
+        "code": "K",
+        "display": "Bangladeshi"
+      },
+      {
+        "code": "L",
+        "display": "Any other Asian background"
+      },
+      {
+        "code": "M",
+        "display": "Caribbean"
+      },
+      {
+        "code": "N",
+        "display": "African"
+      },
+      {
+        "code": "P",
+        "display": "Any other Black background"
+      },
+      {
+        "code": "R",
+        "display": "Chinese"
+      },
+      {
+        "code": "S",
+        "display": "Any other ethnic group"
+      },
+      {
+        "code": "Z",
+        "display": "Not stated"
+      }
+    ]
+  }
+}

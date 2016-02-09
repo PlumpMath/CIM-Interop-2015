@@ -1,0 +1,218 @@
+﻿{
+  "id": "primarycare-practitioner",
+  "meta": {
+    "lastUpdated": "2015-11-01T10:00:00+00:00"
+  },
+  "url": "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-practitioner",
+  "name": "PrimaryCare-Practitioner",
+  "display": "Primary Care practitioner",
+  "status": "draft",
+  "publisher": "Endeavour Health Charitable Trust",
+  "contact": [
+    {
+      "telecom": [
+        {
+          "system": 4,
+          "value": "http://www.endeavourhealth.org/"
+        }
+      ]
+    }
+  ],
+  "date": "2015-11-01",
+  "description": "Primary Care practitioner",
+  "fhirVersion": "1.0.2",
+  "kind": 1,
+  "constrainedType": "Practitioner",
+  "abstract": false,
+  "base": "http://hl7.org/fhir/StructureDefinition/Practitioner",
+  "differential": {
+    "element": [
+      {
+        "path": "Practitioner",
+        "short": "A person with a  formal responsibility in the provisioning of healthcare or related services",
+        "definition": "A person who is directly or indirectly involved in the provisioning of healthcare.",
+        "comments": "Note that a cab driver no longer fits the bill. You probably would be interested in the organization rather than the individual?",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "Practitioner"
+          }
+        ],
+        "mapping": [
+          {
+            "identity": "v2",
+            "map": "PRD (as one example)"
+          },
+          {
+            "identity": "rim",
+            "map": "Role"
+          },
+          {
+            "identity": "servd",
+            "map": "Provider"
+          },
+          {
+            "identity": "w5",
+            "map": "administrative.individual"
+          }
+        ]
+      },
+      {
+        "path": "Practitioner.identifier.assigner",
+        "short": "Organization that issued id (may be just text)",
+        "definition": "Organization that issued/manages the identifier.",
+        "comments": "The reference may be just a text description of the assigner.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-organization"
+            ]
+          }
+        ],
+        "isSummary": true,
+        "mapping": [
+          {
+            "identity": "v2",
+            "map": "CX.4 / (CX.4,CX.9,CX.10)"
+          },
+          {
+            "identity": "rim",
+            "map": "II.assigningAuthorityName but note that this is an improper use by the definition of the field.  Also Role.scoper"
+          },
+          {
+            "identity": "servd",
+            "map": "./IdentifierIssuingAuthority"
+          }
+        ]
+      },
+      {
+        "path": "Practitioner.practitionerRole.managingOrganization",
+        "short": "Organization where the roles are performed",
+        "definition": "The organization where the Practitioner performs the roles associated.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-organization"
+            ]
+          }
+        ],
+        "mapping": [
+          {
+            "identity": "rim",
+            "map": "scopingOrganization"
+          }
+        ]
+      },
+      {
+        "path": "Practitioner.practitionerRole.location",
+        "short": "The location(s) at which this practitioner provides care",
+        "definition": "The location(s) at which this practitioner provides care.",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-location"
+            ]
+          }
+        ],
+        "mapping": [
+          {
+            "identity": "rim",
+            "map": "./target[classCode=\"indirectAuthority].source[classCode=SDLOC]"
+          },
+          {
+            "identity": "servd",
+            "map": "(ServD maps Practitioners and Organizations via another entity, so this concept is not available)<br/> However these are accessed via the Site.ServiceSite.ServiceSiteProvider record. (The Site has the location)"
+          },
+          {
+            "identity": "w5",
+            "map": "where"
+          }
+        ]
+      },
+      {
+        "path": "Practitioner.practitionerRole.healthcareService",
+        "short": "The list of healthcare services that this worker provides for this role's Organization/Location(s)",
+        "definition": "The list of healthcare services that this worker provides for this role's Organization/Location(s).",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-healthcare-service"
+            ]
+          }
+        ],
+        "mapping": [
+          {
+            "identity": "rim",
+            "map": "./target[classCode=\"indirectAuthority].id?"
+          }
+        ]
+      },
+      {
+        "path": "Practitioner.qualification.identifier.assigner",
+        "short": "Organization that issued id (may be just text)",
+        "definition": "Organization that issued/manages the identifier.",
+        "comments": "The reference may be just a text description of the assigner.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-organization"
+            ]
+          }
+        ],
+        "isSummary": true,
+        "mapping": [
+          {
+            "identity": "v2",
+            "map": "CX.4 / (CX.4,CX.9,CX.10)"
+          },
+          {
+            "identity": "rim",
+            "map": "II.assigningAuthorityName but note that this is an improper use by the definition of the field.  Also Role.scoper"
+          },
+          {
+            "identity": "servd",
+            "map": "./IdentifierIssuingAuthority"
+          }
+        ]
+      },
+      {
+        "path": "Practitioner.qualification.issuer",
+        "short": "Organization that regulates and issues the qualification",
+        "definition": "Organization that regulates and issues the qualification.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-organization"
+            ]
+          }
+        ],
+        "mapping": [
+          {
+            "identity": "rim",
+            "map": "./scoper"
+          }
+        ]
+      }
+    ]
+  },
+  "W5TopLevelGroup": "Identification"
+}

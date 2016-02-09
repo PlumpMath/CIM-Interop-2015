@@ -1,0 +1,88 @@
+﻿{
+  "id": "primarycare-task-priority",
+  "meta": {
+    "lastUpdated": "2015-09-24T16:19:37.151+01:00",
+    "profile": [
+      "http://hl7.org/fhir/StructureDefinition/valueset-shareable-definition"
+    ]
+  },
+  "text": {
+    "status": 1,
+    "div": {
+      "Items": [
+        {
+          "Text": [
+            "TaskPriority"
+          ]
+        },
+        {
+          "Text": [
+            "The priority/importance of the task."
+          ]
+        },
+        {
+          "Text": [
+            "This value set has an inline code system which defines the following codes:"
+          ]
+        },
+        {
+          "Text": [
+            "Low | Medium | High"
+          ]
+        }
+      ]
+    }
+  },
+  "extension": [
+    {
+      "Item": 0,
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm"
+    }
+  ],
+  "url": "http://endeavourhealth.org/fhir/ValueSet/primarycare-task-priority",
+  "version": "1.0.0",
+  "name": "PrimaryCare-TaskPriority",
+  "status": "draft",
+  "publisher": "Endeavour Health Charitable Trust",
+  "description": "The priority/importance of a task.",
+  "codeSystem": {
+    "system": "http://endeavourhealth.org/fhir/ValueSet/primarycare-task-priority",
+    "version": "1.0.0",
+    "caseSensitive": true,
+    "concept": [
+      {
+        "extension": [
+          {
+            "Item": "Low",
+            "url": "http://hl7.org/fhir/StructureDefinition/valueset-comments"
+          }
+        ],
+        "code": "low",
+        "display": "Low",
+        "definition": "Low"
+      },
+      {
+        "extension": [
+          {
+            "Item": "Medium",
+            "url": "http://hl7.org/fhir/StructureDefinition/valueset-comments"
+          }
+        ],
+        "code": "medium",
+        "display": "Medium",
+        "definition": "Medium"
+      },
+      {
+        "extension": [
+          {
+            "Item": "High",
+            "url": "http://hl7.org/fhir/StructureDefinition/valueset-comments"
+          }
+        ],
+        "code": "high",
+        "display": "High",
+        "definition": "High"
+      }
+    ]
+  }
+}

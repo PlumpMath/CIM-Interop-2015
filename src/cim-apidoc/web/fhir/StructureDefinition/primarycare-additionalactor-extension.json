@@ -1,0 +1,105 @@
+﻿{
+  "id": "primarycare-additionalactor-extension",
+  "meta": {
+    "lastUpdated": "2015-11-01T10:00:00+00:00"
+  },
+  "url": "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-additional-actor-extension",
+  "name": "PrimaryCare-AdditionalActor-Extension",
+  "display": "Primary Care Additional Actor",
+  "status": "draft",
+  "publisher": "Endeavour Health Charitable Trust",
+  "contact": [
+    {
+      "telecom": [
+        {
+          "system": 4,
+          "value": "http://www.endeavourhealth.org/"
+        }
+      ]
+    }
+  ],
+  "date": "2015-11-01T10:00:00",
+  "description": "Primary Care Additional Actor description.",
+  "fhirVersion": "1.0.2",
+  "kind": 0,
+  "constrainedType": "Extension",
+  "abstract": false,
+  "contextType": 0,
+  "context": [
+    "Schedule"
+  ],
+  "base": "http://hl7.org/fhir/StructureDefinition/Extension",
+  "differential": {
+    "element": [
+      {
+        "path": "Extension",
+        "definition": "Optional Extensions Element - found in all resources.",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "Element"
+          }
+        ]
+      },
+      {
+        "path": "Extension.url",
+        "representation": [
+          0
+        ],
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "uri"
+          }
+        ],
+        "Item1": "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-additional-actor-extension"
+      },
+      {
+        "path": "Extension.value[x]",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "Reference",
+            "profile": [
+              "http://hl7.org/fhir/StructureDefinition/Patient"
+            ]
+          },
+          {
+            "code": "Reference",
+            "profile": [
+              "http://hl7.org/fhir/StructureDefinition/Practitioner"
+            ]
+          },
+          {
+            "code": "Reference",
+            "profile": [
+              "http://hl7.org/fhir/StructureDefinition/RelatedPerson"
+            ]
+          },
+          {
+            "code": "Reference",
+            "profile": [
+              "http://hl7.org/fhir/StructureDefinition/Device"
+            ]
+          },
+          {
+            "code": "Reference",
+            "profile": [
+              "http://hl7.org/fhir/StructureDefinition/HealthcareService"
+            ]
+          },
+          {
+            "code": "Reference",
+            "profile": [
+              "http://hl7.org/fhir/StructureDefinition/Location"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "W5TopLevelGroup": ""
+}

@@ -1,0 +1,179 @@
+﻿{
+  "id": "primarycare-condition-episodelink-extension",
+  "meta": {
+    "lastUpdated": "2015-09-22T11:02:49.724+01:00"
+  },
+  "url": "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-condition-episodelink-extension",
+  "name": "PrimaryCare-ConditionEpisodeLink-Extension",
+  "display": "Primary Care condition episode link extension",
+  "status": "draft",
+  "publisher": "Endeavour Health Charitable Trust",
+  "contact": [
+    {
+      "telecom": [
+        {
+          "system": 4,
+          "value": "http://www.endeavourhealth.org/"
+        }
+      ]
+    }
+  ],
+  "date": "2015-11-01T00:00:00+00:00",
+  "description": "Follow-on observation(s) linked to a condition episode e.g. Reviews",
+  "fhirVersion": "1.0.1",
+  "kind": 0,
+  "constrainedType": "Extension",
+  "abstract": false,
+  "contextType": 0,
+  "context": [
+    "Condition"
+  ],
+  "base": "http://hl7.org/fhir/StructureDefinition/Extension",
+  "differential": {
+    "element": [
+      {
+        "path": "Extension",
+        "short": "Episode observation link",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "Extension"
+          }
+        ]
+      },
+      {
+        "path": "Extension.extension",
+        "slicing": {
+          "discriminator": [
+            "url"
+          ],
+          "rules": 2
+        }
+      },
+      {
+        "path": "Extension.extension",
+        "name": "type",
+        "definition": "The type of relationship that exists between a condition and the target follow-on observation",
+        "comments": "Allows the specification of the relationship type between a condition and the target follow-on observation. review | flare | end",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "Extension"
+          }
+        ]
+      },
+      {
+        "path": "Extension.extension.extension",
+        "slicing": {
+          "discriminator": [
+            "url"
+          ],
+          "rules": 2
+        }
+      },
+      {
+        "path": "Extension.extension.extension",
+        "name": "extension",
+        "min": 0,
+        "max": "0"
+      },
+      {
+        "path": "Extension.extension.url",
+        "type": [
+          {
+            "code": "uri"
+          }
+        ],
+        "Item1": "type"
+      },
+      {
+        "path": "Extension.extension.value[x]",
+        "name": "valueCode",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "code"
+          }
+        ],
+        "binding": {
+          "strength": 0,
+          "Item": "http://endeavourhealth.org/fhir/ValueSet/primarycare-condition-episodelinktype"
+        }
+      },
+      {
+        "path": "Extension.extension",
+        "name": "target",
+        "short": "Target observation",
+        "comments": "A reference to the follow-on observation linked to the condition episode",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "Extension"
+          }
+        ]
+      },
+      {
+        "path": "Extension.extension.extension",
+        "slicing": {
+          "discriminator": [
+            "url"
+          ],
+          "rules": 2
+        }
+      },
+      {
+        "path": "Extension.extension.extension",
+        "name": "extension",
+        "min": 0,
+        "max": "0"
+      },
+      {
+        "path": "Extension.extension.url",
+        "type": [
+          {
+            "code": "uri"
+          }
+        ],
+        "Item1": "target"
+      },
+      {
+        "path": "Extension.extension.value[x]",
+        "name": "valueReference",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-observation"
+            ]
+          }
+        ]
+      },
+      {
+        "path": "Extension.url",
+        "representation": [
+          0
+        ],
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "uri"
+          }
+        ],
+        "Item1": "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-condition-episodelink-extension"
+      },
+      {
+        "path": "Extension.value[x]",
+        "min": 0,
+        "max": "0"
+      }
+    ]
+  },
+  "W5TopLevelGroup": ""
+}

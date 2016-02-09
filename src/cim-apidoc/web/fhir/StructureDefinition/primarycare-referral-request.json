@@ -1,0 +1,218 @@
+﻿{
+  "id": "primarycare-referral-request",
+  "meta": {
+    "lastUpdated": "2015-09-22T11:02:49.724+01:00"
+  },
+  "extension": [
+    {
+      "Item": 0,
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm"
+    }
+  ],
+  "url": "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-referral-request",
+  "name": "PrimaryCare-ReferralRequest",
+  "display": "Primary Care referral request",
+  "status": "draft",
+  "publisher": "Endeavour Health Charitable Trust",
+  "contact": [
+    {
+      "telecom": [
+        {
+          "system": 4,
+          "value": "http://www.endeavourhealth.org/"
+        }
+      ]
+    }
+  ],
+  "date": "2015-11-01T00:00:00+00:00",
+  "description": "Placeholder",
+  "fhirVersion": "1.0.1",
+  "kind": 1,
+  "constrainedType": "ReferralRequest",
+  "abstract": false,
+  "base": "http://hl7.org/fhir/StructureDefinition/ReferralRequest",
+  "differential": {
+    "element": [
+      {
+        "path": "ReferralRequest",
+        "short": "A request for referral or transfer of care",
+        "definition": "Used to record and send details about a request for referral service or transfer of a patient to the care of another provider or provider organization.",
+        "alias": [
+          "ReferralRequest TransferOfCare Request"
+        ],
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "ReferralRequest"
+          }
+        ],
+        "mapping": [
+          {
+            "identity": "w5",
+            "map": "clinical.careprovision"
+          }
+        ]
+      },
+      {
+        "path": "ReferralRequest.identifier.assigner",
+        "short": "Organization that issued id (may be just text)",
+        "definition": "Organization that issued/manages the identifier.",
+        "comments": "The reference may be just a text description of the assigner.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-organization"
+            ]
+          }
+        ],
+        "isSummary": true,
+        "mapping": [
+          {
+            "identity": "v2",
+            "map": "CX.4 / (CX.4,CX.9,CX.10)"
+          },
+          {
+            "identity": "rim",
+            "map": "II.assigningAuthorityName but note that this is an improper use by the definition of the field.  Also Role.scoper"
+          },
+          {
+            "identity": "servd",
+            "map": "./IdentifierIssuingAuthority"
+          }
+        ]
+      },
+      {
+        "path": "ReferralRequest.patient",
+        "short": "Patient referred to care or transfer",
+        "definition": "The patient who is the subject of a referral or transfer of care request.",
+        "comments": "Referral of family, group or community is to be catered for by profiles.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-patient"
+            ]
+          }
+        ],
+        "isModifier": false,
+        "isSummary": true,
+        "mapping": [
+          {
+            "identity": "v2",
+            "map": "PID-3"
+          },
+          {
+            "identity": "w5",
+            "map": "who.focus"
+          }
+        ]
+      },
+      {
+        "path": "ReferralRequest.requester",
+        "short": "Requester of referral / transfer of care",
+        "definition": "The healthcare provider or provider organization who/which initiated the referral/transfer of care request. Can also be  Patient (a self referral).",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-practitioner"
+            ]
+          },
+          {
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-organization"
+            ]
+          },
+          {
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-patient"
+            ]
+          }
+        ],
+        "isModifier": false,
+        "isSummary": true,
+        "mapping": [
+          {
+            "identity": "v2",
+            "map": "Practitioner: PRD-2/PRD-7 where PRD-3 = RP; Organization: PRD-10 where PRD-3 = RP"
+          },
+          {
+            "identity": "w5",
+            "map": "who.author"
+          }
+        ]
+      },
+      {
+        "path": "ReferralRequest.recipient",
+        "short": "Receiver of referral / transfer of care request",
+        "definition": "The healthcare provider(s) or provider organization(s) who/which is to receive the referral/transfer of care request.",
+        "comments": "There will be a primary receiver. But the request can be received by any number of \"copied to\" providers or organizations.",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-practitioner"
+            ]
+          },
+          {
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-organization"
+            ]
+          }
+        ],
+        "isModifier": false,
+        "isSummary": true,
+        "mapping": [
+          {
+            "identity": "v2",
+            "map": "Practitioner: PRD-2/PRD-7 where PRD-3 = RT; Organization: PRD-10 where PRD-3 = RT"
+          },
+          {
+            "identity": "w5",
+            "map": "who.actor"
+          }
+        ]
+      },
+      {
+        "path": "ReferralRequest.encounter",
+        "short": "Originating encounter",
+        "definition": "The encounter at which the request for referral or transfer of care is initiated.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-encounter"
+            ]
+          }
+        ],
+        "isModifier": false,
+        "mapping": [
+          {
+            "identity": "v2",
+            "map": "PV1-19"
+          },
+          {
+            "identity": "w5",
+            "map": "context"
+          }
+        ]
+      }
+    ]
+  },
+  "W5TopLevelGroup": "Clinical"
+}
