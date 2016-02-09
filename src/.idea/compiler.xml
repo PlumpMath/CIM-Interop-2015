@@ -66,6 +66,13 @@
         <processorPath useClasspath="true" />
         <module name="cim-core" />
       </profile>
+      <profile default="false" name="Annotation profile for cim-repository" enabled="true">
+        <sourceOutputDir name="target\generated-sources\annotations" />
+        <sourceTestOutputDir name="target\generated-test-sources\test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="true" />
+        <module name="cim-repository" />
+      </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="cim-apidoc" target="1.8" />
@@ -75,6 +82,7 @@
       <module name="cim-dataservice-async" target="1.8" />
       <module name="cim-dataservice-cim" target="1.8" />
       <module name="cim-management" target="1.8" />
+      <module name="cim-repository" target="1.8" />
       <module name="cim-transforms" target="1.8" />
     </bytecodeTargetLevel>
   </component>

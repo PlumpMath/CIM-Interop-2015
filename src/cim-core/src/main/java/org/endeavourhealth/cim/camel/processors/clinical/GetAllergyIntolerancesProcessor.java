@@ -7,7 +7,7 @@ import org.apache.camel.Exchange;
 import org.apache.camel.Processor;
 import org.endeavourhealth.cim.camel.helpers.ExchangeHelper;
 import org.endeavourhealth.cim.exceptions.NotFoundException;
-import org.endeavourhealth.core.utils.TextUtils;
+import org.endeavourhealth.cim.repository.utils.TextUtils;
 
 public class GetAllergyIntolerancesProcessor implements Processor {
 

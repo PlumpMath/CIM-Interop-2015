@@ -4,7 +4,7 @@ import org.apache.camel.Exchange;
 import org.apache.commons.io.IOUtils;
 import org.endeavourhealth.cim.exceptions.InvalidParamException;
 import org.endeavourhealth.cim.exceptions.MissingParamException;
-import org.endeavourhealth.core.utils.TextUtils;
+import org.endeavourhealth.cim.repository.utils.TextUtils;
 import org.hl7.fhir.instance.formats.JsonParser;
 import org.hl7.fhir.instance.model.Resource;
 

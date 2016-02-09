@@ -3,7 +3,7 @@ package org.endeavourhealth.cim.transform.common;
 import org.hl7.fhir.instance.model.Bundle;
 import org.hl7.fhir.instance.model.Meta;
 import org.hl7.fhir.instance.model.Resource;
-import org.endeavourhealth.core.utils.TextUtils;
+import org.endeavourhealth.cim.repository.utils.TextUtils;
 
 import java.util.ArrayList;
 import java.util.Date;

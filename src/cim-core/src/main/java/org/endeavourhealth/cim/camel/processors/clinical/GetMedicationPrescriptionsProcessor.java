@@ -7,7 +7,7 @@ import org.endeavourhealth.cim.camel.helpers.ExchangeHelper;
 import org.endeavourhealth.cim.camel.helpers.CIMHeaderKey;
 import org.endeavourhealth.cim.exceptions.InvalidParamException;
 import org.endeavourhealth.cim.exceptions.NotFoundException;
-import org.endeavourhealth.core.utils.TextUtils;
+import org.endeavourhealth.cim.repository.utils.TextUtils;
 import org.endeavourhealth.cim.dataManager.DataManagerFactory;
 import org.hl7.fhir.instance.model.MedicationOrder;
 

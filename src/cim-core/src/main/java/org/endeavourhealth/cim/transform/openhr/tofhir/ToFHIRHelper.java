@@ -7,7 +7,7 @@ import org.endeavourhealth.cim.transform.exceptions.SourceDocumentInvalidExcepti
 import org.endeavourhealth.cim.transform.exceptions.TransformFeatureNotSupportedException;
 import org.endeavourhealth.cim.transform.common.TransformHelper;
 import org.endeavourhealth.cim.transform.openhr.tofhir.admin.NameConverter;
-import org.endeavourhealth.core.utils.TextUtils;
+import org.endeavourhealth.cim.repository.utils.TextUtils;
 import org.hl7.fhir.instance.model.*;
 
 import java.math.BigDecimal;

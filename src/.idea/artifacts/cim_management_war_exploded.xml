@@ -5,7 +5,7 @@
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
           <element id="module-output" name="cim-management" />
-          <element id="module-output" name="cim-common" />
+          <element id="module-output" name="cim-repository" />
         </element>
         <element id="directory" name="lib">
           <element id="library" level="project" name="Maven: com.codahale.metrics:metrics-core:3.0.2" />

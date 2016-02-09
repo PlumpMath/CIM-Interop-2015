@@ -1,10 +1,7 @@
-package org.endeavourhealth.common;
+package org.endeavourhealth.repository;
 
 import org.endeavourhealth.cim.dataManager.IRegistry;
 import org.endeavourhealth.cim.transform.IRecordTransformer;
-import org.endeavourhealth.core.repository.informationSharingProtocols.InformationSharingProtocol;
-
-import java.util.*;
 
 public class TestRegistry implements IRegistry
 {

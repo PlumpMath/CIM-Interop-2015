@@ -1,4 +1,4 @@
-package org.endeavourhealth.common.camel;
+package org.endeavourhealth.repository.camel;
 
 import org.apache.camel.EndpointInject;
 import org.apache.camel.Produce;
@@ -6,14 +6,14 @@ import org.apache.camel.ProducerTemplate;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.component.mock.MockEndpoint;
 import org.apache.camel.test.junit4.CamelTestSupport;
-import org.endeavourhealth.common.TestUserRepository;
-import org.endeavourhealth.common.TestRegistry;
+import org.endeavourhealth.repository.TestUserRepository;
+import org.endeavourhealth.repository.TestRegistry;
 import org.endeavourhealth.cim.exceptions.SecurityFailedException;
-import org.endeavourhealth.common.informationSharingFramework.TestISFManager;
+import org.endeavourhealth.repository.informationSharingFramework.TestISFManager;
 import org.endeavourhealth.cim.camel.processors.common.SecurityProcessor;
-import org.endeavourhealth.core.repository.informationSharing.ISFManager;
+import org.endeavourhealth.cim.repository.domains.informationSharing.ISFManager;
 import org.endeavourhealth.cim.dataManager.Registry;
-import org.endeavourhealth.core.repository.user.UserRepository;
+import org.endeavourhealth.cim.repository.domains.user.UserRepository;
 import org.junit.Test;
 
 import java.util.HashMap;

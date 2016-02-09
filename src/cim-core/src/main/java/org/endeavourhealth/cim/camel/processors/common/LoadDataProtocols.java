@@ -5,9 +5,9 @@ import org.endeavourhealth.cim.camel.helpers.CIMHeaderKey;
 import org.endeavourhealth.cim.camel.helpers.ExchangeHelper;
 import org.endeavourhealth.cim.camel.helpers.PropertyKey;
 import org.endeavourhealth.cim.exceptions.NoLegitimateRelationshipException;
-import org.endeavourhealth.core.repository.informationSharing.model.InformationSharingProtocol;
-import org.endeavourhealth.core.repository.common.data.RepositoryException;
-import org.endeavourhealth.core.utils.TextUtils;
+import org.endeavourhealth.cim.repository.domains.informationSharing.model.InformationSharingProtocol;
+import org.endeavourhealth.cim.repository.framework.RepositoryException;
+import org.endeavourhealth.cim.repository.utils.TextUtils;
 
 import java.util.ArrayList;
 import java.util.Arrays;

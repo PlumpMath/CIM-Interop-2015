@@ -1,7 +1,7 @@
 package org.endeavourhealth.cim.exceptions;
 
 import org.endeavourhealth.cim.camel.helpers.FhirIssueType;
-import org.endeavourhealth.core.utils.TextUtils;
+import org.endeavourhealth.cim.repository.utils.TextUtils;
 import org.hl7.fhir.instance.formats.JsonParser;
 import org.hl7.fhir.instance.model.CodeableConcept;
 import org.hl7.fhir.instance.model.OperationOutcome;

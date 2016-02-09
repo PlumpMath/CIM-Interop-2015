@@ -1,7 +1,7 @@
 package org.endeavourhealth.cim.management.endpoints;
 
-import org.endeavourhealth.core.repository.user.UserRepository;
-import org.endeavourhealth.core.serializer.JsonSerializer;
+import org.endeavourhealth.cim.repository.domains.user.UserRepository;
+import org.endeavourhealth.cim.repository.utils.JsonSerializer;
 import org.endeavourhealth.cim.management.model.User;
 import org.endeavourhealth.cim.management.model.UserResponse;
 

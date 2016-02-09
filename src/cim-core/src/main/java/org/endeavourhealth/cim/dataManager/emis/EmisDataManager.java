@@ -4,7 +4,7 @@ import org.endeavourhealth.cim.dataManager.Registry;
 import org.endeavourhealth.cim.exceptions.InvalidInternalIdentifier;
 import org.endeavourhealth.cim.transform.common.BundleProperties;
 import org.endeavourhealth.cim.exceptions.NotFoundException;
-import org.endeavourhealth.core.utils.TextUtils;
+import org.endeavourhealth.cim.repository.utils.TextUtils;
 import org.endeavourhealth.cim.dataManager.IDataManager;
 import org.endeavourhealth.cim.camel.helpers.FhirFilterHelper;
 import org.endeavourhealth.cim.transform.EmisTransformer;

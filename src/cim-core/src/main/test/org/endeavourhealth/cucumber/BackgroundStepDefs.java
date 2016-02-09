@@ -1,8 +1,8 @@
 package org.endeavourhealth.cucumber;
 
 import cucumber.api.java.en.And;
-import org.endeavourhealth.common.TestUserRepository;
-import org.endeavourhealth.core.repository.user.UserRepository;
+import org.endeavourhealth.repository.TestUserRepository;
+import org.endeavourhealth.cim.repository.domains.user.UserRepository;
 
 public class BackgroundStepDefs {
 	TestUserRepository _testUserRepository;

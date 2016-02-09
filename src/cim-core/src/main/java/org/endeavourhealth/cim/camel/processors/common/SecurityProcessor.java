@@ -6,9 +6,9 @@ import org.endeavourhealth.cim.camel.helpers.CIMHeaderKey;
 import org.endeavourhealth.cim.camel.helpers.ExchangeHelper;
 import org.endeavourhealth.cim.camel.helpers.Util;
 import org.endeavourhealth.cim.exceptions.SecurityFailedException;
-import org.endeavourhealth.core.repository.common.data.RepositoryException;
-import org.endeavourhealth.core.repository.user.UserRepository;
-import org.endeavourhealth.core.repository.user.User;
+import org.endeavourhealth.cim.repository.framework.RepositoryException;
+import org.endeavourhealth.cim.repository.domains.user.UserRepository;
+import org.endeavourhealth.cim.repository.domains.user.User;
 
 public class SecurityProcessor implements Processor {
 

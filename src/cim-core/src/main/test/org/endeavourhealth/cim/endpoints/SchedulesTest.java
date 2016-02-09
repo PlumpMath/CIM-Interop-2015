@@ -9,9 +9,9 @@ import org.apache.camel.test.junit4.CamelTestSupport;
 import org.endeavourhealth.cim.camel.processors.administrative.GetSchedulesProcessor;
 import org.endeavourhealth.cim.exceptions.InvalidParamException;
 import org.endeavourhealth.cim.exceptions.MissingParamException;
-import org.endeavourhealth.core.repository.informationSharing.ISFManager;
+import org.endeavourhealth.cim.repository.domains.informationSharing.ISFManager;
 import org.endeavourhealth.cim.dataManager.Registry;
-import org.endeavourhealth.common.TestRegistry;
+import org.endeavourhealth.repository.TestRegistry;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -33,7 +33,7 @@ public class SchedulesTest extends CamelTestSupport {
 		return new RouteBuilder() {
 			public void configure() throws Exception {
 				Registry.setInstance(new TestRegistry());
-				ISFManager.setInstance(new org.endeavourhealth.common.informationSharingFramework.TestISFManager());
+				ISFManager.setInstance(new org.endeavourhealth.repository.informationSharingFramework.TestISFManager());
 
 				onException(Exception.class)
 					.to("mock:error")

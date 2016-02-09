@@ -4,7 +4,7 @@ import org.apache.camel.Exchange;
 import org.apache.commons.io.IOUtils;
 import org.endeavourhealth.cim.camel.helpers.CIMHeaderKey;
 import org.endeavourhealth.cim.camel.helpers.ExchangeHelper;
-import org.endeavourhealth.core.repository.audit.AuditRepository;
+import org.endeavourhealth.cim.repository.domains.audit.AuditRepository;
 
 import java.io.InputStream;
 import java.util.Arrays;

@@ -3,12 +3,12 @@ package org.endeavourhealth.cim.camel.processors.common;
 import org.apache.camel.Exchange;
 import org.apache.camel.Processor;
 import org.endeavourhealth.cim.camel.helpers.PropertyKey;
-import org.endeavourhealth.core.repository.common.data.RepositoryException;
-import org.endeavourhealth.core.repository.informationSharing.data.DatasetCollectionRepository;
-import org.endeavourhealth.core.repository.informationSharing.data.PublisherProfileRepository;
-import org.endeavourhealth.core.repository.informationSharing.model.DatasetCollection;
-import org.endeavourhealth.core.repository.informationSharing.model.InformationSharingProtocol;
-import org.endeavourhealth.core.repository.informationSharing.model.PublisherProfile;
+import org.endeavourhealth.cim.repository.framework.RepositoryException;
+import org.endeavourhealth.cim.repository.domains.informationSharing.data.DatasetCollectionRepository;
+import org.endeavourhealth.cim.repository.domains.informationSharing.data.PublisherProfileRepository;
+import org.endeavourhealth.cim.repository.domains.informationSharing.model.DatasetCollection;
+import org.endeavourhealth.cim.repository.domains.informationSharing.model.InformationSharingProtocol;
+import org.endeavourhealth.cim.repository.domains.informationSharing.model.PublisherProfile;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

@@ -1,11 +1,9 @@
-package org.endeavourhealth.common;
+package org.endeavourhealth.repository;
 
-import org.endeavourhealth.core.repository.user.UserRepository;
-import org.endeavourhealth.core.repository.user.User;
+import org.endeavourhealth.cim.repository.domains.user.UserRepository;
+import org.endeavourhealth.cim.repository.domains.user.User;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class TestUserRepository extends UserRepository{

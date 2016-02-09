@@ -3,9 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/cim-apidoc/cim-apidoc.iml" filepath="$PROJECT_DIR$/cim-apidoc/cim-apidoc.iml" />
-      <module fileurl="file://$PROJECT_DIR$/cim-common/cim-common.iml" filepath="$PROJECT_DIR$/cim-common/cim-common.iml" />
       <module fileurl="file://$PROJECT_DIR$/cim-core/cim-core.iml" filepath="$PROJECT_DIR$/cim-core/cim-core.iml" />
       <module fileurl="file://$PROJECT_DIR$/cim-management/cim-management.iml" filepath="$PROJECT_DIR$/cim-management/cim-management.iml" />
+      <module fileurl="file://$PROJECT_DIR$/cim-repository/cim-repository.iml" filepath="$PROJECT_DIR$/cim-repository/cim-repository.iml" />
     </modules>
   </component>
 </project>

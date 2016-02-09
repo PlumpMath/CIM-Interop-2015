@@ -2,7 +2,6 @@ package org.endeavourhealth.cim.dataManager;
 
 import org.endeavourhealth.cim.transform.EmisTransformer;
 import org.endeavourhealth.cim.transform.IRecordTransformer;
-import org.endeavourhealth.core.repository.informationSharingProtocols.InformationSharingProtocol;
 
 import java.util.*;
 
@@ -78,8 +77,4 @@ public class Registry implements IRegistry {
 		return new EmisTransformer();
 	}
 
-	@Override
-	public InformationSharingProtocol[] getDataDistributionProtocolsForApiKey(String apiKey) {
-		return new InformationSharingProtocol[1];
-	}
 }

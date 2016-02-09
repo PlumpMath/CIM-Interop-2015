@@ -1,6 +1,6 @@
 package org.endeavourhealth.cim.camel.helpers;
 
-import org.endeavourhealth.core.repository.common.data.DbClient;
+import org.endeavourhealth.cim.repository.framework.DbClient;
 
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;

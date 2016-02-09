@@ -1,8 +1,8 @@
-package org.endeavourhealth.common.informationSharingFramework;
+package org.endeavourhealth.repository.informationSharingFramework;
 
-import org.endeavourhealth.core.repository.informationSharing.ISFManager;
-import org.endeavourhealth.core.repository.informationSharing.model.InformationSharingProtocol;
-import org.endeavourhealth.core.repository.common.data.RepositoryException;
+import org.endeavourhealth.cim.repository.domains.informationSharing.ISFManager;
+import org.endeavourhealth.cim.repository.domains.informationSharing.model.InformationSharingProtocol;
+import org.endeavourhealth.cim.repository.framework.RepositoryException;
 
 import java.util.ArrayList;
 import java.util.List;

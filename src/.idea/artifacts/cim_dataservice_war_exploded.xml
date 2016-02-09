@@ -5,7 +5,7 @@
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
           <element id="module-output" name="cim-core" />
-          <element id="module-output" name="cim-common" />
+          <element id="module-output" name="cim-repository" />
           <element id="module-output" name="cim-transforms" />
         </element>
         <element id="directory" name="lib">
