@@ -50,17 +50,11 @@
     <option name="originalFiles">
       <list>
         <option value="$PROJECT_DIR$/cim-dataservice/pom.xml" />
-        <option value="$PROJECT_DIR$/cim-common/pom.xml" />
         <option value="$PROJECT_DIR$/cim-apidoc/pom.xml" />
         <option value="$PROJECT_DIR$/cim-management/pom.xml" />
         <option value="$PROJECT_DIR$/cim-core/pom.xml" />
+        <option value="$PROJECT_DIR$/cim-repository/pom.xml" />
       </list>
-    </option>
-    <option name="ignoredFiles">
-      <set>
-        <option value="$PROJECT_DIR$/cim-dataservice-async/pom.xml" />
-        <option value="$PROJECT_DIR$/cim-dataservice-cim/pom.xml" />
-      </set>
     </option>
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
