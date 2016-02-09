@@ -5,7 +5,7 @@ import org.apache.camel.Processor;
 import org.endeavourhealth.cim.camel.helpers.CIMHeaderKey;
 import org.endeavourhealth.cim.camel.helpers.ExchangeHelper;
 import org.endeavourhealth.cim.camel.helpers.Util;
-import org.endeavourhealth.cim.exceptions.SecurityFailedException;
+import org.endeavourhealth.cim.camel.exceptions.SecurityFailedException;
 import org.endeavourhealth.cim.repository.framework.RepositoryException;
 import org.endeavourhealth.cim.repository.domains.user.UserRepository;
 import org.endeavourhealth.cim.repository.domains.user.User;

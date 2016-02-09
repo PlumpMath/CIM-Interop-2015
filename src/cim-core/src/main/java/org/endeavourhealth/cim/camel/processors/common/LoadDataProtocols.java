@@ -4,7 +4,7 @@ import org.apache.camel.Exchange;
 import org.endeavourhealth.cim.camel.helpers.CIMHeaderKey;
 import org.endeavourhealth.cim.camel.helpers.ExchangeHelper;
 import org.endeavourhealth.cim.camel.helpers.PropertyKey;
-import org.endeavourhealth.cim.exceptions.NoLegitimateRelationshipException;
+import org.endeavourhealth.cim.camel.exceptions.NoLegitimateRelationshipException;
 import org.endeavourhealth.cim.repository.domains.informationSharing.model.InformationSharingProtocol;
 import org.endeavourhealth.cim.repository.framework.RepositoryException;
 import org.endeavourhealth.cim.repository.utils.TextUtils;

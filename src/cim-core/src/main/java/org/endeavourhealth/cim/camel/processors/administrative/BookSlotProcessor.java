@@ -6,7 +6,7 @@ import org.apache.camel.Processor;
 import org.endeavourhealth.cim.camel.helpers.ExchangeHelper;
 import org.endeavourhealth.cim.camel.helpers.CIMHeaderKey;
 import org.endeavourhealth.cim.camel.helpers.ParametersHelper;
-import org.endeavourhealth.cim.exceptions.*;
+import org.endeavourhealth.cim.camel.exceptions.*;
 import org.endeavourhealth.cim.dataManager.DataManagerFactory;
 import org.hl7.fhir.instance.model.Parameters;
 

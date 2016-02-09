@@ -7,8 +7,8 @@ import org.endeavourhealth.cim.dataManager.IDataManager;
 import org.apache.camel.Exchange;
 import org.apache.camel.Processor;
 import org.endeavourhealth.cim.camel.helpers.ExchangeHelper;
-import org.endeavourhealth.cim.exceptions.BaseException;
-import org.endeavourhealth.cim.exceptions.InvalidParamException;
+import org.endeavourhealth.cim.camel.exceptions.BaseException;
+import org.endeavourhealth.cim.camel.exceptions.InvalidParamException;
 import org.endeavourhealth.cim.camel.helpers.DateUtils;
 
 import java.util.Date;

@@ -8,9 +8,9 @@ import org.apache.camel.Exchange;
 import org.apache.camel.Processor;
 import org.endeavourhealth.cim.camel.helpers.DateUtils;
 import org.endeavourhealth.cim.camel.helpers.ExchangeHelper;
-import org.endeavourhealth.cim.exceptions.BaseException;
-import org.endeavourhealth.cim.exceptions.InvalidParamException;
-import org.endeavourhealth.cim.exceptions.MissingParamException;
+import org.endeavourhealth.cim.camel.exceptions.BaseException;
+import org.endeavourhealth.cim.camel.exceptions.InvalidParamException;
+import org.endeavourhealth.cim.camel.exceptions.MissingParamException;
 
 import java.util.Date;
 

@@ -3,8 +3,8 @@ package org.endeavourhealth.cim.camel.processors.common;
 import org.apache.camel.Exchange;
 import org.apache.camel.Processor;
 import org.endeavourhealth.cim.camel.helpers.ExchangeHelper;
-import org.endeavourhealth.cim.exceptions.BaseException;
-import org.endeavourhealth.cim.exceptions.FallbackExceptionMapper;
+import org.endeavourhealth.cim.camel.exceptions.BaseException;
+import org.endeavourhealth.cim.camel.exceptions.FallbackExceptionMapper;
 
 public class ExceptionHandlerProcessor implements Processor {
 

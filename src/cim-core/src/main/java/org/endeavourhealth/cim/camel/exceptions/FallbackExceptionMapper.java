@@ -1,4 +1,4 @@
-package org.endeavourhealth.cim.exceptions;
+package org.endeavourhealth.cim.camel.exceptions;
 
 import javax.xml.soap.SOAPException;
 

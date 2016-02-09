@@ -6,7 +6,7 @@ import org.endeavourhealth.cim.dataManager.IDataManager;
 import org.apache.camel.Exchange;
 import org.apache.camel.Processor;
 import org.endeavourhealth.cim.camel.helpers.ExchangeHelper;
-import org.endeavourhealth.cim.exceptions.NotFoundException;
+import org.endeavourhealth.cim.camel.exceptions.NotFoundException;
 
 public class GetFullPatientRecordProcessor implements Processor {
 

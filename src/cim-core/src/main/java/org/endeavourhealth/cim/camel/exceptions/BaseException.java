@@ -1,4 +1,4 @@
-package org.endeavourhealth.cim.exceptions;
+package org.endeavourhealth.cim.camel.exceptions;
 
 import org.endeavourhealth.cim.camel.helpers.FhirIssueType;
 import org.endeavourhealth.cim.repository.utils.TextUtils;
