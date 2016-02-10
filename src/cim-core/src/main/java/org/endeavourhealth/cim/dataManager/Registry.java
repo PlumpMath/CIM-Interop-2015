@@ -1,36 +1,12 @@
 package org.endeavourhealth.cim.dataManager;
 
+import org.endeavourhealth.cim.PrincipalSystemConfiguration;
 import org.endeavourhealth.cim.transform.EmisTransformer;
 import org.endeavourhealth.cim.transform.IRecordTransformer;
 
 import java.util.*;
 
 public class Registry implements IRegistry {
-
-    ////////////////////////////////////////////////////////////
-    // Items that need changing based on deployment
-    ////////////////////////////////////////////////////////////
-
-        private static final String EMIS_SOAP_URI = "http://localhost:9001/GPApiService/Soap";
-        // private static final String EMIS_SOAP_URI = "http://endeavour-gp.cloudapp.net:9001/GPApiService/Soap";
-
-        private static final String BASE_URI = "http://localhost:8080/api/0.1";
-        // private static final String BASE_URI = "http://endeavour-cim.cloudapp.net/api/0.1";
-
-        // ALSO CHANGE cim-apidoc/web/cim-api.json
-        //
-        // "host": "localhost:8080",
-        // "host": "endeavour-cim.cloudapp.net",
-        //
-        // AND UPDATE "Build last updated" in the same file at
-        //
-        // "info": {
-        //      "description"
-
-    ////////////////////////////////////////////////////////////
-    // End
-    ////////////////////////////////////////////////////////////
-
 
     private static IRegistry _instance;
 
@@ -65,11 +41,11 @@ public class Registry implements IRegistry {
     }
 
     public String getEmisSoapUri() {
-        return EMIS_SOAP_URI;
+        return PrincipalSystemConfiguration.EMIS_SOAP_URI;
     }
 
     public String getBaseUri(String odsCode) {
-        return BASE_URI + "/" + odsCode;
+        return PrincipalSystemConfiguration.BASE_URI + "/" + odsCode;
     }
 
 	@Override
