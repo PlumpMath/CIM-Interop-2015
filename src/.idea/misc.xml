@@ -44,6 +44,7 @@
     </entry_points>
   </component>
   <component name="FrameworkDetectionExcludesConfiguration">
+    <file type="web" url="file://$PROJECT_DIR$/cim-apidoc/web/fhir/StructureDefinition/primarycare-clinical-impression.json" />
     <file type="web" url="file://$PROJECT_DIR$/cim-transforms/src/main/java/org/endeavourhealth/cim/transform/emisopen/tofhir/ToFHIRTransformer.java" />
   </component>
   <component name="MavenProjectsManager">
