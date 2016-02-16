@@ -91,12 +91,17 @@ public class ConditionTransformer {
     }
 
     private static String convertCodeSystem(String codeSystem) throws TransformFeatureNotSupportedException {
+
+        final String snomedOid = "2.16.840.1.113883.2.1.3.2.4.15";
+
         switch (codeSystem)
         {
             case "READ2":
                 return "2.16.840.1.113883.2.1.6.2";
             case "SNOMED":
-                return "2.16.840.1.113883.2.1.3.2.4.15";
+                return snomedOid;
+            case "http://snomed.info/sct":
+                return snomedOid;
             default:
                 throw new TransformFeatureNotSupportedException("CodeSystem not supported: " + codeSystem);
         }
