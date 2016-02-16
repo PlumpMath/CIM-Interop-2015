@@ -147,6 +147,10 @@ public class EmisDataManager implements IDataManager {
 		}
 
 		String openHRXml = _emisDataAdapter.getLocationById(odsCode, locationUuid);
+
+		if (TextUtils.isNullOrTrimmedEmpty(openHRXml))
+			throw new NotFoundException("");
+
 		Location location = _emisTransformer.openHRToFhirLocation(openHRXml);
 
 		return new JsonParser().composeString(location);
