@@ -412,7 +412,12 @@ public class EmisDataAdapter {
 
     private static String getSOAPResultAsString(SOAPMessage soapResponse, String soapMethod) throws Exception {
 
-        return getSOAPResultAsElement(soapResponse, soapMethod).getTextContent();
+        Node n = getSOAPResultAsElement(soapResponse, soapMethod);
+
+        if (n != null)
+            return n.getTextContent();
+
+        return "";
     }
 
 }

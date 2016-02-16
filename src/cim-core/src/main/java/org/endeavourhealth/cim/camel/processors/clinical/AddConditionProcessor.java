@@ -1,5 +1,6 @@
 package org.endeavourhealth.cim.camel.processors.clinical;
 
+import org.apache.http.HttpStatus;
 import org.endeavourhealth.cim.camel.helpers.CIMHeaderKey;
 import org.endeavourhealth.cim.dataManager.DataManagerFactory;
 import org.endeavourhealth.cim.dataManager.IDataManager;
@@ -18,5 +19,6 @@ public class AddConditionProcessor implements Processor {
         String responseBody = dataManager.addCondition(odsCode, requestBody);
 
         ExchangeHelper.setInBodyString(exchange, responseBody);
+        ExchangeHelper.setInHeader(exchange, Exchange.HTTP_RESPONSE_CODE, HttpStatus.SC_CREATED);
     }
 }

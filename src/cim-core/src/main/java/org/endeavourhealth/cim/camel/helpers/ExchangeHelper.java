@@ -99,6 +99,10 @@ public class ExchangeHelper {
         exchange.getIn().setBody(body, String.class);
     }
 
+    public static void setInHeader(Exchange exchange, String headerKey, Object headerValue) {
+        exchange.getIn().setHeader(headerKey, headerValue);
+    }
+
     public static void setOutBodyString(Exchange exchange, String body) {
         exchange.getOut().setBody(body, String.class);
     }
