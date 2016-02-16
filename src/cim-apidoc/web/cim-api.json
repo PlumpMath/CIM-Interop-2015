@@ -161,6 +161,9 @@
           "403": {
             "$ref": "#definitions/403Response"
           },
+          "404": {
+            "$ref": "#definitions/404LocationNotFoundResponse"
+          },
           "500": {
             "$ref": "#definitions/500Response"
           },
@@ -1000,10 +1003,19 @@
         ],
         "responses": {
           "201": {
-            "description": "TBD | TBD"
+            "description": "Condition added successfully | (empty)"
           },
-          "Other": {
-            "description": "TBD | TBD"
+          "404": {
+            "$ref": "#definitions/404PatientNotFoundResponse"
+          },
+          "500": {
+            "$ref": "#definitions/500Response"
+          },
+          "502": {
+            "$ref": "#definitions/502Response"
+          },
+          "504": {
+            "$ref": "#definitions/504Response"
           }
         }
       }
@@ -1452,6 +1464,9 @@
     },
     "404OrganizationNotFoundResponse": {
       "description": "Organization not found | <a target='_blank' href='fhir/primarycare-operationoutcome.html'>OperationOutcome</a> with <a href='fhir/primarycare-issue-type.html'>IssueType</a> of Not found"
+    },
+    "404LocationNotFoundResponse": {
+      "description": "Location not found | <a target='_blank' href='fhir/primarycare-operationoutcome.html'>OperationOutcome</a> with <a href='fhir/primarycare-issue-type.html'>IssueType</a> of Not found"
     },
     "404SlotOrPatientNotFoundResponse": {
       "description": "Slot not found; Patient not found | <a target='_blank' href='fhir/primarycare-operationoutcome.html'>OperationOutcome</a> with <a href='fhir/primarycare-issue-type.html'>IssueType</a> of Not found"
