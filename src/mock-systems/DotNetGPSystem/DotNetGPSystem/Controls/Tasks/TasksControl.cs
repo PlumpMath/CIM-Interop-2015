@@ -108,10 +108,7 @@ namespace DotNetGPSystem
             btnFile.Enabled = false;
             task.Filed = true;
 
-            List<OpenHR001HealthDomainEvent> events = new List<OpenHR001HealthDomainEvent>();
-            events.Add(task.Event);
-            events.AddRange(task.Patient.OpenHealthRecord.healthDomain.@event);
-            task.Patient.OpenHealthRecord.healthDomain.@event = events.ToArray();
+            DataStore.AddEventToPatient(task.Patient, task.Event);
 
             lblFiled.Visible = task.Filed;
         }

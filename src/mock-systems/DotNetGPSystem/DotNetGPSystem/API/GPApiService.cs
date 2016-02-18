@@ -138,9 +138,24 @@ namespace DotNetGPSystem
             }
         }
 
-        public void UpdatePatient(string odsCode, string openHRXml)
+        public string UpdatePatient(string odsCode, string openHRXml)
         {
-            DataStore.ProcessExternalUpdate(openHRXml);
+            UpdateRecordStatus response = UpdateRecordStatus.Successful;
+
+            if (DataStore.AutomaticallyFileRecordUpdates)
+            {
+                OpenHR001OpenHealthRecord openHR = Utilities.Deserialize<OpenHR001OpenHealthRecord>(openHRXml);
+                OpenHR001HealthDomainEvent eventToAdd = openHR.healthDomain.@event.FirstOrDefault();
+                OpenHRPatient patient = DataStore.OpenHRPatients.FirstOrDefault(t => new Guid(t.Patient.id) == new Guid(eventToAdd.patient));
+
+                response = DataStore.AddEventToPatient(patient, eventToAdd);                
+            }
+            else
+            {
+                DataStore.ProcessExternalUpdate(openHRXml);
+            }
+
+            return Enum.GetName(typeof(UpdateRecordStatus), response);
         }
 
         public string GetAppointmentSessions(string odsCode, DateTime fromDate, DateTime toDate)

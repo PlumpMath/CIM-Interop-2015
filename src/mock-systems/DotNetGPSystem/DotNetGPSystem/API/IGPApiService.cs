@@ -42,7 +42,7 @@ namespace DotNetGPSystem
         string[] GetChangedPatients(string odsCode, DateTime? sinceDateTime);
 
         [OperationContract]
-        void UpdatePatient(string odsCode, string openHRXml);
+        string UpdatePatient(string odsCode, string openHRXml);
 
         [OperationContract]
         string GetAppointmentSessions(string odsCode, DateTime fromDate, DateTime toDate);

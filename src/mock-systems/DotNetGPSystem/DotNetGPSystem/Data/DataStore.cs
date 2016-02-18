@@ -254,6 +254,25 @@ namespace DotNetGPSystem
             OnExternalUpdateReceived(dateStamp, openHRXml);
         }
 
+        public static UpdateRecordStatus AddEventToPatient(OpenHRPatient patient, OpenHR001HealthDomainEvent healthDomainEvent)
+        {
+            if (patient == null)
+                return UpdateRecordStatus.PatientNotFound;
+
+            if (String.IsNullOrWhiteSpace(healthDomainEvent.id))
+                healthDomainEvent.id = Guid.NewGuid().ToString();
+
+            if (patient.OpenHealthRecord.healthDomain.@event.Any(t => t.id == healthDomainEvent.id))
+                return UpdateRecordStatus.IdentifierAlreadyInUse;
+
+            List<OpenHR001HealthDomainEvent> events = new List<OpenHR001HealthDomainEvent>();
+            events.Add(healthDomainEvent);
+            events.AddRange(patient.OpenHealthRecord.healthDomain.@event);
+            patient.OpenHealthRecord.healthDomain.@event = events.ToArray();
+
+            return UpdateRecordStatus.Successful;
+        }
+
         private static void OnExternalUpdateReceived(DateTime dateStamp, string openHRXml)
         {
             if (ExternalUpdateReceived != null)

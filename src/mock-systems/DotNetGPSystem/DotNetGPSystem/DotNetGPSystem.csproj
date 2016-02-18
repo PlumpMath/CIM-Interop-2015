@@ -146,6 +146,7 @@
     <Compile Include="Data\OpenHR\OpenHRLocation.cs" />
     <Compile Include="Data\OpenHR\OpenHROrganisation.cs" />
     <Compile Include="Data\OpenHR\OpenHRUser.cs" />
+    <Compile Include="Data\OpenHR\UpdateRecordStatus.cs" />
     <Compile Include="GPSystemForm.cs">
       <SubType>Form</SubType>
     </Compile>
