@@ -204,11 +204,11 @@
     </organisation>
     <organisation updateMode="add">
       <id>8dd408c7-d11e-4c34-9120-56a4556f94f2</id>
-      <name>Dorset Surgery</name>
+      <name>Grange Park Surgery</name>
       <organisationType codeSystem="2.16.840.1.113883.2.1.6.2" displayName="General Practice" code="" />
       <speciality codeSystem="2.16.840.1.113883.2.1.6.2" displayName="General Medical Practice" code="" />
       <cdb>4000</cdb>
-      <nationalPracticeCode>D99999</nationalPracticeCode>
+      <nationalPracticeCode>B83019</nationalPracticeCode>
       <mainLocation>3822ab7c-4161-4c18-8957-9d6cba7e184b</mainLocation>
       <locations updateMode="add">
         <location>3822ab7c-4161-4c18-8957-9d6cba7e184b</location>
@@ -218,17 +218,17 @@
     </organisation>
     <location updateMode="add">
       <id>3822ab7c-4161-4c18-8957-9d6cba7e184b</id>
-      <name>Dorset Surgery</name>
+      <name>Grange Park Surgery</name>
       <locationType codeSystem="2.16.840.1.113883.2.1.6.2" displayName="Main Surgery" code="" />
       <notes />
       <openDate>2009-04-24T15:54:57.88</openDate>
       <address>
         <id>3664e69b-1af6-44bf-9273-400aba2772f9</id>
-        <postCode>LS25 4AY</postCode>
+        <postCode>LS29 7HG</postCode>
         <houseNameFlat />
-        <street>4 Saint Helen's Drive</street>
-        <village>Micklefield</village>
-        <town>Leeds</town>
+        <street>Grange Road</street>
+        <village>Burley in Wharfedale</village>
+        <town>Ilkley</town>
         <county>West Yorkshire</county>
       </address>
       <contact updateMode="add">

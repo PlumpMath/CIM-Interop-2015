@@ -183,11 +183,11 @@
     </organisation>
     <organisation updateMode="add">
       <id>994198b8-69a7-4667-9cfb-5cc51a817509</id>
-      <name>Dorset Surgery</name>
+      <name>Grange Park Surgery</name>
       <organisationType codeSystem="2.16.840.1.113883.2.1.6.2" displayName="General Practice" code="" />
       <speciality codeSystem="2.16.840.1.113883.2.1.6.2" displayName="General Medical Practice" code="" />
       <cdb>41600</cdb>
-      <nationalPracticeCode>D99999</nationalPracticeCode>
+      <nationalPracticeCode>B83019</nationalPracticeCode>
       <mainLocation>b310e5cd-98f8-4c7f-8a98-1547da4622c7</mainLocation>
       <locations updateMode="add">
         <location>b310e5cd-98f8-4c7f-8a98-1547da4622c7</location>
@@ -234,18 +234,18 @@
     </location>
     <location updateMode="add">
       <id>b310e5cd-98f8-4c7f-8a98-1547da4622c7</id>
-      <name>Dorset Surgery</name>
+      <name>Grange Park Surgery</name>
       <locationType codeSystem="2.16.840.1.113883.2.1.6.2" displayName="Main Surgery" code="" />
       <notes />
       <openDate>2009-04-07T15:54:57.88</openDate>
       <address>
         <id>ad25779b-5f1e-49eb-8f20-128888c9dafa</id>
-        <postCode>SK23 7JQ</postCode>
+        <postCode>LS29 7HG</postCode>
         <houseNameFlat />
-        <street>1 Mevril Springs Way</street>
-        <village>Road New</village>
-        <town>High Peak</town>
-        <county>Derbyshire</county>
+        <street>Grange Road</street>
+        <village>Burley in Wharfedale</village>
+        <town>Ilkley</town>
+        <county>West Yorkshire</county>
       </address>
       <contact updateMode="add">
         <id>b310e5cd-98f8-4c7f-8a98-1547da4622c7</id>

@@ -192,11 +192,11 @@
     </organisation>
     <organisation updateMode="add">
       <id>d22c665a-c768-4617-9d83-de8c556abf0d</id>
-      <name>Dorset Surgery</name>
+      <name>Grange Park Surgery</name>
       <organisationType codeSystem="2.16.840.1.113883.2.1.6.2" displayName="General Practice" code="" />
       <speciality codeSystem="2.16.840.1.113883.2.1.6.2" displayName="General Medical Practice" code="" />
       <cdb>37300</cdb>
-      <nationalPracticeCode>D99999</nationalPracticeCode>
+      <nationalPracticeCode>B83019</nationalPracticeCode>
       <mainLocation>448f14d8-d4f2-4bb0-a83a-0a7a4a8bcbee</mainLocation>
       <locations updateMode="add">
         <location>448f14d8-d4f2-4bb0-a83a-0a7a4a8bcbee</location>
@@ -218,17 +218,17 @@
     </organisation>
     <location updateMode="add">
       <id>448f14d8-d4f2-4bb0-a83a-0a7a4a8bcbee</id>
-      <name>Dorset Surgery</name>
+      <name>Grange Park Surgery</name>
       <locationType codeSystem="2.16.840.1.113883.2.1.6.2" displayName="Main Surgery" code="" />
       <notes />
       <openDate>2009-06-05T15:54:57.88</openDate>
       <address>
         <id>c6255bda-1f9e-4da8-bebb-cef9e4079fd7</id>
-        <postCode>LS8 4JA</postCode>
+        <postCode>LS29 7HG</postCode>
         <houseNameFlat />
-        <street>66D Harehills Lane</street>
-        <village />
-        <town>Leeds</town>
+        <street>Grange Road</street>
+        <village>Burley in Wharfedale</village>
+        <town>Ilkley</town>
         <county>West Yorkshire</county>
       </address>
       <contact updateMode="add">

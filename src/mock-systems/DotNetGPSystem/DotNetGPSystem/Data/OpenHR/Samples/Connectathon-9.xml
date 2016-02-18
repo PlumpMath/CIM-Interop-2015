@@ -183,11 +183,11 @@
     </organisation>
     <organisation updateMode="add">
       <id>50e37edd-978d-4133-8121-30af9388b977</id>
-      <name>Dorset Surgery</name>
+      <name>Grange Park Surgery</name>
       <organisationType codeSystem="2.16.840.1.113883.2.1.6.2" displayName="General Practice" code="" />
       <speciality codeSystem="2.16.840.1.113883.2.1.6.2" displayName="General Medical Practice" code="" />
       <cdb>68200</cdb>
-      <nationalPracticeCode>D99999</nationalPracticeCode>
+      <nationalPracticeCode>B83019</nationalPracticeCode>
       <mainLocation>8fb6ff3d-e964-424e-bac2-f618fd26dd1e</mainLocation>
       <locations updateMode="add">
         <location>8fb6ff3d-e964-424e-bac2-f618fd26dd1e</location>
@@ -218,17 +218,17 @@
     </organisation>
     <location updateMode="add">
       <id>8fb6ff3d-e964-424e-bac2-f618fd26dd1e</id>
-      <name>Dorset Surgery</name>
+      <name>Grange Park Surgery</name>
       <locationType codeSystem="2.16.840.1.113883.2.1.6.2" displayName="Main Surgery" code="" />
       <notes />
       <openDate>2009-04-25T15:54:57.88</openDate>
       <address>
         <id>5fe5b366-68e2-41c8-a4e5-991fb3e3d76b</id>
-        <postCode>LS7 1NT</postCode>
+        <postCode>LS29 7HG</postCode>
         <houseNameFlat />
-        <street>4 Carlton Hill</street>
-        <village />
-        <town>Leeds</town>
+        <street>Grange Road</street>
+        <village>Burley in Wharfedale</village>
+        <town>Ilkley</town>
         <county>West Yorkshire</county>
       </address>
       <contact updateMode="add">
