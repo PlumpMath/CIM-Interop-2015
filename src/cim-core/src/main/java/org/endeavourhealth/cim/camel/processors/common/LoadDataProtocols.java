@@ -19,7 +19,7 @@ public class LoadDataProtocols implements org.apache.camel.Processor {
 	@Override
 	public void process(Exchange exchange) throws Exception {
 		// temporary check
-		List validOdsCodes = Arrays.asList("A99999", "B99999", "D99999", "Y99999", "Z99999");
+		List validOdsCodes = Arrays.asList("A99999", "B83019", "B99999", "D99999", "Y99999", "Z99999");
 		String odsCode = ExchangeHelper.getInHeaderString(exchange, CIMHeaderKey.DestinationOdsCode);
  		if (TextUtils.isNullOrTrimmedEmpty(odsCode) == false) {
 			if (validOdsCodes.contains(odsCode)) {
