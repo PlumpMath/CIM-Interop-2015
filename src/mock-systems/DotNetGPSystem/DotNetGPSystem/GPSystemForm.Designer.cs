@@ -50,6 +50,7 @@
             this.btnViewApiLog = new System.Windows.Forms.ToolStripButton();
             this.tcTabControl = new System.Windows.Forms.TabControl();
             this.timer = new System.Windows.Forms.Timer(this.components);
+            this.btnSettings = new System.Windows.Forms.ToolStripButton();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -112,7 +113,7 @@
             this.lblServiceStatus.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblServiceStatus.Location = new System.Drawing.Point(118, 13);
             this.lblServiceStatus.Name = "lblServiceStatus";
-            this.lblServiceStatus.Size = new System.Drawing.Size(75, 15);
+            this.lblServiceStatus.Size = new System.Drawing.Size(74, 15);
             this.lblServiceStatus.TabIndex = 10;
             this.lblServiceStatus.Text = "STARTING...";
             // 
@@ -132,7 +133,7 @@
             this.llServiceStatus.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.llServiceStatus.Location = new System.Drawing.Point(118, 37);
             this.llServiceStatus.Name = "llServiceStatus";
-            this.llServiceStatus.Size = new System.Drawing.Size(182, 15);
+            this.llServiceStatus.Size = new System.Drawing.Size(181, 15);
             this.llServiceStatus.TabIndex = 9;
             this.llServiceStatus.TabStop = true;
             this.llServiceStatus.Text = "http://localhost:{0}/GPApiService";
@@ -164,7 +165,7 @@
             this.label1.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(329, 10);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(282, 32);
+            this.label1.Size = new System.Drawing.Size(281, 32);
             this.label1.TabIndex = 0;
             this.label1.Text = "GP System Demonstrator";
             // 
@@ -189,7 +190,8 @@
             this.btnOpenPatientRecord,
             this.btnAppointmentBook,
             this.btnViewTasks,
-            this.btnViewApiLog});
+            this.btnViewApiLog,
+            this.btnSettings});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(1637, 37);
@@ -228,7 +230,7 @@
             this.btnViewTasks.Image = ((System.Drawing.Image)(resources.GetObject("btnViewTasks.Image")));
             this.btnViewTasks.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnViewTasks.Name = "btnViewTasks";
-            this.btnViewTasks.Size = new System.Drawing.Size(84, 34);
+            this.btnViewTasks.Size = new System.Drawing.Size(83, 34);
             this.btnViewTasks.Text = "View Tasks";
             // 
             // btnViewApiLog
@@ -253,6 +255,14 @@
             this.timer.Enabled = true;
             this.timer.Interval = 1000;
             this.timer.Tick += new System.EventHandler(this.timer_Tick);
+            // 
+            // btnSettings
+            // 
+            this.btnSettings.Image = ((System.Drawing.Image)(resources.GetObject("btnSettings.Image")));
+            this.btnSettings.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnSettings.Name = "btnSettings";
+            this.btnSettings.Size = new System.Drawing.Size(69, 34);
+            this.btnSettings.Text = "Settings";
             // 
             // GPSystemForm
             // 
@@ -303,7 +313,7 @@
         private System.Windows.Forms.Timer timer;
         private System.Windows.Forms.ToolStripButton btnViewApiLog;
         private System.Windows.Forms.ToolStripButton btnAppointmentBook;
-
+        private System.Windows.Forms.ToolStripButton btnSettings;
     }
 }
 

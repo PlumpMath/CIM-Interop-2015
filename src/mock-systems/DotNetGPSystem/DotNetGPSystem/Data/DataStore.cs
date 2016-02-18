@@ -33,6 +33,7 @@ namespace DotNetGPSystem
         private static Session[] _sessions;
         public static readonly int[] AppointmentTimes = new int[] { 9, 10, 11, 12, 13, 14, 15, 16, 17 };
         private static OpenHR001Location[] _locations;
+        private static bool _automaticallyFileRecordUpdates = true;
         public static event ExternalUpdateReceivedHandler ExternalUpdateReceived;
         public static event EventHandler ExternalAppointmentBookChangeMade;
 
@@ -87,6 +88,18 @@ namespace DotNetGPSystem
                 return Organisations
                     .SelectMany(t => t.Users)
                     .ToArray();
+            }
+        }
+
+        public static bool AutomaticallyFileRecordUpdates
+        {
+            get
+            {
+                return _automaticallyFileRecordUpdates;
+            }
+            set
+            {
+                _automaticallyFileRecordUpdates = value;
             }
         }
 

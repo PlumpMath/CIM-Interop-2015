@@ -36,6 +36,7 @@ namespace DotNetGPSystem
             btnViewTasks.Click += (sender, e) => OpenTasks();
             btnViewApiLog.Click += (sender, e) => OpenApiMessageLog();
             btnAppointmentBook.Click += (sender, e) => OpenAppointmentBook();
+            btnSettings.Click += (sender, e) => OpenSettings();
 
             if (!int.TryParse(ConfigurationManager.AppSettings.Get("portNumber"), out _portNumber))
                 _portNumber = _defaultPortNumber;
@@ -102,6 +103,11 @@ namespace DotNetGPSystem
                 tcTabControl.TabPages.Add(_appointmentBookTabPage);
 
             tcTabControl.SelectedTab = _appointmentBookTabPage;
+        }
+
+        private void OpenSettings()
+        {
+            SettingsDialog.ShowSettingsDialog();
         }
 
         private void llServiceStatus_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
