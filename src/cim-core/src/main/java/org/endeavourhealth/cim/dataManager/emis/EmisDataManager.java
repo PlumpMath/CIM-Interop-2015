@@ -1,5 +1,6 @@
 package org.endeavourhealth.cim.dataManager.emis;
 
+import org.endeavourhealth.cim.camel.exceptions.InvalidParamException;
 import org.endeavourhealth.cim.dataManager.Registry;
 import org.endeavourhealth.cim.camel.exceptions.InvalidInternalIdentifier;
 import org.endeavourhealth.cim.transform.common.BundleProperties;
@@ -8,8 +9,10 @@ import org.endeavourhealth.cim.repository.utils.TextUtils;
 import org.endeavourhealth.cim.dataManager.IDataManager;
 import org.endeavourhealth.cim.camel.helpers.FhirFilterHelper;
 import org.endeavourhealth.cim.transform.EmisTransformer;
+import org.endeavourhealth.cim.transform.common.ReferenceHelper;
 import org.hl7.fhir.instance.formats.JsonParser;
 import org.hl7.fhir.instance.model.*;
+import org.omg.CORBA.DynAnyPackage.Invalid;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -259,10 +262,38 @@ public class EmisDataManager implements IDataManager {
 	}
 
 	@Override
-	public String addCondition(String odsCode, String fhirRequest) throws Exception {
+	public String addCondition(String odsCode, String patientId, String fhirRequest) throws Exception {
 
-		Condition condition = (Condition)new JsonParser().parse(fhirRequest);
-		String request = _emisTransformer.fromFHIRCondition(condition);
+		UUID patientUuid;
+		String request;
+		try
+		{
+			try {
+				patientUuid = UUID.fromString(patientId);
+			}
+			catch (Exception e){
+				throw new InvalidParamException("patientId", e);
+			}
+
+			Condition condition = (Condition)new JsonParser().parse(fhirRequest);
+
+			if ((condition.getPatient() == null) || (TextUtils.isNullOrTrimmedEmpty(condition.getPatient().getReference())))
+				condition.setPatient(ReferenceHelper.createReference(ResourceType.Patient, patientId));
+
+			if (!patientId.equals(ReferenceHelper.getReferenceId(condition.getPatient(), ResourceType.Patient)))
+				throw new InvalidParamException("patientId");
+
+			request = _emisTransformer.fromFHIRCondition(condition);
+		}
+		catch (InvalidParamException e1)
+		{
+			throw e1;
+		}
+		catch (Exception e2)
+		{
+			throw new InvalidParamException("condition", e2);
+		}
+
 		String response = _emisDataAdapter.createCondition(odsCode, request);
 		String fhirResponse = response; // _openHrTransformer.toFHIRCondition(response));
 

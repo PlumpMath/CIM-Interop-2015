@@ -1005,8 +1005,14 @@
           "201": {
             "description": "Condition added successfully | (empty)"
           },
+          "400": {
+            "$ref": "#definitions/400Response"
+          },
           "404": {
             "$ref": "#definitions/404PatientNotFoundResponse"
+          },
+          "409": {
+            "$ref": "#definitions/409IdentifierInUseResponse"
           },
           "500": {
             "$ref": "#definitions/500Response"
@@ -1473,6 +1479,9 @@
     },
     "409SlotAlreadyBookedResponse": {
       "description": "Slot already booked | <a target='_blank' href='fhir/primarycare-operationoutcome.html'>OperationOutcome</a> with <a href='fhir/primarycare-issue-type.html'>IssueType</a> of Edit version conflict"
+    },
+    "409IdentifierInUseResponse": {
+      "description": "Identifier in use | <a target='_blank' href='fhir/primarycare-operationoutcome.html'>OperationOutcome</a> with <a href='fhir/primarycare-issue-type.html'>IssueType</a> of Edit version conflict"
     },
     "412SlotAlreadyBookedByThisPatientResponse": {
       "description": "Slot already booked by this patient | <a target='_blank' href='fhir/primarycare-operationoutcome.html'>OperationOutcome</a> with <a href='fhir/primarycare-issue-type.html'>IssueType</a> of Business rule violation"

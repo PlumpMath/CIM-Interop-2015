@@ -29,7 +29,7 @@ public interface IDataManager {
     String getAllergyIntolerances(String odsCode, String patientId) throws Exception;
     String getImmunizations(String odsCode, String patientId) throws Exception;
     String getMedicationPrescriptions(String odsCode, String patientId, MedicationOrder.MedicationOrderStatus medicationOrderStatus) throws Exception;
-    String addCondition(String odsCode, String request) throws Exception;
+    String addCondition(String odsCode, String patientId, String request) throws Exception;
 
     // demographic
     String getPatientDemographics(String odsCode, String patientId) throws Exception;
