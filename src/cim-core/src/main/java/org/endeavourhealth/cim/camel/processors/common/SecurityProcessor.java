@@ -4,6 +4,7 @@ import org.apache.camel.Exchange;
 import org.apache.camel.Processor;
 import org.endeavourhealth.cim.camel.helpers.CIMHeaderKey;
 import org.endeavourhealth.cim.camel.helpers.ExchangeHelper;
+import org.endeavourhealth.cim.camel.helpers.PropertyKey;
 import org.endeavourhealth.cim.camel.helpers.Util;
 import org.endeavourhealth.cim.camel.exceptions.SecurityFailedException;
 import org.endeavourhealth.cim.repository.framework.RepositoryException;
@@ -19,10 +20,12 @@ public class SecurityProcessor implements Processor {
         String method = ExchangeHelper.getEndpointPath(exchange);
         String body = ExchangeHelper.getInBodyString(exchange);
 
-        validateMessage(apiKey, method, body, inboundHash);
+        User user = validateMessage(apiKey, method, body, inboundHash);
+
+        exchange.setProperty(PropertyKey.Email, user.getEmail());
     }
 
-    private void validateMessage(String apiKey, String method, String body, String inboundHash) throws SecurityFailedException {
+    private User validateMessage(String apiKey, String method, String body, String inboundHash) throws SecurityFailedException {
 
 		if (apiKey == null || apiKey.isEmpty())
 			throw new SecurityFailedException("Missing Api key");
@@ -60,5 +63,7 @@ public class SecurityProcessor implements Processor {
 		// Compare to inbound hash
 		if (hash.equals(inboundHash) == false)
 			throw new SecurityFailedException("Incorrect hash");
+
+        return user;
     }
 }

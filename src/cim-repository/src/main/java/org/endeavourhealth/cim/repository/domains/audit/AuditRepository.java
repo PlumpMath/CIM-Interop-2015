@@ -8,6 +8,7 @@ import org.endeavourhealth.cim.repository.framework.InsertStatementBuilder;
 import org.endeavourhealth.cim.repository.framework.RepositoryException;
 
 import java.util.Date;
+import java.util.UUID;
 
 public class AuditRepository extends Repository
 {
@@ -18,15 +19,17 @@ public class AuditRepository extends Repository
 		super(RepositoryConfiguration.DATASERVICE_KEYSPACE);
 	}
 
-	public void add(Date date, String apikey, String message) throws RepositoryException {
-
-		if (TextUtils.isNullOrTrimmedEmpty(message))
-			return;
+	public void add(UUID auditId, Date date, String apikey, String direction, String email, String url, String status, String message) throws RepositoryException {
 
 		BoundStatement boundStatement = new InsertStatementBuilder(getStatementCache(), TableName)
-				.addColumnTimestamp("rowkey", date)
+				.addColumnString("email", email)
+				.addColumnTimestamp("datetime", date)
+				.addColumnUUID("auditid", auditId)
+				.addColumnString("direction", direction)
 				.addColumnString("apikey", apikey)
-                .addColumnString("message", message)
+				.addColumnString("url", url)
+				.addColumnString("status", status)
+				.addColumnString("message", message)
                 .build();
 
 		getSession().execute(boundStatement);
