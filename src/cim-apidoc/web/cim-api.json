@@ -1340,56 +1340,6 @@
           }
         }
       }
-    },
-    "/{odsCode}/Subscription/{id}": {
-      "put": {
-        "tags": [
-          "demographics"
-        ],
-        "summary": "Subscribe to patient changes",
-        "description": "The subscription resource is used to define a push based subscription from a server to another system. Once a subscription is registered with the server, the server checks every resource that is created or updated, and if the resource matches the given criteria, it sends a message on the defined 'channel' so that another system is able to take an appropriate action.",
-        "produces": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "$ref": "#definitions/apiKeyParameter"
-          },
-          {
-            "$ref": "#definitions/hashParameter"
-          },
-          {
-            "$ref": "#definitions/odsCodeParameter"
-          },
-          {
-            "name": "id",
-            "in": "path",
-            "description": "Subscription unique reference",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "in": "body",
-            "name": "body",
-            "description": "FHIR Subscription Resource.<br/><br/>Example:<br/><br/>{<br/>&nbsp;&nbsp;'resourceType':&nbsp;'Subscription',<br/>&nbsp;&nbsp;'id':&nbsp;'917c53fd-058a-4e8b-8a64-344b3fcc00b9',<br/>&nbsp;&nbsp;'criteria':&nbsp;'/Patient?&nbsp;?identifier=NHS|6980086397',<br/>&nbsp;&nbsp;'reason':&nbsp;'Monitor&nbsp;new&nbsp;neonatal&nbsp;function',<br/>&nbsp;&nbsp;'status':&nbsp;'requested',<br/>&nbsp;&nbsp;'channel':&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;'type':&nbsp;'rest-hook',<br/>&nbsp;&nbsp;&nbsp;&nbsp;'endpoint':&nbsp;'https://example.com/patients/update-result',<br/>&nbsp;&nbsp;&nbsp;&nbsp;'payload':&nbsp;'application/json',<br/>&nbsp;&nbsp;&nbsp;&nbsp;'header':&nbsp;'Authorization:&nbsp;Bearer&nbsp;secret-token-abc-123'<br/>&nbsp;&nbsp;}<br/>}",
-            "required": true,
-            "schema": {
-              "type": "object"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "successful operation"
-          },
-          "400": {
-            "description": "Bad request - resource could not be parsed or failed basic FHIR validation rules"
-          },
-          "404": {
-            "description": "Not found - resource type not supported, or not a FHIR end point"
-          }
-        }
-      }
     }
   },
   "definitions": {
