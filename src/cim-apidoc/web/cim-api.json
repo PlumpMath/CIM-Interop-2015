@@ -539,50 +539,50 @@
       }
     },
     "/{odsCode}/Task": {
-        "get": {
-          "tags": [
-            "administrative"
-          ],
-          "summary": "Get organisation tasks",
-          "description": "Get tasks by organisation.",
-          "produces": [
-            "application/json"
-          ],
-          "parameters": [
-            {
-              "$ref": "#definitions/apiKeyParameter"
-            },
-            {
-              "$ref": "#definitions/hashParameter"
-            },
-            {
-              "$ref": "#definitions/odsCodeParameter"
-            }
-          ],
-          "responses": {
-            "200": {
-              "description": "OK | A bundle of <a target='_blank' href='fhir/primarycare-order.html'>Order</a> resources"
-            },
-            "400": {
-              "$ref": "#definitions/400Response"
-            },
-            "401": {
-              "$ref": "#definitions/401Response"
-            },
-            "403": {
-              "$ref": "#definitions/403Response"
-            },
-            "500": {
-              "$ref": "#definitions/500Response"
-            },
-            "502": {
-              "$ref": "#definitions/502Response"
-            },
-            "504": {
-              "$ref": "#definitions/504Response"
-            }
+      "get": {
+        "tags": [
+          "administrative"
+        ],
+        "summary": "Get organisation tasks",
+        "description": "Get tasks by organisation.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#definitions/apiKeyParameter"
+          },
+          {
+            "$ref": "#definitions/hashParameter"
+          },
+          {
+            "$ref": "#definitions/odsCodeParameter"
           }
-        },
+        ],
+        "responses": {
+          "200": {
+            "description": "OK | A bundle of <a target='_blank' href='fhir/primarycare-order.html'>Order</a> resources"
+          },
+          "400": {
+            "$ref": "#definitions/400Response"
+          },
+          "401": {
+            "$ref": "#definitions/401Response"
+          },
+          "403": {
+            "$ref": "#definitions/403Response"
+          },
+          "500": {
+            "$ref": "#definitions/500Response"
+          },
+          "502": {
+            "$ref": "#definitions/502Response"
+          },
+          "504": {
+            "$ref": "#definitions/504Response"
+          }
+        }
+      },
 
       "post": {
         "tags": [
@@ -997,7 +997,7 @@
             "description": "<a target='_blank'  href='fhir/primarycare-condition.html'>Condition resource</a>",
             "required": true,
             "schema": {
-              "type": "object"
+              "$ref": "#/definitions/conditionResource"
             }
           }
         ],
@@ -1536,106 +1536,112 @@
           "type": "string",
           "example": "00000000-0000-0000-0000-000000000000"
         },
-        "extension" : {
-          "type" : "array",
-          "items" : [
+        "extension": {
+          "type": "array",
+          "items": [
             {
-              "type" : "object",
+              "type": "object",
               "properties": {
-                "url" : {
-                  "type" : "string",
-                  "example" : "fhir/ValueSet/task-type"
+                "url": {
+                  "type": "string",
+                  "example": "fhir/ValueSet/task-type"
                 },
-                "valueCodeableConcept" : {
-                  "type" : "object",
-                  "properties" : {
-                    "coding" : {
-                      "type" : "array",
-                      "items" : [{
-                        "type" : "object",
-                        "properties" : {
-                          "system" : {
-                            "type" : "string",
-                            "example" : "fhir/task-type"
-                          },
-                          "code" : {
-                            "type" : "string",
-                            "example" : "patientNote"
-                          },
-                          "display" : {
-                            "type" : "string",
-                            "example" : "Patient Note"
+                "valueCodeableConcept": {
+                  "type": "object",
+                  "properties": {
+                    "coding": {
+                      "type": "array",
+                      "items": [
+                        {
+                          "type": "object",
+                          "properties": {
+                            "system": {
+                              "type": "string",
+                              "example": "fhir/task-type"
+                            },
+                            "code": {
+                              "type": "string",
+                              "example": "patientNote"
+                            },
+                            "display": {
+                              "type": "string",
+                              "example": "Patient Note"
+                            }
                           }
                         }
-                      }]
+                      ]
                     }
                   }
                 }
               }
             },
             {
-              "type" : "object",
+              "type": "object",
               "properties": {
-                "url" : {
-                  "type" : "string",
-                  "example" : "fhir/ValueSet/task-priority"
+                "url": {
+                  "type": "string",
+                  "example": "fhir/ValueSet/task-priority"
                 },
-                "valueCodeableConcept" : {
-                  "type" : "object",
-                  "properties" : {
-                    "coding" : {
-                      "type" : "array",
-                      "items" : [{
-                        "type" : "object",
-                        "properties" : {
-                          "system" : {
-                            "type" : "string",
-                            "example" : "fhir/task-priority"
-                          },
-                          "code" : {
-                            "type" : "string",
-                            "example" : "medium"
-                          },
-                          "display" : {
-                            "type" : "string",
-                            "example" : "Medium"
+                "valueCodeableConcept": {
+                  "type": "object",
+                  "properties": {
+                    "coding": {
+                      "type": "array",
+                      "items": [
+                        {
+                          "type": "object",
+                          "properties": {
+                            "system": {
+                              "type": "string",
+                              "example": "fhir/task-priority"
+                            },
+                            "code": {
+                              "type": "string",
+                              "example": "medium"
+                            },
+                            "display": {
+                              "type": "string",
+                              "example": "Medium"
+                            }
                           }
                         }
-                      }]
+                      ]
                     }
                   }
                 }
               }
             },
             {
-              "type" : "object",
+              "type": "object",
               "properties": {
-                "url" : {
-                  "type" : "string",
-                  "example" : "fhir/ValueSet/task-status"
+                "url": {
+                  "type": "string",
+                  "example": "fhir/ValueSet/task-status"
                 },
-                "valueCodeableConcept" : {
-                  "type" : "object",
-                  "properties" : {
-                    "coding" : {
-                      "type" : "array",
-                      "items" : [{
-                        "type" : "object",
-                        "properties" : {
-                          "system" : {
-                            "type" : "string",
-                            "example" : "fhir/task-status"
-                          },
-                          "code" : {
-                            "type" : "string",
-                            "example" : "active"
-                          },
-                          "display" : {
-                            "type" : "string",
-                            "example" : "Active"
+                "valueCodeableConcept": {
+                  "type": "object",
+                  "properties": {
+                    "coding": {
+                      "type": "array",
+                      "items": [
+                        {
+                          "type": "object",
+                          "properties": {
+                            "system": {
+                              "type": "string",
+                              "example": "fhir/task-status"
+                            },
+                            "code": {
+                              "type": "string",
+                              "example": "active"
+                            },
+                            "display": {
+                              "type": "string",
+                              "example": "Active"
+                            }
                           }
                         }
-                      }]
+                      ]
                     }
                   }
                 }
@@ -1674,7 +1680,7 @@
             }
           }
         },
-        "reasonCoding" : {
+        "reasonCoding": {
           "type": "object",
           "properties": {
             "display": {
@@ -1683,7 +1689,7 @@
             }
           }
         },
-        "when" : {
+        "when": {
           "type": "object",
           "properties": {
             "schedule": {
@@ -1691,10 +1697,12 @@
               "properties": {
                 "event": {
                   "type": "array",
-                  "items": [{
-                    "type": "string",
-                    "example": "2015-08-04T10:00:00"
-                  }]
+                  "items": [
+                    {
+                      "type": "string",
+                      "example": "2015-08-04T10:00:00"
+                    }
+                  ]
                 }
               }
             }
@@ -1702,15 +1710,141 @@
         },
         "detail": {
           "type": "array",
-          "items": [{
-            "type": "object",
-            "properties": {
-              "display": {
-                "type": "string",
-                "example": "I saw this patient with an asthma attack at the weekend, which are getting increasingly frequent. I noted that he has not had an asthma review for some time. I think a recall for a review would be worthwhile."
+          "items": [
+            {
+              "type": "object",
+              "properties": {
+                "display": {
+                  "type": "string",
+                  "example": "I saw this patient with an asthma attack at the weekend, which are getting increasingly frequent. I noted that he has not had an asthma review for some time. I think a recall for a review would be worthwhile."
+                }
               }
             }
-          }]
+          ]
+        }
+      }
+    },
+    "conditionResource": {
+      "type": "object",
+      "properties": {
+        "resourceType": {
+          "type": "string",
+          "example": "Condition"
+        },
+        "asserter": {
+          "type": "object",
+          "properties": {
+            "reference": {
+              "type": "string",
+              "example": "Practitioner/00000000-0000-0000-0000-000000000000"
+            }
+          }
+        },
+        "dateRecorded": {
+          "type": "string",
+          "example": "2001-01-01"
+        },
+        "code": {
+          "type": "object",
+          "properties": {
+            "coding": {
+              "type": "array",
+              "items": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "system": {
+                      "type": "string",
+                      "example": "READ2"
+                    },
+                    "code": {
+                      "type": "string",
+                      "example": " "
+                    },
+                    "display": {
+                      "type": "string",
+                      "example": " "
+                    }
+                  }
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "system": {
+                      "type": "string",
+                      "example": "http://snomed.info/sct"
+                    },
+                    "code": {
+                      "type": "string",
+                      "example": " "
+                    },
+                    "display": {
+                      "type": "string",
+                      "example": " "
+                    }
+                  }
+                }
+              ]
+            },
+            "text": {
+              "type": "string",
+              "example": " "
+            }
+          }
+        },
+        "category": {
+          "type": "object",
+          "properties": {
+            "coding": {
+              "type": "array",
+              "items": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "system": {
+                      "type": "string",
+                      "example": "http://hl7.org/fhir/condition-status"
+                    },
+                    "code": {
+                      "type": "string",
+                      "example": " "
+                    },
+                    "display": {
+                      "type": "string",
+                      "example": " "
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        },
+        "severity": {
+          "type": "object",
+          "properties": {
+            "coding": {
+              "type": "array",
+              "items": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "system": {
+                      "type": "string",
+                      "example": "http://hl7.org/fhir/vs/condition-severity"
+                    },
+                    "code": {
+                      "type": "string",
+                      "example": " "
+                    },
+                    "display": {
+                      "type": "string",
+                      "example": " "
+                    }
+                  }
+                }
+              ]
+            }
+          }
         }
       }
     }
