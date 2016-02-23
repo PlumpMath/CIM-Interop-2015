@@ -1,5 +1,6 @@
 package org.endeavourhealth.cim.transform.openhr.tofhir;
 
+import org.endeavourhealth.cim.transform.exceptions.TransformException;
 import org.endeavourhealth.cim.transform.schemas.openhr.*;
 import org.endeavourhealth.cim.transform.common.FhirConstants;
 import org.endeavourhealth.cim.transform.common.StreamExtension;
@@ -10,10 +11,11 @@ import org.endeavourhealth.cim.transform.openhr.tofhir.admin.NameConverter;
 import org.endeavourhealth.cim.repository.utils.TextUtils;
 import org.hl7.fhir.instance.model.*;
 
+import javax.xml.datatype.DatatypeConfigurationException;
+import javax.xml.datatype.DatatypeFactory;
+import javax.xml.datatype.XMLGregorianCalendar;
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 
 public class ToFHIRHelper {
     public static UUID parseUUID(String id) throws SourceDocumentInvalidException {
@@ -21,6 +23,20 @@ public class ToFHIRHelper {
             return UUID.fromString(id);
         } catch (Exception e) {
             throw new SourceDocumentInvalidException("Could not parse UUID: " + id, e);
+        }
+    }
+
+    public static XMLGregorianCalendar toCalendar(Date date) throws TransformException
+    {
+        try
+        {
+            GregorianCalendar gregorianCalendar = new GregorianCalendar();
+            gregorianCalendar.setTime(date);
+            return DatatypeFactory.newInstance().newXMLGregorianCalendar(gregorianCalendar);
+        }
+        catch (Exception e)
+        {
+            throw new TransformFeatureNotSupportedException(e);
         }
     }
 

@@ -29,7 +29,10 @@ class ConditionTransformer implements ClinicalResourceTransformer {
         target.setId(convertId(source.getId()));
         target.setPatient(convertPatient(source.getPatient()));
         target.setEncounter(getEncounter(container, source.getId()));
-        target.setAsserter(convertUserInRole(source.getAuthorisingUserInRole()));
+
+        if (source.getAuthorisingUserInRole() != null)
+            target.setAsserter(convertUserInRole(source.getAuthorisingUserInRole()));
+
         target.setDateRecordedElement(convertEffectiveDateTime(source.getEffectiveTime()));
         target.setCode(CodeHelper.convertCode(source.getCode(), source.getDisplayTerm()));
         target.setCategory(convertCategory());

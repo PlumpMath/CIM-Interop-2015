@@ -1,8 +1,10 @@
 package org.endeavourhealth.cim.transform.openhr.fromfhir.clinical;
 
 import org.apache.commons.lang3.StringUtils;
+import org.endeavourhealth.cim.repository.utils.TextUtils;
 import org.endeavourhealth.cim.transform.exceptions.TransformException;
 import org.endeavourhealth.cim.transform.openhr.fromfhir.OpenHRContainer;
+import org.endeavourhealth.cim.transform.openhr.tofhir.ToFHIRHelper;
 import org.endeavourhealth.cim.transform.schemas.openhr.*;
 import org.endeavourhealth.cim.transform.exceptions.SourceDocumentInvalidException;
 import org.endeavourhealth.cim.transform.exceptions.TransformFeatureNotSupportedException;
@@ -12,29 +14,54 @@ import org.hl7.fhir.instance.model.Condition;
 import org.hl7.fhir.instance.model.Reference;
 
 import javax.xml.datatype.DatatypeConfigurationException;
+import javax.xml.datatype.DatatypeFactory;
 import javax.xml.datatype.XMLGregorianCalendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
+import java.util.UUID;
 
 public class ConditionTransformer {
     public static void transform(OpenHRContainer container, Condition condition) throws TransformException
     {
-        OpenHR001HealthDomain.Event targetEvent = new OpenHR001HealthDomain.Event();
+        if (TextUtils.isNullOrTrimmedEmpty(condition.getId()))
+            condition.setId(UUID.randomUUID().toString());
+
+        container.getEvents().add(createEvent(condition));
+        container.getProblems().add(createProblem(condition));
+    }
+
+    private static OpenHR001Problem createProblem(Condition condition)
+    {
         OpenHR001Problem targetProblem = new OpenHR001Problem();
+        targetProblem.setId(condition.getId());
+        targetProblem.setUpdateMode(VocUpdateMode.ADD);
+
+        targetProblem.setStatus(VocProblemStatus.A);
+        targetProblem.setSignificance(VocProblemSignificance.S);
+
+        return targetProblem;
+    }
+
+    private static OpenHR001HealthDomain.Event createEvent(Condition condition) throws TransformException
+    {
+        OpenHR001HealthDomain.Event targetEvent = new OpenHR001HealthDomain.Event();
 
         targetEvent.setId(condition.getId());
         targetEvent.setUpdateMode(VocUpdateMode.ADD);
-        targetProblem.setId(condition.getId());
-        targetProblem.setUpdateMode(VocUpdateMode.ADD);
 
         if (condition.getPatient() != null)
             targetEvent.setPatient(getPatientIdFromReference(condition.getPatient()));
 
         targetEvent.setEventType(VocEventType.OBS);
 
-        if (condition.getDateRecorded() != null) {
+        if (condition.getDateRecorded() != null)
+        {
             XMLGregorianCalendar eventDate;
-            try {
+            try
+            {
                 eventDate = TransformHelper.fromDate(condition.getDateRecorded());
-            } catch (DatatypeConfigurationException e) {
+            } catch (DatatypeConfigurationException e)
+            {
                 throw new SourceDocumentInvalidException("Error creating Date", e);
             }
 
@@ -43,15 +70,25 @@ public class ConditionTransformer {
             effectiveTime.setDatepart(VocDatePart.YMD);
             targetEvent.setEffectiveTime(effectiveTime);
             targetEvent.setAvailabilityTimeStamp(eventDate);
+        } else
+        {
+            DtDatePart effectiveTime = new DtDatePart();
+            effectiveTime.setValue(null);
+            effectiveTime.setDatepart(VocDatePart.U);
+            targetEvent.setEffectiveTime(effectiveTime);
+            targetEvent.setAvailabilityTimeStamp(ToFHIRHelper.toCalendar(new Date()));
         }
 
-        if (condition.getAsserter() != null) {
+        if (condition.getAsserter() != null)
+        {
             targetEvent.setAuthorisingUserInRole(getPractitionerIdFromReference(condition.getAsserter()));
             targetEvent.setEnteredByUserInRole(getPractitionerIdFromReference(condition.getAsserter()));
         }
 
-        if (condition.getCode() != null) {
-            for (Coding sourceCode: condition.getCode().getCoding()) {
+        if (condition.getCode() != null)
+        {
+            for (Coding sourceCode : condition.getCode().getCoding())
+            {
                 DtCodeQualified targetCode = new DtCodeQualified();
                 targetCode.setCodeSystem(convertCodeSystem(sourceCode.getSystem()));
                 targetCode.setCode(sourceCode.getCode());
@@ -64,7 +101,8 @@ public class ConditionTransformer {
             }
         }
 
-        if (StringUtils.isNotBlank(condition.getNotes())) {
+        if (StringUtils.isNotBlank(condition.getNotes()))
+        {
             OpenHR001Event.AssociatedText associatedText = new OpenHR001Event.AssociatedText();
             associatedText.setAssociatedTextType(VocAssociatedTextType.PT);
             associatedText.setValue(condition.getNotes());
@@ -75,11 +113,7 @@ public class ConditionTransformer {
         observation.setEpisodicity(VocEpisodicity.NEW);
         targetEvent.setObservation(observation);
 
-        targetProblem.setStatus(VocProblemStatus.A);
-        targetProblem.setSignificance(VocProblemSignificance.S);
-
-        container.getEvents().add(targetEvent);
-        container.getProblems().add(targetProblem);
+        return targetEvent;
     }
 
     private static String getPatientIdFromReference(Reference reference) {

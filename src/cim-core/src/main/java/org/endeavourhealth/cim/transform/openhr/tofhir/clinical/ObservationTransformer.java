@@ -1,6 +1,7 @@
 package org.endeavourhealth.cim.transform.openhr.tofhir.clinical;
 
 import org.apache.commons.lang3.StringUtils;
+import org.endeavourhealth.cim.repository.utils.TextUtils;
 import org.endeavourhealth.cim.transform.common.ReferenceHelper;
 import org.endeavourhealth.cim.transform.exceptions.TransformException;
 import org.endeavourhealth.cim.transform.openhr.tofhir.ToFHIRHelper;
@@ -30,7 +31,10 @@ class ObservationTransformer implements ClinicalResourceTransformer {
         target.setIssued(TransformHelper.toDate(source.getAvailabilityTimeStamp()));
         target.setStatus(Observation.ObservationStatus.FINAL);
         target.setSubject(convertPatient(source.getPatient()));
-        target.addPerformer(convertUserInRole(source.getAuthorisingUserInRole()));
+
+        if (!TextUtils.isNullOrTrimmedEmpty(source.getAuthorisingUserInRole()))
+            target.addPerformer(convertUserInRole(source.getAuthorisingUserInRole()));
+
         target.setEncounter(getEncounter(container, source.getId()));
 
         convertAssociatedText(source, target);
