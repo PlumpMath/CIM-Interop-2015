@@ -19,7 +19,6 @@ class MedicationTransformer implements ClinicalResourceTransformer {
 
         target.setId(source.getId());
         target.setDateWritten(convertEffectiveDateTime(source.getEffectiveTime()));
-        target.setStatus(MedicationOrder.MedicationOrderStatus.ACTIVE);
         target.setPatient(convertPatient(source.getPatient()));
         target.setPrescriber(convertUserInRole(source.getAuthorisingUserInRole()));
         target.setEncounter(getEncounter(container, source.getId()));
@@ -37,6 +36,17 @@ class MedicationTransformer implements ClinicalResourceTransformer {
         }
 
         return target;
+    }
+
+    private static MedicationOrder.MedicationOrderStatus getStatus(VocDrugStatus drugStatus) {
+
+        switch (drugStatus)
+        {
+            case A: return MedicationOrder.MedicationOrderStatus.ACTIVE;
+            case N: return MedicationOrder.MedicationOrderStatus.DRAFT;
+            case C:
+            default: return MedicationOrder.MedicationOrderStatus.COMPLETED;
+        }
     }
 
     private Date convertEffectiveDateTime(DtDatePart source) throws TransformException {
@@ -80,7 +90,8 @@ class MedicationTransformer implements ClinicalResourceTransformer {
                 .setText(medicationIssue.getDosage())
                 .setDose(new SimpleQuantity()
                         .setValue(medicationIssue.getQuantity())
-                        .setUnit(medicationIssue.getQuantityUnit())));
+                        .setUnit(medicationIssue.getQuantityUnit())))
+                .setStatus(MedicationOrder.MedicationOrderStatus.COMPLETED);
     }
 
     private void convertMedication(OpenHR001Medication medication, MedicationOrder target) {
@@ -88,7 +99,9 @@ class MedicationTransformer implements ClinicalResourceTransformer {
                 .setText(medication.getDosage())
                 .setDose(new SimpleQuantity()
                         .setValue(medication.getQuantity())
-                        .setUnit(medication.getQuantityUnit())));
+                        .setUnit(medication.getQuantityUnit())))
+                .setStatus(getStatus(medication.getDrugStatus()));
+
     }
 
 }
