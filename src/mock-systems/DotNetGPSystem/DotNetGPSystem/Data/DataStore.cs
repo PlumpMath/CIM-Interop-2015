@@ -254,21 +254,28 @@ namespace DotNetGPSystem
             OnExternalUpdateReceived(dateStamp, openHRXml);
         }
 
-        public static UpdateRecordStatus AddEventToPatient(OpenHRPatient patient, OpenHR001HealthDomainEvent healthDomainEvent)
+        public static UpdateRecordStatus FileEvent(string openHRXml)
         {
+            OpenHR001OpenHealthRecord openHR = Utilities.Deserialize<OpenHR001OpenHealthRecord>(openHRXml);
+            OpenHR001HealthDomainEvent openHREvent = openHR.healthDomain.@event.FirstOrDefault();
+            OpenHR001Problem openHRProblem = openHR.healthDomain.problem.FirstOrDefault(t => t.id == openHREvent.id);
+            OpenHRPatient patient = DataStore.OpenHRPatients.FirstOrDefault(t => new Guid(t.Patient.id) == new Guid(openHREvent.patient));    
+
             if (patient == null)
                 return UpdateRecordStatus.PatientNotFound;
 
-            if (String.IsNullOrWhiteSpace(healthDomainEvent.id))
-                healthDomainEvent.id = Guid.NewGuid().ToString();
-
-            if (patient.OpenHealthRecord.healthDomain.@event.Any(t => t.id == healthDomainEvent.id))
+            if (patient.OpenHealthRecord.healthDomain.@event.Any(t => t.id == openHREvent.id))
                 return UpdateRecordStatus.IdentifierAlreadyInUse;
 
-            List<OpenHR001HealthDomainEvent> events = new List<OpenHR001HealthDomainEvent>();
-            events.Add(healthDomainEvent);
-            events.AddRange(patient.OpenHealthRecord.healthDomain.@event);
-            patient.OpenHealthRecord.healthDomain.@event = events.ToArray();
+            if (openHRProblem != null)
+            {
+                if (patient.OpenHealthRecord.healthDomain.problem.Any(t => t.id == openHRProblem.id))
+                    return UpdateRecordStatus.IdentifierAlreadyInUse;
+
+                patient.OpenHealthRecord.healthDomain.problem = patient.OpenHealthRecord.healthDomain.problem.Concat(new[] { openHRProblem }).ToArray();
+            }
+
+            patient.OpenHealthRecord.healthDomain.@event = patient.OpenHealthRecord.healthDomain.@event.Concat(new[] { openHREvent }).ToArray();
 
             return UpdateRecordStatus.Successful;
         }

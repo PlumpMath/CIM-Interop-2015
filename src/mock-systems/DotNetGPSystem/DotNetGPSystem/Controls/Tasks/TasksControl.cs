@@ -108,7 +108,7 @@ namespace DotNetGPSystem
             btnFile.Enabled = false;
             task.Filed = true;
 
-            DataStore.AddEventToPatient(task.Patient, task.Event);
+            DataStore.FileEvent(task.OpenHRXml);
 
             lblFiled.Visible = task.Filed;
         }
