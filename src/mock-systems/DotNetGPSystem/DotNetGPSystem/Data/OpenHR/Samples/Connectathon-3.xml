@@ -18365,75 +18365,6 @@
       <significance>M</significance>
       <expectedDuration unit="D" value="28" />
       <endTime datepart="YMD" value="2008-01-04T00:00:00" />
-      <eventLink updateMode="add">
-        <id>6ae17e4a-2afd-4d4b-8195-2f9391c01c31</id>
-        <eventType>OBS</eventType>
-        <eventLinkType>ASS</eventLinkType>
-      </eventLink>
-      <eventLink updateMode="add">
-        <id>801af9ac-2d06-4f1a-aeb7-7af19ed476ec</id>
-        <eventType>OBS</eventType>
-        <eventLinkType>ASS</eventLinkType>
-      </eventLink>
-      <eventLink updateMode="add">
-        <id>414b3432-bf3f-420e-8c89-76d0c7e0db97</id>
-        <eventType>VAL</eventType>
-        <eventLinkType>ASS</eventLinkType>
-      </eventLink>
-      <eventLink updateMode="add">
-        <id>99c086e3-9465-493d-9eb7-d9fb8673fcac</id>
-        <eventType>OBS</eventType>
-        <eventLinkType>ASS</eventLinkType>
-      </eventLink>
-      <eventLink updateMode="add">
-        <id>3441db81-fe84-49a7-b505-7d6c053eca4b</id>
-        <eventType>MED</eventType>
-      </eventLink>
-      <eventLink updateMode="add">
-        <id>8073e05f-cbda-4ad8-9b01-9faace270ea1</id>
-        <eventType>OBS</eventType>
-        <eventLinkType>ASS</eventLinkType>
-      </eventLink>
-      <eventLink updateMode="add">
-        <id>95ea054a-4795-497d-937f-96c2ac0a8890</id>
-        <eventType>OBS</eventType>
-        <eventLinkType>ASS</eventLinkType>
-      </eventLink>
-      <eventLink updateMode="add">
-        <id>5e8f6df1-9c2d-44ac-bf1f-f6168cc42425</id>
-        <eventType>OBS</eventType>
-        <eventLinkType>ASS</eventLinkType>
-      </eventLink>
-      <eventLink updateMode="add">
-        <id>31ef1ba3-6e71-48f5-9dbb-515c2ac6154f</id>
-        <eventType>OBS</eventType>
-        <eventLinkType>ASS</eventLinkType>
-      </eventLink>
-      <eventLink updateMode="add">
-        <id>ae9f0827-a968-4ea9-bb2b-b591dc438728</id>
-        <eventType>OBS</eventType>
-        <eventLinkType>ASS</eventLinkType>
-      </eventLink>
-      <eventLink updateMode="add">
-        <id>f1c266cb-6161-4bf0-8d93-3a1386fec0b9</id>
-        <eventType>OBS</eventType>
-        <eventLinkType>ASS</eventLinkType>
-      </eventLink>
-      <eventLink updateMode="add">
-        <id>958ab5a8-25ad-40ab-872e-3bbcae84d3ff</id>
-        <eventType>OBS</eventType>
-        <eventLinkType>ASS</eventLinkType>
-      </eventLink>
-      <eventLink updateMode="add">
-        <id>9e598e96-619d-4cb6-b27f-7c8d04876bf8</id>
-        <eventType>OBS</eventType>
-        <eventLinkType>ASS</eventLinkType>
-      </eventLink>
-      <eventLink updateMode="add">
-        <id>1294eb85-2886-4b36-b1b2-0b8688afb27a</id>
-        <eventType>OBS</eventType>
-        <eventLinkType>ASS</eventLinkType>
-      </eventLink>
     </problem>
     <problem updateMode="add">
       <id>d9b59b5b-1e5c-47fb-a646-a0120ea22f90</id>
@@ -18441,52 +18372,12 @@
       <significance>M</significance>
       <expectedDuration unit="D" value="28" />
       <endTime datepart="YMD" value="2007-09-29T00:00:00" />
-      <eventLink updateMode="add">
-        <id>222d773d-3f84-4028-8ffb-aa0b21f583dd</id>
-        <eventType>OBS</eventType>
-        <eventLinkType>ASS</eventLinkType>
-      </eventLink>
-      <eventLink updateMode="add">
-        <id>5e917bc2-b72c-40f4-a7ac-d5d65fe4dc0a</id>
-        <eventType>OBS</eventType>
-        <eventLinkType>ASS</eventLinkType>
-      </eventLink>
-      <eventLink updateMode="add">
-        <id>16bb0b2d-072a-4fa1-beda-2508db3641f4</id>
-        <eventType>MED</eventType>
-      </eventLink>
-      <eventLink updateMode="add">
-        <id>9ee6e7b6-a0f9-4708-a650-a6e9014e6312</id>
-        <eventType>ISS</eventType>
-      </eventLink>
-      <eventLink updateMode="add">
-        <id>d0d2e27b-5969-4b72-833a-aa34f7b23c82</id>
-        <eventType>OBS</eventType>
-        <eventLinkType>ASS</eventLinkType>
-      </eventLink>
-      <eventLink updateMode="add">
-        <id>118478a3-df6b-4848-9707-19006649482a</id>
-        <eventType>ISS</eventType>
-      </eventLink>
-      <eventLink updateMode="add">
-        <id>e63a4d5b-9dbe-4243-a3e8-6541383907ec</id>
-        <eventType>MED</eventType>
-      </eventLink>
-      <eventLink updateMode="add">
-        <id>c8a51ac0-4bee-4f3d-961e-10d4784b8c61</id>
-        <eventType>OBS</eventType>
-        <eventLinkType>FOL</eventLinkType>
-      </eventLink>
     </problem>
     <problem updateMode="add">
       <id>7ef38311-298d-4c87-82dd-37168fd7782a</id>
       <status>A</status>
       <significance>S</significance>
       <expectedDuration unit="D" value="0" />
-      <eventLink updateMode="add">
-        <id>5571ab3e-a5ef-43cd-9d54-f0b5cb6d3536</id>
-        <eventType>MED</eventType>
-      </eventLink>
     </problem>
     <problem updateMode="add">
       <id>f3a6f1d2-4b78-4254-ab0b-7fd72b24c416</id>
@@ -18500,170 +18391,18 @@
       <significance>M</significance>
       <expectedDuration unit="D" value="28" />
       <endTime datepart="YMD" value="2006-12-01T00:00:00" />
-      <eventLink updateMode="add">
-        <id>e3c3f012-7aa0-4665-b6d1-da0bc8d56690</id>
-        <eventType>ISS</eventType>
-      </eventLink>
-      <eventLink updateMode="add">
-        <id>0c03bdf6-c510-4e89-90b8-9c3e7e71a070</id>
-        <eventType>ISS</eventType>
-      </eventLink>
-      <eventLink updateMode="add">
-        <id>60f1cc05-8b8c-410c-baa9-13226f2754f0</id>
-        <eventType>ISS</eventType>
-      </eventLink>
-      <eventLink updateMode="add">
-        <id>d3455b40-ede4-4a5d-9fd2-2c57ec9250d2</id>
-        <eventType>MED</eventType>
-      </eventLink>
-      <eventLink updateMode="add">
-        <id>4f7f5dc0-bbf0-4d11-bedb-43cd4dd180ac</id>
-        <eventType>ISS</eventType>
-      </eventLink>
-      <eventLink updateMode="add">
-        <id>9eb0f925-c986-496c-b9dd-574ae6bb5847</id>
-        <eventType>ISS</eventType>
-      </eventLink>
-      <eventLink updateMode="add">
-        <id>55be4a01-9743-4d28-955b-658ad7299b23</id>
-        <eventType>ISS</eventType>
-      </eventLink>
-      <eventLink updateMode="add">
-        <id>178256e5-4797-483a-a200-d7250232a64b</id>
-        <eventType>ISS</eventType>
-      </eventLink>
-      <eventLink updateMode="add">
-        <id>b0512e84-284f-46f8-a3c5-2178eb69e728</id>
-        <eventType>ISS</eventType>
-      </eventLink>
-      <eventLink updateMode="add">
-        <id>67963894-3020-49f9-9dfe-919fce99bcee</id>
-        <eventType>OBS</eventType>
-        <eventLinkType>ASS</eventLinkType>
-      </eventLink>
-      <eventLink updateMode="add">
-        <id>294d09cf-d322-4e2d-872a-ac5bda8b9723</id>
-        <eventType>ISS</eventType>
-      </eventLink>
-      <eventLink updateMode="add">
-        <id>049a78a6-dadc-404b-bc65-6a5c6b3d53b1</id>
-        <eventType>ISS</eventType>
-      </eventLink>
-      <eventLink updateMode="add">
-        <id>b26b5c90-8801-413d-9eb6-13a1b64a8c45</id>
-        <eventType>OBS</eventType>
-        <eventLinkType>ASS</eventLinkType>
-      </eventLink>
-      <eventLink updateMode="add">
-        <id>ad4413ed-7b2c-4ff3-8258-6225d84430f5</id>
-        <eventType>ISS</eventType>
-      </eventLink>
-      <eventLink updateMode="add">
-        <id>a2e1d776-61a7-4c54-b338-e963479e9de2</id>
-        <eventType>ISS</eventType>
-      </eventLink>
-      <eventLink updateMode="add">
-        <id>a2f5598a-c0e8-4357-83eb-f01bc3f8ec75</id>
-        <eventType>MED</eventType>
-      </eventLink>
-      <eventLink updateMode="add">
-        <id>cb992ae0-7272-4f9e-9de5-836871b7da7b</id>
-        <eventType>ISS</eventType>
-      </eventLink>
-      <eventLink updateMode="add">
-        <id>9e268856-e606-421e-a003-2a0fee5adea2</id>
-        <eventType>ISS</eventType>
-      </eventLink>
-      <eventLink updateMode="add">
-        <id>afac6ca1-6c46-48bf-a20a-85cfa7d00b71</id>
-        <eventType>ISS</eventType>
-      </eventLink>
     </problem>
     <problem updateMode="add">
       <id>1c273893-b22f-449e-ba74-a0685ee685ee</id>
       <status>A</status>
       <significance>S</significance>
       <expectedDuration unit="D" value="0" />
-      <eventLink updateMode="add">
-        <id>617a07c3-3cab-4e0d-afcb-09eba2b57619</id>
-        <eventType>MED</eventType>
-      </eventLink>
     </problem>
     <problem updateMode="add">
       <id>021285c6-0d27-4734-a770-9b204ff1375a</id>
       <status>A</status>
       <significance>S</significance>
       <expectedDuration unit="D" value="0" />
-      <eventLink updateMode="add">
-        <id>08747e90-1f3d-49cb-b741-6301dc79051f</id>
-        <eventType>MED</eventType>
-      </eventLink>
-      <eventLink updateMode="add">
-        <id>76d12f99-5844-452d-b605-7d541f19578a</id>
-        <eventType>MED</eventType>
-      </eventLink>
-      <eventLink updateMode="add">
-        <id>3360c098-b9fd-4334-8093-c32312a3abff</id>
-        <eventType>OBS</eventType>
-        <eventLinkType>FOL</eventLinkType>
-      </eventLink>
-      <eventLink updateMode="add">
-        <id>4b497b64-24df-4dd1-990e-7817fdddb4e1</id>
-        <eventType>MED</eventType>
-      </eventLink>
-      <eventLink updateMode="add">
-        <id>4d4d39b3-141c-492c-a39c-f7dc3961b00e</id>
-        <eventType>OBS</eventType>
-        <eventLinkType>FOL</eventLinkType>
-      </eventLink>
-      <eventLink updateMode="add">
-        <id>c00fc67e-f8fb-4ae5-99cb-34893eb1a540</id>
-        <eventType>MED</eventType>
-      </eventLink>
-      <eventLink updateMode="add">
-        <id>5bd4fe35-7db8-4058-a369-563a9a7483f4</id>
-        <eventType>OBS</eventType>
-        <eventLinkType>FOL</eventLinkType>
-      </eventLink>
-      <eventLink updateMode="add">
-        <id>ee2b21df-ee0f-467d-b108-6f7f419ddaf8</id>
-        <eventType>OBS</eventType>
-        <eventLinkType>FOL</eventLinkType>
-      </eventLink>
-      <eventLink updateMode="add">
-        <id>85e3a5c8-c420-4208-9c0c-cefb6b7e0a5c</id>
-        <eventType>OBS</eventType>
-        <eventLinkType>FOL</eventLinkType>
-      </eventLink>
-      <eventLink updateMode="add">
-        <id>9a45dcc7-390c-48bf-bd40-06862226727d</id>
-        <eventType>MED</eventType>
-      </eventLink>
-      <eventLink updateMode="add">
-        <id>fbfda62d-280d-4035-b111-d42a5b8fdbd6</id>
-        <eventType>OBS</eventType>
-        <eventLinkType>FOL</eventLinkType>
-      </eventLink>
-      <eventLink updateMode="add">
-        <id>5acdf08f-bb7d-4490-8d6b-2b50b60daf54</id>
-        <eventType>MED</eventType>
-      </eventLink>
-      <eventLink updateMode="add">
-        <id>438094aa-c0cc-4bab-9fe5-fa3f1833c983</id>
-        <eventType>MED</eventType>
-      </eventLink>
-      <eventLink updateMode="add">
-        <id>bd55dac1-f200-4c5d-bf99-99f6f35e90e5</id>
-        <eventType>MED</eventType>
-      </eventLink>
-      <eventLink updateMode="add">
-        <id>d45a5a69-dbf1-4cea-899d-6e6a7f458158</id>
-        <eventType>MED</eventType>
-      </eventLink>
-      <eventLink updateMode="add">
-        <id>814a0a33-e70e-419a-8f23-6b686a489ac3</id>
-        <eventType>MED</eventType>
-      </eventLink>
     </problem>
   </healthDomain>
 </openHealthRecord>
