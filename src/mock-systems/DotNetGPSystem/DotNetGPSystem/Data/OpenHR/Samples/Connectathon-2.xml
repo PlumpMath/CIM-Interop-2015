@@ -3932,6 +3932,21 @@
         <episodicity>FIRST</episodicity>
       </observation>
     </event>
+	<event updateMode="add">
+      <id>825b3f2a-dfd9-426c-a9d7-c6112f7712a7</id>
+      <patient>26537e8d-ef36-4978-9688-e8295de24258</patient>
+      <eventType>ALL</eventType>
+      <effectiveTime datepart="YMD" value="2001-07-06T00:00:00" />
+      <availabilityTimeStamp>2006-05-20T00:00:00</availabilityTimeStamp>
+      <authorisingUserInRole>29f9e2d1-1243-41bf-815e-9310022f147b</authorisingUserInRole>
+      <enteredByUserInRole>29f9e2d1-1243-41bf-815e-9310022f147b</enteredByUserInRole>
+      <code codeSystem="2.16.840.1.113883.2.1.6.2" displayName="H/O: penicillin allergy" code="14L1">
+        <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="H/O: penicillin allergy" code="161591004" />
+      </code>
+      <displayTerm>H/O: penicillin allergy</displayTerm>
+      <organisation>b0415c85-bf4b-4e58-8a6d-dee613a09ffe</organisation>
+      <confidentialityPolicy>40e4ffcb-a326-4484-8033-7242d9cee64b</confidentialityPolicy>
+    </event>
     <event updateMode="add">
       <id>35690bfe-3fed-42cc-8443-d65b6b84616e</id>
       <patient>26537e8d-ef36-4978-9688-e8295de24258</patient>
