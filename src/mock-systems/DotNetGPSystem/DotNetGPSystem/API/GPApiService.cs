@@ -36,10 +36,10 @@ namespace DotNetGPSystem
 
             return DataStore
                 .OpenHRPatients
-                .Where(t => t.Person.surname.StartsWith(surname.Trim())
+                .Where(t => t.Person.surname.ToLower().StartsWith(surname.ToLower().Trim())
                     && t.Person.sex == sex
                     && t.Person.birthDate.Date == dateOfBirth.Date
-                    && (string.IsNullOrEmpty(forename) || t.Person.forenames.StartsWith(forename.Replace(" ", string.Empty)))
+                    && (string.IsNullOrEmpty(forename) || t.Person.forenames.ToLower().StartsWith(forename.ToLower().Replace(" ", string.Empty)))
                     && (string.IsNullOrEmpty(postcode) || t.Person.address.GetHomeAddress().postCode.ToUpper().Replace(" ", string.Empty).StartsWith(postcode.ToUpper().Replace(" ", string.Empty))))
                 .Select(t => t.OpenHRExcludingHealthDomainXml)
                 .ToArray();
