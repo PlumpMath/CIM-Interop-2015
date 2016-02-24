@@ -11,9 +11,13 @@ import org.endeavourhealth.cim.repository.framework.RepositoryException;
 import org.endeavourhealth.cim.repository.domains.user.UserRepository;
 import org.endeavourhealth.cim.repository.domains.user.User;
 
+import java.util.UUID;
+
 public class SecurityProcessor implements Processor {
 
     public void process(Exchange exchange) throws Exception {
+
+        exchange.setProperty(PropertyKey.AuditId, UUID.randomUUID().toString());
 
         String apiKey = ExchangeHelper.getInHeaderString(exchange, CIMHeaderKey.ApiKey);
         String inboundHash = ExchangeHelper.getInHeaderString(exchange, CIMHeaderKey.Hash);

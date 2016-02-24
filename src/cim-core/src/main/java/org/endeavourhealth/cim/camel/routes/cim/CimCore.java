@@ -20,7 +20,6 @@ public class CimCore extends BaseRouteBuilder {
                 .when(simple("${exchangeProperty." + PropertyKey.WrappedRouteCallback + "} != null"))
 					.to(BaseRouteBuilder.direct(ComponentRouteName.HEADER_VALIDATION))
 					.to(BaseRouteBuilder.direct(ComponentRouteName.SECURITY))
-					.setProperty(PropertyKey.AuditId, constant(UUID.randomUUID()))
 					.setProperty(PropertyKey.TapLocation, constant("Inbound"))
 					.wireTap(BaseRouteBuilder.direct(ComponentRouteName.AUDIT))
 					.end()
