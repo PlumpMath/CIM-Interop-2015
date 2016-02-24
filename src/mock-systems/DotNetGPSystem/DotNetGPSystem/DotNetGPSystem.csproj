@@ -73,6 +73,12 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Controls\IKeyHandler.cs" />
+    <Compile Include="Controls\Patient\AllergiesControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Patient\AllergiesControl.Designer.cs">
+      <DependentUpon>AllergiesControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\Patient\ConditionsControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -189,6 +195,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\AppointmentBook\AppointmentBookControl.resx">
       <DependentUpon>AppointmentBookControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Patient\AllergiesControl.resx">
+      <DependentUpon>AllergiesControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\Patient\ConditionsControl.resx">
       <DependentUpon>ConditionsControl.cs</DependentUpon>

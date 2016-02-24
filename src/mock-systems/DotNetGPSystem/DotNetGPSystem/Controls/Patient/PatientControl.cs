@@ -13,6 +13,7 @@ namespace DotNetGPSystem
     internal partial class PatientControl : UserControl, IKeyHandler
     {
         private DemographicsControl _demographicsPage;
+        private AllergiesControl _allergiesPage;
         private ConditionsControl _conditionsPage;
         private ConsultationsControl _consultationsPage;
         private MedicationControl _medicationPage;
@@ -49,6 +50,10 @@ namespace DotNetGPSystem
             _demographicsPage = new DemographicsControl(patient, RefreshDemographicsOnUpdateEvent);
             _demographicsPage.Parent = pnlContent;
             btnDemographics.Tag = _demographicsPage;
+
+            _allergiesPage = new AllergiesControl(patient);
+            _allergiesPage.Parent = pnlContent;
+            btnAllergies.Tag = _allergiesPage;
 
             _conditionsPage = new ConditionsControl(patient);
             _conditionsPage.Parent = pnlContent;

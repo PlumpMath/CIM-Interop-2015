@@ -43,6 +43,7 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.btnDemographics = new System.Windows.Forms.ToolStripButton();
+            this.btnAllergies = new System.Windows.Forms.ToolStripButton();
             this.btnConditions = new System.Windows.Forms.ToolStripButton();
             this.btnConsultations = new System.Windows.Forms.ToolStripButton();
             this.btnMedication = new System.Windows.Forms.ToolStripButton();
@@ -93,7 +94,7 @@
             this.lblOrganisation.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
             this.lblOrganisation.Location = new System.Drawing.Point(1005, 15);
             this.lblOrganisation.Name = "lblOrganisation";
-            this.lblOrganisation.Size = new System.Drawing.Size(108, 20);
+            this.lblOrganisation.Size = new System.Drawing.Size(109, 20);
             this.lblOrganisation.TabIndex = 8;
             this.lblOrganisation.Text = "Alpha Surgery";
             // 
@@ -194,6 +195,7 @@
             this.toolStrip1.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btnDemographics,
+            this.btnAllergies,
             this.btnConditions,
             this.btnConsultations,
             this.btnMedication,
@@ -216,6 +218,16 @@
             this.btnDemographics.Size = new System.Drawing.Size(104, 34);
             this.btnDemographics.Text = "Demographics";
             this.btnDemographics.Click += new System.EventHandler(this.toolStripButton_Click);
+            // 
+            // btnAllergies
+            // 
+            this.btnAllergies.CheckOnClick = true;
+            this.btnAllergies.Image = ((System.Drawing.Image)(resources.GetObject("btnAllergies.Image")));
+            this.btnAllergies.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnAllergies.Name = "btnAllergies";
+            this.btnAllergies.Size = new System.Drawing.Size(72, 34);
+            this.btnAllergies.Text = "Allergies";
+            this.btnAllergies.Click += new System.EventHandler(this.toolStripButton_Click);
             // 
             // btnConditions
             // 
@@ -333,5 +345,6 @@
         private System.Windows.Forms.ToolStripButton btnMedication;
         private System.Windows.Forms.Label lblOrganisation;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ToolStripButton btnAllergies;
     }
 }
