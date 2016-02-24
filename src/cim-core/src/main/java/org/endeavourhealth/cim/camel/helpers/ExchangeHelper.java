@@ -36,6 +36,11 @@ public class ExchangeHelper {
         return new TokenSearchParameter(tokenString);
     }
 
+    public static Boolean hasProperty(Exchange exchange, String propertyKey)
+    {
+        return (exchange.getProperties().keySet().contains(propertyKey));
+    }
+
     public static Boolean hasInHeader(Exchange exchange, String headerKey) {
         return exchange.getIn().getHeaders().containsKey(headerKey);
     }
