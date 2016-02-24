@@ -6736,6 +6736,21 @@
       <confidentialityPolicy>37bd8eb9-3107-4361-8554-3614dc4b4f99</confidentialityPolicy>
     </event>
     <event updateMode="add">
+      <id>7a15c6c0-6657-46c1-9871-0d35cb92aa27</id>
+      <patient>d58cf91f-a863-4a3f-a80e-dd5df42aff09</patient>
+      <eventType>ALL</eventType>
+      <effectiveTime datepart="YMD" value="2001-07-02T00:00:00" />
+      <availabilityTimeStamp>2004-05-20T00:00:00</availabilityTimeStamp>
+      <authorisingUserInRole>4de9503a-9765-4731-8216-fa215bccd666</authorisingUserInRole>
+      <enteredByUserInRole>4de9503a-9765-4731-8216-fa215bccd666</enteredByUserInRole>
+      <code codeSystem="2.16.840.1.113883.2.1.6.2" displayName="Hay fever - unspecified allergen" code="H172">
+        <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Hay fever - unspecified allergen" code="195820004" />
+      </code>
+      <displayTerm>Hay fever - unspecified allergen</displayTerm>
+      <organisation>50e37edd-978d-4133-8121-30af9388b977</organisation>
+      <confidentialityPolicy>37bd8eb9-3107-4361-8554-3614dc4b4f99</confidentialityPolicy>
+    </event>
+    <event updateMode="add">
       <id>4ac65a01-728e-41e4-941d-365d65a9599f</id>
       <patient>d58cf91f-a863-4a3f-a80e-dd5df42aff09</patient>
       <eventType>VAL</eventType>

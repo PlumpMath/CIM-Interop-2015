@@ -3871,6 +3871,21 @@
       <confidentialityPolicy>bedef669-9d7d-451f-a4a6-cf2198904f03</confidentialityPolicy>
     </event>
     <event updateMode="add">
+      <id>4bcf0377-f033-4b63-84d2-9bb8d3b7c317</id>
+      <patient>d4033553-f6f9-4188-bc61-0360ea9511a1</patient>
+      <eventType>ALL</eventType>
+      <effectiveTime datepart="YMD" value="2001-07-02T00:00:00" />
+      <availabilityTimeStamp>2004-05-20T00:00:00</availabilityTimeStamp>
+      <authorisingUserInRole>766c11cd-d2bf-40f4-a06e-6b8e551f3807</authorisingUserInRole>
+      <enteredByUserInRole>766c11cd-d2bf-40f4-a06e-6b8e551f3807</enteredByUserInRole>
+      <code codeSystem="2.16.840.1.113883.2.1.6.2" displayName="Hay fever - unspecified allergen" code="H172">
+        <translation codeSystem="2.16.840.1.113883.2.1.3.2.4.15" displayName="Hay fever - unspecified allergen" code="195820004" />
+      </code>
+      <displayTerm>Hay fever - unspecified allergen</displayTerm>
+      <organisation>6abcdae5-1f78-4225-b3a6-d040fd4abdcc</organisation>
+      <confidentialityPolicy>bedef669-9d7d-451f-a4a6-cf2198904f03</confidentialityPolicy>
+    </event>
+    <event updateMode="add">
       <id>fee67e45-d26a-479d-a46d-856608de7b0a</id>
       <patient>d4033553-f6f9-4188-bc61-0360ea9511a1</patient>
       <eventType>OBS</eventType>
