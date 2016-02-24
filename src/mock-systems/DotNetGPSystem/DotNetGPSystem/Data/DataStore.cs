@@ -269,13 +269,14 @@ namespace DotNetGPSystem
 
             if (openHRProblem != null)
             {
-                if (patient.OpenHealthRecord.healthDomain.problem.Any(t => t.id == openHRProblem.id))
-                    return UpdateRecordStatus.IdentifierAlreadyInUse;
+                if (patient.OpenHealthRecord.healthDomain.problem != null)
+                    if (patient.OpenHealthRecord.healthDomain.problem.Any(t => t.id == openHRProblem.id))
+                        return UpdateRecordStatus.IdentifierAlreadyInUse;
 
-                patient.OpenHealthRecord.healthDomain.problem = patient.OpenHealthRecord.healthDomain.problem.Concat(new[] { openHRProblem }).ToArray();
+                patient.OpenHealthRecord.healthDomain.problem = (patient.OpenHealthRecord.healthDomain.problem ?? new OpenHR001Problem[] { }).Concat(new[] { openHRProblem }).ToArray();
             }
 
-            patient.OpenHealthRecord.healthDomain.@event = patient.OpenHealthRecord.healthDomain.@event.Concat(new[] { openHREvent }).ToArray();
+            patient.OpenHealthRecord.healthDomain.@event = (patient.OpenHealthRecord.healthDomain.@event ?? new OpenHR001HealthDomainEvent[] { }).Concat(new[] { openHREvent }).ToArray();
 
             return UpdateRecordStatus.Successful;
         }
