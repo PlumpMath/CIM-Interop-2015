@@ -17,7 +17,7 @@ public class SecurityProcessor implements Processor {
 
     public void process(Exchange exchange) throws Exception {
 
-        exchange.setProperty(PropertyKey.AuditId, UUID.randomUUID().toString());
+        exchange.setProperty(PropertyKey.AuditId, UUID.randomUUID());
 
         String apiKey = ExchangeHelper.getInHeaderString(exchange, CIMHeaderKey.ApiKey);
         String inboundHash = ExchangeHelper.getInHeaderString(exchange, CIMHeaderKey.Hash);
