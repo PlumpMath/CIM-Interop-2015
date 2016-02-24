@@ -147,7 +147,7 @@
       <caseloadPatient updateMode="add">
         <id>2cb9cdad-3bbe-4e4c-b099-fed4b1d6c81f</id>
         <organisation>8dd408c7-d11e-4c34-9120-56a4556f94f2</organisation>
-        <dateRecorded>2001-11-17T00:00:00</dateRecorded>
+        <dateRecorded>1972-11-17T00:00:00</dateRecorded>
         <patientStatus>
           <status>6</status>
           <caseloadStatus>REG</caseloadStatus>
