@@ -1,8 +1,14 @@
 ﻿{
   "id": "primarycare-organization",
   "meta": {
-    "lastUpdated": "2015-11-01T10:00:00"
+    "lastUpdated": "2015-11-01T10:00:00+00:00"
   },
+  "extension": [
+    {
+      "Item": 1,
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm"
+    }
+  ],
   "url": "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-organization",
   "name": "PrimaryCare-Organization",
   "display": "Primary Care organization",
@@ -37,7 +43,37 @@
           {
             "code": "Organization"
           }
+        ],
+        "mapping": [
+          {
+            "identity": "v2",
+            "map": "(also see master files messages)"
+          },
+          {
+            "identity": "rim",
+            "map": "Organization(classCode=ORG, determinerCode=INST)"
+          },
+          {
+            "identity": "servd",
+            "map": "Organization"
+          },
+          {
+            "identity": "w5",
+            "map": "administrative.group"
+          }
         ]
+      },
+      {
+        "path": "Organization.identifier",
+        "slicing": {
+          "rules": 2
+        },
+        "short": "Identifies this organization  across multiple systems",
+        "definition": "Identifier for the organization that is used to identify the organization across multiple disparate systems.",
+        "requirements": "Organizations are known by a variety of ids. Some institutions maintain several, and most collect identifiers for exchange with other organizations concerning the organization.",
+        "min": 0,
+        "max": "*",
+        "isSummary": true
       },
       {
         "path": "Organization.identifier.assigner",
@@ -54,7 +90,116 @@
             ]
           }
         ],
-        "isSummary": true
+        "isSummary": true,
+        "mapping": [
+          {
+            "identity": "v2",
+            "map": "CX.4 / (CX.4,CX.9,CX.10)"
+          },
+          {
+            "identity": "rim",
+            "map": "II.assigningAuthorityName but note that this is an improper use by the definition of the field.  Also Role.scoper"
+          },
+          {
+            "identity": "servd",
+            "map": "./IdentifierIssuingAuthority"
+          }
+        ]
+      },
+      {
+        "path": "Organization.identifier",
+        "name": "ODSCode",
+        "short": "Identifies this organization  across multiple systems",
+        "definition": "Identifier for the organization that is used to identify the organization across multiple disparate systems.",
+        "requirements": "Organizations are known by a variety of ids. Some institutions maintain several, and most collect identifiers for exchange with other organizations concerning the organization.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "Identifier"
+          }
+        ],
+        "condition": [
+          "org-1"
+        ],
+        "isSummary": true,
+        "mapping": [
+          {
+            "identity": "v2",
+            "map": "XON.10 / XON.3"
+          },
+          {
+            "identity": "rim",
+            "map": ".scopes[Role](classCode=IDENT)"
+          },
+          {
+            "identity": "servd",
+            "map": "./Identifiers"
+          },
+          {
+            "identity": "w5",
+            "map": "id"
+          }
+        ]
+      },
+      {
+        "path": "Organization.identifier.system",
+        "short": "ODS code",
+        "definition": "Establishes the namespace in which set of possible id values is unique.",
+        "requirements": "There are many sequences of identifiers.  To perform matching, we need to know what sequence we're dealing with. The system identifies a particular sequence or set of unique identifiers.",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "uri"
+          }
+        ],
+        "Item1": "http://endeavourhealth.org/fhir/identifier/ods-code",
+        "Item3": "http://www.acme.com/identifiers/patient or urn:ietf:rfc:3986 if the Identifier.value itself is a full uri",
+        "isSummary": true,
+        "mapping": [
+          {
+            "identity": "v2",
+            "map": "CX.4 / EI-2-4"
+          },
+          {
+            "identity": "rim",
+            "map": "II.root or Role.id.root"
+          },
+          {
+            "identity": "servd",
+            "map": "./IdentifierType"
+          }
+        ]
+      },
+      {
+        "path": "Organization.identifier.value",
+        "short": "ODS code value",
+        "definition": "The portion of the identifier typically displayed to the user and which is unique within the context of the system.",
+        "comments": "If the value is a full URI, then the system SHALL be urn:ietf:rfc:3986.",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "string"
+          }
+        ],
+        "Item3": "123456",
+        "isSummary": true,
+        "mapping": [
+          {
+            "identity": "v2",
+            "map": "CX.1 / EI.1"
+          },
+          {
+            "identity": "rim",
+            "map": "II.extension or II.root if system indicates OID or GUID (Or Role.id.extension or root)"
+          },
+          {
+            "identity": "servd",
+            "map": "./Value"
+          }
+        ]
       },
       {
         "path": "Organization.partOf",
@@ -71,7 +216,21 @@
             ]
           }
         ],
-        "isSummary": true
+        "isSummary": true,
+        "mapping": [
+          {
+            "identity": "v2",
+            "map": "No equivalent in HL7 v2"
+          },
+          {
+            "identity": "rim",
+            "map": ".playedBy[classCode=Part].scoper"
+          },
+          {
+            "identity": "servd",
+            "map": "n/a"
+          }
+        ]
       }
     ]
   },

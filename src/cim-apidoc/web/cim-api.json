@@ -5,7 +5,7 @@
     "version": "0.1",
     "title": "Common Interface Mechanism"
   },
-  "host": "localhost:8080",
+  "host": "endeavour-cim.cloudapp.net",
   "basePath": "/api/v0.1",
   "tags": [
     {
@@ -45,7 +45,7 @@
         ],
         "responses": {
           "200": {
-            "description": "OK | <a target='_blank' href='http://hl7.org/fhir/DSTU2/organization.html'>Organisation</a> resource"
+            "description": "OK | <a target='_blank' href='fhir/primarycare-organization.html'>PrimaryCare-Organization</a> resource"
           },
           "400": {
             "$ref": "#definitions/400Response"
@@ -98,7 +98,7 @@
         ],
         "responses": {
           "200": {
-            "description": "OK | <a target='_blank' href='http://hl7.org/fhir/DSTU2/organization.html'>Organisation</a> resource"
+            "description": "OK | <a target='_blank' href='fhir/primarycare-organization.html'>PrimaryCare-Organization</a> resource"
           },
           "400": {
             "$ref": "#definitions/400Response"
@@ -150,7 +150,7 @@
         ],
         "responses": {
           "200": {
-            "description": "OK | <a target='_blank' href='http://hl7.org/fhir/DSTU2/location.html'>Location</a> resource"
+            "description": "OK | <a target='_blank' href='fhir/primarycare-location.html'>PrimaryCare-Location</a> resource"
           },
           "400": {
             "$ref": "#definitions/400Response"
@@ -270,7 +270,7 @@
         ],
         "responses": {
           "200": {
-            "description": "OK | <a target='_blank' href='http://hl7.org/fhir/DSTU2/bundle.html'>Bundle</a> containing zero or more <a target='_blank' href='http://hl7.org/fhir/DSTU2/schedule.html'>Schedule</a> resources"
+            "description": "OK | <a target='_blank' href='http://hl7.org/fhir/DSTU2/bundle.html'>Bundle</a> containing zero or more <a target='_blank' href='fhir/primarycare-schedule.html'>PrimaryCare-Schedule</a> resources"
           },
           "400": {
             "$ref": "#definitions/400Response"
@@ -323,7 +323,7 @@
         ],
         "responses": {
           "200": {
-            "description": "OK | <a target='_blank' href='http://hl7.org/fhir/DSTU2/bundle.html'>Bundle</a> containing zero or more <a target='_blank' href='http://hl7.org/fhir/DSTU2/slot.html'>Slot</a> resources"
+            "description": "OK | <a target='_blank' href='http://hl7.org/fhir/DSTU2/bundle.html'>Bundle</a> containing zero or more <a target='_blank' href='fhir/primarycare-slot.html'>PrimaryCare-Slot</a> resources"
           },
           "400": {
             "$ref": "#definitions/400Response"
@@ -372,7 +372,7 @@
           {
             "name": "body",
             "in": "body",
-            "description": "Patient ID wrapped in <a target='_blank'  href='http://hl7.org/fhir/DSTU2/parameters.html'>Parameters resource</a>.",
+            "description": "Patient ID wrapped in <a target='_blank'  href='http://hl7.org/fhir/DSTU2/parameters.html'>Parameters</a> resource.",
             "required": true,
             "schema": {
               "$ref": "#/definitions/parametersResource"
@@ -436,7 +436,7 @@
           {
             "name": "body",
             "in": "body",
-            "description": "Patient ID wrapped in <a target='_blank'  href='http://hl7.org/fhir/DSTU2/parameters.html'>FHIR Parameters Resource</a>.",
+            "description": "Patient ID wrapped in <a target='_blank'  href='http://hl7.org/fhir/DSTU2/parameters.html'>Parameters</a> Resource.",
             "required": true,
             "schema": {
               "$ref": "#/definitions/parametersResource"
@@ -515,7 +515,7 @@
         ],
         "responses": {
           "200": {
-            "description": "OK | <a target='_blank' href='http://hl7.org/fhir/DSTU2/bundle.html'>Bundle</a> containing zero or more <a target='_blank' href='http://hl7.org/fhir/DSTU2/appointment.html'>Appointment</a> resources"
+            "description": "OK | <a target='_blank' href='http://hl7.org/fhir/DSTU2/bundle.html'>Bundle</a> containing zero or more <a target='_blank' href='fhir/primarycare-appointment.html'>PrimaryCare-Appointment</a> resources"
           },
           "400": {
             "$ref": "#definitions/400Response"
@@ -561,7 +561,7 @@
         ],
         "responses": {
           "200": {
-            "description": "OK | A bundle of <a target='_blank' href='http://hl7.org/fhir/DSTU2/order.html'>Order</a> resources"
+            "description": "OK | A bundle of <a target='_blank' href='fhir/primarycare-task.html'>PrimaryCare-Task</a> resources"
           },
           "400": {
             "$ref": "#definitions/400Response"
@@ -606,7 +606,7 @@
           {
             "name": "body",
             "in": "body",
-            "description": "<a target='_blank'  href='http://hl7.org/fhir/DSTU2/order.html'>Order Resource</a> (with task extensions).",
+            "description": "<a target='_blank' href='fhir/primarycare-task.html'>PrimaryCare-Task</a> Resource.",
             "required": true,
             "schema": {
               "$ref": "#/definitions/taskResource"
@@ -713,7 +713,7 @@
         ],
         "responses": {
           "200": {
-            "description": "OK | A bundle of <a target='_blank' href='http://hl7.org/fhir/DSTU2/order.html'>Order</a> resources"
+            "description": "OK | A bundle of <a target='_blank' href='fhir/primarycare-task.html'>PrimaryCare-Task</a> resources"
           },
           "400": {
             "$ref": "#definitions/400Response"
@@ -762,7 +762,7 @@
         ],
         "responses": {
           "200": {
-            "description": "OK | A bundle of <a target='_blank' href='http://hl7.org/fhir/DSTU2/order.html'>Order</a> resources"
+            "description": "OK | A bundle of <a target='_blank' href='fhir/primarycare-task.html'>PrimaryCare-Task</a> resources"
           },
           "400": {
             "$ref": "#definitions/400Response"
@@ -885,7 +885,7 @@
         ],
         "responses": {
           "200": {
-            "description": "OK | <a target='_blank' href='http://hl7.org/fhir/DSTU2/bundle.html'>Bundle</a> containing zero or more <a target='_blank' href='http://hl7.org/fhir/DSTU2/medicationprescription.html'>MedicationPrescription</a> resources"
+            "description": "OK | <a target='_blank' href='http://hl7.org/fhir/DSTU2/bundle.html'>Bundle</a> containing zero or more <a target='_blank' href='fhir/primarycare-medication.html'>PrimaryCare-Medication</a> resources"
           },
           "400": {
             "$ref": "#definitions/400Response"
@@ -944,7 +944,7 @@
         ],
         "responses": {
           "200": {
-            "description": "OK | <a target='_blank' href='http://hl7.org/fhir/DSTU2/bundle.html'>Bundle</a> containing zero or more <a target='_blank' href='http://hl7.org/fhir/DSTU2/condition.html'>Condition</a> resources"
+            "description": "OK | <a target='_blank' href='http://hl7.org/fhir/DSTU2/bundle.html'>Bundle</a> containing zero or more <a target='_blank' href='fhir/primarycare-condition.html'>PrimaryCare-Condition</a> resources"
           },
           "400": {
             "$ref": "#definitions/400Response"
@@ -994,7 +994,7 @@
           {
             "in": "body",
             "name": "body",
-            "description": "<a target='_blank'  href='http://hl7.org/fhir/DSTU2/condition.html'>Condition resource</a>",
+            "description": "<a target='_blank'  href='fhir/primarycare-condition.html'>PrimaryCare-Condition resource</a>",
             "required": true,
             "schema": {
               "$ref": "#/definitions/conditionResource"
@@ -1059,7 +1059,7 @@
         ],
         "responses": {
           "200": {
-            "description": "OK | <a target='_blank' href='http://hl7.org/fhir/DSTU2/bundle.html'>Bundle</a> containing zero or more <a target='_blank' href='http://hl7.org/fhir/DSTU2/immunization.html'>Immunization</a> resources"
+            "description": "OK | <a target='_blank' href='http://hl7.org/fhir/DSTU2/bundle.html'>Bundle</a> containing zero or more <a target='_blank' href='fhir/primarycare-immunization.html'>PrimaryCare-Immunization</a> resources"
           },
           "400": {
             "$ref": "#definitions/400Response"
@@ -1123,7 +1123,7 @@
         ],
         "responses": {
           "200": {
-            "description": "OK | <a target='_blank' href='http://hl7.org/fhir/DSTU2/bundle.html'>Bundle</a> containing zero or more <a target='_blank' href='http://hl7.org/fhir/DSTU2/allergyintolerance.html'>AllergyIntolerance</a> resources"
+            "description": "OK | <a target='_blank' href='http://hl7.org/fhir/DSTU2/bundle.html'>Bundle</a> containing zero or more <a target='_blank' href='fhir/primarycare-allergy-intolerance.html'>PrimaryCare-AllergyIntolerance</a> resources"
           },
           "400": {
             "$ref": "#definitions/400Response"
@@ -1203,7 +1203,7 @@
         ],
         "responses": {
           "200": {
-            "description": "OK | <a target='_blank' href='http://hl7.org/fhir/DSTU2/bundle.html'>Bundle</a> containing zero or more <a target='_blank' href='http://hl7.org/fhir/DSTU2/person.html'>Person</a> resources and zero or more associated <a target='_blank' href='http://hl7.org/fhir/DSTU2/patient.html'>Patient</a> resources"
+            "description": "OK | <a target='_blank' href='http://hl7.org/fhir/DSTU2/bundle.html'>Bundle</a> containing zero or more <a target='_blank' href='http://hl7.org/fhir/DSTU2/person.html'>Person</a> resources and zero or more associated <a target='_blank' href='fhir/primarycare-patient.html'>PrimaryCare-Patient</a> resources"
           },
           "400": {
             "$ref": "#definitions/400Response"
@@ -1252,7 +1252,7 @@
         ],
         "responses": {
           "200": {
-            "description": "OK | <a target='_blank' href='http://hl7.org/fhir/DSTU2/patient.html'>Patient</a> resource"
+            "description": "OK | <a target='_blank' href='fhir/primarycare-patient.html'>PrimaryCare-Patient</a> resource"
           },
           "400": {
             "$ref": "#definitions/400Response"
@@ -1318,7 +1318,7 @@
         ],
         "responses": {
           "200": {
-            "description": "OK | <a target='_blank' href='http://hl7.org/fhir/DSTU2/bundle.html'>Bundle</a> containing zero or more <a target='_blank' href='http://hl7.org/fhir/DSTU2/person.html'>Patient</a> resources"
+            "description": "OK | <a target='_blank' href='http://hl7.org/fhir/DSTU2/bundle.html'>Bundle</a> containing zero or more <a target='_blank' href='fhir/primarycare-person.html'>PrimaryCare-Patient</a> resources"
           },
           "400": {
             "$ref": "#definitions/400Response"
@@ -1407,46 +1407,46 @@
       "type": "string"
     },
     "400Response": {
-      "description": "Required parameter missing; Invalid parameter | <a target='_blank' href='http://hl7.org/fhir/DSTU2/operationoutcome.html'>OperationOutcome</a> with <a href='http://hl7.org/fhir/DSTU2/issue-type.html'>IssueType</a> of Required element missing; Element value invalid"
+      "description": "Required parameter missing; Invalid parameter | <a target='_blank' href='http://hl7.org/fhir/DSTU2/operationoutcome.html'>OperationOutcome</a> with <a href='http://hl7.org/fhir/DSTU2/valueset-issue-type.html'>IssueType</a> of Required element missing; Element value invalid"
     },
     "401Response": {
-      "description": "Security failed | <a target='_blank' href='http://hl7.org/fhir/DSTU2/operationoutcome.html'>OperationOutcome</a> with <a href='http://hl7.org/fhir/DSTU2/issue-type.html'>IssueType</a> of Unknown user"
+      "description": "Security failed | <a target='_blank' href='http://hl7.org/fhir/DSTU2/operationoutcome.html'>OperationOutcome</a> with <a href='http://hl7.org/fhir/DSTU2/valueset-issue-type.html'>IssueType</a> of Unknown user"
     },
     "403Response": {
-      "description": "No legitimate relationship | <a target='_blank' href='http://hl7.org/fhir/DSTU2/operationoutcome.html'>OperationOutcome</a> with <a href='http://hl7.org/fhir/DSTU2/issue-type.html'>IssueType</a> of Information suppressed"
+      "description": "No legitimate relationship | <a target='_blank' href='http://hl7.org/fhir/DSTU2/operationoutcome.html'>OperationOutcome</a> with <a href='http://hl7.org/fhir/DSTU2/valueset-issue-type.html'>IssueType</a> of Information suppressed"
     },
     "404PatientNotFoundResponse": {
-      "description": "Patient not found | <a target='_blank' href='http://hl7.org/fhir/DSTU2/operationoutcome.html'>OperationOutcome</a> with <a href='http://hl7.org/fhir/DSTU2/issue-type.html'>IssueType</a> of Not found"
+      "description": "Patient not found | <a target='_blank' href='http://hl7.org/fhir/DSTU2/operationoutcome.html'>OperationOutcome</a> with <a href='http://hl7.org/fhir/DSTU2/valueset-issue-type.html'>IssueType</a> of Not found"
     },
     "404OrganizationNotFoundResponse": {
-      "description": "Organization not found | <a target='_blank' href='http://hl7.org/fhir/DSTU2/operationoutcome.html'>OperationOutcome</a> with <a href='http://hl7.org/fhir/DSTU2/issue-type.html'>IssueType</a> of Not found"
+      "description": "Organization not found | <a target='_blank' href='http://hl7.org/fhir/DSTU2/operationoutcome.html'>OperationOutcome</a> with <a href='http://hl7.org/fhir/DSTU2/valueset-issue-type.html'>IssueType</a> of Not found"
     },
     "404LocationNotFoundResponse": {
-      "description": "Location not found | <a target='_blank' href='http://hl7.org/fhir/DSTU2/operationoutcome.html'>OperationOutcome</a> with <a href='http://hl7.org/fhir/DSTU2/issue-type.html'>IssueType</a> of Not found"
+      "description": "Location not found | <a target='_blank' href='http://hl7.org/fhir/DSTU2/operationoutcome.html'>OperationOutcome</a> with <a href='http://hl7.org/fhir/DSTU2/valueset-issue-type.html'>IssueType</a> of Not found"
     },
     "404SlotOrPatientNotFoundResponse": {
-      "description": "Slot not found; Patient not found | <a target='_blank' href='http://hl7.org/fhir/DSTU2/operationoutcome.html'>OperationOutcome</a> with <a href='http://hl7.org/fhir/DSTU2/issue-type.html'>IssueType</a> of Not found"
+      "description": "Slot not found; Patient not found | <a target='_blank' href='http://hl7.org/fhir/DSTU2/operationoutcome.html'>OperationOutcome</a> with <a href='http://hl7.org/fhir/DSTU2/valueset-issue-type.html'>IssueType</a> of Not found"
     },
     "409SlotAlreadyBookedResponse": {
-      "description": "Slot already booked | <a target='_blank' href='http://hl7.org/fhir/DSTU2/operationoutcome.html'>OperationOutcome</a> with <a href='http://hl7.org/fhir/DSTU2/issue-type.html'>IssueType</a> of Edit version conflict"
+      "description": "Slot already booked | <a target='_blank' href='http://hl7.org/fhir/DSTU2/operationoutcome.html'>OperationOutcome</a> with <a href='http://hl7.org/fhir/DSTU2/valueset-issue-type.html'>IssueType</a> of Edit version conflict"
     },
     "409IdentifierInUseResponse": {
-      "description": "Identifier in use | <a target='_blank' href='http://hl7.org/fhir/DSTU2/operationoutcome.html'>OperationOutcome</a> with <a href='http://hl7.org/fhir/DSTU2/issue-type.html'>IssueType</a> of Edit version conflict"
+      "description": "Identifier in use | <a target='_blank' href='http://hl7.org/fhir/DSTU2/operationoutcome.html'>OperationOutcome</a> with <a href='http://hl7.org/fhir/DSTU2/valueset-issue-type.html'>IssueType</a> of Edit version conflict"
     },
     "412SlotAlreadyBookedByThisPatientResponse": {
-      "description": "Slot already booked by this patient | <a target='_blank' href='http://hl7.org/fhir/DSTU2/operationoutcome.html'>OperationOutcome</a> with <a href='http://hl7.org/fhir/DSTU2/issue-type.html'>IssueType</a> of Business rule violation"
+      "description": "Slot already booked by this patient | <a target='_blank' href='http://hl7.org/fhir/DSTU2/operationoutcome.html'>OperationOutcome</a> with <a href='http://hl7.org/fhir/DSTU2/valueset-issue-type.html'>IssueType</a> of Business rule violation"
     },
     "412SlotNotBookedByThisPatientResponse": {
-      "description": "Slot not booked by this patient | <a target='_blank' href='http://hl7.org/fhir/DSTU2/operationoutcome.html'>OperationOutcome</a> with <a href='http://hl7.org/fhir/DSTU2/issue-type.html'>IssueType</a> of Business rule violation"
+      "description": "Slot not booked by this patient | <a target='_blank' href='http://hl7.org/fhir/DSTU2/operationoutcome.html'>OperationOutcome</a> with <a href='http://hl7.org/fhir/DSTU2/valueset-issue-type.html'>IssueType</a> of Business rule violation"
     },
     "500Response": {
-      "description": "Unexpected error | <a target='_blank' href='http://hl7.org/fhir/DSTU2/operationoutcome.html'>OperationOutcome</a> with <a href='http://hl7.org/fhir/DSTU2/issue-type.html'>IssueType</a> of Exception"
+      "description": "Unexpected error | <a target='_blank' href='http://hl7.org/fhir/DSTU2/operationoutcome.html'>OperationOutcome</a> with <a href='http://hl7.org/fhir/DSTU2/valueset-issue-type.html'>IssueType</a> of Exception"
     },
     "502Response": {
-      "description": "Error received from principal system | <a target='_blank' href='http://hl7.org/fhir/DSTU2/operationoutcome.html'>OperationOutcome</a> with <a href='http://hl7.org/fhir/DSTU2/issue-type.html'>IssueType</a> of Exception"
+      "description": "Error received from principal system | <a target='_blank' href='http://hl7.org/fhir/DSTU2/operationoutcome.html'>OperationOutcome</a> with <a href='http://hl7.org/fhir/DSTU2/valueset-issue-type.html'>IssueType</a> of Exception"
     },
     "504Response": {
-      "description": "Connection timeout to principal system | <a target='_blank' href='http://hl7.org/fhir/DSTU2/operationoutcome.html'>OperationOutcome</a> with <a href='http://hl7.org/fhir/DSTU2/issue-type.html'>IssueType</a> of Timeout"
+      "description": "Connection timeout to principal system | <a target='_blank' href='http://hl7.org/fhir/DSTU2/operationoutcome.html'>OperationOutcome</a> with <a href='http://hl7.org/fhir/DSTU2/valueset-issue-type.html'>IssueType</a> of Timeout"
     },
     "parametersResource": {
       "type": "object",

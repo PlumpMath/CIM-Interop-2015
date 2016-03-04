@@ -3,6 +3,12 @@
   "meta": {
     "lastUpdated": "2015-11-01T10:00:00+00:00"
   },
+  "extension": [
+    {
+      "Item": 1,
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm"
+    }
+  ],
   "url": "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-schedule",
   "name": "PrimaryCare-Schedule",
   "display": "Primary Care schedule",

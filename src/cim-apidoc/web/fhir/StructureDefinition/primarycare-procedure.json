@@ -5,7 +5,7 @@
   },
   "extension": [
     {
-      "Item": 0,
+      "Item": 1,
       "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm"
     },
     {
@@ -56,6 +56,31 @@
           {
             "identity": "w5",
             "map": "clinical.general"
+          }
+        ]
+      },
+      {
+        "path": "Procedure.extension",
+        "slicing": {
+          "discriminator": [
+            "url"
+          ],
+          "rules": 2
+        }
+      },
+      {
+        "path": "Procedure.extension",
+        "name": "dateRecorded",
+        "short": "When first entered",
+        "definition": "A date, when the statement was documented.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-daterecorded-extension"
+            ]
           }
         ]
       },
@@ -121,12 +146,141 @@
         ]
       },
       {
+        "path": "Procedure.category",
+        "short": "Classification of the procedure",
+        "definition": "A code that classifies the procedure for searching, sorting and display purposes (e.g. \"Surgical Procedure\").",
+        "min": 0,
+        "max": "0",
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ],
+        "isSummary": true,
+        "binding": {
+          "strength": 3,
+          "description": "A code that classifies a procedure for searching, sorting and display purposes.",
+          "Item": {
+            "reference": "http://hl7.org/fhir/ValueSet/procedure-category"
+          }
+        },
+        "mapping": [
+          {
+            "identity": "rim",
+            "map": ".outboundRelationship[typeCode=\"COMP].target[classCode=\"LIST\", moodCode=\"EVN\"].code"
+          }
+        ]
+      },
+      {
+        "path": "Procedure.code.coding.extension",
+        "slicing": {
+          "discriminator": [
+            "url"
+          ],
+          "rules": 2
+        }
+      },
+      {
+        "path": "Procedure.code.coding.extension",
+        "name": "qualifier",
+        "short": "Coding Qualifier",
+        "definition": "Used to qualify or indicate extra clinical information about a coded value e.g. Laterality, Severity, etc.",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-coding-qualifier-extension"
+            ]
+          }
+        ]
+      },
+      {
+        "path": "Procedure.notPerformed",
+        "short": "True if procedure was not performed as scheduled",
+        "definition": "Set this to true if the record is saying that the procedure was NOT performed.",
+        "min": 0,
+        "max": "0",
+        "type": [
+          {
+            "code": "boolean"
+          }
+        ],
+        "Item": false,
+        "isModifier": true,
+        "mapping": [
+          {
+            "identity": "rim",
+            "map": ".actionNegationInd"
+          }
+        ]
+      },
+      {
+        "path": "Procedure.reasonNotPerformed",
+        "short": "Reason procedure was not performed",
+        "definition": "A code indicating why the procedure was not performed.",
+        "min": 0,
+        "max": "0",
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ],
+        "condition": [
+          "pro-1"
+        ],
+        "binding": {
+          "strength": 3,
+          "description": "A code that identifies the reason a procedure was not performed.",
+          "Item": {
+            "reference": "http://hl7.org/fhir/ValueSet/procedure-not-performed-reason"
+          }
+        },
+        "mapping": [
+          {
+            "identity": "rim",
+            "map": ".reason.Observation.value"
+          }
+        ]
+      },
+      {
+        "path": "Procedure.bodySite",
+        "short": "Target body sites",
+        "definition": "Detailed and structured anatomical location information. Multiple locations are allowed - e.g. multiple punch biopsies of a lesion.",
+        "min": 0,
+        "max": "0",
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ],
+        "isSummary": true,
+        "binding": {
+          "strength": 3,
+          "description": "Codes describing anatomical locations. May include laterality.",
+          "Item": {
+            "reference": "http://hl7.org/fhir/ValueSet/body-site"
+          }
+        },
+        "mapping": [
+          {
+            "identity": "v2",
+            "map": "OBX-20"
+          },
+          {
+            "identity": "rim",
+            "map": ".targetSiteCode"
+          }
+        ]
+      },
+      {
         "path": "Procedure.reason[x]",
         "short": "Reason procedure performed",
         "definition": "The reason why the procedure was performed. This may be due to a Condition, may be coded entity of some type, or may simply be present as text.",
         "comments": "e.g. endoscopy for dilatation and biopsy, combination diagnosis and therapeutic.",
         "min": 0,
-        "max": "1",
+        "max": "0",
         "type": [
           {
             "code": "CodeableConcept"
@@ -202,6 +356,33 @@
         ]
       },
       {
+        "path": "Procedure.performed[x]",
+        "short": "Date the procedure was performed",
+        "definition": "The date(time)/period over which the procedure was performed.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "dateTime"
+          }
+        ],
+        "isSummary": true,
+        "mapping": [
+          {
+            "identity": "v2",
+            "map": "OBR-7"
+          },
+          {
+            "identity": "rim",
+            "map": ".effectiveTime"
+          },
+          {
+            "identity": "w5",
+            "map": "when.done"
+          }
+        ]
+      },
+      {
         "path": "Procedure.encounter",
         "short": "The encounter associated with the procedure",
         "definition": "The encounter during which the procedure was performed.",
@@ -255,12 +436,39 @@
         ]
       },
       {
+        "path": "Procedure.outcome",
+        "short": "The result of procedure",
+        "definition": "The outcome of the procedure - did it resolve reasons for the procedure being performed?",
+        "comments": "If outcome contains narrative text only, it can be captured using the CodeableConcept.text.",
+        "min": 0,
+        "max": "0",
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ],
+        "isSummary": true,
+        "binding": {
+          "strength": 3,
+          "description": "An outcome of a procedure - whether it was resolved or otherwise.",
+          "Item": {
+            "reference": "http://hl7.org/fhir/ValueSet/procedure-outcome"
+          }
+        },
+        "mapping": [
+          {
+            "identity": "rim",
+            "map": ".outboundRelationship[typeCode=OUT].target.text"
+          }
+        ]
+      },
+      {
         "path": "Procedure.report",
         "short": "Any report resulting from the procedure",
         "definition": "This could be a histology result, pathology report, surgical report, etc..",
         "comments": "There could potentially be multiple reports - e.g. if this was a procedure which took multiple biopsies resulting in a number of anatomical pathology reports.",
         "min": 0,
-        "max": "*",
+        "max": "0",
         "type": [
           {
             "code": "Reference",
@@ -277,11 +485,62 @@
         ]
       },
       {
+        "path": "Procedure.complication",
+        "short": "Complication following the procedure",
+        "definition": "Any complications that occurred during the procedure, or in the immediate post-performance period. These are generally tracked separately from the notes, which will typically describe the procedure itself rather than any 'post procedure' issues.",
+        "comments": "If complications are only expressed by the narrative text, they can be captured using the CodeableConcept.text.",
+        "min": 0,
+        "max": "0",
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ],
+        "binding": {
+          "strength": 3,
+          "description": "Codes describing complications that resulted from a procedure.",
+          "Item": {
+            "reference": "http://hl7.org/fhir/ValueSet/condition-code"
+          }
+        },
+        "mapping": [
+          {
+            "identity": "rim",
+            "map": "Need specialization of OUT for this."
+          }
+        ]
+      },
+      {
+        "path": "Procedure.followUp",
+        "short": "Instructions for follow up",
+        "definition": "If the procedure required specific follow up - e.g. removal of sutures. The followup may be represented as a simple note, or could potentially be more complex in which case the CarePlan resource can be used.",
+        "min": 0,
+        "max": "0",
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ],
+        "binding": {
+          "strength": 3,
+          "description": "Specific follow up required for a procedure e.g. removal of sutures.",
+          "Item": {
+            "reference": "http://hl7.org/fhir/ValueSet/procedure-followup"
+          }
+        },
+        "mapping": [
+          {
+            "identity": "rim",
+            "map": ".outboundRelationship[typeCode=COMP].target[classCode=ACT, moodCode=INT].code"
+          }
+        ]
+      },
+      {
         "path": "Procedure.request",
         "short": "A request for this procedure",
         "definition": "A reference to a resource that contains details of the request for this procedure.",
         "min": 0,
-        "max": "1",
+        "max": "0",
         "type": [
           {
             "code": "Reference",
@@ -314,7 +573,7 @@
         "short": "Individual responsible for the annotation",
         "definition": "The individual responsible for making the annotation.",
         "min": 0,
-        "max": "1",
+        "max": "0",
         "type": [
           {
             "code": "Reference",
@@ -351,6 +610,41 @@
         ]
       },
       {
+        "path": "Procedure.notes.time",
+        "short": "When the annotation was made",
+        "definition": "Indicates when this particular annotation was made.",
+        "min": 0,
+        "max": "0",
+        "type": [
+          {
+            "code": "dateTime"
+          }
+        ],
+        "isSummary": true,
+        "mapping": [
+          {
+            "identity": "v2",
+            "map": "N/A"
+          },
+          {
+            "identity": "rim",
+            "map": "Act.effectiveTime"
+          }
+        ]
+      },
+      {
+        "path": "Procedure.focalDevice",
+        "short": "Device changed in procedure",
+        "definition": "A device that is implanted, removed or otherwise manipulated (calibration, battery replacement, fitting a prosthesis, attaching a wound-vac, etc.) as a focal portion of the Procedure.",
+        "min": 0,
+        "max": "0",
+        "type": [
+          {
+            "code": "BackboneElement"
+          }
+        ]
+      },
+      {
         "path": "Procedure.focalDevice.manipulated",
         "short": "Device that was changed",
         "definition": "The device that was manipulated (changed) during the procedure.",
@@ -372,7 +666,7 @@
         "comments": "For devices actually implanted or removed, use Procedure.device.",
         "requirements": "Used for tracking contamination, etc.",
         "min": 0,
-        "max": "*",
+        "max": "0",
         "type": [
           {
             "code": "Reference",

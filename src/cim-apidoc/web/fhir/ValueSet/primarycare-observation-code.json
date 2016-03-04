@@ -1,0 +1,36 @@
+﻿{
+  "id": "primarycare-observation-code",
+  "meta": {
+    "lastUpdated": "2015-11-01T10:00:00"
+  },
+  "extension": [
+    {
+      "Item": 1,
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm"
+    }
+  ],
+  "url": "http://endeavourhealth.org/fhir/ValueSet/primarycare-observation-code",
+  "version": "1.0.2",
+  "name": "PrimaryCare-ObservationCode",
+  "status": "draft",
+  "publisher": "Endeavour Health Charitable Trust",
+  "contact": [
+    {
+      "telecom": [
+        {
+          "system": 4,
+          "value": "http://www.endeavourhealth.org/"
+        }
+      ]
+    }
+  ],
+  "date": "2015-11-01",
+  "description": "This value set includes all SNOMED codes",
+  "compose": {
+    "include": [
+      {
+        "system": "http://snomed.info/sct"
+      }
+    ]
+  }
+}

@@ -3,6 +3,12 @@
   "meta": {
     "lastUpdated": "2015-09-22T11:02:49.724+01:00"
   },
+  "extension": [
+    {
+      "Item": 1,
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm"
+    }
+  ],
   "url": "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-condition-episodelink-extension",
   "name": "PrimaryCare-ConditionEpisodeLink-Extension",
   "display": "Primary Care condition episode link extension",
@@ -150,6 +156,12 @@
             "code": "Reference",
             "profile": [
               "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-observation"
+            ]
+          },
+          {
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-allergy-intolerance"
             ]
           }
         ]

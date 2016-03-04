@@ -5,7 +5,7 @@
   },
   "extension": [
     {
-      "Item": 0,
+      "Item": 1,
       "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm"
     }
   ],
@@ -227,6 +227,215 @@
         ]
       },
       {
+        "path": "AllergyIntolerance.substance",
+        "short": "Substance, (or class) considered to be responsible for risk",
+        "definition": "Identification of a substance, or a class of substances, that is considered to be responsible for the adverse reaction risk.",
+        "comments": "It is strongly recommended that the substance be coded with a terminology, where possible. Plain text should only be used if there is no appropriate terminology available. Additional details about a substance can be specified in the text.",
+        "alias": [
+          "Agent"
+        ],
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ],
+        "isSummary": true,
+        "binding": {
+          "strength": 3,
+          "description": "Type of the substance and Negation codes for reporting no known allergies.",
+          "Item": {
+            "reference": "http://hl7.org/fhir/ValueSet/allergyintolerance-substance-code"
+          }
+        },
+        "mapping": [
+          {
+            "identity": "v2",
+            "map": "AL1-3 / IAM-3"
+          },
+          {
+            "identity": "w5",
+            "map": "what"
+          }
+        ]
+      },
+      {
+        "path": "AllergyIntolerance.substance.coding.extension",
+        "slicing": {
+          "discriminator": [
+            "url"
+          ],
+          "rules": 2
+        }
+      },
+      {
+        "path": "AllergyIntolerance.substance.coding.extension",
+        "name": "qualifier",
+        "short": "Coding Qualifier",
+        "definition": "Used to qualify or indicate extra information about a coded value.",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-coding-qualifier-extension"
+            ]
+          }
+        ]
+      },
+      {
+        "path": "AllergyIntolerance.status",
+        "short": "active | unconfirmed | confirmed | inactive | resolved | refuted | entered-in-error",
+        "definition": "Assertion about certainty associated with the propensity, or potential risk, of a reaction to the identified Substance.",
+        "comments": "Decision support would typically raise alerts for 'Unconfirmed', 'Confirmed', and 'Resolved' and ignore a 'Refuted' reaction. In particular, 'Refuted' may be useful for reconciliation of the Adverse Reaction List. Some implementations may choose to make this field mandatory.",
+        "alias": [
+          "State"
+        ],
+        "min": 0,
+        "max": "0",
+        "type": [
+          {
+            "code": "code"
+          }
+        ],
+        "isModifier": true,
+        "isSummary": true,
+        "binding": {
+          "strength": 0,
+          "description": "Assertion about certainty associated with a propensity, or potential risk, of a reaction to the identified Substance.",
+          "Item": {
+            "reference": "http://hl7.org/fhir/ValueSet/allergy-intolerance-status"
+          }
+        },
+        "mapping": [
+          {
+            "identity": "v2",
+            "map": "IAM-17"
+          },
+          {
+            "identity": "w5",
+            "map": "status"
+          }
+        ]
+      },
+      {
+        "path": "AllergyIntolerance.criticality",
+        "short": "CRITL | CRITH | CRITU",
+        "definition": "Estimate of the potential clinical harm, or seriousness, of the reaction to the identified Substance.",
+        "comments": "The default criticality value for any propensity to an adverse reaction should be 'Low Risk', indicating at the very least a relative contraindication to deliberate or voluntary exposure to the Substance. 'High Risk' is flagged if the clinician has identified a propensity for a more serious or potentially life-threatening reaction, such as anaphylaxis, and implies an absolute contraindication to deliberate or voluntary exposure to the substance. If this element is missing, the criticality is unknown (though it may be known elsewhere).",
+        "alias": [
+          "Severity",
+          "Seriousness",
+          "Contra-indication",
+          "Risk"
+        ],
+        "min": 0,
+        "max": "0",
+        "type": [
+          {
+            "code": "code"
+          }
+        ],
+        "isSummary": true,
+        "binding": {
+          "strength": 0,
+          "description": "Estimate of the potential clinical harm, or seriousness, of a reaction to an identified Substance.",
+          "Item": {
+            "reference": "http://hl7.org/fhir/ValueSet/allergy-intolerance-criticality"
+          }
+        },
+        "mapping": [
+          {
+            "identity": "w5",
+            "map": "grade"
+          }
+        ]
+      },
+      {
+        "path": "AllergyIntolerance.type",
+        "short": "allergy | intolerance - Underlying mechanism (if known)",
+        "definition": "Identification of the underlying physiological mechanism for the reaction risk.",
+        "comments": "Allergic (typically immune-mediated) reactions have been traditionally regarded as an indicator for potential escalation to significant future risk. Contemporary knowledge suggests that some reactions previously thought to be immune-mediated are, in fact, non-immune, but in some cases can still pose a life threatening risk. It is acknowledged that many clinicians may not be in a position to distinguish the mechanism of a particular reaction. Often the term \"allergy\" is used rather generically and may overlap with the use of \"intolerance\" - in practice the boundaries between these two concepts may not be well-defined or understood. This data element is included nevertheless, because many legacy systems have captured this attribute. Immunologic testing may provide supporting evidence for the basis of the reaction and the causative substance, but no tests are 100% sensitive or specific for sensitivity to a particular substance. If, as is commonly the case, it is unclear whether the reaction is due to an allergy or an intolerance, then the type element should be omitted from the resource.",
+        "alias": [
+          "Category",
+          "Class"
+        ],
+        "min": 0,
+        "max": "0",
+        "type": [
+          {
+            "code": "code"
+          }
+        ],
+        "isSummary": true,
+        "binding": {
+          "strength": 0,
+          "description": "Identification of the underlying physiological mechanism for a Reaction Risk.",
+          "Item": {
+            "reference": "http://hl7.org/fhir/ValueSet/allergy-intolerance-type"
+          }
+        },
+        "mapping": [
+          {
+            "identity": "v2",
+            "map": "IAM-9"
+          },
+          {
+            "identity": "w5",
+            "map": "class"
+          }
+        ]
+      },
+      {
+        "path": "AllergyIntolerance.category",
+        "short": "food | medication | environment | other - Category of Substance",
+        "definition": "Category of the identified Substance.",
+        "comments": "This data element has been included because it is currently being captured in some clinical systems. This data can be derived from the Substance where coding systems are used, and is effectively redundant in that situation.",
+        "alias": [
+          "Category",
+          "Type",
+          "Reaction Type",
+          "Class"
+        ],
+        "min": 0,
+        "max": "0",
+        "type": [
+          {
+            "code": "code"
+          }
+        ],
+        "isSummary": true,
+        "binding": {
+          "strength": 0,
+          "description": "Category of an identified Substance.",
+          "Item": {
+            "reference": "http://hl7.org/fhir/ValueSet/allergy-intolerance-category"
+          }
+        },
+        "mapping": [
+          {
+            "identity": "w5",
+            "map": "class"
+          }
+        ]
+      },
+      {
+        "path": "AllergyIntolerance.lastOccurence",
+        "short": "Date(/time) of last known occurrence of a reaction",
+        "definition": "Represents the date and/or time of the last known occurrence of a reaction event.",
+        "comments": "This date may be replicated by one of the Onset of Reaction dates. Where a textual representation of the date of last occurrence is required e.g. 'In Childhood, '10 years ago' the Comment element should be used.",
+        "min": 0,
+        "max": "0",
+        "type": [
+          {
+            "code": "dateTime"
+          }
+        ],
+        "isSummary": true
+      },
+      {
         "path": "AllergyIntolerance.note.author[x]",
         "short": "Individual responsible for the annotation",
         "definition": "The individual responsible for making the annotation.",
@@ -287,6 +496,18 @@
           {
             "identity": "rim",
             "map": "Act.text"
+          }
+        ]
+      },
+      {
+        "path": "AllergyIntolerance.reaction",
+        "short": "Adverse Reaction Events linked to exposure to substance",
+        "definition": "Details about each adverse reaction event linked to exposure to the identified Substance.",
+        "min": 0,
+        "max": "0",
+        "type": [
+          {
+            "code": "BackboneElement"
           }
         ]
       }

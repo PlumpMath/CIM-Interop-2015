@@ -1,5 +1,11 @@
 ﻿{
   "id": "primarycare-milestone-extension",
+  "extension": [
+    {
+      "Item": 1,
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm"
+    }
+  ],
   "url": "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-milestone-extension",
   "name": "PrimaryCare-Milestone-Extension",
   "display": "Primary Care milestone",

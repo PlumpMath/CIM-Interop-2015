@@ -1,0 +1,186 @@
+﻿{
+  "id": "primarycare-coding-qualifier-extension",
+  "meta": {
+    "lastUpdated": "2015-09-22T11:02:49.724+01:00"
+  },
+  "extension": [
+    {
+      "Item": 1,
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm"
+    }
+  ],
+  "url": "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-coding-qualifier-extension",
+  "name": "PrimaryCare-CodingQualifier-Extension",
+  "display": "Primary Care Coding Qualifier extension",
+  "status": "draft",
+  "publisher": "Endeavour Health Charitable Trust",
+  "contact": [
+    {
+      "telecom": [
+        {
+          "system": 4,
+          "value": "http://www.endeavourhealth.org/"
+        }
+      ]
+    }
+  ],
+  "date": "2015-11-01T00:00:00+00:00",
+  "description": "Used to indicate extra information about a coded value e.g. Laterality, Severity, etc.",
+  "fhirVersion": "1.0.1",
+  "kind": 0,
+  "constrainedType": "Extension",
+  "abstract": false,
+  "contextType": 0,
+  "context": [
+    "Condition"
+  ],
+  "base": "http://hl7.org/fhir/StructureDefinition/Extension",
+  "differential": {
+    "element": [
+      {
+        "path": "Extension",
+        "short": "Coding Qualifier",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "Extension"
+          }
+        ]
+      },
+      {
+        "path": "Extension.extension",
+        "slicing": {
+          "discriminator": [
+            "url"
+          ],
+          "rules": 2
+        }
+      },
+      {
+        "path": "Extension.extension",
+        "name": "type",
+        "short": "Qualifier Type",
+        "definition": "The type of qualifier used to indicate extra information about a coded value e.g. Laterality, Severity, etc.",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "Extension"
+          }
+        ]
+      },
+      {
+        "path": "Extension.extension.extension",
+        "slicing": {
+          "discriminator": [
+            "url"
+          ],
+          "rules": 2
+        }
+      },
+      {
+        "path": "Extension.extension.extension",
+        "name": "extension",
+        "min": 0,
+        "max": "0"
+      },
+      {
+        "path": "Extension.extension.url",
+        "type": [
+          {
+            "code": "uri"
+          }
+        ],
+        "Item1": "type"
+      },
+      {
+        "path": "Extension.extension.value[x]",
+        "name": "valueCoding",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "Coding"
+          }
+        ],
+        "binding": {
+          "strength": 3,
+          "Item": "http://endeavourhealth.org/fhir/ValueSet/primarycare-coding-qualifier"
+        }
+      },
+      {
+        "path": "Extension.extension",
+        "name": "value",
+        "short": "Qualifier Value",
+        "comments": "The qualifier value used to indicate extra information about a coded value e.g. Left, Bilateral, Severe, etc.",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "Extension"
+          }
+        ]
+      },
+      {
+        "path": "Extension.extension.extension",
+        "slicing": {
+          "discriminator": [
+            "url"
+          ],
+          "rules": 2
+        }
+      },
+      {
+        "path": "Extension.extension.extension",
+        "name": "extension",
+        "min": 0,
+        "max": "0"
+      },
+      {
+        "path": "Extension.extension.url",
+        "type": [
+          {
+            "code": "uri"
+          }
+        ],
+        "Item1": "value"
+      },
+      {
+        "path": "Extension.extension.value[x]",
+        "name": "valueCoding",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "Coding"
+          }
+        ],
+        "binding": {
+          "strength": 3,
+          "Item": "http://endeavourhealth.org/fhir/ValueSet/primarycare-coding-qualifier"
+        }
+      },
+      {
+        "path": "Extension.url",
+        "representation": [
+          0
+        ],
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "uri"
+          }
+        ],
+        "Item1": "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-coding-qualifier-extension"
+      },
+      {
+        "path": "Extension.value[x]",
+        "min": 0,
+        "max": "0"
+      }
+    ]
+  },
+  "W5TopLevelGroup": ""
+}
