@@ -35,6 +35,7 @@
         "max": "*",
         "type": [
           {
+            "TypeName": "Goal",
             "code": "Goal"
           }
         ],
@@ -71,6 +72,7 @@
         "max": "*",
         "type": [
           {
+            "TypeName": "Extension",
             "code": "Extension",
             "profile": [
               "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-milestone-extension"
@@ -87,6 +89,7 @@
         "max": "1",
         "type": [
           {
+            "TypeName": "Reference",
             "code": "Reference",
             "profile": [
               "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-organization"
@@ -118,18 +121,21 @@
         "max": "1",
         "type": [
           {
+            "TypeName": "Reference",
             "code": "Reference",
             "profile": [
               "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-patient"
             ]
           },
           {
+            "TypeName": "Reference",
             "code": "Reference",
             "profile": [
               "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-practitioner"
             ]
           },
           {
+            "TypeName": "Reference",
             "code": "Reference",
             "profile": [
               "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-related-person"
@@ -153,36 +159,42 @@
         "max": "*",
         "type": [
           {
+            "TypeName": "Reference",
             "code": "Reference",
             "profile": [
               "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-condition"
             ]
           },
           {
+            "TypeName": "Reference",
             "code": "Reference",
             "profile": [
               "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-observation"
             ]
           },
           {
+            "TypeName": "Reference",
             "code": "Reference",
             "profile": [
               "http://hl7.org/fhir/StructureDefinition/MedicationStatement"
             ]
           },
           {
+            "TypeName": "Reference",
             "code": "Reference",
             "profile": [
               "http://hl7.org/fhir/StructureDefinition/NutritionOrder"
             ]
           },
           {
+            "TypeName": "Reference",
             "code": "Reference",
             "profile": [
               "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-procedure-request"
             ]
           },
           {
+            "TypeName": "Reference",
             "code": "Reference",
             "profile": [
               "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-risk-assessment"
@@ -204,24 +216,28 @@
         "max": "1",
         "type": [
           {
+            "TypeName": "Reference",
             "code": "Reference",
             "profile": [
               "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-practitioner"
             ]
           },
           {
+            "TypeName": "Reference",
             "code": "Reference",
             "profile": [
               "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-patient"
             ]
           },
           {
+            "TypeName": "Reference",
             "code": "Reference",
             "profile": [
               "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-related-person"
             ]
           },
           {
+            "TypeName": "string",
             "code": "string"
           }
         ],
@@ -245,9 +261,11 @@
         "max": "1",
         "type": [
           {
+            "TypeName": "CodeableConcept",
             "code": "CodeableConcept"
           },
           {
+            "TypeName": "Reference",
             "code": "Reference",
             "profile": [
               "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-observation"

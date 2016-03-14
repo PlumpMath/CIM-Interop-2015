@@ -34,6 +34,7 @@
         "max": "*",
         "type": [
           {
+            "TypeName": "Order",
             "code": "Order"
           }
         ],
@@ -67,6 +68,7 @@
         "max": "1",
         "type": [
           {
+            "TypeName": "Extension",
             "code": "Extension",
             "profile": [
               "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-task-type-extension"
@@ -82,6 +84,7 @@
         "max": "1",
         "type": [
           {
+            "TypeName": "Extension",
             "code": "Extension",
             "profile": [
               "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-task-status-extension"
@@ -97,6 +100,7 @@
         "max": "1",
         "type": [
           {
+            "TypeName": "Extension",
             "code": "Extension",
             "profile": [
               "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-task-priority-extension"
@@ -113,6 +117,7 @@
         "max": "1",
         "type": [
           {
+            "TypeName": "Reference",
             "code": "Reference",
             "profile": [
               "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-organization"
@@ -147,24 +152,28 @@
         "max": "1",
         "type": [
           {
+            "TypeName": "Reference",
             "code": "Reference",
             "profile": [
               "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-patient"
             ]
           },
           {
+            "TypeName": "Reference",
             "code": "Reference",
             "profile": [
               "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-group"
             ]
           },
           {
+            "TypeName": "Reference",
             "code": "Reference",
             "profile": [
               "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-device"
             ]
           },
           {
+            "TypeName": "Reference",
             "code": "Reference",
             "profile": [
               "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-substance"
@@ -199,12 +208,14 @@
         "max": "1",
         "type": [
           {
+            "TypeName": "Reference",
             "code": "Reference",
             "profile": [
               "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-practitioner"
             ]
           },
           {
+            "TypeName": "Reference",
             "code": "Reference",
             "profile": [
               "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-organization"
@@ -235,18 +246,21 @@
         "max": "1",
         "type": [
           {
+            "TypeName": "Reference",
             "code": "Reference",
             "profile": [
               "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-organization"
             ]
           },
           {
+            "TypeName": "Reference",
             "code": "Reference",
             "profile": [
               "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-device"
             ]
           },
           {
+            "TypeName": "Reference",
             "code": "Reference",
             "profile": [
               "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-practitioner"

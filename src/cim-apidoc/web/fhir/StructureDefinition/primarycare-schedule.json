@@ -44,6 +44,7 @@
         "max": "*",
         "type": [
           {
+            "TypeName": "Schedule",
             "code": "Schedule"
           }
         ],
@@ -75,6 +76,7 @@
         "max": "*",
         "type": [
           {
+            "TypeName": "Extension",
             "code": "Extension",
             "profile": [
               "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-additional-actor-extension"
@@ -91,6 +93,7 @@
         "max": "1",
         "type": [
           {
+            "TypeName": "Reference",
             "code": "Reference",
             "profile": [
               "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-organization"
@@ -121,36 +124,42 @@
         "max": "1",
         "type": [
           {
+            "TypeName": "Reference",
             "code": "Reference",
             "profile": [
               "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-patient"
             ]
           },
           {
+            "TypeName": "Reference",
             "code": "Reference",
             "profile": [
               "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-practitioner"
             ]
           },
           {
+            "TypeName": "Reference",
             "code": "Reference",
             "profile": [
               "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-related-person"
             ]
           },
           {
+            "TypeName": "Reference",
             "code": "Reference",
             "profile": [
               "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-device"
             ]
           },
           {
+            "TypeName": "Reference",
             "code": "Reference",
             "profile": [
               "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-healthcare-service"
             ]
           },
           {
+            "TypeName": "Reference",
             "code": "Reference",
             "profile": [
               "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-location"

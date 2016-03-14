@@ -5,7 +5,7 @@
   },
   "extension": [
     {
-      "Item": 0,
+      "Item": 1,
       "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm"
     }
   ],
@@ -25,7 +25,7 @@
     }
   ],
   "date": "2015-11-01T00:00:00+00:00",
-  "description": "Placeholder",
+  "description": "The findings and interpretation of diagnostic tests performed on patients.",
   "requirements": "To support reporting for any diagnostic report into a clinical data repository.",
   "fhirVersion": "1.0.1",
   "kind": 1,
@@ -51,6 +51,7 @@
         "max": "*",
         "type": [
           {
+            "TypeName": "DiagnosticReport",
             "code": "DiagnosticReport"
           }
         ],
@@ -78,6 +79,7 @@
         "max": "1",
         "type": [
           {
+            "TypeName": "Reference",
             "code": "Reference",
             "profile": [
               "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-organization"
@@ -101,6 +103,41 @@
         ]
       },
       {
+        "path": "DiagnosticReport.code",
+        "short": "Name/Code for this diagnostic report",
+        "definition": "A code or name that describes this diagnostic report.",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "TypeName": "CodeableConcept",
+            "code": "CodeableConcept"
+          }
+        ],
+        "isSummary": true,
+        "binding": {
+          "strength": 2,
+          "description": "Codes that describe Diagnostic Reports.",
+          "Item": {
+            "reference": "http://endeavourhealth.org/fhir/ValueSet/primarycare-report-codes"
+          }
+        },
+        "mapping": [
+          {
+            "identity": "v2",
+            "map": "OBR-4 (HL7 v2 doesn't provide an easy way to indicate both the ordered test and the performed panel)"
+          },
+          {
+            "identity": "rim",
+            "map": "code"
+          },
+          {
+            "identity": "w5",
+            "map": "what"
+          }
+        ]
+      },
+      {
         "path": "DiagnosticReport.subject",
         "short": "The subject of the report, usually, but not always, the patient",
         "definition": "The subject of the report. Usually, but not always, this is a patient. However diagnostic services also perform analyses on specimens collected from a variety of other sources.",
@@ -112,27 +149,10 @@
         "max": "1",
         "type": [
           {
+            "TypeName": "Reference",
             "code": "Reference",
             "profile": [
               "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-patient"
-            ]
-          },
-          {
-            "code": "Reference",
-            "profile": [
-              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-group"
-            ]
-          },
-          {
-            "code": "Reference",
-            "profile": [
-              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-device"
-            ]
-          },
-          {
-            "code": "Reference",
-            "profile": [
-              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-location"
             ]
           }
         ],
@@ -160,6 +180,7 @@
         "max": "1",
         "type": [
           {
+            "TypeName": "Reference",
             "code": "Reference",
             "profile": [
               "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-encounter"
@@ -199,12 +220,14 @@
         "max": "1",
         "type": [
           {
+            "TypeName": "Reference",
             "code": "Reference",
             "profile": [
               "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-practitioner"
             ]
           },
           {
+            "TypeName": "Reference",
             "code": "Reference",
             "profile": [
               "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-organization"
@@ -237,21 +260,10 @@
         "max": "*",
         "type": [
           {
+            "TypeName": "Reference",
             "code": "Reference",
             "profile": [
               "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-diagnostic-order"
-            ]
-          },
-          {
-            "code": "Reference",
-            "profile": [
-              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-procedure-request"
-            ]
-          },
-          {
-            "code": "Reference",
-            "profile": [
-              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-referral-request"
             ]
           }
         ],
@@ -276,6 +288,7 @@
         "max": "*",
         "type": [
           {
+            "TypeName": "Reference",
             "code": "Reference",
             "profile": [
               "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-specimen"
@@ -313,6 +326,7 @@
         "max": "*",
         "type": [
           {
+            "TypeName": "Reference",
             "code": "Reference",
             "profile": [
               "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-observation"
@@ -327,6 +341,91 @@
           {
             "identity": "rim",
             "map": "outboundRelationship[typeCode=COMP].target"
+          }
+        ]
+      },
+      {
+        "path": "DiagnosticReport.imagingStudy",
+        "short": "Reference to full details of imaging associated with the diagnostic report",
+        "definition": "One or more links to full details of any imaging performed during the diagnostic investigation. Typically, this is imaging performed by DICOM enabled modalities, but this is not required. A fully enabled PACS viewer can use this information to provide views of the source images.",
+        "comments": "ImagingStudy and ImageObjectStudy and the image element are somewhat overlapping - typically, the list of image references in the image element will also be found in one of the imaging study resources. However each caters to different types of displays for different types of purposes. Neither, either, or both may be provided.",
+        "min": 0,
+        "max": "0",
+        "type": [
+          {
+            "TypeName": "Reference",
+            "code": "Reference",
+            "profile": [
+              "http://hl7.org/fhir/StructureDefinition/ImagingStudy"
+            ]
+          },
+          {
+            "TypeName": "Reference",
+            "code": "Reference",
+            "profile": [
+              "http://hl7.org/fhir/StructureDefinition/ImagingObjectSelection"
+            ]
+          }
+        ],
+        "mapping": [
+          {
+            "identity": "rim",
+            "map": "outboundRelationship[typeCode=COMP].target[classsCode=DGIMG, moodCode=EVN]"
+          }
+        ]
+      },
+      {
+        "path": "DiagnosticReport.image",
+        "short": "Key images associated with this report",
+        "definition": "A list of key images associated with this report. The images are generally created during the diagnostic process, and may be directly of the patient, or of treated specimens (i.e. slides of interest).",
+        "requirements": "Many diagnostic services include images in the report as part of their service.",
+        "alias": [
+          "DICOM",
+          "Slides",
+          "Scans"
+        ],
+        "min": 0,
+        "max": "0",
+        "type": [
+          {
+            "TypeName": "BackboneElement",
+            "code": "BackboneElement"
+          }
+        ],
+        "isSummary": true,
+        "mapping": [
+          {
+            "identity": "v2",
+            "map": "OBX?"
+          },
+          {
+            "identity": "rim",
+            "map": "outboundRelationship[typeCode=COMP].target"
+          }
+        ]
+      },
+      {
+        "path": "DiagnosticReport.presentedForm",
+        "short": "Entire report as issued",
+        "definition": "Rich text representation of the entire result as issued by the diagnostic service. Multiple formats are allowed but they SHALL be semantically equivalent.",
+        "comments": "\"application/pdf\" is recommended as the most reliable and interoperable in this context.",
+        "requirements": "Gives Laboratory the ability to provide its own fully formatted report for clinical fidelity.",
+        "min": 0,
+        "max": "0",
+        "type": [
+          {
+            "TypeName": "Attachment",
+            "code": "Attachment"
+          }
+        ],
+        "mapping": [
+          {
+            "identity": "v2",
+            "map": "OBX"
+          },
+          {
+            "identity": "rim",
+            "map": "text (type=ED)"
           }
         ]
       }

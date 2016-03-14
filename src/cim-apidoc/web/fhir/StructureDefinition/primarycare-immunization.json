@@ -1,0 +1,390 @@
+﻿{
+  "id": "primarycare-immunization",
+  "meta": {
+    "lastUpdated": "2015-09-22T11:02:49.724+01:00"
+  },
+  "extension": [
+    {
+      "Item": 1,
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm"
+    }
+  ],
+  "url": "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-immunization",
+  "name": "PrimaryCare-Immunization",
+  "display": "Primary Care immunization",
+  "status": "draft",
+  "publisher": "Endeavour Health Charitable Trust",
+  "contact": [
+    {
+      "telecom": [
+        {
+          "system": 4,
+          "value": "http://www.endeavourhealth.org/"
+        }
+      ]
+    }
+  ],
+  "date": "2015-11-01T00:00:00+00:00",
+  "description": "Describes the event of a patient being administered a vaccination or a record of a vaccination as reported by a patient, a clinician or another party and may include vaccine reaction information and what vaccination protocol was followed.",
+  "fhirVersion": "1.0.1",
+  "mapping": [
+    {
+      "identity": "v2",
+      "uri": "http://hl7.org/v2",
+      "name": "HL7 v2"
+    },
+    {
+      "identity": "rim",
+      "uri": "http://hl7.org/v3",
+      "name": "RIM"
+    },
+    {
+      "identity": "w5",
+      "uri": "http://hl7.org/fhir/w5",
+      "name": "W5 Mapping"
+    },
+    {
+      "identity": "cda",
+      "uri": "http://hl7.org/v3/cda",
+      "name": "CDA (R2)"
+    }
+  ],
+  "kind": 1,
+  "constrainedType": "Immunization",
+  "abstract": false,
+  "base": "http://hl7.org/fhir/StructureDefinition/Immunization",
+  "differential": {
+    "element": [
+      {
+        "path": "Immunization",
+        "short": "Immunization event information",
+        "definition": "Describes the event of a patient being administered a vaccination or a record of a vaccination as reported by a patient, a clinician or another party and may include vaccine reaction information and what vaccination protocol was followed.",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "TypeName": "Immunization",
+            "code": "Immunization"
+          }
+        ],
+        "mapping": [
+          {
+            "identity": "v2",
+            "map": "VXU_V04"
+          },
+          {
+            "identity": "rim",
+            "map": "SubstanceAdministration"
+          },
+          {
+            "identity": "w5",
+            "map": "clinical.medication"
+          }
+        ]
+      },
+      {
+        "path": "Immunization.patient",
+        "short": "Who was immunized",
+        "definition": "The patient who either received or did not receive the immunization.",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "TypeName": "Reference",
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-patient"
+            ]
+          }
+        ],
+        "mapping": [
+          {
+            "identity": "v2",
+            "map": "PID-3"
+          },
+          {
+            "identity": "rim",
+            "map": ".partipication[ttypeCode=].role"
+          },
+          {
+            "identity": "w5",
+            "map": "who.focus"
+          }
+        ]
+      },
+      {
+        "path": "Immunization.performer",
+        "short": "Who administered vaccine",
+        "definition": "Clinician who administered the vaccine.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "TypeName": "Reference",
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-practitioner"
+            ]
+          }
+        ],
+        "mapping": [
+          {
+            "identity": "v2",
+            "map": "RXA-10"
+          },
+          {
+            "identity": "rim",
+            "map": ".participation[typeCode=PRF].COCT_MT090102UV"
+          },
+          {
+            "identity": "cda",
+            "map": "ClinicalDocument/component/StructuredBody/component/section/entry/substanceAdministration/performer/assignedEntity/assignedPerson/name"
+          },
+          {
+            "identity": "w5",
+            "map": "who.actor"
+          }
+        ]
+      },
+      {
+        "path": "Immunization.requester",
+        "short": "Who ordered vaccination",
+        "definition": "Clinician who ordered the vaccination.",
+        "comments": "Other participants - delegate to Provenance resource.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "TypeName": "Reference",
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-practitioner"
+            ]
+          }
+        ],
+        "mapping": [
+          {
+            "identity": "v2",
+            "map": "ORC-12"
+          },
+          {
+            "identity": "rim",
+            "map": "outboundRelationship.target[classCode=SBADM].participation[typeCode=AUT].COCT_MT090102UV"
+          },
+          {
+            "identity": "w5",
+            "map": "who.cause"
+          }
+        ]
+      },
+      {
+        "path": "Immunization.encounter",
+        "short": "Encounter administered as part of",
+        "definition": "The visit or admission or other contact between patient and health care provider the immunization was performed as part of.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "TypeName": "Reference",
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-encounter"
+            ]
+          }
+        ],
+        "mapping": [
+          {
+            "identity": "v2",
+            "map": "PV1-19"
+          },
+          {
+            "identity": "rim",
+            "map": "component->EncounterEvent"
+          },
+          {
+            "identity": "w5",
+            "map": "context"
+          }
+        ]
+      },
+      {
+        "path": "Immunization.manufacturer",
+        "short": "Vaccine manufacturer",
+        "definition": "Name of vaccine manufacturer.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "TypeName": "Reference",
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-organization"
+            ]
+          }
+        ],
+        "mapping": [
+          {
+            "identity": "v2",
+            "map": "RXA-17"
+          },
+          {
+            "identity": "rim",
+            "map": ".participation[typeCode=CSM].role[classCode=INST].scopedRole.scoper[classCode=ORG]"
+          },
+          {
+            "identity": "cda",
+            "map": "ClinicalDocument/component/StructuredBody/component/section/entry/substanceAdministration/consumable/manfacturedProduct/manufacuturerOrganization/name"
+          }
+        ]
+      },
+      {
+        "path": "Immunization.location",
+        "short": "Where vaccination occurred",
+        "definition": "The service delivery location where the vaccine administration occurred.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "TypeName": "Reference",
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-location"
+            ]
+          }
+        ],
+        "mapping": [
+          {
+            "identity": "v2",
+            "map": "RXA-27  (or RXA-11, deprecated as of v2.7)"
+          },
+          {
+            "identity": "rim",
+            "map": ".participation[typeCode=LOC].COCT_MT240000UV"
+          },
+          {
+            "identity": "w5",
+            "map": "where"
+          }
+        ]
+      },
+      {
+        "path": "Immunization.note.author[x]",
+        "short": "Individual responsible for the annotation",
+        "definition": "The individual responsible for making the annotation.",
+        "min": 0,
+        "max": "0",
+        "type": [
+          {
+            "TypeName": "Reference",
+            "code": "Reference",
+            "profile": [
+              "http://hl7.org/fhir/StructureDefinition/Practitioner"
+            ]
+          },
+          {
+            "TypeName": "Reference",
+            "code": "Reference",
+            "profile": [
+              "http://hl7.org/fhir/StructureDefinition/Patient"
+            ]
+          },
+          {
+            "TypeName": "Reference",
+            "code": "Reference",
+            "profile": [
+              "http://hl7.org/fhir/StructureDefinition/RelatedPerson"
+            ]
+          },
+          {
+            "TypeName": "string",
+            "code": "string"
+          }
+        ],
+        "isSummary": true,
+        "mapping": [
+          {
+            "identity": "v2",
+            "map": "N/A"
+          },
+          {
+            "identity": "rim",
+            "map": "Act.participant[typeCode=AUT].role"
+          }
+        ]
+      },
+      {
+        "path": "Immunization.note.time",
+        "short": "When the annotation was made",
+        "definition": "Indicates when this particular annotation was made.",
+        "min": 0,
+        "max": "0",
+        "type": [
+          {
+            "TypeName": "dateTime",
+            "code": "dateTime"
+          }
+        ],
+        "isSummary": true,
+        "mapping": [
+          {
+            "identity": "v2",
+            "map": "N/A"
+          },
+          {
+            "identity": "rim",
+            "map": "Act.effectiveTime"
+          }
+        ]
+      },
+      {
+        "path": "Immunization.reaction.detail",
+        "short": "Additional information on reaction",
+        "definition": "Details of the reaction.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "TypeName": "Reference",
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-observation"
+            ]
+          }
+        ],
+        "mapping": [
+          {
+            "identity": "v2",
+            "map": "OBX-5"
+          },
+          {
+            "identity": "rim",
+            "map": ".value"
+          }
+        ]
+      },
+      {
+        "path": "Immunization.vaccinationProtocol.authority",
+        "short": "Who is responsible for protocol",
+        "definition": "Indicates the authority who published the protocol.  E.g. ACIP.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "TypeName": "Reference",
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-organization"
+            ]
+          }
+        ],
+        "mapping": [
+          {
+            "identity": "rim",
+            "map": "outboundRelationship[typeCode=INST].target[classCode=SBADM].inboundRelationship[typeCode=COMP].source[classCode=SBADM].participation[typeCode=AUT].COCT_MT090200UV"
+          }
+        ]
+      }
+    ]
+  },
+  "W5TopLevelGroup": "Clinical"
+}

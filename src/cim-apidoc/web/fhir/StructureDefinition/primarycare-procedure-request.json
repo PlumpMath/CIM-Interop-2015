@@ -5,7 +5,7 @@
   },
   "extension": [
     {
-      "Item": 0,
+      "Item": 1,
       "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm"
     }
   ],
@@ -25,7 +25,7 @@
     }
   ],
   "date": "2015-11-01T00:00:00+00:00",
-  "description": "Placeholder",
+  "description": "A request for a procedure to be performed. May be a proposal or an order.",
   "fhirVersion": "1.0.1",
   "kind": 1,
   "constrainedType": "ProcedureRequest",
@@ -41,6 +41,7 @@
         "max": "*",
         "type": [
           {
+            "TypeName": "ProcedureRequest",
             "code": "ProcedureRequest"
           }
         ],
@@ -61,6 +62,7 @@
         "max": "1",
         "type": [
           {
+            "TypeName": "Reference",
             "code": "Reference",
             "profile": [
               "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-organization"
@@ -91,15 +93,10 @@
         "max": "1",
         "type": [
           {
+            "TypeName": "Reference",
             "code": "Reference",
             "profile": [
               "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-patient"
-            ]
-          },
-          {
-            "code": "Reference",
-            "profile": [
-              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-group"
             ]
           }
         ],
@@ -116,6 +113,32 @@
         ]
       },
       {
+        "path": "ProcedureRequest.code.coding.extension",
+        "slicing": {
+          "discriminator": [
+            "url"
+          ],
+          "rules": 2
+        }
+      },
+      {
+        "path": "ProcedureRequest.code.coding.extension",
+        "name": "qualifier",
+        "short": "Coding Qualifier",
+        "definition": "Used to qualify or indicate extra clinical information about a coded value.",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "TypeName": "Extension",
+            "code": "Extension",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-coding-qualifier-extension"
+            ]
+          }
+        ]
+      },
+      {
         "path": "ProcedureRequest.reason[x]",
         "short": "Why procedure should occur",
         "definition": "The reason why the procedure is being proposed or ordered. This procedure request may be motivated by a Condition for instance.",
@@ -123,9 +146,11 @@
         "max": "1",
         "type": [
           {
+            "TypeName": "CodeableConcept",
             "code": "CodeableConcept"
           },
           {
+            "TypeName": "Reference",
             "code": "Reference",
             "profile": [
               "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-condition"
@@ -155,6 +180,7 @@
         "max": "1",
         "type": [
           {
+            "TypeName": "Reference",
             "code": "Reference",
             "profile": [
               "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-encounter"
@@ -181,24 +207,28 @@
         "max": "1",
         "type": [
           {
+            "TypeName": "Reference",
             "code": "Reference",
             "profile": [
               "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-practitioner"
             ]
           },
           {
+            "TypeName": "Reference",
             "code": "Reference",
             "profile": [
               "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-organization"
             ]
           },
           {
+            "TypeName": "Reference",
             "code": "Reference",
             "profile": [
               "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-patient"
             ]
           },
           {
+            "TypeName": "Reference",
             "code": "Reference",
             "profile": [
               "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-related-person"
@@ -221,24 +251,28 @@
         "max": "1",
         "type": [
           {
+            "TypeName": "Reference",
             "code": "Reference",
             "profile": [
               "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-practitioner"
             ]
           },
           {
+            "TypeName": "Reference",
             "code": "Reference",
             "profile": [
               "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-patient"
             ]
           },
           {
+            "TypeName": "Reference",
             "code": "Reference",
             "profile": [
               "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-related-person"
             ]
           },
           {
+            "TypeName": "string",
             "code": "string"
           }
         ],
@@ -262,27 +296,24 @@
         "max": "1",
         "type": [
           {
+            "TypeName": "Reference",
             "code": "Reference",
             "profile": [
               "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-practitioner"
             ]
           },
           {
+            "TypeName": "Reference",
             "code": "Reference",
             "profile": [
               "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-patient"
             ]
           },
           {
+            "TypeName": "Reference",
             "code": "Reference",
             "profile": [
               "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-related-person"
-            ]
-          },
-          {
-            "code": "Reference",
-            "profile": [
-              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-device"
             ]
           }
         ],

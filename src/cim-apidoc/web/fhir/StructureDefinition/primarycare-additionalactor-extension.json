@@ -44,6 +44,7 @@
         "max": "*",
         "type": [
           {
+            "TypeName": "Element",
             "code": "Element"
           }
         ]
@@ -57,6 +58,7 @@
         "max": "1",
         "type": [
           {
+            "TypeName": "uri",
             "code": "uri"
           }
         ],
@@ -68,36 +70,42 @@
         "max": "1",
         "type": [
           {
+            "TypeName": "Reference",
             "code": "Reference",
             "profile": [
               "http://hl7.org/fhir/StructureDefinition/Patient"
             ]
           },
           {
+            "TypeName": "Reference",
             "code": "Reference",
             "profile": [
               "http://hl7.org/fhir/StructureDefinition/Practitioner"
             ]
           },
           {
+            "TypeName": "Reference",
             "code": "Reference",
             "profile": [
               "http://hl7.org/fhir/StructureDefinition/RelatedPerson"
             ]
           },
           {
+            "TypeName": "Reference",
             "code": "Reference",
             "profile": [
               "http://hl7.org/fhir/StructureDefinition/Device"
             ]
           },
           {
+            "TypeName": "Reference",
             "code": "Reference",
             "profile": [
               "http://hl7.org/fhir/StructureDefinition/HealthcareService"
             ]
           },
           {
+            "TypeName": "Reference",
             "code": "Reference",
             "profile": [
               "http://hl7.org/fhir/StructureDefinition/Location"

@@ -1,6 +1,7 @@
-﻿<html>
+﻿<!DOCTYPE HTML>
+<html>
     <head>
-        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+        <meta charset="UTF-8">
         <meta http-equiv="refresh" content="1;url=../primarycare-condition-lastreviewed-extension.extension.html">
         <script type="text/javascript">
              window.location.href = "../primarycare-condition-lastreviewed-extension.extension.html"

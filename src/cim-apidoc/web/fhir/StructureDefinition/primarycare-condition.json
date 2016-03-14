@@ -40,6 +40,7 @@
         "max": "*",
         "type": [
           {
+            "TypeName": "Condition",
             "code": "Condition"
           }
         ],
@@ -77,6 +78,7 @@
         "max": "1",
         "type": [
           {
+            "TypeName": "Extension",
             "code": "Extension",
             "profile": [
               "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-condition-significance-extension"
@@ -93,6 +95,7 @@
         "max": "1",
         "type": [
           {
+            "TypeName": "Extension",
             "code": "Extension",
             "profile": [
               "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-condition-expectedduration-extension"
@@ -109,6 +112,7 @@
         "max": "1",
         "type": [
           {
+            "TypeName": "Extension",
             "code": "Extension",
             "profile": [
               "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-condition-lastreviewed-extension"
@@ -125,6 +129,7 @@
         "max": "*",
         "type": [
           {
+            "TypeName": "Extension",
             "code": "Extension",
             "profile": [
               "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-condition-episodelink-extension"
@@ -141,9 +146,27 @@
         "max": "*",
         "type": [
           {
+            "TypeName": "Extension",
             "code": "Extension",
             "profile": [
               "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-condition-associated-extension"
+            ]
+          }
+        ]
+      },
+      {
+        "path": "Condition.extension",
+        "name": "related",
+        "short": "Related condition",
+        "definition": "A reference to another condition (target) whose relationship is defined by the relationship type code.",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "TypeName": "Extension",
+            "code": "Extension",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-condition-related-extension"
             ]
           }
         ]
@@ -157,6 +180,7 @@
         "max": "1",
         "type": [
           {
+            "TypeName": "Reference",
             "code": "Reference",
             "profile": [
               "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-organization"
@@ -187,6 +211,7 @@
         "max": "1",
         "type": [
           {
+            "TypeName": "Reference",
             "code": "Reference",
             "profile": [
               "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-patient"
@@ -218,6 +243,7 @@
         "max": "1",
         "type": [
           {
+            "TypeName": "Reference",
             "code": "Reference",
             "profile": [
               "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-encounter"
@@ -248,12 +274,14 @@
         "max": "1",
         "type": [
           {
+            "TypeName": "Reference",
             "code": "Reference",
             "profile": [
               "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-practitioner"
             ]
           },
           {
+            "TypeName": "Reference",
             "code": "Reference",
             "profile": [
               "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-patient"
@@ -294,45 +322,11 @@
         "max": "*",
         "type": [
           {
+            "TypeName": "Extension",
             "code": "Extension",
             "profile": [
               "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-coding-qualifier-extension"
             ]
-          }
-        ]
-      },
-      {
-        "path": "Condition.category",
-        "short": "complaint | symptom | finding | diagnosis",
-        "definition": "A category assigned to the condition.",
-        "comments": "The categorization is often highly contextual and may appear poorly differentiated or not very useful in other contexts.",
-        "min": 0,
-        "max": "0",
-        "type": [
-          {
-            "code": "CodeableConcept"
-          }
-        ],
-        "isSummary": true,
-        "binding": {
-          "strength": 2,
-          "description": "A category assigned to the condition.",
-          "Item": {
-            "reference": "http://hl7.org/fhir/ValueSet/condition-category"
-          }
-        },
-        "mapping": [
-          {
-            "identity": "v2",
-            "map": "'problem' if from PRB-3. 'diagnosis' if from DG1 segment in PV1 message"
-          },
-          {
-            "identity": "rim",
-            "map": ".code"
-          },
-          {
-            "identity": "w5",
-            "map": "class"
           }
         ]
       },
@@ -344,6 +338,7 @@
         "max": "1",
         "type": [
           {
+            "TypeName": "code",
             "code": "code"
           }
         ],
@@ -376,9 +371,11 @@
         "max": "1",
         "type": [
           {
+            "TypeName": "dateTime",
             "code": "dateTime"
           },
           {
+            "TypeName": "Quantity",
             "code": "Quantity",
             "profile": [
               "http://hl7.org/fhir/StructureDefinition/Age"
@@ -410,15 +407,18 @@
         "max": "1",
         "type": [
           {
+            "TypeName": "dateTime",
             "code": "dateTime"
           },
           {
+            "TypeName": "Quantity",
             "code": "Quantity",
             "profile": [
               "http://hl7.org/fhir/StructureDefinition/Age"
             ]
           },
           {
+            "TypeName": "boolean",
             "code": "boolean"
           }
         ],
@@ -442,6 +442,7 @@
         "max": "0",
         "type": [
           {
+            "TypeName": "BackboneElement",
             "code": "BackboneElement"
           }
         ],
@@ -461,18 +462,21 @@
         "max": "*",
         "type": [
           {
+            "TypeName": "Reference",
             "code": "Reference",
             "profile": [
               "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-clinical-impression"
             ]
           },
           {
+            "TypeName": "Reference",
             "code": "Reference",
             "profile": [
               "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-diagnostic-report"
             ]
           },
           {
+            "TypeName": "Reference",
             "code": "Reference",
             "profile": [
               "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-observation"
@@ -499,6 +503,7 @@
         "max": "0",
         "type": [
           {
+            "TypeName": "BackboneElement",
             "code": "BackboneElement"
           }
         ],
@@ -516,9 +521,10 @@
         "definition": "The anatomical location where this condition manifests itself.",
         "comments": "May be a summary code, or a reference to a very precise definition of the location, or both.",
         "min": 0,
-        "max": "0",
+        "max": "*",
         "type": [
           {
+            "TypeName": "CodeableConcept",
             "code": "CodeableConcept"
           }
         ],

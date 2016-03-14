@@ -5,7 +5,7 @@
   },
   "extension": [
     {
-      "Item": 0,
+      "Item": 1,
       "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm"
     }
   ],
@@ -25,7 +25,7 @@
     }
   ],
   "date": "2015-11-01T00:00:00+00:00",
-  "description": "Placeholder",
+  "description": "Used to record and send details about a request for referral service or transfer of a patient to the care of another provider or provider organisation.",
   "fhirVersion": "1.0.1",
   "kind": 1,
   "constrainedType": "ReferralRequest",
@@ -44,6 +44,7 @@
         "max": "*",
         "type": [
           {
+            "TypeName": "ReferralRequest",
             "code": "ReferralRequest"
           }
         ],
@@ -55,6 +56,20 @@
         ]
       },
       {
+        "path": "ReferralRequest.identifier",
+        "slicing": {
+          "discriminator": [
+            "system"
+          ],
+          "rules": 2
+        },
+        "short": "Business identifier",
+        "definition": "Business identifier that uniquely identifies the referral/care transfer request instance.",
+        "min": 0,
+        "max": "*",
+        "isModifier": false
+      },
+      {
         "path": "ReferralRequest.identifier.assigner",
         "short": "Organization that issued id (may be just text)",
         "definition": "Organization that issued/manages the identifier.",
@@ -63,9 +78,223 @@
         "max": "1",
         "type": [
           {
+            "TypeName": "Reference",
             "code": "Reference",
             "profile": [
               "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-organization"
+            ]
+          }
+        ],
+        "isSummary": true,
+        "mapping": [
+          {
+            "identity": "v2",
+            "map": "CX.4 / (CX.4,CX.9,CX.10)"
+          },
+          {
+            "identity": "rim",
+            "map": "II.assigningAuthorityName but note that this is an improper use by the definition of the field.  Also Role.scoper"
+          },
+          {
+            "identity": "servd",
+            "map": "./IdentifierIssuingAuthority"
+          }
+        ]
+      },
+      {
+        "path": "ReferralRequest.identifier",
+        "name": "UBRN",
+        "short": "Unique Booking Reference Number",
+        "definition": "The unique booking reference number assigned by the Choose and Book system when a patient accepts an appointment offer.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "TypeName": "Identifier",
+            "code": "Identifier"
+          }
+        ],
+        "isModifier": false,
+        "mapping": [
+          {
+            "identity": "v2",
+            "map": "RF1-6 / RF1-11"
+          },
+          {
+            "identity": "w5",
+            "map": "id"
+          }
+        ]
+      },
+      {
+        "path": "ReferralRequest.identifier.use",
+        "short": "usual | official | temp | secondary (If known)",
+        "definition": "The purpose of this identifier.",
+        "comments": "This is labeled as \"Is Modifier\" because applications should not mistake a temporary id for a permanent one. Applications can assume that an identifier is permanent unless it explicitly says that it is temporary.",
+        "requirements": "Allows the appropriate identifier for a particular context of use to be selected from among a set of identifiers.",
+        "min": 0,
+        "max": "0",
+        "type": [
+          {
+            "TypeName": "code",
+            "code": "code"
+          }
+        ],
+        "isModifier": true,
+        "isSummary": true,
+        "binding": {
+          "strength": 0,
+          "description": "Identifies the purpose for this identifier, if known .",
+          "Item": {
+            "reference": "http://hl7.org/fhir/ValueSet/identifier-use"
+          }
+        },
+        "mapping": [
+          {
+            "identity": "v2",
+            "map": "N/A"
+          },
+          {
+            "identity": "rim",
+            "map": "Role.code or implied by context"
+          }
+        ]
+      },
+      {
+        "path": "ReferralRequest.identifier.type",
+        "short": "Description of identifier",
+        "definition": "A coded type for the identifier that can be used to determine which identifier to use for a specific purpose.",
+        "comments": "This element deals only with general categories of identifiers.  It SHOULD not be used for codes that correspond 1..1 with the Identifier.system. Some identifiers may fall into multiple categories due to common usage.   Where the system is known, a type is unnecessary because the type is always part of the system definition. However systems often need to handle identifiers where the system is not known. There is not a 1:1 relationship between type and system, since many different systems have the same type.",
+        "requirements": "Allows users to make use of identifiers when the identifier system is not known.",
+        "min": 0,
+        "max": "0",
+        "type": [
+          {
+            "TypeName": "CodeableConcept",
+            "code": "CodeableConcept"
+          }
+        ],
+        "isSummary": true,
+        "binding": {
+          "strength": 1,
+          "description": "A coded type for an identifier that can be used to determine which identifier to use for a specific purpose.",
+          "Item": {
+            "reference": "http://hl7.org/fhir/ValueSet/identifier-type"
+          }
+        },
+        "mapping": [
+          {
+            "identity": "v2",
+            "map": "CX.5"
+          },
+          {
+            "identity": "rim",
+            "map": "Role.code or implied by context"
+          }
+        ]
+      },
+      {
+        "path": "ReferralRequest.identifier.system",
+        "short": "The namespace for the identifier",
+        "definition": "Establishes the namespace in which set of possible id values is unique.",
+        "requirements": "There are many sequences of identifiers.  To perform matching, we need to know what sequence we're dealing with. The system identifies a particular sequence or set of unique identifiers.",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "TypeName": "uri",
+            "code": "uri"
+          }
+        ],
+        "Item1": "http://endeavourhealth.org/fhir/identifier/ubrn",
+        "Item3": "http://www.acme.com/identifiers/patient or urn:ietf:rfc:3986 if the Identifier.value itself is a full uri",
+        "isSummary": true,
+        "mapping": [
+          {
+            "identity": "v2",
+            "map": "CX.4 / EI-2-4"
+          },
+          {
+            "identity": "rim",
+            "map": "II.root or Role.id.root"
+          },
+          {
+            "identity": "servd",
+            "map": "./IdentifierType"
+          }
+        ]
+      },
+      {
+        "path": "ReferralRequest.identifier.value",
+        "short": "The unique booking reference number",
+        "definition": "The portion of the identifier typically displayed to the user and which is unique within the context of the system.",
+        "comments": "If the value is a full URI, then the system SHALL be urn:ietf:rfc:3986.",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "TypeName": "string",
+            "code": "string"
+          }
+        ],
+        "Item3": "123456",
+        "isSummary": true,
+        "mapping": [
+          {
+            "identity": "v2",
+            "map": "CX.1 / EI.1"
+          },
+          {
+            "identity": "rim",
+            "map": "II.extension or II.root if system indicates OID or GUID (Or Role.id.extension or root)"
+          },
+          {
+            "identity": "servd",
+            "map": "./Value"
+          }
+        ]
+      },
+      {
+        "path": "ReferralRequest.identifier.period",
+        "short": "Time period when id is/was valid for use",
+        "definition": "Time period during which identifier is/was valid for use.",
+        "min": 0,
+        "max": "0",
+        "type": [
+          {
+            "TypeName": "Period",
+            "code": "Period"
+          }
+        ],
+        "isSummary": true,
+        "mapping": [
+          {
+            "identity": "v2",
+            "map": "CX.7 + CX.8"
+          },
+          {
+            "identity": "rim",
+            "map": "Role.effectiveTime or implied by context"
+          },
+          {
+            "identity": "servd",
+            "map": "./StartDate and ./EndDate"
+          }
+        ]
+      },
+      {
+        "path": "ReferralRequest.identifier.assigner",
+        "short": "Organization that issued id (may be just text)",
+        "definition": "Organization that issued/manages the identifier.",
+        "comments": "The reference may be just a text description of the assigner.",
+        "min": 0,
+        "max": "0",
+        "type": [
+          {
+            "TypeName": "Reference",
+            "code": "Reference",
+            "profile": [
+              "http://hl7.org/fhir/StructureDefinition/Organization"
             ]
           }
         ],
@@ -90,10 +319,11 @@
         "short": "Patient referred to care or transfer",
         "definition": "The patient who is the subject of a referral or transfer of care request.",
         "comments": "Referral of family, group or community is to be catered for by profiles.",
-        "min": 0,
+        "min": 1,
         "max": "1",
         "type": [
           {
+            "TypeName": "Reference",
             "code": "Reference",
             "profile": [
               "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-patient"
@@ -117,22 +347,25 @@
         "path": "ReferralRequest.requester",
         "short": "Requester of referral / transfer of care",
         "definition": "The healthcare provider or provider organization who/which initiated the referral/transfer of care request. Can also be  Patient (a self referral).",
-        "min": 0,
+        "min": 1,
         "max": "1",
         "type": [
           {
+            "TypeName": "Reference",
             "code": "Reference",
             "profile": [
               "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-practitioner"
             ]
           },
           {
+            "TypeName": "Reference",
             "code": "Reference",
             "profile": [
               "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-organization"
             ]
           },
           {
+            "TypeName": "Reference",
             "code": "Reference",
             "profile": [
               "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-patient"
@@ -157,16 +390,18 @@
         "short": "Receiver of referral / transfer of care request",
         "definition": "The healthcare provider(s) or provider organization(s) who/which is to receive the referral/transfer of care request.",
         "comments": "There will be a primary receiver. But the request can be received by any number of \"copied to\" providers or organizations.",
-        "min": 0,
+        "min": 1,
         "max": "*",
         "type": [
           {
+            "TypeName": "Reference",
             "code": "Reference",
             "profile": [
               "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-practitioner"
             ]
           },
           {
+            "TypeName": "Reference",
             "code": "Reference",
             "profile": [
               "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-organization"
@@ -194,6 +429,7 @@
         "max": "1",
         "type": [
           {
+            "TypeName": "Reference",
             "code": "Reference",
             "profile": [
               "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-encounter"

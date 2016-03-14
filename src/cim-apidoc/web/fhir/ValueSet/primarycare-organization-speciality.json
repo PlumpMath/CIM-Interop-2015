@@ -1,0 +1,906 @@
+﻿{
+  "id": "primarycare-organization-speciality",
+  "meta": {
+    "lastUpdated": "2015-10-27T00:00:00+00:00",
+    "profile": [
+      "http://hl7.org/fhir/StructureDefinition/valueset-shareable-definition"
+    ]
+  },
+  "extension": [
+    {
+      "Item": 1,
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm"
+    },
+    {
+      "Item": "http://www.datadictionary.nhs.uk/data_dictionary/attributes/t/tran/treatment_function_code_de.asp?shownav=0",
+      "url": "http://hl7.org/fhir/StructureDefinition/valueset-sourceReference"
+    }
+  ],
+  "url": "http://endeavourhealth.org/fhir/ValueSet/primarycare-organization-speciality",
+  "version": "1.0.0",
+  "name": "PrimaryCare-OrganizationType",
+  "status": "draft",
+  "publisher": "Endeavour Health Charitable Trust",
+  "contact": [
+    {
+      "telecom": [
+        {
+          "system": 4,
+          "value": "http://www.endeavourhealth.org"
+        }
+      ]
+    }
+  ],
+  "date": "2015-10-27T00:00:00+00:00",
+  "description": "The speciality or specialities of an organisation. This valueset references NHS Data Dictionary: Treatment Function Code.\n\nNote: This valueset defines an inline code system for an NHS code set.  This is a temporary provision while an NHS FHIR defined code system becomes available.",
+  "codeSystem": {
+    "system": "http://endeavourhealth.org/fhir/ValueSet/primarycare-organization-speciality",
+    "concept": [
+      {
+        "code": "100",
+        "display": "General Surgery",
+        "definition": "Includes sub-categories not elsewhere listed e.g. endocrine surgery"
+      },
+      {
+        "code": "101",
+        "display": "Urology",
+        "definition": "Surgical treatment of disorders of the urinary system and male reproductive system"
+      },
+      {
+        "code": "102",
+        "display": "Transplantation Surgery",
+        "definition": "Includes pre- and post-operative care for major organ transplants except heart and lung (see Cardiothoracic Transplantation). Excludes corneal grafts"
+      },
+      {
+        "code": "103",
+        "display": "Breast Surgery",
+        "definition": "Includes treatment for cancer, suspected neoplasms, cysts and post-cancer reconstructive surgery. Excludes cosmetic surgery"
+      },
+      {
+        "code": "104",
+        "display": "Colorectal Surgery",
+        "definition": "Surgical treatment of disorders of the lower intestine (colon, anus and rectum)"
+      },
+      {
+        "code": "105",
+        "display": "Hepatobiliary & Pancreatic Surgery",
+        "definition": "Includes liver surgery, but liver transplantation should be recorded in 102 Transplantation Surgery"
+      },
+      {
+        "code": "106",
+        "display": "Upper Gastrointestinal Surgery",
+        "definition": "Surgical treatment of disorders of the upper parts of the gastrointestinal tract"
+      },
+      {
+        "code": "107",
+        "display": "Vascular Surgery",
+        "definition": "Surgical treatment of diseases of the vascular system"
+      },
+      {
+        "code": "108",
+        "display": "Spinal Surgery Service",
+        "definition": "Surgery concentrating on specialised and complex treatment of the back and spine. The service has a significantly different composition and profile from the service provided in 110 Trauma & Orthopaedic. Excludes Spinal Injuries - see 323 "
+      },
+      {
+        "code": "110",
+        "display": "Trauma & Orthopaedics",
+        "definition": "Surgery to treat injuries, congenital and acquired disorders of the bones, joints, and their associated soft tissues, including ligaments, nerves and muscles. Excludes Spinal Surgery Service - see 108"
+      },
+      {
+        "code": "120",
+        "display": "ENT",
+        "definition": "Ear, nose and throat"
+      },
+      {
+        "code": "130",
+        "display": "Ophthalmology",
+        "definition": "The surgical treatment of disorders and diseases of the eye. Excludes Medical Ophthalmology - see 460"
+      },
+      {
+        "code": "140",
+        "display": "Oral Surgery",
+        "definition": "The diagnosis and surgical treatment of diseases, injuries and defects involving both the functional and aesthetic aspects of the hard and soft tissues of the head, mouth, teeth, gums, jaws and neck"
+      },
+      {
+        "code": "141",
+        "display": "Restorative Dentistry",
+        "definition": "Endodontics, Periodontics and Prosthodontics are all part of Restorative Dentistry"
+      },
+      {
+        "code": "142",
+        "display": "Paediatric Dentistry",
+        "definition": "Dentistry services dedicated to children with appropriate facilities and support staff"
+      },
+      {
+        "code": "143",
+        "display": "Orthodontics",
+        "definition": "The treatment of malocclusions (improper bites). Orthodontic treatment can focus on dental displacement only, or can deal with the control and modification of facial growth"
+      },
+      {
+        "code": "144",
+        "display": "Maxillo-Facial Surgery",
+        "definition": "Mouth, jaw and face related surgery"
+      },
+      {
+        "code": "150",
+        "display": "Neurosurgery",
+        "definition": "The prevention, diagnosis, treatment, and rehabilitation of disorders which affect any portion of the nervous system including the brain, spinal cord, peripheral nerves, and extra-cranial cerebrovascular system"
+      },
+      {
+        "code": "160",
+        "display": "Plastic Surgery",
+        "definition": "Services to correct or restore form and function. In addition to cosmetic or aesthetic surgery, plastic surgery includes many types of reconstructive surgery, and the treatment of burns"
+      },
+      {
+        "code": "161",
+        "display": "Burns Care",
+        "definition": "To be used by recognised specialist units and associated outreach services only"
+      },
+      {
+        "code": "170",
+        "display": "Cardiothoracic Surgery",
+        "definition": "Should only be used where there are no separate services for Cardiac Surgery and Thoracic Surgery"
+      },
+      {
+        "code": "171",
+        "display": "Paediatric Surgery",
+        "definition": "This is paediatric general surgery"
+      },
+      {
+        "code": "172",
+        "display": "Cardiac Surgery",
+        "definition": "Surgical treatment of the heart or great vessels"
+      },
+      {
+        "code": "173",
+        "display": "Thoracic Surgery",
+        "definition": "Surgical treatment of diseases affecting organs inside the thorax (the chest). Generally treatment of conditions of the lungs, chest wall, and diaphragm"
+      },
+      {
+        "code": "174",
+        "display": "Cardiothoracic Transplantation",
+        "definition": "To be used by recognised specialist units and associated outreach services only. Includes pre- and post-operative services"
+      },
+      {
+        "code": "180",
+        "display": "Accident & Emergency",
+        "definition": "Services to care for patients with urgent problems delivered as part of an Accident and Emergency Attendance or admission at an Accident and Emergency Department "
+      },
+      {
+        "code": "191",
+        "display": "Pain Management",
+        "definition": "Complex pain disorders requiring diagnosis and treatment by a specialist multi-professional team"
+      },
+      {
+        "code": "211",
+        "display": "Paediatric Urology",
+        "definition": "Surgical treatment of disorders of the urinary system and male reproductive system"
+      },
+      {
+        "code": "212",
+        "display": "Paediatric Transplantation Surgery",
+        "definition": "Includes pre- and post-operative care for major organ transplants except heart and lung (see Cardiothoracic Transplantation). Excludes corneal grafts"
+      },
+      {
+        "code": "213",
+        "display": "Paediatric Gastrointestinal Surgery",
+        "definition": "Surgical treatment of disorders of the gastrointestinal tract"
+      },
+      {
+        "code": "214",
+        "display": "Paediatric Trauma And Orthopaedics",
+        "definition": "Surgery to treat injuries, congenital and acquired disorders of the bones, joints, and their associated soft tissues, including ligaments, nerves and muscles. Excludes Spinal Surgery Service - see 108"
+      },
+      {
+        "code": "215",
+        "display": "Paediatric Ear Nose And Throat",
+        "definition": "Ear, nose and throat"
+      },
+      {
+        "code": "216",
+        "display": "Paediatric Ophthalmology",
+        "definition": "The surgical treatment of disorders and diseases of the eye."
+      },
+      {
+        "code": "217",
+        "display": "Paediatric Maxillo-Facial Surgery",
+        "definition": "Mouth, jaw and face related surgery"
+      },
+      {
+        "code": "218",
+        "display": "Paediatric Neurosurgery",
+        "definition": "The prevention, diagnosis, treatment, and rehabilitation of disorders which affect any portion of the nervous system including the brain, spinal cord, peripheral nerves, and extra-cranial cerebrovascular system"
+      },
+      {
+        "code": "219",
+        "display": "Paediatric Plastic Surgery",
+        "definition": "Services to correct or restore form and function. In addition to cosmetic or aesthetic surgery, plastic surgery includes many types of reconstructive surgery, and the treatment of burns"
+      },
+      {
+        "code": "220",
+        "display": "Paediatric Burns Care",
+        "definition": "To be used by recognised specialist units and associated outreach services only"
+      },
+      {
+        "code": "221",
+        "display": "Paediatric Cardiac Surgery",
+        "definition": "Surgical treatment of the heart or great vessels"
+      },
+      {
+        "code": "222",
+        "display": "Paediatric Thoracic Surgery",
+        "definition": "Surgical treatment of diseases affecting organs inside the thorax (the chest). Generally treatment of conditions of the lungs, chest wall, and diaphragm"
+      },
+      {
+        "code": "223",
+        "display": "Paediatric Epilepsy",
+        "definition": "Designated clinic which provides services to children led by consultant paediatrician with expertise in epilepsy supported by specialist staff"
+      },
+      {
+        "code": "241",
+        "display": "Paediatric Pain Management",
+        "definition": "Complex pain disorders requiring diagnosis and treatment by a specialist multi-professional team"
+      },
+      {
+        "code": "242",
+        "display": "Paediatric Intensive Care",
+        "definition": "Only to be used by designated Paediatric Intensive Care Units"
+      },
+      {
+        "code": "251",
+        "display": "Paediatric Gastroenterology",
+        "definition": "The treatment of disorders of the digestive system"
+      },
+      {
+        "code": "252",
+        "display": "Paediatric Endocrinology",
+        "definition": "The treatment of disorders of the endocrine system"
+      },
+      {
+        "code": "253",
+        "display": "Paediatric Clinical Haematology",
+        "definition": "Excludes Anticoagulant Service - see 324"
+      },
+      {
+        "code": "254",
+        "display": "Paediatric Audiological Medicine",
+        "definition": "The medical specialty concerned with the investigation, diagnosis and management of patients with disorders of balance, hearing, tinnitus and auditory communication. Excludes audiology and hearing tests"
+      },
+      {
+        "code": "255",
+        "display": "Paediatric Clinical Immunology And Allergy Service",
+        "definition": "Clinical Immunology is the treatment of disorders of the immune system. Allergy Service is the diagnosis  and management of allergic disease"
+      },
+      {
+        "code": "256",
+        "display": "Paediatric Infectious Diseases",
+        "definition": "Services to diagnose and treat contagious or communicable diseases"
+      },
+      {
+        "code": "257",
+        "display": "Paediatric Dermatology",
+        "definition": "Services for the treatment of diseases of the skin"
+      },
+      {
+        "code": "258",
+        "display": "Paediatric Respiratory Medicine",
+        "definition": "Also known as Thoracic Medicine"
+      },
+      {
+        "code": "259",
+        "display": "Paediatric Nephrology",
+        "definition": "services to treat kidney conditions and abnormalities"
+      },
+      {
+        "code": "260",
+        "display": "Paediatric Medical Oncology",
+        "definition": "The diagnosis and treatment, typically with Chemotherapy of patients with cancer"
+      },
+      {
+        "code": "261",
+        "display": "Paediatric Metabolic Disease",
+        "definition": "The diagnosis and management of inherited metabolic conditions"
+      },
+      {
+        "code": "262",
+        "display": "Paediatric Rheumatology",
+        "definition": "Services to treat rheumatism, arthritis, and other disorders of the joints, muscles and ligaments"
+      },
+      {
+        "code": "263",
+        "display": "Paediatric Diabetic Medicine",
+        "definition": "Services to diagnose, treat and support patients with diabetes"
+      },
+      {
+        "code": "264",
+        "display": "Paediatric Cystic Fibrosis",
+        "definition": "Specialised, multidisciplinary service concerned with the diagnosis, assessment and management of patients with cystic fibrosis. This should be used by recognised specialist centres only"
+      },
+      {
+        "code": "280",
+        "display": "Paediatric Interventional Radiology",
+        "definition": "Diagnosis and treatment of diseases utilising minimally-invasive image-guided procedures. Not to be used for Diagnostic Imaging - see 812"
+      },
+      {
+        "code": "290",
+        "display": "Community Paediatrics",
+        "definition": "Includes routine health surveillance, health promotion, behavioural paediatrics and Looked After Children. Excludes Paediatric Neuro-Disability"
+      },
+      {
+        "code": "291",
+        "display": "Paediatric Neuro-Disability",
+        "definition": "Dedicated services for children with Cerebral Palsy and non-progressive handicapping neurological conditions, with or without Learning Disability"
+      },
+      {
+        "code": "190",
+        "display": "Anaesthetics",
+        "definition": "This can be used in out-patients only. Pain Management should be recorded in 191"
+      },
+      {
+        "code": "192",
+        "display": "Critical Care Medicine",
+        "definition": "also known as Intensive Care Medicine"
+      },
+      {
+        "code": "300",
+        "display": "General Medicine",
+        "definition": "Includes sub-categories not elsewhere listed e.g. Metabolic Medicine."
+      },
+      {
+        "code": "301",
+        "display": "Gastroenterology",
+        "definition": "The treatment of disorders of the digestive system"
+      },
+      {
+        "code": "302",
+        "display": "Endocrinology",
+        "definition": "The treatment of disorders of the endocrine system"
+      },
+      {
+        "code": "303",
+        "display": "Clinical Haematology",
+        "definition": "Excludes Anticoagulant Service - see 324"
+      },
+      {
+        "code": "304",
+        "display": "Clinical Physiology",
+        "definition": "Physiological measurement including ECG (e.g. exercise testing, stress testing), gastrointestinal physiology, cardiac physiology, vascular technology, urodynamics, and ophthalmic and vision science. Excludes Clinical Neurophysiology - see 401, Audiology - see 840 or Respiratory Physiology - see 341"
+      },
+      {
+        "code": "305",
+        "display": "Clinical Pharmacology",
+        "definition": "Services providing drug information, medication safety and other aspects of pharmacy practice"
+      },
+      {
+        "code": "306",
+        "display": "Hepatology",
+        "definition": "Also known as liver medicine"
+      },
+      {
+        "code": "307",
+        "display": "Diabetic Medicine",
+        "definition": "Services to diagnose, treat and support patients with diabetes"
+      },
+      {
+        "code": "308",
+        "display": "Blood And Marrow Transplantation",
+        "definition": "Previously coded within Clinical Haematology (303). Includes haemopoietic stem cell transplantation"
+      },
+      {
+        "code": "309",
+        "display": "Haemophilia Service",
+        "definition": "Previously coded within Clinical Haematology (303)."
+      },
+      {
+        "code": "310",
+        "display": "Audiological Medicine",
+        "definition": "The medical specialty concerned with the investigation, diagnosis and management of patients with disorders of balance, hearing, tinnitus and auditory communication. Excludes audiology and hearing tests"
+      },
+      {
+        "code": "311",
+        "display": "Clinical Genetics",
+        "definition": "Diagnosis of disorders caused by genetic mechanisms and counselling service to patients and affected family members. To be used by recognised specialist units and associated outreach services only"
+      },
+      {
+        "code": "312",
+        "display": "Not A Treatment Function",
+        "definition": ""
+      },
+      {
+        "code": "313",
+        "display": "Clinical Immunology And Allergy Service",
+        "definition": "Should only be used where there are no separate services for Clinical Immunology and Allergy"
+      },
+      {
+        "code": "314",
+        "display": "Rehabilitation Service",
+        "definition": "Services to enhance and restore functional ability and quality of life to those with physical impairments or disabilities. Excludes Mental Health Recovery and Rehabilitation Service - see 725"
+      },
+      {
+        "code": "315",
+        "display": "Palliative Medicine",
+        "definition": "The treatment for curable illnesses and those living with chronic diseases, as well as patients who are nearing the end of life"
+      },
+      {
+        "code": "316",
+        "display": "Clinical Immunology",
+        "definition": "The treatment of disorders of the immune system"
+      },
+      {
+        "code": "317",
+        "display": "Allergy Service",
+        "definition": "The diagnosis and management of allergic disease (abnormal immune responses to external substances) and the exclusion of allergic causes in other conditions"
+      },
+      {
+        "code": "318",
+        "display": "Intermediate Care",
+        "definition": "Intermediate care encompasses a range of multi-disciplinary services designed to safeguard independence by maximising rehabilitation and recovery after illness or injury"
+      },
+      {
+        "code": "319",
+        "display": "Respite Care",
+        "definition": "Services providing temporary care of a dependant person, providing relief for their usual caregivers"
+      },
+      {
+        "code": "320",
+        "display": "Cardiology",
+        "definition": "Services treating diseases and abnormalities of the heart"
+      },
+      {
+        "code": "321",
+        "display": "Paediatric Cardiology",
+        "definition": "Dedicated services to children with diseases and abnormalities of the heart, with appropriate facilities and support staff"
+      },
+      {
+        "code": "322",
+        "display": "Clinical Microbiology",
+        "definition": "Services to treat diseases caused by bacteria, viruses, fungi and parasites"
+      },
+      {
+        "code": "323",
+        "display": "Spinal Injuries",
+        "definition": "To be used by recognised specialist units and associated outreach services only, Excludes Spinal Surgery Service - see 108"
+      },
+      {
+        "code": "324",
+        "display": "Anticoagulant Service",
+        "definition": "The monitoring and control of anticoagulant therapy including the initiation and/or supervision of oral anticoagulant therapy and the determination of anticoagulant dosage. This can be used in out-patients only"
+      },
+      {
+        "code": "325",
+        "display": "Sport And Exercise Medicine",
+        "definition": "The diagnosis and management of medical problems caused by physical activity, the prevention of related injury and disease and the role of exercise in disease treatment"
+      },
+      {
+        "code": "327",
+        "display": "Cardiac Rehabilitation",
+        "definition": "Rehabilitation service for patients with or recovering from heart related conditions such as heart attacks or from procedures such as coronary artery bypass surgery to ensure that they achieve their full potential in terms of physical and psychological health"
+      },
+      {
+        "code": "328",
+        "display": "Stroke Medicine",
+        "definition": "For stroke services excluding Transient Ischaemic Attack - see 329"
+      },
+      {
+        "code": "329",
+        "display": "Transient Ischaemic Attack",
+        "definition": "A multidisciplinary service for rapid diagnosis and treatment of patients presenting with suspected Transient Ischaemic Attack and mini-strokes to minimise the chance of a full stroke occurring and maximise the chances of independent living after a stroke"
+      },
+      {
+        "code": "330",
+        "display": "Dermatology",
+        "definition": "services for the treatment of diseases of the skin"
+      },
+      {
+        "code": "331",
+        "display": "Congenital Heart Disease Service",
+        "definition": "The management and treatment of congenital heart disease, this includes the ongoing care of children in to adulthood"
+      },
+      {
+        "code": "340",
+        "display": "Respiratory Medicine",
+        "definition": "Also known as Thoracic Medicine"
+      },
+      {
+        "code": "341",
+        "display": "Respiratory Physiology",
+        "definition": "Physiological measurement of the function of the respiratory system. Includes Sleep Studies (the diagnosis and treatment of sleep disordered breathing, including upper airway resistance syndrome and sleep apnoea)"
+      },
+      {
+        "code": "342",
+        "display": "Programmed Pulmonary Rehabilitation",
+        "definition": "A multidisciplinary programme of care for patients with chronic respiratory impairment that is individually tailored and designed to optimise the individual's physical and social performance and autonomy"
+      },
+      {
+        "code": "343",
+        "display": "Adult Cystic Fibrosis Service",
+        "definition": "Specialised, multidisciplinary service concerned with the diagnosis, assessment and management of patients with cystic fibrosis. This should be used by recognised specialist centres only"
+      },
+      {
+        "code": "344",
+        "display": "Complex Specialised Rehabilitation Service",
+        "definition": "Complex specialised rehabilitation service which meets the NHS Specialised Services Rehabilitation Services' criteria and is registered as a Level 1 service. For further information see the NHS Specialised Services website"
+      },
+      {
+        "code": "345",
+        "display": "Specialist Rehabilitation Service",
+        "definition": "Specialist rehabilitation service which meets the NHS Specialised Services Rehabilitation Services' criteria and is registered as a Level 2a service. For further information see the NHS Specialised Services website"
+      },
+      {
+        "code": "346",
+        "display": "Local Specialist Rehabilitation Service",
+        "definition": "Local specialist rehabilitation service which meets the NHS Specialised Services Rehabilitation Services' criteria and is registered as a Level 2b service. For further information see the NHS Specialised Services website"
+      },
+      {
+        "code": "350",
+        "display": "Infectious Diseases",
+        "definition": "Services to diagnose and treat contagious or communicable diseases"
+      },
+      {
+        "code": "352",
+        "display": "Tropical Medicine",
+        "definition": "Services to diagnose and treat diseases that are found most often in tropical  or sub-tropical regions"
+      },
+      {
+        "code": "360",
+        "display": "Genitourinary Medicine",
+        "definition": "Primarily related to medicine dealing with sexually transmitted diseases"
+      },
+      {
+        "code": "361",
+        "display": "Nephrology",
+        "definition": "Services to treat kidney conditions and abnormalities"
+      },
+      {
+        "code": "370",
+        "display": "Medical Oncology",
+        "definition": "The diagnosis and treatment, typically with Chemotherapy, of patients with cancer"
+      },
+      {
+        "code": "371",
+        "display": "Nuclear Medicine",
+        "definition": "The treatment of patients through the use of radioactive substances"
+      },
+      {
+        "code": "400",
+        "display": "Neurology",
+        "definition": "Services to diagnose and treat conditions and diseases of the central nervous system"
+      },
+      {
+        "code": "401",
+        "display": "Clinical Neurophysiology",
+        "definition": "The study of the central and peripheral nervous systems through the recording of bioelectrical activity. Includes Electroencephalogram (EEG)"
+      },
+      {
+        "code": "410",
+        "display": "Rheumatology",
+        "definition": "Services to treat rheumatism, arthritis, and other disorders of the joints, muscles and ligaments"
+      },
+      {
+        "code": "420",
+        "display": "Paediatrics",
+        "definition": "Services to treat infants, children, and adolescents"
+      },
+      {
+        "code": "421",
+        "display": "Paediatric Neurology",
+        "definition": "Dedicated services to children to diagnose and treat conditions and diseases of the central nervous system, with appropriate facilities and support staff"
+      },
+      {
+        "code": "422",
+        "display": "Neonatology",
+        "definition": "Special Care, High Dependency and Intensive Care"
+      },
+      {
+        "code": "424",
+        "display": "Well Babies",
+        "definition": "Normal Care: Care given by the mother/substitute with medical and neonatal nursing advice if needed. See Well Baby"
+      },
+      {
+        "code": "430",
+        "display": "Geriatric Medicine",
+        "definition": "Services to treat diseases and disabilities in older adults. There is no set age at which patients may be under the care of Geriatric Medicine, this decision should be determined by the individual patient's needs"
+      },
+      {
+        "code": "450",
+        "display": "Dental Medicine Specialties",
+        "definition": "Includes Oral Medicine."
+      },
+      {
+        "code": "460",
+        "display": "Medical Ophthalmology",
+        "definition": "Services to diagnose and treat medical conditions affecting the eye, orbits, and visual pathways"
+      },
+      {
+        "code": "500",
+        "display": "Not A Treatment Function",
+        "definition": ""
+      },
+      {
+        "code": "501",
+        "display": "Obstetrics",
+        "definition": "The management of pregnancy and childbirth including miscarriages and still births but excluding planned terminations. Excludes Midwifery Service see 560"
+      },
+      {
+        "code": "502",
+        "display": "Gynaecology",
+        "definition": "Disorders of the female reproductive system. Includes planned terminations"
+      },
+      {
+        "code": "503",
+        "display": "Gynaecological Oncology",
+        "definition": "Services to treat cancers of the female reproductive system"
+      },
+      {
+        "code": "510",
+        "display": "Retired ",
+        "definition": "Record as Obstetrics, antenatal clinic can be used as a local sub-specialty if required "
+      },
+      {
+        "code": "520",
+        "display": "Retired ",
+        "definition": "Record as Obstetrics, postnatal clinic can be used as a local sub-specialty if required "
+      },
+      {
+        "code": "560",
+        "display": "Midwifery Service",
+        "definition": "Services provided under the direct care of a midwife. Excludes Obstetrics see 501"
+      },
+      {
+        "code": "600",
+        "display": "Not A Treatment Function",
+        "definition": ""
+      },
+      {
+        "code": "610",
+        "display": "Retired ",
+        "definition": "Record as Obstetrics "
+      },
+      {
+        "code": "620",
+        "display": "Retired ",
+        "definition": "Use the appropriate function under which the patient is treated "
+      },
+      {
+        "code": "650",
+        "display": "Physiotherapy",
+        "definition": "The treatment of human function and movement to help people to achieve their full physical potential. The use of physical approaches to promote, maintain and restore wellbeing"
+      },
+      {
+        "code": "651",
+        "display": "Occupational Therapy",
+        "definition": "The use of specific activities to limit the effects of disability and promote independence in all aspects of daily life"
+      },
+      {
+        "code": "652",
+        "display": "Speech And Language Therapy",
+        "definition": "The assessment, treatment and help to prevent speech, language and swallowing difficulties"
+      },
+      {
+        "code": "653",
+        "display": "Podiatry",
+        "definition": "Also known as Chiropody. The diagnosis and treatment of disorders, diseases and deformities of the feet. Excludes Podiatric Surgery see 663"
+      },
+      {
+        "code": "654",
+        "display": "Dietetics",
+        "definition": "The application of the science of nutrition to devise eating plans for patients to treat medical conditions. The promotion of good health by helping to facilitate a positive change in food choices amongst individuals, groups and communities"
+      },
+      {
+        "code": "655",
+        "display": "Orthoptics",
+        "definition": "The diagnosis and treatment of visual problems involving eye movement and alignment"
+      },
+      {
+        "code": "656",
+        "display": "Clinical Psychology",
+        "definition": "The diagnosis and treatment of emotional and behavioural disorders"
+      },
+      {
+        "code": "657",
+        "display": "Prosthetics",
+        "definition": "The supply of prosthetics for patients"
+      },
+      {
+        "code": "658",
+        "display": "Orthotics",
+        "definition": "The supply of orthoses for patients"
+      },
+      {
+        "code": "659",
+        "display": "Drama Therapy",
+        "definition": "The use of drama and theatre techniques including role play, voice work and storytelling for therapeutic purposes"
+      },
+      {
+        "code": "660",
+        "display": "Art Therapy",
+        "definition": "The use of art techniques including clay, paint and paper for therapeutic purposes and as a means of communication"
+      },
+      {
+        "code": "661",
+        "display": "Music Therapy",
+        "definition": "The use of music and all of its facets to help clients to improve or maintain their health"
+      },
+      {
+        "code": "662",
+        "display": "Optometry",
+        "definition": "The diagnosis and non-surgical treatment of disorders of the eye and vision care"
+      },
+      {
+        "code": "663",
+        "display": "Podiatric Surgery",
+        "definition": "The treatment of foot problems, including soft tissue, bone and joint surgery of the foot, ankle and associated structures, excludes Podiatry see - 653"
+      },
+      {
+        "code": "700",
+        "display": "Learning Disability",
+        "definition": "Services provided to patients with a Learning Disability"
+      },
+      {
+        "code": "710",
+        "display": "Adult Mental Illness",
+        "definition": "Services provided to adult patients for the assessment, diagnosis and treatment of mental illness"
+      },
+      {
+        "code": "711",
+        "display": "Child And Adolescent Psychiatry",
+        "definition": "Services providing diagnosis, treatment, and prevention of psychopathological disorders of children and adolescents"
+      },
+      {
+        "code": "712",
+        "display": "Forensic Psychiatry",
+        "definition": "Services to assess patients who have committed an offence and are receiving treatment in high, medium and low secure units or prisons"
+      },
+      {
+        "code": "713",
+        "display": "Psychotherapy",
+        "definition": "Services providing therapy used to treat emotional problems and mental health conditions"
+      },
+      {
+        "code": "715",
+        "display": "Old Age Psychiatry",
+        "definition": "Services providing the diagnosis, treatment, and prevention of mental and emotional disorders in older adult patients"
+      },
+      {
+        "code": "720",
+        "display": "Eating Disorders",
+        "definition": "A specialist service for the diagnosis and treatment of eating disorders including anorexia, bulimia and compulsive overeating"
+      },
+      {
+        "code": "721",
+        "display": "Addiction Services",
+        "definition": "The prevention and treatment of substance misuse including drugs and alcohol. If patients have both severe mental illness and problematic substance misuse, see 726 Dual Diagnosis Service"
+      },
+      {
+        "code": "722",
+        "display": "Liaison Psychiatry",
+        "definition": "The provision of psychiatric treatment to patients attending general hospitals including out-patient clinics, Accident and Emergency Departments and admission to wards. Deals with the interface between physical and psychological health."
+      },
+      {
+        "code": "723",
+        "display": "Psychiatric Intensive Care",
+        "definition": "The provision of psychiatric services to vulnerable individuals who are admitted to Psychiatric Intensive Care Units from open acute wards and forensic settings"
+      },
+      {
+        "code": "724",
+        "display": "Perinatal Psychiatry",
+        "definition": "A specialist psychiatric service for the diagnosis and treatment of ante-natal and post-natal psychiatric problems"
+      },
+      {
+        "code": "725",
+        "display": "Mental Health Recovery And Rehabilitation Service",
+        "definition": "Services provided to support recovery from mental illness that maximises the patient's quality of life and social inclusion by encouraging their skills, promoting independence and autonomy"
+      },
+      {
+        "code": "726",
+        "display": "Mental Health Dual Diagnosis Service",
+        "definition": "Services to provide support to patients with both severe mental illness and substance misuse problems. Personality disorder may coexist with psychiatric illness and/or substance misuse"
+      },
+      {
+        "code": "727",
+        "display": "Dementia Assessment Service",
+        "definition": "Services for the assessment of patients with dementia, which may complicate care giving and can occur at any stage of the illness. In addition to memory impairment, dementia may include behavioural and psychological problems"
+      },
+      {
+        "code": "800",
+        "display": "Clinical Oncology (Previously Radiotherapy)",
+        "definition": "The diagnosis and treatment, typically with Radiotherapy, of patients with cancer."
+      },
+      {
+        "code": "810",
+        "display": "Not A Treatment Function",
+        "definition": ""
+      },
+      {
+        "code": "811",
+        "display": "Interventional Radiology",
+        "definition": "Diagnosis and treatment of diseases utilising minimally-invasive image-guided procedures. Not to be used for Diagnostic Imaging - see 812"
+      },
+      {
+        "code": "812",
+        "display": "Diagnostic Imaging",
+        "definition": "The production and interpretation of high quality images of the body to diagnose injuries and disease, e.g. x-rays, Ultrasound Scan, MRI Scan, PET Scan or CT Scan."
+      },
+      {
+        "code": "820",
+        "display": "Not A Treatment Function",
+        "definition": ""
+      },
+      {
+        "code": "821",
+        "display": "Not A Treatment Function",
+        "definition": ""
+      },
+      {
+        "code": "822",
+        "display": "Chemical Pathology",
+        "definition": "To be used for clinical management only"
+      },
+      {
+        "code": "823",
+        "display": "Not A Treatment Function",
+        "definition": "See Clinical Haematology"
+      },
+      {
+        "code": "824",
+        "display": "Not A Treatment Function",
+        "definition": ""
+      },
+      {
+        "code": "830",
+        "display": "Not A Treatment Function",
+        "definition": "See Clinical Immunology"
+      },
+      {
+        "code": "831",
+        "display": "Not A Treatment Function",
+        "definition": "See Clinical Microbiology"
+      },
+      {
+        "code": "832",
+        "display": "Retired ",
+        "definition": ""
+      },
+      {
+        "code": "834",
+        "display": "Medical Virology",
+        "definition": "The diagnosis and management and prevention of virus and related infections, in hospital and in the community including HIV/AIDS, other blood-borne infections like hepatitis B and C and viruses such as SARS and avian flu"
+      },
+      {
+        "code": "840",
+        "display": "Audiology",
+        "definition": "Physiological measurement and diagnosis of hearing disorders, and the rehabilitation of patients with hearing loss"
+      },
+      {
+        "code": "900",
+        "display": "Not A Treatment Function",
+        "definition": ""
+      },
+      {
+        "code": "901",
+        "display": "Not A Treatment Function",
+        "definition": ""
+      },
+      {
+        "code": "920",
+        "display": "Diabetic Education Service",
+        "definition": "services providing dedicated small group education courses regarding self management for diabetic patients"
+      },
+      {
+        "code": "950",
+        "display": "Not A Treatment Function",
+        "definition": "Use the appropriate function under which the patient is treated"
+      },
+      {
+        "code": "960",
+        "display": "Not A Treatment Function",
+        "definition": "Use the appropriate function under which the patient is treated"
+      },
+      {
+        "code": "990",
+        "display": "Retired",
+        "definition": ""
+      }
+    ]
+  }
+}

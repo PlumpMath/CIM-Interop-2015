@@ -32,6 +32,7 @@
         "max": "*",
         "type": [
           {
+            "TypeName": "MessageHeader",
             "code": "MessageHeader"
           }
         ],
@@ -60,6 +61,7 @@
         "max": "1",
         "type": [
           {
+            "TypeName": "Coding",
             "code": "Coding"
           }
         ],
@@ -95,6 +97,7 @@
         "max": "1",
         "type": [
           {
+            "TypeName": "uri",
             "code": "uri"
           }
         ],

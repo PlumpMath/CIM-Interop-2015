@@ -44,6 +44,7 @@
         "max": "*",
         "type": [
           {
+            "TypeName": "Extension",
             "code": "Extension"
           }
         ]
@@ -52,6 +53,7 @@
         "path": "Extension.url",
         "type": [
           {
+            "TypeName": "uri",
             "code": "uri"
           }
         ],
@@ -68,6 +70,7 @@
         "max": "1",
         "type": [
           {
+            "TypeName": "CodeableConcept",
             "code": "CodeableConcept"
           }
         ],

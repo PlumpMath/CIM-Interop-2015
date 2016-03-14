@@ -3,15 +3,8 @@
   "meta": {
     "lastUpdated": "2015-09-22T11:02:49.724+01:00"
   },
-  "extension": [
-    {
-      "Item": 1,
-      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm"
-    }
-  ],
   "url": "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-condition-episodelink-extension",
   "name": "PrimaryCare-ConditionEpisodeLink-Extension",
-  "display": "Primary Care condition episode link extension",
   "status": "draft",
   "publisher": "Endeavour Health Charitable Trust",
   "contact": [
@@ -27,6 +20,13 @@
   "date": "2015-11-01T00:00:00+00:00",
   "description": "Follow-on observation(s) linked to a condition episode e.g. Reviews",
   "fhirVersion": "1.0.1",
+  "mapping": [
+    {
+      "identity": "rim",
+      "uri": "http://hl7.org/v3",
+      "name": "RIM"
+    }
+  ],
   "kind": 0,
   "constrainedType": "Extension",
   "abstract": false,
@@ -39,12 +39,15 @@
     "element": [
       {
         "path": "Extension",
+        "name": "extension",
         "short": "Episode observation link",
+        "definition": "Optional Extensions Element - found in all resources.",
         "min": 0,
         "max": "*",
         "type": [
           {
-            "code": "Extension"
+            "TypeName": "Element",
+            "code": "Element"
           }
         ]
       },
@@ -66,48 +69,73 @@
         "max": "1",
         "type": [
           {
-            "code": "Extension"
+            "TypeName": "Element",
+            "code": "Element"
           }
         ]
       },
       {
-        "path": "Extension.extension.extension",
-        "slicing": {
-          "discriminator": [
-            "url"
-          ],
-          "rules": 2
-        }
-      },
-      {
-        "path": "Extension.extension.extension",
-        "name": "extension",
+        "path": "Extension.extension.id",
+        "representation": [
+          0
+        ],
+        "short": "xml:id (or equivalent in JSON)",
+        "definition": "unique id for the element within a resource (for internal references).",
         "min": 0,
-        "max": "0"
+        "max": "1",
+        "type": [
+          {
+            "TypeName": "id",
+            "code": "id"
+          }
+        ]
       },
       {
         "path": "Extension.extension.url",
-        "type": [
-          {
-            "code": "uri"
-          }
+        "representation": [
+          0
         ],
-        "Item1": "type"
-      },
-      {
-        "path": "Extension.extension.value[x]",
-        "name": "valueCode",
+        "short": "identifies the meaning of the extension",
+        "definition": "Source of the definition for the extension code - a logical name or a URL.",
+        "comments": "The definition may point directly to a computable or human-readable definition of the extensibility codes, or it may be a logical URI as declared in some other specification. The definition should be version specific.  This will ideally be the URI for the Resource Profile defining the extension, with the code for the extension after a #.",
         "min": 1,
         "max": "1",
         "type": [
           {
+            "TypeName": "uri",
+            "code": "uri"
+          }
+        ],
+        "Item1": "type",
+        "mapping": [
+          {
+            "identity": "rim",
+            "map": "N/A"
+          }
+        ]
+      },
+      {
+        "path": "Extension.extension.valueCode",
+        "short": "Value of extension",
+        "definition": "Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "TypeName": "code",
             "code": "code"
           }
         ],
         "binding": {
           "strength": 0,
           "Item": "http://endeavourhealth.org/fhir/ValueSet/primarycare-condition-episodelinktype"
-        }
+        },
+        "mapping": [
+          {
+            "identity": "rim",
+            "map": "N/A"
+          }
+        ]
       },
       {
         "path": "Extension.extension",
@@ -118,51 +146,94 @@
         "max": "1",
         "type": [
           {
-            "code": "Extension"
+            "TypeName": "Element",
+            "code": "Element"
           }
         ]
       },
       {
-        "path": "Extension.extension.extension",
-        "slicing": {
-          "discriminator": [
-            "url"
-          ],
-          "rules": 2
-        }
-      },
-      {
-        "path": "Extension.extension.extension",
-        "name": "extension",
+        "path": "Extension.extension.id",
+        "representation": [
+          0
+        ],
+        "short": "xml:id (or equivalent in JSON)",
+        "definition": "unique id for the element within a resource (for internal references).",
         "min": 0,
-        "max": "0"
+        "max": "1",
+        "type": [
+          {
+            "TypeName": "id",
+            "code": "id"
+          }
+        ]
       },
       {
         "path": "Extension.extension.url",
-        "type": [
-          {
-            "code": "uri"
-          }
+        "representation": [
+          0
         ],
-        "Item1": "target"
-      },
-      {
-        "path": "Extension.extension.value[x]",
-        "name": "valueReference",
+        "short": "identifies the meaning of the extension",
+        "definition": "Source of the definition for the extension code - a logical name or a URL.",
+        "comments": "The definition may point directly to a computable or human-readable definition of the extensibility codes, or it may be a logical URI as declared in some other specification. The definition should be version specific.  This will ideally be the URI for the Resource Profile defining the extension, with the code for the extension after a #.",
         "min": 1,
         "max": "1",
         "type": [
           {
+            "TypeName": "uri",
+            "code": "uri"
+          }
+        ],
+        "Item1": "target",
+        "mapping": [
+          {
+            "identity": "rim",
+            "map": "N/A"
+          }
+        ]
+      },
+      {
+        "path": "Extension.extension.value[x]",
+        "name": "valueReference",
+        "short": "Value of extension",
+        "definition": "Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "TypeName": "Reference",
             "code": "Reference",
             "profile": [
               "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-observation"
             ]
           },
           {
+            "TypeName": "Reference",
             "code": "Reference",
             "profile": [
               "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-allergy-intolerance"
             ]
+          }
+        ],
+        "mapping": [
+          {
+            "identity": "rim",
+            "map": "N/A"
+          }
+        ]
+      },
+      {
+        "path": "Extension.id",
+        "representation": [
+          0
+        ],
+        "short": "xml:id (or equivalent in JSON)",
+        "definition": "unique id for the element within a resource (for internal references).",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "TypeName": "id",
+            "code": "id"
           }
         ]
       },
@@ -171,19 +242,171 @@
         "representation": [
           0
         ],
+        "short": "identifies the meaning of the extension",
+        "definition": "Source of the definition for the extension code - a logical name or a URL.",
+        "comments": "The definition may point directly to a computable or human-readable definition of the extensibility codes, or it may be a logical URI as declared in some other specification. The definition should be version specific.  This will ideally be the URI for the Resource Profile defining the extension, with the code for the extension after a #.",
         "min": 1,
         "max": "1",
         "type": [
           {
+            "TypeName": "uri",
             "code": "uri"
           }
         ],
-        "Item1": "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-condition-episodelink-extension"
+        "Item1": "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-condition-episodelink-extension",
+        "mapping": [
+          {
+            "identity": "rim",
+            "map": "N/A"
+          }
+        ]
       },
       {
         "path": "Extension.value[x]",
+        "short": "Value of extension",
+        "definition": "Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).",
         "min": 0,
-        "max": "0"
+        "max": "0",
+        "type": [
+          {
+            "TypeName": "boolean",
+            "code": "boolean"
+          },
+          {
+            "TypeName": "integer",
+            "code": "integer"
+          },
+          {
+            "TypeName": "decimal",
+            "code": "decimal"
+          },
+          {
+            "TypeName": "base64Binary",
+            "code": "base64Binary"
+          },
+          {
+            "TypeName": "instant",
+            "code": "instant"
+          },
+          {
+            "TypeName": "string",
+            "code": "string"
+          },
+          {
+            "TypeName": "uri",
+            "code": "uri"
+          },
+          {
+            "TypeName": "date",
+            "code": "date"
+          },
+          {
+            "TypeName": "dateTime",
+            "code": "dateTime"
+          },
+          {
+            "TypeName": "time",
+            "code": "time"
+          },
+          {
+            "TypeName": "code",
+            "code": "code"
+          },
+          {
+            "TypeName": "oid",
+            "code": "oid"
+          },
+          {
+            "TypeName": "id",
+            "code": "id"
+          },
+          {
+            "TypeName": "unsignedInt",
+            "code": "unsignedInt"
+          },
+          {
+            "TypeName": "positiveInt",
+            "code": "positiveInt"
+          },
+          {
+            "TypeName": "markdown",
+            "code": "markdown"
+          },
+          {
+            "TypeName": "Annotation",
+            "code": "Annotation"
+          },
+          {
+            "TypeName": "Attachment",
+            "code": "Attachment"
+          },
+          {
+            "TypeName": "Identifier",
+            "code": "Identifier"
+          },
+          {
+            "TypeName": "CodeableConcept",
+            "code": "CodeableConcept"
+          },
+          {
+            "TypeName": "Coding",
+            "code": "Coding"
+          },
+          {
+            "TypeName": "Quantity",
+            "code": "Quantity"
+          },
+          {
+            "TypeName": "Range",
+            "code": "Range"
+          },
+          {
+            "TypeName": "Period",
+            "code": "Period"
+          },
+          {
+            "TypeName": "Ratio",
+            "code": "Ratio"
+          },
+          {
+            "TypeName": "SampledData",
+            "code": "SampledData"
+          },
+          {
+            "TypeName": "Signature",
+            "code": "Signature"
+          },
+          {
+            "TypeName": "HumanName",
+            "code": "HumanName"
+          },
+          {
+            "TypeName": "Address",
+            "code": "Address"
+          },
+          {
+            "TypeName": "ContactPoint",
+            "code": "ContactPoint"
+          },
+          {
+            "TypeName": "Timing",
+            "code": "Timing"
+          },
+          {
+            "TypeName": "Reference",
+            "code": "Reference"
+          },
+          {
+            "TypeName": "Meta",
+            "code": "Meta"
+          }
+        ],
+        "mapping": [
+          {
+            "identity": "rim",
+            "map": "N/A"
+          }
+        ]
       }
     ]
   },

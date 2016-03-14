@@ -44,6 +44,7 @@
         "max": "*",
         "type": [
           {
+            "TypeName": "Element",
             "code": "Element"
           }
         ],
@@ -66,6 +67,7 @@
         "max": "1",
         "type": [
           {
+            "TypeName": "uri",
             "code": "uri"
           }
         ],
@@ -86,6 +88,7 @@
         "max": "1",
         "type": [
           {
+            "TypeName": "Reference",
             "code": "Reference",
             "profile": [
               "http://hl7.org/fhir/StructureDefinition/Resource"

@@ -30,6 +30,7 @@
         "max": "*",
         "type": [
           {
+            "TypeName": "Extension",
             "code": "Extension"
           }
         ]
@@ -52,6 +53,7 @@
         "max": "1",
         "type": [
           {
+            "TypeName": "Extension",
             "code": "Extension"
           }
         ]
@@ -75,6 +77,7 @@
         "path": "Extension.extension.url",
         "type": [
           {
+            "TypeName": "uri",
             "code": "uri"
           }
         ],
@@ -86,6 +89,7 @@
         "max": "1",
         "type": [
           {
+            "TypeName": "CodeableConcept",
             "code": "CodeableConcept"
           }
         ]
@@ -99,6 +103,7 @@
         "max": "1",
         "type": [
           {
+            "TypeName": "Extension",
             "code": "Extension"
           }
         ]
@@ -122,6 +127,7 @@
         "path": "Extension.extension.url",
         "type": [
           {
+            "TypeName": "uri",
             "code": "uri"
           }
         ],
@@ -133,102 +139,135 @@
         "max": "1",
         "type": [
           {
+            "TypeName": "boolean",
             "code": "boolean"
           },
           {
+            "TypeName": "integer",
             "code": "integer"
           },
           {
+            "TypeName": "decimal",
             "code": "decimal"
           },
           {
+            "TypeName": "base64Binary",
             "code": "base64Binary"
           },
           {
+            "TypeName": "instant",
             "code": "instant"
           },
           {
+            "TypeName": "string",
             "code": "string"
           },
           {
+            "TypeName": "uri",
             "code": "uri"
           },
           {
+            "TypeName": "date",
             "code": "date"
           },
           {
+            "TypeName": "dateTime",
             "code": "dateTime"
           },
           {
+            "TypeName": "time",
             "code": "time"
           },
           {
+            "TypeName": "code",
             "code": "code"
           },
           {
+            "TypeName": "oid",
             "code": "oid"
           },
           {
+            "TypeName": "id",
             "code": "id"
           },
           {
+            "TypeName": "unsignedInt",
             "code": "unsignedInt"
           },
           {
+            "TypeName": "positiveInt",
             "code": "positiveInt"
           },
           {
+            "TypeName": "markdown",
             "code": "markdown"
           },
           {
+            "TypeName": "Annotation",
             "code": "Annotation"
           },
           {
+            "TypeName": "Attachment",
             "code": "Attachment"
           },
           {
+            "TypeName": "Identifier",
             "code": "Identifier"
           },
           {
+            "TypeName": "CodeableConcept",
             "code": "CodeableConcept"
           },
           {
+            "TypeName": "Coding",
             "code": "Coding"
           },
           {
+            "TypeName": "Quantity",
             "code": "Quantity"
           },
           {
+            "TypeName": "Range",
             "code": "Range"
           },
           {
+            "TypeName": "Period",
             "code": "Period"
           },
           {
+            "TypeName": "Ratio",
             "code": "Ratio"
           },
           {
+            "TypeName": "SampledData",
             "code": "SampledData"
           },
           {
+            "TypeName": "Signature",
             "code": "Signature"
           },
           {
+            "TypeName": "HumanName",
             "code": "HumanName"
           },
           {
+            "TypeName": "Address",
             "code": "Address"
           },
           {
+            "TypeName": "ContactPoint",
             "code": "ContactPoint"
           },
           {
+            "TypeName": "Timing",
             "code": "Timing"
           },
           {
+            "TypeName": "Reference",
             "code": "Reference"
           },
           {
+            "TypeName": "Meta",
             "code": "Meta"
           }
         ]
@@ -242,6 +281,7 @@
         "max": "1",
         "type": [
           {
+            "TypeName": "Extension",
             "code": "Extension"
           }
         ]
@@ -265,6 +305,7 @@
         "path": "Extension.extension.url",
         "type": [
           {
+            "TypeName": "uri",
             "code": "uri"
           }
         ],
@@ -276,9 +317,11 @@
         "max": "1",
         "type": [
           {
+            "TypeName": "date",
             "code": "date"
           },
           {
+            "TypeName": "Quantity",
             "code": "Quantity",
             "profile": [
               "http://hl7.org/fhir/StructureDefinition/Duration"
@@ -295,6 +338,7 @@
         "max": "1",
         "type": [
           {
+            "TypeName": "Extension",
             "code": "Extension"
           }
         ],
@@ -319,6 +363,7 @@
         "path": "Extension.extension.url",
         "type": [
           {
+            "TypeName": "uri",
             "code": "uri"
           }
         ],
@@ -330,9 +375,11 @@
         "max": "1",
         "type": [
           {
+            "TypeName": "date",
             "code": "date"
           },
           {
+            "TypeName": "boolean",
             "code": "boolean"
           }
         ]
@@ -346,6 +393,7 @@
         "max": "1",
         "type": [
           {
+            "TypeName": "uri",
             "code": "uri"
           }
         ],

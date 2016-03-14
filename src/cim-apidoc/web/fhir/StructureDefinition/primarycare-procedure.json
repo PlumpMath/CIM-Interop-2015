@@ -45,6 +45,7 @@
         "max": "*",
         "type": [
           {
+            "TypeName": "Procedure",
             "code": "Procedure"
           }
         ],
@@ -77,6 +78,7 @@
         "max": "1",
         "type": [
           {
+            "TypeName": "Extension",
             "code": "Extension",
             "profile": [
               "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-daterecorded-extension"
@@ -93,6 +95,7 @@
         "max": "1",
         "type": [
           {
+            "TypeName": "Reference",
             "code": "Reference",
             "profile": [
               "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-organization"
@@ -123,6 +126,7 @@
         "max": "1",
         "type": [
           {
+            "TypeName": "Reference",
             "code": "Reference",
             "profile": [
               "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-patient"
@@ -150,9 +154,10 @@
         "short": "Classification of the procedure",
         "definition": "A code that classifies the procedure for searching, sorting and display purposes (e.g. \"Surgical Procedure\").",
         "min": 0,
-        "max": "0",
+        "max": "1",
         "type": [
           {
+            "TypeName": "CodeableConcept",
             "code": "CodeableConcept"
           }
         ],
@@ -189,6 +194,7 @@
         "max": "*",
         "type": [
           {
+            "TypeName": "Extension",
             "code": "Extension",
             "profile": [
               "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-coding-qualifier-extension"
@@ -204,6 +210,7 @@
         "max": "0",
         "type": [
           {
+            "TypeName": "boolean",
             "code": "boolean"
           }
         ],
@@ -224,6 +231,7 @@
         "max": "0",
         "type": [
           {
+            "TypeName": "CodeableConcept",
             "code": "CodeableConcept"
           }
         ],
@@ -249,9 +257,10 @@
         "short": "Target body sites",
         "definition": "Detailed and structured anatomical location information. Multiple locations are allowed - e.g. multiple punch biopsies of a lesion.",
         "min": 0,
-        "max": "0",
+        "max": "*",
         "type": [
           {
+            "TypeName": "CodeableConcept",
             "code": "CodeableConcept"
           }
         ],
@@ -283,9 +292,11 @@
         "max": "0",
         "type": [
           {
+            "TypeName": "CodeableConcept",
             "code": "CodeableConcept"
           },
           {
+            "TypeName": "Reference",
             "code": "Reference",
             "profile": [
               "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-condition"
@@ -308,31 +319,55 @@
         ]
       },
       {
+        "path": "Procedure.performer",
+        "short": "The people who performed the procedure",
+        "definition": "Limited to 'real' people rather than equipment.",
+        "min": 1,
+        "max": "*",
+        "type": [
+          {
+            "TypeName": "BackboneElement",
+            "code": "BackboneElement"
+          }
+        ],
+        "isSummary": true,
+        "mapping": [
+          {
+            "identity": "rim",
+            "map": ".participation[typeCode=PFM]"
+          }
+        ]
+      },
+      {
         "path": "Procedure.performer.actor",
         "short": "The reference to the practitioner",
         "definition": "The practitioner who was involved in the procedure.",
-        "min": 0,
+        "min": 1,
         "max": "1",
         "type": [
           {
+            "TypeName": "Reference",
             "code": "Reference",
             "profile": [
               "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-practitioner"
             ]
           },
           {
+            "TypeName": "Reference",
             "code": "Reference",
             "profile": [
               "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-organization"
             ]
           },
           {
+            "TypeName": "Reference",
             "code": "Reference",
             "profile": [
               "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-patient"
             ]
           },
           {
+            "TypeName": "Reference",
             "code": "Reference",
             "profile": [
               "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-related-person"
@@ -363,6 +398,7 @@
         "max": "1",
         "type": [
           {
+            "TypeName": "dateTime",
             "code": "dateTime"
           }
         ],
@@ -390,6 +426,7 @@
         "max": "1",
         "type": [
           {
+            "TypeName": "Reference",
             "code": "Reference",
             "profile": [
               "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-encounter"
@@ -421,6 +458,7 @@
         "max": "1",
         "type": [
           {
+            "TypeName": "Reference",
             "code": "Reference",
             "profile": [
               "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-location"
@@ -444,6 +482,7 @@
         "max": "0",
         "type": [
           {
+            "TypeName": "CodeableConcept",
             "code": "CodeableConcept"
           }
         ],
@@ -471,6 +510,7 @@
         "max": "0",
         "type": [
           {
+            "TypeName": "Reference",
             "code": "Reference",
             "profile": [
               "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-diagnostic-report"
@@ -493,6 +533,7 @@
         "max": "0",
         "type": [
           {
+            "TypeName": "CodeableConcept",
             "code": "CodeableConcept"
           }
         ],
@@ -518,6 +559,7 @@
         "max": "0",
         "type": [
           {
+            "TypeName": "CodeableConcept",
             "code": "CodeableConcept"
           }
         ],
@@ -543,24 +585,28 @@
         "max": "0",
         "type": [
           {
+            "TypeName": "Reference",
             "code": "Reference",
             "profile": [
               "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-care-plan"
             ]
           },
           {
+            "TypeName": "Reference",
             "code": "Reference",
             "profile": [
               "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-diagnostic-order"
             ]
           },
           {
+            "TypeName": "Reference",
             "code": "Reference",
             "profile": [
               "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-procedure-request"
             ]
           },
           {
+            "TypeName": "Reference",
             "code": "Reference",
             "profile": [
               "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-referral-request"
@@ -576,24 +622,28 @@
         "max": "0",
         "type": [
           {
+            "TypeName": "Reference",
             "code": "Reference",
             "profile": [
               "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-practitioner"
             ]
           },
           {
+            "TypeName": "Reference",
             "code": "Reference",
             "profile": [
               "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-patient"
             ]
           },
           {
+            "TypeName": "Reference",
             "code": "Reference",
             "profile": [
               "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-related-person"
             ]
           },
           {
+            "TypeName": "string",
             "code": "string"
           }
         ],
@@ -617,6 +667,7 @@
         "max": "0",
         "type": [
           {
+            "TypeName": "dateTime",
             "code": "dateTime"
           }
         ],
@@ -640,6 +691,7 @@
         "max": "0",
         "type": [
           {
+            "TypeName": "BackboneElement",
             "code": "BackboneElement"
           }
         ]
@@ -652,6 +704,7 @@
         "max": "1",
         "type": [
           {
+            "TypeName": "Reference",
             "code": "Reference",
             "profile": [
               "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-device"
@@ -669,18 +722,21 @@
         "max": "0",
         "type": [
           {
+            "TypeName": "Reference",
             "code": "Reference",
             "profile": [
               "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-device"
             ]
           },
           {
+            "TypeName": "Reference",
             "code": "Reference",
             "profile": [
               "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-medication"
             ]
           },
           {
+            "TypeName": "Reference",
             "code": "Reference",
             "profile": [
               "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-substance"

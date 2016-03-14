@@ -43,6 +43,7 @@
         "max": "*",
         "type": [
           {
+            "TypeName": "Encounter",
             "code": "Encounter"
           }
         ],
@@ -75,6 +76,7 @@
         "max": "1",
         "type": [
           {
+            "TypeName": "Extension",
             "code": "Extension",
             "profile": [
               "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-encounter-purpose-extension"
@@ -91,6 +93,7 @@
         "max": "1",
         "type": [
           {
+            "TypeName": "Reference",
             "code": "Reference",
             "profile": [
               "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-organization"
@@ -114,6 +117,20 @@
         ]
       },
       {
+        "path": "Encounter.statusHistory",
+        "short": "List of past encounter statuses",
+        "definition": "The status history permits the encounter resource to contain the status history without needing to read through the historical versions of the resource, or even have the server store them.",
+        "comments": "The current status is always found in the current version of the resource, not the status history.",
+        "min": 0,
+        "max": "0",
+        "type": [
+          {
+            "TypeName": "BackboneElement",
+            "code": "BackboneElement"
+          }
+        ]
+      },
+      {
         "path": "Encounter.type",
         "short": "Specific type of encounter",
         "definition": "Specific type of encounter (e.g. telephone consultation, face to face, home visit note).",
@@ -122,6 +139,7 @@
         "max": "1",
         "type": [
           {
+            "TypeName": "CodeableConcept",
             "code": "CodeableConcept"
           }
         ],
@@ -147,6 +165,40 @@
         ]
       },
       {
+        "path": "Encounter.priority",
+        "short": "Indicates the urgency of the encounter",
+        "definition": "Indicates the urgency of the encounter.",
+        "min": 0,
+        "max": "0",
+        "type": [
+          {
+            "TypeName": "CodeableConcept",
+            "code": "CodeableConcept"
+          }
+        ],
+        "binding": {
+          "strength": 3,
+          "description": "Indicates the urgency of the encounter.",
+          "Item": {
+            "reference": "http://hl7.org/fhir/ValueSet/encounter-priority"
+          }
+        },
+        "mapping": [
+          {
+            "identity": "v2",
+            "map": "PV2-25"
+          },
+          {
+            "identity": "rim",
+            "map": ".priorityCode"
+          },
+          {
+            "identity": "w5",
+            "map": "grade"
+          }
+        ]
+      },
+      {
         "path": "Encounter.patient",
         "short": "The patient present at the encounter",
         "definition": "The patient present at the encounter.",
@@ -158,6 +210,7 @@
         "max": "1",
         "type": [
           {
+            "TypeName": "Reference",
             "code": "Reference",
             "profile": [
               "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-patient"
@@ -188,6 +241,7 @@
         "max": "*",
         "type": [
           {
+            "TypeName": "Reference",
             "code": "Reference",
             "profile": [
               "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-episode-of-care"
@@ -214,9 +268,10 @@
         "max": "*",
         "type": [
           {
+            "TypeName": "Reference",
             "code": "Reference",
             "profile": [
-              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-procedure-request"
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-referral-request"
             ]
           }
         ]
@@ -229,12 +284,14 @@
         "max": "1",
         "type": [
           {
+            "TypeName": "Reference",
             "code": "Reference",
             "profile": [
               "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-practitioner"
             ]
           },
           {
+            "TypeName": "Reference",
             "code": "Reference",
             "profile": [
               "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-related-person"
@@ -265,6 +322,7 @@
         "max": "1",
         "type": [
           {
+            "TypeName": "Reference",
             "code": "Reference",
             "profile": [
               "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-appointment"
@@ -295,12 +353,14 @@
         "max": "*",
         "type": [
           {
+            "TypeName": "Reference",
             "code": "Reference",
             "profile": [
               "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-condition"
             ]
           },
           {
+            "TypeName": "Reference",
             "code": "Reference",
             "profile": [
               "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-procedure"
@@ -323,6 +383,26 @@
         ]
       },
       {
+        "path": "Encounter.hospitalization",
+        "short": "Details about the admission to a healthcare service",
+        "definition": "Details about the admission to a healthcare service.",
+        "comments": "An Encounter may cover more than just the inpatient stay. Contexts such as outpatients, community clinics, and aged care facilities are also included.  The duration recorded in the period of this encounter covers the entire scope of this hospitalization record.",
+        "min": 0,
+        "max": "0",
+        "type": [
+          {
+            "TypeName": "BackboneElement",
+            "code": "BackboneElement"
+          }
+        ],
+        "mapping": [
+          {
+            "identity": "rim",
+            "map": ".outboundRelationship[typeCode=COMP].target[classCode=ENC, moodCode=EVN]"
+          }
+        ]
+      },
+      {
         "path": "Encounter.hospitalization.preAdmissionIdentifier.assigner",
         "short": "Organization that issued id (may be just text)",
         "definition": "Organization that issued/manages the identifier.",
@@ -331,6 +411,7 @@
         "max": "1",
         "type": [
           {
+            "TypeName": "Reference",
             "code": "Reference",
             "profile": [
               "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-organization"
@@ -361,6 +442,7 @@
         "max": "1",
         "type": [
           {
+            "TypeName": "Reference",
             "code": "Reference",
             "profile": [
               "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-location"
@@ -382,6 +464,7 @@
         "max": "*",
         "type": [
           {
+            "TypeName": "Reference",
             "code": "Reference",
             "profile": [
               "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-condition"
@@ -397,6 +480,7 @@
         "max": "1",
         "type": [
           {
+            "TypeName": "Reference",
             "code": "Reference",
             "profile": [
               "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-location"
@@ -422,6 +506,7 @@
         "max": "*",
         "type": [
           {
+            "TypeName": "Reference",
             "code": "Reference",
             "profile": [
               "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-condition"
@@ -443,6 +528,7 @@
         "max": "1",
         "type": [
           {
+            "TypeName": "Reference",
             "code": "Reference",
             "profile": [
               "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-location"
@@ -472,6 +558,7 @@
         "max": "1",
         "type": [
           {
+            "TypeName": "Reference",
             "code": "Reference",
             "profile": [
               "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-organization"
@@ -494,9 +581,10 @@
         "short": "Another Encounter this encounter is part of",
         "definition": "Another Encounter of which this encounter is a part of (administratively or in time).",
         "min": 0,
-        "max": "1",
+        "max": "0",
         "type": [
           {
+            "TypeName": "Reference",
             "code": "Reference",
             "profile": [
               "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-encounter"

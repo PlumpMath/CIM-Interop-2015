@@ -1,0 +1,200 @@
+﻿{
+  "id": "primarycare-medication-regime",
+  "meta": {
+    "lastUpdated": "2015-09-22T11:02:49.724+01:00"
+  },
+  "extension": [
+    {
+      "Item": 1,
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm"
+    }
+  ],
+  "url": "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-medication-regime",
+  "name": "PrimaryCare-MedicationRegime",
+  "display": "Primary Care medication regime",
+  "status": "draft",
+  "publisher": "Endeavour Health Charitable Trust",
+  "contact": [
+    {
+      "telecom": [
+        {
+          "system": 4,
+          "value": "http://www.endeavourhealth.org/"
+        }
+      ]
+    }
+  ],
+  "date": "2015-11-01T00:00:00+00:00",
+  "description": "Medication regimes, or courses, are  “templates” for a prescription. Active or past. Contains enough information for a prescription to be issues or for it to be transcribed into another record as a reference (e.g. secondary care noting the primary care information would be a subset). What it is, who authorised it, when it was authorised, reference to last issue, overall compliance for that course, special instructions etc.",
+  "fhirVersion": "1.0.1",
+  "kind": 1,
+  "constrainedType": "MedicationStatement",
+  "abstract": false,
+  "base": "http://hl7.org/fhir/StructureDefinition/MedicationStatement",
+  "differential": {
+    "element": [
+      {
+        "path": "MedicationStatement",
+        "short": "Record of medication being taken by a patient",
+        "definition": "A record of a medication that is being consumed by a patient.   A MedicationStatement may indicate that the patient may be taking the medication now, or has taken the medication in the past or will be taking the medication in the future.  The source of this information can be the patient, significant other (such as a family member or spouse), or a clinician.  A common scenario where this information is captured is during the history taking process during a patient visit or stay.   The medication information may come from e.g. the patient's memory, from a prescription bottle,  or from a list of medications the patient, clinician or other party maintains   The primary difference between a medication statement and a medication administration is that the medication administration has complete administration information and is based on actual administration information from the person who administered the medication.  A medication statement is often, if not always, less specific.  There is no required date/time when the medication was administered, in fact we only know that a source has reported the patient is taking this medication, where details such as time, quantity, or rate or even medication product may be incomplete or missing or less precise.  As stated earlier, the medication statement information may come from the patient's memory, from a prescription bottle or from a list of medications the patient, clinician or other party maintains.  Medication administration is more formal and is not missing detailed information.",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "TypeName": "MedicationStatement",
+            "code": "MedicationStatement"
+          }
+        ],
+        "isSummary": true,
+        "mapping": [
+          {
+            "identity": "rim",
+            "map": "SubstanceAdministration"
+          },
+          {
+            "identity": "w5",
+            "map": "clinical.medication"
+          }
+        ]
+      },
+      {
+        "path": "MedicationStatement.extension",
+        "slicing": {
+          "discriminator": [
+            "url"
+          ],
+          "rules": 2
+        }
+      },
+      {
+        "path": "MedicationStatement.extension",
+        "name": "quantity",
+        "short": "Amount of medication to supply",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "TypeName": "Extension",
+            "code": "Extension",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-medication-regime-quantity-extension"
+            ]
+          }
+        ]
+      },
+      {
+        "path": "MedicationStatement.patient",
+        "short": "Who is/was taking  the medication",
+        "definition": "The person or animal who is/was taking the medication.",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "TypeName": "Reference",
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-patient"
+            ]
+          }
+        ],
+        "isSummary": true,
+        "mapping": [
+          {
+            "identity": "v2",
+            "map": "PID-3-Patient ID List"
+          },
+          {
+            "identity": "rim",
+            "map": "SubstanceAdministration->subject->Patient"
+          },
+          {
+            "identity": "w5",
+            "map": "who.focus"
+          }
+        ]
+      },
+      {
+        "path": "MedicationStatement.informationSource",
+        "definition": "The person who provided the information about the taking of this medication.",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "TypeName": "Reference",
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-practitioner"
+            ]
+          }
+        ],
+        "isSummary": true,
+        "mapping": [
+          {
+            "identity": "w5",
+            "map": "who.source"
+          }
+        ]
+      },
+      {
+        "path": "MedicationStatement.reasonForUse[x]",
+        "definition": "A reason for why the medication is being/was taken.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "TypeName": "CodeableConcept",
+            "code": "CodeableConcept"
+          },
+          {
+            "TypeName": "Reference",
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-condition"
+            ]
+          }
+        ],
+        "isSummary": true,
+        "binding": {
+          "strength": 3,
+          "description": "Codes identifying why the medication is being taken.",
+          "Item": {
+            "reference": "http://hl7.org/fhir/ValueSet/condition-code"
+          }
+        }
+      },
+      {
+        "path": "MedicationStatement.medication[x]",
+        "short": "What medication was taken",
+        "definition": "Identifies the medication being administered. This is either a link to a resource representing the details of the medication or a simple attribute carrying a code that identifies the medication from a known list of medications.",
+        "comments": "If only a code is specified, then it needs to be a code for a specific product.  If more information is required, then the use of the medication resource is recommended.  Note: do not use Medication.name to describe the medication this statement concerns. When the only available information is a text description of the medication, Medication.code.text should be used.",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "TypeName": "CodeableConcept",
+            "code": "CodeableConcept"
+          },
+          {
+            "TypeName": "Reference",
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-medication"
+            ]
+          }
+        ],
+        "isSummary": true,
+        "mapping": [
+          {
+            "identity": "rim",
+            "map": "SubstanceAdministration>Component>SubstanceAdministrationRequest.consumable"
+          },
+          {
+            "identity": "w5",
+            "map": "what"
+          }
+        ]
+      }
+    ]
+  },
+  "W5TopLevelGroup": "Clinical"
+}

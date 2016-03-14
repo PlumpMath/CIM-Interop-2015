@@ -5,7 +5,7 @@
   },
   "extension": [
     {
-      "Item": 0,
+      "Item": 1,
       "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm"
     }
   ],
@@ -25,7 +25,7 @@
     }
   ],
   "date": "2015-11-01T00:00:00+00:00",
-  "description": "Placeholder",
+  "description": "A record of a request for a diagnostic investigation service to be performed.",
   "fhirVersion": "1.0.1",
   "kind": 1,
   "constrainedType": "DiagnosticOrder",
@@ -41,6 +41,7 @@
         "max": "*",
         "type": [
           {
+            "TypeName": "DiagnosticOrder",
             "code": "DiagnosticOrder"
           }
         ],
@@ -63,27 +64,10 @@
         "max": "1",
         "type": [
           {
+            "TypeName": "Reference",
             "code": "Reference",
             "profile": [
               "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-patient"
-            ]
-          },
-          {
-            "code": "Reference",
-            "profile": [
-              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-group"
-            ]
-          },
-          {
-            "code": "Reference",
-            "profile": [
-              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-location"
-            ]
-          },
-          {
-            "code": "Reference",
-            "profile": [
-              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-device"
             ]
           }
         ],
@@ -107,6 +91,7 @@
         "max": "1",
         "type": [
           {
+            "TypeName": "Reference",
             "code": "Reference",
             "profile": [
               "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-practitioner"
@@ -134,6 +119,7 @@
         "max": "1",
         "type": [
           {
+            "TypeName": "Reference",
             "code": "Reference",
             "profile": [
               "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-organization"
@@ -164,6 +150,7 @@
         "max": "1",
         "type": [
           {
+            "TypeName": "Reference",
             "code": "Reference",
             "profile": [
               "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-encounter"
@@ -195,18 +182,21 @@
         "max": "*",
         "type": [
           {
+            "TypeName": "Reference",
             "code": "Reference",
             "profile": [
               "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-observation"
             ]
           },
           {
+            "TypeName": "Reference",
             "code": "Reference",
             "profile": [
               "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-condition"
             ]
           },
           {
+            "TypeName": "Reference",
             "code": "Reference",
             "profile": [
               "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-document-reference"
@@ -233,6 +223,7 @@
         "max": "*",
         "type": [
           {
+            "TypeName": "Reference",
             "code": "Reference",
             "profile": [
               "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-specimen"
@@ -254,12 +245,14 @@
         "max": "1",
         "type": [
           {
+            "TypeName": "Reference",
             "code": "Reference",
             "profile": [
               "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-practitioner"
             ]
           },
           {
+            "TypeName": "Reference",
             "code": "Reference",
             "profile": [
               "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-device"
@@ -274,6 +267,38 @@
         ]
       },
       {
+        "path": "DiagnosticOrder.item.code",
+        "short": "Code to indicate the item (test or panel) being ordered",
+        "definition": "A code that identifies a particular diagnostic investigation, or panel of investigations, that have been requested.",
+        "comments": "Many laboratory tests and radiology tests embed the specimen/organ system in the test name, for example,  serum or serum/plasma glucose, or a chest xray. The specimen may not be recorded separately from the test code.",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "TypeName": "CodeableConcept",
+            "code": "CodeableConcept"
+          }
+        ],
+        "isSummary": true,
+        "binding": {
+          "strength": 2,
+          "description": "Codes for tests/services that can be performed by diagnostic services.",
+          "Item": {
+            "reference": "http://endeavourhealth.org/fhir/ValueSet/primarycare-diagnostic-order-item-type"
+          }
+        },
+        "mapping": [
+          {
+            "identity": "v2",
+            "map": "OBX-4"
+          },
+          {
+            "identity": "rim",
+            "map": ".code"
+          }
+        ]
+      },
+      {
         "path": "DiagnosticOrder.item.specimen",
         "short": "If this item relates to specific specimens",
         "definition": "If the item is related to a specific specimen.",
@@ -282,6 +307,7 @@
         "max": "*",
         "type": [
           {
+            "TypeName": "Reference",
             "code": "Reference",
             "profile": [
               "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-specimen"
@@ -303,24 +329,28 @@
         "max": "1",
         "type": [
           {
+            "TypeName": "Reference",
             "code": "Reference",
             "profile": [
               "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-practitioner"
             ]
           },
           {
+            "TypeName": "Reference",
             "code": "Reference",
             "profile": [
               "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-patient"
             ]
           },
           {
+            "TypeName": "Reference",
             "code": "Reference",
             "profile": [
               "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-related-person"
             ]
           },
           {
+            "TypeName": "string",
             "code": "string"
           }
         ],

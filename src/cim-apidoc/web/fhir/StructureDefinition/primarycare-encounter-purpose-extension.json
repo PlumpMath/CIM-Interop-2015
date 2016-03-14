@@ -45,6 +45,7 @@
         "max": "*",
         "type": [
           {
+            "TypeName": "Element",
             "code": "Element"
           }
         ]
@@ -61,6 +62,7 @@
         "max": "1",
         "type": [
           {
+            "TypeName": "uri",
             "code": "uri"
           }
         ],
@@ -80,6 +82,7 @@
         "max": "1",
         "type": [
           {
+            "TypeName": "CodeableConcept",
             "code": "CodeableConcept"
           }
         ],
