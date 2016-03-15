@@ -1,0 +1,447 @@
+<html xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:x="urn:schemas-microsoft-com:office:excel"
+xmlns="http://www.w3.org/TR/REC-html40">
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1252">
+<meta name=ProgId content=Excel.Sheet>
+<meta name=Generator content="Microsoft Excel 15">
+<link id=Main-File rel=Main-File href="../primarycare-openhr-mapping.htm">
+<link rel=File-List href=filelist.xml>
+<title>PrimaryCare OpenHR mapping</title>
+<link rel=Stylesheet href=stylesheet.css>
+<style>
+<!--table
+	{mso-displayed-decimal-separator:"\.";
+	mso-displayed-thousand-separator:"\,";}
+@page
+	{margin:.75in .7in .75in .7in;
+	mso-header-margin:.3in;
+	mso-footer-margin:.3in;}
+-->
+</style>
+<![if !supportTabStrip]><script language="JavaScript">
+<!--
+function fnUpdateTabs()
+ {
+  if (parent.window.g_iIEVer>=4) {
+   if (parent.document.readyState=="complete"
+    && parent.frames['frTabs'].document.readyState=="complete")
+   parent.fnSetActiveSheet(11);
+  else
+   window.setTimeout("fnUpdateTabs();",150);
+ }
+}
+
+if (window.name!="frSheet")
+ window.location.replace("../primarycare-openhr-mapping.htm");
+else
+ fnUpdateTabs();
+//-->
+</script>
+<![endif]>
+</head>
+
+<body link="#0563C1" vlink="#954F72">
+
+<table border=0 cellpadding=0 cellspacing=0 width=1358 style='border-collapse:
+ collapse;table-layout:fixed;width:1019pt'>
+ <col width=37 style='mso-width-source:userset;mso-width-alt:1184;width:28pt'>
+ <col width=229 style='mso-width-source:userset;mso-width-alt:7328;width:172pt'>
+ <col width=40 style='mso-width-source:userset;mso-width-alt:1280;width:30pt'>
+ <col width=489 style='mso-width-source:userset;mso-width-alt:15648;width:367pt'>
+ <col width=231 style='mso-width-source:userset;mso-width-alt:7392;width:173pt'>
+ <col width=332 style='mso-width-source:userset;mso-width-alt:10624;width:249pt'>
+ <tr height=21 style='height:15.75pt'>
+  <td height=21 width=37 style='height:15.75pt;width:28pt'></td>
+  <td class=xl66 width=229 style='width:172pt'>Resource Name:<span
+  style='mso-spacerun:yes'> </span></td>
+  <td colspan=3 class=xl85 width=760 style='width:570pt'>PrimaryCare-MedicationOrder</td>
+  <td width=332 style='width:249pt'></td>
+ </tr>
+ <tr height=21 style='height:15.75pt'>
+  <td height=21 style='height:15.75pt'></td>
+  <td class=xl66>Base:<span style='mso-spacerun:yes'> </span></td>
+  <td colspan=3 class=xl85>MedicationOrder</td>
+  <td></td>
+ </tr>
+ <tr height=21 style='height:15.75pt'>
+  <td height=21 style='height:15.75pt'></td>
+  <td class=xl66>Extensions:</td>
+  <td colspan=3 class=xl66>primarycare-coding-qualifier-extension</td>
+  <td></td>
+ </tr>
+ <tr height=42 style='height:31.5pt;mso-xlrowspan:2'>
+  <td height=42 colspan=6 style='height:31.5pt;mso-ignore:colspan'></td>
+ </tr>
+ <tr height=21 style='height:15.75pt'>
+  <td height=21 style='height:15.75pt'></td>
+  <td class=xl65>PrimaryCare-MedicationOrder</td>
+  <td class=xl65>&nbsp;</td>
+  <td class=xl65>OpenHR</td>
+  <td class=xl65>GP Record Requirements (Phase 1)</td>
+  <td class=xl65>Notes</td>
+ </tr>
+ <tr height=21 style='mso-height-source:userset;height:15.95pt'>
+  <td height=21 style='height:15.95pt'></td>
+  <td>identifier</td>
+  <td class=xl70>0 .. *</td>
+  <td></td>
+  <td>PrescriptionIdentifier</td>
+  <td></td>
+ </tr>
+ <tr height=21 style='height:15.75pt'>
+  <td height=21 style='height:15.75pt'></td>
+  <td>dateWritten</td>
+  <td class=xl70>0 .. 1</td>
+  <td>event.effectiveTime</td>
+  <td>PrescriptionDate</td>
+  <td></td>
+ </tr>
+ <tr height=21 style='height:15.75pt'>
+  <td height=21 style='height:15.75pt'></td>
+  <td>status</td>
+  <td class=xl70>0 .. 1</td>
+  <td></td>
+  <td>Status</td>
+  <td></td>
+ </tr>
+ <tr height=21 style='height:15.75pt'>
+  <td height=21 style='height:15.75pt'></td>
+  <td>dateEnded</td>
+  <td class=xl70>0 .. 1</td>
+  <td></td>
+  <td>DateEnd</td>
+  <td></td>
+ </tr>
+ <tr height=21 style='height:15.75pt'>
+  <td height=21 style='height:15.75pt'></td>
+  <td>reasonEnded</td>
+  <td class=xl70>0 .. 1</td>
+  <td></td>
+  <td class=xl84></td>
+  <td></td>
+ </tr>
+ <tr height=21 style='height:15.75pt'>
+  <td height=21 style='height:15.75pt'></td>
+  <td class=xl72>patient</td>
+  <td class=xl70>1 .. 1</td>
+  <td>event.patient</td>
+  <td class=xl84></td>
+  <td></td>
+ </tr>
+ <tr height=21 style='height:15.75pt'>
+  <td height=21 style='height:15.75pt'></td>
+  <td class=xl72>perscriber</td>
+  <td class=xl70>1 .. 1</td>
+  <td>event.authorisingUserInRole</td>
+  <td>PrescriptionAuthor</td>
+  <td></td>
+ </tr>
+ <tr height=21 style='height:15.75pt'>
+  <td height=21 style='height:15.75pt'></td>
+  <td>encounter</td>
+  <td class=xl70>0 .. 1</td>
+  <td></td>
+  <td class=xl84></td>
+  <td></td>
+ </tr>
+ <tr height=21 style='height:15.75pt'>
+  <td height=21 style='height:15.75pt'></td>
+  <td>reason[x]</td>
+  <td class=xl70>0 .. 1</td>
+  <td></td>
+  <td class=xl84></td>
+  <td></td>
+ </tr>
+ <tr height=21 style='height:15.75pt'>
+  <td height=21 style='height:15.75pt'></td>
+  <td>note</td>
+  <td class=xl70>0 .. 1</td>
+  <td>event.associatedText</td>
+  <td>Notes</td>
+  <td></td>
+ </tr>
+ <tr height=21 style='height:15.75pt'>
+  <td height=21 style='height:15.75pt'></td>
+  <td class=xl72>medication[x]</td>
+  <td class=xl70>1 .. 1</td>
+  <td>event.code</td>
+  <td>&lt;&lt;Medication&gt;&gt;</td>
+  <td></td>
+ </tr>
+ <tr height=21 style='height:15.75pt'>
+  <td height=21 style='height:15.75pt'></td>
+  <td>dosageInstruction</td>
+  <td class=xl70>0 .. *</td>
+  <td></td>
+  <td>DosageInstructions</td>
+  <td></td>
+ </tr>
+ <tr height=21 style='height:15.75pt'>
+  <td height=21 style='height:15.75pt'></td>
+  <td class=xl68>text</td>
+  <td class=xl70>0 .. 1</td>
+  <td class=xl73>event.medicationIssue.dosage</td>
+  <td colspan=2 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=21 style='height:15.75pt'>
+  <td height=21 class=xl82 style='height:15.75pt'></td>
+  <td class=xl68>additionalInstructions</td>
+  <td class=xl70>0 .. 1</td>
+  <td></td>
+  <td class=xl84></td>
+  <td></td>
+ </tr>
+ <tr height=21 style='height:15.75pt'>
+  <td height=21 style='height:15.75pt'></td>
+  <td class=xl68>timing</td>
+  <td class=xl70>0 .. 1</td>
+  <td></td>
+  <td class=xl84></td>
+  <td></td>
+ </tr>
+ <tr height=21 style='height:15.75pt'>
+  <td height=21 style='height:15.75pt'></td>
+  <td class=xl68>asNeeded[x]</td>
+  <td class=xl70>0 .. 1</td>
+  <td></td>
+  <td class=xl84></td>
+  <td></td>
+ </tr>
+ <tr height=21 style='height:15.75pt'>
+  <td height=21 style='height:15.75pt'></td>
+  <td class=xl68>site[x]</td>
+  <td class=xl70>0 .. 1</td>
+  <td></td>
+  <td class=xl84></td>
+  <td></td>
+ </tr>
+ <tr height=21 style='height:15.75pt'>
+  <td height=21 style='height:15.75pt'></td>
+  <td class=xl68>route</td>
+  <td class=xl70>0 .. 1</td>
+  <td></td>
+  <td class=xl84></td>
+  <td></td>
+ </tr>
+ <tr height=21 style='height:15.75pt'>
+  <td height=21 style='height:15.75pt'></td>
+  <td class=xl68>method</td>
+  <td class=xl70>0 .. 1</td>
+  <td></td>
+  <td class=xl84></td>
+  <td></td>
+ </tr>
+ <tr height=21 style='height:15.75pt'>
+  <td height=21 style='height:15.75pt'></td>
+  <td class=xl68>dose[x]</td>
+  <td class=xl70>0 .. 1</td>
+  <td colspan=3 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=21 style='height:15.75pt'>
+  <td height=21 style='height:15.75pt'></td>
+  <td class=xl68>rate[x]</td>
+  <td class=xl70>0 .. 1</td>
+  <td></td>
+  <td class=xl84></td>
+  <td></td>
+ </tr>
+ <tr height=21 style='height:15.75pt'>
+  <td height=21 style='height:15.75pt'></td>
+  <td class=xl68>maxDosePerPeriod</td>
+  <td class=xl70>0 .. 1</td>
+  <td></td>
+  <td class=xl84></td>
+  <td></td>
+ </tr>
+ <tr height=21 style='height:15.75pt'>
+  <td height=21 style='height:15.75pt'></td>
+  <td>dispenseRequest</td>
+  <td class=xl70>0 .. 1</td>
+  <td></td>
+  <td class=xl84></td>
+  <td></td>
+ </tr>
+ <tr height=21 style='height:15.75pt'>
+  <td height=21 style='height:15.75pt'></td>
+  <td class=xl68>medication[x]</td>
+  <td class=xl70>0 .. 1</td>
+  <td></td>
+  <td class=xl84></td>
+  <td></td>
+ </tr>
+ <tr height=21 style='height:15.75pt'>
+  <td height=21 style='height:15.75pt'></td>
+  <td class=xl68>validityPeriod</td>
+  <td class=xl70>0 .. 1</td>
+  <td></td>
+  <td class=xl84></td>
+  <td></td>
+ </tr>
+ <tr height=21 style='height:15.75pt'>
+  <td height=21 style='height:15.75pt'></td>
+  <td class=xl68>numberOfRepeatsAllowed</td>
+  <td class=xl70>0 .. 1</td>
+  <td></td>
+  <td class=xl84></td>
+  <td></td>
+ </tr>
+ <tr height=21 style='height:15.75pt'>
+  <td height=21 style='height:15.75pt'></td>
+  <td class=xl68>quantity</td>
+  <td class=xl70>0 .. 1</td>
+  <td class=xl73>event.medicationIssue.quantity &amp; quantityUnit</td>
+  <td>Quantity</td>
+  <td></td>
+ </tr>
+ <tr height=21 style='height:15.75pt'>
+  <td height=21 style='height:15.75pt'></td>
+  <td class=xl68>expectedSupplyDuration</td>
+  <td class=xl70>0 .. 1</td>
+  <td></td>
+  <td class=xl84></td>
+  <td></td>
+ </tr>
+ <tr height=21 style='height:15.75pt'>
+  <td height=21 style='height:15.75pt'></td>
+  <td>substitution</td>
+  <td class=xl70>0 .. 1</td>
+  <td></td>
+  <td class=xl84></td>
+  <td></td>
+ </tr>
+ <tr height=21 style='height:15.75pt'>
+  <td height=21 style='height:15.75pt'></td>
+  <td class=xl74>type</td>
+  <td class=xl70>1 .. 1</td>
+  <td></td>
+  <td class=xl84></td>
+  <td></td>
+ </tr>
+ <tr height=21 style='height:15.75pt'>
+  <td height=21 style='height:15.75pt'></td>
+  <td class=xl68>reason</td>
+  <td class=xl70>0 .. 1</td>
+  <td class=xl68></td>
+  <td class=xl84></td>
+  <td></td>
+ </tr>
+ <tr height=21 style='height:15.75pt'>
+  <td height=21 style='height:15.75pt'></td>
+  <td>priorPrescription</td>
+  <td class=xl70>0 .. 1</td>
+  <td class=xl68></td>
+  <td class=xl84></td>
+  <td></td>
+ </tr>
+ <tr height=21 style='height:15.75pt'>
+  <td height=21 colspan=3 style='height:15.75pt;mso-ignore:colspan'></td>
+  <td class=xl68></td>
+  <td colspan=2 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=21 style='height:15.75pt'>
+  <td height=21 colspan=3 style='height:15.75pt;mso-ignore:colspan'></td>
+  <td>event.medicationIssue.medication</td>
+  <td>IsRepeat</td>
+  <td></td>
+ </tr>
+ <tr height=21 style='height:15.75pt'>
+  <td height=21 colspan=3 style='height:15.75pt;mso-ignore:colspan'></td>
+  <td class=xl73>event.medicationIssue.quantityRepresentation</td>
+  <td>FirstRepeatDate</td>
+  <td></td>
+ </tr>
+ <tr height=21 style='height:15.75pt'>
+  <td height=21 colspan=3 style='height:15.75pt;mso-ignore:colspan'></td>
+  <td class=xl73>event.medicationIssue.durationOfIssue</td>
+  <td>LastIssueDate</td>
+  <td></td>
+ </tr>
+ <tr height=21 style='height:15.75pt'>
+  <td height=21 colspan=3 style='height:15.75pt;mso-ignore:colspan'></td>
+  <td class=xl73>event.medicationIssue.prescriptionType</td>
+  <td>NumberOfIssues</td>
+  <td></td>
+ </tr>
+ <tr height=21 style='height:15.75pt'>
+  <td height=21 colspan=3 style='height:15.75pt;mso-ignore:colspan'></td>
+  <td class=xl73>event.medicationIssue.estimatedNHSCost</td>
+  <td>QuantityText</td>
+  <td></td>
+ </tr>
+ <tr height=21 style='height:15.75pt'>
+  <td height=21 colspan=3 style='height:15.75pt;mso-ignore:colspan'></td>
+  <td class=xl73>event.medicationIssue.pharmacyStamp</td>
+  <td colspan=2 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=21 style='height:15.75pt'>
+  <td height=21 colspan=3 style='height:15.75pt;mso-ignore:colspan'></td>
+  <td class=xl73>event.medicationIssue.issueMethod</td>
+  <td colspan=2 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=21 style='height:15.75pt'>
+  <td height=21 colspan=3 style='height:15.75pt;mso-ignore:colspan'></td>
+  <td class=xl73>event.medicationIssue.pharmacyText</td>
+  <td colspan=2 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=21 style='height:15.75pt'>
+  <td height=21 colspan=3 style='height:15.75pt;mso-ignore:colspan'></td>
+  <td class=xl73>event.medicationIssue.patientText</td>
+  <td colspan=2 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=21 style='height:15.75pt'>
+  <td height=21 colspan=3 style='height:15.75pt;mso-ignore:colspan'></td>
+  <td class=xl73>event.medicationIssue.pharmacyMessage</td>
+  <td colspan=2 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=21 style='height:15.75pt'>
+  <td height=21 colspan=3 style='height:15.75pt;mso-ignore:colspan'></td>
+  <td class=xl73>event.medicationIssue.patientMessage</td>
+  <td colspan=2 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=21 style='height:15.75pt'>
+  <td height=21 colspan=3 style='height:15.75pt;mso-ignore:colspan'></td>
+  <td class=xl73>event.medicationIssue.private</td>
+  <td colspan=2 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=21 style='height:15.75pt'>
+  <td height=21 colspan=3 style='height:15.75pt;mso-ignore:colspan'></td>
+  <td class=xl73>event.medicationIssue.cancelled</td>
+  <td colspan=2 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=21 style='height:15.75pt'>
+  <td height=21 colspan=3 style='height:15.75pt;mso-ignore:colspan'></td>
+  <td class=xl73>event.medicationIssue.prescribedAsContraceptive</td>
+  <td colspan=2 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=21 style='height:15.75pt'>
+  <td height=21 colspan=3 style='height:15.75pt;mso-ignore:colspan'></td>
+  <td class=xl73>event.medicationIssue.repeatDispensingInterval</td>
+  <td colspan=2 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=21 style='height:15.75pt'>
+  <td height=21 colspan=3 style='height:15.75pt;mso-ignore:colspan'></td>
+  <td class=xl73>event.medicationIssue.repeatDispensingIssueCount</td>
+  <td colspan=2 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=21 style='height:15.75pt'>
+  <td height=21 colspan=3 style='height:15.75pt;mso-ignore:colspan'></td>
+  <td class=xl73>event.medicationIssue.batchNumber</td>
+  <td colspan=2 style='mso-ignore:colspan'></td>
+ </tr>
+ <![if supportMisalignedColumns]>
+ <tr height=0 style='display:none'>
+  <td width=37 style='width:28pt'></td>
+  <td width=229 style='width:172pt'></td>
+  <td width=40 style='width:30pt'></td>
+  <td width=489 style='width:367pt'></td>
+  <td width=231 style='width:173pt'></td>
+  <td width=332 style='width:249pt'></td>
+ </tr>
+ <![endif]>
+</table>
+
+</body>
+
+</html>

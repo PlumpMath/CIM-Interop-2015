@@ -1,0 +1,289 @@
+<html xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:x="urn:schemas-microsoft-com:office:excel"
+xmlns="http://www.w3.org/TR/REC-html40">
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1252">
+<meta name=ProgId content=Excel.Sheet>
+<meta name=Generator content="Microsoft Excel 15">
+<link id=Main-File rel=Main-File href="../primarycare-openhr-mapping.htm">
+<link rel=File-List href=filelist.xml>
+<title>PrimaryCare OpenHR mapping</title>
+<link rel=Stylesheet href=stylesheet.css>
+<style>
+<!--table
+	{mso-displayed-decimal-separator:"\.";
+	mso-displayed-thousand-separator:"\,";}
+@page
+	{margin:.75in .7in .75in .7in;
+	mso-header-margin:.3in;
+	mso-footer-margin:.3in;}
+-->
+</style>
+<![if !supportTabStrip]><script language="JavaScript">
+<!--
+function fnUpdateTabs()
+ {
+  if (parent.window.g_iIEVer>=4) {
+   if (parent.document.readyState=="complete"
+    && parent.frames['frTabs'].document.readyState=="complete")
+   parent.fnSetActiveSheet(12);
+  else
+   window.setTimeout("fnUpdateTabs();",150);
+ }
+}
+
+if (window.name!="frSheet")
+ window.location.replace("../primarycare-openhr-mapping.htm");
+else
+ fnUpdateTabs();
+//-->
+</script>
+<![endif]>
+</head>
+
+<body link="#0563C1" vlink="#954F72">
+
+<table border=0 cellpadding=0 cellspacing=0 width=1272 style='border-collapse:
+ collapse;table-layout:fixed;width:954pt'>
+ <col width=37 style='mso-width-source:userset;mso-width-alt:1184;width:28pt'>
+ <col width=229 style='mso-width-source:userset;mso-width-alt:7328;width:172pt'>
+ <col width=40 style='mso-width-source:userset;mso-width-alt:1280;width:30pt'>
+ <col width=363 style='mso-width-source:userset;mso-width-alt:11616;width:272pt'>
+ <col width=271 style='mso-width-source:userset;mso-width-alt:8672;width:203pt'>
+ <col width=332 style='mso-width-source:userset;mso-width-alt:10624;width:249pt'>
+ <tr height=21 style='height:15.75pt'>
+  <td height=21 width=37 style='height:15.75pt;width:28pt'></td>
+  <td class=xl66 width=229 style='width:172pt'>Resource Name:<span
+  style='mso-spacerun:yes'> </span></td>
+  <td colspan=3 class=xl85 width=674 style='width:505pt'>PrimaryCare-Encounter</td>
+  <td width=332 style='width:249pt'></td>
+ </tr>
+ <tr height=21 style='height:15.75pt'>
+  <td height=21 style='height:15.75pt'></td>
+  <td class=xl66>Base:<span style='mso-spacerun:yes'> </span></td>
+  <td colspan=3 class=xl85>Encounter</td>
+  <td></td>
+ </tr>
+ <tr height=21 style='height:15.75pt'>
+  <td height=21 style='height:15.75pt'></td>
+  <td class=xl66>Extensions:</td>
+  <td colspan=3 class=xl66>primarycare-encounter-purpose-extension</td>
+  <td></td>
+ </tr>
+ <tr height=42 style='height:31.5pt;mso-xlrowspan:2'>
+  <td height=42 colspan=6 style='height:31.5pt;mso-ignore:colspan'></td>
+ </tr>
+ <tr height=21 style='height:15.75pt'>
+  <td height=21 style='height:15.75pt'></td>
+  <td class=xl65>PrimaryCare-Encounter</td>
+  <td class=xl65>&nbsp;</td>
+  <td class=xl65>OpenHR</td>
+  <td class=xl65>GP Record Requirements (Phase 1)</td>
+  <td class=xl65>Notes</td>
+ </tr>
+ <tr height=21 style='height:15.75pt'>
+  <td height=21 style='height:15.75pt'></td>
+  <td>identifier</td>
+  <td class=xl70>0 .. *</td>
+  <td></td>
+  <td>Identifier</td>
+  <td></td>
+ </tr>
+ <tr height=21 style='height:15.75pt'>
+  <td height=21 style='height:15.75pt'></td>
+  <td class=xl72>status</td>
+  <td class=xl70>1 .. 1</td>
+  <td></td>
+  <td>Status</td>
+  <td></td>
+ </tr>
+ <tr height=21 style='height:15.75pt'>
+  <td height=21 style='height:15.75pt'></td>
+  <td class=xl67><s>statusHIstory</s></td>
+  <td class=xl70>0 .. 0</td>
+  <td></td>
+  <td colspan=2 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=21 style='height:15.75pt'>
+  <td height=21 style='height:15.75pt'></td>
+  <td>class</td>
+  <td class=xl70>0 .. 1</td>
+  <td></td>
+  <td colspan=2 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=21 style='height:15.75pt'>
+  <td height=21 style='height:15.75pt'></td>
+  <td>type</td>
+  <td class=xl70>0 .. 1</td>
+  <td>encounter.loacationType</td>
+  <td>Type</td>
+  <td></td>
+ </tr>
+ <tr height=21 style='height:15.75pt'>
+  <td height=21 style='height:15.75pt'></td>
+  <td class=xl67><s>priority</s></td>
+  <td class=xl70>0 .. 0</td>
+  <td></td>
+  <td colspan=2 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=21 style='height:15.75pt'>
+  <td height=21 style='height:15.75pt'></td>
+  <td class=xl72>patient</td>
+  <td class=xl70>1 .. 1</td>
+  <td>encounter.patient</td>
+  <td>Patient</td>
+  <td></td>
+ </tr>
+ <tr height=21 style='height:15.75pt'>
+  <td height=21 style='height:15.75pt'></td>
+  <td>episodeOfCare</td>
+  <td class=xl70>0 .. 1</td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=21 style='height:15.75pt'>
+  <td height=21 style='height:15.75pt'></td>
+  <td>incomingReferral</td>
+  <td class=xl70>0 .. *</td>
+  <td></td>
+  <td colspan=2 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=21 style='height:15.75pt'>
+  <td height=21 style='height:15.75pt'></td>
+  <td>participant</td>
+  <td class=xl70>0 .. *</td>
+  <td>encounter.authorisingUserInRole / accompanyingHCP</td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=21 style='height:15.75pt'>
+  <td height=21 style='height:15.75pt'></td>
+  <td class=xl68>type</td>
+  <td class=xl70>0 .. *</td>
+  <td></td>
+  <td>Role</td>
+  <td></td>
+ </tr>
+ <tr height=21 style='height:15.75pt'>
+  <td height=21 style='height:15.75pt'></td>
+  <td class=xl68>period</td>
+  <td class=xl70>0 .. 1</td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=21 style='height:15.75pt'>
+  <td height=21 style='height:15.75pt'></td>
+  <td class=xl68>individual</td>
+  <td class=xl70>0 .. 1</td>
+  <td>encounter.authorisingUserInRole / accompanyingHCP</td>
+  <td>Person</td>
+  <td></td>
+ </tr>
+ <tr height=21 style='height:15.75pt'>
+  <td height=21 style='height:15.75pt'></td>
+  <td>appointment</td>
+  <td class=xl70>0 .. 1</td>
+  <td></td>
+  <td colspan=2 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=21 style='height:15.75pt'>
+  <td height=21 style='height:15.75pt'></td>
+  <td class=xl73>period</td>
+  <td class=xl70>0 .. 1</td>
+  <td>encounter.effectiveTime</td>
+  <td>DateTime</td>
+  <td></td>
+ </tr>
+ <tr height=21 style='height:15.75pt'>
+  <td height=21 style='height:15.75pt'></td>
+  <td class=xl73>length</td>
+  <td class=xl70>0 .. 1</td>
+  <td>encounter.duration</td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=21 style='height:15.75pt'>
+  <td height=21 style='height:15.75pt'></td>
+  <td class=xl73>reason</td>
+  <td class=xl70>0 .. *</td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=21 style='height:15.75pt'>
+  <td height=21 style='height:15.75pt'></td>
+  <td class=xl73>indication</td>
+  <td class=xl70>0 .. *</td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=21 style='height:15.75pt'>
+  <td height=21 style='height:15.75pt'></td>
+  <td class=xl76><s>hospitalization</s></td>
+  <td class=xl70>0 .. 0</td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=21 style='height:15.75pt'>
+  <td height=21 style='height:15.75pt'></td>
+  <td class=xl73>location</td>
+  <td class=xl70>0 .. *</td>
+  <td>encounter.location</td>
+  <td>Location</td>
+  <td></td>
+ </tr>
+ <tr height=21 style='height:15.75pt'>
+  <td height=21 class=xl82 style='height:15.75pt'></td>
+  <td class=xl73>serviceProvider</td>
+  <td class=xl70>0 .. 1</td>
+  <td>encounter.organisation</td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=21 style='height:15.75pt'>
+  <td height=21 style='height:15.75pt'></td>
+  <td class=xl76><s>partOf</s></td>
+  <td class=xl70>0 .. 0</td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=21 style='height:15.75pt'>
+  <td height=21 class=xl71 style='height:15.75pt'>EXT</td>
+  <td class=xl73>purpose</td>
+  <td class=xl70>0 .. 1</td>
+  <td>encounter.clinicalPurpose</td>
+  <td colspan=2 style='mso-ignore:colspan'></td>
+ </tr>
+ <tr height=21 style='height:15.75pt'>
+  <td height=21 colspan=2 style='height:15.75pt;mso-ignore:colspan'></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=21 style='height:15.75pt'>
+  <td height=21 colspan=3 style='height:15.75pt;mso-ignore:colspan'></td>
+  <td></td>
+  <td colspan=2 style='mso-ignore:colspan'></td>
+ </tr>
+ <![if supportMisalignedColumns]>
+ <tr height=0 style='display:none'>
+  <td width=37 style='width:28pt'></td>
+  <td width=229 style='width:172pt'></td>
+  <td width=40 style='width:30pt'></td>
+  <td width=363 style='width:272pt'></td>
+  <td width=271 style='width:203pt'></td>
+  <td width=332 style='width:249pt'></td>
+ </tr>
+ <![endif]>
+</table>
+
+</body>
+
+</html>

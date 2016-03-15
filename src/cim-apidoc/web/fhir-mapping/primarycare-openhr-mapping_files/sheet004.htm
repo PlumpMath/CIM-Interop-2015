@@ -1,0 +1,391 @@
+<html xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:x="urn:schemas-microsoft-com:office:excel"
+xmlns="http://www.w3.org/TR/REC-html40">
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1252">
+<meta name=ProgId content=Excel.Sheet>
+<meta name=Generator content="Microsoft Excel 15">
+<link id=Main-File rel=Main-File href="../primarycare-openhr-mapping.htm">
+<link rel=File-List href=filelist.xml>
+<title>PrimaryCare OpenHR mapping</title>
+<link rel=Stylesheet href=stylesheet.css>
+<style>
+<!--table
+	{mso-displayed-decimal-separator:"\.";
+	mso-displayed-thousand-separator:"\,";}
+@page
+	{margin:.75in .7in .75in .7in;
+	mso-header-margin:.3in;
+	mso-footer-margin:.3in;}
+-->
+</style>
+<![if !supportTabStrip]><script language="JavaScript">
+<!--
+function fnUpdateTabs()
+ {
+  if (parent.window.g_iIEVer>=4) {
+   if (parent.document.readyState=="complete"
+    && parent.frames['frTabs'].document.readyState=="complete")
+   parent.fnSetActiveSheet(3);
+  else
+   window.setTimeout("fnUpdateTabs();",150);
+ }
+}
+
+if (window.name!="frSheet")
+ window.location.replace("../primarycare-openhr-mapping.htm");
+else
+ fnUpdateTabs();
+//-->
+</script>
+<![endif]>
+</head>
+
+<body link="#0563C1" vlink="#954F72">
+
+<table border=0 cellpadding=0 cellspacing=0 width=1149 style='border-collapse:
+ collapse;table-layout:fixed;width:862pt'>
+ <col width=37 style='mso-width-source:userset;mso-width-alt:1184;width:28pt'>
+ <col width=229 style='mso-width-source:userset;mso-width-alt:7328;width:172pt'>
+ <col width=40 style='mso-width-source:userset;mso-width-alt:1280;width:30pt'>
+ <col width=283 style='mso-width-source:userset;mso-width-alt:9056;width:212pt'>
+ <col width=228 style='mso-width-source:userset;mso-width-alt:7296;width:171pt'>
+ <col width=332 style='mso-width-source:userset;mso-width-alt:10624;width:249pt'>
+ <tr height=21 style='height:15.75pt'>
+  <td height=21 width=37 style='height:15.75pt;width:28pt'></td>
+  <td class=xl66 width=229 style='width:172pt'>Resource Name:<span
+  style='mso-spacerun:yes'> </span></td>
+  <td colspan=3 class=xl85 width=551 style='width:413pt'>PrimaryCare-FamilyMemberHistory</td>
+  <td width=332 style='width:249pt'></td>
+ </tr>
+ <tr height=21 style='height:15.75pt'>
+  <td height=21 style='height:15.75pt'></td>
+  <td class=xl66>Base:<span style='mso-spacerun:yes'> </span></td>
+  <td colspan=3 class=xl85>FamilyMemberHistory</td>
+  <td></td>
+ </tr>
+ <tr height=21 style='height:15.75pt'>
+  <td height=21 style='height:15.75pt'></td>
+  <td class=xl66>Extensions:</td>
+  <td colspan=3 class=xl66>primarycare-coding-qualifier-extension</td>
+  <td></td>
+ </tr>
+ <tr height=21 style='height:15.75pt'>
+  <td height=21 style='height:15.75pt'></td>
+  <td class=xl66>&nbsp;</td>
+  <td colspan=3 class=xl66>primarycare-family-member-history-recorder-extension</td>
+  <td></td>
+ </tr>
+ <tr height=21 style='height:15.75pt'>
+  <td height=21 style='height:15.75pt'></td>
+  <td class=xl66>&nbsp;</td>
+  <td colspan=3 class=xl66>http://hl7.org/fhir/StructureDefinition/encounter-associatedEncounter</td>
+  <td></td>
+ </tr>
+ <tr height=21 style='height:15.75pt'>
+  <td height=21 style='height:15.75pt'></td>
+  <td class=xl66>&nbsp;</td>
+  <td colspan=3 class=xl66>primarycare-family-member-history-reporter-extension</td>
+  <td></td>
+ </tr>
+ <tr height=42 style='height:31.5pt;mso-xlrowspan:2'>
+  <td height=42 colspan=6 style='height:31.5pt;mso-ignore:colspan'></td>
+ </tr>
+ <tr height=21 style='height:15.75pt'>
+  <td height=21 style='height:15.75pt'></td>
+  <td class=xl65>PrimaryCare-FamilyMemberHistory</td>
+  <td class=xl65>&nbsp;</td>
+  <td class=xl65>OpenHR</td>
+  <td class=xl65>GP Record Requirements (Phase 1)</td>
+  <td class=xl65>Notes</td>
+ </tr>
+ <tr height=21 style='height:15.75pt'>
+  <td height=21 style='height:15.75pt'></td>
+  <td>identifier</td>
+  <td class=xl70>0 .. *</td>
+  <td></td>
+  <td rowspan=39 class=xl86>Not Specified</td>
+  <td></td>
+ </tr>
+ <tr height=21 style='height:15.75pt'>
+  <td height=21 style='height:15.75pt'></td>
+  <td class=xl72>patient</td>
+  <td class=xl70>1 .. 1</td>
+  <td>event.patient</td>
+  <td></td>
+ </tr>
+ <tr height=21 style='height:15.75pt'>
+  <td height=21 style='height:15.75pt'></td>
+  <td>date</td>
+  <td class=xl70>0 .. 1</td>
+  <td>event.effectiveTime</td>
+  <td></td>
+ </tr>
+ <tr height=21 style='height:15.75pt'>
+  <td height=21 style='height:15.75pt'></td>
+  <td class=xl72>status</td>
+  <td class=xl70>1 .. 1</td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=21 style='height:15.75pt'>
+  <td height=21 style='height:15.75pt'></td>
+  <td>name</td>
+  <td class=xl70>0 .. 1</td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=21 style='height:15.75pt'>
+  <td height=21 style='height:15.75pt'></td>
+  <td class=xl72>relationship</td>
+  <td class=xl70>1 .. 1</td>
+  <td>event.code.qualifier (name = FH code)</td>
+  <td></td>
+ </tr>
+ <tr height=21 style='height:15.75pt'>
+  <td height=21 style='height:15.75pt'></td>
+  <td class=xl68>coding</td>
+  <td class=xl70>0 .. *</td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=21 style='height:15.75pt'>
+  <td height=21 style='height:15.75pt'></td>
+  <td class=xl69>system</td>
+  <td class=xl70>0 .. 1</td>
+  <td>event.code.qualifier.value.codeSystem</td>
+  <td></td>
+ </tr>
+ <tr height=21 style='height:15.75pt'>
+  <td height=21 style='height:15.75pt'></td>
+  <td class=xl69>version</td>
+  <td class=xl70>0 .. 1</td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=21 style='height:15.75pt'>
+  <td height=21 style='height:15.75pt'></td>
+  <td class=xl69>code</td>
+  <td class=xl70>0 .. 1</td>
+  <td>event.code.qualifier.value.code</td>
+  <td></td>
+ </tr>
+ <tr height=21 style='height:15.75pt'>
+  <td height=21 style='height:15.75pt'></td>
+  <td class=xl69>display</td>
+  <td class=xl70>0 .. 1</td>
+  <td>event.code.qualifier.value.displayName</td>
+  <td></td>
+ </tr>
+ <tr height=21 style='height:15.75pt'>
+  <td height=21 style='height:15.75pt'></td>
+  <td class=xl69>userSelected</td>
+  <td class=xl70>0 .. 1</td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=21 style='height:15.75pt'>
+  <td height=21 style='height:15.75pt'></td>
+  <td class=xl68>text</td>
+  <td class=xl70>0 .. 1</td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=21 style='height:15.75pt'>
+  <td height=21 style='height:15.75pt'></td>
+  <td>gender</td>
+  <td class=xl70>0 .. 1</td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=21 style='height:15.75pt'>
+  <td height=21 style='height:15.75pt'></td>
+  <td>born[x]</td>
+  <td class=xl70>0 .. 1</td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=21 style='height:15.75pt'>
+  <td height=21 style='height:15.75pt'></td>
+  <td>age[x]</td>
+  <td class=xl70>0 .. 1</td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=21 style='height:15.75pt'>
+  <td height=21 style='height:15.75pt'></td>
+  <td>deceased[x]</td>
+  <td class=xl70>0 .. 1</td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=21 style='height:15.75pt'>
+  <td height=21 style='height:15.75pt'></td>
+  <td class=xl73>note</td>
+  <td class=xl70>0 .. 1</td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=21 style='height:15.75pt'>
+  <td height=21 style='height:15.75pt'></td>
+  <td class=xl75><s>author[x]</s></td>
+  <td class=xl70>0 .. 0</td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=21 style='height:15.75pt'>
+  <td height=21 style='height:15.75pt'></td>
+  <td class=xl75><s>time</s></td>
+  <td class=xl70>0 .. 0</td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=21 style='height:15.75pt'>
+  <td height=21 style='height:15.75pt'></td>
+  <td class=xl74>text</td>
+  <td class=xl70>1 .. 1</td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=21 style='height:15.75pt'>
+  <td height=21 style='height:15.75pt'></td>
+  <td class=xl72>condition</td>
+  <td class=xl70>1 .. *</td>
+  <td>event.code</td>
+  <td></td>
+ </tr>
+ <tr height=21 style='height:15.75pt'>
+  <td height=21 style='height:15.75pt'></td>
+  <td class=xl68>code</td>
+  <td class=xl70>1 .. 1</td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=21 style='height:15.75pt'>
+  <td height=21 style='height:15.75pt'></td>
+  <td class=xl69>coding</td>
+  <td class=xl70>0 .. *</td>
+  <td>event.code</td>
+  <td></td>
+ </tr>
+ <tr height=21 style='height:15.75pt'>
+  <td height=21 style='height:15.75pt'></td>
+  <td class=xl77>system</td>
+  <td class=xl70>0 .. 1</td>
+  <td>event.code.codeSystem</td>
+  <td></td>
+ </tr>
+ <tr height=21 style='height:15.75pt'>
+  <td height=21 style='height:15.75pt'></td>
+  <td class=xl77>version</td>
+  <td class=xl70>0 .. 1</td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=21 style='height:15.75pt'>
+  <td height=21 style='height:15.75pt'></td>
+  <td class=xl77>code</td>
+  <td class=xl70>0 .. 1</td>
+  <td>event.code.code</td>
+  <td></td>
+ </tr>
+ <tr height=21 style='height:15.75pt'>
+  <td height=21 style='height:15.75pt'></td>
+  <td class=xl77>display</td>
+  <td class=xl70>0 .. 1</td>
+  <td>event.code.displayName</td>
+  <td></td>
+ </tr>
+ <tr height=21 style='height:15.75pt'>
+  <td height=21 style='height:15.75pt'></td>
+  <td class=xl77>userSelected</td>
+  <td class=xl70>0 .. 1</td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=21 style='height:15.75pt'>
+  <td height=21 class=xl71 style='height:15.75pt'>EXT</td>
+  <td class=xl77>qualifier</td>
+  <td class=xl70>0 .. *</td>
+  <td>event.code.qualifier</td>
+  <td></td>
+ </tr>
+ <tr height=21 style='height:15.75pt'>
+  <td height=21 style='height:15.75pt'></td>
+  <td class=xl69>text</td>
+  <td class=xl70>0 .. 1</td>
+  <td>event.displayTerm</td>
+  <td></td>
+ </tr>
+ <tr height=21 style='height:15.75pt'>
+  <td height=21 style='height:15.75pt'></td>
+  <td class=xl68>outcome</td>
+  <td class=xl70>0 .. 1</td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=21 style='height:15.75pt'>
+  <td height=21 style='height:15.75pt'></td>
+  <td class=xl68>onset[x]</td>
+  <td class=xl70>0 .. 1</td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=21 style='height:15.75pt'>
+  <td height=21 style='height:15.75pt'></td>
+  <td class=xl68>note</td>
+  <td class=xl70>0 .. 1</td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=21 style='height:15.75pt'>
+  <td height=21 style='height:15.75pt'></td>
+  <td class=xl78><s>author[x]</s></td>
+  <td class=xl70>0 .. 0</td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=21 style='height:15.75pt'>
+  <td height=21 style='height:15.75pt'></td>
+  <td class=xl78><s>time</s></td>
+  <td class=xl70>0 .. 0</td>
+  <td></td>
+  <td></td>
+ </tr>
+ <tr height=21 style='height:15.75pt'>
+  <td height=21 style='height:15.75pt'></td>
+  <td class=xl79>text</td>
+  <td class=xl70>1 .. 1</td>
+  <td>event.associatedText</td>
+  <td></td>
+ </tr>
+ <tr height=21 style='height:15.75pt'>
+  <td height=21 class=xl71 style='height:15.75pt'>EXT</td>
+  <td class=xl73>recorder</td>
+  <td class=xl70>1 .. 1</td>
+  <td>event.authorisingUserInRole</td>
+  <td></td>
+ </tr>
+ <tr height=21 style='height:15.75pt'>
+  <td height=21 class=xl71 style='height:15.75pt'>EXT</td>
+  <td class=xl73>encounter</td>
+  <td class=xl70>0 .. 1</td>
+  <td></td>
+  <td></td>
+ </tr>
+ <![if supportMisalignedColumns]>
+ <tr height=0 style='display:none'>
+  <td width=37 style='width:28pt'></td>
+  <td width=229 style='width:172pt'></td>
+  <td width=40 style='width:30pt'></td>
+  <td width=283 style='width:212pt'></td>
+  <td width=228 style='width:171pt'></td>
+  <td width=332 style='width:249pt'></td>
+ </tr>
+ <![endif]>
+</table>
+
+</body>
+
+</html>
