@@ -30,7 +30,8 @@
   <differential>
     <element>
       <path value="Extension" />
-      <definition value="Optional Extensions Element - found in all resources." />
+      <short value="Condition significance" />
+      <definition value="Used to indicate the clinical significance of a Condition." />
       <min value="0" />
       <max value="*" />
       <type>
@@ -59,9 +60,9 @@
       </mapping>
     </element>
     <element>
-      <path value="Extension.value[x]" />
+      <path value="Extension.valueCode" />
       <name value="valueCode" />
-      <short value="Expected duration" />
+      <short value="Condition significance code" />
       <definition value="Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list)." />
       <min value="1" />
       <max value="1" />

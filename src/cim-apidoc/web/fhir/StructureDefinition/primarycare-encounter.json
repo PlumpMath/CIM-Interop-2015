@@ -59,32 +59,6 @@
         ]
       },
       {
-        "path": "Encounter.extension",
-        "slicing": {
-          "discriminator": [
-            "url"
-          ],
-          "rules": 2
-        }
-      },
-      {
-        "path": "Encounter.extension",
-        "name": "purpose",
-        "short": "Clinical purpose of encounter",
-        "definition": "Specific clinical purpose of encounter (e.g. child health, antenatal, assessment).",
-        "min": 0,
-        "max": "1",
-        "type": [
-          {
-            "TypeName": "Extension",
-            "code": "Extension",
-            "profile": [
-              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-encounter-purpose-extension"
-            ]
-          }
-        ]
-      },
-      {
         "path": "Encounter.identifier.assigner",
         "short": "Organization that issued id (may be just text)",
         "definition": "Organization that issued/manages the identifier.",

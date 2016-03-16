@@ -39,7 +39,8 @@
     "element": [
       {
         "path": "Extension",
-        "definition": "Optional Extensions Element - found in all resources.",
+        "short": "Condition significance",
+        "definition": "Used to indicate the clinical significance of a Condition.",
         "min": 0,
         "max": "*",
         "type": [
@@ -80,9 +81,9 @@
         ]
       },
       {
-        "path": "Extension.value[x]",
+        "path": "Extension.valueCode",
         "name": "valueCode",
-        "short": "Expected duration",
+        "short": "Condition significance code",
         "definition": "Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).",
         "min": 1,
         "max": "1",

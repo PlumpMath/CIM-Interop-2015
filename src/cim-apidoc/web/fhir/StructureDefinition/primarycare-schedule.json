@@ -85,6 +85,73 @@
         ]
       },
       {
+        "path": "Schedule.identifier.use",
+        "short": "usual | official | temp | secondary (If known)",
+        "definition": "The purpose of this identifier.",
+        "comments": "This is labeled as \"Is Modifier\" because applications should not mistake a temporary id for a permanent one. Applications can assume that an identifier is permanent unless it explicitly says that it is temporary.",
+        "requirements": "Allows the appropriate identifier for a particular context of use to be selected from among a set of identifiers.",
+        "min": 0,
+        "max": "0",
+        "type": [
+          {
+            "TypeName": "code",
+            "code": "code"
+          }
+        ],
+        "isModifier": true,
+        "isSummary": true,
+        "binding": {
+          "strength": 0,
+          "description": "Identifies the purpose for this identifier, if known .",
+          "Item": {
+            "reference": "http://hl7.org/fhir/ValueSet/identifier-use"
+          }
+        },
+        "mapping": [
+          {
+            "identity": "v2",
+            "map": "N/A"
+          },
+          {
+            "identity": "rim",
+            "map": "Role.code or implied by context"
+          }
+        ]
+      },
+      {
+        "path": "Schedule.identifier.type",
+        "short": "Description of identifier",
+        "definition": "A coded type for the identifier that can be used to determine which identifier to use for a specific purpose.",
+        "comments": "This element deals only with general categories of identifiers.  It SHOULD not be used for codes that correspond 1..1 with the Identifier.system. Some identifiers may fall into multiple categories due to common usage.   Where the system is known, a type is unnecessary because the type is always part of the system definition. However systems often need to handle identifiers where the system is not known. There is not a 1:1 relationship between type and system, since many different systems have the same type.",
+        "requirements": "Allows users to make use of identifiers when the identifier system is not known.",
+        "min": 0,
+        "max": "0",
+        "type": [
+          {
+            "TypeName": "CodeableConcept",
+            "code": "CodeableConcept"
+          }
+        ],
+        "isSummary": true,
+        "binding": {
+          "strength": 1,
+          "description": "A coded type for an identifier that can be used to determine which identifier to use for a specific purpose.",
+          "Item": {
+            "reference": "http://hl7.org/fhir/ValueSet/identifier-type"
+          }
+        },
+        "mapping": [
+          {
+            "identity": "v2",
+            "map": "CX.5"
+          },
+          {
+            "identity": "rim",
+            "map": "Role.code or implied by context"
+          }
+        ]
+      },
+      {
         "path": "Schedule.identifier.assigner",
         "short": "Organization that issued id (may be just text)",
         "definition": "Organization that issued/manages the identifier.",
@@ -117,6 +184,95 @@
         ]
       },
       {
+        "path": "Schedule.type",
+        "short": "The schedule type can be used for the categorization of healthcare services or other appointment types",
+        "definition": "The schedule type can be used for the categorization of healthcare services or other appointment types.",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "TypeName": "CodeableConcept",
+            "code": "CodeableConcept"
+          }
+        ],
+        "binding": {
+          "strength": 2,
+          "description": "Additional details about where the content was created (e.g. clinical specialty)",
+          "Item": {
+            "reference": "http://endeavourhealth.org/fhir/ValueSet/primarycare-treatment-function-code"
+          }
+        },
+        "mapping": [
+          {
+            "identity": "ical",
+            "map": "n/a"
+          },
+          {
+            "identity": "w5",
+            "map": "class"
+          }
+        ]
+      },
+      {
+        "path": "Schedule.type.coding.version",
+        "short": "Version of the system - if relevant",
+        "definition": "The version of the code system which was used when choosing this code. Note that a well-maintained code system does not need the version reported, because the meaning of codes is consistent across versions. However this cannot consistently be assured. and when the meaning is not guaranteed to be consistent, the version SHOULD be exchanged.",
+        "comments": "Where the terminology does not clearly define what string should be used to identify code system versions, the recommendation is to use the date (expressed in FHIR date format) on which that version was officially published as the version date.",
+        "min": 0,
+        "max": "0",
+        "type": [
+          {
+            "TypeName": "string",
+            "code": "string"
+          }
+        ],
+        "isSummary": true,
+        "mapping": [
+          {
+            "identity": "v2",
+            "map": "C*E.7"
+          },
+          {
+            "identity": "rim",
+            "map": "./codeSystemVersion"
+          },
+          {
+            "identity": "orim",
+            "map": "fhir:Coding.version rdfs:subPropertyOf dt:CDCoding.codeSystemVersion"
+          }
+        ]
+      },
+      {
+        "path": "Schedule.type.coding.userSelected",
+        "short": "If this coding was chosen directly by the user",
+        "definition": "Indicates that this coding was chosen by a user directly - i.e. off a pick list of available items (codes or displays).",
+        "comments": "Amongst a set of alternatives, a directly chosen code is the most appropriate starting point for new translations. There is some ambiguity about what exactly 'directly chosen' implies, and trading partner agreement may be needed to clarify the use of this element and its consequences more completely.",
+        "requirements": "This has been identified as a clinical safety criterium - that this exact system/code pair was chosen explicitly, rather than inferred by the system based on some rules or language processing.",
+        "min": 0,
+        "max": "0",
+        "type": [
+          {
+            "TypeName": "boolean",
+            "code": "boolean"
+          }
+        ],
+        "isSummary": true,
+        "mapping": [
+          {
+            "identity": "v2",
+            "map": "Sometimes implied by being first"
+          },
+          {
+            "identity": "rim",
+            "map": "CD.codingRationale"
+          },
+          {
+            "identity": "orim",
+            "map": "fhir:Coding.userSelected fhir:mapsTo dt:CDCoding.codingRationale. fhir:Coding.userSelected fhir:hasMap fhir:Coding.userSelected.map. fhir:Coding.userSelected.map a fhir:Map;   fhir:target dt:CDCoding.codingRationale. fhir:Coding.userSelected\\#true a [     fhir:source \"true\";     fhir:target dt:CDCoding.codingRationale\\#O   ]"
+          }
+        ]
+      },
+      {
         "path": "Schedule.actor",
         "short": "The resource this Schedule resource is providing availability information for. These are expected to usually be one of HealthcareService, Location, Practitioner, Device, Patient or RelatedPerson",
         "definition": "The resource this Schedule resource is providing availability information for. These are expected to usually be one of HealthcareService, Location, Practitioner, Device, Patient or RelatedPerson.",
@@ -127,28 +283,7 @@
             "TypeName": "Reference",
             "code": "Reference",
             "profile": [
-              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-patient"
-            ]
-          },
-          {
-            "TypeName": "Reference",
-            "code": "Reference",
-            "profile": [
               "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-practitioner"
-            ]
-          },
-          {
-            "TypeName": "Reference",
-            "code": "Reference",
-            "profile": [
-              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-related-person"
-            ]
-          },
-          {
-            "TypeName": "Reference",
-            "code": "Reference",
-            "profile": [
-              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-device"
             ]
           },
           {
@@ -175,6 +310,87 @@
           {
             "identity": "w5",
             "map": "who.focus"
+          }
+        ]
+      },
+      {
+        "path": "Schedule.planningHorizon",
+        "short": "The period of time that the slots that are attached to this Schedule resource cover (even if none exist). These  cover the amount of time that an organization's planning horizon; the interval for which they are currently accepting appointments. This does not define a \"template\" for planning outside these dates",
+        "definition": "The period of time that the slots that are attached to this Schedule resource cover (even if none exist). These  cover the amount of time that an organization's planning horizon; the interval for which they are currently accepting appointments. This does not define a \"template\" for planning outside these dates.",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "TypeName": "Period",
+            "code": "Period"
+          }
+        ],
+        "isSummary": true,
+        "mapping": [
+          {
+            "identity": "ical",
+            "map": "DTSTART:20131201T003000Z DTEND:2014030101T003000Z"
+          },
+          {
+            "identity": "w5",
+            "map": "when.planned"
+          }
+        ]
+      },
+      {
+        "path": "Schedule.planningHorizon.start",
+        "short": "Starting time with inclusive boundary",
+        "definition": "The start of the period. The boundary is inclusive.",
+        "comments": "If the low element is missing, the meaning is that the low boundary is not known.",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "TypeName": "dateTime",
+            "code": "dateTime"
+          }
+        ],
+        "condition": [
+          "per-1"
+        ],
+        "isSummary": true,
+        "mapping": [
+          {
+            "identity": "v2",
+            "map": "DR.1"
+          },
+          {
+            "identity": "rim",
+            "map": "./low"
+          }
+        ]
+      },
+      {
+        "path": "Schedule.planningHorizon.end",
+        "short": "End time with inclusive boundary, if not ongoing",
+        "definition": "The end of the period. If the end of the period is missing, it means that the period is ongoing. The start may be in the past, and the end date in the future, which means that period is expected/planned to end at that time.",
+        "comments": "The high value includes any matching date/time. i.e. 2012-02-03T10:00:00 is in a period that has a end value of 2012-02-03.",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "TypeName": "dateTime",
+            "code": "dateTime"
+          }
+        ],
+        "meaningWhenMissing": "If the end of the period is missing, it means that the period is ongoing",
+        "condition": [
+          "per-1"
+        ],
+        "isSummary": true,
+        "mapping": [
+          {
+            "identity": "v2",
+            "map": "DR.2"
+          },
+          {
+            "identity": "rim",
+            "map": "./high"
           }
         ]
       }

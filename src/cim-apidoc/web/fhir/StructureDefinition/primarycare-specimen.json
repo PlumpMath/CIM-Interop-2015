@@ -172,6 +172,32 @@
         ]
       },
       {
+        "path": "Specimen.collection.extension",
+        "slicing": {
+          "discriminator": [
+            "url"
+          ],
+          "rules": 2
+        }
+      },
+      {
+        "path": "Specimen.collection.extension",
+        "name": "fasting",
+        "short": "Fasting indicator",
+        "definition": "Specimen fasting status indicator.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "TypeName": "Extension",
+            "code": "Extension",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-specimen-fasting-extension"
+            ]
+          }
+        ]
+      },
+      {
         "path": "Specimen.collection.collector",
         "short": "Who collected the specimen",
         "definition": "Person who collected the specimen.",

@@ -1,5 +1,5 @@
 ﻿{
-  "id": "primarycare-encounter-purpose-extension",
+  "id": "primarycare-diagnostic-report-interpretation-extension",
   "meta": {
     "lastUpdated": "2015-09-22T11:02:49.724+01:00"
   },
@@ -9,9 +9,9 @@
       "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm"
     }
   ],
-  "url": "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-encounter-purpose-extension",
-  "name": "PrimaryCare-EncounterPurpose-Extension",
-  "display": "Primary Care encounter purpose extension",
+  "url": "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-diagnostic-report-interpretation-extension",
+  "name": "PrimaryCare-DiagnosticReportInterpretation-Extension",
+  "display": "Primary Care diagnostic report interpretation extension",
   "status": "draft",
   "publisher": "Endeavour Health Charitable Trust",
   "contact": [
@@ -25,28 +25,34 @@
     }
   ],
   "date": "2015-11-01T00:00:00+00:00",
-  "description": "Specific clinical purpose of encounter (e.g. child health, antenatal, assessment).",
+  "description": "The assessment made based on the result of the diagnostic report.",
   "fhirVersion": "1.0.1",
   "kind": 0,
   "constrainedType": "Extension",
   "abstract": false,
   "contextType": 0,
   "context": [
-    "Encounter"
+    "DiagnosticReport"
   ],
   "base": "http://hl7.org/fhir/StructureDefinition/Extension",
   "differential": {
     "element": [
       {
         "path": "Extension",
-        "short": "Clinical purpose of encounter",
-        "definition": "Specific clinical purpose of encounter (e.g. child health, antenatal, assessment).",
+        "short": "Abnormal, Normal, etc.",
+        "definition": "The assessment made based on the result of the diagnostic report.",
         "min": 0,
         "max": "*",
         "type": [
           {
             "TypeName": "Element",
             "code": "Element"
+          }
+        ],
+        "mapping": [
+          {
+            "identity": "rim",
+            "map": "N/A"
           }
         ]
       },
@@ -66,7 +72,7 @@
             "code": "uri"
           }
         ],
-        "Item1": "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-encounter-purpose-extension",
+        "Item1": "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-diagnostic-report-interpretation-extension",
         "mapping": [
           {
             "identity": "rim",
@@ -75,10 +81,11 @@
         ]
       },
       {
-        "path": "Extension.value[x]",
+        "path": "Extension.valueCodeableConcept",
         "name": "valueCodeableConcept",
-        "short": "Value of extension",
-        "min": 0,
+        "short": "Interpretation code",
+        "definition": "Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).",
+        "min": 1,
         "max": "1",
         "type": [
           {
@@ -87,9 +94,17 @@
           }
         ],
         "binding": {
-          "strength": 3,
-          "Item": "http://endeavourhealth.org/fhir/ValueSet/primarycare-encounter-purpose"
-        }
+          "strength": 1,
+          "Item": {
+            "reference": "http://hl7.org/fhir/ValueSet/observation-interpretation"
+          }
+        },
+        "mapping": [
+          {
+            "identity": "rim",
+            "map": "N/A"
+          }
+        ]
       }
     ]
   },
