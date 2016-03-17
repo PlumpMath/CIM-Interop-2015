@@ -1,0 +1,48 @@
+﻿{
+  "id": "primarycare-problem-relationshiptype",
+  "meta": {
+    "lastUpdated": "2015-09-24T16:19:37.151+01:00",
+    "profile": [
+      "http://hl7.org/fhir/StructureDefinition/valueset-shareable-definition"
+    ]
+  },
+  "extension": [
+    {
+      "Item": 1,
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm"
+    }
+  ],
+  "url": "http://endeavourhealth.org/fhir/ValueSet/primarycare-problem-relationshiptype",
+  "version": "1.0.0",
+  "name": "PrimaryCare-Problem-RelationshipType",
+  "status": "draft",
+  "publisher": "Endeavour Health Charitable Trust",
+  "description": "A set of codes specifying the kind of relationship that exists with a target problem.",
+  "codeSystem": {
+    "system": "http://endeavourhealth.org/fhir/ValueSet/primarycare-problem-relationshiptype",
+    "version": "1.0.0",
+    "caseSensitive": true,
+    "concept": [
+      {
+        "code": "combined",
+        "display": "Combined",
+        "definition": "This problem is combined/merged with the target problem to form a single logical problem."
+      },
+      {
+        "code": "grouped",
+        "display": "Grouped",
+        "definition": "This problem is part of a group that includes the target problem as a member of the group."
+      },
+      {
+        "code": "replaces",
+        "display": "Replaces",
+        "definition": "This problem replaces a previous problem (i.e. a revised diagnosis). The target problem is now obsolete."
+      },
+      {
+        "code": "evolved-from",
+        "display": "Evolved From",
+        "definition": "This problem has evolved from the target problem"
+      }
+    ]
+  }
+}

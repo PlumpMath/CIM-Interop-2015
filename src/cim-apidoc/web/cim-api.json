@@ -1,11 +1,11 @@
 {
   "swagger": "2.0",
   "info": {
-    "description": "API documentation for the Endeavour Health Common Interface Mechanism.<div id='notes'><div id='notestitle'>NOTES</div><p>Sample data and notes on usage can be <a href='usage-notes.html' target='_blank'>viewed here</a> and FHIR profiles can be <a href='fhir'>viewed here</a>.</p><p>Build last updated: 14-Mar-2016</p></div>",
+    "description": "API documentation for the Endeavour Health Common Interface Mechanism.<div id='notes'><div id='notestitle'>NOTES</div><p>Sample data and notes on usage can be <a href='usage-notes.html' target='_blank'>viewed here</a> and FHIR profiles can be <a href='profiles'>viewed here</a>.</p><p>Build last updated: 14-Mar-2016</p></div>",
     "version": "0.1",
     "title": "Common Interface Mechanism"
   },
-  "host": "endeavour-cim.cloudapp.net",
+  "host": "fhir.endeavourhealth.org",
   "basePath": "/api/v0.1",
   "tags": [
     {

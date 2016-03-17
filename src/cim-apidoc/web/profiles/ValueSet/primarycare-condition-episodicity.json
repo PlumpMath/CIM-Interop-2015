@@ -1,0 +1,43 @@
+﻿{
+  "id": "primarycare-condition-episodicity",
+  "meta": {
+    "lastUpdated": "2015-09-24T16:19:37.151+01:00",
+    "profile": [
+      "http://hl7.org/fhir/StructureDefinition/valueset-shareable-definition"
+    ]
+  },
+  "extension": [
+    {
+      "Item": 1,
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm"
+    }
+  ],
+  "url": "http://endeavourhealth.org/fhir/ValueSet/primarycare-condition-episodicity",
+  "version": "1.0.0",
+  "name": "PrimaryCare-Condition-Episodicity",
+  "status": "draft",
+  "publisher": "Endeavour Health Charitable Trust",
+  "description": "The type of relationship that exists between a follow-on condition and the target problem episode.",
+  "codeSystem": {
+    "system": "http://endeavourhealth.org/fhir/ValueSet/primarycare-condition-episodicity",
+    "version": "1.0.0",
+    "caseSensitive": true,
+    "concept": [
+      {
+        "code": "review",
+        "display": "Review",
+        "definition": "The condition is a review of the target problem episode"
+      },
+      {
+        "code": "flare",
+        "display": "Flare",
+        "definition": "The condition marks a flare-up of the target problem episode"
+      },
+      {
+        "code": "end",
+        "display": "End",
+        "definition": "The condition marks the end of the target problem episode"
+      }
+    ]
+  }
+}
