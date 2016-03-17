@@ -84,7 +84,7 @@
             "TypeName": "Reference",
             "code": "Reference",
             "profile": [
-              "http://hl7.org/fhir/StructureDefinition/Practitioner"
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-practitioner"
             ]
           }
         ],

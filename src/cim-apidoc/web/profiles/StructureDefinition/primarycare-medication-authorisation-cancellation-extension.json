@@ -1,0 +1,310 @@
+﻿{
+  "id": "primarycare-medication-authorisation-cancellation-extension",
+  "meta": {
+    "lastUpdated": "2015-09-22T11:02:49.724+01:00"
+  },
+  "extension": [
+    {
+      "Item": 1,
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm"
+    }
+  ],
+  "url": "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-medication-authorisation-cancellation-extension",
+  "name": "PrimaryCare-MedicationAuthorisationCancellation-Extension",
+  "display": "Primary Care medication authorisation cancellation extension",
+  "status": "draft",
+  "publisher": "Endeavour Health Charitable Trust",
+  "contact": [
+    {
+      "telecom": [
+        {
+          "system": 4,
+          "value": "http://www.endeavourhealth.org/"
+        }
+      ]
+    }
+  ],
+  "date": "2015-11-01T00:00:00+00:00",
+  "description": "Indicates that the authorisation has been cancelled.",
+  "fhirVersion": "1.0.1",
+  "kind": 0,
+  "constrainedType": "Extension",
+  "abstract": false,
+  "contextType": 0,
+  "context": [
+    "MedicationStatement"
+  ],
+  "base": "http://hl7.org/fhir/StructureDefinition/Extension",
+  "differential": {
+    "element": [
+      {
+        "path": "Extension",
+        "name": "extension",
+        "short": "Authorisation cancellation detail",
+        "definition": "Indicates that the authorisation has been cancelled.",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "TypeName": "Element",
+            "code": "Element"
+          }
+        ],
+        "mapping": [
+          {
+            "identity": "rim",
+            "map": "N/A"
+          }
+        ]
+      },
+      {
+        "path": "Extension.extension",
+        "slicing": {
+          "discriminator": [
+            "url"
+          ],
+          "rules": 2
+        }
+      },
+      {
+        "path": "Extension.extension",
+        "name": "performer",
+        "short": "Who is responsible for the cancellation",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "TypeName": "Element",
+            "code": "Element"
+          }
+        ],
+        "mapping": [
+          {
+            "identity": "rim",
+            "map": "N/A"
+          }
+        ]
+      },
+      {
+        "path": "Extension.extension.url",
+        "representation": [
+          0
+        ],
+        "short": "identifies the meaning of the extension",
+        "definition": "Source of the definition for the extension code - a logical name or a URL.",
+        "comments": "The definition may point directly to a computable or human-readable definition of the extensibility codes, or it may be a logical URI as declared in some other specification. The definition should be version specific.  This will ideally be the URI for the Resource Profile defining the extension, with the code for the extension after a #.",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "TypeName": "uri",
+            "code": "uri"
+          }
+        ],
+        "Item1": "performer",
+        "mapping": [
+          {
+            "identity": "rim",
+            "map": "N/A"
+          }
+        ]
+      },
+      {
+        "path": "Extension.extension.valueReference",
+        "short": "Who is responsible for the cancellation",
+        "definition": "Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "TypeName": "Reference",
+            "code": "Reference",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-practitioner"
+            ]
+          }
+        ],
+        "mapping": [
+          {
+            "identity": "rim",
+            "map": "N/A"
+          }
+        ]
+      },
+      {
+        "path": "Extension.extension",
+        "name": "date",
+        "short": "Date of cancellation",
+        "definition": "Date (and time if available) of the cancellation.",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "TypeName": "Element",
+            "code": "Element"
+          }
+        ],
+        "mapping": [
+          {
+            "identity": "rim",
+            "map": "N/A"
+          }
+        ]
+      },
+      {
+        "path": "Extension.extension.url",
+        "representation": [
+          0
+        ],
+        "short": "identifies the meaning of the extension",
+        "definition": "Source of the definition for the extension code - a logical name or a URL.",
+        "comments": "The definition may point directly to a computable or human-readable definition of the extensibility codes, or it may be a logical URI as declared in some other specification. The definition should be version specific.  This will ideally be the URI for the Resource Profile defining the extension, with the code for the extension after a #.",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "TypeName": "uri",
+            "code": "uri"
+          }
+        ],
+        "Item1": "date",
+        "mapping": [
+          {
+            "identity": "rim",
+            "map": "N/A"
+          }
+        ]
+      },
+      {
+        "path": "Extension.extension.valueDateTime",
+        "short": "Date of cancellation",
+        "definition": "Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "TypeName": "dateTime",
+            "code": "dateTime"
+          }
+        ],
+        "mapping": [
+          {
+            "identity": "rim",
+            "map": "N/A"
+          }
+        ]
+      },
+      {
+        "path": "Extension.extension",
+        "name": "note",
+        "short": "Cancellation note",
+        "definition": "May include notes and comments about the cancellation.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "TypeName": "Element",
+            "code": "Element"
+          }
+        ],
+        "mapping": [
+          {
+            "identity": "rim",
+            "map": "N/A"
+          }
+        ]
+      },
+      {
+        "path": "Extension.extension.url",
+        "representation": [
+          0
+        ],
+        "short": "identifies the meaning of the extension",
+        "definition": "Source of the definition for the extension code - a logical name or a URL.",
+        "comments": "The definition may point directly to a computable or human-readable definition of the extensibility codes, or it may be a logical URI as declared in some other specification. The definition should be version specific.  This will ideally be the URI for the Resource Profile defining the extension, with the code for the extension after a #.",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "TypeName": "uri",
+            "code": "uri"
+          }
+        ],
+        "Item1": "note",
+        "mapping": [
+          {
+            "identity": "rim",
+            "map": "N/A"
+          }
+        ]
+      },
+      {
+        "path": "Extension.extension.valueString",
+        "short": "Notes about cancellation",
+        "definition": "Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "TypeName": "string",
+            "code": "string"
+          }
+        ],
+        "mapping": [
+          {
+            "identity": "rim",
+            "map": "N/A"
+          }
+        ]
+      },
+      {
+        "path": "Extension.url",
+        "representation": [
+          0
+        ],
+        "short": "identifies the meaning of the extension",
+        "definition": "Source of the definition for the extension code - a logical name or a URL.",
+        "comments": "The definition may point directly to a computable or human-readable definition of the extensibility codes, or it may be a logical URI as declared in some other specification. The definition should be version specific.  This will ideally be the URI for the Resource Profile defining the extension, with the code for the extension after a #.",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "TypeName": "uri",
+            "code": "uri"
+          }
+        ],
+        "Item1": "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-medication-authorisation-cancellation-extension",
+        "mapping": [
+          {
+            "identity": "rim",
+            "map": "N/A"
+          }
+        ]
+      },
+      {
+        "path": "Extension.valueQuantity",
+        "name": "valueQuantity",
+        "short": "Value of extension",
+        "definition": "Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).",
+        "min": 0,
+        "max": "0",
+        "type": [
+          {
+            "TypeName": "Quantity",
+            "code": "Quantity",
+            "profile": [
+              "http://hl7.org/fhir/StructureDefinition/SimpleQuantity"
+            ]
+          }
+        ],
+        "mapping": [
+          {
+            "identity": "rim",
+            "map": "N/A"
+          }
+        ]
+      }
+    ]
+  },
+  "W5TopLevelGroup": ""
+}

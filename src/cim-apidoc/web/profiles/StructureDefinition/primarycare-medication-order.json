@@ -61,6 +61,117 @@
         ]
       },
       {
+        "path": "MedicationOrder.extension",
+        "slicing": {
+          "discriminator": [
+            "url"
+          ],
+          "rules": 2
+        }
+      },
+      {
+        "path": "MedicationOrder.extension",
+        "name": "authorisation",
+        "short": "Authorisation link",
+        "definition": "A link to the medication authorisation that this order is part of.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "TypeName": "Extension",
+            "code": "Extension",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-medication-order-authorisation-extension"
+            ]
+          }
+        ]
+      },
+      {
+        "path": "MedicationOrder.extension",
+        "name": "estimatedNHSCost",
+        "short": "Estimated NHS cost",
+        "definition": "Estimated cost of the prescription to the NHS.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "TypeName": "Extension",
+            "code": "Extension",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-medication-order-estimatednhscost-extension"
+            ]
+          }
+        ]
+      },
+      {
+        "path": "MedicationOrder.extension",
+        "name": "pharmacyText",
+        "short": "Pharmacy text",
+        "definition": "Instructions or additional information included in prescription for use by the pharmacy.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "TypeName": "Extension",
+            "code": "Extension",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-pharmacytext-extension"
+            ]
+          }
+        ]
+      },
+      {
+        "path": "MedicationOrder.extension",
+        "name": "patientText",
+        "short": "Patient text",
+        "definition": "Instructions or additional information included in prescription for use by the patient.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "TypeName": "Extension",
+            "code": "Extension",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-patienttext-extension"
+            ]
+          }
+        ]
+      },
+      {
+        "path": "MedicationOrder.extension",
+        "name": "private",
+        "short": "Private prescription flag",
+        "definition": "Used to indicate a private prescription.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "TypeName": "Extension",
+            "code": "Extension",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-privateprescription-extension"
+            ]
+          }
+        ]
+      },
+      {
+        "path": "MedicationOrder.extension",
+        "name": "prescribedAsContraception",
+        "short": "Prescribed as contraception flag",
+        "definition": "Used to indicate a prescription is prescribed as a contraception.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "TypeName": "Extension",
+            "code": "Extension",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-prescribedascontraception-extension"
+            ]
+          }
+        ]
+      },
+      {
         "path": "MedicationOrder.patient",
         "short": "Who prescription is for",
         "definition": "A link to a resource representing the person to whom the medication will be given.",

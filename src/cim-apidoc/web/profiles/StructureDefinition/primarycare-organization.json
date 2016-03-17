@@ -65,6 +65,32 @@
         ]
       },
       {
+        "path": "Organization.extension",
+        "slicing": {
+          "discriminator": [
+            "url"
+          ],
+          "rules": 2
+        }
+      },
+      {
+        "path": "Organization.extension",
+        "name": "mainLocation",
+        "short": "The primary or main location for this organization.",
+        "definition": "Optional Extensions Element - found in all resources.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "TypeName": "Extension",
+            "code": "Extension",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-location-extension"
+            ]
+          }
+        ]
+      },
+      {
         "path": "Organization.identifier",
         "slicing": {
           "discriminator": [
@@ -410,10 +436,10 @@
       },
       {
         "path": "Organization.identifier.system",
-        "short": "The namespace for the identifier",
+        "short": "The system suppliers identifier namespace, e.g. http://supplier.co.uk/identifier",
         "definition": "Establishes the namespace in which set of possible id values is unique.",
         "requirements": "There are many sequences of identifiers.  To perform matching, we need to know what sequence we're dealing with. The system identifies a particular sequence or set of unique identifiers.",
-        "min": 0,
+        "min": 1,
         "max": "1",
         "type": [
           {
@@ -421,7 +447,6 @@
             "code": "uri"
           }
         ],
-        "Item1": "http://endeavourhealth.org/fhir/identifier#systemsupplieridentifier",
         "Item3": "http://www.acme.com/identifiers/patient or urn:ietf:rfc:3986 if the Identifier.value itself is a full uri",
         "isSummary": true,
         "mapping": [
@@ -436,6 +461,36 @@
           {
             "identity": "servd",
             "map": "./IdentifierType"
+          }
+        ]
+      },
+      {
+        "path": "Organization.identifier.value",
+        "short": "The value that is unique",
+        "definition": "The portion of the identifier typically displayed to the user and which is unique within the context of the system.",
+        "comments": "If the value is a full URI, then the system SHALL be urn:ietf:rfc:3986.",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "TypeName": "string",
+            "code": "string"
+          }
+        ],
+        "Item3": "123456",
+        "isSummary": true,
+        "mapping": [
+          {
+            "identity": "v2",
+            "map": "CX.1 / EI.1"
+          },
+          {
+            "identity": "rim",
+            "map": "II.extension or II.root if system indicates OID or GUID (Or Role.id.extension or root)"
+          },
+          {
+            "identity": "servd",
+            "map": "./Value"
           }
         ]
       },
@@ -555,7 +610,7 @@
         "definition": "A reference to a code defined by a terminology system.",
         "comments": "Codes may be defined very casually in enumerations, or code lists, up to very formal definitions such as SNOMED CT - see the HL7 v3 Core Principles for more information.  Ordering of codings is undefined and SHALL NOT be used to infer meaning. Generally, at most only one of the coding values will be labelled as UserSelected = true.",
         "requirements": "Allows for translations and alternate encodings within a code system.  Also supports communication of the same instance to systems requiring different encodings.",
-        "min": 1,
+        "min": 0,
         "max": "1",
         "type": [
           {
@@ -585,7 +640,7 @@
         "definition": "The identification of the code system that defines the meaning of the symbol in the code.",
         "comments": "The URI may be an OID (urn:oid:...) or a UUID (urn:uuid:...).  OIDs and UUIDs SHALL be references to the HL7 OID registry. Otherwise, the URI should come from HL7's list of FHIR defined special URIs or it should de-reference to some definition that establish the system clearly and unambiguously.",
         "requirements": "Need to be unambiguous about the source of the definition of the symbol.",
-        "min": 0,
+        "min": 1,
         "max": "1",
         "type": [
           {
@@ -636,6 +691,35 @@
           {
             "identity": "orim",
             "map": "fhir:Coding.version rdfs:subPropertyOf dt:CDCoding.codeSystemVersion"
+          }
+        ]
+      },
+      {
+        "path": "Organization.type.coding.code",
+        "short": "Symbol in syntax defined by the system",
+        "definition": "A symbol in syntax defined by the system. The symbol may be a predefined code or an expression in a syntax defined by the coding system (e.g. post-coordination).",
+        "requirements": "Need to refer to a particular code in the system.",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "TypeName": "code",
+            "code": "code"
+          }
+        ],
+        "isSummary": true,
+        "mapping": [
+          {
+            "identity": "v2",
+            "map": "C*E.1"
+          },
+          {
+            "identity": "rim",
+            "map": "./code"
+          },
+          {
+            "identity": "orim",
+            "map": "fhir:Coding.code rdfs:subPropertyOf dt:CDCoding.code"
           }
         ]
       },
@@ -731,6 +815,312 @@
         ]
       },
       {
+        "path": "Organization.telecom",
+        "short": "A contact detail for the organization",
+        "definition": "A contact detail for the organization.",
+        "comments": "The use code home is not to be used. Note that these contacts are not the contact details of people who are employed by or represent the organization, but official contacts for the organization itself.",
+        "requirements": "Human contact for the organization.",
+        "min": 0,
+        "max": "0",
+        "type": [
+          {
+            "TypeName": "ContactPoint",
+            "code": "ContactPoint"
+          }
+        ],
+        "condition": [
+          "org-3"
+        ],
+        "mapping": [
+          {
+            "identity": "v2",
+            "map": "ORC-22?"
+          },
+          {
+            "identity": "rim",
+            "map": ".telecom"
+          },
+          {
+            "identity": "servd",
+            "map": "./ContactPoints"
+          }
+        ]
+      },
+      {
+        "path": "Organization.telecom.system",
+        "short": "phone | fax | email | pager | other",
+        "definition": "Telecommunications form for contact point - what communications system is required to make use of the contact.",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "TypeName": "code",
+            "code": "code"
+          }
+        ],
+        "condition": [
+          "cpt-2"
+        ],
+        "isSummary": true,
+        "binding": {
+          "strength": 0,
+          "description": "Telecommunications form for contact point",
+          "Item": {
+            "reference": "http://hl7.org/fhir/ValueSet/contact-point-system"
+          }
+        },
+        "mapping": [
+          {
+            "identity": "v2",
+            "map": "XTN.3"
+          },
+          {
+            "identity": "rim",
+            "map": "./scheme"
+          },
+          {
+            "identity": "servd",
+            "map": "./ContactPointType"
+          }
+        ]
+      },
+      {
+        "path": "Organization.telecom.value",
+        "short": "The actual contact point details",
+        "definition": "The actual contact point details, in a form that is meaningful to the designated communication system (i.e. phone number or email address).",
+        "comments": "Additional text data such as phone extension numbers, or notes about use of the contact are sometimes included in the value.",
+        "requirements": "Need to support legacy numbers that are not in a tightly controlled format.",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "TypeName": "string",
+            "code": "string"
+          }
+        ],
+        "isSummary": true,
+        "mapping": [
+          {
+            "identity": "v2",
+            "map": "XTN.1 (or XTN.12)"
+          },
+          {
+            "identity": "rim",
+            "map": "./url"
+          },
+          {
+            "identity": "servd",
+            "map": "./Value"
+          }
+        ]
+      },
+      {
+        "path": "Organization.telecom.use",
+        "short": "home | work | temp | old | mobile - purpose of this contact point",
+        "definition": "Identifies the purpose for the contact point.",
+        "comments": "This is labeled as \"Is Modifier\" because applications should not mistake a temporary or old contact etc.for a current/permanent one. Applications can assume that a contact is current unless it explicitly says that it is temporary or old.",
+        "requirements": "Need to track the way a person uses this contact, so a user can choose which is appropriate for their purpose.",
+        "min": 0,
+        "max": "0",
+        "type": [
+          {
+            "TypeName": "code",
+            "code": "code"
+          }
+        ],
+        "isModifier": true,
+        "isSummary": true,
+        "binding": {
+          "strength": 0,
+          "description": "Use of contact point",
+          "Item": {
+            "reference": "http://hl7.org/fhir/ValueSet/contact-point-use"
+          }
+        },
+        "mapping": [
+          {
+            "identity": "v2",
+            "map": "XTN.2 - but often indicated by field"
+          },
+          {
+            "identity": "rim",
+            "map": "unique(./use)"
+          },
+          {
+            "identity": "servd",
+            "map": "./ContactPointPurpose"
+          }
+        ]
+      },
+      {
+        "path": "Organization.telecom.period",
+        "short": "Time period when the contact point was/is in use",
+        "definition": "Time period when the contact point was/is in use.",
+        "min": 0,
+        "max": "0",
+        "type": [
+          {
+            "TypeName": "Period",
+            "code": "Period"
+          }
+        ],
+        "isSummary": true,
+        "mapping": [
+          {
+            "identity": "v2",
+            "map": "N/A"
+          },
+          {
+            "identity": "rim",
+            "map": "./useablePeriod[type=\"IVL<TS>\"]"
+          },
+          {
+            "identity": "servd",
+            "map": "./StartDate and ./EndDate"
+          }
+        ]
+      },
+      {
+        "path": "Organization.address",
+        "short": "An address for the organization",
+        "definition": "An address for the organization.",
+        "comments": "Organization may have multiple addresses with different uses or applicable periods. The use code home is not to be used.",
+        "requirements": "May need to keep track of the organization's addresses for contacting, billing or reporting requirements.",
+        "min": 0,
+        "max": "0",
+        "type": [
+          {
+            "TypeName": "Address",
+            "code": "Address"
+          }
+        ],
+        "condition": [
+          "org-2"
+        ],
+        "mapping": [
+          {
+            "identity": "v2",
+            "map": "ORC-23?"
+          },
+          {
+            "identity": "rim",
+            "map": ".address"
+          },
+          {
+            "identity": "servd",
+            "map": "./PrimaryAddress and ./OtherAddresses"
+          }
+        ]
+      },
+      {
+        "path": "Organization.address.use",
+        "short": "home | work | temp | old - purpose of this address",
+        "definition": "The purpose of this address.",
+        "comments": "This is labeled as \"Is Modifier\" because applications should not mistake a temporary or old address etc.for a current/permanent one. Applications can assume that an address is current unless it explicitly says that it is temporary or old.",
+        "requirements": "Allows an appropriate address to be chosen from a list of many.",
+        "min": 0,
+        "max": "0",
+        "type": [
+          {
+            "TypeName": "code",
+            "code": "code"
+          }
+        ],
+        "Item3": "home",
+        "isModifier": true,
+        "isSummary": true,
+        "binding": {
+          "strength": 0,
+          "description": "The use of an address",
+          "Item": {
+            "reference": "http://hl7.org/fhir/ValueSet/address-use"
+          }
+        },
+        "mapping": [
+          {
+            "identity": "v2",
+            "map": "XAD.7"
+          },
+          {
+            "identity": "rim",
+            "map": "unique(./use)"
+          },
+          {
+            "identity": "servd",
+            "map": "./AddressPurpose"
+          }
+        ]
+      },
+      {
+        "path": "Organization.address.state",
+        "short": "Sub-unit of country (abbreviations ok)",
+        "definition": "Sub-unit of a country with limited sovereignty in a federally organized country. A code may be used if codes are in common use (i.e. US 2 letter state codes).",
+        "alias": [
+          "Province",
+          "Territory"
+        ],
+        "min": 0,
+        "max": "0",
+        "type": [
+          {
+            "TypeName": "string",
+            "code": "string"
+          }
+        ],
+        "isSummary": true,
+        "mapping": [
+          {
+            "identity": "v2",
+            "map": "XAD.4"
+          },
+          {
+            "identity": "rim",
+            "map": "AD.part[parttype = STA]"
+          },
+          {
+            "identity": "vcard",
+            "map": "region"
+          },
+          {
+            "identity": "servd",
+            "map": "./Region"
+          }
+        ]
+      },
+      {
+        "path": "Organization.address.period",
+        "short": "Time period when address was/is in use",
+        "definition": "Time period when address was/is in use.",
+        "requirements": "Allows addresses to be placed in historical context.",
+        "min": 0,
+        "max": "0",
+        "type": [
+          {
+            "TypeName": "Period",
+            "code": "Period"
+          }
+        ],
+        "Item3": {
+          "start": "2010-03-23",
+          "end": "2010-07-01"
+        },
+        "isSummary": true,
+        "mapping": [
+          {
+            "identity": "v2",
+            "map": "XAD.12 / XAD.13 + XAD.14"
+          },
+          {
+            "identity": "rim",
+            "map": "./usablePeriod[type=\"IVL<TS>\"]"
+          },
+          {
+            "identity": "servd",
+            "map": "./StartDate and ./EndDate"
+          }
+        ]
+      },
+      {
         "path": "Organization.partOf",
         "short": "The organization of which this organization forms a part",
         "definition": "The organization of which this organization forms a part.",
@@ -759,6 +1149,410 @@
           {
             "identity": "servd",
             "map": "n/a"
+          }
+        ]
+      },
+      {
+        "path": "Organization.contact",
+        "short": "Contact for the organization for a certain purpose",
+        "definition": "Contact for the organization for a certain purpose.",
+        "comments": "Where multiple contacts for the same purpose are provided there is a standard extension that can be used to determine which one is the preferred contact to use.",
+        "requirements": "Need to keep track of assigned contact points within bigger organization.",
+        "min": 0,
+        "max": "0",
+        "type": [
+          {
+            "TypeName": "BackboneElement",
+            "code": "BackboneElement"
+          }
+        ],
+        "mapping": [
+          {
+            "identity": "rim",
+            "map": ".contactParty"
+          }
+        ]
+      },
+      {
+        "path": "Organization.contact.purpose.coding.version",
+        "short": "Version of the system - if relevant",
+        "definition": "The version of the code system which was used when choosing this code. Note that a well-maintained code system does not need the version reported, because the meaning of codes is consistent across versions. However this cannot consistently be assured. and when the meaning is not guaranteed to be consistent, the version SHOULD be exchanged.",
+        "comments": "Where the terminology does not clearly define what string should be used to identify code system versions, the recommendation is to use the date (expressed in FHIR date format) on which that version was officially published as the version date.",
+        "min": 0,
+        "max": "0",
+        "type": [
+          {
+            "TypeName": "string",
+            "code": "string"
+          }
+        ],
+        "isSummary": true,
+        "mapping": [
+          {
+            "identity": "v2",
+            "map": "C*E.7"
+          },
+          {
+            "identity": "rim",
+            "map": "./codeSystemVersion"
+          },
+          {
+            "identity": "orim",
+            "map": "fhir:Coding.version rdfs:subPropertyOf dt:CDCoding.codeSystemVersion"
+          }
+        ]
+      },
+      {
+        "path": "Organization.contact.purpose.coding.userSelected",
+        "short": "If this coding was chosen directly by the user",
+        "definition": "Indicates that this coding was chosen by a user directly - i.e. off a pick list of available items (codes or displays).",
+        "comments": "Amongst a set of alternatives, a directly chosen code is the most appropriate starting point for new translations. There is some ambiguity about what exactly 'directly chosen' implies, and trading partner agreement may be needed to clarify the use of this element and its consequences more completely.",
+        "requirements": "This has been identified as a clinical safety criterium - that this exact system/code pair was chosen explicitly, rather than inferred by the system based on some rules or language processing.",
+        "min": 0,
+        "max": "0",
+        "type": [
+          {
+            "TypeName": "boolean",
+            "code": "boolean"
+          }
+        ],
+        "isSummary": true,
+        "mapping": [
+          {
+            "identity": "v2",
+            "map": "Sometimes implied by being first"
+          },
+          {
+            "identity": "rim",
+            "map": "CD.codingRationale"
+          },
+          {
+            "identity": "orim",
+            "map": "fhir:Coding.userSelected fhir:mapsTo dt:CDCoding.codingRationale. fhir:Coding.userSelected fhir:hasMap fhir:Coding.userSelected.map. fhir:Coding.userSelected.map a fhir:Map;   fhir:target dt:CDCoding.codingRationale. fhir:Coding.userSelected\\#true a [     fhir:source \"true\";     fhir:target dt:CDCoding.codingRationale\\#O   ]"
+          }
+        ]
+      },
+      {
+        "path": "Organization.contact.name.use",
+        "short": "usual | official | temp | nickname | anonymous | old | maiden",
+        "definition": "Identifies the purpose for this name.",
+        "comments": "This is labeled as \"Is Modifier\" because applications should not mistake a temporary or old name etc.for a current/permanent one. Applications can assume that a name is current unless it explicitly says that it is temporary or old.",
+        "requirements": "Allows the appropriate name for a particular context of use to be selected from among a set of names.",
+        "min": 0,
+        "max": "0",
+        "type": [
+          {
+            "TypeName": "code",
+            "code": "code"
+          }
+        ],
+        "isModifier": true,
+        "isSummary": true,
+        "binding": {
+          "strength": 0,
+          "description": "The use of a human name",
+          "Item": {
+            "reference": "http://hl7.org/fhir/ValueSet/name-use"
+          }
+        },
+        "mapping": [
+          {
+            "identity": "v2",
+            "map": "XPN.7, but often indicated by which field contains the name"
+          },
+          {
+            "identity": "rim",
+            "map": "unique(./use)"
+          },
+          {
+            "identity": "servd",
+            "map": "./NamePurpose"
+          }
+        ]
+      },
+      {
+        "path": "Organization.contact.name.family",
+        "short": "Family name (often called 'Surname')",
+        "definition": "The part of a name that links to the genealogy. In some cultures (e.g. Eritrea) the family name of a son is the first name of his father.",
+        "comments": "For family name, hyphenated names such as \"Smith-Jones\" are a single name, but names with spaces such as \"Smith Jones\" are broken into multiple parts.",
+        "alias": [
+          "surname"
+        ],
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "TypeName": "string",
+            "code": "string"
+          }
+        ],
+        "isSummary": true,
+        "mapping": [
+          {
+            "identity": "v2",
+            "map": "XPN.1"
+          },
+          {
+            "identity": "rim",
+            "map": "./part[partType = FAM]"
+          },
+          {
+            "identity": "servd",
+            "map": "./FamilyName"
+          }
+        ]
+      },
+      {
+        "path": "Organization.contact.name.prefix",
+        "short": "Parts that come before the name",
+        "definition": "Part of the name that is acquired as a title due to academic, legal, employment or nobility status, etc. and that appears at the start of the name.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "TypeName": "string",
+            "code": "string"
+          }
+        ],
+        "isSummary": true,
+        "mapping": [
+          {
+            "identity": "v2",
+            "map": "XPN.5"
+          },
+          {
+            "identity": "rim",
+            "map": "./part[partType = PFX]"
+          },
+          {
+            "identity": "servd",
+            "map": "./TitleCode"
+          }
+        ]
+      },
+      {
+        "path": "Organization.contact.name.suffix",
+        "short": "Parts that come after the name",
+        "definition": "Part of the name that is acquired as a title due to academic, legal, employment or nobility status, etc. and that appears at the end of the name.",
+        "min": 0,
+        "max": "0",
+        "type": [
+          {
+            "TypeName": "string",
+            "code": "string"
+          }
+        ],
+        "isSummary": true,
+        "mapping": [
+          {
+            "identity": "v2",
+            "map": "XPN/4"
+          },
+          {
+            "identity": "rim",
+            "map": "./part[partType = SFX]"
+          }
+        ]
+      },
+      {
+        "path": "Organization.contact.name.period",
+        "short": "Time period when name was/is in use",
+        "definition": "Indicates the period of time when this name was valid for the named person.",
+        "requirements": "Allows names to be placed in historical context.",
+        "min": 0,
+        "max": "0",
+        "type": [
+          {
+            "TypeName": "Period",
+            "code": "Period"
+          }
+        ],
+        "isSummary": true,
+        "mapping": [
+          {
+            "identity": "v2",
+            "map": "XPN.13 + XPN.14"
+          },
+          {
+            "identity": "rim",
+            "map": "./usablePeriod[type=\"IVL<TS>\"]"
+          },
+          {
+            "identity": "servd",
+            "map": "./StartDate and ./EndDate"
+          }
+        ]
+      },
+      {
+        "path": "Organization.contact.telecom.system",
+        "short": "phone | fax | email | pager | other",
+        "definition": "Telecommunications form for contact point - what communications system is required to make use of the contact.",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "TypeName": "code",
+            "code": "code"
+          }
+        ],
+        "condition": [
+          "cpt-2"
+        ],
+        "isSummary": true,
+        "binding": {
+          "strength": 0,
+          "description": "Telecommunications form for contact point",
+          "Item": {
+            "reference": "http://hl7.org/fhir/ValueSet/contact-point-system"
+          }
+        },
+        "mapping": [
+          {
+            "identity": "v2",
+            "map": "XTN.3"
+          },
+          {
+            "identity": "rim",
+            "map": "./scheme"
+          },
+          {
+            "identity": "servd",
+            "map": "./ContactPointType"
+          }
+        ]
+      },
+      {
+        "path": "Organization.contact.telecom.value",
+        "short": "The actual contact point details",
+        "definition": "The actual contact point details, in a form that is meaningful to the designated communication system (i.e. phone number or email address).",
+        "comments": "Additional text data such as phone extension numbers, or notes about use of the contact are sometimes included in the value.",
+        "requirements": "Need to support legacy numbers that are not in a tightly controlled format.",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "TypeName": "string",
+            "code": "string"
+          }
+        ],
+        "isSummary": true,
+        "mapping": [
+          {
+            "identity": "v2",
+            "map": "XTN.1 (or XTN.12)"
+          },
+          {
+            "identity": "rim",
+            "map": "./url"
+          },
+          {
+            "identity": "servd",
+            "map": "./Value"
+          }
+        ]
+      },
+      {
+        "path": "Organization.contact.telecom.use",
+        "short": "home | work | temp | old | mobile - purpose of this contact point",
+        "definition": "Identifies the purpose for the contact point.",
+        "comments": "This is labeled as \"Is Modifier\" because applications should not mistake a temporary or old contact etc.for a current/permanent one. Applications can assume that a contact is current unless it explicitly says that it is temporary or old.",
+        "requirements": "Need to track the way a person uses this contact, so a user can choose which is appropriate for their purpose.",
+        "min": 0,
+        "max": "0",
+        "type": [
+          {
+            "TypeName": "code",
+            "code": "code"
+          }
+        ],
+        "isModifier": true,
+        "isSummary": true,
+        "binding": {
+          "strength": 0,
+          "description": "Use of contact point",
+          "Item": {
+            "reference": "http://hl7.org/fhir/ValueSet/contact-point-use"
+          }
+        },
+        "mapping": [
+          {
+            "identity": "v2",
+            "map": "XTN.2 - but often indicated by field"
+          },
+          {
+            "identity": "rim",
+            "map": "unique(./use)"
+          },
+          {
+            "identity": "servd",
+            "map": "./ContactPointPurpose"
+          }
+        ]
+      },
+      {
+        "path": "Organization.contact.telecom.period",
+        "short": "Time period when the contact point was/is in use",
+        "definition": "Time period when the contact point was/is in use.",
+        "min": 0,
+        "max": "0",
+        "type": [
+          {
+            "TypeName": "Period",
+            "code": "Period"
+          }
+        ],
+        "isSummary": true,
+        "mapping": [
+          {
+            "identity": "v2",
+            "map": "N/A"
+          },
+          {
+            "identity": "rim",
+            "map": "./useablePeriod[type=\"IVL<TS>\"]"
+          },
+          {
+            "identity": "servd",
+            "map": "./StartDate and ./EndDate"
+          }
+        ]
+      },
+      {
+        "path": "Organization.contact.address.use",
+        "short": "home | work | temp | old - purpose of this address",
+        "definition": "The purpose of this address.",
+        "comments": "This is labeled as \"Is Modifier\" because applications should not mistake a temporary or old address etc.for a current/permanent one. Applications can assume that an address is current unless it explicitly says that it is temporary or old.",
+        "requirements": "Allows an appropriate address to be chosen from a list of many.",
+        "min": 0,
+        "max": "0",
+        "type": [
+          {
+            "TypeName": "code",
+            "code": "code"
+          }
+        ],
+        "Item3": "home",
+        "isModifier": true,
+        "isSummary": true,
+        "binding": {
+          "strength": 0,
+          "description": "The use of an address",
+          "Item": {
+            "reference": "http://hl7.org/fhir/ValueSet/address-use"
+          }
+        },
+        "mapping": [
+          {
+            "identity": "v2",
+            "map": "XAD.7"
+          },
+          {
+            "identity": "rim",
+            "map": "unique(./use)"
+          },
+          {
+            "identity": "servd",
+            "map": "./AddressPurpose"
           }
         ]
       },
@@ -795,6 +1589,39 @@
           {
             "identity": "servd",
             "map": "./Region"
+          }
+        ]
+      },
+      {
+        "path": "Organization.contact.address.period",
+        "short": "Time period when address was/is in use",
+        "definition": "Time period when address was/is in use.",
+        "requirements": "Allows addresses to be placed in historical context.",
+        "min": 0,
+        "max": "0",
+        "type": [
+          {
+            "TypeName": "Period",
+            "code": "Period"
+          }
+        ],
+        "Item3": {
+          "start": "2010-03-23",
+          "end": "2010-07-01"
+        },
+        "isSummary": true,
+        "mapping": [
+          {
+            "identity": "v2",
+            "map": "XAD.12 / XAD.13 + XAD.14"
+          },
+          {
+            "identity": "rim",
+            "map": "./usablePeriod[type=\"IVL<TS>\"]"
+          },
+          {
+            "identity": "servd",
+            "map": "./StartDate and ./EndDate"
           }
         ]
       }

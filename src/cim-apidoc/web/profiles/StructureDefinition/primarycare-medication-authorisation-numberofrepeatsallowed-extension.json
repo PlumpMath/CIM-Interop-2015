@@ -1,0 +1,112 @@
+﻿{
+  "id": "primarycare-medication-authorisation-numberofrepeatsallowed-extension",
+  "meta": {
+    "lastUpdated": "2015-09-22T11:02:49.724+01:00"
+  },
+  "extension": [
+    {
+      "Item": 1,
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm"
+    }
+  ],
+  "url": "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-medication-authorisation-numberofrepeatsallowed-extension",
+  "name": "PrimaryCare-MedicationAuthorisationNumberOfRepeatsAllowed-Extension",
+  "display": "Primary Care medication authorisation number of repeats allowed extension",
+  "status": "draft",
+  "publisher": "Endeavour Health Charitable Trust",
+  "contact": [
+    {
+      "telecom": [
+        {
+          "system": 4,
+          "value": "http://www.endeavourhealth.org/"
+        }
+      ]
+    }
+  ],
+  "date": "2015-11-01T00:00:00+00:00",
+  "description": "Number of issues allowed in the authorisation.",
+  "fhirVersion": "1.0.1",
+  "mapping": [
+    {
+      "identity": "rim",
+      "uri": "http://hl7.org/v3",
+      "name": "RIM"
+    }
+  ],
+  "kind": 0,
+  "constrainedType": "Extension",
+  "abstract": false,
+  "contextType": 0,
+  "context": [
+    "MedicationStatement"
+  ],
+  "base": "http://hl7.org/fhir/StructureDefinition/Extension",
+  "differential": {
+    "element": [
+      {
+        "path": "Extension",
+        "name": "extension",
+        "short": "Number of issues allowed",
+        "definition": "Number of issues allowed in the authorisation.",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "TypeName": "Element",
+            "code": "Element"
+          }
+        ],
+        "mapping": [
+          {
+            "identity": "rim",
+            "map": "N/A"
+          }
+        ]
+      },
+      {
+        "path": "Extension.url",
+        "representation": [
+          0
+        ],
+        "short": "identifies the meaning of the extension",
+        "definition": "Source of the definition for the extension code - a logical name or a URL.",
+        "comments": "The definition may point directly to a computable or human-readable definition of the extensibility codes, or it may be a logical URI as declared in some other specification. The definition should be version specific.  This will ideally be the URI for the Resource Profile defining the extension, with the code for the extension after a #.",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "TypeName": "uri",
+            "code": "uri"
+          }
+        ],
+        "Item1": "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-medication-authorisation-numberofrepeatsallowed-extension",
+        "mapping": [
+          {
+            "identity": "rim",
+            "map": "N/A"
+          }
+        ]
+      },
+      {
+        "path": "Extension.valuePositiveInt",
+        "short": "Number of issues allowed",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "TypeName": "positiveInt",
+            "code": "positiveInt"
+          }
+        ],
+        "mapping": [
+          {
+            "identity": "rim",
+            "map": "N/A"
+          }
+        ]
+      }
+    ]
+  },
+  "W5TopLevelGroup": ""
+}

@@ -324,8 +324,75 @@
         ]
       },
       {
+        "path": "Patient.identifier.use",
+        "short": "usual | official | temp | secondary (If known)",
+        "definition": "The purpose of this identifier.",
+        "comments": "This is labeled as \"Is Modifier\" because applications should not mistake a temporary id for a permanent one. Applications can assume that an identifier is permanent unless it explicitly says that it is temporary.",
+        "requirements": "Allows the appropriate identifier for a particular context of use to be selected from among a set of identifiers.",
+        "min": 0,
+        "max": "0",
+        "type": [
+          {
+            "TypeName": "code",
+            "code": "code"
+          }
+        ],
+        "isModifier": true,
+        "isSummary": true,
+        "binding": {
+          "strength": 0,
+          "description": "Identifies the purpose for this identifier, if known .",
+          "Item": {
+            "reference": "http://hl7.org/fhir/ValueSet/identifier-use"
+          }
+        },
+        "mapping": [
+          {
+            "identity": "v2",
+            "map": "N/A"
+          },
+          {
+            "identity": "rim",
+            "map": "Role.code or implied by context"
+          }
+        ]
+      },
+      {
+        "path": "Patient.identifier.type",
+        "short": "Description of identifier",
+        "definition": "A coded type for the identifier that can be used to determine which identifier to use for a specific purpose.",
+        "comments": "This element deals only with general categories of identifiers.  It SHOULD not be used for codes that correspond 1..1 with the Identifier.system. Some identifiers may fall into multiple categories due to common usage.   Where the system is known, a type is unnecessary because the type is always part of the system definition. However systems often need to handle identifiers where the system is not known. There is not a 1:1 relationship between type and system, since many different systems have the same type.",
+        "requirements": "Allows users to make use of identifiers when the identifier system is not known.",
+        "min": 0,
+        "max": "0",
+        "type": [
+          {
+            "TypeName": "CodeableConcept",
+            "code": "CodeableConcept"
+          }
+        ],
+        "isSummary": true,
+        "binding": {
+          "strength": 1,
+          "description": "A coded type for an identifier that can be used to determine which identifier to use for a specific purpose.",
+          "Item": {
+            "reference": "http://hl7.org/fhir/ValueSet/identifier-type"
+          }
+        },
+        "mapping": [
+          {
+            "identity": "v2",
+            "map": "CX.5"
+          },
+          {
+            "identity": "rim",
+            "map": "Role.code or implied by context"
+          }
+        ]
+      },
+      {
         "path": "Patient.identifier.system",
-        "short": "The namespace for the identifier",
+        "short": "The local identifier namespace, e.g. http://trust.nhs.uk/identifier",
         "definition": "Establishes the namespace in which set of possible id values is unique.",
         "requirements": "There are many sequences of identifiers.  To perform matching, we need to know what sequence we're dealing with. The system identifies a particular sequence or set of unique identifiers.",
         "min": 1,
@@ -384,6 +451,767 @@
         ]
       },
       {
+        "path": "Patient.identifier.period",
+        "short": "Time period when id is/was valid for use",
+        "definition": "Time period during which identifier is/was valid for use.",
+        "min": 0,
+        "max": "0",
+        "type": [
+          {
+            "TypeName": "Period",
+            "code": "Period"
+          }
+        ],
+        "isSummary": true,
+        "mapping": [
+          {
+            "identity": "v2",
+            "map": "CX.7 + CX.8"
+          },
+          {
+            "identity": "rim",
+            "map": "Role.effectiveTime or implied by context"
+          },
+          {
+            "identity": "servd",
+            "map": "./StartDate and ./EndDate"
+          }
+        ]
+      },
+      {
+        "path": "Patient.name.use",
+        "short": "usual | official | temp | nickname | anonymous | old | maiden",
+        "definition": "Identifies the purpose for this name.",
+        "comments": "This is labeled as \"Is Modifier\" because applications should not mistake a temporary or old name etc.for a current/permanent one. Applications can assume that a name is current unless it explicitly says that it is temporary or old.",
+        "requirements": "Allows the appropriate name for a particular context of use to be selected from among a set of names.",
+        "min": 0,
+        "max": "0",
+        "type": [
+          {
+            "TypeName": "code",
+            "code": "code"
+          }
+        ],
+        "isModifier": true,
+        "isSummary": true,
+        "binding": {
+          "strength": 0,
+          "description": "The use of a human name",
+          "Item": {
+            "reference": "http://hl7.org/fhir/ValueSet/name-use"
+          }
+        },
+        "mapping": [
+          {
+            "identity": "v2",
+            "map": "XPN.7, but often indicated by which field contains the name"
+          },
+          {
+            "identity": "rim",
+            "map": "unique(./use)"
+          },
+          {
+            "identity": "servd",
+            "map": "./NamePurpose"
+          }
+        ]
+      },
+      {
+        "path": "Patient.name.family",
+        "short": "Family name (often called 'Surname')",
+        "definition": "The part of a name that links to the genealogy. In some cultures (e.g. Eritrea) the family name of a son is the first name of his father.",
+        "comments": "For family name, hyphenated names such as \"Smith-Jones\" are a single name, but names with spaces such as \"Smith Jones\" are broken into multiple parts.",
+        "alias": [
+          "surname"
+        ],
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "TypeName": "string",
+            "code": "string"
+          }
+        ],
+        "isSummary": true,
+        "mapping": [
+          {
+            "identity": "v2",
+            "map": "XPN.1"
+          },
+          {
+            "identity": "rim",
+            "map": "./part[partType = FAM]"
+          },
+          {
+            "identity": "servd",
+            "map": "./FamilyName"
+          }
+        ]
+      },
+      {
+        "path": "Patient.name.given",
+        "short": "Given names (not always 'first'). Includes middle names",
+        "definition": "Given name.",
+        "comments": "If only initials are recorded, they may be used in place of the full name.  Not called \"first name\" since given names do not always come first.",
+        "alias": [
+          "first name",
+          "middle name"
+        ],
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "TypeName": "string",
+            "code": "string"
+          }
+        ],
+        "isSummary": true,
+        "mapping": [
+          {
+            "identity": "v2",
+            "map": "XPN.2 + XPN.3"
+          },
+          {
+            "identity": "rim",
+            "map": "./part[partType = GIV]"
+          },
+          {
+            "identity": "servd",
+            "map": "./GivenNames"
+          }
+        ]
+      },
+      {
+        "path": "Patient.name.prefix",
+        "short": "Parts that come before the name",
+        "definition": "Part of the name that is acquired as a title due to academic, legal, employment or nobility status, etc. and that appears at the start of the name.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "TypeName": "string",
+            "code": "string"
+          }
+        ],
+        "isSummary": true,
+        "mapping": [
+          {
+            "identity": "v2",
+            "map": "XPN.5"
+          },
+          {
+            "identity": "rim",
+            "map": "./part[partType = PFX]"
+          },
+          {
+            "identity": "servd",
+            "map": "./TitleCode"
+          }
+        ]
+      },
+      {
+        "path": "Patient.name.suffix",
+        "short": "Parts that come after the name",
+        "definition": "Part of the name that is acquired as a title due to academic, legal, employment or nobility status, etc. and that appears at the end of the name.",
+        "min": 0,
+        "max": "0",
+        "type": [
+          {
+            "TypeName": "string",
+            "code": "string"
+          }
+        ],
+        "isSummary": true,
+        "mapping": [
+          {
+            "identity": "v2",
+            "map": "XPN/4"
+          },
+          {
+            "identity": "rim",
+            "map": "./part[partType = SFX]"
+          }
+        ]
+      },
+      {
+        "path": "Patient.name.period",
+        "short": "Time period when name was/is in use",
+        "definition": "Indicates the period of time when this name was valid for the named person.",
+        "requirements": "Allows names to be placed in historical context.",
+        "min": 0,
+        "max": "0",
+        "type": [
+          {
+            "TypeName": "Period",
+            "code": "Period"
+          }
+        ],
+        "isSummary": true,
+        "mapping": [
+          {
+            "identity": "v2",
+            "map": "XPN.13 + XPN.14"
+          },
+          {
+            "identity": "rim",
+            "map": "./usablePeriod[type=\"IVL<TS>\"]"
+          },
+          {
+            "identity": "servd",
+            "map": "./StartDate and ./EndDate"
+          }
+        ]
+      },
+      {
+        "path": "Patient.telecom.system",
+        "short": "phone | fax | email | pager | other",
+        "definition": "Telecommunications form for contact point - what communications system is required to make use of the contact.",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "TypeName": "code",
+            "code": "code"
+          }
+        ],
+        "condition": [
+          "cpt-2"
+        ],
+        "isSummary": true,
+        "binding": {
+          "strength": 0,
+          "description": "Telecommunications form for contact point",
+          "Item": {
+            "reference": "http://hl7.org/fhir/ValueSet/contact-point-system"
+          }
+        },
+        "mapping": [
+          {
+            "identity": "v2",
+            "map": "XTN.3"
+          },
+          {
+            "identity": "rim",
+            "map": "./scheme"
+          },
+          {
+            "identity": "servd",
+            "map": "./ContactPointType"
+          }
+        ]
+      },
+      {
+        "path": "Patient.telecom.value",
+        "short": "The actual contact point details",
+        "definition": "The actual contact point details, in a form that is meaningful to the designated communication system (i.e. phone number or email address).",
+        "comments": "Additional text data such as phone extension numbers, or notes about use of the contact are sometimes included in the value.",
+        "requirements": "Need to support legacy numbers that are not in a tightly controlled format.",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "TypeName": "string",
+            "code": "string"
+          }
+        ],
+        "isSummary": true,
+        "mapping": [
+          {
+            "identity": "v2",
+            "map": "XTN.1 (or XTN.12)"
+          },
+          {
+            "identity": "rim",
+            "map": "./url"
+          },
+          {
+            "identity": "servd",
+            "map": "./Value"
+          }
+        ]
+      },
+      {
+        "path": "Patient.telecom.period",
+        "short": "Time period when the contact point was/is in use",
+        "definition": "Time period when the contact point was/is in use.",
+        "min": 0,
+        "max": "0",
+        "type": [
+          {
+            "TypeName": "Period",
+            "code": "Period"
+          }
+        ],
+        "isSummary": true,
+        "mapping": [
+          {
+            "identity": "v2",
+            "map": "N/A"
+          },
+          {
+            "identity": "rim",
+            "map": "./useablePeriod[type=\"IVL<TS>\"]"
+          },
+          {
+            "identity": "servd",
+            "map": "./StartDate and ./EndDate"
+          }
+        ]
+      },
+      {
+        "path": "Patient.gender",
+        "short": "male | female | other | unknown",
+        "definition": "Administrative Gender - the gender that the patient is considered to have for administration and record keeping purposes.",
+        "comments": "The gender may not match the biological sex as determined by genetics, or the individual's preferred identification. Note that for both humans and particularly animals, there are other legitimate possibilities than M and F, though the vast majority of systems and contexts only support M and F.  Systems providing decision support or enforcing business rules should ideally do this on the basis of Observations dealing with the specific gender aspect of interest (anatomical, chromosonal, social, etc.)  However, because these observations are infrequently recorded, defaulting to the administrative gender is common practice.  Where such defaulting occurs, rule enforcement should allow for the variation between administrative and biological, chromosonal and other gender aspects.  For example, an alert about a hysterectomy on a male should be handled as a warning or overrideable error, not a \"hard\" error.",
+        "requirements": "Needed for identification of the individual, in combination with (at least) name and birth date. Gender of individual drives many clinical processes.",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "TypeName": "code",
+            "code": "code"
+          }
+        ],
+        "isSummary": true,
+        "binding": {
+          "strength": 0,
+          "description": "The gender of a person used for administrative purposes.",
+          "Item": {
+            "reference": "http://hl7.org/fhir/ValueSet/administrative-gender"
+          }
+        },
+        "mapping": [
+          {
+            "identity": "v2",
+            "map": "PID-8"
+          },
+          {
+            "identity": "rim",
+            "map": "player[classCode=PSN|ANM and determinerCode=INSTANCE]/administrativeGender"
+          },
+          {
+            "identity": "cda",
+            "map": ".patient.administrativeGenderCode"
+          }
+        ]
+      },
+      {
+        "path": "Patient.birthDate",
+        "short": "The date of birth for the individual",
+        "definition": "The date of birth for the individual.",
+        "comments": "At least an estimated year should be provided as a guess if the real DOB is unknown  There is a standard extension \"patient-birthTime\" available that should be used where Time is required (such as in maternaty/infant care systems).",
+        "requirements": "Age of the individual drives many clinical processes.",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "TypeName": "date",
+            "code": "date"
+          }
+        ],
+        "isSummary": true,
+        "mapping": [
+          {
+            "identity": "v2",
+            "map": "PID-7"
+          },
+          {
+            "identity": "rim",
+            "map": "player[classCode=PSN|ANM and determinerCode=INSTANCE]/birthTime"
+          },
+          {
+            "identity": "cda",
+            "map": ".patient.birthTime"
+          },
+          {
+            "identity": "loinc",
+            "map": "21112-8"
+          }
+        ]
+      },
+      {
+        "path": "Patient.address.state",
+        "short": "Sub-unit of country (abbreviations ok)",
+        "definition": "Sub-unit of a country with limited sovereignty in a federally organized country. A code may be used if codes are in common use (i.e. US 2 letter state codes).",
+        "alias": [
+          "Province",
+          "Territory"
+        ],
+        "min": 0,
+        "max": "0",
+        "type": [
+          {
+            "TypeName": "string",
+            "code": "string"
+          }
+        ],
+        "isSummary": true,
+        "mapping": [
+          {
+            "identity": "v2",
+            "map": "XAD.4"
+          },
+          {
+            "identity": "rim",
+            "map": "AD.part[parttype = STA]"
+          },
+          {
+            "identity": "vcard",
+            "map": "region"
+          },
+          {
+            "identity": "servd",
+            "map": "./Region"
+          }
+        ]
+      },
+      {
+        "path": "Patient.address.period",
+        "short": "Time period when address was/is in use",
+        "definition": "Time period when address was/is in use.",
+        "requirements": "Allows addresses to be placed in historical context.",
+        "min": 0,
+        "max": "0",
+        "type": [
+          {
+            "TypeName": "Period",
+            "code": "Period"
+          }
+        ],
+        "Item3": {
+          "start": "2010-03-23",
+          "end": "2010-07-01"
+        },
+        "isSummary": true,
+        "mapping": [
+          {
+            "identity": "v2",
+            "map": "XAD.12 / XAD.13 + XAD.14"
+          },
+          {
+            "identity": "rim",
+            "map": "./usablePeriod[type=\"IVL<TS>\"]"
+          },
+          {
+            "identity": "servd",
+            "map": "./StartDate and ./EndDate"
+          }
+        ]
+      },
+      {
+        "path": "Patient.maritalStatus.coding.userSelected",
+        "short": "If this coding was chosen directly by the user",
+        "definition": "Indicates that this coding was chosen by a user directly - i.e. off a pick list of available items (codes or displays).",
+        "comments": "Amongst a set of alternatives, a directly chosen code is the most appropriate starting point for new translations. There is some ambiguity about what exactly 'directly chosen' implies, and trading partner agreement may be needed to clarify the use of this element and its consequences more completely.",
+        "requirements": "This has been identified as a clinical safety criterium - that this exact system/code pair was chosen explicitly, rather than inferred by the system based on some rules or language processing.",
+        "min": 0,
+        "max": "0",
+        "type": [
+          {
+            "TypeName": "boolean",
+            "code": "boolean"
+          }
+        ],
+        "isSummary": true,
+        "mapping": [
+          {
+            "identity": "v2",
+            "map": "Sometimes implied by being first"
+          },
+          {
+            "identity": "rim",
+            "map": "CD.codingRationale"
+          },
+          {
+            "identity": "orim",
+            "map": "fhir:Coding.userSelected fhir:mapsTo dt:CDCoding.codingRationale. fhir:Coding.userSelected fhir:hasMap fhir:Coding.userSelected.map. fhir:Coding.userSelected.map a fhir:Map;   fhir:target dt:CDCoding.codingRationale. fhir:Coding.userSelected\\#true a [     fhir:source \"true\";     fhir:target dt:CDCoding.codingRationale\\#O   ]"
+          }
+        ]
+      },
+      {
+        "path": "Patient.contact.relationship.coding.userSelected",
+        "short": "If this coding was chosen directly by the user",
+        "definition": "Indicates that this coding was chosen by a user directly - i.e. off a pick list of available items (codes or displays).",
+        "comments": "Amongst a set of alternatives, a directly chosen code is the most appropriate starting point for new translations. There is some ambiguity about what exactly 'directly chosen' implies, and trading partner agreement may be needed to clarify the use of this element and its consequences more completely.",
+        "requirements": "This has been identified as a clinical safety criterium - that this exact system/code pair was chosen explicitly, rather than inferred by the system based on some rules or language processing.",
+        "min": 0,
+        "max": "0",
+        "type": [
+          {
+            "TypeName": "boolean",
+            "code": "boolean"
+          }
+        ],
+        "isSummary": true,
+        "mapping": [
+          {
+            "identity": "v2",
+            "map": "Sometimes implied by being first"
+          },
+          {
+            "identity": "rim",
+            "map": "CD.codingRationale"
+          },
+          {
+            "identity": "orim",
+            "map": "fhir:Coding.userSelected fhir:mapsTo dt:CDCoding.codingRationale. fhir:Coding.userSelected fhir:hasMap fhir:Coding.userSelected.map. fhir:Coding.userSelected.map a fhir:Map;   fhir:target dt:CDCoding.codingRationale. fhir:Coding.userSelected\\#true a [     fhir:source \"true\";     fhir:target dt:CDCoding.codingRationale\\#O   ]"
+          }
+        ]
+      },
+      {
+        "path": "Patient.contact.name.use",
+        "short": "usual | official | temp | nickname | anonymous | old | maiden",
+        "definition": "Identifies the purpose for this name.",
+        "comments": "This is labeled as \"Is Modifier\" because applications should not mistake a temporary or old name etc.for a current/permanent one. Applications can assume that a name is current unless it explicitly says that it is temporary or old.",
+        "requirements": "Allows the appropriate name for a particular context of use to be selected from among a set of names.",
+        "min": 0,
+        "max": "0",
+        "type": [
+          {
+            "TypeName": "code",
+            "code": "code"
+          }
+        ],
+        "isModifier": true,
+        "isSummary": true,
+        "binding": {
+          "strength": 0,
+          "description": "The use of a human name",
+          "Item": {
+            "reference": "http://hl7.org/fhir/ValueSet/name-use"
+          }
+        },
+        "mapping": [
+          {
+            "identity": "v2",
+            "map": "XPN.7, but often indicated by which field contains the name"
+          },
+          {
+            "identity": "rim",
+            "map": "unique(./use)"
+          },
+          {
+            "identity": "servd",
+            "map": "./NamePurpose"
+          }
+        ]
+      },
+      {
+        "path": "Patient.contact.name.family",
+        "short": "Family name (often called 'Surname')",
+        "definition": "The part of a name that links to the genealogy. In some cultures (e.g. Eritrea) the family name of a son is the first name of his father.",
+        "comments": "For family name, hyphenated names such as \"Smith-Jones\" are a single name, but names with spaces such as \"Smith Jones\" are broken into multiple parts.",
+        "alias": [
+          "surname"
+        ],
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "TypeName": "string",
+            "code": "string"
+          }
+        ],
+        "isSummary": true,
+        "mapping": [
+          {
+            "identity": "v2",
+            "map": "XPN.1"
+          },
+          {
+            "identity": "rim",
+            "map": "./part[partType = FAM]"
+          },
+          {
+            "identity": "servd",
+            "map": "./FamilyName"
+          }
+        ]
+      },
+      {
+        "path": "Patient.contact.name.given",
+        "short": "Given names (not always 'first'). Includes middle names",
+        "definition": "Given name.",
+        "comments": "If only initials are recorded, they may be used in place of the full name.  Not called \"first name\" since given names do not always come first.",
+        "alias": [
+          "first name",
+          "middle name"
+        ],
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "TypeName": "string",
+            "code": "string"
+          }
+        ],
+        "isSummary": true,
+        "mapping": [
+          {
+            "identity": "v2",
+            "map": "XPN.2 + XPN.3"
+          },
+          {
+            "identity": "rim",
+            "map": "./part[partType = GIV]"
+          },
+          {
+            "identity": "servd",
+            "map": "./GivenNames"
+          }
+        ]
+      },
+      {
+        "path": "Patient.contact.name.prefix",
+        "short": "Parts that come before the name",
+        "definition": "Part of the name that is acquired as a title due to academic, legal, employment or nobility status, etc. and that appears at the start of the name.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "TypeName": "string",
+            "code": "string"
+          }
+        ],
+        "isSummary": true,
+        "mapping": [
+          {
+            "identity": "v2",
+            "map": "XPN.5"
+          },
+          {
+            "identity": "rim",
+            "map": "./part[partType = PFX]"
+          },
+          {
+            "identity": "servd",
+            "map": "./TitleCode"
+          }
+        ]
+      },
+      {
+        "path": "Patient.contact.name.suffix",
+        "short": "Parts that come after the name",
+        "definition": "Part of the name that is acquired as a title due to academic, legal, employment or nobility status, etc. and that appears at the end of the name.",
+        "min": 0,
+        "max": "0",
+        "type": [
+          {
+            "TypeName": "string",
+            "code": "string"
+          }
+        ],
+        "isSummary": true,
+        "mapping": [
+          {
+            "identity": "v2",
+            "map": "XPN/4"
+          },
+          {
+            "identity": "rim",
+            "map": "./part[partType = SFX]"
+          }
+        ]
+      },
+      {
+        "path": "Patient.contact.name.period",
+        "short": "Time period when name was/is in use",
+        "definition": "Indicates the period of time when this name was valid for the named person.",
+        "requirements": "Allows names to be placed in historical context.",
+        "min": 0,
+        "max": "0",
+        "type": [
+          {
+            "TypeName": "Period",
+            "code": "Period"
+          }
+        ],
+        "isSummary": true,
+        "mapping": [
+          {
+            "identity": "v2",
+            "map": "XPN.13 + XPN.14"
+          },
+          {
+            "identity": "rim",
+            "map": "./usablePeriod[type=\"IVL<TS>\"]"
+          },
+          {
+            "identity": "servd",
+            "map": "./StartDate and ./EndDate"
+          }
+        ]
+      },
+      {
+        "path": "Patient.contact.address.state",
+        "short": "Sub-unit of country (abbreviations ok)",
+        "definition": "Sub-unit of a country with limited sovereignty in a federally organized country. A code may be used if codes are in common use (i.e. US 2 letter state codes).",
+        "alias": [
+          "Province",
+          "Territory"
+        ],
+        "min": 0,
+        "max": "0",
+        "type": [
+          {
+            "TypeName": "string",
+            "code": "string"
+          }
+        ],
+        "isSummary": true,
+        "mapping": [
+          {
+            "identity": "v2",
+            "map": "XAD.4"
+          },
+          {
+            "identity": "rim",
+            "map": "AD.part[parttype = STA]"
+          },
+          {
+            "identity": "vcard",
+            "map": "region"
+          },
+          {
+            "identity": "servd",
+            "map": "./Region"
+          }
+        ]
+      },
+      {
+        "path": "Patient.contact.address.period",
+        "short": "Time period when address was/is in use",
+        "definition": "Time period when address was/is in use.",
+        "requirements": "Allows addresses to be placed in historical context.",
+        "min": 0,
+        "max": "0",
+        "type": [
+          {
+            "TypeName": "Period",
+            "code": "Period"
+          }
+        ],
+        "Item3": {
+          "start": "2010-03-23",
+          "end": "2010-07-01"
+        },
+        "isSummary": true,
+        "mapping": [
+          {
+            "identity": "v2",
+            "map": "XAD.12 / XAD.13 + XAD.14"
+          },
+          {
+            "identity": "rim",
+            "map": "./usablePeriod[type=\"IVL<TS>\"]"
+          },
+          {
+            "identity": "servd",
+            "map": "./StartDate and ./EndDate"
+          }
+        ]
+      },
+      {
         "path": "Patient.contact.organization",
         "short": "Organization that is associated with the contact",
         "definition": "Organization on behalf of which the contact is acting or for which the contact is working.",
@@ -410,6 +1238,29 @@
           {
             "identity": "rim",
             "map": "scoper"
+          },
+          {
+            "identity": "cda",
+            "map": "n/a"
+          }
+        ]
+      },
+      {
+        "path": "Patient.contact.period",
+        "short": "The period during which this contact person or organization is valid to be contacted relating to this patient",
+        "definition": "The period during which this contact person or organization is valid to be contacted relating to this patient.",
+        "min": 0,
+        "max": "0",
+        "type": [
+          {
+            "TypeName": "Period",
+            "code": "Period"
+          }
+        ],
+        "mapping": [
+          {
+            "identity": "rim",
+            "map": "effectiveTime"
           },
           {
             "identity": "cda",
@@ -447,6 +1298,36 @@
           {
             "identity": "cda",
             "map": "n/a"
+          }
+        ]
+      },
+      {
+        "path": "Patient.communication.language.coding.userSelected",
+        "short": "If this coding was chosen directly by the user",
+        "definition": "Indicates that this coding was chosen by a user directly - i.e. off a pick list of available items (codes or displays).",
+        "comments": "Amongst a set of alternatives, a directly chosen code is the most appropriate starting point for new translations. There is some ambiguity about what exactly 'directly chosen' implies, and trading partner agreement may be needed to clarify the use of this element and its consequences more completely.",
+        "requirements": "This has been identified as a clinical safety criterium - that this exact system/code pair was chosen explicitly, rather than inferred by the system based on some rules or language processing.",
+        "min": 0,
+        "max": "0",
+        "type": [
+          {
+            "TypeName": "boolean",
+            "code": "boolean"
+          }
+        ],
+        "isSummary": true,
+        "mapping": [
+          {
+            "identity": "v2",
+            "map": "Sometimes implied by being first"
+          },
+          {
+            "identity": "rim",
+            "map": "CD.codingRationale"
+          },
+          {
+            "identity": "orim",
+            "map": "fhir:Coding.userSelected fhir:mapsTo dt:CDCoding.codingRationale. fhir:Coding.userSelected fhir:hasMap fhir:Coding.userSelected.map. fhir:Coding.userSelected.map a fhir:Map;   fhir:target dt:CDCoding.codingRationale. fhir:Coding.userSelected\\#true a [     fhir:source \"true\";     fhir:target dt:CDCoding.codingRationale\\#O   ]"
           }
         ]
       },

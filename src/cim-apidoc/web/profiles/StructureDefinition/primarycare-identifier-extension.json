@@ -15,7 +15,7 @@
   "status": "draft",
   "publisher": "Endeavour Health Charitable Trust",
   "date": "2015-09-22T20:02:49+10:00",
-  "description": "Base StructureDefinition for Extension Type",
+  "description": "",
   "requirements": "The ability to add extensions in a structured way is what keeps FHIR resources simple.",
   "fhirVersion": "1.0.1",
   "kind": 0,

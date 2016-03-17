@@ -11,7 +11,7 @@
   ],
   "url": "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-location-extension",
   "name": "PrimaryCare-Location-Extension",
-  "display": "Primary Care Additional Actor",
+  "display": "Primary Care Location",
   "status": "draft",
   "publisher": "Endeavour Health Charitable Trust",
   "contact": [
@@ -84,7 +84,7 @@
             "TypeName": "Reference",
             "code": "Reference",
             "profile": [
-              "http://hl7.org/fhir/StructureDefinition/Location"
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-location"
             ]
           }
         ],

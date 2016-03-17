@@ -35,8 +35,8 @@
     "element": [
       {
         "path": "MedicationStatement",
-        "short": "Record of medication being taken by a patient",
-        "definition": "A record of a medication that is being consumed by a patient.   A MedicationStatement may indicate that the patient may be taking the medication now, or has taken the medication in the past or will be taking the medication in the future.  The source of this information can be the patient, significant other (such as a family member or spouse), or a clinician.  A common scenario where this information is captured is during the history taking process during a patient visit or stay.   The medication information may come from e.g. the patient's memory, from a prescription bottle,  or from a list of medications the patient, clinician or other party maintains   The primary difference between a medication statement and a medication administration is that the medication administration has complete administration information and is based on actual administration information from the person who administered the medication.  A medication statement is often, if not always, less specific.  There is no required date/time when the medication was administered, in fact we only know that a source has reported the patient is taking this medication, where details such as time, quantity, or rate or even medication product may be incomplete or missing or less precise.  As stated earlier, the medication statement information may come from the patient's memory, from a prescription bottle or from a list of medications the patient, clinician or other party maintains.  Medication administration is more formal and is not missing detailed information.",
+        "short": "Record of medication authorisation",
+        "definition": "Medication authorisations, or courses, are  “templates” for a prescription. Active or past. They contain enough information for a prescription to be issued or for it to be transcribed into another record as a reference (e.g. secondary care noting the primary care information would be a subset). What it is, who authorised it, when it was authorised, reference to last issue, overall compliance for that course, special instructions etc.",
         "min": 0,
         "max": "*",
         "type": [
@@ -71,7 +71,7 @@
         "name": "quantity",
         "short": "Amount of medication to supply",
         "definition": "Optional Extensions Element - found in all resources.",
-        "min": 1,
+        "min": 0,
         "max": "1",
         "type": [
           {
@@ -79,6 +79,176 @@
             "code": "Extension",
             "profile": [
               "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-medication-authorisation-quantity-extension"
+            ]
+          }
+        ]
+      },
+      {
+        "path": "MedicationStatement.extension",
+        "name": "numberOfRepeatsAllowed",
+        "short": "Number of issues allowed",
+        "definition": "Number of issues allowed in the authorisation.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "TypeName": "Extension",
+            "code": "Extension",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-medication-authorisation-numberofrepeatsallowed-extension"
+            ]
+          }
+        ]
+      },
+      {
+        "path": "MedicationStatement.extension",
+        "name": "numberOfRepeatsIssued",
+        "short": "Number of issues issued",
+        "definition": "Number of prescriptions issued within authorisation.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "TypeName": "Extension",
+            "code": "Extension",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-medication-authorisation-numberofrepeatsissued-extension"
+            ]
+          }
+        ]
+      },
+      {
+        "path": "MedicationStatement.extension",
+        "name": "expectedSupplyDuration",
+        "short": "Expected supply duration",
+        "definition": "Number of days supply per issue.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "TypeName": "Extension",
+            "code": "Extension",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-medication-authorisation-expectedsupplyduration-extension"
+            ]
+          }
+        ]
+      },
+      {
+        "path": "MedicationStatement.extension",
+        "name": "pharmacyText",
+        "short": "Pharmacy text",
+        "definition": "Instructions or additional information included in prescription for use by the pharmacy.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "TypeName": "Extension",
+            "code": "Extension",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-pharmacytext-extension"
+            ]
+          }
+        ]
+      },
+      {
+        "path": "MedicationStatement.extension",
+        "name": "patientText",
+        "short": "Patient text",
+        "definition": "Instructions or additional information included in prescription for use by the patient.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "TypeName": "Extension",
+            "code": "Extension",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-patienttext-extension"
+            ]
+          }
+        ]
+      },
+      {
+        "path": "MedicationStatement.extension",
+        "name": "private",
+        "short": "Private prescription flag",
+        "definition": "Used to indicate a private prescription.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "TypeName": "Extension",
+            "code": "Extension",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-privateprescription-extension"
+            ]
+          }
+        ]
+      },
+      {
+        "path": "MedicationStatement.extension",
+        "name": "firstIssueDate",
+        "short": "First issue date",
+        "definition": "Date (and time if available) when a prescription was first issued for this authorisation.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "TypeName": "Extension",
+            "code": "Extension",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-medication-authorisation-firstissuedate-extension"
+            ]
+          }
+        ]
+      },
+      {
+        "path": "MedicationStatement.extension",
+        "name": "mostRecentIssueDate",
+        "short": "Most recent issue date",
+        "definition": "Date (and time if available) of most recent prescription issue for this authorisation.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "TypeName": "Extension",
+            "code": "Extension",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-medication-authorisation-mostrecentissuedate-extension"
+            ]
+          }
+        ]
+      },
+      {
+        "path": "MedicationStatement.extension",
+        "name": "prescribedAsContraception",
+        "short": "Prescribed as contraception flag",
+        "definition": "Used to indicate a prescription is prescribed as a contraception.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "TypeName": "Extension",
+            "code": "Extension",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-prescribedascontraception-extension"
+            ]
+          }
+        ]
+      },
+      {
+        "path": "MedicationStatement.extension",
+        "name": "cancellation",
+        "short": "Authorisation cancellation detail",
+        "definition": "Indicates that the authorisation has been cancelled.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "TypeName": "Extension",
+            "code": "Extension",
+            "profile": [
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-medication-authorisation-cancellation-extension"
             ]
           }
         ]
