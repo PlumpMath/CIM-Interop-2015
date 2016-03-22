@@ -1,23 +1,31 @@
 {
   "swagger": "2.0",
   "info": {
-    "description": "API documentation for the Endeavour Health Common Interface Mechanism.<div id='notes'><div id='notestitle'>NOTES</div><p>Sample data and notes on usage can be <a href='usage-notes.html' target='_blank'>viewed here</a> and FHIR profiles can be <a href='profiles'>viewed here</a>.</p><p>Build last updated: 14-Mar-2016</p></div>",
+    "description": "",
     "version": "0.1",
-    "title": "Common Interface Mechanism"
+    "title": ""
   },
   "host": "fhir.endeavourhealth.org",
   "basePath": "/api/v0.1",
   "tags": [
     {
-      "name": "demographics",
+      "name": "Demographics",
       "description": ""
     },
     {
-      "name": "clinical",
+      "name": "Clinical",
       "description": ""
     },
     {
-      "name": "administrative",
+      "name": "Administration",
+      "description": ""
+    },
+    {
+      "name": "Appointments",
+      "description": ""
+    },
+    {
+      "name": "Tasks",
       "description": ""
     }
   ],
@@ -25,7 +33,7 @@
     "/Organization/{id}": {
       "get": {
         "tags": [
-          "administrative"
+          "Administration"
         ],
         "summary": "Get organisation by ID",
         "description": "Get organisation details by ID.",
@@ -74,7 +82,7 @@
     "/Organization": {
       "get": {
         "tags": [
-          "administrative"
+          "Administration"
         ],
         "summary": "Get organisation by ODS code",
         "description": "Get organisation details by ODS code.",
@@ -127,7 +135,7 @@
     "/{odsCode}/Location/{id}": {
       "get": {
         "tags": [
-          "administrative"
+          "Administration"
         ],
         "summary": "Get location details",
         "description": "Get location details by ID.",
@@ -179,7 +187,7 @@
     "/{odsCode}/User/{id}": {
       "get": {
         "tags": [
-          "administrative"
+          "Administration"
         ],
         "summary": "Get user details",
         "description": "Get user details by ID.",
@@ -232,7 +240,7 @@
     "/{odsCode}/Schedule": {
       "get": {
         "tags": [
-          "administrative"
+          "Appointments"
         ],
         "summary": "Get appointment schedules",
         "description": "Get appointment schedules by date and/or practitioner ID.",
@@ -296,7 +304,7 @@
     "/{odsCode}/Slot": {
       "get": {
         "tags": [
-          "administrative"
+          "Appointments"
         ],
         "summary": "Get appointment slots",
         "description": "Get appointment slots by schedule ID.",
@@ -349,7 +357,7 @@
     "/{odsCode}/Slot/{id}/$book": {
       "post": {
         "tags": [
-          "administrative"
+          "Appointments"
         ],
         "summary": "Book an appointment slot",
         "description": "Book an appointment slot.",
@@ -416,7 +424,7 @@
     "/{odsCode}/Slot/{id}/$cancel": {
       "post": {
         "tags": [
-          "administrative"
+          "Appointments"
         ],
         "summary": "Cancel an appointment slot",
         "description": "Cancel an appointment slot.",
@@ -477,7 +485,7 @@
     "/{odsCode}/Appointment": {
       "get": {
         "tags": [
-          "administrative"
+          "Appointments"
         ],
         "summary": "Get appointments by patient",
         "description": "Get appointments by patient ID.",
@@ -541,7 +549,7 @@
     "/{odsCode}/Task": {
       "get": {
         "tags": [
-          "administrative"
+          "Tasks"
         ],
         "summary": "Get organisation tasks",
         "description": "Get tasks by organisation.",
@@ -586,7 +594,7 @@
 
       "post": {
         "tags": [
-          "administrative"
+          "Tasks"
         ],
         "summary": "Add a task",
         "description": "Add a task at a given organisation",
@@ -641,7 +649,7 @@
     "/{odsCode}/Task/{id}": {
       "get": {
         "tags": [
-          "administrative"
+          "Tasks"
         ],
         "summary": "Get a task",
         "description": "Retrieve a task from a given organisation",
@@ -690,7 +698,7 @@
     "/{odsCode}/User/{id}/Task": {
       "get": {
         "tags": [
-          "administrative"
+          "Tasks"
         ],
         "summary": "Get user tasks",
         "description": "Get tasks by user.",
@@ -739,7 +747,7 @@
     "/{odsCode}/Patient/{id}/Task": {
       "get": {
         "tags": [
-          "administrative"
+          "Tasks"
         ],
         "summary": "Get patient tasks",
         "description": "Get tasks by patient.",
@@ -788,7 +796,7 @@
     "/{odsCode}/Patient/{id}/$everythingnobinary": {
       "get": {
         "tags": [
-          "clinical"
+          "Clinical"
         ],
         "summary": "Get full record by patient ID",
         "description": "Get full record (demographic and clinical) by patient ID, excluding binaries and attachments.",
@@ -840,7 +848,7 @@
     "/{odsCode}/Patient/{id}/MedicationPrescription": {
       "get": {
         "tags": [
-          "clinical"
+          "Clinical"
         ],
         "summary": "Get medication prescriptions by patient ID",
         "description": "Get medication prescriptions by patient ID",
@@ -914,7 +922,7 @@
     "/{odsCode}/Patient/{id}/Condition": {
       "get": {
         "tags": [
-          "clinical"
+          "Clinical"
         ],
         "summary": "Get conditions by patient ID",
         "description": "Get conditions by patient ID.",
@@ -971,7 +979,7 @@
       },
       "post": {
         "tags": [
-          "clinical"
+          "Clinical"
         ],
         "summary": "Add condition to patient",
         "description": "Add condition to patient.",
@@ -1029,7 +1037,7 @@
     "/{odsCode}/Patient/{id}/Immunization": {
       "get": {
         "tags": [
-          "clinical"
+          "Clinical"
         ],
         "summary": "Get immunisations by patient ID",
         "description": "Get immunisations by patient ID.",
@@ -1088,7 +1096,7 @@
     "/{odsCode}/Patient/{id}/AllergyIntolerance": {
       "get": {
         "tags": [
-          "clinical"
+          "Clinical"
         ],
         "summary": "Get allergies by patient ID",
         "description": "Get allergies by patient ID.",
@@ -1152,7 +1160,7 @@
     "/Person/$trace": {
       "get": {
         "tags": [
-          "demographics"
+          "Demographics"
         ],
         "summary": "Trace persons",
         "description": "<p>Trace persons.</p><p>Valid trace combinations:</p><ul><li>Person identifier</li><li>Person name AND date of birth AND gender</li></ul>",
@@ -1229,7 +1237,7 @@
     "/{odsCode}/Patient/{id}": {
       "get": {
         "tags": [
-          "demographics"
+          "Demographics"
         ],
         "summary": "Get demographics by patient ID",
         "description": "Get demographics by patient ID.",
@@ -1281,7 +1289,7 @@
     "/{odsCode}/Patient": {
       "get": {
         "tags": [
-          "demographics"
+          "Demographics"
         ],
         "summary": "Get all patients",
         "description": "Get all patients.",

@@ -1,7 +1,7 @@
 ﻿{
   "id": "primarycare-schedule",
   "meta": {
-    "lastUpdated": "2015-11-01T10:00:00+00:00"
+    "lastUpdated": "2016-03-21T23:29:35.111+00:00"
   },
   "extension": [
     {
@@ -35,13 +35,18 @@
     "element": [
       {
         "path": "Schedule",
-        "short": "A container for slot(s) of time that may be available for booking appointments",
+        "short": "A pre-scheduled time period associated with one or more practitioners and optionally a location, containing a number of bookable slots.",
         "definition": "A container for slot(s) of time that may be available for booking appointments.",
         "alias": [
           "Availability"
         ],
         "min": 0,
         "max": "*",
+        "base": {
+          "path": "Schedule",
+          "min": 0,
+          "max": "*"
+        },
         "type": [
           {
             "TypeName": "Schedule",
@@ -71,9 +76,15 @@
       {
         "path": "Schedule.extension",
         "name": "additionalActors",
+        "short": "Additional practitioners providing care at for this schedule",
         "definition": "Optional Extensions Element - found in all resources.",
         "min": 0,
         "max": "*",
+        "base": {
+          "path": "Schedule.extension",
+          "min": 0,
+          "max": "*"
+        },
         "type": [
           {
             "TypeName": "Extension",
@@ -87,10 +98,15 @@
       {
         "path": "Schedule.extension",
         "name": "location",
-        "short": "Location that the schedule is being run from.  Need not be populated where the location is implicit in the booking.",
+        "short": "Location that the schedule is being run from.  Need not be populated where the location is implicit in the booking",
         "definition": "Optional Extensions Element - found in all resources.",
         "min": 0,
         "max": "1",
+        "base": {
+          "path": "Schedule.extension",
+          "min": 0,
+          "max": "1"
+        },
         "type": [
           {
             "TypeName": "Extension",
@@ -102,6 +118,39 @@
         ]
       },
       {
+        "path": "Schedule.identifier",
+        "short": "May be used to carry supplier specific business identifiers, or non-globally unique identifiers",
+        "definition": "External Ids for this item.",
+        "min": 0,
+        "max": "*",
+        "base": {
+          "path": "Schedule.identifier",
+          "min": 0,
+          "max": "*"
+        },
+        "type": [
+          {
+            "TypeName": "Identifier",
+            "code": "Identifier"
+          }
+        ],
+        "isSummary": true,
+        "mapping": [
+          {
+            "identity": "rim",
+            "map": ".id"
+          },
+          {
+            "identity": "ical",
+            "map": "UID"
+          },
+          {
+            "identity": "w5",
+            "map": "id"
+          }
+        ]
+      },
+      {
         "path": "Schedule.identifier.use",
         "short": "usual | official | temp | secondary (If known)",
         "definition": "The purpose of this identifier.",
@@ -109,6 +158,11 @@
         "requirements": "Allows the appropriate identifier for a particular context of use to be selected from among a set of identifiers.",
         "min": 0,
         "max": "0",
+        "base": {
+          "path": "Schedule.identifier.use",
+          "min": 0,
+          "max": "0"
+        },
         "type": [
           {
             "TypeName": "code",
@@ -143,6 +197,11 @@
         "requirements": "Allows users to make use of identifiers when the identifier system is not known.",
         "min": 0,
         "max": "0",
+        "base": {
+          "path": "Schedule.identifier.type",
+          "min": 0,
+          "max": "0"
+        },
         "type": [
           {
             "TypeName": "CodeableConcept",
@@ -169,11 +228,86 @@
         ]
       },
       {
+        "path": "Schedule.identifier.system",
+        "short": "The namespace for the identifier",
+        "definition": "Establishes the namespace in which set of possible id values is unique.",
+        "requirements": "There are many sequences of identifiers.  To perform matching, we need to know what sequence we're dealing with. The system identifies a particular sequence or set of unique identifiers.",
+        "min": 1,
+        "max": "1",
+        "base": {
+          "path": "Identifier.system",
+          "min": 0,
+          "max": "1"
+        },
+        "type": [
+          {
+            "TypeName": "uri",
+            "code": "uri"
+          }
+        ],
+        "Item3": "http://www.acme.com/identifiers/patient or urn:ietf:rfc:3986 if the Identifier.value itself is a full uri",
+        "isSummary": true,
+        "mapping": [
+          {
+            "identity": "v2",
+            "map": "CX.4 / EI-2-4"
+          },
+          {
+            "identity": "rim",
+            "map": "II.root or Role.id.root"
+          },
+          {
+            "identity": "servd",
+            "map": "./IdentifierType"
+          }
+        ]
+      },
+      {
+        "path": "Schedule.identifier.value",
+        "short": "Value must be unique within the above system",
+        "definition": "The portion of the identifier typically displayed to the user and which is unique within the context of the system.",
+        "comments": "If the value is a full URI, then the system SHALL be urn:ietf:rfc:3986.",
+        "min": 1,
+        "max": "1",
+        "base": {
+          "path": "Identifier.value",
+          "min": 0,
+          "max": "1"
+        },
+        "type": [
+          {
+            "TypeName": "string",
+            "code": "string"
+          }
+        ],
+        "Item3": "123456",
+        "isSummary": true,
+        "mapping": [
+          {
+            "identity": "v2",
+            "map": "CX.1 / EI.1"
+          },
+          {
+            "identity": "rim",
+            "map": "II.extension or II.root if system indicates OID or GUID (Or Role.id.extension or root)"
+          },
+          {
+            "identity": "servd",
+            "map": "./Value"
+          }
+        ]
+      },
+      {
         "path": "Schedule.identifier.period",
         "short": "Time period when id is/was valid for use",
         "definition": "Time period during which identifier is/was valid for use.",
         "min": 0,
         "max": "0",
+        "base": {
+          "path": "Schedule.identifier.period",
+          "min": 0,
+          "max": "0"
+        },
         "type": [
           {
             "TypeName": "Period",
@@ -203,6 +337,11 @@
         "comments": "The reference may be just a text description of the assigner.",
         "min": 0,
         "max": "0",
+        "base": {
+          "path": "Schedule.identifier.assigner",
+          "min": 0,
+          "max": "0"
+        },
         "type": [
           {
             "TypeName": "Reference",
@@ -234,6 +373,11 @@
         "definition": "The schedule type can be used for the categorization of healthcare services or other appointment types.",
         "min": 0,
         "max": "*",
+        "base": {
+          "path": "Schedule.type",
+          "min": 0,
+          "max": "*"
+        },
         "type": [
           {
             "TypeName": "CodeableConcept",
@@ -265,6 +409,11 @@
         "comments": "Where the terminology does not clearly define what string should be used to identify code system versions, the recommendation is to use the date (expressed in FHIR date format) on which that version was officially published as the version date.",
         "min": 0,
         "max": "0",
+        "base": {
+          "path": "Schedule.type.coding.version",
+          "min": 0,
+          "max": "0"
+        },
         "type": [
           {
             "TypeName": "string",
@@ -295,6 +444,11 @@
         "requirements": "This has been identified as a clinical safety criterium - that this exact system/code pair was chosen explicitly, rather than inferred by the system based on some rules or language processing.",
         "min": 0,
         "max": "0",
+        "base": {
+          "path": "Schedule.type.coding.userSelected",
+          "min": 0,
+          "max": "0"
+        },
         "type": [
           {
             "TypeName": "boolean",
@@ -319,9 +473,15 @@
       },
       {
         "path": "Schedule.actor",
-        "short": "The Practitioner (or primary/first Practitioner) providing care for this Schedule.  Additional practitioners should be added to the additionalActors element.",
+        "short": "The Practitioner (or primary/first Practitioner) providing care for this Schedule.  Additional practitioners should be added to the additionalActors element",
+        "definition": "The resource this Schedule resource is providing availability information for. These are expected to usually be one of HealthcareService, Location, Practitioner, Device, Patient or RelatedPerson.",
         "min": 1,
         "max": "1",
+        "base": {
+          "path": "Schedule.actor",
+          "min": 1,
+          "max": "1"
+        },
         "type": [
           {
             "TypeName": "Reference",
@@ -349,6 +509,11 @@
         "definition": "The period of time that the slots that are attached to this Schedule resource cover (even if none exist). These  cover the amount of time that an organization's planning horizon; the interval for which they are currently accepting appointments. This does not define a \"template\" for planning outside these dates.",
         "min": 1,
         "max": "1",
+        "base": {
+          "path": "Schedule.planningHorizon",
+          "min": 1,
+          "max": "1"
+        },
         "type": [
           {
             "TypeName": "Period",
@@ -374,6 +539,11 @@
         "comments": "If the low element is missing, the meaning is that the low boundary is not known.",
         "min": 1,
         "max": "1",
+        "base": {
+          "path": "Schedule.planningHorizon.start",
+          "min": 1,
+          "max": "1"
+        },
         "type": [
           {
             "TypeName": "dateTime",
@@ -402,6 +572,11 @@
         "comments": "The high value includes any matching date/time. i.e. 2012-02-03T10:00:00 is in a period that has a end value of 2012-02-03.",
         "min": 0,
         "max": "1",
+        "base": {
+          "path": "Schedule.planningHorizon.end",
+          "min": 0,
+          "max": "1"
+        },
         "type": [
           {
             "TypeName": "dateTime",

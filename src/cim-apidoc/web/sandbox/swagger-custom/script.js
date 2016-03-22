@@ -1,22 +1,10 @@
-$(function() {
-    $('head').append("<link href='https://fonts.googleapis.com/css?family=Droid+Sans:400,700|Open+Sans' rel='stylesheet' type='text/css' />");
-    $('#input_apiKey').parent().after("<div class='input'><input placeholder='secret' id='input_privateKey' name='privateKey' type='password' /></div>");
-});
-
 function customScriptInitialize(){
 
-    addCustomLogo();
     removeCurl();
     disableHash();
     injectVisualizer();
     injectHashGeneration();
     customizeResponseModelTable();
-
-    function addCustomLogo() {
-        if ($('#custom-logo').length == 0) {
-            $('<a href="/"><div id="custom-logo"></div></a>').insertBefore('#logo');
-        }
-    }
 
     function removeCurl() {
         $('h4').filter(function() {

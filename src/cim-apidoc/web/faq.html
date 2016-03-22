@@ -1,0 +1,68 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Overview - Endeavour FHIR Interoperability Guide</title>
+		<link rel="stylesheet" href="styles/bootstrap.css" />
+		<link rel="stylesheet" href="styles/jquery-ui.css" />
+		<link rel="stylesheet" href="styles/style.css" />
+		<script src="scripts/jquery-2.1.4.js"></script>
+		<script src="scripts/bootstrap.js"></script>
+	</head>
+	<body>
+		<div id="segment-header" class="segment">
+			<div class="container">
+				<a id="logo" href="../">
+					<img src="images/endeavourlogo.png" alt="Endeavour Logo" />
+				</a>
+				<div id="fhir-status"></div>
+				<div id="fhir-nav">
+					<a id="fhir-logo" target="_blank" href="http://www.hl7.org/fhir/">
+						<img src="images/fhirlogo.png" alt="FHIR logo" />
+					</a>
+				</div>
+			</div>
+		</div>
+        <div id="segment-navbar" class="segment">
+            <div class="container">
+                <a href="overview.html">Overview</a>
+				<a href="profiles">Profiles</a>
+				<a href="api.html">API definition</a>
+				<a href="sandbox">Sandbox</a>
+				<a href="faq.html">FAQ</a>
+            </div>
+        </div>
+		<div id="segment-content" class="segment">
+            <div class="container">
+				<h1>FAQ</h1>
+				<p>[This section is currently being authored.]
+				<h3>For other questions or to provide feedback</h3>
+				<p>Please get in touch at <a id="emaila" href="">.</p>
+		    </div>
+        </div>
+		<div id="segment-footer" class="segment">
+            <div class="container">© Endeavour Health Charitable Trust 2016. All rights reserved.</div>
+        </div>
+		
+		
+		<script type="text/javascript">
+<!--
+  function decodeEntities(s)
+	{
+		var str, temp= document.createElement('p');
+		temp.innerHTML= s;
+		str= temp.textContent || temp.innerText;
+		temp=null;
+		return str;
+	}
+
+	str1="mailto:";
+	str2="&#x6A;&#x6F;&#x6E;&#x6E;&#x79;&#x2E;&#x72;&#x79;&#x6C;&#x61;&#x6E;&#x64;&#x73;&#x40;&#x65;&#x6E;";
+	str3="&#x64;&#x65;&#x61;&#x76;&#x6F;&#x75;&#x72;&#x68;&#x65;&#x61;&#x6C;&#x74;&#x68;&#x2E;&#x6F;&#x72;&#x67;";
+	document.getElementById("emaila").innerHTML = decodeEntities(str2+str3);
+	document.getElementById("emaila").setAttribute("href", decodeEntities(str1+str2+str3));
+-->
+</script>
+
+
+	</body>
+</html>

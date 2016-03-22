@@ -1,44 +1,46 @@
 ﻿<!DOCTYPE html>
 <html>
-	<head>
-		<title>PrimaryCare-Problem-RelationshipType - Endeavour FHIR Implementation Guide</title>
-		<link rel="stylesheet" href="styles/bootstrap.css" />
-		<link rel="stylesheet" href="styles/jquery-ui.css" />
-		<link rel="stylesheet" href="styles/style.css" />
-		<script src="scripts/jquery-2.1.4.js"></script>
-		<script src="scripts/bootstrap.js"></script>
-	</head>
-	<body>
-		<div id="segment-header" class="segment">
-			<div class="container">
-				<a id="logo" href="http://www.endeavourhealth.org/">
-					<img src="images/endeavourlogo.png" alt="Endeavour Logo" />
-				</a>
-				<div id="fhir-status">
-					<b>FHIR Implementation Guide (Draft)</b>
-				</div>
-				<div id="fhir-nav">
-					<a id="fhir-logo" href="http://www.hl7.org/fhir/">
-						<img src="images/fhirlogo.png" alt="FHIR logo" />
-					</a>
-				</div>
-			</div>
-		</div>
-        <div id="segment-navbar" class="segment">
-            <div class="container">
-                <a class="btn btn-primary" href="index.html">Overview</a>
-                <a class="btn btn-primary" href="resources.html">Resources</a>
-                <a class="btn btn-primary" href="valuesets.html">Value sets</a>
-                <a class="btn btn-primary" href="api.html">API</a>
+<head>
+    <title>PrimaryCare-Problem-RelationshipType - Endeavour FHIR Implementation Guide</title>
+    <link rel="stylesheet" href="styles/bootstrap.css" />
+    <link rel="stylesheet" href="styles/jquery-ui.css" />
+    <link rel="stylesheet" href="../styles/style.css" />
+    <script src="scripts/jquery-2.1.4.js"></script>
+    <script src="scripts/bootstrap.js"></script>
+</head>
+<body>
+    <div id="segment-header" class="segment">
+        <div class="container">
+            <a id="logo" href="../">
+                <img src="images/endeavourlogo.png" alt="Endeavour Logo" />
+            </a>
+            <div id="fhir-status">
+                <b></b>
+            </div>
+            <div id="fhir-nav">
+                <a id="fhir-logo" target="_blank" href="http://www.hl7.org/fhir/">
+                    <img src="images/fhirlogo.png" alt="FHIR logo" />
+                </a>
             </div>
         </div>
-		<div id="segment-content" class="segment">
-            <div class="container">
-                <div><div><h3><span class="label label-default">Value set</span> PrimaryCare-Problem-RelationshipType</h3><p>The official URL for this value set is: </p><pre>http://endeavourhealth.org/fhir/ValueSet/primarycare-problem-relationshiptype</pre><p>Maturity level: <img src="images/bullet_orange.png" /> Draft (for review).</p><h3>Description</h3><p>A set of codes specifying the kind of relationship that exists with a target problem.</p><h3>Definition</h3><p>This valueset is comprised of  the following codes from <b>inline code system </b><a href="http://endeavourhealth.org/fhir/ValueSet/primarycare-problem-relationshiptype">http://endeavourhealth.org/fhir/ValueSet/primarycare-problem-relationshiptype</a>:</p><table class="table table-condensed table-fixed"><thead><th class="table-column-20pc">Code</th><th class="table-column-20pc">Display</th><th>Definition</th></thead><tbody><tr><td>combined</td><td>Combined</td><td>This problem is combined/merged with the target problem to form a single logical problem.</td></tr><tr><td>grouped</td><td>Grouped</td><td>This problem is part of a group that includes the target problem as a member of the group.</td></tr><tr><td>replaces</td><td>Replaces</td><td>This problem replaces a previous problem (i.e. a revised diagnosis). The target problem is now obsolete.</td></tr><tr><td>evolved-from</td><td>Evolved From</td><td>This problem has evolved from the target problem</td></tr></tbody></table></div></div>
-		    </div>
+    </div>
+    <div id="segment-navbar" class="segment">
+        <div class="container">
+            <a href="../overview.html">Overview</a>
+            <a href="../profiles">Profiles</a>
+            <a href="../api.html">API definition</a>
+            <a href="../sandbox">Sandbox</a>
+            <a href="../faq.html">FAQ</a>
         </div>
-		<div id="segment-footer" class="segment">
-            <div class="container">© Endeavour Health Charitable Trust 2015. FHIR Implementation Guide 0.1 generated on 17-Mar-2016.</div>
+    </div>
+    <div id="segment-content" class="segment">
+        <div class="container">
+            <h1>FHIR profiles</h1>
+            <div><div><h3><span class="label label-default">Value set</span> PrimaryCare-Problem-RelationshipType</h3><p>The official URL for this value set is: </p><pre>http://endeavourhealth.org/fhir/ValueSet/primarycare-problem-relationshiptype</pre><p>Maturity level: <img src="images/bullet_orange.png" /> Draft (for review).</p><h3>Description</h3><p>A set of codes specifying the kind of relationship that exists with a target problem.</p><h3>Definition</h3><p>This valueset is comprised of  the following codes from <b>inline code system </b><a href="http://endeavourhealth.org/fhir/ValueSet/primarycare-problem-relationshiptype">http://endeavourhealth.org/fhir/ValueSet/primarycare-problem-relationshiptype</a>:</p><table class="table table-condensed table-fixed"><thead><th class="table-column-20pc">Code</th><th class="table-column-20pc">Display</th><th>Definition</th></thead><tbody><tr><td>combined</td><td>Combined</td><td>This problem is combined/merged with the target problem to form a single logical problem.</td></tr><tr><td>grouped</td><td>Grouped</td><td>This problem is part of a group that includes the target problem as a member of the group.</td></tr><tr><td>replaces</td><td>Replaces</td><td>This problem replaces a previous problem (i.e. a revised diagnosis). The target problem is now obsolete.</td></tr><tr><td>evolved-from</td><td>Evolved From</td><td>This problem has evolved from the target problem</td></tr></tbody></table></div></div>
         </div>
-	</body>
+    </div>
+    <div id="segment-footer" class="segment">
+        <div class="container">© Endeavour Health Charitable Trust 2016. All rights reserved.</div>
+    </div>
+</body>
 </html>

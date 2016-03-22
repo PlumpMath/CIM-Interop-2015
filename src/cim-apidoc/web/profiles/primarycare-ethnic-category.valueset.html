@@ -1,44 +1,46 @@
 ﻿<!DOCTYPE html>
 <html>
-	<head>
-		<title>PrimaryCare-EthnicCategory - Endeavour FHIR Implementation Guide</title>
-		<link rel="stylesheet" href="styles/bootstrap.css" />
-		<link rel="stylesheet" href="styles/jquery-ui.css" />
-		<link rel="stylesheet" href="styles/style.css" />
-		<script src="scripts/jquery-2.1.4.js"></script>
-		<script src="scripts/bootstrap.js"></script>
-	</head>
-	<body>
-		<div id="segment-header" class="segment">
-			<div class="container">
-				<a id="logo" href="http://www.endeavourhealth.org/">
-					<img src="images/endeavourlogo.png" alt="Endeavour Logo" />
-				</a>
-				<div id="fhir-status">
-					<b>FHIR Implementation Guide (Draft)</b>
-				</div>
-				<div id="fhir-nav">
-					<a id="fhir-logo" href="http://www.hl7.org/fhir/">
-						<img src="images/fhirlogo.png" alt="FHIR logo" />
-					</a>
-				</div>
-			</div>
-		</div>
-        <div id="segment-navbar" class="segment">
-            <div class="container">
-                <a class="btn btn-primary" href="index.html">Overview</a>
-                <a class="btn btn-primary" href="resources.html">Resources</a>
-                <a class="btn btn-primary" href="valuesets.html">Value sets</a>
-                <a class="btn btn-primary" href="api.html">API</a>
+<head>
+    <title>PrimaryCare-EthnicCategory - Endeavour FHIR Implementation Guide</title>
+    <link rel="stylesheet" href="styles/bootstrap.css" />
+    <link rel="stylesheet" href="styles/jquery-ui.css" />
+    <link rel="stylesheet" href="../styles/style.css" />
+    <script src="scripts/jquery-2.1.4.js"></script>
+    <script src="scripts/bootstrap.js"></script>
+</head>
+<body>
+    <div id="segment-header" class="segment">
+        <div class="container">
+            <a id="logo" href="../">
+                <img src="images/endeavourlogo.png" alt="Endeavour Logo" />
+            </a>
+            <div id="fhir-status">
+                <b></b>
+            </div>
+            <div id="fhir-nav">
+                <a id="fhir-logo" target="_blank" href="http://www.hl7.org/fhir/">
+                    <img src="images/fhirlogo.png" alt="FHIR logo" />
+                </a>
             </div>
         </div>
-		<div id="segment-content" class="segment">
-            <div class="container">
-                <div><div><h3><span class="label label-default">Value set</span> PrimaryCare-EthnicCategory</h3><p>The official URL for this value set is: </p><pre>http://endeavourhealth.org/fhir/ValueSet/primarycare-ethnic-category</pre><p>Maturity level: <img src="images/bullet_orange.png" /> Draft (for review).</p><h3>Description</h3><p>The ethnicity of a patient, as specified by the patient. This valueset is comprised of codes from references NHS Data Dictionary: Ethnic Category Code.</p><p>Note: This valueset defines an inline code system for an NHS code set.  This is a temporary provision while an NHS FHIR defined code system becomes available.</p><p>Reference: <a href="http://www.datadictionary.nhs.uk/data_dictionary/attributes/e/end/ethnic_category_code_de.asp?shownav=0">http://www.datadictionary.nhs.uk/data_dictionary/attributes/e/end/ethnic_category_code_de.asp?shownav=0</a>.</p><h3>Definition</h3><p>This valueset is comprised of  the following codes from <b>inline code system </b><a href="http://endeavourhealth.org/fhir/ValueSet/primarycare-ethnic-category">http://endeavourhealth.org/fhir/ValueSet/primarycare-ethnic-category</a>:</p><table class="table table-condensed table-fixed"><thead><th class="table-column-20pc">Code</th><th class="table-column-20pc">Display</th><th></th></thead><tbody><tr><td>A</td><td>British</td><td></td></tr><tr><td>B</td><td>Irish</td><td></td></tr><tr><td>C</td><td>Any other White background</td><td></td></tr><tr><td>D</td><td>White and Black Caribbean</td><td></td></tr><tr><td>E</td><td>White and Black African</td><td></td></tr><tr><td>F</td><td>White and Asian</td><td></td></tr><tr><td>G</td><td>Any other mixed background</td><td></td></tr><tr><td>H</td><td>Indian</td><td></td></tr><tr><td>J</td><td>Pakistani</td><td></td></tr><tr><td>K</td><td>Bangladeshi</td><td></td></tr><tr><td>L</td><td>Any other Asian background</td><td></td></tr><tr><td>M</td><td>Caribbean</td><td></td></tr><tr><td>N</td><td>African</td><td></td></tr><tr><td>P</td><td>Any other Black background</td><td></td></tr><tr><td>R</td><td>Chinese</td><td></td></tr><tr><td>S</td><td>Any other ethnic group</td><td></td></tr><tr><td>Z</td><td>Not stated</td><td></td></tr></tbody></table></div></div>
-		    </div>
+    </div>
+    <div id="segment-navbar" class="segment">
+        <div class="container">
+            <a href="../overview.html">Overview</a>
+            <a href="../profiles">Profiles</a>
+            <a href="../api.html">API definition</a>
+            <a href="../sandbox">Sandbox</a>
+            <a href="../faq.html">FAQ</a>
         </div>
-		<div id="segment-footer" class="segment">
-            <div class="container">© Endeavour Health Charitable Trust 2015. FHIR Implementation Guide 0.1 generated on 17-Mar-2016.</div>
+    </div>
+    <div id="segment-content" class="segment">
+        <div class="container">
+            <h1>FHIR profiles</h1>
+            <div><div><h3><span class="label label-default">Value set</span> PrimaryCare-EthnicCategory</h3><p>The official URL for this value set is: </p><pre>http://endeavourhealth.org/fhir/ValueSet/primarycare-ethnic-category</pre><p>Maturity level: <img src="images/bullet_orange.png" /> Draft (for review).</p><h3>Description</h3><p>The ethnicity of a patient, as specified by the patient. This valueset is comprised of codes from references NHS Data Dictionary: Ethnic Category Code.</p><p>Note: This valueset defines an inline code system for an NHS code set.  This is a temporary provision while an NHS FHIR defined code system becomes available.</p><p>Reference: <a href="http://www.datadictionary.nhs.uk/data_dictionary/attributes/e/end/ethnic_category_code_de.asp?shownav=0">http://www.datadictionary.nhs.uk/data_dictionary/attributes/e/end/ethnic_category_code_de.asp?shownav=0</a>.</p><h3>Definition</h3><p>This valueset is comprised of  the following codes from <b>inline code system </b><a href="http://endeavourhealth.org/fhir/ValueSet/primarycare-ethnic-category">http://endeavourhealth.org/fhir/ValueSet/primarycare-ethnic-category</a>:</p><table class="table table-condensed table-fixed"><thead><th class="table-column-20pc">Code</th><th class="table-column-20pc">Display</th><th></th></thead><tbody><tr><td>A</td><td>British</td><td></td></tr><tr><td>B</td><td>Irish</td><td></td></tr><tr><td>C</td><td>Any other White background</td><td></td></tr><tr><td>D</td><td>White and Black Caribbean</td><td></td></tr><tr><td>E</td><td>White and Black African</td><td></td></tr><tr><td>F</td><td>White and Asian</td><td></td></tr><tr><td>G</td><td>Any other mixed background</td><td></td></tr><tr><td>H</td><td>Indian</td><td></td></tr><tr><td>J</td><td>Pakistani</td><td></td></tr><tr><td>K</td><td>Bangladeshi</td><td></td></tr><tr><td>L</td><td>Any other Asian background</td><td></td></tr><tr><td>M</td><td>Caribbean</td><td></td></tr><tr><td>N</td><td>African</td><td></td></tr><tr><td>P</td><td>Any other Black background</td><td></td></tr><tr><td>R</td><td>Chinese</td><td></td></tr><tr><td>S</td><td>Any other ethnic group</td><td></td></tr><tr><td>Z</td><td>Not stated</td><td></td></tr></tbody></table></div></div>
         </div>
-	</body>
+    </div>
+    <div id="segment-footer" class="segment">
+        <div class="container">© Endeavour Health Charitable Trust 2016. All rights reserved.</div>
+    </div>
+</body>
 </html>

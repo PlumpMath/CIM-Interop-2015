@@ -1,0 +1,148 @@
+body {
+	font-family: Arial;
+	
+}
+
+h2 a
+{
+	font-weight: normal;
+	font-size: 24px;
+}
+
+.swagger-section .swagger-ui-wrap ul#resources li.resource
+{
+	border-bottom: 0;
+}
+
+.swagger-section .swagger-ui-wrap ul#resources li.resource div.heading h2 a
+{
+	color: black;
+}
+
+#header {
+	display: none;
+}
+
+#segment-header, #segment-navbar {
+	box-sizing: border-box;
+}
+
+#segment-navbar {
+	font-family: Arial;
+	font-size: 14px;
+}
+
+.swagger-section #message-bar {
+	min-height: 0;
+}
+
+.swagger-section .swagger-ui-wrap {
+	max-width: none;
+}
+
+.swagger-section #message-bar {
+	text-align: right;
+}
+
+#message-bar {
+	font-family: Arial;
+	font-size: 14px;
+}
+
+#segment-navbar .container {
+	padding-top: 3px;
+}
+
+.sandbox-header h1 {
+    font-family: Open Sans;
+    font-size: 36px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+	font-weight: 500;
+	line-height: 1.1;
+	box-sizing: border-box;
+}
+
+.sandbox-header p {
+	padding-top: 3px;
+	font-size: 14px;
+	margin: 0 0 10px;
+}	
+
+#api_info {
+	display: none;
+}
+
+.icon-btn {
+    display: none !important;
+}
+
+#explore {
+    display: none !important;
+}
+
+#input_baseUrl {
+    display: none !important;
+}
+
+#logo {
+    display: none !important;
+}
+
+#endeavour-logo 
+{
+    float: left;
+    margin-top: 6px;
+    margin-bottom: 4px;
+    margin-left: 0;
+    display: block;
+}
+
+#endeavour-logo img 
+{
+    max-width: 100%;
+}
+
+.swagger-section #header {
+	background-color: white;
+}
+
+#header {
+    background-color: white;
+    height: 60px;
+}
+
+#register {
+    margin-top: 10px;
+}
+
+form#api_selector {
+	display: inline;
+}
+
+form#api_selector div.input {
+	/*padding-top: 15px;*/
+	display: inline;
+	float: right;
+}
+
+img#validator {
+    display: none !important;
+}
+
+
+#notes {
+    background-color: #f8f8f8 !important;
+    margin-top: 10px;
+    border: 1px solid #d3d3d3;
+    padding: 10px 10px 0px 10px;
+}
+
+#notestitle {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+#input_privateKey, #input_apiKey {
+    width: 150px;
+}
