@@ -1,46 +1,25 @@
 ﻿<!DOCTYPE html>
 <html>
-<head>
-    <title>Primary Care task type extension - Endeavour FHIR Implementation Guide</title>
-    <link rel="stylesheet" href="styles/bootstrap.css" />
-    <link rel="stylesheet" href="styles/jquery-ui.css" />
-    <link rel="stylesheet" href="../styles/style.css" />
-    <script src="scripts/jquery-2.1.4.js"></script>
-    <script src="scripts/bootstrap.js"></script>
-</head>
-<body>
-    <div id="segment-header" class="segment">
-        <div class="container">
-            <a id="logo" href="../">
-                <img src="images/endeavourlogo.png" alt="Endeavour Logo" />
-            </a>
-            <div id="fhir-status">
-                <b></b>
-            </div>
-            <div id="fhir-nav">
-                <a id="fhir-logo" target="_blank" href="http://www.hl7.org/fhir/">
-                    <img src="images/fhirlogo.png" alt="FHIR logo" />
-                </a>
+    <head>
+        <title>Primary Care task type extension - Endeavour FHIR Implementation Guide</title>
+        <link rel="stylesheet" href="styles/bootstrap.css" />
+        <link rel="stylesheet" href="styles/jquery-ui.css" />
+        <link rel="stylesheet" href="../styles/style.css" />
+        <script src="scripts/jquery-2.1.4.js"></script>
+        <script src="scripts/bootstrap.js"></script>
+    </head>
+    <body>
+
+<%@ include file="../includes/header.html" %>
+
+        <div id="segment-content" class="segment">
+            <div class="container">
+                <h1>FHIR profiles</h1>
+                <div><div><h3><span class="label label-default">Extension</span> PrimaryCare-TaskType-Extension</h3><p>The official URL for this profile is: </p><pre>http://endeavourhealth.org/fhir/StructureDefinition/primarycare-task-type-extension</pre><p>Maturity level: <img src="images/bullet_orange.png" /> Draft (for review).</p><h3>Description</h3><p>Primary Care task type extension.</p><p /><h3>Definition</h3><p>This profile is derived from <a href="http://hl7.org/fhir/StructureDefinition/Extension">Extension</a>.</p><div><ul class="nav nav-tabs" role="tablist"><li role="presentation" class="active"><a href="#Structure" aria-controls="Structure" role="tab" data-toggle="tab"><b>Structure</b></a></li><li role="presentation"><a href="#XML" aria-controls="XML" role="tab" data-toggle="tab"><b>XML</b></a></li><li role="presentation"><a href="#JSON" aria-controls="JSON" role="tab" data-toggle="tab"><b>JSON</b></a></li><li role="presentation"><a href="#Examples" aria-controls="Examples" role="tab" data-toggle="tab"><b>Examples</b></a></li><li role="presentation"><a href="#Schemas" aria-controls="Schemas" role="tab" data-toggle="tab"><b>Schemas</b></a></li></ul><div class="tab-content"><div role="tabpanel" class="tab-pane active" id="Structure"><table class="resource-tree"><thead><tr><th class="resource-tree-name-column"><a href="http://hl7.org/fhir/DSTU2/formats.html#table">Name</a></th><th class="resource-tree-cardinality-column"><a href="http://hl7.org/fhir/DSTU2/formats.html#table">Card.</a></th><th class="resource-tree-type-column"><a href="http://hl7.org/fhir/DSTU2/formats.html#table">Type</a></th><th class="resource-tree-description-column"><a href="http://hl7.org/fhir/DSTU2/formats.html#table">Description &amp; Constraints</a></th></tr></thead><tbody><tr><td class="hierarchy" style="background-image: url(images/tbl_bck1.png)"><img src="images/tbl_spacer.png" class="hierarchy" alt="." /><img src="images/icon_datatype.gif" class="hierarchy" alt="." title="Data type" /><img src="images/tbl_spacerwide.png" class="hierarchy" alt="." />Extension</td><td>0..*</td><td><a href="http://hl7.org/fhir/DSTU2/datatypes.html#Element">Element</a></td><td><p>Task type</p></td></tr><tr><td class="hierarchy" style="background-image: url(images/tbl_bck10.png)"><img src="images/tbl_spacer.png" class="hierarchy" alt="." /><img src="images/tbl_vjoin.png" class="hierarchy" alt="." /><img src="images/icon_primitive.png" class="hierarchy" alt="." title="Primitive data type" /><img src="images/tbl_spacerwide.png" class="hierarchy" alt="." />id</td><td>0..1</td><td><a href="http://hl7.org/fhir/DSTU2/datatypes.html#id">id</a></td><td><p>xml:id (or equivalent in JSON)</p></td></tr><tr><td class="hierarchy" style="background-image: url(images/tbl_bck10.png)"><img src="images/tbl_spacer.png" class="hierarchy" alt="." /><img src="images/tbl_vjoin.png" class="hierarchy" alt="." /><img src="images/icon_extension_simple.png" class="hierarchy" alt="." title="Simple extension" /><img src="images/tbl_spacerwide.png" class="hierarchy" alt="." /></td><td>0..*</td><td></td><td><p>Additional Content defined by implementations</p></td></tr><tr><td class="hierarchy" style="background-image: url(images/tbl_bck10.png)"><img src="images/tbl_spacer.png" class="hierarchy" alt="." /><img src="images/tbl_vjoin.png" class="hierarchy" alt="." /><img src="images/icon_primitive.png" class="hierarchy" alt="." title="Primitive data type" /><img src="images/tbl_spacerwide.png" class="hierarchy" alt="." />url</td><td>1..1</td><td><a href="http://hl7.org/fhir/DSTU2/datatypes.html#uri">uri</a></td><td><p>Extension definition</p><p><span class="label label-default">Fixed value</span> http://endeavourhealth.org/fhir/StructureDefinition/primarycare-task-type-extension</p></td></tr><tr><td class="hierarchy" style="background-image: url(images/tbl_bck00.png)"><img src="images/tbl_spacer.png" class="hierarchy" alt="." /><img src="images/tbl_vjoin_end.png" class="hierarchy" alt="." /><img src="images/icon_primitive.png" class="hierarchy" alt="." title="Primitive data type" /><img src="images/tbl_spacerwide.png" class="hierarchy" alt="." />value[x] [valueCode]</td><td>1..1</td><td><a href="http://hl7.org/fhir/DSTU2/datatypes.html#code">code</a></td><td><p>Task type code</p><p><span class="label label-default">Valueset</span> <a href="primarycare-task-type.valueset.html">PrimaryCare-TaskType</a> (<a href="http://hl7.org/fhir/DSTU2/terminologies.html#example">Example</a>)</p></td></tr></tbody></table></div><div role="tabpanel" class="tab-pane" id="XML">Content</div><div role="tabpanel" class="tab-pane" id="JSON">Content</div><div role="tabpanel" class="tab-pane" id="Examples">Content</div><div role="tabpanel" class="tab-pane" id="Schemas"><ul class="star-list"><li><p><a href="#">XML Schema</a></p></li><li><p><a href="#"> Schematron</a></p></li><li><p><a href="#">JSON schema</a></p></li><li><p>Resource profile<ul class="star-list"><li><p><a href="StructureDefinition/primarycare-task-type-extension.xml">In XML</a></p></li><li><p><a href="StructureDefinition/primarycare-task-type-extension.json">In JSON</a></p></li></ul></p></li></ul></div></div></div></div></div>
             </div>
         </div>
-    </div>
-    <div id="segment-navbar" class="segment">
-        <div class="container">
-            <a href="../overview.html">Overview</a>
-            <a href="../profiles">Profiles</a>
-            <a href="../api.html">API definition</a>
-            <a href="../sandbox">Sandbox</a>
-            <a href="../faq.html">FAQ</a>
-        </div>
-    </div>
-    <div id="segment-content" class="segment">
-        <div class="container">
-            <h1>FHIR profiles</h1>
-            <div><div><h3><span class="label label-default">Extension</span> PrimaryCare-TaskType-Extension</h3><p>The official URL for this profile is: </p><pre>http://endeavourhealth.org/fhir/StructureDefinition/primarycare-task-type-extension</pre><p>Maturity level: <img src="images/bullet_orange.png" /> Draft (for review).</p><h3>Description</h3><p>Primary Care task type extension.</p><p /><h3>Definition</h3><p>This profile is derived from <a href="http://hl7.org/fhir/StructureDefinition/Extension">Extension</a>.</p><div><ul class="nav nav-tabs" role="tablist"><li role="presentation" class="active"><a href="#Structure" aria-controls="Structure" role="tab" data-toggle="tab"><b>Structure</b></a></li><li role="presentation"><a href="#XML" aria-controls="XML" role="tab" data-toggle="tab"><b>XML</b></a></li><li role="presentation"><a href="#JSON" aria-controls="JSON" role="tab" data-toggle="tab"><b>JSON</b></a></li><li role="presentation"><a href="#Examples" aria-controls="Examples" role="tab" data-toggle="tab"><b>Examples</b></a></li><li role="presentation"><a href="#Schemas" aria-controls="Schemas" role="tab" data-toggle="tab"><b>Schemas</b></a></li></ul><div class="tab-content"><div role="tabpanel" class="tab-pane active" id="Structure"><table class="resource-tree"><thead><tr><th class="resource-tree-name-column"><a href="http://hl7.org/fhir/DSTU2/formats.html#table">Name</a></th><th class="resource-tree-cardinality-column"><a href="http://hl7.org/fhir/DSTU2/formats.html#table">Card.</a></th><th class="resource-tree-type-column"><a href="http://hl7.org/fhir/DSTU2/formats.html#table">Type</a></th><th class="resource-tree-description-column"><a href="http://hl7.org/fhir/DSTU2/formats.html#table">Description &amp; Constraints</a></th></tr></thead><tbody><tr><td class="hierarchy" style="background-image: url(images/tbl_bck1.png)"><img src="images/tbl_spacer.png" class="hierarchy" alt="." /><img src="images/icon_datatype.gif" class="hierarchy" alt="." title="Data type" /><img src="images/tbl_spacerwide.png" class="hierarchy" alt="." />Extension</td><td>0..*</td><td><a href="http://hl7.org/fhir/DSTU2/datatypes.html#Element">Element</a></td><td><p>Task type</p></td></tr><tr><td class="hierarchy" style="background-image: url(images/tbl_bck10.png)"><img src="images/tbl_spacer.png" class="hierarchy" alt="." /><img src="images/tbl_vjoin.png" class="hierarchy" alt="." /><img src="images/icon_primitive.png" class="hierarchy" alt="." title="Primitive data type" /><img src="images/tbl_spacerwide.png" class="hierarchy" alt="." />id</td><td>0..1</td><td><a href="http://hl7.org/fhir/DSTU2/datatypes.html#id">id</a></td><td><p>xml:id (or equivalent in JSON)</p></td></tr><tr><td class="hierarchy" style="background-image: url(images/tbl_bck10.png)"><img src="images/tbl_spacer.png" class="hierarchy" alt="." /><img src="images/tbl_vjoin.png" class="hierarchy" alt="." /><img src="images/icon_extension_simple.png" class="hierarchy" alt="." title="Simple extension" /><img src="images/tbl_spacerwide.png" class="hierarchy" alt="." /></td><td>0..*</td><td></td><td><p>Additional Content defined by implementations</p></td></tr><tr><td class="hierarchy" style="background-image: url(images/tbl_bck10.png)"><img src="images/tbl_spacer.png" class="hierarchy" alt="." /><img src="images/tbl_vjoin.png" class="hierarchy" alt="." /><img src="images/icon_primitive.png" class="hierarchy" alt="." title="Primitive data type" /><img src="images/tbl_spacerwide.png" class="hierarchy" alt="." />url</td><td>1..1</td><td><a href="http://hl7.org/fhir/DSTU2/datatypes.html#uri">uri</a></td><td><p>Extension definition</p><p><span class="label label-default">Fixed value</span> http://endeavourhealth.org/fhir/StructureDefinition/primarycare-task-type-extension</p></td></tr><tr><td class="hierarchy" style="background-image: url(images/tbl_bck00.png)"><img src="images/tbl_spacer.png" class="hierarchy" alt="." /><img src="images/tbl_vjoin_end.png" class="hierarchy" alt="." /><img src="images/icon_primitive.png" class="hierarchy" alt="." title="Primitive data type" /><img src="images/tbl_spacerwide.png" class="hierarchy" alt="." />value[x] [valueCode]</td><td>1..1</td><td><a href="http://hl7.org/fhir/DSTU2/datatypes.html#code">code</a></td><td><p>Task type code</p><p><span class="label label-default">Valueset</span> <a href="primarycare-task-type.valueset.html">PrimaryCare-TaskType</a> (<a href="http://hl7.org/fhir/DSTU2/terminologies.html#example">Example</a>)</p></td></tr></tbody></table></div><div role="tabpanel" class="tab-pane" id="XML">Content</div><div role="tabpanel" class="tab-pane" id="JSON">Content</div><div role="tabpanel" class="tab-pane" id="Examples">Content</div><div role="tabpanel" class="tab-pane" id="Schemas"><ul class="star-list"><li><p><a href="#">XML Schema</a></p></li><li><p><a href="#"> Schematron</a></p></li><li><p><a href="#">JSON schema</a></p></li><li><p>Resource profile<ul class="star-list"><li><p><a href="StructureDefinition/primarycare-task-type-extension.xml">In XML</a></p></li><li><p><a href="StructureDefinition/primarycare-task-type-extension.json">In JSON</a></p></li></ul></p></li></ul></div></div></div></div></div>
-        </div>
-    </div>
-    <div id="segment-footer" class="segment">
-        <div class="container">© Endeavour Health Charitable Trust 2016. All rights reserved.</div>
-    </div>
-</body>
+
+<%@ include file="../includes/footer.html" %>
+
+    </body>
 </html>
