@@ -1,166 +1,151 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Sandbox - Endeavour FHIR Interoperability Guide</title>
+<html>
+    <head>
+        <title>Sandbox usage notes - Endeavour FHIR Interoperability Guide</title>
+        <link rel="stylesheet" href="../styles/bootstrap.css" />
+        <link rel="stylesheet" href="../styles/style.css" />
+    </head>
+    <body>
 
-    <!-- custom -->
-    <link href='https://fonts.googleapis.com/css?family=Droid+Sans:400,700|Open+Sans' rel='stylesheet' type='text/css' />
-    <!-- end custom -->
-    <link href='swagger/css/reset.css' media='screen' rel='stylesheet' type='text/css'/>
-    <link href='swagger/css/screen.css' media='screen' rel='stylesheet' type='text/css'/>
-    <link href='swagger/css/reset.css' media='print' rel='stylesheet' type='text/css'/>
-    <link href='swagger/css/print.css' media='print' rel='stylesheet' type='text/css'/>
+<%@ include file="../includes/header.html" %>
 
-    <!-- custom -->
-    <link href='swagger-custom/style.css' media='screen' rel='stylesheet' type='text/css'/>
-    <!-- end custom -->
-</head>
-<body class="swagger-section">
-<div id='header'>
-    <div class="swagger-ui-wrap">
-        <img src="swagger-custom/endeavourlogo.png">
-    </div>
-</div>
-<div id="message-bar" class="swagger-ui-wrap" data-sw-translate>&nbsp;</div>
-<div class="swagger-ui-wrap">
-    <div class="info">
-        <div class="info_title">Resource profiles</div>
-        <p>Endeavour resource profiles can be found <a href="../profiles">here</a>.</p>
-        <p>&nbsp;</p>
-    </div>
-    <div class="info">
-        <div class="info_title">Dates</div>
-        <p>Dates must be provided in the standard REST format (ISO-8601 - '2015-12-31' or '2015-12-31T23:59:59')</p>
-        <p>&nbsp;</p>
-    </div>
-    <div class="info">
-        <div class="info_title">Organisations</div>
-        <table class="fullwidth">
-            <thead>
-                <tr>
-                    <th style="width: 100px; max-width: 100px">ODS Code</th>
-                    <th style="width: 400px; max-width: 400px">Name</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>A99999</td>
-                    <td>Alpha Surgery</td>
-                </tr>
-                <tr>
-                    <td>B99999</td>
-                    <td>Bravo Surgery</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-    <br>
-    <br>
-    <div class="info">
-        <div class="info_title">Patients - Alpha Surgery (A99999)</div>
-        <table class="fullwidth">
-            <thead>
-            <tr>
-                <th style="width: 100px; max-width: 100px">NHS No</th>
-                <th style="width: 250px; max-width: 100px">Patient Id</th>
-                <th style="width: 200px; max-width: 300px">Name</th>
-                <th style="width: 100px; max-width: 100px">Born</th>
-                <th style="width: 100px; max-width: 100px">Size</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td>936 633 9786</td>
-                <td>11af0e7f-be18-431e-9be9-fd1adb2f0742</td>
-                <td>BARNEY, Kendrick (Master)</td>
-                <td>24-Aug-2007</td>
-                <td>87</td>
-            </tr>
-            <tr>
-                <td>650 633 5386</td>
-                <td>46ad9673-3f27-4a84-b7d3-08cfc316500d</td>
-                <td>DOMINIC, Cornelius (Mr)</td>
-                <td>20-May-1975</td>
-                <td>3</td>
-            </tr>
-            <tr>
-                <td>968 945 2150</td>
-                <td>403d97c0-adc6-47ef-80f9-446faa357fc6</td>
-                <td>ERICH, Dirk (Mr)</td>
-                <td>28-Mar-1973</td>
-                <td>30</td>
-            </tr>
-            <tr>
-                <td>859 927 3337</td>
-                <td>eb889d15-b50c-4390-bff2-dbe5dcc50593</td>
-                <td>ROOSEVELT, Alvin (Miss)</td>
-                <td>02-May-2007</td>
-                <td>39</td>
-            </tr>
-            <tr>
-                <td>622 883 2891</td>
-                <td>8c55c625-d987-433d-b34e-219baaef075b</td>
-                <td>TYRONE, Camilla (Mrs)</td>
-                <td>02-Jun-1964</td>
-                <td>295</td>
-            </tr>
-            </tbody>
-        </table>
-    </div>
-    <br>
-    <br>
-    <div class="info">
-        <div class="info_title">Patients - Bravo Surgery (B99999)</div>
-        <table class="fullwidth">
-            <thead>
-            <tr>
-                <th style="width: 100px; max-width: 100px">NHS No</th>
-                <th style="width: 250px; max-width: 100px">Patient Id</th>
-                <th style="width: 200px; max-width: 300px">Name</th>
-                <th style="width: 100px; max-width: 100px">Born</th>
-                <th style="width: 100px; max-width: 100px">Size</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td>443 496 8882</td>
-                <td>c4fb954c-a65d-4442-a7a5-bd3c57cbcc38</td>
-                <td>ARMAND, Mitchell (Mrs)</td>
-                <td>14-Jan-1973</td>
-                <td>112</td>
-            </tr>
-            <tr>
-                <td>897 271 7991</td>
-                <td>57102956-6590-4eeb-abdb-9a24eba90e9c</td>
-                <td>COREY, Renaldo (Mrs)</td>
-                <td>19-Oct-1944</td>
-                <td>244</td>
-            </tr>
-            <tr>
-                <td>977 851 9188</td>
-                <td>fcf9a63a-f5d8-4a61-b467-6e36bf145736</td>
-                <td>NIGEL, Lewis (Mr)</td>
-                <td>05-Aug-1987</td>
-                <td>35</td>
-            </tr>
-            <tr>
-                <td>899 513 6022</td>
-                <td>b4022034-7559-4426-a28f-95872ab6a504</td>
-                <td>RICARDO, Caleb (Mr)</td>
-                <td>12-Dec-1966</td>
-                <td>0</td>
-            </tr>
-            <tr>
-                <td>748 796 1214</td>
-                <td>e8e30f24-71dd-4984-baf7-786dc8092ef3</td>
-                <td>RUPERT, Antoine (Mr)</td>
-                <td>15-Apr-1952</td>
-                <td>350</td>
-            </tr>
-            </tbody>
-        </table>
-    </div>
-</div>
-</body>
+        <div id="segment-content" class="segment">
+            <div class="container">
+
+                <h1>FHIR sandbox usage notes</h1>
+
+                <h3>Dates</h3>
+                <p>Dates must be provided in the standard REST format (ISO-8601 - '2015-12-31' or '2015-12-31T23:59:59')</p>
+
+                <h3>Organisations</h3>
+
+                <table class="table table-hover table-striped">
+                    <thead>
+                        <tr>
+                            <th style="width: 100px; max-width: 100px">ODS Code</th>
+                            <th style="width: 400px; max-width: 400px">Name</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>A99999</td>
+                            <td>Alpha Surgery</td>
+                        </tr>
+                        <tr>
+                            <td>B99999</td>
+                            <td>Bravo Surgery</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>Patients - Alpha Surgery (A99999)</h3>
+
+                <table class="table table-hover table-striped">
+                    <thead>
+                        <tr>
+                            <th style="width: 100px; max-width: 100px">NHS No</th>
+                            <th style="width: 250px;">Patient Id</th>
+                            <th style="width: 200px; max-width: 300px">Name</th>
+                            <th style="width: 100px; max-width: 100px">Born</th>
+                            <th style="width: 100px; max-width: 100px">Size</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>936 633 9786</td>
+                            <td>11af0e7f-be18-431e-9be9-fd1adb2f0742</td>
+                            <td>BARNEY, Kendrick (Master)</td>
+                            <td>24-Aug-2007</td>
+                            <td>87</td>
+                        </tr>
+                        <tr>
+                            <td>650 633 5386</td>
+                            <td>46ad9673-3f27-4a84-b7d3-08cfc316500d</td>
+                            <td>DOMINIC, Cornelius (Mr)</td>
+                            <td>20-May-1975</td>
+                            <td>3</td>
+                        </tr>
+                        <tr>
+                            <td>968 945 2150</td>
+                            <td>403d97c0-adc6-47ef-80f9-446faa357fc6</td>
+                            <td>ERICH, Dirk (Mr)</td>
+                            <td>28-Mar-1973</td>
+                            <td>30</td>
+                        </tr>
+                        <tr>
+                            <td>859 927 3337</td>
+                            <td>eb889d15-b50c-4390-bff2-dbe5dcc50593</td>
+                            <td>ROOSEVELT, Alvin (Miss)</td>
+                            <td>02-May-2007</td>
+                            <td>39</td>
+                        </tr>
+                        <tr>
+                            <td>622 883 2891</td>
+                            <td>8c55c625-d987-433d-b34e-219baaef075b</td>
+                            <td>TYRONE, Camilla (Mrs)</td>
+                            <td>02-Jun-1964</td>
+                            <td>295</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+
+
+                <h3>Patients - Bravo Surgery (B99999)</h3>
+
+                <table class="table table-hover table-striped">
+                    <thead>
+                        <tr>
+                            <th style="width: 100px; max-width: 100px">NHS No</th>
+                            <th style="width: 250px;">Patient Id</th>
+                            <th style="width: 200px; max-width: 300px">Name</th>
+                            <th style="width: 100px; max-width: 100px">Born</th>
+                            <th style="width: 100px; max-width: 100px">Size</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>443 496 8882</td>
+                            <td>c4fb954c-a65d-4442-a7a5-bd3c57cbcc38</td>
+                            <td>ARMAND, Mitchell (Mrs)</td>
+                            <td>14-Jan-1973</td>
+                            <td>112</td>
+                        </tr>
+                        <tr>
+                            <td>897 271 7991</td>
+                            <td>57102956-6590-4eeb-abdb-9a24eba90e9c</td>
+                            <td>COREY, Renaldo (Mrs)</td>
+                            <td>19-Oct-1944</td>
+                            <td>244</td>
+                        </tr>
+                        <tr>
+                            <td>977 851 9188</td>
+                            <td>fcf9a63a-f5d8-4a61-b467-6e36bf145736</td>
+                            <td>NIGEL, Lewis (Mr)</td>
+                            <td>05-Aug-1987</td>
+                            <td>35</td>
+                        </tr>
+                        <tr>
+                            <td>899 513 6022</td>
+                            <td>b4022034-7559-4426-a28f-95872ab6a504</td>
+                            <td>RICARDO, Caleb (Mr)</td>
+                            <td>12-Dec-1966</td>
+                            <td>0</td>
+                        </tr>
+                        <tr>
+                            <td>748 796 1214</td>
+                            <td>e8e30f24-71dd-4984-baf7-786dc8092ef3</td>
+                            <td>RUPERT, Antoine (Mr)</td>
+                            <td>15-Apr-1952</td>
+                            <td>350</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+
+<%@ include file="../includes/footer.html" %>
+
+    </body>
 </html>

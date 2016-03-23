@@ -85,24 +85,6 @@ h2 a
     display: none !important;
 }
 
-#logo {
-    display: none !important;
-}
-
-#endeavour-logo 
-{
-    float: left;
-    margin-top: 6px;
-    margin-bottom: 4px;
-    margin-left: 0;
-    display: block;
-}
-
-#endeavour-logo img 
-{
-    max-width: 100%;
-}
-
 .swagger-section #header {
 	background-color: white;
 }

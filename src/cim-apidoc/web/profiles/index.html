@@ -1,41 +1,19 @@
 ﻿<!DOCTYPE html>
 <html>
-<head>
-    <title>Profiles - Endeavour FHIR Interoperability Guide</title>
-    <link rel="stylesheet" href="styles/bootstrap.css" />
-    <link rel="stylesheet" href="styles/jquery-ui.css" />
-    <link rel="stylesheet" href="../styles/style.css" />
-    <script src="scripts/jquery-2.1.4.js"></script>
-    <script src="scripts/bootstrap.js"></script>
-</head>
-<body>
-    <div id="segment-header" class="segment">
-        <div class="container">
-            <a id="logo" href="../">
-                <img src="images/endeavourlogo.png" alt="Endeavour Logo" />
-            </a>
-            <div id="fhir-status">
-                <b></b>
-            </div>
-            <div id="fhir-nav">
-                <a id="fhir-logo" target="_blank" href="http://www.hl7.org/fhir/">
-                    <img src="images/fhirlogo.png" alt="FHIR logo" />
-                </a>
-            </div>
-        </div>
-    </div>
-    <div id="segment-navbar" class="segment">
-        <div class="container">
-            <a href="../overview.html">Overview</a>
-            <a href="../profiles">Profiles</a>
-            <a href="../api.html">API definition</a>
-            <a href="../sandbox">Sandbox</a>
-            <a href="../faq.html">FAQ</a>
-        </div>
-    </div>
+    <head>
+        <title>Profiles - Endeavour FHIR Interoperability Guide</title>
+        <link rel="stylesheet" href="../styles/bootstrap.css" />
+        <link rel="stylesheet" href="../styles/style.css" />
+    </head>
+    <body>
+
+<%@ include file="../includes/header.html" %>
+
     <div id="segment-content" class="segment">
         <div class="container">
+
             <h1>FHIR profiles</h1>
+
 				<p>This specification is built on <a target="_blank" href="http://hl7.org/fhir/DSTU2/index.html">FHIR DSTU 2 (1.0.2)</a>.</p>
 				<h3>Contents</h3>
 				<ul>
@@ -62,8 +40,8 @@
             <div><div><h3 id="valuesets">Value sets</h3><table id="resources-table" class="table table-hover table-condensed"><thead><th class="resources-table-name-column">Name</th><th class="resources-table-maturity-column"><img src="images/blank.png" /> Maturity</th><th class="resources-table-identifier-column">Identifier</th></thead><tbody><tr><td class="resources-table-name-column"><a href="primarycare-coding-qualifier.valueset.html">PrimaryCare-CodingQualifier</a></td><td class="resources-table-maturity-column"><img src="images/bullet_orange.png" /> Draft (for review)</td><td class="resources-table-identifier-column">http://endeavourhealth.org/fhir/ValueSet/primarycare-coding-qualifier</td></tr><tr><td class="resources-table-name-column"><a href="primarycare-composition-type.valueset.html">PrimaryCare-CompositionType</a></td><td class="resources-table-maturity-column"><img src="images/bullet_orange.png" /> Draft (for review)</td><td class="resources-table-identifier-column">http://endeavourhealth.org/fhir/ValueSet/primarycare-composition-type</td></tr><tr><td class="resources-table-name-column"><a href="primarycare-condition-episodicity.valueset.html">PrimaryCare-Condition-Episodicity</a></td><td class="resources-table-maturity-column"><img src="images/bullet_orange.png" /> Draft (for review)</td><td class="resources-table-identifier-column">http://endeavourhealth.org/fhir/ValueSet/primarycare-condition-episodicity</td></tr><tr><td class="resources-table-name-column"><a href="primarycare-diagnostic-order-item-type.valueset.html">PrimaryCare-DiagnosticOrderItemType</a></td><td class="resources-table-maturity-column"><img src="images/bullet_orange.png" /> Draft (for review)</td><td class="resources-table-identifier-column">http://endeavourhealth.org/fhir/ValueSet/primarycare-diagnostic-order-item-type</td></tr><tr><td class="resources-table-name-column"><a href="primarycare-encounter-type.valueset.html">PrimaryCare-EncounterType</a></td><td class="resources-table-maturity-column"><img src="images/bullet_orange.png" /> Draft (for review)</td><td class="resources-table-identifier-column">http://endeavourhealth.org/fhir/ValueSet/primarycare-encounter-type</td></tr><tr><td class="resources-table-name-column"><a href="primarycare-ethnic-category.valueset.html">PrimaryCare-EthnicCategory</a></td><td class="resources-table-maturity-column"><img src="images/bullet_orange.png" /> Draft (for review)</td><td class="resources-table-identifier-column">http://endeavourhealth.org/fhir/ValueSet/primarycare-ethnic-category</td></tr><tr><td class="resources-table-name-column"><a href="primarycare-marital-status.valueset.html">PrimaryCare-MaritalStatus</a></td><td class="resources-table-maturity-column"><img src="images/bullet_orange.png" /> Draft (for review)</td><td class="resources-table-identifier-column">http://endeavourhealth.org/fhir/ValueSet/primarycare-marital-status</td></tr><tr><td class="resources-table-name-column"><a href="primarycare-message-event.valueset.html">PrimaryCare-MessageEvent</a></td><td class="resources-table-maturity-column"><img src="images/bullet_orange.png" /> Draft (for review)</td><td class="resources-table-identifier-column">http://endeavourhealth.org/fhir/ValueSet/primarycare-message-event</td></tr><tr><td class="resources-table-name-column"><a href="primarycare-observation-code.valueset.html">PrimaryCare-ObservationCode</a></td><td class="resources-table-maturity-column"><img src="images/bullet_orange.png" /> Draft (for review)</td><td class="resources-table-identifier-column">http://endeavourhealth.org/fhir/ValueSet/primarycare-observation-code</td></tr><tr><td class="resources-table-name-column"><a href="primarycare-organization-type.valueset.html">PrimaryCare-OrganizationType</a></td><td class="resources-table-maturity-column"><img src="images/bullet_orange.png" /> Draft (for review)</td><td class="resources-table-identifier-column">http://endeavourhealth.org/fhir/ValueSet/primarycare-organization-type</td></tr><tr><td class="resources-table-name-column"><a href="primarycare-problem-relationshiptype.valueset.html">PrimaryCare-Problem-RelationshipType</a></td><td class="resources-table-maturity-column"><img src="images/bullet_orange.png" /> Draft (for review)</td><td class="resources-table-identifier-column">http://endeavourhealth.org/fhir/ValueSet/primarycare-problem-relationshiptype</td></tr><tr><td class="resources-table-name-column"><a href="primarycare-problem-significance.valueset.html">PrimaryCare-ProblemSignificance</a></td><td class="resources-table-maturity-column"><img src="images/bullet_orange.png" /> Draft (for review)</td><td class="resources-table-identifier-column">http://endeavourhealth.org/fhir/ValueSet/primarycare-problem-significance</td></tr><tr><td class="resources-table-name-column"><a href="primarycare-report-codes.valueset.html">PrimaryCare-ReportCodes</a></td><td class="resources-table-maturity-column"><img src="images/bullet_orange.png" /> Draft (for review)</td><td class="resources-table-identifier-column">http://endeavourhealth.org/fhir/ValueSet/primarycare-report-codes</td></tr><tr><td class="resources-table-name-column"><a href="primarycare-task-priority.valueset.html">PrimaryCare-TaskPriority</a></td><td class="resources-table-maturity-column"><img src="images/bullet_orange.png" /> Draft (for review)</td><td class="resources-table-identifier-column">http://endeavourhealth.org/fhir/ValueSet/primarycare-task-priority</td></tr><tr><td class="resources-table-name-column"><a href="primarycare-task-status.valueset.html">PrimaryCare-TaskStatus</a></td><td class="resources-table-maturity-column"><img src="images/bullet_orange.png" /> Draft (for review)</td><td class="resources-table-identifier-column">http://endeavourhealth.org/fhir/ValueSet/primarycare-task-status</td></tr><tr><td class="resources-table-name-column"><a href="primarycare-task-type.valueset.html">PrimaryCare-TaskType</a></td><td class="resources-table-maturity-column"><img src="images/bullet_orange.png" /> Draft (for review)</td><td class="resources-table-identifier-column">http://endeavourhealth.org/fhir/ValueSet/primarycare-task-type</td></tr><tr><td class="resources-table-name-column"><a href="primarycare-treatment-function-code.valueset.html">PrimaryCare-TreatmentFunctionCode</a></td><td class="resources-table-maturity-column"><img src="images/bullet_orange.png" /> Draft (for review)</td><td class="resources-table-identifier-column">http://endeavourhealth.org/fhir/ValueSet/primarycare-treatment-function-code</td></tr></tbody></table></div></div>       
 	   </div>
     </div>
-    <div id="segment-footer" class="segment">
-        <div class="container">© Endeavour Health Charitable Trust 2016. All rights reserved.</div>
-    </div>
-</body>
+
+<%@ include file="../includes/footer.html" %>
+
+    </body>
 </html>

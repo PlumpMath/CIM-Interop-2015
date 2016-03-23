@@ -3,36 +3,14 @@
 	<head>
 		<title>Overview - Endeavour FHIR Interoperability Guide</title>
 		<link rel="stylesheet" href="styles/bootstrap.css" />
-		<link rel="stylesheet" href="styles/jquery-ui.css" />
 		<link rel="stylesheet" href="styles/style.css" />
-		<script src="scripts/jquery-2.1.4.js"></script>
-		<script src="scripts/bootstrap.js"></script>
 	</head>
 	<body>
-		<div id="segment-header" class="segment">
-			<div class="container">
-				<a id="logo" href="../">
-					<img src="images/endeavourlogo.png" alt="Endeavour Logo" />
-				</a>
-				<div id="fhir-status"></div>
-				<div id="fhir-nav">
-					<a id="fhir-logo" target="_blank" href="http://www.hl7.org/fhir/">
-						<img src="images/fhirlogo.png" alt="FHIR logo" />
-					</a>
-				</div>
-			</div>
-		</div>
-        <div id="segment-navbar" class="segment">
-            <div class="container">
-                <a href="overview.html">Overview</a>
-				<a href="profiles">Profiles</a>
-				<a href="api.html">API definition</a>
-				<a href="sandbox">Sandbox</a>
-				<a href="faq.html">FAQ</a>
-            </div>
-        </div>
+
+<%@ include file="includes/header.html" %>
+
 		<div id="segment-content" class="segment">
-            <div class="container">
+			<div class="container">
 				<h1>Overview</h1>
 				<p>[This section is currently being authored.]</p>
 				<p>Please see:</p>
@@ -40,8 +18,10 @@
 					<li><a href="profiles">Profiles</a></li>
 					<li><a href="sandbox">Sandbox</a></li>
 				</ul>
-		    </div>
-        </div>
+			</div>
+		</div>
+
 <%@ include file="includes/footer.html" %>
+
 	</body>
 </html>
