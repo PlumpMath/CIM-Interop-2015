@@ -53,7 +53,7 @@
         ],
         "responses": {
           "200": {
-            "description": "OK | <a target='_blank' href='fhir/primarycare-organization.html'>PrimaryCare-Organization</a> resource"
+            "description": "OK | <a target='_blank' href='../profiles/primarycare-organization.html'>PrimaryCare-Organization</a> resource"
           },
           "400": {
             "$ref": "#definitions/400Response"
@@ -106,7 +106,7 @@
         ],
         "responses": {
           "200": {
-            "description": "OK | <a target='_blank' href='fhir/primarycare-organization.html'>PrimaryCare-Organization</a> resource"
+            "description": "OK | <a target='_blank' href='../profiles/primarycare-organization.html'>PrimaryCare-Organization</a> resource"
           },
           "400": {
             "$ref": "#definitions/400Response"
@@ -158,7 +158,7 @@
         ],
         "responses": {
           "200": {
-            "description": "OK | <a target='_blank' href='fhir/primarycare-location.html'>PrimaryCare-Location</a> resource"
+            "description": "OK | <a target='_blank' href='../profiles/primarycare-location.html'>PrimaryCare-Location</a> resource"
           },
           "400": {
             "$ref": "#definitions/400Response"
@@ -278,7 +278,7 @@
         ],
         "responses": {
           "200": {
-            "description": "OK | <a target='_blank' href='http://hl7.org/fhir/DSTU2/bundle.html'>Bundle</a> containing zero or more <a target='_blank' href='fhir/primarycare-schedule.html'>PrimaryCare-Schedule</a> resources"
+            "description": "OK | <a target='_blank' href='http://hl7.org/fhir/DSTU2/bundle.html'>Bundle</a> containing zero or more <a target='_blank' href='../profiles/primarycare-schedule.html'>PrimaryCare-Schedule</a> resources"
           },
           "400": {
             "$ref": "#definitions/400Response"
@@ -331,7 +331,7 @@
         ],
         "responses": {
           "200": {
-            "description": "OK | <a target='_blank' href='http://hl7.org/fhir/DSTU2/bundle.html'>Bundle</a> containing zero or more <a target='_blank' href='fhir/primarycare-slot.html'>PrimaryCare-Slot</a> resources"
+            "description": "OK | <a target='_blank' href='http://hl7.org/fhir/DSTU2/bundle.html'>Bundle</a> containing zero or more <a target='_blank' href='../profiles/primarycare-slot.html'>PrimaryCare-Slot</a> resources"
           },
           "400": {
             "$ref": "#definitions/400Response"
@@ -523,7 +523,7 @@
         ],
         "responses": {
           "200": {
-            "description": "OK | <a target='_blank' href='http://hl7.org/fhir/DSTU2/bundle.html'>Bundle</a> containing zero or more <a target='_blank' href='fhir/primarycare-appointment.html'>PrimaryCare-Appointment</a> resources"
+            "description": "OK | <a target='_blank' href='http://hl7.org/fhir/DSTU2/bundle.html'>Bundle</a> containing zero or more <a target='_blank' href='../profiles/primarycare-appointment.html'>PrimaryCare-Appointment</a> resources"
           },
           "400": {
             "$ref": "#definitions/400Response"
@@ -569,7 +569,7 @@
         ],
         "responses": {
           "200": {
-            "description": "OK | A bundle of <a target='_blank' href='fhir/primarycare-task.html'>PrimaryCare-Task</a> resources"
+            "description": "OK | A bundle of <a target='_blank' href='../profiles/primarycare-task.html'>PrimaryCare-Task</a> resources"
           },
           "400": {
             "$ref": "#definitions/400Response"
@@ -614,7 +614,7 @@
           {
             "name": "body",
             "in": "body",
-            "description": "<a target='_blank' href='fhir/primarycare-task.html'>PrimaryCare-Task</a> Resource.",
+            "description": "<a target='_blank' href='../profiles/primarycare-task.html'>PrimaryCare-Task</a> Resource.",
             "required": true,
             "schema": {
               "$ref": "#/definitions/taskResource"
@@ -721,7 +721,7 @@
         ],
         "responses": {
           "200": {
-            "description": "OK | A bundle of <a target='_blank' href='fhir/primarycare-task.html'>PrimaryCare-Task</a> resources"
+            "description": "OK | A bundle of <a target='_blank' href='../profiles/primarycare-task.html'>PrimaryCare-Task</a> resources"
           },
           "400": {
             "$ref": "#definitions/400Response"
@@ -770,7 +770,7 @@
         ],
         "responses": {
           "200": {
-            "description": "OK | A bundle of <a target='_blank' href='fhir/primarycare-task.html'>PrimaryCare-Task</a> resources"
+            "description": "OK | A bundle of <a target='_blank' href='../profiles/primarycare-task.html'>PrimaryCare-Task</a> resources"
           },
           "400": {
             "$ref": "#definitions/400Response"
@@ -893,7 +893,7 @@
         ],
         "responses": {
           "200": {
-            "description": "OK | <a target='_blank' href='http://hl7.org/fhir/DSTU2/bundle.html'>Bundle</a> containing zero or more <a target='_blank' href='fhir/primarycare-medication.html'>PrimaryCare-Medication</a> resources"
+            "description": "OK | <a target='_blank' href='http://hl7.org/fhir/DSTU2/bundle.html'>Bundle</a> containing zero or more <a target='_blank' href='../profiles/primarycare-medication.html'>PrimaryCare-Medication</a> resources"
           },
           "400": {
             "$ref": "#definitions/400Response"
@@ -952,7 +952,7 @@
         ],
         "responses": {
           "200": {
-            "description": "OK | <a target='_blank' href='http://hl7.org/fhir/DSTU2/bundle.html'>Bundle</a> containing zero or more <a target='_blank' href='fhir/primarycare-condition.html'>PrimaryCare-Condition</a> resources"
+            "description": "OK | <a target='_blank' href='http://hl7.org/fhir/DSTU2/bundle.html'>Bundle</a> containing zero or more <a target='_blank' href='../profiles/primarycare-condition.html'>PrimaryCare-Condition</a> resources"
           },
           "400": {
             "$ref": "#definitions/400Response"
@@ -1002,7 +1002,7 @@
           {
             "in": "body",
             "name": "body",
-            "description": "<a target='_blank'  href='fhir/primarycare-condition.html'>PrimaryCare-Condition resource</a>",
+            "description": "<a target='_blank'  href='../profiles/primarycare-condition.html'>PrimaryCare-Condition resource</a>",
             "required": true,
             "schema": {
               "$ref": "#/definitions/conditionResource"
@@ -1067,7 +1067,7 @@
         ],
         "responses": {
           "200": {
-            "description": "OK | <a target='_blank' href='http://hl7.org/fhir/DSTU2/bundle.html'>Bundle</a> containing zero or more <a target='_blank' href='fhir/primarycare-immunization.html'>PrimaryCare-Immunization</a> resources"
+            "description": "OK | <a target='_blank' href='http://hl7.org/fhir/DSTU2/bundle.html'>Bundle</a> containing zero or more <a target='_blank' href='../profiles/primarycare-immunization.html'>PrimaryCare-Immunization</a> resources"
           },
           "400": {
             "$ref": "#definitions/400Response"
@@ -1131,7 +1131,7 @@
         ],
         "responses": {
           "200": {
-            "description": "OK | <a target='_blank' href='http://hl7.org/fhir/DSTU2/bundle.html'>Bundle</a> containing zero or more <a target='_blank' href='fhir/primarycare-allergy-intolerance.html'>PrimaryCare-AllergyIntolerance</a> resources"
+            "description": "OK | <a target='_blank' href='http://hl7.org/fhir/DSTU2/bundle.html'>Bundle</a> containing zero or more <a target='_blank' href='../profiles/primarycare-allergy-intolerance.html'>PrimaryCare-AllergyIntolerance</a> resources"
           },
           "400": {
             "$ref": "#definitions/400Response"
@@ -1211,7 +1211,7 @@
         ],
         "responses": {
           "200": {
-            "description": "OK | <a target='_blank' href='http://hl7.org/fhir/DSTU2/bundle.html'>Bundle</a> containing zero or more <a target='_blank' href='http://hl7.org/fhir/DSTU2/person.html'>Person</a> resources and zero or more associated <a target='_blank' href='fhir/primarycare-patient.html'>PrimaryCare-Patient</a> resources"
+            "description": "OK | <a target='_blank' href='http://hl7.org/fhir/DSTU2/bundle.html'>Bundle</a> containing zero or more <a target='_blank' href='http://hl7.org/fhir/DSTU2/person.html'>Person</a> resources and zero or more associated <a target='_blank' href='../profiles/primarycare-patient.html'>PrimaryCare-Patient</a> resources"
           },
           "400": {
             "$ref": "#definitions/400Response"
@@ -1260,7 +1260,7 @@
         ],
         "responses": {
           "200": {
-            "description": "OK | <a target='_blank' href='fhir/primarycare-patient.html'>PrimaryCare-Patient</a> resource"
+            "description": "OK | <a target='_blank' href='../profiles/primarycare-patient.html'>PrimaryCare-Patient</a> resource"
           },
           "400": {
             "$ref": "#definitions/400Response"
@@ -1326,7 +1326,7 @@
         ],
         "responses": {
           "200": {
-            "description": "OK | <a target='_blank' href='http://hl7.org/fhir/DSTU2/bundle.html'>Bundle</a> containing zero or more <a target='_blank' href='fhir/primarycare-person.html'>PrimaryCare-Patient</a> resources"
+            "description": "OK | <a target='_blank' href='http://hl7.org/fhir/DSTU2/bundle.html'>Bundle</a> containing zero or more <a target='_blank' href='../profiles/primarycare-person.html'>PrimaryCare-Patient</a> resources"
           },
           "400": {
             "$ref": "#definitions/400Response"
