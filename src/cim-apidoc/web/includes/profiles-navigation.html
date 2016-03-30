@@ -4,7 +4,7 @@
 
     <%
 
-        LinkedHashMap<String, String> tabs = new LinkedHashMap<>();
+        LinkedHashMap tabs = new LinkedHashMap();
 
         tabs.put("index.html", "Resource profiles");
         tabs.put("extensions.html", "Extensions");
@@ -13,14 +13,14 @@
 
         String pageName = this.getClass().getSimpleName().replaceAll("_", ".");
 
-        for (String key : tabs.keySet())
+        for (Object key : tabs.keySet())
         {
             String active = "";
 
             if (key.equals(pageName))
                 active = " class=\"active\"";
 
-            out.println("<li role=\"presentation\"" + active + "><a href=\"" + key + "\">" + tabs.get(key) + "</a></li>");
+            out.println("<li role=\"presentation\"" + active + "><a href=\"" + key + "\">" + (String)tabs.get(key) + "</a></li>");
         }
     %>
 
