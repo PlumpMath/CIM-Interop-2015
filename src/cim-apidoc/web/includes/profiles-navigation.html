@@ -1,0 +1,26 @@
+<%@ page import="java.util.LinkedHashMap" %>
+
+<ul class="nav nav-tabs">
+    <%
+
+        LinkedHashMap<String, String> tabs = new LinkedHashMap<>();
+
+        tabs.put("index.html", "Resource profiles");
+        tabs.put("extensions.html", "Extensions");
+        tabs.put("valuesets.html", "Valuesets");
+        tabs.put("identifiersystems.html", "Identifier systems");
+
+        String pageName = this.getClass().getSimpleName().replaceAll("_", ".");
+
+        for (String key : tabs.keySet())
+        {
+            String active = "";
+
+            if (key.equals(pageName))
+                active = " class=\"active\"";
+
+            out.println("<li role=\"presentation\"" + active + "><a href=\"" + key + "\">" + tabs.get(key) + "</a></li>");
+        }
+    %>
+
+</ul>

@@ -1,0 +1,94 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <title>Identifier systems - Endeavour FHIR Interoperability Guide</title>
+        <link rel="stylesheet" href="../styles/bootstrap.css" />
+        <link rel="stylesheet" href="../styles/style.css" />
+    </head>
+    <body>
+
+<%@ include file="../includes/header.html" %>
+
+    <div id="segment-content" class="segment">
+        <div class="container">
+
+            <h1>FHIR profiles</h1>
+
+				<p>This specification is built on <a target="_blank" href="http://hl7.org/fhir/DSTU2/index.html">FHIR DSTU 2 (1.0.2)</a>.</p>
+
+<%@ include file="../includes/profiles-navigation.html" %>
+
+			<h3 id="identifiersystems">Identifier systems</h3>
+
+			<p>The <a href="https://www.hl7.org/fhir/DSTU2/identifier-registry.html" target="_blank">identifier systems</a> below are for use in the system element of the <a href="https://www.hl7.org/fhir/DSTU2/datatypes.html#Identifier" target="_blank">Identifier</a> data type in Endeavour profiles. Where there is no official identifier system defined by the issuing party, a temporary Endeavour identifier system has been created while an official one becomes available.</p>
+
+			<table class="table table-hover table-condensed">
+				<thead>
+					<tr>
+						<th style="width: 180px;">Name</th>
+						<th style="width: 350px;">URI</th>
+						<th>Relevent resource</th>
+						<th>Is temporary?</th>
+						<th>Issuing party reference</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>NHS number</td>
+						<td>http://fhir.nhs.net/Id/nhs-number</td>
+						<td><a href="primarycare-patient.html">PrimaryCare-Patient</a></td>
+						<td>No</td>
+						<td><a href="http://data.developer.nhs.uk/fhir/gpconnect-getrecord-phase1/Profile.GetRecordQueryResponse-Phase-1/gpconnect-patient-1-0.html" target="_blank">HSCIC FHIR API Implementation Guide</a></td>
+					</tr>
+					<tr>
+						<td>CHI number</td>
+						<td>http://endeavourhealth.org/fhir/Identifier/chi-number</td>
+						<td>PrimaryCare-Patient</td>
+						<td>Yes</td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>Health and care number</td>
+						<td>http://endeavourhealth.org/fhir/Identifier/hc-number</td>
+						<td>PrimaryCare-Patient</td>
+						<td>Yes</td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>SDS user ID</td>
+						<td>http://fhir.nhs.net/Id/sds-user-id</td>
+						<td>PrimaryCare-Practitioner</td>
+						<td>No</td>
+						<td><a href="http://data.developer.nhs.uk/fhir/gpconnect-getrecord-phase1/Profile.GetRecordQueryResponse-Phase-1/gpconnect-practitioner-1-0.html" target="_blank">HSCIC FHIR API Implementation Guide</a></td>
+					</tr>
+					<tr>
+						<td>SDS role profile ID</td>
+						<td>http://fhir.nhs.net/Id/sds-role-profile-id</td>
+						<td>PrimaryCare-Practitioner</td>
+						<td>No</td>
+						<td><a href="http://data.developer.nhs.uk/fhir/gpconnect-getrecord-phase1/Profile.GetRecordQueryResponse-Phase-1/gpconnect-practitioner-1-0.html" target="_blank">HSCIC FHIR API Implementation Guide</a></td>
+					</tr>
+					<tr>
+						<td>ODS organisation code</td>
+						<td>http://fhir.nhs.net/Id/ods-organization-code</td>
+						<td><a href="primarycare-organization.html">PrimaryCare-Organization</a></td>
+						<td>No</td>
+						<td><a href="http://data.developer.nhs.uk/fhir/gpconnect-getrecord-phase1/Profile.GetRecordQueryResponse-Phase-1/gpconnect-organization-1-0.html" target="_blank">HSCIC FHIR API Implementation Guide</a></td>
+					</tr>
+					<tr>
+						<td>e-Referral service UBRN</td>
+						<td>http://endeavourhealth.org/fhir/Identifier/ubrn</td>
+						<td><a href="primarycare-referral-request.html">PrimaryCare-ReferralRequest</a></td>
+						<td>Yes</td>
+						<td></td>
+					</tr>
+				</tbody>
+			</table>
+
+	   </div>
+    </div>
+
+<%@ include file="../includes/footer.html" %>
+
+    </body>
+</html>
