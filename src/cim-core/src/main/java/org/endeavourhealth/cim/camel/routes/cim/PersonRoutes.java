@@ -1,16 +1,16 @@
-package org.endeavourhealth.cim.camel.endpoints;
+package org.endeavourhealth.cim.camel.routes.cim;
 
 import org.endeavourhealth.cim.camel.helpers.ArrayListAggregationStrategy;
 import org.endeavourhealth.cim.camel.helpers.CIMHeaderKey;
 import org.endeavourhealth.cim.camel.processors.demographics.TracePersonProcessor;
 import org.endeavourhealth.cim.camel.processors.demographics.TracePersonResultProcessor;
-import org.endeavourhealth.cim.camel.routes.cim.CimCore;
+import org.endeavourhealth.cim.camel.routes.common.CimCore;
 import org.endeavourhealth.cim.camel.helpers.HttpVerb;
 import org.endeavourhealth.cim.camel.helpers.BaseRouteBuilder;
 import org.endeavourhealth.cim.dataManager.DataManagerFactory;
 
 @SuppressWarnings({"WeakerAccess", "unused"})
-public class PersonEndpoints extends BaseRouteBuilder {
+public class PersonRoutes extends BaseRouteBuilder {
 
     @Override
     public void configureRoute() throws Exception {

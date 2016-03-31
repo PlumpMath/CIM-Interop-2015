@@ -1,14 +1,14 @@
-package org.endeavourhealth.cim.camel.endpoints;
+package org.endeavourhealth.cim.camel.routes.cim;
 
 import org.endeavourhealth.cim.camel.processors.appointments.BookSlotProcessor;
 import org.endeavourhealth.cim.camel.processors.appointments.CancelSlotProcessor;
 import org.endeavourhealth.cim.camel.processors.appointments.GetSlotsProcessor;
-import org.endeavourhealth.cim.camel.routes.cim.CimCore;
+import org.endeavourhealth.cim.camel.routes.common.CimCore;
 import org.endeavourhealth.cim.camel.helpers.HttpVerb;
 import org.endeavourhealth.cim.camel.helpers.BaseRouteBuilder;
 
 @SuppressWarnings({"WeakerAccess", "unused"})
-public class SlotEndpoints extends BaseRouteBuilder {
+public class SlotRoutes extends BaseRouteBuilder {
 
     @Override
     public void configureRoute() throws Exception {

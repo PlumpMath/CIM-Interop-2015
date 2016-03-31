@@ -1,12 +1,12 @@
-package org.endeavourhealth.cim.camel.endpoints;
+package org.endeavourhealth.cim.camel.routes.cim;
 
 import org.endeavourhealth.cim.camel.processors.appointments.GetAppointmentsProcessor;
 import org.endeavourhealth.cim.camel.helpers.HttpVerb;
 import org.endeavourhealth.cim.camel.helpers.BaseRouteBuilder;
-import org.endeavourhealth.cim.camel.routes.cim.CimCore;
+import org.endeavourhealth.cim.camel.routes.common.CimCore;
 
 @SuppressWarnings({"WeakerAccess", "unused"})
-public class AppointmentEndpoints extends BaseRouteBuilder {
+public class AppointmentsRoutes extends BaseRouteBuilder {
 
     @Override
     public void configureRoute() throws Exception {

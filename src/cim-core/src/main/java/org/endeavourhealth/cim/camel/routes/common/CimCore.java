@@ -1,4 +1,4 @@
-package org.endeavourhealth.cim.camel.routes.cim;
+package org.endeavourhealth.cim.camel.routes.common;
 
 import org.apache.camel.LoggingLevel;
 import org.endeavourhealth.cim.camel.helpers.BaseRouteBuilder;
