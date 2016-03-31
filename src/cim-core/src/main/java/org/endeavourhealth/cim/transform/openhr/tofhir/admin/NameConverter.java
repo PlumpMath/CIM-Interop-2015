@@ -7,9 +7,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class NameConverter {
-
-    public static List<HumanName> convert(String title, String forenames, String surname, String callingName, String birthSurname, String previousSurname) {
+public class NameConverter
+{
+    public static List<HumanName> convert(String title, String forenames, String surname, String callingName, String birthSurname, String previousSurname)
+    {
         return convertCleaned(
                 StringUtils.trimToNull(forenames),
                 StringUtils.trimToNull(callingName),
@@ -19,7 +20,8 @@ public class NameConverter {
                 StringUtils.trimToNull(title));
     }
 
-    public static HumanName convert(String forenames, String surname, String title) {
+    public static HumanName convert(String forenames, String surname, String title)
+    {
         List<HumanName> results = convertCleaned(
                 StringUtils.trimToNull(forenames),
                 null,
@@ -34,13 +36,7 @@ public class NameConverter {
             return results.get(0);
     }
 
-    private static List<HumanName> convertCleaned(
-            String forenames,
-            String callingName,
-            String surname,
-            String birthSurname,
-            String previousSurname,
-            String title)
+    private static List<HumanName> convertCleaned(String forenames, String callingName, String surname, String birthSurname, String previousSurname, String title)
     {
         List<HumanName> list = new ArrayList<>();
 
@@ -48,19 +44,13 @@ public class NameConverter {
         list.add(createName(HumanName.NameUse.OFFICIAL, title, forenames, surname));
 
         if (birthSurname != null && !birthSurname.equalsIgnoreCase(surname))
-        {
             list.add(createName(HumanName.NameUse.OLD, title, forenames, birthSurname));
-        }
 
         if (previousSurname != null && !previousSurname.equalsIgnoreCase(surname))
-        {
             list.add(createName(HumanName.NameUse.OLD, title, forenames, previousSurname));
-        }
 
         if (callingName != null && !callingName.equalsIgnoreCase(forenames))
-        {
             list.add(createName(HumanName.NameUse.USUAL, title, callingName, surname));
-        }
 
         return list;
     }
@@ -72,19 +62,20 @@ public class NameConverter {
                 .setText(buildDisplayFormat(title, forenames, surname));
 
         List<String> titleList = split(title);
-        if (titleList != null) {
+
+        if (titleList != null)
             titleList.forEach(name::addPrefix);
-        }
 
         List<String> forenameList = split(forenames);
-        if (forenameList != null) {
+
+        if (forenameList != null)
             forenameList.forEach(name::addGiven);
-        }
 
         List<String> surnameList = split(surname);
-        if (surnameList != null) {
+
+        if (surnameList != null)
             surnameList.forEach(name::addFamily);
-        }
+
 
         return name;
     }
@@ -97,18 +88,22 @@ public class NameConverter {
         return new ArrayList<String>(Arrays.asList(input.split(" ")));
     }
 
-    private static String buildDisplayFormat(String title, String forenames, String surname) {
+    private static String buildDisplayFormat(String title, String forenames, String surname)
+    {
         StringBuilder sb = new StringBuilder();
 
         sb.append(surname.toUpperCase());
 
         List<String> forenameList = split(forenames);
-        if (forenameList != null && forenameList.size() > 0) {
+
+        if (forenameList != null && forenameList.size() > 0)
+        {
             sb.append(", ");
             sb.append(forenameList.get(0));
         }
 
-        if (StringUtils.isNotBlank(title)) {
+        if (StringUtils.isNotBlank(title))
+        {
             sb.append(" (");
             sb.append(title);
             sb.append(")");

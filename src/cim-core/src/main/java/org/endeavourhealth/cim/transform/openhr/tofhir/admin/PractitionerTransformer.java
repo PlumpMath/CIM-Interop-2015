@@ -13,14 +13,20 @@ import org.hl7.fhir.instance.model.*;
 import java.util.ArrayList;
 import java.util.List;
 
-class PractitionerTransformer {
-    public static void transform(FhirContainer container, OpenHR001AdminDomain adminDomain) throws TransformException {
-        for (OpenHR001UserInRole userInRole: adminDomain.getUserInRole()) {
-            container.addResource(createPractitioner(adminDomain, userInRole));
-        }
+class PractitionerTransformer
+{
+    public static List<Practitioner> transform(OpenHR001AdminDomain adminDomain) throws TransformException
+    {
+        ArrayList<Practitioner> practitioners = new ArrayList<>();
+
+        for (OpenHR001UserInRole userInRole: adminDomain.getUserInRole())
+            practitioners.add(createPractitioner(adminDomain, userInRole));
+
+        return practitioners;
     }
 
-    private static Practitioner createPractitioner(OpenHR001AdminDomain adminDomain, OpenHR001UserInRole userInRole) throws SourceDocumentInvalidException, TransformFeatureNotSupportedException {
+    private static Practitioner createPractitioner(OpenHR001AdminDomain adminDomain, OpenHR001UserInRole userInRole) throws TransformException
+    {
         OpenHR001User user = getUser(adminDomain.getUser(), userInRole.getUser());
         OpenHR001Role role = getRole(adminDomain.getRole(), userInRole.getRole());
         OpenHR001Person person = getPerson(adminDomain.getPerson(), user.getUserPerson());
@@ -34,9 +40,9 @@ class PractitionerTransformer {
         practitioner.setId(userInRole.getId());
 
         List<Identifier> identifiers = convertIdentifiers(userInRole.getUserIdentifier());
-        if (identifiers != null) {
+
+        if (identifiers != null)
             identifiers.forEach(practitioner::addIdentifier);
-        }
 
         practitioner.setName(NameConverter.convert(
                 person.getForenames(),
@@ -44,9 +50,9 @@ class PractitionerTransformer {
                 person.getTitle()));
 
         List<ContactPoint> telecoms = ContactPointConverter.convert(person.getContact());
-        if (telecoms != null) {
+
+        if (telecoms != null)
             telecoms.forEach(practitioner::addTelecom);
-        }
 
         Practitioner.PractitionerPractitionerRoleComponent practitionerRole =  practitioner.addPractitionerRole();
         practitionerRole.setManagingOrganization(ReferenceHelper.createReference(ResourceType.Organization, role.getOrganisation()));
@@ -64,7 +70,8 @@ class PractitionerTransformer {
         return practitioner;
     }
 
-    private static OpenHR001User getUser(List<OpenHR001User> userList, String userId) throws SourceDocumentInvalidException {
+    private static OpenHR001User getUser(List<OpenHR001User> userList, String userId) throws TransformException
+    {
         if (userList == null)
             throw new SourceDocumentInvalidException("User not found: " + userId);
 
@@ -80,7 +87,8 @@ class PractitionerTransformer {
         return user;
     }
 
-    private static OpenHR001Role getRole(List<OpenHR001Role> roleList, String roleId) throws SourceDocumentInvalidException {
+    private static OpenHR001Role getRole(List<OpenHR001Role> roleList, String roleId) throws TransformException
+    {
         if (roleList == null)
             throw new SourceDocumentInvalidException("Role not found: " + roleId);
 
@@ -95,7 +103,8 @@ class PractitionerTransformer {
         return role;
     }
 
-    private static OpenHR001Person getPerson(List<OpenHR001Person> sourcePeople, String personId) throws TransformFeatureNotSupportedException, SourceDocumentInvalidException {
+    private static OpenHR001Person getPerson(List<OpenHR001Person> sourcePeople, String personId) throws TransformException
+    {
         if (sourcePeople == null)
             throw new TransformFeatureNotSupportedException("No AdminDomain.Person found.");
 
@@ -111,13 +120,15 @@ class PractitionerTransformer {
         return person;
     }
 
-    private static List<Identifier> convertIdentifiers(List<DtUserIdentifier> sourceIdentifiers) throws TransformFeatureNotSupportedException {
+    private static List<Identifier> convertIdentifiers(List<DtUserIdentifier> sourceIdentifiers) throws TransformException
+    {
         if (sourceIdentifiers == null || sourceIdentifiers.isEmpty())
             return null;
 
         List<Identifier> targetIdentifiers = new ArrayList<>();
 
-        for (DtUserIdentifier source: sourceIdentifiers) {
+        for (DtUserIdentifier source: sourceIdentifiers)
+        {
             targetIdentifiers.add(new Identifier()
                 .setSystem(convertIdentifierType(source.getIdentifierType()))
                 .setValue(source.getValue()));
@@ -126,7 +137,8 @@ class PractitionerTransformer {
         return targetIdentifiers;
     }
 
-    private static String convertIdentifierType(VocUserIdentifierType openHRType) throws TransformFeatureNotSupportedException {
+    private static String convertIdentifierType(VocUserIdentifierType openHRType) throws TransformException
+    {
         switch (openHRType)
         {
             case GP:

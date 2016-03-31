@@ -1,5 +1,6 @@
 package org.endeavourhealth.cim.transform.openhr.tofhir.admin;
 
+import org.endeavourhealth.cim.transform.common.FhirUris;
 import org.endeavourhealth.cim.transform.common.ReferenceHelper;
 import org.endeavourhealth.cim.transform.common.TransformHelper;
 import org.endeavourhealth.cim.transform.common.valueSets.TaskStatusCode;
@@ -15,14 +16,8 @@ import org.endeavourhealth.cim.transform.common.valueSets.TaskPriorityCode;
 import org.hl7.fhir.instance.model.*;
 
 
-public class TaskTransformer {
-	public final static String TASKTYPE_EXTENSION_URL = "http://cim-api.endeavourhealth.org/fhir/ValueSet/task-type";
-	public final static String TASKTYPE_SYSTEM = "http://cim-api.endeavourhealth.org/fhir/task-type";
-	public final static String TASKPRIORITY_EXTENSION_URL = "http://cim-api.endeavourhealth.org/fhir/ValueSet/task-priority";
-	public final static String TASKPRIORITY_SYSTEM = "http://cim-api.endeavourhealth.org/fhir/task-priority";
-	public final static String TASKSTATUS_EXTENSION_URL = "http://cim-api.endeavourhealth.org/fhir/ValueSet/task-status";
-	public final static String TASKSTATUS_SYSTEM = "http://cim-api.endeavourhealth.org/fhir/task-status";
-
+public class TaskTransformer
+{
 	public static Order transform(OpenHR001PatientTask source) throws SourceDocumentInvalidException, TransformFeatureNotSupportedException
 	{
 		OpenHRHelper.ensureDboNotDelete(source);
@@ -61,10 +56,10 @@ public class TaskTransformer {
 
 		target.addExtension(
 				new Extension()
-						.setUrl(TASKTYPE_EXTENSION_URL)
+						.setUrl(FhirUris.TASKTYPE_EXTENSION_URL)
 						.setValue(new CodeableConcept()
 								.addCoding(new Coding()
-										.setSystem(TASKTYPE_SYSTEM)
+										.setSystem(FhirUris.TASKTYPE_SYSTEM)
 										.setCode(toFhirTaskType(taskType).name())
 										.setDisplay(taskType.toString()))));
 	}
@@ -75,10 +70,10 @@ public class TaskTransformer {
 
 		target.addExtension(
 				new Extension()
-						.setUrl(TASKPRIORITY_EXTENSION_URL)
+						.setUrl(FhirUris.TASKPRIORITY_EXTENSION_URL)
 						.setValue(new CodeableConcept()
 								.addCoding(new Coding()
-										.setSystem(TASKPRIORITY_SYSTEM)
+										.setSystem(FhirUris.TASKPRIORITY_SYSTEM)
 										.setCode(toFhirTaskPriority(taskPriority).name())
 										.setDisplay(taskPriority.toString()))));
 	}
@@ -89,10 +84,10 @@ public class TaskTransformer {
 
 		target.addExtension(
 				new Extension()
-						.setUrl(TASKSTATUS_EXTENSION_URL)
+						.setUrl(FhirUris.TASKSTATUS_EXTENSION_URL)
 						.setValue(new CodeableConcept()
 								.addCoding(new Coding()
-										.setSystem(TASKSTATUS_SYSTEM)
+										.setSystem(FhirUris.TASKSTATUS_SYSTEM)
 										.setCode(toFhirTaskStatus(taskStatus).name())
 										.setDisplay(taskStatus.toString()))));
 	}

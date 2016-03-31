@@ -11,14 +11,17 @@ import org.hl7.fhir.instance.model.Address;
 import java.util.ArrayList;
 import java.util.List;
 
-class AddressConverter {
-    public static List<Address> convert(List<DtAddress> addressList) throws TransformFeatureNotSupportedException {
+class AddressConverter
+{
+    public static List<Address> convert(List<DtAddress> addressList) throws TransformFeatureNotSupportedException
+    {
         if (addressList == null || addressList.isEmpty())
             return null;
 
         List<Address> targetAddressList = new ArrayList<>();
 
-        for (DtAddress address: addressList) {
+        for (DtAddress address: addressList)
+        {
             Address targetAddress = convertAddress(address);
 
             if (targetAddress != null)
@@ -31,13 +34,15 @@ class AddressConverter {
             return targetAddressList;
     }
 
-    public static List<Address> convertFromPersonAddress(List<OpenHR001Person.Address> addressList) throws TransformFeatureNotSupportedException {
+    public static List<Address> convertFromPersonAddress(List<OpenHR001Person.Address> addressList) throws TransformFeatureNotSupportedException
+    {
         if (addressList == null || addressList.isEmpty())
             return null;
 
         List<Address> targetAddressList = new ArrayList<>();
 
-        for (OpenHR001Person.Address address: addressList) {
+        for (OpenHR001Person.Address address: addressList)
+        {
             OpenHRHelper.ensureDboNotDelete(address.getUpdateMode());
 
             Address targetAddress = convertAddress(address);
@@ -52,7 +57,8 @@ class AddressConverter {
             return targetAddressList;
     }
 
-    public static Address convert(DtAddress source) throws TransformFeatureNotSupportedException {
+    public static Address convert(DtAddress source) throws TransformFeatureNotSupportedException
+    {
         if (source == null)
             return null;
 
@@ -74,38 +80,46 @@ class AddressConverter {
 
         if (StringUtils.isNotBlank(source.getTown()))
             target.setCity(source.getTown());
+
         if (StringUtils.isNotBlank(source.getCounty()))
             target.setDistrict(source.getCounty());
+
         if (StringUtils.isNotBlank(source.getPostCode()))
             target.setPostalCode(source.getPostCode());
 
         return target;
     }
 
-    private static String createDisplayText(DtAddress source) {
+    private static String createDisplayText(DtAddress source)
+    {
         StringBuilder sb = new StringBuilder();
 
-        if (StringUtils.isNotBlank(source.getHouseNameFlat())) {
+        if (StringUtils.isNotBlank(source.getHouseNameFlat()))
+        {
             sb.append(source.getHouseNameFlat());
             sb.append(", ");
         }
 
-        if (StringUtils.isNotBlank(source.getStreet())) {
+        if (StringUtils.isNotBlank(source.getStreet()))
+        {
             sb.append(source.getStreet());
             sb.append(", ");
         }
 
-        if (StringUtils.isNotBlank(source.getVillage())) {
+        if (StringUtils.isNotBlank(source.getVillage()))
+        {
             sb.append(source.getVillage());
             sb.append(", ");
         }
 
-        if (StringUtils.isNotBlank(source.getTown())) {
+        if (StringUtils.isNotBlank(source.getTown()))
+        {
             sb.append(source.getTown());
             sb.append(", ");
         }
 
-        if (StringUtils.isNotBlank(source.getCounty())) {
+        if (StringUtils.isNotBlank(source.getCounty()))
+        {
             sb.append(source.getCounty());
             sb.append(", ");
         }
@@ -116,11 +130,14 @@ class AddressConverter {
         return sb.toString();
     }
 
-    private static void addLines(DtAddress source, Address target) {
+    private static void addLines(DtAddress source, Address target)
+    {
         if (StringUtils.isNotBlank(source.getHouseNameFlat()))
             target.addLine(source.getHouseNameFlat());
+
         if (StringUtils.isNotBlank(source.getStreet()))
             target.addLine(source.getStreet());
+
         if (StringUtils.isNotBlank(source.getVillage()))
             target.addLine(source.getVillage());
     }
@@ -144,5 +161,4 @@ class AddressConverter {
                 return Address.AddressUse.NULL;
         }
     }
-
 }

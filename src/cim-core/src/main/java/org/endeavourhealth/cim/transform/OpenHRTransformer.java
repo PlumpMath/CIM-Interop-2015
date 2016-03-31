@@ -23,7 +23,7 @@ public class OpenHRTransformer
         OpenHR001OpenHealthRecord openHR = TransformHelper.unmarshall(openHRXml, OpenHR001OpenHealthRecord.class);
 
         FhirContainer container = new FhirContainer();
-        AdminDomainTransformer.transform(container, openHR);
+        container.addResources(AdminDomainTransformer.transform(openHR));
         HealthDomainTransformer.transform(container, openHR);
 
         Date creationDate = TransformHelper.toDate(openHR.getCreationTime());
@@ -62,7 +62,7 @@ public class OpenHRTransformer
 	public Location toFhirLocation(String openHRLocationXml) throws TransformException
     {
 		OpenHR001Location openHR = TransformHelper.unmarshall(openHRLocationXml, OpenHR001Location.class);
-		return LocationTransformer.transform(openHR);
+		return LocationTransformer.transform(openHR, null);
 	}
 
 	public Order toFhirTask(String openHRPatientTaskXml) throws TransformException

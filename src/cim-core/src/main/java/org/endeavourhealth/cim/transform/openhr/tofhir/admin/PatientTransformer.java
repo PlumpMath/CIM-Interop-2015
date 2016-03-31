@@ -14,10 +14,10 @@ import org.endeavourhealth.cim.transform.schemas.openhr.VocSex;
 
 import java.util.List;
 
-public class PatientTransformer {
-
-    public static Patient transform(OpenHR001AdminDomain adminDomain) throws TransformException {
-
+public class PatientTransformer
+{
+    public static Patient transform(OpenHR001AdminDomain adminDomain) throws TransformException
+    {
         OpenHR001Patient sourcePatient = OpenHRHelper.getPatient(adminDomain);
         OpenHR001Person sourcePerson = OpenHRHelper.getPerson(adminDomain.getPerson(), sourcePatient.getId());
 
@@ -26,25 +26,32 @@ public class PatientTransformer {
         targetPatient.setId(sourcePatient.getId());
 
         List<Identifier> identifiers = OpenHRHelper.convertIdentifiers(sourcePatient.getPatientIdentifier());
-        if (identifiers != null) {
+
+        if (identifiers != null)
             identifiers.forEach(targetPatient::addIdentifier);
-        }
 
         List<HumanName> names = OpenHRHelper.convertName(sourcePerson);
-        if (names != null) names.forEach(targetPatient::addName);
+
+        if (names != null)
+            names.forEach(targetPatient::addName);
 
         List<ContactPoint> telecoms = ContactPointConverter.convert(sourcePerson.getContact());
-        if (telecoms != null) telecoms.forEach(targetPatient::addTelecom);
+
+        if (telecoms != null)
+            telecoms.forEach(targetPatient::addTelecom);
 
         AdministrativeGender gender = convertSex(sourcePerson.getSex());
         targetPatient.setGender(gender);
 
         targetPatient.setBirthDate(TransformHelper.toDate(sourcePerson.getBirthDate()));
 
-        if (sourcePatient.getDateOfDeath() != null) targetPatient.setDeceased(new DateTimeType(TransformHelper.toDate(sourcePatient.getDateOfDeath())));
+        if (sourcePatient.getDateOfDeath() != null)
+            targetPatient.setDeceased(new DateTimeType(TransformHelper.toDate(sourcePatient.getDateOfDeath())));
 
         List<Address> addressList = AddressConverter.convertFromPersonAddress(sourcePerson.getAddress());
-        if (addressList != null) addressList.forEach(targetPatient::addAddress);
+
+        if (addressList != null)
+            addressList.forEach(targetPatient::addAddress);
 
         String organisationGuid = OpenHRHelper.getPatientOrganisationGuid(sourcePatient);
 
@@ -53,8 +60,10 @@ public class PatientTransformer {
         return targetPatient;
     }
 
-    private static AdministrativeGender convertSex(VocSex sex) throws TransformFeatureNotSupportedException {
-        switch (sex) {
+    private static AdministrativeGender convertSex(VocSex sex) throws TransformFeatureNotSupportedException
+    {
+        switch (sex)
+        {
             case U:
                 return AdministrativeGender.UNKNOWN;
             case M:

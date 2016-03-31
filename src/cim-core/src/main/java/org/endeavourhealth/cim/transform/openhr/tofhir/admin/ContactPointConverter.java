@@ -10,14 +10,17 @@ import org.hl7.fhir.instance.model.ContactPoint;
 import java.util.ArrayList;
 import java.util.List;
 
-class ContactPointConverter {
-    public static List<ContactPoint> convert(List<DtContact> sourceList) throws TransformFeatureNotSupportedException {
+class ContactPointConverter
+{
+    public static List<ContactPoint> convert(List<DtContact> sourceList) throws TransformFeatureNotSupportedException
+    {
         if (sourceList == null || sourceList.isEmpty())
             return null;
 
         List<ContactPoint> targetList = new ArrayList<>();
 
-        for (DtContact source: sourceList) {
+        for (DtContact source: sourceList)
+        {
             ContactPoint target = convertDtContact(source);
 
             if (target != null)
@@ -30,7 +33,8 @@ class ContactPointConverter {
             return targetList;
     }
 
-    private static ContactPoint convertDtContact(DtContact source) throws TransformFeatureNotSupportedException {
+    private static ContactPoint convertDtContact(DtContact source) throws TransformFeatureNotSupportedException
+    {
         String value = StringUtils.trimToNull(source.getValue());
 
         if (value == null)
@@ -46,7 +50,8 @@ class ContactPointConverter {
         return contact;
     }
 
-    private static ContactPoint.ContactPointSystem convertContactSystem(VocContactType openHRType) throws TransformFeatureNotSupportedException {
+    private static ContactPoint.ContactPointSystem convertContactSystem(VocContactType openHRType) throws TransformFeatureNotSupportedException
+    {
         switch (openHRType)
         {
             case H:
@@ -62,7 +67,8 @@ class ContactPointConverter {
         }
     }
 
-    private static ContactPoint.ContactPointUse convertContactInfoUse(VocContactType openHRType) throws TransformFeatureNotSupportedException {
+    private static ContactPoint.ContactPointUse convertContactInfoUse(VocContactType openHRType) throws TransformFeatureNotSupportedException
+    {
         switch (openHRType)
         {
             case H:

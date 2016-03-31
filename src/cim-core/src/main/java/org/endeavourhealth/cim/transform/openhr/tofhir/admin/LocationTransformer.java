@@ -1,31 +1,32 @@
 package org.endeavourhealth.cim.transform.openhr.tofhir.admin;
 
 import org.apache.commons.lang3.StringUtils;
+import org.endeavourhealth.cim.transform.common.FhirUris;
 import org.endeavourhealth.cim.transform.common.ReferenceHelper;
 import org.endeavourhealth.cim.transform.common.exceptions.TransformException;
 import org.endeavourhealth.cim.transform.openhr.tofhir.OpenHRHelper;
 import org.endeavourhealth.cim.transform.schemas.openhr.*;
 import org.endeavourhealth.cim.transform.common.StreamExtension;
-import org.endeavourhealth.cim.transform.common.exceptions.SourceDocumentInvalidException;
-import org.endeavourhealth.cim.transform.common.exceptions.TransformFeatureNotSupportedException;
-import org.endeavourhealth.cim.transform.openhr.tofhir.FhirContainer;
 import org.hl7.fhir.instance.model.*;
 
 import javax.xml.datatype.XMLGregorianCalendar;
+import java.util.ArrayList;
 import java.util.List;
 
-public class LocationTransformer {
-    public final static String LOCATIONTYPE_EXTENSION_URL = "http://www.e-mis.com/emisopen/extension/LocationType";
-    public final static String LOCATIONTYPE_SYSTEM = "http://www.e-mis.com/emisopen/LocationType";
-
-    public static void transform(FhirContainer container, OpenHR001AdminDomain adminDomain) throws TransformException
+public class LocationTransformer
+{
+    public static List<Location> transform(OpenHR001AdminDomain adminDomain) throws TransformException
     {
-        for (OpenHR001Location source: adminDomain.getLocation()) {
-            container.addResource(createLocation(adminDomain, source));
-        }
+        ArrayList<Location> locations = new ArrayList<>();
+
+        for (OpenHR001Location source: adminDomain.getLocation())
+            locations.add(transform(source, adminDomain));
+
+        return locations;
     }
 
-	public static Location transform(OpenHR001Location source) throws SourceDocumentInvalidException, TransformFeatureNotSupportedException {
+	public static Location transform(OpenHR001Location source, OpenHR001AdminDomain adminDomain) throws TransformException
+    {
 		OpenHRHelper.ensureDboNotDelete(source);
 
 		Location target = new Location();
@@ -41,16 +42,14 @@ public class LocationTransformer {
 
 		addLocationTypeExtension(source.getLocationType(), target);
 
+        if (adminDomain != null)
+            target.setManagingOrganization(createOrganisationReference(adminDomain.getOrganisation(), source.getId()));
+
 		return target;
 	}
 
-    private static Location createLocation(OpenHR001AdminDomain adminDomain, OpenHR001Location source) throws SourceDocumentInvalidException, TransformFeatureNotSupportedException {
-        Location target = transform(source);
-        target.setManagingOrganization(createOrganisationReference(adminDomain.getOrganisation(), source.getId()));
-        return target;
-    }
-
-    private static void addTelecoms(List<DtContact> sourceContacts, Location target) throws TransformFeatureNotSupportedException {
+    private static void addTelecoms(List<DtContact> sourceContacts, Location target) throws TransformException
+    {
         if (sourceContacts == null)
             return;
 
@@ -60,27 +59,31 @@ public class LocationTransformer {
         }
     }
 
-    private static void addAddress(DtAddress sourceAddress, Location target) throws TransformFeatureNotSupportedException {
+    private static void addAddress(DtAddress sourceAddress, Location target) throws TransformException
+    {
         if (sourceAddress == null)
             return;
 
         target.setAddress(AddressConverter.convert(sourceAddress));
     }
 
-    private static Reference createParentReference(String parentLocationId) {
+    private static Reference createParentReference(String parentLocationId)
+    {
         if (StringUtils.isBlank(parentLocationId))
             return null;
 
         return ReferenceHelper.createReference(ResourceType.Location, parentLocationId);
     }
 
-    private static Location.LocationStatus convertCloseDateToStatus(XMLGregorianCalendar closeDate) {
+    private static Location.LocationStatus convertCloseDateToStatus(XMLGregorianCalendar closeDate)
+    {
         return closeDate == null
             ? Location.LocationStatus.ACTIVE
             : Location.LocationStatus.INACTIVE;
     }
 
-    private static Reference createOrganisationReference(List<OpenHR001Organisation> organisations, String locationId) throws SourceDocumentInvalidException, TransformFeatureNotSupportedException {
+    private static Reference createOrganisationReference(List<OpenHR001Organisation> organisations, String locationId) throws TransformException
+    {
         if (organisations == null)
             return null;
 
@@ -95,15 +98,16 @@ public class LocationTransformer {
         return ReferenceHelper.createReference(ResourceType.Organization, organisationWithLocationMatch.getId());
     }
 
-    private static void addLocationTypeExtension(OpenHR001LocationType locationType, Location target) {
+    private static void addLocationTypeExtension(OpenHR001LocationType locationType, Location target)
+    {
         if (locationType == null)
             return;
 
         target.addExtension(new Extension()
-                .setUrl(LOCATIONTYPE_EXTENSION_URL)
+                .setUrl(FhirUris.LOCATIONTYPE_EXTENSION_URL)
                 .setValue(new CodeableConcept()
                                 .addCoding(new Coding()
-                                                .setSystem(LOCATIONTYPE_SYSTEM)
+                                                .setSystem(FhirUris.LOCATIONTYPE_SYSTEM)
                                                 .setDisplay(locationType.getDisplayName())
                                 )
                 )

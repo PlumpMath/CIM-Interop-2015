@@ -1,5 +1,6 @@
 package org.endeavourhealth.cim.transform.openhr.fromfhir;
 
+import org.endeavourhealth.cim.transform.common.FhirUris;
 import org.endeavourhealth.cim.transform.common.ReferenceHelper;
 import org.endeavourhealth.cim.transform.common.TransformHelper;
 import org.endeavourhealth.cim.transform.common.valueSets.TaskStatusCode;
@@ -51,11 +52,11 @@ public class TaskTransformer {
 					&& ((CodeableConcept)extension.getValue()).hasCoding()
 					&& ((CodeableConcept)extension.getValue()).getCoding().size() > 0) {
 				Coding coding = ((CodeableConcept)extension.getValue()).getCoding().get(0);
-				if (org.endeavourhealth.cim.transform.openhr.tofhir.admin.TaskTransformer.TASKTYPE_EXTENSION_URL.equals(extension.getUrl()))
+				if (FhirUris.TASKTYPE_EXTENSION_URL.equals(extension.getUrl()))
 					targetTask.setTaskType(fromFhirTaskType(coding.getCode(), coding.getDisplay()));
-				if (org.endeavourhealth.cim.transform.openhr.tofhir.admin.TaskTransformer.TASKPRIORITY_EXTENSION_URL.equals(extension.getUrl()))
+				if (FhirUris.TASKPRIORITY_EXTENSION_URL.equals(extension.getUrl()))
 					targetTask.setPriority(fromFhirTaskPriority(coding.getCode()));
-				if (org.endeavourhealth.cim.transform.openhr.tofhir.admin.TaskTransformer.TASKSTATUS_EXTENSION_URL.equals(extension.getUrl()))
+				if (FhirUris.TASKSTATUS_EXTENSION_URL.equals(extension.getUrl()))
 					targetTask.setStatus(fromFhirTaskStatus(coding.getCode()));
 			}
 		}
