@@ -1,4 +1,4 @@
-package org.endeavourhealth.cim.transform.openhr;
+package org.endeavourhealth.cim.transform;
 
 import org.endeavourhealth.cim.transform.common.BundleProperties;
 import org.endeavourhealth.cim.transform.common.TransformHelper;

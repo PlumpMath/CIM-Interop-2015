@@ -3,16 +3,16 @@ package org.endeavourhealth.cim.dataManager.emis;
 import org.endeavourhealth.cim.camel.exceptions.InvalidParamException;
 import org.endeavourhealth.cim.dataManager.Registry;
 import org.endeavourhealth.cim.camel.exceptions.InvalidInternalIdentifier;
+import org.endeavourhealth.cim.transform.EmisOpenTransformer;
+import org.endeavourhealth.cim.transform.OpenHRTransformer;
 import org.endeavourhealth.cim.transform.common.BundleProperties;
 import org.endeavourhealth.cim.camel.exceptions.NotFoundException;
 import org.endeavourhealth.cim.repository.utils.TextUtils;
 import org.endeavourhealth.cim.dataManager.IDataManager;
 import org.endeavourhealth.cim.camel.helpers.FhirFilterHelper;
-import org.endeavourhealth.cim.transform.EmisTransformer;
 import org.endeavourhealth.cim.transform.common.ReferenceHelper;
 import org.hl7.fhir.instance.formats.JsonParser;
 import org.hl7.fhir.instance.model.*;
-import org.omg.CORBA.DynAnyPackage.Invalid;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -21,7 +21,8 @@ import java.util.stream.Collectors;
 public class EmisDataManager implements IDataManager {
 
 	protected EmisDataAdapter _emisDataAdapter = new EmisDataAdapter();
-	private final EmisTransformer _emisTransformer = new EmisTransformer();
+	private final EmisOpenTransformer _emisOpenTransformer = new EmisOpenTransformer();
+	private final OpenHRTransformer _openHRTransformer = new OpenHRTransformer();
 
 	/* administrative */
 
@@ -40,7 +41,7 @@ public class EmisDataManager implements IDataManager {
 		String organisationXml = _emisDataAdapter.getOrganisationInformation(odsCode);
 		BundleProperties bundleProperties = getBundleProperties(odsCode);
 
-		Bundle bundle = _emisTransformer.eopenToFhirScheduleBundle(bundleProperties, schedulesXml, organisationXml);
+		Bundle bundle = _emisOpenTransformer.toFhirScheduleBundle(bundleProperties, schedulesXml, organisationXml);
 		bundle = FhirFilterHelper.filterScheduleByPractitioner(bundle, practitionerUuid);
 		return new JsonParser().composeString(bundle);
 	}
@@ -51,7 +52,7 @@ public class EmisDataManager implements IDataManager {
 		String slotsXml = _emisDataAdapter.getSlots(odsCode, scheduleId);
 		BundleProperties bundleProperties = getBundleProperties(odsCode);
 
-		Bundle bundle = _emisTransformer.eopenToFhirSlotBundle(bundleProperties, scheduleId, slotsXml);
+		Bundle bundle = _emisOpenTransformer.toFhirSlotBundle(bundleProperties, scheduleId, slotsXml);
 		return new JsonParser().composeString(bundle);
 	}
 
@@ -68,7 +69,7 @@ public class EmisDataManager implements IDataManager {
 		String organisationXml = _emisDataAdapter.getOrganisationInformation(odsCode);
 		BundleProperties bundleProperties = getBundleProperties(odsCode);
 
-		Bundle bundle = _emisTransformer.eopenToFhirAppointmentForPatientBundle(bundleProperties, patientUuid.toString(), appointmentDataInNativeFormat, organisationXml);
+		Bundle bundle = _emisOpenTransformer.toFhirAppointmentForPatientBundle(bundleProperties, patientUuid.toString(), appointmentDataInNativeFormat, organisationXml);
 		return new JsonParser().composeString(bundle);
 	}
 
@@ -105,7 +106,7 @@ public class EmisDataManager implements IDataManager {
 		}
 
 		String openHRXml = _emisDataAdapter.getUserById(odsCode, userUuid);
-		Person person = _emisTransformer.openHRToFhirPerson(openHRXml);
+		Person person = _emisOpenTransformer.toFhirPerson(openHRXml);
 
 		return new JsonParser().composeString(person);
 	}
@@ -117,7 +118,7 @@ public class EmisDataManager implements IDataManager {
 		if (TextUtils.isNullOrTrimmedEmpty(openHRXml))
 			throw new NotFoundException("");
 
-		Organization organisation = _emisTransformer.openHRToFhirOrganisation(openHRXml);
+		Organization organisation = _openHRTransformer.toFhirOrganisation(openHRXml);
 
 		return new JsonParser().composeString(organisation);
 	}
@@ -135,7 +136,7 @@ public class EmisDataManager implements IDataManager {
 		if (TextUtils.isNullOrTrimmedEmpty(openHRXml))
 			throw new NotFoundException("");
 
-		Organization organisation = _emisTransformer.openHRToFhirOrganisation(openHRXml);
+		Organization organisation = _openHRTransformer.toFhirOrganisation(openHRXml);
 
 		return new JsonParser().composeString(organisation);
 	}
@@ -154,7 +155,7 @@ public class EmisDataManager implements IDataManager {
 		if (TextUtils.isNullOrTrimmedEmpty(openHRXml))
 			throw new NotFoundException("");
 
-		Location location = _emisTransformer.openHRToFhirLocation(openHRXml);
+		Location location = _openHRTransformer.toFhirLocation(openHRXml);
 
 		return new JsonParser().composeString(location);
 	}
@@ -169,7 +170,7 @@ public class EmisDataManager implements IDataManager {
 		}
 
 		String openHRXml = _emisDataAdapter.getTaskById(odsCode, taskUuid);
-		Order task = _emisTransformer.openHRToFhirTask(openHRXml);
+		Order task = _openHRTransformer.toFhirTask(openHRXml);
 
 		return new JsonParser().composeString(task);
 	}
@@ -177,11 +178,9 @@ public class EmisDataManager implements IDataManager {
 	@Override
 	public void addTask(String odsCode, String fhirRequest) throws Exception {
 		Order task = (Order)new JsonParser().parse(fhirRequest);
-		String request = _emisTransformer.fromFhirTask(task);
-		// String response =
+		String request = _openHRTransformer.fromFhirTask(task);
+
 		_emisDataAdapter.addTask(odsCode, request);
-		// String fhirResponse = response; // _openHrTransformer.toFhirTask(response);
-		//return fhirResponse;
 	}
 
 	@Override
@@ -194,7 +193,7 @@ public class EmisDataManager implements IDataManager {
 		}
 
 		List<String> openHRXml = _emisDataAdapter.getTasksByUser(odsCode, userUuid);
-		Bundle tasks = _emisTransformer.openHRToFhirTaskBundle(openHRXml);
+		Bundle tasks = _openHRTransformer.toFhirTaskBundle(openHRXml);
 
 		return new JsonParser().composeString(tasks);
 	}
@@ -202,7 +201,7 @@ public class EmisDataManager implements IDataManager {
 	@Override
 	public String getOrganisationTasks(String odsCode) throws Exception{
 		List<String> openHRXml = _emisDataAdapter.getTasksByOrganisation(odsCode);
-		Bundle tasks = _emisTransformer.openHRToFhirTaskBundle(openHRXml);
+		Bundle tasks = _openHRTransformer.toFhirTaskBundle(openHRXml);
 
 		return new JsonParser().composeString(tasks);
 	}
@@ -217,7 +216,7 @@ public class EmisDataManager implements IDataManager {
 		}
 
 		List<String> openHRXml = _emisDataAdapter.getTasksByPatient(odsCode, patientUuid);
-		Bundle tasks = _emisTransformer.openHRToFhirTaskBundle(openHRXml);
+		Bundle tasks = _openHRTransformer.toFhirTaskBundle(openHRXml);
 
 		return new JsonParser().composeString(tasks);
 	}
@@ -247,7 +246,7 @@ public class EmisDataManager implements IDataManager {
 		if (TextUtils.isNullOrTrimmedEmpty(openHRXml))
 			return null;
 
-		return _emisTransformer.openHRToFhirBundle(getBundleProperties(odsCode), openHRXml);
+		return _openHRTransformer.toFhirBundle(getBundleProperties(odsCode), openHRXml);
 	}
 
 	@Override
@@ -283,7 +282,7 @@ public class EmisDataManager implements IDataManager {
 			if (!patientId.equals(ReferenceHelper.getReferenceId(condition.getPatient(), ResourceType.Patient)))
 				throw new InvalidParamException("patientId");
 
-			request = _emisTransformer.fromFHIRCondition(condition);
+			request = _openHRTransformer.fromFhirCondition(condition);
 		}
 		catch (InvalidParamException e1)
 		{
@@ -352,7 +351,7 @@ public class EmisDataManager implements IDataManager {
 		if (TextUtils.isNullOrTrimmedEmpty(openHRXml))
 			return null;
 
-		Patient patient = _emisTransformer.openHRToFhirPatient(openHRXml);
+		Patient patient = _openHRTransformer.toFhirPatient(openHRXml);
 		return new JsonParser().composeString(patient);
 	}
 
@@ -364,7 +363,7 @@ public class EmisDataManager implements IDataManager {
 		if (TextUtils.isNullOrTrimmedEmpty(openHRXml))
 			return null;
 
-		Patient patient = _emisTransformer.openHRToFhirPatient(openHRXml);
+		Patient patient = _openHRTransformer.toFhirPatient(openHRXml);
 		return new JsonParser().composeString(patient);
 	}
 
@@ -373,7 +372,7 @@ public class EmisDataManager implements IDataManager {
 
 		List<String> openHRXml = _emisDataAdapter.tracePatientByDemographics(surname, dateOfBirth, gender, forename, postcode);
 
-		Bundle bundle = _emisTransformer.openHRToFhirPersonBundle(openHRXml);
+		Bundle bundle = _openHRTransformer.toFhirPatientBundle(openHRXml, true);
 		return new JsonParser().composeString(bundle);
 	}
 
@@ -382,7 +381,7 @@ public class EmisDataManager implements IDataManager {
 
 		List<String> openHRXml = _emisDataAdapter.tracePatientByNhsNumber(nhsNumber);
 
-		Bundle bundle = _emisTransformer.openHRToFhirPersonBundle(openHRXml);
+		Bundle bundle = _openHRTransformer.toFhirPatientBundle(openHRXml, true);
 		return new JsonParser().composeString(bundle);
 	}
 
@@ -400,7 +399,7 @@ public class EmisDataManager implements IDataManager {
 	public String getChangedPatients(String odsCode, Date date) throws Exception {
 		List<String> openHRXml = _emisDataAdapter.getChangedPatients(odsCode, date);
 
-		Bundle bundle = _emisTransformer.openHRToFhirPatientBundle(openHRXml);
+		Bundle bundle = _openHRTransformer.toFhirPatientBundle(openHRXml, false);
 		return new JsonParser().composeString(bundle);
 	}
 

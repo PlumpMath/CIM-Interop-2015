@@ -1,6 +1,10 @@
-package org.endeavourhealth.cim.transform.emisopen;
+package org.endeavourhealth.cim.transform;
 
 import org.endeavourhealth.cim.transform.common.exceptions.TransformException;
+import org.endeavourhealth.cim.transform.emisopen.AppointmentTransformer;
+import org.endeavourhealth.cim.transform.emisopen.ScheduleTransformer;
+import org.endeavourhealth.cim.transform.emisopen.SlotTransformer;
+import org.endeavourhealth.cim.transform.emisopen.UserTransformer;
 import org.endeavourhealth.cim.transform.schemas.emisopen.eomappointmentsessions.AppointmentSessionList;
 import org.endeavourhealth.cim.transform.schemas.emisopen.eomslotsforsession.SlotListStruct;
 import org.endeavourhealth.cim.transform.schemas.emisopen.eomuserdetails.UserDetails;
@@ -15,8 +19,8 @@ import org.hl7.fhir.instance.model.Resource;
 
 import java.util.List;
 
-public class EmisOpenTransformer {
-
+public class EmisOpenTransformer
+{
     public Bundle toFhirScheduleBundle(BundleProperties bundleProperties, String eopenSchedulesXml, String eopenOrganisationXml) throws TransformException
     {
 
@@ -27,16 +31,16 @@ public class EmisOpenTransformer {
         return BundleHelper.createBundle(bundleProperties, resources);
     }
 
-    public Bundle toFhirSlotBundle(BundleProperties bundleProperties, String scheduleId, String eopenSlotsXml) throws TransformException {
-
+    public Bundle toFhirSlotBundle(BundleProperties bundleProperties, String scheduleId, String eopenSlotsXml) throws TransformException
+    {
         SlotListStruct slotListStruct = TransformHelper.unmarshall(eopenSlotsXml, SlotListStruct.class);
 
         List<Resource> resources = SlotTransformer.transformToSlotResources(scheduleId, slotListStruct);
         return BundleHelper.createBundle(bundleProperties, resources);
     }
 
-    public Bundle toFhirAppointmentForPatientBundle(BundleProperties bundleProperties, String patientId, String eopenAppointmentsXml, String organisationXml) throws TransformException {
-
+    public Bundle toFhirAppointmentForPatientBundle(BundleProperties bundleProperties, String patientId, String eopenAppointmentsXml, String organisationXml) throws TransformException
+    {
         PatientAppointmentList patientAppointmentList = TransformHelper.unmarshall(eopenAppointmentsXml, PatientAppointmentList.class);
         OrganisationInformation organisationInformation = TransformHelper.unmarshall(organisationXml, OrganisationInformation.class);
 
@@ -45,9 +49,9 @@ public class EmisOpenTransformer {
 
     }
 
-	public Person toFhirPerson(String eopenMedicalRecordXml) throws TransformException {
+	public Person toFhirPerson(String eopenMedicalRecordXml) throws TransformException
+    {
 		UserDetails userDetails = TransformHelper.unmarshall(eopenMedicalRecordXml, UserDetails.class);
-		Person person = UserTransformer.transformToPersonResource(userDetails);
-		return person;
+		return UserTransformer.transformToPersonResource(userDetails);
 	}
 }
