@@ -57,8 +57,11 @@ public class OrganisationTransformer
         target.setName(source.getName());
         target.setType(new CodeableConcept().setText(source.getOrganisationType().getDisplayName()));
 
+        if (!StringUtils.isBlank(source.getParentOrganisation()))
+            target.setPartOf(ReferenceHelper.createReference(ResourceType.Organization, source.getParentOrganisation()));
+
         if (!StringUtils.isBlank(source.getMainLocation()))
-            target.addExtension(TransformHelper.createSimpleExtension(FhirUris.EXTENSION_URI_LOCATION, ReferenceHelper.createReference(ResourceType.Location, source.getMainLocation())));
+            target.addExtension(TransformHelper.createSimpleExtension(FhirUris.EXTENSION_URI_MAINLOCATION, ReferenceHelper.createReference(ResourceType.Location, source.getMainLocation())));
 
 		return target;
 	}
