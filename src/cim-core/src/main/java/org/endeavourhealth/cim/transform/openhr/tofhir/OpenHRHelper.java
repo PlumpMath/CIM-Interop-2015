@@ -2,7 +2,7 @@ package org.endeavourhealth.cim.transform.openhr.tofhir;
 
 import org.endeavourhealth.cim.transform.common.exceptions.TransformException;
 import org.endeavourhealth.cim.transform.schemas.openhr.*;
-import org.endeavourhealth.cim.transform.common.FhirConstants;
+import org.endeavourhealth.cim.transform.common.FhirUris;
 import org.endeavourhealth.cim.transform.common.StreamExtension;
 import org.endeavourhealth.cim.transform.common.exceptions.SourceDocumentInvalidException;
 import org.endeavourhealth.cim.transform.common.exceptions.TransformFeatureNotSupportedException;
@@ -214,7 +214,7 @@ public class OpenHRHelper
         switch (openHRType)
         {
             case NHS:
-                return FhirConstants.CODE_SYSTEM_NHSNUMBER;
+                return FhirUris.IDENTIFIER_SYSTEM_NHSNUMBER;
             case ONHS:
                 return "http://fhir.endeavourhealth.org/identifier#oldnhsnumber";
             case CHI:

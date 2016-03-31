@@ -55,8 +55,8 @@ public class OpenHRTransformer
 
 	public Organization toFhirOrganisation(String openHROrganisationXml) throws TransformException
     {
-		OpenHR001Organisation openHR = TransformHelper.unmarshall(openHROrganisationXml, OpenHR001Organisation.class);
-		return OrganisationTransformer.transform(openHR);
+		OpenHR001Organisation openHROrganisation = TransformHelper.unmarshall(openHROrganisationXml, OpenHR001Organisation.class);
+		return OrganisationTransformer.transform(openHROrganisation);
 	}
 
 	public Location toFhirLocation(String openHRLocationXml) throws TransformException

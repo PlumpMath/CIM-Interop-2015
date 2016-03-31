@@ -8,7 +8,7 @@ import org.endeavourhealth.cim.camel.helpers.ExchangeHelper;
 import org.endeavourhealth.cim.camel.exceptions.InvalidParamException;
 import org.endeavourhealth.cim.camel.helpers.TokenSearchParameter;
 import org.endeavourhealth.cim.repository.utils.TextUtils;
-import org.endeavourhealth.cim.transform.common.FhirConstants;
+import org.endeavourhealth.cim.transform.common.FhirUris;
 
 import java.util.Date;
 
@@ -31,7 +31,7 @@ public class TracePersonProcessor implements org.apache.camel.Processor {
 				throw new InvalidParamException("Invalid parameter combination");
 
 			if (!TextUtils.isNullOrTrimmedEmpty(identifier.getSystem()))
-				if (!identifier.getSystem().equals(FhirConstants.CODE_SYSTEM_NHSNUMBER))
+				if (!identifier.getSystem().equals(FhirUris.IDENTIFIER_SYSTEM_NHSNUMBER))
 					throw new InvalidParamException("Identifier code system not recognised");
 
 			if (!NhsNumberValidator.IsValidNhsNumber(identifier.getCode()))

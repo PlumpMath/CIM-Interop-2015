@@ -1,125 +1,55 @@
 package org.endeavourhealth.cim.transform.openhr.tofhir.admin;
 
 import org.apache.commons.lang3.StringUtils;
+import org.endeavourhealth.cim.transform.common.FhirUris;
+import org.endeavourhealth.cim.transform.common.TransformHelper;
 import org.endeavourhealth.cim.transform.common.exceptions.TransformException;
 import org.endeavourhealth.cim.transform.common.ReferenceHelper;
-import org.endeavourhealth.cim.transform.common.StreamExtension;
-import org.endeavourhealth.cim.transform.common.exceptions.SourceDocumentInvalidException;
-import org.endeavourhealth.cim.transform.common.exceptions.TransformFeatureNotSupportedException;
-import org.endeavourhealth.cim.transform.openhr.tofhir.FhirContainer;
 import org.endeavourhealth.cim.transform.openhr.tofhir.OpenHRHelper;
 import org.endeavourhealth.cim.transform.schemas.openhr.*;
 import org.hl7.fhir.instance.model.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class OrganisationTransformer {
-	public static void transform(FhirContainer container, OpenHR001AdminDomain adminDomain) throws TransformException
+public class OrganisationTransformer
+{
+	public static List<Organization> transform(List<OpenHR001Organisation> sources) throws TransformException
     {
-        for (OpenHR001Organisation source: adminDomain.getOrganisation()) {
-            container.addResource(createOrganisation(adminDomain, source));
-        }
+        ArrayList<Organization> organizations = new ArrayList<>();
+
+        for (OpenHR001Organisation source: sources)
+            organizations.add(transform(source));
+
+        return organizations;
     }
 
-	public static Organization transform(OpenHR001Organisation source) throws TransformFeatureNotSupportedException, SourceDocumentInvalidException {
+	public static Organization transform(OpenHR001Organisation source) throws TransformException
+    {
 		OpenHRHelper.ensureDboNotDelete(source);
+
 		Organization target = new Organization();
-		target.setId(source.getId());
-		addIdentifiers(source, target);
-		target.setName(source.getName());
-		target.setType(convertOrganisationType(source));
-		target.setActive(source.getCloseDate() == null);
+
+        target.setId(source.getId());
+        target.setMeta(new Meta().addProfile(FhirUris.PROFILE_URI_ORGANIZATION));
+
+        if (StringUtils.isNotBlank(source.getNationalPracticeCode()))
+            target.addIdentifier(TransformHelper.createIdentifier(FhirUris.IDENTIFIER_SYSTEM_ODS_CODE, source.getNationalPracticeCode()));
+
+        if (source.getCdb() != null)
+            target.addIdentifier(TransformHelper.createIdentifier(FhirUris.IDENTIFIER_SYSTEM_EMIS_CDB, source.getCdb().toString()));
+
+        target.setActive(source.getCloseDate() == null);
+
+        if (source.getOpenDate() != null)
+            target.getActiveElement().addExtension(TransformHelper.createSimpleExtension(FhirUris.EXTENSION_URI_DATE, new DateType(TransformHelper.toDate(source.getOpenDate()))));
+
+        target.setName(source.getName());
+        target.setType(new CodeableConcept().setText(source.getOrganisationType().getDisplayName()));
+
+        if (!StringUtils.isBlank(source.getMainLocation()))
+            target.addExtension(TransformHelper.createSimpleExtension(FhirUris.EXTENSION_URI_LOCATION, ReferenceHelper.createReference(ResourceType.Location, source.getMainLocation())));
 
 		return target;
 	}
-
-    private static Organization createOrganisation(OpenHR001AdminDomain adminDomain, OpenHR001Organisation source) throws SourceDocumentInvalidException, TransformFeatureNotSupportedException {
-        Organization target = transform(source);
-
-        OpenHR001Location mainLocation = getLocation(adminDomain.getLocation(), source.getMainLocation());
-        if (mainLocation != null) {
-            addTelecoms(mainLocation.getContact(), target);
-            addAddress(mainLocation.getAddress(), target);
-        }
-
-        target.setPartOf(createParentReference(source.getParentOrganisation()));
-
-        return target;
-    }
-
-    private static void addIdentifiers(OpenHR001Organisation source, Organization target) throws SourceDocumentInvalidException {
-        // add Identifier for NationalPracticeCode(ODS)
-        String odsCode = source.getNationalPracticeCode();
-        if (StringUtils.isNotBlank(odsCode)) {
-            target.addIdentifier(new Identifier()
-                    .setSystem("ODS")
-                    .setValue(odsCode));
-        }
-
-        // add Identifier for EMIS CDB Number
-        Integer cdb = source.getCdb();
-        if (cdb != null) {
-            target.addIdentifier(new Identifier()
-                    .setSystem("urn:fhir.nhs.uk:id/LocalIdentifier")
-                    .setValue(cdb.toString()));
-        }
-    }
-
-    private static CodeableConcept convertOrganisationType(OpenHR001Organisation source) throws SourceDocumentInvalidException {
-        DtCode organisationType = source.getOrganisationType();
-
-        if (organisationType == null)
-            throw new SourceDocumentInvalidException("Missing OrganisationType from Organisation: " + source.getId());
-
-        return new CodeableConcept()
-                .addCoding(new Coding()
-                                .setSystem("http://www.e-mis.com/emisopen/OrganisationType")
-                                .setCode(organisationType.getCode())
-                                .setDisplay(organisationType.getDisplayName())
-                );
-    }
-
-    private static OpenHR001Location getLocation(List<OpenHR001Location> locations, String locationId) throws SourceDocumentInvalidException, TransformFeatureNotSupportedException {
-        if (StringUtils.isBlank(locationId))
-            return null;
-
-        if (locations == null)
-            throw new SourceDocumentInvalidException("Location not found: " + locationId);
-
-        //if the location exists multiple times, then it will just throw a general exception.
-        OpenHR001Location location = locations.stream()
-                .filter(u -> u.getId().equals(locationId))
-                .collect(StreamExtension.singleOrNullCollector());
-
-        if (location == null)
-            throw new SourceDocumentInvalidException("Location not found: " + locationId);
-
-        OpenHRHelper.ensureDboNotDelete(location);
-
-        return location;
-    }
-
-    private static void addTelecoms(List<DtContact> sourceContacts, Organization target) throws TransformFeatureNotSupportedException {
-        if (sourceContacts == null)
-            return;
-
-        List<ContactPoint> telecoms = ContactPointConverter.convert(sourceContacts);
-        if (telecoms != null) {
-            telecoms.forEach(target::addTelecom);
-        }
-    }
-
-    private static void addAddress(DtAddress sourceAddress, Organization target) throws TransformFeatureNotSupportedException {
-        if (sourceAddress == null)
-            return;
-
-        target.addAddress(AddressConverter.convert(sourceAddress));
-    }
-
-    private static Reference createParentReference(String parentOrganisationId) {
-        if (StringUtils.isBlank(parentOrganisationId))
-            return null;
-
-        return ReferenceHelper.createReference(ResourceType.Organization, parentOrganisationId);
-    }
 }

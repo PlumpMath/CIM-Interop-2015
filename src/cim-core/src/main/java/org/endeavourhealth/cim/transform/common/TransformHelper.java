@@ -4,6 +4,8 @@ import org.endeavourhealth.cim.transform.common.exceptions.SerializationExceptio
 import org.endeavourhealth.cim.transform.common.exceptions.TransformException;
 import org.endeavourhealth.cim.transform.schemas.openhr.ObjectFactory;
 import org.endeavourhealth.cim.transform.schemas.openhr.OpenHR001OpenHealthRecord;
+import org.hl7.fhir.instance.model.Extension;
+import org.hl7.fhir.instance.model.Identifier;
 
 import javax.xml.bind.*;
 import javax.xml.datatype.DatatypeConfigurationException;
@@ -19,10 +21,20 @@ import java.util.GregorianCalendar;
 
 public class TransformHelper {
 
+    public static Identifier createIdentifier(String system, String value)
+    {
+        return new Identifier().setSystem(system).setValue(value);
+    }
+
+    public static Extension createSimpleExtension(String uri, org.hl7.fhir.instance.model.Type value)
+    {
+        return new Extension().setUrl(uri).setValue(value);
+    }
+
     public static Date toDate(XMLGregorianCalendar value) {
-        if (value == null) {
+        if (value == null)
             return null;
-        }
+
         return value.toGregorianCalendar().getTime();
     }
 

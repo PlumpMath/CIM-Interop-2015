@@ -1,7 +1,7 @@
 package org.endeavourhealth.cim.camel.helpers;
 
 import org.endeavourhealth.cim.transform.common.BundleHelper;
-import org.endeavourhealth.cim.transform.common.FhirConstants;
+import org.endeavourhealth.cim.transform.common.FhirUris;
 import org.endeavourhealth.cim.transform.common.ReferenceHelper;
 import org.hl7.fhir.instance.model.*;
 
@@ -73,7 +73,7 @@ public class FhirFilterHelper {
 				}
 				else {
 					for (Extension extension : schedule.getExtension())
-						if (FhirConstants.SCHEDULEADDITIONALACTOR_EXTENSION_URL.equals(extension.getUrl()))
+						if (FhirUris.EXTENSION_URL_SCHEDULEADDITIONALACTOR.equals(extension.getUrl()))
 							if (extension.getValue() instanceof Reference)
 								if (ReferenceHelper.referenceEquals((Reference)extension.getValue(), ResourceType.Practitioner, practitionerId.toString()))
 									resources.add(schedule);

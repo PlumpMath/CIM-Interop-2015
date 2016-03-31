@@ -1,7 +1,7 @@
 package org.endeavourhealth.cim.transform.openhr.tofhir.clinical;
 
 import org.apache.commons.lang3.StringUtils;
-import org.endeavourhealth.cim.transform.common.FhirConstants;
+import org.endeavourhealth.cim.transform.common.FhirUris;
 import org.endeavourhealth.cim.transform.common.exceptions.TransformFeatureNotSupportedException;
 import org.endeavourhealth.cim.transform.schemas.openhr.DtCodeQualified;
 import org.hl7.fhir.instance.model.CodeableConcept;
@@ -40,9 +40,9 @@ class CodeHelper {
     private static String convertCodeSystem(String sourceCodeSystem) throws TransformFeatureNotSupportedException {
         switch (sourceCodeSystem) {
             case "2.16.840.1.113883.2.1.6.2":
-                return FhirConstants.CODE_SYSTEM_READ2;
+                return FhirUris.CODE_SYSTEM_READ2;
             case "2.16.840.1.113883.2.1.3.2.4.15":
-                return FhirConstants.CODE_SYSTEM_SNOMED_CT;
+                return FhirUris.CODE_SYSTEM_SNOMED_CT;
             case "2.16.840.1.113883.2.1.6.3":
                 return "http://www.e-mis.com/emisopen/emis_snomed";
             case "EMISPREPARATION":

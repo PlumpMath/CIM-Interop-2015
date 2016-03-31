@@ -1,7 +1,7 @@
 package org.endeavourhealth.cim.transform.openhr.tofhir.clinical;
 
 import org.apache.commons.lang3.StringUtils;
-import org.endeavourhealth.cim.transform.common.FhirConstants;
+import org.endeavourhealth.cim.transform.common.FhirUris;
 import org.endeavourhealth.cim.transform.common.ReferenceHelper;
 import org.endeavourhealth.cim.transform.common.StreamExtension;
 import org.endeavourhealth.cim.transform.common.TransformHelper;
@@ -105,7 +105,7 @@ class EncounterTransformer {
     private static CodeableConcept convertType(OpenHR001LocationType sourceLocationType) {
         return new CodeableConcept()
                 .addCoding(new Coding()
-                                .setSystem(FhirConstants.CODE_SYSTEM_SNOMED_CT)
+                                .setSystem(FhirUris.CODE_SYSTEM_SNOMED_CT)
                                 .setCode(sourceLocationType.getCode())
                                 .setDisplay(sourceLocationType.getDisplayName())
                 );
@@ -145,7 +145,7 @@ class EncounterTransformer {
             return null;
 
         Duration target = new Duration();
-        target.setSystem(FhirConstants.CODE_SYSTEM_SNOMED_CT);
+        target.setSystem(FhirUris.CODE_SYSTEM_SNOMED_CT);
         target.setUnit("minutes");
         target.setCode("258701004");
         target.setValue(new BigDecimal(sourceDuration.getValue()));
@@ -219,7 +219,7 @@ class EncounterTransformer {
                 Composition.SectionComponent categorySection = new Composition.SectionComponent()
                         .setCode(new CodeableConcept()
                                 .addCoding(new Coding()
-                                        .setSystem(FhirConstants.CODE_SYSTEM_SNOMED_CT)
+                                        .setSystem(FhirUris.CODE_SYSTEM_SNOMED_CT)
                                         .setDisplay(sourceSection.getHeading().getDisplayName())
                                         .setCode(sourceSection.getHeading().getCode())));
 
@@ -286,7 +286,7 @@ class EncounterTransformer {
         if (topicCode == null) {
             topicCode = new CodeableConcept()
                     .addCoding(new Coding()
-                            .setSystem(FhirConstants.CODE_SYSTEM_SNOMED_CT)
+                            .setSystem(FhirUris.CODE_SYSTEM_SNOMED_CT)
                             .setDisplay(DEFAULT_TOPIC_DISPLAY)
                             .setCode(DEFAULT_TOPIC_CODE));
         }
@@ -372,12 +372,12 @@ class EncounterTransformer {
             case "109341000000100": // GP to GP communication transaction
             case "24751000000101": // Nursing Home Visit Note
             case "25811000000106": // OOH Attendance Note
-                return new Coding().setSystem(FhirConstants.CODE_SYSTEM_SNOMED_CT).setDisplay(locationType.getDisplayName()).setCode(locationType.getCode());
+                return new Coding().setSystem(FhirUris.CODE_SYSTEM_SNOMED_CT).setDisplay(locationType.getDisplayName()).setCode(locationType.getCode());
             // LocationTypes mapped to valid GP2GP EhrComposition Vocabulary Code
             case "1503371000006105": //	GP Surgery
-                return new Coding().setSystem(FhirConstants.CODE_SYSTEM_SNOMED_CT).setDisplay("Surgery Consultation Note").setCode("25671000000102");
+                return new Coding().setSystem(FhirUris.CODE_SYSTEM_SNOMED_CT).setDisplay("Surgery Consultation Note").setCode("25671000000102");
             case "1809181000006108": //	Emergency consultation
-                return new Coding().setSystem(FhirConstants.CODE_SYSTEM_SNOMED_CT).setDisplay("Emergency Consultation Note").setCode("37301000000106");
+                return new Coding().setSystem(FhirUris.CODE_SYSTEM_SNOMED_CT).setDisplay("Emergency Consultation Note").setCode("37301000000106");
             case "185221008": // Seen in gynaecology clinic
             case "185229005": // Seen in diabetic clinic
             case "185242005": // Seen in asthma clinic
@@ -385,16 +385,16 @@ class EncounterTransformer {
             case "1503121000006107": //	Walk-in clinic
             case "1854731000006104": //	Seen in drug misuse clinic
             case "1839331000006101": //	Seen in chronic obstructive pulmonary disease clinic
-                return new Coding().setSystem(FhirConstants.CODE_SYSTEM_SNOMED_CT).setDisplay("Clinic Note").setCode("24731000000108");
+                return new Coding().setSystem(FhirUris.CODE_SYSTEM_SNOMED_CT).setDisplay("Clinic Note").setCode("24731000000108");
             case "185317003": // Telephone encounter
             case "1849981000006103": //	Follow up telephone consultation
             case "1849991000006100": //	First telephone consultation
             case "386473003": // Telephone follow-up
             case "401267002": // Telephone triage encounter
-                return new Coding().setSystem(FhirConstants.CODE_SYSTEM_SNOMED_CT).setDisplay("Telephone Consultation").setCode("24681000000104");
+                return new Coding().setSystem(FhirUris.CODE_SYSTEM_SNOMED_CT).setDisplay("Telephone Consultation").setCode("24681000000104");
             default:
                 //A composition with a name that is not the same as any specified composition name. The originalText element specifies a title for the composition.
-                return new Coding().setSystem(FhirConstants.CODE_SYSTEM_SNOMED_CT).setDisplay("Other Report").setCode("24591000000103");
+                return new Coding().setSystem(FhirUris.CODE_SYSTEM_SNOMED_CT).setDisplay("Other Report").setCode("24591000000103");
         }
     }
 

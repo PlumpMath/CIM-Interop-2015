@@ -13,7 +13,7 @@ public class AdminDomainTransformer {
         if (adminDomain == null)
             return;
 
-        OrganisationTransformer.transform(container, adminDomain);
+        container.addResources(OrganisationTransformer.transform(adminDomain.getOrganisation()));
         LocationTransformer.transform(container, adminDomain);
         HealthcareServiceTransformer.transform(container, adminDomain);
         PractitionerTransformer.transform(container, adminDomain);

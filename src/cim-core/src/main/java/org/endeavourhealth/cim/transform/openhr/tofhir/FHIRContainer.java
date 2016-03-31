@@ -12,6 +12,12 @@ public class FhirContainer
     private final Map<String, Resource> _resourceMap = new HashMap<>();
     private final Map<String, OpenHR001Encounter> _eventEncounterMap = new HashMap<>();
 
+    public <T extends Resource> void addResources(List<T> resources)
+    {
+        for (T resource : resources)
+            addResource(resource);
+    }
+
     public void addResource(Resource resource) {
         _resourceMap.put(resource.getId(), resource);
         _resources.add(resource);
