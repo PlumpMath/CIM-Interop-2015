@@ -3,7 +3,7 @@ package org.endeavourhealth.cim.transform;
 import org.endeavourhealth.cim.transform.common.BundleProperties;
 import org.endeavourhealth.cim.transform.common.TransformHelper;
 import org.endeavourhealth.cim.transform.common.exceptions.TransformException;
-import org.endeavourhealth.cim.transform.openhr.FromFHIRTransformer;
+import org.endeavourhealth.cim.transform.openhr.fromfhir.FromFhirTransformer;
 import org.endeavourhealth.cim.transform.openhr.tofhir.FhirContainer;
 import org.endeavourhealth.cim.transform.openhr.tofhir.admin.*;
 import org.endeavourhealth.cim.transform.openhr.tofhir.clinical.HealthDomainTransformer;
@@ -86,7 +86,7 @@ public class OpenHRTransformer
 
     public String fromFhirTask(Order fhirTask) throws TransformException
     {
-		FromFHIRTransformer transformer = new FromFHIRTransformer();
+		FromFhirTransformer transformer = new FromFhirTransformer();
 		OpenHR001OpenHealthRecord openHR = transformer.transformFromTask(fhirTask);
 
         return TransformHelper.marshall(new ObjectFactory().createOpenHealthRecord(openHR));
@@ -94,7 +94,7 @@ public class OpenHRTransformer
 
     public String fromFhirCondition(Condition fhirCondition) throws TransformException
     {
-        FromFHIRTransformer transformer = new FromFHIRTransformer();
+        FromFhirTransformer transformer = new FromFhirTransformer();
         OpenHR001OpenHealthRecord openHR = transformer.transformFromCondition(fhirCondition);
 
         return TransformHelper.marshall(new ObjectFactory().createOpenHealthRecord(openHR));

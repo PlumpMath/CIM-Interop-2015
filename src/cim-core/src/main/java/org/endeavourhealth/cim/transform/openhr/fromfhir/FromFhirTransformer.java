@@ -1,4 +1,4 @@
-package org.endeavourhealth.cim.transform.openhr;
+package org.endeavourhealth.cim.transform.openhr.fromfhir;
 
 import org.endeavourhealth.cim.transform.common.exceptions.SourceDocumentInvalidException;
 import org.endeavourhealth.cim.transform.common.exceptions.TransformException;
@@ -14,7 +14,8 @@ import javax.xml.datatype.DatatypeConfigurationException;
 import java.util.Date;
 import java.util.UUID;
 
-public class FromFHIRTransformer {
+public class FromFhirTransformer
+{
     public OpenHR001OpenHealthRecord transformFromCondition(Condition condition) throws TransformException {
         OpenHRContainer container = new OpenHRContainer();
         ConditionTransformer.transform(container, condition);
