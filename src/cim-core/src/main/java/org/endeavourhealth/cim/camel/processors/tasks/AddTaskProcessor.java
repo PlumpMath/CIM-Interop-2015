@@ -1,19 +1,21 @@
-package org.endeavourhealth.cim.camel.processors.administrative;
+package org.endeavourhealth.cim.camel.processors.tasks;
 
 import org.endeavourhealth.cim.camel.helpers.CIMHeaderKey;
+import org.endeavourhealth.cim.dataManager.DataManagerFactory;
 import org.endeavourhealth.cim.dataManager.IDataManager;
 import org.apache.camel.Exchange;
 import org.endeavourhealth.cim.camel.helpers.ExchangeHelper;
-import org.endeavourhealth.cim.dataManager.DataManagerFactory;
 
-public class GetOrganisationTasksProcessor implements org.apache.camel.Processor {
+public class AddTaskProcessor implements org.apache.camel.Processor {
 	@Override
 	public void process(Exchange exchange) throws Exception {
 		String odsCode = ExchangeHelper.getInHeaderString(exchange, CIMHeaderKey.DestinationOdsCode, true);
+		String taskData = ExchangeHelper.getInBodyString(exchange);
 
 		IDataManager dataManager = DataManagerFactory.getDataManagerForService(odsCode);
-		String responseBody = dataManager.getOrganisationTasks(odsCode);
+		dataManager.addTask(odsCode, taskData);
 
-		ExchangeHelper.setInBodyString(exchange, responseBody);
+		// ExchangeHelper.setInBodyString(exchange, responseBody);
+
 	}
 }

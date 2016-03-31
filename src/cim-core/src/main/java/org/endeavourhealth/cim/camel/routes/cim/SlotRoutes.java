@@ -1,8 +1,8 @@
 package org.endeavourhealth.cim.camel.routes.cim;
 
-import org.endeavourhealth.cim.camel.processors.administrative.BookSlotProcessor;
-import org.endeavourhealth.cim.camel.processors.administrative.CancelSlotProcessor;
-import org.endeavourhealth.cim.camel.processors.administrative.GetSlotsProcessor;
+import org.endeavourhealth.cim.camel.processors.appointments.BookSlotProcessor;
+import org.endeavourhealth.cim.camel.processors.appointments.CancelSlotProcessor;
+import org.endeavourhealth.cim.camel.processors.appointments.GetSlotsProcessor;
 import org.endeavourhealth.cim.camel.helpers.BaseRouteBuilder;
 
 @SuppressWarnings({"WeakerAccess", "unused"})

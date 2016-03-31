@@ -1,41 +1,36 @@
-package org.endeavourhealth.cim.camel.processors.administrative;
+package org.endeavourhealth.cim.camel.processors.appointments;
 
 import org.endeavourhealth.cim.camel.helpers.CIMHeaderKey;
-import org.endeavourhealth.cim.camel.helpers.DateSearchParameter;
 import org.endeavourhealth.cim.dataManager.DataManagerFactory;
+import org.endeavourhealth.cim.camel.helpers.DateSearchParameter;
 import org.endeavourhealth.cim.dataManager.IDataManager;
 import org.apache.camel.Exchange;
 import org.apache.camel.Processor;
-import org.endeavourhealth.cim.camel.helpers.DateUtils;
 import org.endeavourhealth.cim.camel.helpers.ExchangeHelper;
 import org.endeavourhealth.cim.camel.exceptions.BaseException;
 import org.endeavourhealth.cim.camel.exceptions.InvalidParamException;
-import org.endeavourhealth.cim.camel.exceptions.MissingParamException;
+import org.endeavourhealth.cim.camel.helpers.DateUtils;
 
 import java.util.Date;
 
-public class GetSchedulesProcessor implements Processor {
+public class GetAppointmentsProcessor implements Processor {
 
 	@SuppressWarnings("unchecked")
 	public void process(Exchange exchange) throws Exception {
 
-		String odsCode = null;
-		Date fromDate = null;
-		Date toDate = null;
-		String practitioner = null;
+		String odsCode;
+		String patientId;
+		Date fromDate;
+		Date toDate;
 
 		try {
 			odsCode = ExchangeHelper.getInHeaderString(exchange, CIMHeaderKey.DestinationOdsCode, true);
-			DateSearchParameter date = null;
+			patientId = ExchangeHelper.getInHeaderString(exchange, CIMHeaderKey.Patient, true);
 
-			if (ExchangeHelper.hasInHeader(exchange, CIMHeaderKey.ActorPractitioner))
-				practitioner = ExchangeHelper.getInHeaderString(exchange, CIMHeaderKey.ActorPractitioner, false);
+			DateSearchParameter date = null;
 
 			if (ExchangeHelper.hasInHeader(exchange, CIMHeaderKey.Date))
 				date = DateSearchParameter.Parse(ExchangeHelper.getInHeaderArray(exchange, CIMHeaderKey.Date));
-
-			if (practitioner == null && date == null)
-				throw new MissingParamException("Either actor or date, or both must be supplied.");
 
 			fromDate = (date != null) ? date.getIntervalStart() : DateUtils.DOTNET_MINIMUM_DATE;
 			toDate = (date != null) ? date.getIntervalEnd() : DateUtils.DOTNET_MAXIMUM_DATE;
@@ -48,7 +43,7 @@ public class GetSchedulesProcessor implements Processor {
 		}
 
 		IDataManager dataManager = DataManagerFactory.getDataManagerForService(odsCode);
-		String responseBody = dataManager.getSchedules(odsCode, fromDate, toDate, practitioner);
+		String responseBody = dataManager.getAppointmentsForPatient(odsCode, patientId, fromDate, toDate);
 
 		ExchangeHelper.setInBodyString(exchange, responseBody);
 	}

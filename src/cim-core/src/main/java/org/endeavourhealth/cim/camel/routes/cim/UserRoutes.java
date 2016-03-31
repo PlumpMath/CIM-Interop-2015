@@ -1,7 +1,7 @@
 package org.endeavourhealth.cim.camel.routes.cim;
 
 import org.endeavourhealth.cim.camel.processors.administrative.GetUserProcessor;
-import org.endeavourhealth.cim.camel.processors.administrative.GetUserTasksProcessor;
+import org.endeavourhealth.cim.camel.processors.tasks.GetUserTasksProcessor;
 import org.endeavourhealth.cim.camel.helpers.BaseRouteBuilder;
 
 @SuppressWarnings({"WeakerAccess", "unused"})

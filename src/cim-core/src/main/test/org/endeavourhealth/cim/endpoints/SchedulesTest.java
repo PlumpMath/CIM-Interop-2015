@@ -6,7 +6,7 @@ import org.apache.camel.ProducerTemplate;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.component.mock.MockEndpoint;
 import org.apache.camel.test.junit4.CamelTestSupport;
-import org.endeavourhealth.cim.camel.processors.administrative.GetSchedulesProcessor;
+import org.endeavourhealth.cim.camel.processors.appointments.GetSchedulesProcessor;
 import org.endeavourhealth.cim.camel.exceptions.InvalidParamException;
 import org.endeavourhealth.cim.camel.exceptions.MissingParamException;
 import org.endeavourhealth.cim.repository.domains.informationSharing.ISFManager;

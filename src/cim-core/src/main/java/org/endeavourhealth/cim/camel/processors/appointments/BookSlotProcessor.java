@@ -1,4 +1,4 @@
-package org.endeavourhealth.cim.camel.processors.administrative;
+package org.endeavourhealth.cim.camel.processors.appointments;
 
 import org.endeavourhealth.cim.dataManager.IDataManager;
 import org.apache.camel.Exchange;
@@ -10,7 +10,7 @@ import org.endeavourhealth.cim.camel.exceptions.*;
 import org.endeavourhealth.cim.dataManager.DataManagerFactory;
 import org.hl7.fhir.instance.model.Parameters;
 
-public class CancelSlotProcessor implements Processor {
+public class BookSlotProcessor implements Processor {
 
     public void process(Exchange exchange) throws Exception {
 
@@ -27,19 +27,22 @@ public class CancelSlotProcessor implements Processor {
         }
 
         IDataManager dataManager = DataManagerFactory.getDataManagerForService(odsCode);
-        String cancelSlotResponse = dataManager.cancelSlot(odsCode, slotId, patientId);
+        String bookSlotResponse = dataManager.bookSlot(odsCode, slotId, patientId);
 
-        if (cancelSlotResponse.equals("SlotNotFound"))
+        if (bookSlotResponse.equals("SlotNotFound"))
             throw new NotFoundException("Slot not found");
 
-        if (cancelSlotResponse.equals("PatientNotFound"))
+        if (bookSlotResponse.equals("PatientNotFound"))
             throw new NotFoundException("Patient not found");
 
-        if (cancelSlotResponse.equals("SlotNotBookedByThisPatient"))
-            throw new BusinessRuleException("Slot not booked by this patient");
+        if (bookSlotResponse.equals("SlotAlreadyBooked"))
+            throw new BusinessRuleConflictException("Slot already booked");
 
-        if (!cancelSlotResponse.equals("Successful"))
-            throw new UnexpectedException("Unexpected response from principal system:\r\n\r\n" + cancelSlotResponse);
+        if (bookSlotResponse.equals("SlotAlreadyBookedByThisPatient"))
+            throw new BusinessRuleException("Slot already booked by this patient");
+
+        if (!bookSlotResponse.equals("Successful"))
+            throw new UnexpectedException("Unexpected response from principal system:\r\n\r\n" + bookSlotResponse);
 
         ExchangeHelper.setInBodyString(exchange, "");
     }

@@ -1,6 +1,6 @@
 package org.endeavourhealth.cim.camel.routes.cim;
 
-import org.endeavourhealth.cim.camel.processors.administrative.GetPatientTasksProcessor;
+import org.endeavourhealth.cim.camel.processors.tasks.GetPatientTasksProcessor;
 import org.endeavourhealth.cim.camel.processors.clinical.GetFullPatientRecordProcessor;
 import org.endeavourhealth.cim.camel.processors.demographics.GetAllPatientsProcessor;
 import org.endeavourhealth.cim.camel.processors.demographics.GetDemographicPatientProcessor;
