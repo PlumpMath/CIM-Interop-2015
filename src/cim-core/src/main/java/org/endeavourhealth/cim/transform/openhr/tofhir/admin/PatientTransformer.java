@@ -4,7 +4,7 @@ import org.endeavourhealth.cim.transform.common.ReferenceHelper;
 import org.endeavourhealth.cim.transform.common.TransformHelper;
 import org.endeavourhealth.cim.transform.common.exceptions.TransformException;
 import org.endeavourhealth.cim.transform.common.exceptions.TransformFeatureNotSupportedException;
-import org.endeavourhealth.cim.transform.openhr.tofhir.ToFHIRHelper;
+import org.endeavourhealth.cim.transform.openhr.tofhir.OpenHRHelper;
 import org.hl7.fhir.instance.model.*;
 import org.hl7.fhir.instance.model.Enumerations.AdministrativeGender;
 import org.endeavourhealth.cim.transform.schemas.openhr.OpenHR001AdminDomain;
@@ -18,19 +18,19 @@ public class PatientTransformer {
 
     public static Patient transform(OpenHR001AdminDomain adminDomain) throws TransformException {
 
-        OpenHR001Patient sourcePatient = ToFHIRHelper.getPatient(adminDomain);
-        OpenHR001Person sourcePerson = ToFHIRHelper.getPerson(adminDomain.getPerson(), sourcePatient.getId());
+        OpenHR001Patient sourcePatient = OpenHRHelper.getPatient(adminDomain);
+        OpenHR001Person sourcePerson = OpenHRHelper.getPerson(adminDomain.getPerson(), sourcePatient.getId());
 
         Patient targetPatient = new Patient();
 
         targetPatient.setId(sourcePatient.getId());
 
-        List<Identifier> identifiers = ToFHIRHelper.convertIdentifiers(sourcePatient.getPatientIdentifier());
+        List<Identifier> identifiers = OpenHRHelper.convertIdentifiers(sourcePatient.getPatientIdentifier());
         if (identifiers != null) {
             identifiers.forEach(targetPatient::addIdentifier);
         }
 
-        List<HumanName> names = ToFHIRHelper.convertName(sourcePerson);
+        List<HumanName> names = OpenHRHelper.convertName(sourcePerson);
         if (names != null) names.forEach(targetPatient::addName);
 
         List<ContactPoint> telecoms = ContactPointConverter.convert(sourcePerson.getContact());
@@ -46,7 +46,7 @@ public class PatientTransformer {
         List<Address> addressList = AddressConverter.convertFromPersonAddress(sourcePerson.getAddress());
         if (addressList != null) addressList.forEach(targetPatient::addAddress);
 
-        String organisationGuid = ToFHIRHelper.getPatientOrganisationGuid(sourcePatient);
+        String organisationGuid = OpenHRHelper.getPatientOrganisationGuid(sourcePatient);
 
         targetPatient.setManagingOrganization(ReferenceHelper.createReference(ResourceType.Organization, organisationGuid));
 

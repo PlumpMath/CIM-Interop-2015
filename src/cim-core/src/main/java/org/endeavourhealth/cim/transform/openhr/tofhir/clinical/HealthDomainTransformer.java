@@ -3,14 +3,14 @@ package org.endeavourhealth.cim.transform.openhr.tofhir.clinical;
 import org.endeavourhealth.cim.transform.common.exceptions.TransformException;
 import org.endeavourhealth.cim.transform.schemas.openhr.OpenHR001Component;
 import org.endeavourhealth.cim.transform.common.exceptions.TransformFeatureNotSupportedException;
-import org.endeavourhealth.cim.transform.openhr.tofhir.FHIRContainer;
-import org.endeavourhealth.cim.transform.openhr.tofhir.ToFHIRHelper;
+import org.endeavourhealth.cim.transform.openhr.tofhir.FhirContainer;
+import org.endeavourhealth.cim.transform.openhr.tofhir.OpenHRHelper;
 import org.endeavourhealth.cim.transform.schemas.openhr.OpenHR001Encounter;
 import org.endeavourhealth.cim.transform.schemas.openhr.OpenHR001HealthDomain;
 import org.endeavourhealth.cim.transform.schemas.openhr.OpenHR001OpenHealthRecord;
 
 public class HealthDomainTransformer {
-    public static void transform(FHIRContainer container, OpenHR001OpenHealthRecord openHR) throws TransformException
+    public static void transform(FhirContainer container, OpenHR001OpenHealthRecord openHR) throws TransformException
     {
         OpenHR001HealthDomain healthDomain = openHR.getHealthDomain();
         if (healthDomain == null)
@@ -24,10 +24,10 @@ public class HealthDomainTransformer {
         EncounterTransformer.transform(container, healthDomain);
     }
 
-    private static void buildEventEncounterMap(FHIRContainer container, OpenHR001HealthDomain healthDomain) throws TransformFeatureNotSupportedException {
+    private static void buildEventEncounterMap(FhirContainer container, OpenHR001HealthDomain healthDomain) throws TransformFeatureNotSupportedException {
         for (OpenHR001Encounter encounter : healthDomain.getEncounter()) {
             for (OpenHR001Component component : encounter.getComponent()) {
-                ToFHIRHelper.ensureDboNotDelete(component);
+                OpenHRHelper.ensureDboNotDelete(component);
                 container.addEventEncounterMap(component.getEvent(), encounter);
             }
         }

@@ -4,7 +4,7 @@ import org.endeavourhealth.cim.transform.common.exceptions.TransformException;
 import org.endeavourhealth.cim.transform.schemas.openhr.OpenHR001CaseloadPatient;
 import org.endeavourhealth.cim.transform.common.StreamExtension;
 import org.endeavourhealth.cim.transform.common.exceptions.TransformFeatureNotSupportedException;
-import org.endeavourhealth.cim.transform.openhr.tofhir.FHIRContainer;
+import org.endeavourhealth.cim.transform.openhr.tofhir.FhirContainer;
 import org.endeavourhealth.cim.transform.schemas.openhr.OpenHR001AdminDomain;
 import org.endeavourhealth.cim.transform.schemas.openhr.OpenHR001Organisation;
 import org.endeavourhealth.cim.transform.schemas.openhr.OpenHR001Patient;
@@ -12,7 +12,7 @@ import org.endeavourhealth.cim.transform.schemas.openhr.OpenHR001Patient;
 import java.util.List;
 
 class HealthcareServiceTransformer {
-    public static void transform(FHIRContainer container, OpenHR001AdminDomain adminDomain) throws TransformException
+    public static void transform(FhirContainer container, OpenHR001AdminDomain adminDomain) throws TransformException
     {
 
     }

@@ -1,10 +1,9 @@
-package org.endeavourhealth.cim.transform.openhr.fromfhir.clinical;
+package org.endeavourhealth.cim.transform.openhr.fromfhir;
 
 import org.apache.commons.lang3.StringUtils;
 import org.endeavourhealth.cim.repository.utils.TextUtils;
 import org.endeavourhealth.cim.transform.common.exceptions.TransformException;
-import org.endeavourhealth.cim.transform.openhr.fromfhir.OpenHRContainer;
-import org.endeavourhealth.cim.transform.openhr.tofhir.ToFHIRHelper;
+import org.endeavourhealth.cim.transform.openhr.tofhir.OpenHRHelper;
 import org.endeavourhealth.cim.transform.schemas.openhr.*;
 import org.endeavourhealth.cim.transform.common.exceptions.SourceDocumentInvalidException;
 import org.endeavourhealth.cim.transform.common.exceptions.TransformFeatureNotSupportedException;
@@ -74,7 +73,7 @@ public class ConditionTransformer {
             effectiveTime.setValue(null);
             effectiveTime.setDatepart(VocDatePart.U);
             targetEvent.setEffectiveTime(effectiveTime);
-            targetEvent.setAvailabilityTimeStamp(ToFHIRHelper.toCalendar(new Date()));
+            targetEvent.setAvailabilityTimeStamp(OpenHRHelper.toCalendar(new Date()));
         }
 
         if (condition.getAsserter() != null)

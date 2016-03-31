@@ -6,7 +6,7 @@ import org.endeavourhealth.cim.transform.common.valueSets.TaskStatusCode;
 import org.endeavourhealth.cim.transform.common.valueSets.TaskTypeCode;
 import org.endeavourhealth.cim.transform.common.exceptions.SourceDocumentInvalidException;
 import org.endeavourhealth.cim.transform.common.exceptions.TransformFeatureNotSupportedException;
-import org.endeavourhealth.cim.transform.openhr.tofhir.ToFHIRHelper;
+import org.endeavourhealth.cim.transform.openhr.tofhir.OpenHRHelper;
 import org.endeavourhealth.cim.transform.schemas.openhr.OpenHR001PatientTask;
 import org.endeavourhealth.cim.transform.schemas.openhr.VocTaskPriority;
 import org.endeavourhealth.cim.transform.schemas.openhr.VocTaskStatus;
@@ -25,7 +25,7 @@ public class TaskTransformer {
 
 	public static Order transform(OpenHR001PatientTask source) throws SourceDocumentInvalidException, TransformFeatureNotSupportedException
 	{
-		ToFHIRHelper.ensureDboNotDelete(source);
+		OpenHRHelper.ensureDboNotDelete(source);
 
 		Order target = new Order();
 		target.setId(source.getId());

@@ -3,13 +3,16 @@ package org.endeavourhealth.cim.transform;
 import org.endeavourhealth.cim.transform.common.BundleProperties;
 import org.endeavourhealth.cim.transform.common.TransformHelper;
 import org.endeavourhealth.cim.transform.common.exceptions.TransformException;
-import org.endeavourhealth.cim.transform.openhr.fromfhir.FromFHIRTransformer;
-import org.endeavourhealth.cim.transform.openhr.tofhir.ToFHIRTransformer;
+import org.endeavourhealth.cim.transform.openhr.FromFHIRTransformer;
+import org.endeavourhealth.cim.transform.openhr.tofhir.FhirContainer;
+import org.endeavourhealth.cim.transform.openhr.tofhir.admin.*;
+import org.endeavourhealth.cim.transform.openhr.tofhir.clinical.HealthDomainTransformer;
 import org.endeavourhealth.cim.transform.schemas.openhr.*;
 import org.endeavourhealth.cim.transform.common.BundleHelper;
 import org.hl7.fhir.instance.model.*;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
@@ -19,16 +22,18 @@ public class OpenHRTransformer
     {
         OpenHR001OpenHealthRecord openHR = TransformHelper.unmarshall(openHRXml, OpenHR001OpenHealthRecord.class);
 
-        ToFHIRTransformer transformer = new ToFHIRTransformer();
-        return transformer.transformToBundle(bundleProperties, openHR);
+        FhirContainer container = new FhirContainer();
+        AdminDomainTransformer.transform(container, openHR);
+        HealthDomainTransformer.transform(container, openHR);
+
+        Date creationDate = TransformHelper.toDate(openHR.getCreationTime());
+        return BundleHelper.createBundle(Bundle.BundleType.SEARCHSET, openHR.getId(), creationDate, container.getResources());
     }
 
     public Patient toFhirPatient(String openHRXml) throws TransformException
     {
         OpenHR001OpenHealthRecord openHR = TransformHelper.unmarshall(openHRXml, OpenHR001OpenHealthRecord.class);
-
-        ToFHIRTransformer transformer = new ToFHIRTransformer();
-        return transformer.transformToPatient(openHR);
+        return PatientTransformer.transform(openHR.getAdminDomain());
     }
 
     public Bundle toFhirPatientBundle(List<String> openHRXmlList, Boolean includePersons) throws TransformException
@@ -39,12 +44,10 @@ public class OpenHRTransformer
         {
             OpenHR001OpenHealthRecord openHR = TransformHelper.unmarshall(openHRXml, OpenHR001OpenHealthRecord.class);
 
-            ToFHIRTransformer transformer = new ToFHIRTransformer();
-
             if (includePersons)
-                result.add(transformer.transformToPerson(openHR));
+                result.add(PersonTransformer.transform(openHR.getAdminDomain()));
 
-            result.add(transformer.transformToPatient(openHR));
+            result.add(PatientTransformer.transform(openHR.getAdminDomain()));
         }
 
         return BundleHelper.createBundle(Bundle.BundleType.SEARCHSET, UUID.randomUUID().toString(), result);
@@ -53,25 +56,19 @@ public class OpenHRTransformer
 	public Organization toFhirOrganisation(String openHROrganisationXml) throws TransformException
     {
 		OpenHR001Organisation openHR = TransformHelper.unmarshall(openHROrganisationXml, OpenHR001Organisation.class);
-
-		ToFHIRTransformer transformer = new ToFHIRTransformer();
-		return transformer.transformToOrganisation(openHR);
+		return OrganisationTransformer.transform(openHR);
 	}
 
 	public Location toFhirLocation(String openHRLocationXml) throws TransformException
     {
 		OpenHR001Location openHR = TransformHelper.unmarshall(openHRLocationXml, OpenHR001Location.class);
-
-		ToFHIRTransformer transformer = new ToFHIRTransformer();
-		return transformer.transformToLocation(openHR);
+		return LocationTransformer.transform(openHR);
 	}
 
 	public Order toFhirTask(String openHRPatientTaskXml) throws TransformException
     {
 		OpenHR001PatientTask openHR = TransformHelper.unmarshall(openHRPatientTaskXml, OpenHR001PatientTask.class);
-
-		ToFHIRTransformer transformer = new ToFHIRTransformer();
-		return transformer.transformToTask(openHR);
+        return TaskTransformer.transform(openHR);
 	}
 
     public Bundle toFhirTaskBundle(List<String> openHRPatientTaskXmlList) throws TransformException
@@ -81,9 +78,7 @@ public class OpenHRTransformer
         for (String openHRPatientTaskXml : openHRPatientTaskXmlList)
         {
             OpenHR001PatientTask task = TransformHelper.unmarshall(openHRPatientTaskXml, OpenHR001PatientTask.class);
-
-            ToFHIRTransformer transformer = new ToFHIRTransformer();
-            tasks.add(transformer.transformToTask(task));
+            tasks.add(TaskTransformer.transform(task));
         }
 
         return BundleHelper.createBundle(Bundle.BundleType.SEARCHSET, UUID.randomUUID().toString(), tasks);

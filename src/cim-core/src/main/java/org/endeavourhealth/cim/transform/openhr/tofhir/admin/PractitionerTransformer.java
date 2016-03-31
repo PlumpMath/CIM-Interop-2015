@@ -5,8 +5,8 @@ import org.endeavourhealth.cim.transform.common.StreamExtension;
 import org.endeavourhealth.cim.transform.common.exceptions.SourceDocumentInvalidException;
 import org.endeavourhealth.cim.transform.common.exceptions.TransformException;
 import org.endeavourhealth.cim.transform.common.exceptions.TransformFeatureNotSupportedException;
-import org.endeavourhealth.cim.transform.openhr.tofhir.FHIRContainer;
-import org.endeavourhealth.cim.transform.openhr.tofhir.ToFHIRHelper;
+import org.endeavourhealth.cim.transform.openhr.tofhir.FhirContainer;
+import org.endeavourhealth.cim.transform.openhr.tofhir.OpenHRHelper;
 import org.endeavourhealth.cim.transform.schemas.openhr.*;
 import org.hl7.fhir.instance.model.*;
 
@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 class PractitionerTransformer {
-    public static void transform(FHIRContainer container, OpenHR001AdminDomain adminDomain) throws TransformException {
+    public static void transform(FhirContainer container, OpenHR001AdminDomain adminDomain) throws TransformException {
         for (OpenHR001UserInRole userInRole: adminDomain.getUserInRole()) {
             container.addResource(createPractitioner(adminDomain, userInRole));
         }
@@ -25,10 +25,10 @@ class PractitionerTransformer {
         OpenHR001Role role = getRole(adminDomain.getRole(), userInRole.getRole());
         OpenHR001Person person = getPerson(adminDomain.getPerson(), user.getUserPerson());
 
-        ToFHIRHelper.ensureDboNotDelete(userInRole);
-        ToFHIRHelper.ensureDboNotDelete(user);
-        ToFHIRHelper.ensureDboNotDelete(role);
-        ToFHIRHelper.ensureDboNotDelete(person);
+        OpenHRHelper.ensureDboNotDelete(userInRole);
+        OpenHRHelper.ensureDboNotDelete(user);
+        OpenHRHelper.ensureDboNotDelete(role);
+        OpenHRHelper.ensureDboNotDelete(person);
 
         Practitioner practitioner = new Practitioner();
         practitioner.setId(userInRole.getId());

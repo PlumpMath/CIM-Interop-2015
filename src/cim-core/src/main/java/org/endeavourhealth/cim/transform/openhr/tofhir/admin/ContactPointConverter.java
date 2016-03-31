@@ -2,7 +2,7 @@ package org.endeavourhealth.cim.transform.openhr.tofhir.admin;
 
 import org.apache.commons.lang3.StringUtils;
 import org.endeavourhealth.cim.transform.common.exceptions.TransformFeatureNotSupportedException;
-import org.endeavourhealth.cim.transform.openhr.tofhir.ToFHIRHelper;
+import org.endeavourhealth.cim.transform.openhr.tofhir.OpenHRHelper;
 import org.endeavourhealth.cim.transform.schemas.openhr.DtContact;
 import org.endeavourhealth.cim.transform.schemas.openhr.VocContactType;
 import org.hl7.fhir.instance.model.ContactPoint;
@@ -36,7 +36,7 @@ class ContactPointConverter {
         if (value == null)
             return null;
 
-        ToFHIRHelper.ensureDboNotDelete(source);
+        OpenHRHelper.ensureDboNotDelete(source);
 
         ContactPoint contact = new ContactPoint();
         contact.setSystem(convertContactSystem(source.getContactType()));

@@ -3,12 +3,12 @@ package org.endeavourhealth.cim.transform.openhr.tofhir.clinical;
 import org.apache.commons.lang3.StringUtils;
 import org.endeavourhealth.cim.transform.common.ReferenceHelper;
 import org.endeavourhealth.cim.transform.common.exceptions.TransformException;
-import org.endeavourhealth.cim.transform.openhr.tofhir.ToFHIRHelper;
+import org.endeavourhealth.cim.transform.openhr.tofhir.OpenHRHelper;
 import org.endeavourhealth.cim.transform.schemas.openhr.*;
 import org.endeavourhealth.cim.transform.common.StreamExtension;
 import org.endeavourhealth.cim.transform.common.exceptions.SourceDocumentInvalidException;
 import org.endeavourhealth.cim.transform.common.exceptions.TransformFeatureNotSupportedException;
-import org.endeavourhealth.cim.transform.openhr.tofhir.FHIRContainer;
+import org.endeavourhealth.cim.transform.openhr.tofhir.FhirContainer;
 import org.hl7.fhir.instance.model.*;
 
 import java.util.List;
@@ -21,7 +21,7 @@ class ConditionTransformer implements ClinicalResourceTransformer {
     private final static String CONDITION_LINK_TYPE_ASSOCIATION_CODE = "has-association";
     private final static String CONDITION_LINK_TYPE_ASSOCIATION_DISPLAY = "Has association";
 
-    public Condition transform(OpenHR001HealthDomain healthDomain, FHIRContainer container, OpenHR001HealthDomain.Event source) throws TransformException
+    public Condition transform(OpenHR001HealthDomain healthDomain, FhirContainer container, OpenHR001HealthDomain.Event source) throws TransformException
     {
         OpenHR001Problem problem = getProblem(healthDomain.getProblem(), convertId(source.getId()));
 
@@ -68,7 +68,7 @@ class ConditionTransformer implements ClinicalResourceTransformer {
         return ReferenceHelper.createReference(ResourceType.Patient, sourcePatientId);
     }
 
-    private Reference getEncounter(FHIRContainer container, String eventId) {
+    private Reference getEncounter(FhirContainer container, String eventId) {
         OpenHR001Encounter encounter = container.getEncounterFromEventId(eventId);
         if (encounter == null)
             return null;
@@ -87,7 +87,7 @@ class ConditionTransformer implements ClinicalResourceTransformer {
         if (source == null)
             throw new SourceDocumentInvalidException("Invalid DateTime");
 
-        return ToFHIRHelper.convertPartialDateTimeToDateType(source);
+        return OpenHRHelper.convertPartialDateTimeToDateType(source);
     }
 
     private CodeableConcept convertCategory() throws TransformFeatureNotSupportedException {
@@ -150,7 +150,7 @@ class ConditionTransformer implements ClinicalResourceTransformer {
         }
     }
 
-    public static void buildConditionLinks(List<Condition> conditions, List<OpenHR001Problem> problems, FHIRContainer container) throws TransformException {
+    public static void buildConditionLinks(List<Condition> conditions, List<OpenHR001Problem> problems, FhirContainer container) throws TransformException {
         for (Condition targetCondition: conditions) {
             OpenHR001Problem sourceProblems = problems
                     .stream()
@@ -160,7 +160,7 @@ class ConditionTransformer implements ClinicalResourceTransformer {
         }
     }
 
-    private static void addEventLinks(Condition target, OpenHR001Problem problem, FHIRContainer container) throws SourceDocumentInvalidException {
+    private static void addEventLinks(Condition target, OpenHR001Problem problem, FhirContainer container) throws SourceDocumentInvalidException {
         if (problem.getEventLink().isEmpty())
             return;
 
@@ -172,7 +172,7 @@ class ConditionTransformer implements ClinicalResourceTransformer {
             .setValue(ReferenceHelper.createInternalReference(conditionLinkList.getId())));
     }
 
-    private static List_ createConditionLinkList(List<OpenHR001ProblemEventLink> eventLinks, FHIRContainer container) throws SourceDocumentInvalidException {
+    private static List_ createConditionLinkList(List<OpenHR001ProblemEventLink> eventLinks, FhirContainer container) throws SourceDocumentInvalidException {
         List_ conditionLinkList = new List_();
         conditionLinkList.setId("condition-links");
         conditionLinkList.setStatus(List_.ListStatus.CURRENT);
@@ -196,7 +196,7 @@ class ConditionTransformer implements ClinicalResourceTransformer {
         return conditionLinkList;
     }
 
-    private static Reference createResourceReferenceFromEvent(FHIRContainer container, String eventId) throws SourceDocumentInvalidException {
+    private static Reference createResourceReferenceFromEvent(FhirContainer container, String eventId) throws SourceDocumentInvalidException {
         // find event resource in container
         Resource resource = container.getResourceById(eventId);
         if (resource == null)

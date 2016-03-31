@@ -8,8 +8,8 @@ import org.endeavourhealth.cim.transform.common.TransformHelper;
 import org.endeavourhealth.cim.transform.common.exceptions.SourceDocumentInvalidException;
 import org.endeavourhealth.cim.transform.common.exceptions.TransformException;
 import org.endeavourhealth.cim.transform.common.exceptions.TransformFeatureNotSupportedException;
-import org.endeavourhealth.cim.transform.openhr.tofhir.FHIRContainer;
-import org.endeavourhealth.cim.transform.openhr.tofhir.ToFHIRHelper;
+import org.endeavourhealth.cim.transform.openhr.tofhir.FhirContainer;
+import org.endeavourhealth.cim.transform.openhr.tofhir.OpenHRHelper;
 import org.endeavourhealth.cim.transform.schemas.openhr.*;
 import org.hl7.fhir.instance.model.*;
 
@@ -68,14 +68,14 @@ class EncounterTransformer {
         }
     }
 
-    public static void transform(FHIRContainer container, OpenHR001HealthDomain healthDomain) throws TransformException {
+    public static void transform(FhirContainer container, OpenHR001HealthDomain healthDomain) throws TransformException {
         for (OpenHR001Encounter source: healthDomain.getEncounter()) {
             container.addResource(createEncounter(healthDomain, container, source));
         }
     }
 
-    private static Encounter createEncounter(OpenHR001HealthDomain healthDomain, FHIRContainer container, OpenHR001Encounter source) throws TransformException {
-        ToFHIRHelper.ensureDboNotDelete(source);
+    private static Encounter createEncounter(OpenHR001HealthDomain healthDomain, FhirContainer container, OpenHR001Encounter source) throws TransformException {
+        OpenHRHelper.ensureDboNotDelete(source);
 
         Encounter target = new Encounter();
         target.setId(source.getId());
@@ -122,7 +122,7 @@ class EncounterTransformer {
         if (source == null)
             throw new SourceDocumentInvalidException("Invalid DateTime");
 
-        return new Period().setEndElement(ToFHIRHelper.convertPartialDateTimeToDateTimeType(source));
+        return new Period().setEndElement(OpenHRHelper.convertPartialDateTimeToDateTimeType(source));
     }
 
     private static Reference createOrganisationReference(List<String> sourceOrganisations) throws SourceDocumentInvalidException {
@@ -188,13 +188,13 @@ class EncounterTransformer {
         }
     }
 
-    private static void addComposition(OpenHR001Encounter source, Encounter target, FHIRContainer container) throws TransformFeatureNotSupportedException, SourceDocumentInvalidException {
+    private static void addComposition(OpenHR001Encounter source, Encounter target, FhirContainer container) throws TransformFeatureNotSupportedException, SourceDocumentInvalidException {
         Composition composition = createComposition(source, container);
         if (composition != null)
             target.getContained().add(composition);
     }
 
-    private static Composition createComposition(OpenHR001Encounter source, FHIRContainer container) throws SourceDocumentInvalidException, TransformFeatureNotSupportedException {
+    private static Composition createComposition(OpenHR001Encounter source, FhirContainer container) throws SourceDocumentInvalidException, TransformFeatureNotSupportedException {
         if (source.getComponent() == null || source.getComponent().isEmpty())
             return null;
 
@@ -267,7 +267,7 @@ class EncounterTransformer {
         return pages;
     }
 
-    private static CodeableConcept getTopicCodeFromEncounterPage(EncounterPage page, FHIRContainer container) {
+    private static CodeableConcept getTopicCodeFromEncounterPage(EncounterPage page, FhirContainer container) {
         CodeableConcept topicCode = null;
         for (EncounterSection section: page.getSections()) {
             if (section.getHeading().getDisplayName().equals(PROBLEM_HEADING_TERM)) {
@@ -398,7 +398,7 @@ class EncounterTransformer {
         }
     }
 
-    private static Reference createResourceReferenceFromEvent(FHIRContainer container, String eventId) throws SourceDocumentInvalidException {
+    private static Reference createResourceReferenceFromEvent(FhirContainer container, String eventId) throws SourceDocumentInvalidException {
         // find event resource in container
         Resource resource = container.getResourceById(eventId);
         if (resource == null)

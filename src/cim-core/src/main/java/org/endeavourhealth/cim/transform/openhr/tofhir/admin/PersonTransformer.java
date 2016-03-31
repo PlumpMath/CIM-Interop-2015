@@ -2,7 +2,7 @@ package org.endeavourhealth.cim.transform.openhr.tofhir.admin;
 
 import org.endeavourhealth.cim.transform.common.ReferenceHelper;
 import org.endeavourhealth.cim.transform.common.exceptions.TransformException;
-import org.endeavourhealth.cim.transform.openhr.tofhir.ToFHIRHelper;
+import org.endeavourhealth.cim.transform.openhr.tofhir.OpenHRHelper;
 import org.endeavourhealth.cim.transform.schemas.openhr.VocSex;
 import org.endeavourhealth.cim.transform.common.TransformHelper;
 import org.endeavourhealth.cim.transform.common.exceptions.TransformFeatureNotSupportedException;
@@ -18,20 +18,20 @@ public class PersonTransformer {
     public static Person transform(OpenHR001AdminDomain adminDomain) throws TransformException
     {
 
-        OpenHR001Patient sourcePatient = ToFHIRHelper.getPatient(adminDomain);
-        OpenHR001Person sourcePerson = ToFHIRHelper.getPerson(adminDomain.getPerson(), sourcePatient.getId());
+        OpenHR001Patient sourcePatient = OpenHRHelper.getPatient(adminDomain);
+        OpenHR001Person sourcePerson = OpenHRHelper.getPerson(adminDomain.getPerson(), sourcePatient.getId());
 
         Person targetPerson = new Person();
 
         targetPerson.setId(sourcePatient.getId());
 
-        List<Identifier> identifiers = ToFHIRHelper.convertIdentifiers(sourcePatient.getPatientIdentifier());
+        List<Identifier> identifiers = OpenHRHelper.convertIdentifiers(sourcePatient.getPatientIdentifier());
 
         if (identifiers != null)
             for (Identifier identifier : identifiers)
                 targetPerson.addIdentifier(identifier);
 
-        List<HumanName> names = ToFHIRHelper.convertName(sourcePerson);
+        List<HumanName> names = OpenHRHelper.convertName(sourcePerson);
 
         for (HumanName name : names)
             targetPerson.addName(name);

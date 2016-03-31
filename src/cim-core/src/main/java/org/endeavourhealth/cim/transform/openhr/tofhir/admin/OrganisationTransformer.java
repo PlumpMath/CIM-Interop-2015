@@ -6,15 +6,15 @@ import org.endeavourhealth.cim.transform.common.ReferenceHelper;
 import org.endeavourhealth.cim.transform.common.StreamExtension;
 import org.endeavourhealth.cim.transform.common.exceptions.SourceDocumentInvalidException;
 import org.endeavourhealth.cim.transform.common.exceptions.TransformFeatureNotSupportedException;
-import org.endeavourhealth.cim.transform.openhr.tofhir.FHIRContainer;
-import org.endeavourhealth.cim.transform.openhr.tofhir.ToFHIRHelper;
+import org.endeavourhealth.cim.transform.openhr.tofhir.FhirContainer;
+import org.endeavourhealth.cim.transform.openhr.tofhir.OpenHRHelper;
 import org.endeavourhealth.cim.transform.schemas.openhr.*;
 import org.hl7.fhir.instance.model.*;
 
 import java.util.List;
 
 public class OrganisationTransformer {
-	public static void transform(FHIRContainer container, OpenHR001AdminDomain adminDomain) throws TransformException
+	public static void transform(FhirContainer container, OpenHR001AdminDomain adminDomain) throws TransformException
     {
         for (OpenHR001Organisation source: adminDomain.getOrganisation()) {
             container.addResource(createOrganisation(adminDomain, source));
@@ -22,7 +22,7 @@ public class OrganisationTransformer {
     }
 
 	public static Organization transform(OpenHR001Organisation source) throws TransformFeatureNotSupportedException, SourceDocumentInvalidException {
-		ToFHIRHelper.ensureDboNotDelete(source);
+		OpenHRHelper.ensureDboNotDelete(source);
 		Organization target = new Organization();
 		target.setId(source.getId());
 		addIdentifiers(source, target);
@@ -94,7 +94,7 @@ public class OrganisationTransformer {
         if (location == null)
             throw new SourceDocumentInvalidException("Location not found: " + locationId);
 
-        ToFHIRHelper.ensureDboNotDelete(location);
+        OpenHRHelper.ensureDboNotDelete(location);
 
         return location;
     }

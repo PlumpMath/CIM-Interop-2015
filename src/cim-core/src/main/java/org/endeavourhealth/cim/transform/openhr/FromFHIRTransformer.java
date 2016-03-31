@@ -1,10 +1,11 @@
-package org.endeavourhealth.cim.transform.openhr.fromfhir;
+package org.endeavourhealth.cim.transform.openhr;
 
 import org.endeavourhealth.cim.transform.common.exceptions.SourceDocumentInvalidException;
 import org.endeavourhealth.cim.transform.common.exceptions.TransformException;
 import org.endeavourhealth.cim.transform.common.TransformHelper;
-import org.endeavourhealth.cim.transform.openhr.fromfhir.clinical.ConditionTransformer;
-import org.endeavourhealth.cim.transform.openhr.fromfhir.admin.TaskTransformer;
+import org.endeavourhealth.cim.transform.openhr.fromfhir.ConditionTransformer;
+import org.endeavourhealth.cim.transform.openhr.fromfhir.OpenHRContainer;
+import org.endeavourhealth.cim.transform.openhr.fromfhir.TaskTransformer;
 import org.endeavourhealth.cim.transform.schemas.openhr.*;
 import org.hl7.fhir.instance.model.Condition;
 import org.hl7.fhir.instance.model.Order;

@@ -6,7 +6,8 @@ import org.hl7.fhir.instance.model.*;
 import java.util.*;
 import java.util.stream.Collectors;
 
-public class FHIRContainer {
+public class FhirContainer
+{
     private final List<Resource> _resources = new ArrayList<>();
     private final Map<String, Resource> _resourceMap = new HashMap<>();
     private final Map<String, OpenHR001Encounter> _eventEncounterMap = new HashMap<>();

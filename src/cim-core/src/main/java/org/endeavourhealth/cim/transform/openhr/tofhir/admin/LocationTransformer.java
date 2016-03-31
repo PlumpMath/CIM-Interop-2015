@@ -3,12 +3,12 @@ package org.endeavourhealth.cim.transform.openhr.tofhir.admin;
 import org.apache.commons.lang3.StringUtils;
 import org.endeavourhealth.cim.transform.common.ReferenceHelper;
 import org.endeavourhealth.cim.transform.common.exceptions.TransformException;
-import org.endeavourhealth.cim.transform.openhr.tofhir.ToFHIRHelper;
+import org.endeavourhealth.cim.transform.openhr.tofhir.OpenHRHelper;
 import org.endeavourhealth.cim.transform.schemas.openhr.*;
 import org.endeavourhealth.cim.transform.common.StreamExtension;
 import org.endeavourhealth.cim.transform.common.exceptions.SourceDocumentInvalidException;
 import org.endeavourhealth.cim.transform.common.exceptions.TransformFeatureNotSupportedException;
-import org.endeavourhealth.cim.transform.openhr.tofhir.FHIRContainer;
+import org.endeavourhealth.cim.transform.openhr.tofhir.FhirContainer;
 import org.hl7.fhir.instance.model.*;
 
 import javax.xml.datatype.XMLGregorianCalendar;
@@ -18,7 +18,7 @@ public class LocationTransformer {
     public final static String LOCATIONTYPE_EXTENSION_URL = "http://www.e-mis.com/emisopen/extension/LocationType";
     public final static String LOCATIONTYPE_SYSTEM = "http://www.e-mis.com/emisopen/LocationType";
 
-    public static void transform(FHIRContainer container, OpenHR001AdminDomain adminDomain) throws TransformException
+    public static void transform(FhirContainer container, OpenHR001AdminDomain adminDomain) throws TransformException
     {
         for (OpenHR001Location source: adminDomain.getLocation()) {
             container.addResource(createLocation(adminDomain, source));
@@ -26,7 +26,7 @@ public class LocationTransformer {
     }
 
 	public static Location transform(OpenHR001Location source) throws SourceDocumentInvalidException, TransformFeatureNotSupportedException {
-		ToFHIRHelper.ensureDboNotDelete(source);
+		OpenHRHelper.ensureDboNotDelete(source);
 
 		Location target = new Location();
 		target.setId(source.getId());

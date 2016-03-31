@@ -16,7 +16,8 @@ import javax.xml.datatype.XMLGregorianCalendar;
 import java.math.BigDecimal;
 import java.util.*;
 
-public class ToFHIRHelper {
+public class OpenHRHelper
+{
     public static UUID parseUUID(String id) throws SourceDocumentInvalidException {
         try {
             return UUID.fromString(id);
@@ -141,7 +142,7 @@ public class ToFHIRHelper {
 
         OpenHR001Patient patient = patients.get(0);
 
-        ToFHIRHelper.ensureDboNotDelete(patient);
+        OpenHRHelper.ensureDboNotDelete(patient);
 
         return patient;
     }
@@ -160,7 +161,7 @@ public class ToFHIRHelper {
         if (person == null)
             throw new SourceDocumentInvalidException("Person not found: " + personId);
 
-        ToFHIRHelper.ensureDboNotDelete(person);
+        OpenHRHelper.ensureDboNotDelete(person);
 
         return person;
     }

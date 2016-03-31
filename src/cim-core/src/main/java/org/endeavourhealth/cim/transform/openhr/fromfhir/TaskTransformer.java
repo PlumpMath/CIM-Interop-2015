@@ -1,4 +1,4 @@
-package org.endeavourhealth.cim.transform.openhr.fromfhir.admin;
+package org.endeavourhealth.cim.transform.openhr.fromfhir;
 
 import org.endeavourhealth.cim.transform.common.ReferenceHelper;
 import org.endeavourhealth.cim.transform.common.TransformHelper;

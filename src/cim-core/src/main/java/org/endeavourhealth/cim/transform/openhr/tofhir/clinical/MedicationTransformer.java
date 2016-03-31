@@ -7,13 +7,13 @@ import org.endeavourhealth.cim.transform.common.exceptions.TransformException;
 import org.endeavourhealth.cim.transform.schemas.openhr.*;
 import org.endeavourhealth.cim.transform.common.exceptions.TransformFeatureNotSupportedException;
 import org.endeavourhealth.cim.transform.common.TransformHelper;
-import org.endeavourhealth.cim.transform.openhr.tofhir.FHIRContainer;
+import org.endeavourhealth.cim.transform.openhr.tofhir.FhirContainer;
 import org.hl7.fhir.instance.model.*;
 
 import java.util.Date;
 
 class MedicationTransformer implements ClinicalResourceTransformer {
-    public MedicationOrder transform(OpenHR001HealthDomain healthDomain, FHIRContainer container, OpenHR001HealthDomain.Event source) throws TransformException
+    public MedicationOrder transform(OpenHR001HealthDomain healthDomain, FhirContainer container, OpenHR001HealthDomain.Event source) throws TransformException
     {
         MedicationOrder target = new MedicationOrder();
 
@@ -68,7 +68,7 @@ class MedicationTransformer implements ClinicalResourceTransformer {
         return ReferenceHelper.createReference(ResourceType.Practitioner, userInRoleId);
     }
 
-    private Reference getEncounter(FHIRContainer container, String eventId) {
+    private Reference getEncounter(FhirContainer container, String eventId) {
         OpenHR001Encounter encounter = container.getEncounterFromEventId(eventId);
         if (encounter == null)
             return null;

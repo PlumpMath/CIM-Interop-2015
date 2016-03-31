@@ -4,12 +4,12 @@ import org.apache.commons.lang3.StringUtils;
 import org.endeavourhealth.cim.repository.utils.TextUtils;
 import org.endeavourhealth.cim.transform.common.ReferenceHelper;
 import org.endeavourhealth.cim.transform.common.exceptions.TransformException;
-import org.endeavourhealth.cim.transform.openhr.tofhir.ToFHIRHelper;
+import org.endeavourhealth.cim.transform.openhr.tofhir.OpenHRHelper;
 import org.endeavourhealth.cim.transform.schemas.openhr.*;
 import org.endeavourhealth.cim.transform.common.exceptions.SourceDocumentInvalidException;
 import org.endeavourhealth.cim.transform.common.exceptions.TransformFeatureNotSupportedException;
 import org.endeavourhealth.cim.transform.common.TransformHelper;
-import org.endeavourhealth.cim.transform.openhr.tofhir.FHIRContainer;
+import org.endeavourhealth.cim.transform.openhr.tofhir.FhirContainer;
 import org.hl7.fhir.instance.model.*;
 
 import java.util.List;
@@ -22,7 +22,7 @@ class ObservationTransformer implements ClinicalResourceTransformer {
     private final static String EPISODICITY_SYSTEM = "urn:fhir.nhs.uk:vs/Episodicity";
 
 
-    public Resource transform(OpenHR001HealthDomain healthDomain, FHIRContainer container, OpenHR001HealthDomain.Event source) throws TransformException
+    public Resource transform(OpenHR001HealthDomain healthDomain, FhirContainer container, OpenHR001HealthDomain.Event source) throws TransformException
     {
         Observation target = new Observation();
         target.setId(source.getId());
@@ -56,7 +56,7 @@ class ObservationTransformer implements ClinicalResourceTransformer {
         if (source == null)
             throw new SourceDocumentInvalidException("Invalid DateTime");
 
-        return ToFHIRHelper.convertPartialDateTimeToDateTimeType(source);
+        return OpenHRHelper.convertPartialDateTimeToDateTimeType(source);
     }
 
     private Reference convertPatient(String sourcePatientId) throws SourceDocumentInvalidException {
@@ -72,7 +72,7 @@ class ObservationTransformer implements ClinicalResourceTransformer {
         return ReferenceHelper.createReference(ResourceType.Practitioner, userInRoleId);
     }
 
-    private Reference getEncounter(FHIRContainer container, String eventId) {
+    private Reference getEncounter(FhirContainer container, String eventId) {
         OpenHR001Encounter encounter = container.getEncounterFromEventId(eventId);
         if (encounter == null)
             return null;
@@ -213,7 +213,7 @@ class ObservationTransformer implements ClinicalResourceTransformer {
             rangeComponent.setText(sourceRange.getDescription());
         }
 
-        rangeComponent.setAge(ToFHIRHelper.convertAgeRange(sourceRange.getAgeRange()));
+        rangeComponent.setAge(OpenHRHelper.convertAgeRange(sourceRange.getAgeRange()));
 
         return rangeComponent;
     }

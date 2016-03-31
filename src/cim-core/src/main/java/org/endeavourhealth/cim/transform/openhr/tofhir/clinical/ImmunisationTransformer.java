@@ -4,15 +4,15 @@ import org.apache.commons.lang3.StringUtils;
 import org.endeavourhealth.cim.transform.common.ReferenceHelper;
 import org.endeavourhealth.cim.transform.common.exceptions.SourceDocumentInvalidException;
 import org.endeavourhealth.cim.transform.common.exceptions.TransformException;
-import org.endeavourhealth.cim.transform.openhr.tofhir.FHIRContainer;
-import org.endeavourhealth.cim.transform.openhr.tofhir.ToFHIRHelper;
+import org.endeavourhealth.cim.transform.openhr.tofhir.FhirContainer;
+import org.endeavourhealth.cim.transform.openhr.tofhir.OpenHRHelper;
 import org.endeavourhealth.cim.transform.schemas.openhr.DtDatePart;
 import org.endeavourhealth.cim.transform.schemas.openhr.OpenHR001Encounter;
 import org.endeavourhealth.cim.transform.schemas.openhr.OpenHR001HealthDomain;
 import org.hl7.fhir.instance.model.*;
 
 class ImmunisationTransformer implements ClinicalResourceTransformer {
-    public Immunization transform(OpenHR001HealthDomain healthDomain, FHIRContainer container, OpenHR001HealthDomain.Event source) throws TransformException
+    public Immunization transform(OpenHR001HealthDomain healthDomain, FhirContainer container, OpenHR001HealthDomain.Event source) throws TransformException
     {
         Immunization target = new Immunization();
         target.setId(source.getId());
@@ -29,7 +29,7 @@ class ImmunisationTransformer implements ClinicalResourceTransformer {
         if (source == null)
             throw new SourceDocumentInvalidException("Invalid DateTime");
 
-        return ToFHIRHelper.convertPartialDateTimeToDateTimeType(source);
+        return OpenHRHelper.convertPartialDateTimeToDateTimeType(source);
     }
 
     private Reference convertPatient(String sourcePatientId) throws SourceDocumentInvalidException {
@@ -45,7 +45,7 @@ class ImmunisationTransformer implements ClinicalResourceTransformer {
         return ReferenceHelper.createReference(ResourceType.Practitioner, userInRoleId);
     }
 
-    private Reference getEncounter(FHIRContainer container, String eventId) {
+    private Reference getEncounter(FhirContainer container, String eventId) {
         OpenHR001Encounter encounter = container.getEncounterFromEventId(eventId);
         if (encounter == null)
             return null;
