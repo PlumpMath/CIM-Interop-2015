@@ -83,76 +83,38 @@
     },
     "/{odsCode}/Location/{id}": {
       "get": {
-        "tags": [
-          "Administration"
-        ],
-        "summary": "Get location details",
-        "description": "Get location details by ID.",
-        "produces": [
-          "application/json"
-        ],
+        "tags": [ "Administration" ],
+        "summary": "Get location",
+        "description": "Get location by id.",
+        "produces": [ "application/json" ],
         "parameters": [
-          {
-            "$ref": "#definitions/apiKeyParameter"
-          },
-          {
-            "$ref": "#definitions/hashParameter"
-          },
-          {
-            "$ref": "#definitions/odsCodeParameter"
-          },
-          {
-            "$ref": "#definitions/locationIdParameter"
-          }
+          { "$ref": "#definitions/apiKeyParameter" },
+          { "$ref": "#definitions/hashParameter" },
+          { "$ref": "#definitions/odsCodeParameter" },
+          { "$ref": "#definitions/locationIdParameter" }
         ],
         "responses": {
-          "200": {
-            "description": "OK | <a target='_blank' href='../profiles/primarycare-location.html'>PrimaryCare-Location</a> resource"
-          },
-          "400": {
-            "$ref": "#definitions/400Response"
-          },
-          "401": {
-            "$ref": "#definitions/401Response"
-          },
-          "403": {
-            "$ref": "#definitions/403Response"
-          },
-          "404": {
-            "$ref": "#definitions/404LocationNotFoundResponse"
-          },
-          "500": {
-            "$ref": "#definitions/500Response"
-          },
-          "502": {
-            "$ref": "#definitions/502Response"
-          },
-          "504": {
-            "$ref": "#definitions/504Response"
-          }
+          "200": { "description": "OK | <a target='_blank' href='../profiles/primarycare-location.html'>PrimaryCare-Location</a> resource" },
+          "400": { "$ref": "#definitions/400Response" },
+          "401": { "$ref": "#definitions/401Response" },
+          "403": { "$ref": "#definitions/403Response" },
+          "404": { "$ref": "#definitions/404LocationNotFoundResponse" },
+          "500": { "$ref": "#definitions/500Response" },
+          "502": { "$ref": "#definitions/502Response" },
+          "504": { "$ref": "#definitions/504Response" }
         }
       }
     },
     "/{odsCode}/User/{id}": {
       "get": {
-        "tags": [
-          "Administration"
-        ],
-        "summary": "Get user details",
-        "description": "Get user details by ID.",
-        "produces": [
-          "application/json"
-        ],
+        "tags": [ "Administration" ],
+        "summary": "Get user",
+        "description": "Get user by id.",
+        "produces": [ "application/json" ],
         "parameters": [
-          {
-            "$ref": "#definitions/apiKeyParameter"
-          },
-          {
-            "$ref": "#definitions/hashParameter"
-          },
-          {
-            "$ref": "#definitions/odsCodeParameter"
-          },
+          { "$ref": "#definitions/apiKeyParameter" },
+          { "$ref": "#definitions/hashParameter" },
+          { "$ref": "#definitions/odsCodeParameter" },
           {
             "name": "id",
             "in": "path",
@@ -162,27 +124,13 @@
           }
         ],
         "responses": {
-          "200": {
-            "description": "OK | <a target='_blank' href='http://hl7.org/fhir/DSTU2/person.html'>Person</a> resource"
-          },
-          "400": {
-            "$ref": "#definitions/400Response"
-          },
-          "401": {
-            "$ref": "#definitions/401Response"
-          },
-          "403": {
-            "$ref": "#definitions/403Response"
-          },
-          "500": {
-            "$ref": "#definitions/500Response"
-          },
-          "502": {
-            "$ref": "#definitions/502Response"
-          },
-          "504": {
-            "$ref": "#definitions/504Response"
-          }
+          "200": { "description": "OK | <a target='_blank' href='http://hl7.org/fhir/DSTU2/person.html'>Person</a> resource" },
+          "400": { "$ref": "#definitions/400Response" },
+          "401": { "$ref": "#definitions/401Response" },
+          "403": { "$ref": "#definitions/403Response" },
+          "500": { "$ref": "#definitions/500Response" },
+          "502": { "$ref": "#definitions/502Response" },
+          "504": { "$ref": "#definitions/504Response" }
         }
       }
     },
