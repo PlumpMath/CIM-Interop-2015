@@ -1,9 +1,9 @@
 package org.endeavourhealth.cim.transform.openhr.tofhir.clinical;
 
-import org.endeavourhealth.cim.transform.exceptions.SourceDocumentInvalidException;
-import org.endeavourhealth.cim.transform.exceptions.TransformException;
+import org.endeavourhealth.cim.transform.common.exceptions.SourceDocumentInvalidException;
+import org.endeavourhealth.cim.transform.common.exceptions.TransformException;
 import org.endeavourhealth.cim.transform.schemas.openhr.OpenHR001Problem;
-import org.endeavourhealth.cim.transform.exceptions.TransformFeatureNotSupportedException;
+import org.endeavourhealth.cim.transform.common.exceptions.TransformFeatureNotSupportedException;
 import org.endeavourhealth.cim.transform.schemas.openhr.DtCodeQualified;
 import org.endeavourhealth.cim.transform.schemas.openhr.OpenHR001HealthDomain;
 import org.endeavourhealth.cim.transform.schemas.openhr.VocEventType;

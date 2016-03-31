@@ -1,6 +1,6 @@
 package org.endeavourhealth.cim.transform;
 
-import org.endeavourhealth.cim.transform.exceptions.TransformException;
+import org.endeavourhealth.cim.transform.common.exceptions.TransformException;
 import org.endeavourhealth.cim.transform.common.BundleProperties;
 import org.endeavourhealth.cim.transform.emisopen.EmisOpenTransformer;
 import org.endeavourhealth.cim.transform.openhr.OpenHRTransformer;
@@ -61,7 +61,7 @@ public class EmisTransformer {
 
 	public String fromFHIRCondition(Condition condition) throws TransformException {
 
-		return _openHRTransformer.fromFHIRCondition(condition);
+		return _openHRTransformer.fromFhirCondition(condition);
 	}
 
 	/* demographic */

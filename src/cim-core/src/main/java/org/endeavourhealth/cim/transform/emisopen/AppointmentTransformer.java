@@ -1,8 +1,8 @@
 package org.endeavourhealth.cim.transform.emisopen;
 
 import org.endeavourhealth.cim.transform.common.ReferenceHelper;
-import org.endeavourhealth.cim.transform.exceptions.SerializationException;
-import org.endeavourhealth.cim.transform.exceptions.TransformFeatureNotSupportedException;
+import org.endeavourhealth.cim.transform.common.exceptions.SerializationException;
+import org.endeavourhealth.cim.transform.common.exceptions.TransformFeatureNotSupportedException;
 import org.endeavourhealth.cim.transform.schemas.emisopen.eomgetpatientappointments.AppointmentStruct;
 import org.endeavourhealth.cim.transform.schemas.emisopen.eomgetpatientappointments.PatientAppointmentList;
 import org.endeavourhealth.cim.transform.schemas.emisopen.eomorganisationinformation.OrganisationInformation;

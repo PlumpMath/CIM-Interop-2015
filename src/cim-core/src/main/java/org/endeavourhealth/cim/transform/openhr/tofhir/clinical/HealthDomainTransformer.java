@@ -1,8 +1,8 @@
 package org.endeavourhealth.cim.transform.openhr.tofhir.clinical;
 
-import org.endeavourhealth.cim.transform.exceptions.TransformException;
+import org.endeavourhealth.cim.transform.common.exceptions.TransformException;
 import org.endeavourhealth.cim.transform.schemas.openhr.OpenHR001Component;
-import org.endeavourhealth.cim.transform.exceptions.TransformFeatureNotSupportedException;
+import org.endeavourhealth.cim.transform.common.exceptions.TransformFeatureNotSupportedException;
 import org.endeavourhealth.cim.transform.openhr.tofhir.FHIRContainer;
 import org.endeavourhealth.cim.transform.openhr.tofhir.ToFHIRHelper;
 import org.endeavourhealth.cim.transform.schemas.openhr.OpenHR001Encounter;

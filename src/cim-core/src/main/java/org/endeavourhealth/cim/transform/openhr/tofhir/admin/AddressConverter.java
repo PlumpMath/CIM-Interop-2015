@@ -3,7 +3,7 @@ package org.endeavourhealth.cim.transform.openhr.tofhir.admin;
 import org.apache.commons.lang3.StringUtils;
 import org.endeavourhealth.cim.transform.openhr.tofhir.ToFHIRHelper;
 import org.endeavourhealth.cim.transform.schemas.openhr.VocAddressType;
-import org.endeavourhealth.cim.transform.exceptions.TransformFeatureNotSupportedException;
+import org.endeavourhealth.cim.transform.common.exceptions.TransformFeatureNotSupportedException;
 import org.endeavourhealth.cim.transform.schemas.openhr.DtAddress;
 import org.endeavourhealth.cim.transform.schemas.openhr.OpenHR001Person;
 import org.hl7.fhir.instance.model.Address;

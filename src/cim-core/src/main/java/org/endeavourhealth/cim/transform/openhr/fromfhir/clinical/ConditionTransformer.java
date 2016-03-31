@@ -2,22 +2,20 @@ package org.endeavourhealth.cim.transform.openhr.fromfhir.clinical;
 
 import org.apache.commons.lang3.StringUtils;
 import org.endeavourhealth.cim.repository.utils.TextUtils;
-import org.endeavourhealth.cim.transform.exceptions.TransformException;
+import org.endeavourhealth.cim.transform.common.exceptions.TransformException;
 import org.endeavourhealth.cim.transform.openhr.fromfhir.OpenHRContainer;
 import org.endeavourhealth.cim.transform.openhr.tofhir.ToFHIRHelper;
 import org.endeavourhealth.cim.transform.schemas.openhr.*;
-import org.endeavourhealth.cim.transform.exceptions.SourceDocumentInvalidException;
-import org.endeavourhealth.cim.transform.exceptions.TransformFeatureNotSupportedException;
+import org.endeavourhealth.cim.transform.common.exceptions.SourceDocumentInvalidException;
+import org.endeavourhealth.cim.transform.common.exceptions.TransformFeatureNotSupportedException;
 import org.endeavourhealth.cim.transform.common.TransformHelper;
 import org.hl7.fhir.instance.model.Coding;
 import org.hl7.fhir.instance.model.Condition;
 import org.hl7.fhir.instance.model.Reference;
 
 import javax.xml.datatype.DatatypeConfigurationException;
-import javax.xml.datatype.DatatypeFactory;
 import javax.xml.datatype.XMLGregorianCalendar;
 import java.util.Date;
-import java.util.GregorianCalendar;
 import java.util.UUID;
 
 public class ConditionTransformer {

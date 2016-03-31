@@ -1,6 +1,6 @@
 package org.endeavourhealth.cim.transform.common;
 
-import org.endeavourhealth.cim.transform.exceptions.SerializationException;
+import org.endeavourhealth.cim.transform.common.exceptions.SerializationException;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Unmarshaller;

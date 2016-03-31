@@ -4,7 +4,7 @@ import org.endeavourhealth.cim.transform.common.ReferenceHelper;
 import org.endeavourhealth.cim.transform.common.TransformHelper;
 import org.endeavourhealth.cim.transform.common.valueSets.TaskStatusCode;
 import org.endeavourhealth.cim.transform.common.valueSets.TaskTypeCode;
-import org.endeavourhealth.cim.transform.exceptions.SourceDocumentInvalidException;
+import org.endeavourhealth.cim.transform.common.exceptions.SourceDocumentInvalidException;
 import org.endeavourhealth.cim.transform.openhr.fromfhir.OpenHRContainer;
 import org.endeavourhealth.cim.transform.schemas.openhr.*;
 import org.endeavourhealth.cim.transform.common.valueSets.TaskPriorityCode;

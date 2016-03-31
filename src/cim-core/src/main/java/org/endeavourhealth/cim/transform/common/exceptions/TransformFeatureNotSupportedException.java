@@ -1,4 +1,4 @@
-package org.endeavourhealth.cim.transform.exceptions;
+package org.endeavourhealth.cim.transform.common.exceptions;
 
 public class TransformFeatureNotSupportedException extends TransformException {
     public TransformFeatureNotSupportedException(String message) { super(message); }

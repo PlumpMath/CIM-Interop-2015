@@ -1,9 +1,9 @@
 package org.endeavourhealth.cim.transform.emisopen;
 
-import org.endeavourhealth.cim.transform.exceptions.SerializationException;
+import org.endeavourhealth.cim.transform.common.exceptions.SerializationException;
 import org.endeavourhealth.cim.transform.schemas.emisopen.eomuserdetails.PersonType;
 import org.endeavourhealth.cim.transform.schemas.emisopen.eomuserdetails.UserDetails;
-import org.endeavourhealth.cim.transform.exceptions.TransformFeatureNotSupportedException;
+import org.endeavourhealth.cim.transform.common.exceptions.TransformFeatureNotSupportedException;
 import org.hl7.fhir.instance.model.*;
 
 public class UserTransformer {
