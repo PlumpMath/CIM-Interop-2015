@@ -72,12 +72,12 @@ public class EmisTransformer {
 
 	public Bundle openHRToFhirPersonBundle(List<String> openHRXmlArray) throws TransformException {
 
-		return _openHRTransformer.toFhirPersonBundle(openHRXmlArray);
+		return _openHRTransformer.toFhirPatientBundle(openHRXmlArray, true);
 	}
 
 	public Bundle openHRToFhirPatientBundle(List<String> openHRXmlArray) throws TransformException {
 
-		return _openHRTransformer.toFhirPatientBundle(openHRXmlArray);
+		return _openHRTransformer.toFhirPatientBundle(openHRXmlArray, false);
 	}
 
 	public Bundle openHRToFhirTaskBundle(List<String> openHRXmlArray) throws TransformException {
