@@ -1,4 +1,4 @@
-package org.endeavourhealth.cim.camel.routes.cim;
+package org.endeavourhealth.cim.camel.routes.domains;
 
 import org.endeavourhealth.cim.camel.processors.administrative.GetLocationProcessor;
 import org.endeavourhealth.cim.camel.routes.common.CimCore;

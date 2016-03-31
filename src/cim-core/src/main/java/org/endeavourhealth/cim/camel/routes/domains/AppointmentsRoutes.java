@@ -1,4 +1,4 @@
-package org.endeavourhealth.cim.camel.routes.cim;
+package org.endeavourhealth.cim.camel.routes.domains;
 
 import org.endeavourhealth.cim.camel.processors.appointments.GetAppointmentsProcessor;
 import org.endeavourhealth.cim.camel.helpers.HttpVerb;

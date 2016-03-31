@@ -1,4 +1,4 @@
-package org.endeavourhealth.cim.camel.routes.cim;
+package org.endeavourhealth.cim.camel.routes.domains;
 
 import org.endeavourhealth.cim.camel.processors.administrative.GetUserProcessor;
 import org.endeavourhealth.cim.camel.processors.tasks.GetUserTasksProcessor;
