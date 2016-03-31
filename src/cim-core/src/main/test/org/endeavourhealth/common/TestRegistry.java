@@ -1,7 +1,6 @@
 package org.endeavourhealth.repository;
 
 import org.endeavourhealth.cim.dataManager.IRegistry;
-import org.endeavourhealth.cim.transform.IRecordTransformer;
 
 public class TestRegistry implements IRegistry
 {

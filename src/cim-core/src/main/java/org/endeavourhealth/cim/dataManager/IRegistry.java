@@ -1,7 +1,5 @@
 package org.endeavourhealth.cim.dataManager;
 
-import org.endeavourhealth.cim.transform.IRecordTransformer;
-
 import java.util.ArrayList;
 
 public interface IRegistry {
@@ -10,6 +8,4 @@ public interface IRegistry {
     ArrayList<String> getAllDataManagerTypes();
     String getEmisSoapUri();
     String getBaseUri(String odsCode);
-
-	IRecordTransformer getTransformerForContentType(String contentType);
 }

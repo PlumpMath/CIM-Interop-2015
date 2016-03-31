@@ -2,7 +2,6 @@ package org.endeavourhealth.cim.dataManager;
 
 import org.endeavourhealth.cim.PrincipalSystemConfiguration;
 import org.endeavourhealth.cim.transform.EmisTransformer;
-import org.endeavourhealth.cim.transform.IRecordTransformer;
 
 import java.util.*;
 
@@ -47,10 +46,5 @@ public class Registry implements IRegistry {
     public String getBaseUri(String odsCode) {
         return PrincipalSystemConfiguration.BASE_URI + "/" + odsCode;
     }
-
-	@Override
-	public IRecordTransformer getTransformerForContentType(String contentType) {
-		return new EmisTransformer();
-	}
 
 }

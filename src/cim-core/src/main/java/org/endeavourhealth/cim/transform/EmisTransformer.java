@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.UUID;
 
 @SuppressWarnings("unused")
-public class EmisTransformer implements IRecordTransformer {
+public class EmisTransformer {
 
 	private final OpenHRTransformer _openHRTransformer = new OpenHRTransformer();
 	private final EmisOpenTransformer _emisOpenTransformer = new EmisOpenTransformer();
@@ -84,14 +84,12 @@ public class EmisTransformer implements IRecordTransformer {
 		return _openHRTransformer.toFhirTaskBundle(openHRXmlArray);
 	}
 
-	@Override
 	public String toFhirCareRecord(String openHRXml) throws Exception {
 		BundleProperties properties = new BundleProperties()
 				.setBundleId(UUID.randomUUID().toString());
 		return new JsonParser().composeString(openHRToFhirBundle(properties, openHRXml));
 	}
 
-	@Override
 	public String fromFhirCareRecord(String fhirData) {
 		return "<OPENHR REPRESENTATION OF FHIR RECORD>";
 	}
