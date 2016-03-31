@@ -14,7 +14,7 @@ public interface IDataManager {
     String bookSlot(String odsCode, String slotId, String patientId) throws Exception;
     String cancelSlot(String odsCode, String slotId, String patientId) throws Exception;
 	String getUser(String odsCode, String userId) throws Exception;
-	String getOrganisationByOdsCode(String odsCode) throws Exception;
+	String searchForOrganisationByOdsCode(String odsCode) throws Exception;
     String getOrganisationById(String organisationId) throws Exception;
 	String getLocation(String odsCode, String locationId) throws Exception;
 	String getTask(String odsCode, String taskId) throws Exception;

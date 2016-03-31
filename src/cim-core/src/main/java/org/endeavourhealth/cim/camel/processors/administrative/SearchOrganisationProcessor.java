@@ -15,7 +15,7 @@ public class SearchOrganisationProcessor implements Processor {
 		String odsCode = ExchangeHelper.getInHeaderString(exchange, CIMHeaderKey.Identifier, true);
 
 		IDataManager dataManager = DataManagerFactory.getDataManagerForService(odsCode);
-		String responseBody = dataManager.getOrganisationByOdsCode(odsCode);
+		String responseBody = dataManager.searchForOrganisationByOdsCode(odsCode);
 
 		ExchangeHelper.setInBodyString(exchange, responseBody);
 	}

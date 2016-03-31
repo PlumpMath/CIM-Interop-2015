@@ -12,17 +12,17 @@ import java.util.stream.Collectors;
 
 public class BundleHelper {
 
-    public static Bundle createBundle(BundleProperties bundleProperties, List<Resource> resources) {
+    public static <T extends Resource> Bundle createBundle(BundleProperties bundleProperties, List<T> resources) {
 
         return createBundle(bundleProperties.getBundleType(), bundleProperties.getBundleId(), resources);
     }
 
-    public static Bundle createBundle(Bundle.BundleType bundleType, String id, List<Resource> resources) {
+    public static <T extends Resource> Bundle createBundle(Bundle.BundleType bundleType, String id, List<T> resources) {
 
         return createBundle(bundleType, id, null, resources);
     }
 
-    public static Bundle createBundle(Bundle.BundleType bundleType, String id, Date lastUpdated, List<Resource> resources) {
+    public static <T extends Resource> Bundle createBundle(Bundle.BundleType bundleType, String id, Date lastUpdated, List<T> resources) {
 
         Bundle bundle = new Bundle()
             .setType(bundleType);

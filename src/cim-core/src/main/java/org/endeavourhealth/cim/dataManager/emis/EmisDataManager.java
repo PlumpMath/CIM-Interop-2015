@@ -5,6 +5,7 @@ import org.endeavourhealth.cim.dataManager.Registry;
 import org.endeavourhealth.cim.camel.exceptions.InvalidInternalIdentifier;
 import org.endeavourhealth.cim.transform.EmisOpenTransformer;
 import org.endeavourhealth.cim.transform.OpenHRTransformer;
+import org.endeavourhealth.cim.transform.common.BundleHelper;
 import org.endeavourhealth.cim.transform.common.BundleProperties;
 import org.endeavourhealth.cim.camel.exceptions.NotFoundException;
 import org.endeavourhealth.cim.repository.utils.TextUtils;
@@ -112,15 +113,17 @@ public class EmisDataManager implements IDataManager {
 	}
 
 	@Override
-	public String getOrganisationByOdsCode(String odsCode) throws Exception {
+	public String searchForOrganisationByOdsCode(String odsCode) throws Exception {
 		String openHRXml = _emisDataAdapter.getOrganisationByOdsCode(odsCode);
 
-		if (TextUtils.isNullOrTrimmedEmpty(openHRXml))
-			throw new NotFoundException("");
+		ArrayList<Organization> organisations = new ArrayList<>();
 
-		Organization organisation = _openHRTransformer.toFhirOrganisation(openHRXml);
+		if (!TextUtils.isNullOrTrimmedEmpty(openHRXml))
+			organisations.add(_openHRTransformer.toFhirOrganisation(openHRXml));
 
-		return new JsonParser().composeString(organisation);
+		Bundle bundle = BundleHelper.createBundle(Bundle.BundleType.SEARCHSET, UUID.randomUUID().toString(), organisations);
+
+		return new JsonParser().composeString(bundle);
 	}
 
 	public String getOrganisationById(String organisationId) throws Exception {

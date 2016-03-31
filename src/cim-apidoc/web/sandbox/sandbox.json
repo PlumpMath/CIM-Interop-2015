@@ -75,7 +75,6 @@
           "400": { "$ref": "#definitions/400Response" },
           "401": { "$ref": "#definitions/401Response" },
           "403": { "$ref": "#definitions/403Response" },
-          "404": { "$ref": "#definitions/404OrganizationNotFoundResponse" },
           "500": { "$ref": "#definitions/500Response" },
           "502": { "$ref": "#definitions/502Response" },
           "504": { "$ref": "#definitions/504Response" }
