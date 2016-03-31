@@ -11,7 +11,8 @@ public class FhirUris
 
     public final static String PROFILE_URI_ORGANIZATION = "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-organization";
 
-    public final static String EXTENSION_URI_DATE = "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-date-extension";
+    public final static String EXTENSION_URI_ACTIVEPERIOD = "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-activeperiod-extension";
     public final static String EXTENSION_URI_LOCATION = "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-location-extension";
     public final static String EXTENSION_URL_SCHEDULEADDITIONALACTOR = "http://www.endeavourhealth.org/fhir/extension/Schedule/AdditionalActor";
+
 }

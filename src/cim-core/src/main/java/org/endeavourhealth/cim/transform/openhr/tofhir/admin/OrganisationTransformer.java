@@ -41,8 +41,18 @@ public class OrganisationTransformer
 
         target.setActive(source.getCloseDate() == null);
 
-        if (source.getOpenDate() != null)
-            target.getActiveElement().addExtension(TransformHelper.createSimpleExtension(FhirUris.EXTENSION_URI_DATE, new DateType(TransformHelper.toDate(source.getOpenDate()))));
+        if ((source.getOpenDate() != null) || (source.getCloseDate() != null))
+        {
+            Period period = new Period();
+
+            if (source.getOpenDate() != null)
+                period.setStart(TransformHelper.toDate(source.getOpenDate()));
+
+            if (source.getCloseDate() != null)
+                period.setEnd(TransformHelper.toDate(source.getCloseDate()));
+
+            target.getActiveElement().addExtension(TransformHelper.createSimpleExtension(FhirUris.EXTENSION_URI_ACTIVEPERIOD, period));
+        }
 
         target.setName(source.getName());
         target.setType(new CodeableConcept().setText(source.getOrganisationType().getDisplayName()));
