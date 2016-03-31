@@ -3,13 +3,13 @@ package org.endeavourhealth.cim.transform.openhr.tofhir.admin;
 import org.apache.commons.lang3.StringUtils;
 import org.endeavourhealth.cim.transform.common.FhirUris;
 import org.endeavourhealth.cim.transform.common.ReferenceHelper;
+import org.endeavourhealth.cim.transform.common.TransformHelper;
 import org.endeavourhealth.cim.transform.common.exceptions.TransformException;
 import org.endeavourhealth.cim.transform.openhr.tofhir.OpenHRHelper;
 import org.endeavourhealth.cim.transform.schemas.openhr.*;
 import org.endeavourhealth.cim.transform.common.StreamExtension;
 import org.hl7.fhir.instance.model.*;
 
-import javax.xml.datatype.XMLGregorianCalendar;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,57 +30,51 @@ public class LocationTransformer
 		OpenHRHelper.ensureDboNotDelete(source);
 
 		Location target = new Location();
+
 		target.setId(source.getId());
+        target.setMeta(new Meta().addProfile(FhirUris.PROFILE_URI_LOCATION));
+
 		target.setName(source.getName());
-		target.setDescription(source.getNotes());
-		target.setMode(Location.LocationMode.INSTANCE);
-		target.setPartOf(createParentReference(source.getParentLocation()));
-		target.setStatus(convertCloseDateToStatus(source.getCloseDate()));
 
-		addTelecoms(source.getContact(), target);
-		addAddress(source.getAddress(), target);
+        if (!StringUtils.isBlank(source.getParentLocation()))
+            target.setPartOf(ReferenceHelper.createReference(ResourceType.Location, source.getParentLocation()));
 
-		addLocationTypeExtension(source.getLocationType(), target);
+		target.setStatus(source.getCloseDate() == null ? Location.LocationStatus.ACTIVE : Location.LocationStatus.INACTIVE);
+
+        if ((source.getOpenDate() != null) || (source.getCloseDate() != null))
+        {
+            Period period = new Period();
+
+            if (source.getOpenDate() != null)
+                period.setStart(TransformHelper.toDate(source.getOpenDate()));
+
+            if (source.getCloseDate() != null)
+                period.setEnd(TransformHelper.toDate(source.getCloseDate()));
+
+            target.getStatusElement().addExtension(TransformHelper.createSimpleExtension(FhirUris.EXTENSION_URI_ACTIVEPERIOD, period));
+        }
+
+        if (source.getAddress() != null)
+            target.setAddress(AddressConverter.convert(source.getAddress()));
+
+        if (source.getLocationType() != null)
+            if (!StringUtils.isBlank(source.getLocationType().getDisplayName()))
+                target.setType(new CodeableConcept().setText(source.getLocationType().getDisplayName()));
 
         if (adminDomain != null)
-            target.setManagingOrganization(createOrganisationReference(adminDomain.getOrganisation(), source.getId()));
+        {
+            Reference reference = createOrganisationReference(adminDomain.getOrganisation(), source.getId());
 
-		return target;
-	}
-
-    private static void addTelecoms(List<DtContact> sourceContacts, Location target) throws TransformException
-    {
-        if (sourceContacts == null)
-            return;
-
-        List<ContactPoint> telecoms = ContactPointConverter.convert(sourceContacts);
-        if (telecoms != null) {
-            telecoms.forEach(target::addTelecom);
+            if (reference != null)
+                target.setManagingOrganization(reference);
         }
-    }
 
-    private static void addAddress(DtAddress sourceAddress, Location target) throws TransformException
-    {
-        if (sourceAddress == null)
-            return;
+        if (source.getContact() != null)
+            for (ContactPoint telecom : ContactPointConverter.convert(source.getContact()))
+                target.addTelecom(telecom);
 
-        target.setAddress(AddressConverter.convert(sourceAddress));
-    }
-
-    private static Reference createParentReference(String parentLocationId)
-    {
-        if (StringUtils.isBlank(parentLocationId))
-            return null;
-
-        return ReferenceHelper.createReference(ResourceType.Location, parentLocationId);
-    }
-
-    private static Location.LocationStatus convertCloseDateToStatus(XMLGregorianCalendar closeDate)
-    {
-        return closeDate == null
-            ? Location.LocationStatus.ACTIVE
-            : Location.LocationStatus.INACTIVE;
-    }
+        return target;
+	}
 
     private static Reference createOrganisationReference(List<OpenHR001Organisation> organisations, String locationId) throws TransformException
     {
@@ -96,21 +90,5 @@ public class LocationTransformer
             return null;
 
         return ReferenceHelper.createReference(ResourceType.Organization, organisationWithLocationMatch.getId());
-    }
-
-    private static void addLocationTypeExtension(OpenHR001LocationType locationType, Location target)
-    {
-        if (locationType == null)
-            return;
-
-        target.addExtension(new Extension()
-                .setUrl(FhirUris.LOCATIONTYPE_EXTENSION_URL)
-                .setValue(new CodeableConcept()
-                                .addCoding(new Coding()
-                                                .setSystem(FhirUris.LOCATIONTYPE_SYSTEM)
-                                                .setDisplay(locationType.getDisplayName())
-                                )
-                )
-        );
     }
 }

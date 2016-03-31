@@ -10,6 +10,7 @@ public class FhirUris
     public final static String CODE_SYSTEM_SNOMED_CT = "http://snomed.info/sct";
 
     public final static String PROFILE_URI_ORGANIZATION = "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-organization";
+    public final static String PROFILE_URI_LOCATION = "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-location";
 
     public final static String EXTENSION_URI_ACTIVEPERIOD = "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-activeperiod-extension";
     public final static String EXTENSION_URI_MAINLOCATION = "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-mainlocation-extension";
@@ -17,8 +18,6 @@ public class FhirUris
 
 
 
-    public final static String LOCATIONTYPE_EXTENSION_URL = "http://www.e-mis.com/emisopen/extension/LocationType";
-    public final static String LOCATIONTYPE_SYSTEM = "http://www.e-mis.com/emisopen/LocationType";
     public final static String TASKTYPE_EXTENSION_URL = "http://cim-api.endeavourhealth.org/fhir/ValueSet/task-type";
     public final static String TASKTYPE_SYSTEM = "http://cim-api.endeavourhealth.org/fhir/task-type";
     public final static String TASKPRIORITY_EXTENSION_URL = "http://cim-api.endeavourhealth.org/fhir/ValueSet/task-priority";

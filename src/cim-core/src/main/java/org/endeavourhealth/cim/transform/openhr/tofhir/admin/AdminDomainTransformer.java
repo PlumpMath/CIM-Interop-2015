@@ -22,7 +22,6 @@ public class AdminDomainTransformer
         {
             resources.addAll(OrganisationTransformer.transform(adminDomain.getOrganisation()));
             resources.addAll(LocationTransformer.transform(adminDomain));
-            resources.addAll(HealthcareServiceTransformer.transform(adminDomain));
             resources.addAll(PractitionerTransformer.transform(adminDomain));
             resources.add(PatientTransformer.transform(adminDomain));
         }

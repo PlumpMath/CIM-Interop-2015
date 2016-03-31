@@ -14,7 +14,7 @@ class ContactPointConverter
 {
     public static List<ContactPoint> convert(List<DtContact> sourceList) throws TransformFeatureNotSupportedException
     {
-        if (sourceList == null || sourceList.isEmpty())
+        if (sourceList == null)
             return null;
 
         List<ContactPoint> targetList = new ArrayList<>();
@@ -27,10 +27,7 @@ class ContactPointConverter
                 targetList.add(target);
         }
 
-        if (targetList.isEmpty())
-            return null;
-        else
-            return targetList;
+        return targetList;
     }
 
     private static ContactPoint convertDtContact(DtContact source) throws TransformFeatureNotSupportedException
