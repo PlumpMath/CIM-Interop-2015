@@ -5,7 +5,7 @@
     "version": "0.1",
     "title": ""
   },
-  "host": "localhost:8080",
+  "host": "fhir.endeavourhealth.org",
   "basePath": "/api/v0.1",
   "tags": [
     {
