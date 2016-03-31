@@ -1,0 +1,65 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <title>Code systems - Endeavour FHIR Interoperability Guide</title>
+        <link rel="stylesheet" href="styles/bootstrap.css" />
+        <link rel="stylesheet" href="styles/style.css" />
+    </head>
+    <body>
+
+<%@ include file="includes/header.html" %>
+
+    <div id="segment-content" class="segment">
+        <div class="container">
+
+            <h1>FHIR profiles</h1>
+			<p>This specification is built on <a target="_blank" href="http://hl7.org/fhir/DSTU2/index.html">FHIR DSTU 2 (1.0.2)</a>.</p>
+
+<%@ include file="includes/profiles-navigation.jsp" %>
+
+			<h3 id="codesystems">Code systems</h3>
+
+			<p>The <a href="https://www.hl7.org/fhir/DSTU2/identifier-registry.html" target="_blank">code system</a> URIs below are for use in the system element of the <a href="https://www.hl7.org/fhir/DSTU2/datatypes.html#Coding" target="_blank">Coding</a> data type in Endeavour profiles. Where there is no official code system defined by the issuing party, a temporary Endeavour identifier system has been created while an official one becomes available.</p>
+
+			<table class="table table-hover table-condensed">
+				<thead>
+					<tr>
+						<th style="width: 180px;">Name</th>
+						<th style="width: 350px;">URI</th>
+						<th>Relevent resource</th>
+						<th>Is temporary?</th>
+						<th>Issuing party reference</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>SNOMED CT</td>
+						<td>http://snomed.info/sct</td>
+						<td>Multiple</td>
+						<td>No</td>
+						<td><a href="https://www.hl7.org/fhir/DSTU2/snomedct.html" target="_blank">FHIR DSTU2</a></td>
+					</tr>
+					<tr>
+						<td>Read Codes Version 2</td>
+						<td>http://endeavourhealth.org/fhir/read2</td>
+						<td>Multiple</td>
+						<td>Yes</td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>Read Clinical Terms Version 3</td>
+						<td>http://endeavourhealth.org/fhir/ctv3</td>
+						<td>Multiple</td>
+						<td>Yes</td>
+						<td></td>
+					</tr>
+				</tbody>
+			</table>
+
+	   </div>
+    </div>
+
+<%@ include file="includes/footer.html" %>
+
+    </body>
+</html>

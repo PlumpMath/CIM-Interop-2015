@@ -9,6 +9,7 @@
         tabs.put("profiles.html", "Resource profiles");
         tabs.put("profiles-extensions.html", "Extensions");
         tabs.put("profiles-valuesets.html", "Valuesets");
+        tabs.put("profiles-codesystems.html", "Code systems");
         tabs.put("profiles-identifiersystems.html", "Identifier systems");
 
         String pageName = this.getClass().getSimpleName().replaceAll("_", ".").replaceAll(".002d", "-");
