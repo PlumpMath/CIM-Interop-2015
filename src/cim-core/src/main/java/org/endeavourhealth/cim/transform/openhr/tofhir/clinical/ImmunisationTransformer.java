@@ -5,7 +5,7 @@ import org.endeavourhealth.cim.transform.common.ReferenceHelper;
 import org.endeavourhealth.cim.transform.common.exceptions.SourceDocumentInvalidException;
 import org.endeavourhealth.cim.transform.common.exceptions.TransformException;
 import org.endeavourhealth.cim.transform.openhr.tofhir.FhirContainer;
-import org.endeavourhealth.cim.transform.openhr.tofhir.OpenHRHelper;
+import org.endeavourhealth.cim.transform.common.OpenHRHelper;
 import org.endeavourhealth.cim.transform.schemas.openhr.DtDatePart;
 import org.endeavourhealth.cim.transform.schemas.openhr.OpenHR001Encounter;
 import org.endeavourhealth.cim.transform.schemas.openhr.OpenHR001HealthDomain;

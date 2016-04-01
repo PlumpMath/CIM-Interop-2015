@@ -9,7 +9,7 @@ import org.endeavourhealth.cim.transform.common.exceptions.SourceDocumentInvalid
 import org.endeavourhealth.cim.transform.common.exceptions.TransformException;
 import org.endeavourhealth.cim.transform.common.exceptions.TransformFeatureNotSupportedException;
 import org.endeavourhealth.cim.transform.openhr.tofhir.FhirContainer;
-import org.endeavourhealth.cim.transform.openhr.tofhir.OpenHRHelper;
+import org.endeavourhealth.cim.transform.common.OpenHRHelper;
 import org.endeavourhealth.cim.transform.schemas.openhr.*;
 import org.hl7.fhir.instance.model.*;
 

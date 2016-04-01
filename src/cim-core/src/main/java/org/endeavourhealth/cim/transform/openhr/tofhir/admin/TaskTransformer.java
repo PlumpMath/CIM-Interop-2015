@@ -7,7 +7,7 @@ import org.endeavourhealth.cim.transform.common.valueSets.TaskStatusCode;
 import org.endeavourhealth.cim.transform.common.valueSets.TaskTypeCode;
 import org.endeavourhealth.cim.transform.common.exceptions.SourceDocumentInvalidException;
 import org.endeavourhealth.cim.transform.common.exceptions.TransformFeatureNotSupportedException;
-import org.endeavourhealth.cim.transform.openhr.tofhir.OpenHRHelper;
+import org.endeavourhealth.cim.transform.common.OpenHRHelper;
 import org.endeavourhealth.cim.transform.schemas.openhr.OpenHR001PatientTask;
 import org.endeavourhealth.cim.transform.schemas.openhr.VocTaskPriority;
 import org.endeavourhealth.cim.transform.schemas.openhr.VocTaskStatus;
@@ -54,45 +54,32 @@ public class TaskTransformer
 		if (taskType == null)
 			return;
 
-		target.addExtension(
-				new Extension()
-						.setUrl(FhirUris.TASKTYPE_EXTENSION_URL)
-						.setValue(new CodeableConcept()
-								.addCoding(new Coding()
-										.setSystem(FhirUris.TASKTYPE_SYSTEM)
-										.setCode(toFhirTaskType(taskType).name())
-										.setDisplay(taskType.toString()))));
+		target.addExtension(new Extension()
+						.setUrl(FhirUris.EXTENSION_URI_TASKTYPE)
+						.setValue(new CodeType().setValue(toFhirTaskType(taskType).name())));
 	}
 
 	private static void addTaskPriorityExtension(VocTaskPriority taskPriority, Order target) {
 		if (taskPriority == null)
 			return;
 
-		target.addExtension(
-				new Extension()
-						.setUrl(FhirUris.TASKPRIORITY_EXTENSION_URL)
-						.setValue(new CodeableConcept()
-								.addCoding(new Coding()
-										.setSystem(FhirUris.TASKPRIORITY_SYSTEM)
-										.setCode(toFhirTaskPriority(taskPriority).name())
-										.setDisplay(taskPriority.toString()))));
+		target.addExtension(new Extension()
+						.setUrl(FhirUris.EXTENSION_URI_TASKPRIORITY)
+						.setValue(new CodeType().setValue(toFhirTaskPriority(taskPriority).name())));
 	}
 
-	private static void addTaskStatusExtension(VocTaskStatus taskStatus, Order target) {
+	private static void addTaskStatusExtension(VocTaskStatus taskStatus, Order target)
+	{
 		if (taskStatus == null)
 			return;
 
-		target.addExtension(
-				new Extension()
-						.setUrl(FhirUris.TASKSTATUS_EXTENSION_URL)
-						.setValue(new CodeableConcept()
-								.addCoding(new Coding()
-										.setSystem(FhirUris.TASKSTATUS_SYSTEM)
-										.setCode(toFhirTaskStatus(taskStatus).name())
-										.setDisplay(taskStatus.toString()))));
+		target.addExtension(new Extension()
+						.setUrl(FhirUris.EXTENSION_URI_TASKSTATUS)
+						.setValue(new CodeType().setValue(toFhirTaskStatus(taskStatus).name())));
 	}
 
-	private static TaskTypeCode toFhirTaskType(VocTaskType taskType) {
+	private static TaskTypeCode toFhirTaskType(VocTaskType taskType)
+	{
 		switch (taskType) {
 			case BOOK_APPOINTMENT:
 			case BOOK_APPOINTMENT_DOCTOR:

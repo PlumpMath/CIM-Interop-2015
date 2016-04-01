@@ -3,7 +3,7 @@ package org.endeavourhealth.cim.transform.openhr.tofhir.clinical;
 import org.apache.commons.lang3.StringUtils;
 import org.endeavourhealth.cim.transform.common.ReferenceHelper;
 import org.endeavourhealth.cim.transform.common.exceptions.TransformException;
-import org.endeavourhealth.cim.transform.openhr.tofhir.OpenHRHelper;
+import org.endeavourhealth.cim.transform.common.OpenHRHelper;
 import org.endeavourhealth.cim.transform.schemas.openhr.*;
 import org.endeavourhealth.cim.transform.common.StreamExtension;
 import org.endeavourhealth.cim.transform.common.exceptions.SourceDocumentInvalidException;

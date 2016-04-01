@@ -5,7 +5,7 @@ import org.endeavourhealth.cim.transform.common.FhirUris;
 import org.endeavourhealth.cim.transform.common.TransformHelper;
 import org.endeavourhealth.cim.transform.common.exceptions.TransformException;
 import org.endeavourhealth.cim.transform.common.ReferenceHelper;
-import org.endeavourhealth.cim.transform.openhr.tofhir.OpenHRHelper;
+import org.endeavourhealth.cim.transform.common.OpenHRHelper;
 import org.endeavourhealth.cim.transform.schemas.openhr.*;
 import org.hl7.fhir.instance.model.*;
 
@@ -35,9 +35,6 @@ public class OrganisationTransformer
 
         if (StringUtils.isNotBlank(source.getNationalPracticeCode()))
             target.addIdentifier(TransformHelper.createIdentifier(FhirUris.IDENTIFIER_SYSTEM_ODS_CODE, source.getNationalPracticeCode()));
-
-        if (source.getCdb() != null)
-            target.addIdentifier(TransformHelper.createIdentifier(FhirUris.IDENTIFIER_SYSTEM_EMIS_CDB, source.getCdb().toString()));
 
         target.setActive(source.getCloseDate() == null);
 

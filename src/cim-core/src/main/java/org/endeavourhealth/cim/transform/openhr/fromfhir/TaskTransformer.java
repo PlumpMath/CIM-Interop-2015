@@ -13,7 +13,8 @@ import org.hl7.fhir.instance.model.*;
 
 import javax.xml.datatype.DatatypeConfigurationException;
 
-public class TaskTransformer {
+public class TaskTransformer
+{
 	public static void transform(OpenHRContainer container, Order task) throws SourceDocumentInvalidException
 	{
 		OpenHR001PatientTask targetTask = new OpenHR001PatientTask();
@@ -22,9 +23,12 @@ public class TaskTransformer {
 
 		targetTask.setId(task.getId());
 
-		try {
+		try
+		{
 			targetTask.setCreatedDate(TransformHelper.fromDate(task.getDate()));
-		} catch (DatatypeConfigurationException e) {
+		}
+		catch (DatatypeConfigurationException e)
+		{
 			throw new SourceDocumentInvalidException("Error creating Created Date", e);
 		}
 
@@ -33,30 +37,38 @@ public class TaskTransformer {
 
 		targetTask.setCreatingUserInRole(ReferenceHelper.getReferenceId(task.getSource(), ResourceType.Practitioner));
 		targetTask.getOwningUserInRole().add(ReferenceHelper.getReferenceId(task.getTarget(), ResourceType.Practitioner));
+
 		if (task.getReason() instanceof Coding)
 			targetTask.setSubject(((Coding)task.getReason()).getDisplay());
 
-		try {
+		try
+		{
 			targetTask.setActionByDate(TransformHelper.fromDate(task.getWhen().getSchedule().getEvent().get(0).getValue()));
-		} catch (DatatypeConfigurationException e) {
+		}
+		catch (DatatypeConfigurationException e)
+		{
 			throw new SourceDocumentInvalidException("Error creating Action By Date", e);
 		}
-
 
 		if (task.getDetail().size() > 0)
 			targetTask.setDescription(task.getDetail().get(0).getDisplay());
 
-		for (Extension extension : task.getExtension()) {
+		for (Extension extension : task.getExtension())
+		{
 			if (extension.hasValue()
 					&& extension.getValue() instanceof CodeableConcept
 					&& ((CodeableConcept)extension.getValue()).hasCoding()
-					&& ((CodeableConcept)extension.getValue()).getCoding().size() > 0) {
+					&& ((CodeableConcept)extension.getValue()).getCoding().size() > 0)
+			{
 				Coding coding = ((CodeableConcept)extension.getValue()).getCoding().get(0);
-				if (FhirUris.TASKTYPE_EXTENSION_URL.equals(extension.getUrl()))
+
+				if (FhirUris.EXTENSION_URI_TASKTYPE.equals(extension.getUrl()))
 					targetTask.setTaskType(fromFhirTaskType(coding.getCode(), coding.getDisplay()));
-				if (FhirUris.TASKPRIORITY_EXTENSION_URL.equals(extension.getUrl()))
+
+				if (FhirUris.EXTENSION_URI_TASKPRIORITY.equals(extension.getUrl()))
 					targetTask.setPriority(fromFhirTaskPriority(coding.getCode()));
-				if (FhirUris.TASKSTATUS_EXTENSION_URL.equals(extension.getUrl()))
+
+				if (FhirUris.EXTENSION_URI_TASKSTATUS.equals(extension.getUrl()))
 					targetTask.setStatus(fromFhirTaskStatus(coding.getCode()));
 			}
 		}
@@ -68,12 +80,19 @@ public class TaskTransformer {
 		container.getPatientTasks().add(targetTask);
 	}
 
-	private static VocTaskType fromFhirTaskType(String taskType, String display) {
-		switch (TaskTypeCode.fromValue(taskType)) {
+	private static VocTaskType fromFhirTaskType(String taskType, String display)
+	{
+		switch (TaskTypeCode.fromValue(taskType))
+		{
 			case bookAppointment:
-				if (display.toUpperCase().contains("NURSE")) return VocTaskType.BOOK_APPOINTMENT_NURSE;
-				if (display.toUpperCase().contains("DOCTOR")) return VocTaskType.BOOK_APPOINTMENT_DOCTOR;
-				return VocTaskType.BOOK_APPOINTMENT;
+			{
+				if (display.toUpperCase().contains("NURSE"))
+					return VocTaskType.BOOK_APPOINTMENT_NURSE;
+				else if (display.toUpperCase().contains("DOCTOR"))
+					return VocTaskType.BOOK_APPOINTMENT_DOCTOR;
+				else
+					return VocTaskType.BOOK_APPOINTMENT;
+			}
 			case telephonePatient: return VocTaskType.TELEPHONE_PATIENT;
 			case screenMessage: return VocTaskType.SCREEN_MESSAGE;
 			case resultsForInfo: return VocTaskType.RESULTS_FOR_INFO;
@@ -92,8 +111,10 @@ public class TaskTransformer {
 		}
 	}
 
-	private static VocTaskPriority fromFhirTaskPriority(String taskPriority) {
-		switch (TaskPriorityCode.fromValue(taskPriority)) {
+	private static VocTaskPriority fromFhirTaskPriority(String taskPriority)
+	{
+		switch (TaskPriorityCode.fromValue(taskPriority))
+		{
 			case low: return VocTaskPriority.LOW;
 			case medium: return VocTaskPriority.NORMAL;
 			case high: return VocTaskPriority.HIGH;
@@ -101,8 +122,10 @@ public class TaskTransformer {
 		}
 	}
 
-	private static VocTaskStatus fromFhirTaskStatus(String taskStatus) {
-		switch (TaskStatusCode.fromValue(taskStatus)) {
+	private static VocTaskStatus fromFhirTaskStatus(String taskStatus)
+	{
+		switch (TaskStatusCode.fromValue(taskStatus))
+		{
 			case active: return VocTaskStatus.ACTIVE;
 			case complete: return VocTaskStatus.COMPLETE;
 			case deleted: return VocTaskStatus.DELETED;
@@ -110,5 +133,4 @@ public class TaskTransformer {
 			default: throw new IllegalArgumentException("Unknown task status " + taskStatus);
 		}
 	}
-
 }

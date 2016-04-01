@@ -64,13 +64,13 @@ public class ScheduleTransformer {
                 schedule.setActor(reference);
             } else {
                 schedule.addExtension(new Extension()
-                        .setUrl(FhirUris.EXTENSION_URL_SCHEDULEADDITIONALACTOR)
+                        .setUrl(FhirUris.EXTENSION_URI_SCHEDULEADDITIONALACTOR)
                         .setValue(reference));
             }
         }
 
         schedule.addExtension(new Extension()
-                .setUrl(FhirUris.EXTENSION_URL_SCHEDULEADDITIONALACTOR)
+                .setUrl(FhirUris.EXTENSION_URI_SCHEDULEADDITIONALACTOR)
                 .setValue(ReferenceHelper.createReference(ResourceType.Location, location.getId())));
 
         return schedule;
@@ -120,7 +120,7 @@ public class ScheduleTransformer {
                     schedule.setActor(ReferenceHelper.createReference(actorResourceType, idGuidMap.get(id)));
 
             for (Extension extension : schedule.getExtension()) {
-                if (FhirUris.EXTENSION_URL_SCHEDULEADDITIONALACTOR.equals(extension.getUrl())) {
+                if (FhirUris.EXTENSION_URI_SCHEDULEADDITIONALACTOR.equals(extension.getUrl())) {
                     if (extension.getValue() instanceof Reference) {
 
                     String id2 = ReferenceHelper.getReferenceId((Reference)extension.getValue(), actorResourceType);

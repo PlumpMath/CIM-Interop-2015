@@ -1,7 +1,9 @@
 package org.endeavourhealth.cim.transform.common;
 
 import org.endeavourhealth.cim.transform.common.exceptions.SerializationException;
+import org.endeavourhealth.cim.transform.common.exceptions.SourceDocumentInvalidException;
 import org.endeavourhealth.cim.transform.common.exceptions.TransformException;
+import org.endeavourhealth.cim.transform.common.exceptions.TransformFeatureNotSupportedException;
 import org.endeavourhealth.cim.transform.schemas.openhr.ObjectFactory;
 import org.endeavourhealth.cim.transform.schemas.openhr.OpenHR001OpenHealthRecord;
 import org.hl7.fhir.instance.model.Extension;
@@ -18,8 +20,43 @@ import java.io.StringReader;
 import java.io.StringWriter;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.UUID;
 
-public class TransformHelper {
+public class TransformHelper
+{
+    public static UUID parseUUID(String id) throws TransformException
+    {
+        try
+        {
+            return UUID.fromString(id);
+        }
+        catch (Exception e)
+        {
+            throw new SourceDocumentInvalidException("Could not parse UUID: " + id, e);
+        }
+    }
+
+    public static XMLGregorianCalendar toCalendar(Date date) throws TransformException
+    {
+        try
+        {
+            GregorianCalendar gregorianCalendar = new GregorianCalendar();
+            gregorianCalendar.setTime(date);
+            return DatatypeFactory.newInstance().newXMLGregorianCalendar(gregorianCalendar);
+        }
+        catch (Exception e)
+        {
+            throw new TransformFeatureNotSupportedException(e);
+        }
+    }
+
+    public static Date toDate(XMLGregorianCalendar value)
+    {
+        if (value == null)
+            return null;
+
+        return value.toGregorianCalendar().getTime();
+    }
 
     public static Identifier createIdentifier(String system, String value)
     {
@@ -29,13 +66,6 @@ public class TransformHelper {
     public static Extension createSimpleExtension(String uri, org.hl7.fhir.instance.model.Type value)
     {
         return new Extension().setUrl(uri).setValue(value);
-    }
-
-    public static Date toDate(XMLGregorianCalendar value) {
-        if (value == null)
-            return null;
-
-        return value.toGregorianCalendar().getTime();
     }
 
     public static XMLGregorianCalendar fromDate(Date value) throws DatatypeConfigurationException {
