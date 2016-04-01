@@ -56,8 +56,8 @@
     "/Organization": {
       "get": {
         "tags": [ "Administration" ],
-        "summary": "Search for organization",
-        "description": "Search for organization by identifier, e.g. ODS code.",
+        "summary": "Search for organizations",
+        "description": "Search for organizations by identifier, e.g. ODS code.",
         "produces": [ "application/json" ],
         "parameters": [
           { "$ref": "#definitions/apiKeyParameter" },
@@ -136,65 +136,39 @@
     },
     "/{odsCode}/Schedule": {
       "get": {
-        "tags": [
-          "Appointments"
-        ],
-        "summary": "Get appointment schedules",
-        "description": "Get appointment schedules by date and/or practitioner ID.",
-        "produces": [
-          "application/json"
-        ],
+        "tags": [ "Appointments" ],
+        "summary": "Search for schedules",
+        "description": "Search for schedules by date and/or practitioner id.",
+        "produces": [ "application/json" ],
         "parameters": [
-          {
-            "$ref": "#definitions/apiKeyParameter"
-          },
-          {
-            "$ref": "#definitions/hashParameter"
-          },
-          {
-            "$ref": "#definitions/odsCodeParameter"
-          },
+          { "$ref": "#definitions/apiKeyParameter" },
+          { "$ref": "#definitions/hashParameter" },
+          { "$ref": "#definitions/odsCodeParameter" },
           {
             "name": "date",
             "in": "query",
-            "description": "Search for schedules within the date(s) specified",
+            "description": "Schedules within the date(s) specified",
             "required": false,
             "type": "array",
-            "items": {
-              "type": "string"
-            },
+            "items": { "type": "string" },
             "collectionFormat": "multi"
           },
           {
             "name": "actor:Practitioner",
             "in": "query",
-            "description": "Search for schedules with the practitioner ID specified",
+            "description": "Schedules with the practitioner specified",
             "required": false,
             "type": "string"
           }
         ],
         "responses": {
-          "200": {
-            "description": "OK | <a target='_blank' href='http://hl7.org/fhir/DSTU2/bundle.html'>Bundle</a> containing zero or more <a target='_blank' href='../profiles/primarycare-schedule.html'>PrimaryCare-Schedule</a> resources"
-          },
-          "400": {
-            "$ref": "#definitions/400Response"
-          },
-          "401": {
-            "$ref": "#definitions/401Response"
-          },
-          "403": {
-            "$ref": "#definitions/403Response"
-          },
-          "500": {
-            "$ref": "#definitions/500Response"
-          },
-          "502": {
-            "$ref": "#definitions/502Response"
-          },
-          "504": {
-            "$ref": "#definitions/504Response"
-          }
+          "200": { "description": "OK | <a target='_blank' href='http://hl7.org/fhir/DSTU2/bundle.html'>Bundle</a> containing zero or more <a target='_blank' href='../profiles/primarycare-schedule.html'>PrimaryCare-Schedule</a> resources" },
+          "400": { "$ref": "#definitions/400Response" },
+          "401": { "$ref": "#definitions/401Response" },
+          "403": { "$ref": "#definitions/403Response" },
+          "500": { "$ref": "#definitions/500Response" },
+          "502": { "$ref": "#definitions/502Response" },
+          "504": { "$ref": "#definitions/504Response" }
         }
       }
     },
@@ -203,21 +177,13 @@
         "tags": [
           "Appointments"
         ],
-        "summary": "Get appointment slots",
-        "description": "Get appointment slots by schedule ID.",
-        "produces": [
-          "application/json"
-        ],
+        "summary": "Search for slots",
+        "description": "Search for slots by schedule id.",
+        "produces": [ "application/json" ],
         "parameters": [
-          {
-            "$ref": "#definitions/apiKeyParameter"
-          },
-          {
-            "$ref": "#definitions/hashParameter"
-          },
-          {
-            "$ref": "#definitions/odsCodeParameter"
-          },
+          { "$ref": "#definitions/apiKeyParameter" },
+          { "$ref": "#definitions/hashParameter" },
+          { "$ref": "#definitions/odsCodeParameter" },
           {
             "name": "schedule",
             "in": "query",
@@ -227,94 +193,46 @@
           }
         ],
         "responses": {
-          "200": {
-            "description": "OK | <a target='_blank' href='http://hl7.org/fhir/DSTU2/bundle.html'>Bundle</a> containing zero or more <a target='_blank' href='../profiles/primarycare-slot.html'>PrimaryCare-Slot</a> resources"
-          },
-          "400": {
-            "$ref": "#definitions/400Response"
-          },
-          "401": {
-            "$ref": "#definitions/401Response"
-          },
-          "403": {
-            "$ref": "#definitions/403Response"
-          },
-          "500": {
-            "$ref": "#definitions/500Response"
-          },
-          "502": {
-            "$ref": "#definitions/502Response"
-          },
-          "504": {
-            "$ref": "#definitions/504Response"
-          }
+          "200": { "description": "OK | <a target='_blank' href='http://hl7.org/fhir/DSTU2/bundle.html'>Bundle</a> containing zero or more <a target='_blank' href='../profiles/primarycare-slot.html'>PrimaryCare-Slot</a> resources" },
+          "400": { "$ref": "#definitions/400Response" },
+          "401": { "$ref": "#definitions/401Response" },
+          "403": { "$ref": "#definitions/403Response" },
+          "500": { "$ref": "#definitions/500Response" },
+          "502": { "$ref": "#definitions/502Response" },
+          "504": { "$ref": "#definitions/504Response" }
         }
       }
     },
     "/{odsCode}/Slot/{id}/$book": {
       "post": {
-        "tags": [
-          "Appointments"
-        ],
-        "summary": "Book an appointment slot",
-        "description": "Book an appointment slot.",
-        "produces": [
-          "application/json"
-        ],
+        "tags": [ "Appointments" ],
+        "summary": "Book slot",
+        "description": "Book slot.",
+        "produces": [ "application/json" ],
         "parameters": [
-          {
-            "$ref": "#definitions/apiKeyParameter"
-          },
-          {
-            "$ref": "#definitions/hashParameter"
-          },
-          {
-            "$ref": "#definitions/odsCodeParameter"
-          },
-          {
-            "$ref": "#definitions/slotIdParameter"
-          },
+          { "$ref": "#definitions/apiKeyParameter" },
+          { "$ref": "#definitions/hashParameter" },
+          { "$ref": "#definitions/odsCodeParameter" },
+          { "$ref": "#definitions/slotIdParameter" },
           {
             "name": "body",
             "in": "body",
             "description": "Patient ID wrapped in <a target='_blank'  href='http://hl7.org/fhir/DSTU2/parameters.html'>Parameters</a> resource.",
             "required": true,
-            "schema": {
-              "$ref": "#/definitions/parametersResource"
-            }
+            "schema": { "$ref": "#/definitions/parametersResource" }
           }
         ],
         "responses": {
-          "200": {
-            "description": "OK | TBD"
-          },
-          "400": {
-            "$ref": "#definitions/400Response"
-          },
-          "401": {
-            "$ref": "#definitions/401Response"
-          },
-          "403": {
-            "$ref": "#definitions/403Response"
-          },
-          "404": {
-            "$ref": "#definitions/404SlotOrPatientNotFoundResponse"
-          },
-          "409": {
-            "$ref": "#definitions/409SlotAlreadyBookedResponse"
-          },
-          "412": {
-            "$ref": "#definitions/412SlotAlreadyBookedByThisPatientResponse"
-          },
-          "500": {
-            "$ref": "#definitions/500Response"
-          },
-          "502": {
-            "$ref": "#definitions/502Response"
-          },
-          "504": {
-            "$ref": "#definitions/504Response"
-          }
+          "200": { "description": "OK | TBD" },
+          "400": { "$ref": "#definitions/400Response" },
+          "401": { "$ref": "#definitions/401Response" },
+          "403": { "$ref": "#definitions/403Response" },
+          "404": { "$ref": "#definitions/404SlotOrPatientNotFoundResponse" },
+          "409": { "$ref": "#definitions/409SlotAlreadyBookedResponse" },
+          "412": { "$ref": "#definitions/412SlotAlreadyBookedByThisPatientResponse" },
+          "500": { "$ref": "#definitions/500Response" },
+          "502": { "$ref": "#definitions/502Response" },
+          "504": { "$ref": "#definitions/504Response" }
         }
       }
     },
@@ -323,8 +241,8 @@
         "tags": [
           "Appointments"
         ],
-        "summary": "Cancel an appointment slot",
-        "description": "Cancel an appointment slot.",
+        "summary": "Cancel slot",
+        "description": "Cancel slot.",
         "parameters": [
           {
             "$ref": "#/definitions/apiKeyParameter"
