@@ -1,7 +1,7 @@
 ﻿{
   "id": "primarycare-practitioner",
   "meta": {
-    "lastUpdated": "2015-11-01T10:00:00+00:00"
+    "lastUpdated": "2016-04-01T13:55:47.217+01:00"
   },
   "url": "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-practitioner",
   "name": "PrimaryCare-Practitioner",
@@ -34,6 +34,11 @@
         "comments": "Note that a cab driver no longer fits the bill. You probably would be interested in the organization rather than the individual?",
         "min": 0,
         "max": "*",
+        "base": {
+          "path": "Practitioner",
+          "min": 0,
+          "max": "*"
+        },
         "type": [
           {
             "TypeName": "Practitioner",
@@ -66,6 +71,11 @@
         "comments": "The reference may be just a text description of the assigner.",
         "min": 0,
         "max": "1",
+        "base": {
+          "path": "Practitioner.identifier.assigner",
+          "min": 0,
+          "max": "1"
+        },
         "type": [
           {
             "TypeName": "Reference",
@@ -97,6 +107,11 @@
         "definition": "The organization where the Practitioner performs the roles associated.",
         "min": 0,
         "max": "1",
+        "base": {
+          "path": "Practitioner.practitionerRole.managingOrganization",
+          "min": 0,
+          "max": "1"
+        },
         "type": [
           {
             "TypeName": "Reference",
@@ -119,6 +134,11 @@
         "definition": "The location(s) at which this practitioner provides care.",
         "min": 0,
         "max": "*",
+        "base": {
+          "path": "Practitioner.practitionerRole.location",
+          "min": 0,
+          "max": "*"
+        },
         "type": [
           {
             "TypeName": "Reference",
@@ -144,34 +164,17 @@
         ]
       },
       {
-        "path": "Practitioner.practitionerRole.healthcareService",
-        "short": "The list of healthcare services that this worker provides for this role's Organization/Location(s)",
-        "definition": "The list of healthcare services that this worker provides for this role's Organization/Location(s).",
-        "min": 0,
-        "max": "*",
-        "type": [
-          {
-            "TypeName": "Reference",
-            "code": "Reference",
-            "profile": [
-              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-healthcare-service"
-            ]
-          }
-        ],
-        "mapping": [
-          {
-            "identity": "rim",
-            "map": "./target[classCode=\"indirectAuthority].id?"
-          }
-        ]
-      },
-      {
         "path": "Practitioner.qualification.identifier.assigner",
         "short": "Organization that issued id (may be just text)",
         "definition": "Organization that issued/manages the identifier.",
         "comments": "The reference may be just a text description of the assigner.",
         "min": 0,
         "max": "1",
+        "base": {
+          "path": "Practitioner.qualification.identifier.assigner",
+          "min": 0,
+          "max": "1"
+        },
         "type": [
           {
             "TypeName": "Reference",
@@ -203,6 +206,11 @@
         "definition": "Organization that regulates and issues the qualification.",
         "min": 0,
         "max": "1",
+        "base": {
+          "path": "Practitioner.qualification.issuer",
+          "min": 0,
+          "max": "1"
+        },
         "type": [
           {
             "TypeName": "Reference",

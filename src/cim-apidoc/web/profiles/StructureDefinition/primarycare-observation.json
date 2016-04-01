@@ -1,7 +1,7 @@
 ﻿{
   "id": "primarycare-observation",
   "meta": {
-    "lastUpdated": "2015-09-22T11:02:49.724+01:00"
+    "lastUpdated": "2016-04-01T13:59:33.201+01:00"
   },
   "extension": [
     {
@@ -47,6 +47,11 @@
         ],
         "min": 0,
         "max": "*",
+        "base": {
+          "path": "Observation",
+          "min": 0,
+          "max": "*"
+        },
         "type": [
           {
             "TypeName": "Observation",
@@ -77,6 +82,11 @@
         "definition": "unique id for the element within a resource (for internal references).",
         "min": 0,
         "max": "0",
+        "base": {
+          "path": "Observation.identifier.id",
+          "min": 0,
+          "max": "0"
+        },
         "type": [
           {
             "TypeName": "id",
@@ -98,6 +108,11 @@
         "requirements": "Allows the appropriate identifier for a particular context of use to be selected from among a set of identifiers.",
         "min": 0,
         "max": "0",
+        "base": {
+          "path": "Observation.identifier.use",
+          "min": 0,
+          "max": "0"
+        },
         "type": [
           {
             "TypeName": "code",
@@ -132,6 +147,11 @@
         "requirements": "Allows users to make use of identifiers when the identifier system is not known.",
         "min": 0,
         "max": "0",
+        "base": {
+          "path": "Observation.identifier.type",
+          "min": 0,
+          "max": "0"
+        },
         "type": [
           {
             "TypeName": "CodeableConcept",
@@ -164,6 +184,11 @@
         "comments": "If the value is a full URI, then the system SHALL be urn:ietf:rfc:3986.",
         "min": 0,
         "max": "0",
+        "base": {
+          "path": "Observation.identifier.value",
+          "min": 0,
+          "max": "0"
+        },
         "type": [
           {
             "TypeName": "string",
@@ -193,6 +218,11 @@
         "definition": "Time period during which identifier is/was valid for use.",
         "min": 0,
         "max": "0",
+        "base": {
+          "path": "Observation.identifier.period",
+          "min": 0,
+          "max": "0"
+        },
         "type": [
           {
             "TypeName": "Period",
@@ -222,6 +252,11 @@
         "comments": "The reference may be just a text description of the assigner.",
         "min": 0,
         "max": "0",
+        "base": {
+          "path": "Observation.identifier.assigner",
+          "min": 0,
+          "max": "0"
+        },
         "type": [
           {
             "TypeName": "Reference",
@@ -254,6 +289,11 @@
         "requirements": "Knowing what kind of observation is being made is essential to understanding the observation.",
         "min": 1,
         "max": "1",
+        "base": {
+          "path": "Observation.code",
+          "min": 1,
+          "max": "1"
+        },
         "type": [
           {
             "TypeName": "CodeableConcept",
@@ -299,6 +339,11 @@
         "definition": "Used to qualify or indicate extra information about a coded value e.g. Laterality, Severity, etc.",
         "min": 0,
         "max": "*",
+        "base": {
+          "path": "Observation.code.coding.extension",
+          "min": 0,
+          "max": "*"
+        },
         "type": [
           {
             "TypeName": "Extension",
@@ -317,6 +362,11 @@
         "requirements": "Observations have no value if you don't know who or what they're about.",
         "min": 1,
         "max": "1",
+        "base": {
+          "path": "Observation.subject",
+          "min": 1,
+          "max": "1"
+        },
         "type": [
           {
             "TypeName": "Reference",
@@ -349,6 +399,11 @@
         "requirements": "For some observations it may be important to know the link between an observation and a particular encounter.",
         "min": 0,
         "max": "1",
+        "base": {
+          "path": "Observation.encounter",
+          "min": 0,
+          "max": "1"
+        },
         "type": [
           {
             "TypeName": "Reference",
@@ -381,6 +436,11 @@
         "requirements": "Knowing when an observation was deemed true is important to its relevance as well as determining trends.",
         "min": 0,
         "max": "1",
+        "base": {
+          "path": "Observation.effective[x]",
+          "min": 0,
+          "max": "1"
+        },
         "type": [
           {
             "TypeName": "dateTime",
@@ -414,6 +474,11 @@
         "requirements": "May give a degree of confidence in the observation and also indicates where follow-up questions should be directed.",
         "min": 1,
         "max": "*",
+        "base": {
+          "path": "Observation.performer",
+          "min": 1,
+          "max": "*"
+        },
         "type": [
           {
             "TypeName": "Reference",
@@ -468,6 +533,11 @@
         "requirements": "An observation exists to have a value, though it may not if it is in error, or it represents a group of observations.",
         "min": 0,
         "max": "1",
+        "base": {
+          "path": "Observation.value[x]",
+          "min": 0,
+          "max": "1"
+        },
         "type": [
           {
             "TypeName": "Quantity",
@@ -505,6 +575,11 @@
         "comments": "Observations are not made on specimens themselves; they are made on a subject, but usually by the means of a specimen. Note that although specimens are often involved, they are not always tracked and reported explicitly. Also note that observation resources may be used in contexts that track the specimen explicitly (e.g. Diagnostic Report).",
         "min": 0,
         "max": "1",
+        "base": {
+          "path": "Observation.specimen",
+          "min": 0,
+          "max": "1"
+        },
         "type": [
           {
             "TypeName": "Reference",
@@ -526,45 +601,16 @@
         ]
       },
       {
-        "path": "Observation.device",
-        "short": "(Measurement) Device",
-        "definition": "The device used to generate the observation data.",
-        "comments": "An extension should be used if further typing of the device is needed.  Devices used to support obtaining an observation can be represented using either extension or through the Observation.related element.",
-        "min": 0,
-        "max": "1",
-        "type": [
-          {
-            "TypeName": "Reference",
-            "code": "Reference",
-            "profile": [
-              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-device"
-            ]
-          },
-          {
-            "TypeName": "Reference",
-            "code": "Reference",
-            "profile": [
-              "http://hl7.org/fhir/StructureDefinition/DeviceMetric"
-            ]
-          }
-        ],
-        "mapping": [
-          {
-            "identity": "v2",
-            "map": "OBX-17 / PRT -10"
-          },
-          {
-            "identity": "rim",
-            "map": "participation[typeCode=DEV]"
-          }
-        ]
-      },
-      {
         "path": "Observation.related.target",
         "short": "Resource that is related to this one",
         "definition": "A reference to the observation resource that is related to this observation.",
         "min": 1,
         "max": "1",
+        "base": {
+          "path": "Observation.related.target",
+          "min": 1,
+          "max": "1"
+        },
         "type": [
           {
             "TypeName": "Reference",
@@ -588,6 +634,11 @@
         "requirements": "Knowing what kind of observation is being made is essential to understanding the observation.",
         "min": 1,
         "max": "1",
+        "base": {
+          "path": "Observation.component.code",
+          "min": 1,
+          "max": "1"
+        },
         "type": [
           {
             "TypeName": "CodeableConcept",
@@ -636,6 +687,11 @@
         "definition": "Used to qualify or indicate extra information about a coded value e.g. Laterality, Severity, etc.",
         "min": 0,
         "max": "*",
+        "base": {
+          "path": "Observation.component.code.coding.extension",
+          "min": 0,
+          "max": "*"
+        },
         "type": [
           {
             "TypeName": "Extension",
@@ -654,6 +710,11 @@
         "requirements": "An observation exists to have a value, though it may not if it is in error, or it represents a group of observations.",
         "min": 0,
         "max": "1",
+        "base": {
+          "path": "Observation.component.value[x]",
+          "min": 0,
+          "max": "1"
+        },
         "type": [
           {
             "TypeName": "Quantity",

@@ -1,7 +1,7 @@
 ﻿{
   "id": "primarycare-task",
   "meta": {
-    "lastUpdated": "2015-09-22T11:02:49.724+01:00"
+    "lastUpdated": "2016-04-01T14:01:24.842+01:00"
   },
   "extension": [
     {
@@ -32,6 +32,11 @@
         ],
         "min": 0,
         "max": "*",
+        "base": {
+          "path": "Order",
+          "min": 0,
+          "max": "*"
+        },
         "type": [
           {
             "TypeName": "Order",
@@ -66,6 +71,11 @@
         "comments": "test",
         "min": 1,
         "max": "1",
+        "base": {
+          "path": "Order.extension",
+          "min": 1,
+          "max": "1"
+        },
         "type": [
           {
             "TypeName": "Extension",
@@ -82,6 +92,11 @@
         "short": "Status of the task",
         "min": 1,
         "max": "1",
+        "base": {
+          "path": "Order.extension",
+          "min": 1,
+          "max": "1"
+        },
         "type": [
           {
             "TypeName": "Extension",
@@ -98,6 +113,11 @@
         "short": "Priority of the task",
         "min": 1,
         "max": "1",
+        "base": {
+          "path": "Order.extension",
+          "min": 1,
+          "max": "1"
+        },
         "type": [
           {
             "TypeName": "Extension",
@@ -115,6 +135,11 @@
         "comments": "The reference may be just a text description of the assigner.",
         "min": 0,
         "max": "1",
+        "base": {
+          "path": "Order.identifier.assigner",
+          "min": 0,
+          "max": "1"
+        },
         "type": [
           {
             "TypeName": "Reference",
@@ -150,26 +175,31 @@
         ],
         "min": 0,
         "max": "1",
+        "base": {
+          "path": "Order.subject",
+          "min": 0,
+          "max": "1"
+        },
         "type": [
           {
             "TypeName": "Reference",
             "code": "Reference",
             "profile": [
+              "http://hl7.org/fhir/StructureDefinition/Group"
+            ]
+          },
+          {
+            "TypeName": "Reference",
+            "code": "Reference",
+            "profile": [
+              "http://hl7.org/fhir/StructureDefinition/Device"
+            ]
+          },
+          {
+            "TypeName": "Reference",
+            "code": "Reference",
+            "profile": [
               "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-patient"
-            ]
-          },
-          {
-            "TypeName": "Reference",
-            "code": "Reference",
-            "profile": [
-              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-group"
-            ]
-          },
-          {
-            "TypeName": "Reference",
-            "code": "Reference",
-            "profile": [
-              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-device"
             ]
           },
           {
@@ -206,6 +236,11 @@
         ],
         "min": 0,
         "max": "1",
+        "base": {
+          "path": "Order.source",
+          "min": 0,
+          "max": "1"
+        },
         "type": [
           {
             "TypeName": "Reference",
@@ -244,19 +279,24 @@
         "definition": "Who is intended to fulfill the order.",
         "min": 0,
         "max": "1",
+        "base": {
+          "path": "Order.target",
+          "min": 0,
+          "max": "1"
+        },
         "type": [
           {
             "TypeName": "Reference",
             "code": "Reference",
             "profile": [
-              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-organization"
+              "http://hl7.org/fhir/StructureDefinition/Device"
             ]
           },
           {
             "TypeName": "Reference",
             "code": "Reference",
             "profile": [
-              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-device"
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-organization"
             ]
           },
           {

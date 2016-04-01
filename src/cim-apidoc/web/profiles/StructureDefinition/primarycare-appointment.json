@@ -1,7 +1,7 @@
 ﻿{
   "id": "primarycare-appointment",
   "meta": {
-    "lastUpdated": "2015-09-22T11:02:49.724+01:00"
+    "lastUpdated": "2016-03-22T00:02:31.758+00:00"
   },
   "extension": [
     {
@@ -60,6 +60,11 @@
         "definition": "A booking of a healthcare event among patient(s), practitioner(s), related person(s) and/or device(s) for a specific date/time. This may result in one or more Encounter(s).",
         "min": 0,
         "max": "*",
+        "base": {
+          "path": "Appointment",
+          "min": 0,
+          "max": "*"
+        },
         "type": [
           {
             "TypeName": "Appointment",
@@ -82,6 +87,63 @@
         ]
       },
       {
+        "path": "Appointment.id",
+        "short": "Logical id of this artifact - must be a globally unique identifier",
+        "definition": "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes.",
+        "comments": "The only time that a resource does not have an id is when it is being submitted to the server using a create operation. Bundles always have an id, though it is usually a generated UUID.",
+        "min": 1,
+        "max": "1",
+        "base": {
+          "path": "Resource.id",
+          "min": 0,
+          "max": "1"
+        },
+        "type": [
+          {
+            "TypeName": "id",
+            "code": "id"
+          }
+        ],
+        "isSummary": true
+      },
+      {
+        "path": "Appointment.identifier",
+        "short": "May be used to carry supplier specific business identifiers, or non-globally unique identifiers",
+        "definition": "This records identifiers associated with this appointment concern that are defined by business processes and/or used to refer to it when a direct URL reference to the resource itself is not appropriate (e.g. in CDA documents, or in written / printed documentation).",
+        "min": 0,
+        "max": "*",
+        "base": {
+          "path": "Appointment.identifier",
+          "min": 0,
+          "max": "*"
+        },
+        "type": [
+          {
+            "TypeName": "Identifier",
+            "code": "Identifier"
+          }
+        ],
+        "isSummary": true,
+        "mapping": [
+          {
+            "identity": "v2",
+            "map": "SCH-1, SCH-2, ARQ-1, ARQ-2"
+          },
+          {
+            "identity": "rim",
+            "map": ".id"
+          },
+          {
+            "identity": "ical",
+            "map": "UID"
+          },
+          {
+            "identity": "w5",
+            "map": "id"
+          }
+        ]
+      },
+      {
         "path": "Appointment.identifier.use",
         "short": "usual | official | temp | secondary (If known)",
         "definition": "The purpose of this identifier.",
@@ -89,6 +151,11 @@
         "requirements": "Allows the appropriate identifier for a particular context of use to be selected from among a set of identifiers.",
         "min": 0,
         "max": "0",
+        "base": {
+          "path": "Appointment.identifier.use",
+          "min": 0,
+          "max": "0"
+        },
         "type": [
           {
             "TypeName": "code",
@@ -123,6 +190,11 @@
         "requirements": "Allows users to make use of identifiers when the identifier system is not known.",
         "min": 0,
         "max": "0",
+        "base": {
+          "path": "Appointment.identifier.type",
+          "min": 0,
+          "max": "0"
+        },
         "type": [
           {
             "TypeName": "CodeableConcept",
@@ -149,11 +221,86 @@
         ]
       },
       {
+        "path": "Appointment.identifier.system",
+        "short": "The namespace for the identifier",
+        "definition": "Establishes the namespace in which set of possible id values is unique.",
+        "requirements": "There are many sequences of identifiers.  To perform matching, we need to know what sequence we're dealing with. The system identifies a particular sequence or set of unique identifiers.",
+        "min": 1,
+        "max": "1",
+        "base": {
+          "path": "Identifier.system",
+          "min": 0,
+          "max": "1"
+        },
+        "type": [
+          {
+            "TypeName": "uri",
+            "code": "uri"
+          }
+        ],
+        "Item3": "http://www.acme.com/identifiers/patient or urn:ietf:rfc:3986 if the Identifier.value itself is a full uri",
+        "isSummary": true,
+        "mapping": [
+          {
+            "identity": "v2",
+            "map": "CX.4 / EI-2-4"
+          },
+          {
+            "identity": "rim",
+            "map": "II.root or Role.id.root"
+          },
+          {
+            "identity": "servd",
+            "map": "./IdentifierType"
+          }
+        ]
+      },
+      {
+        "path": "Appointment.identifier.value",
+        "short": "The value that is unique",
+        "definition": "The portion of the identifier typically displayed to the user and which is unique within the context of the system.",
+        "comments": "If the value is a full URI, then the system SHALL be urn:ietf:rfc:3986.",
+        "min": 1,
+        "max": "1",
+        "base": {
+          "path": "Identifier.value",
+          "min": 0,
+          "max": "1"
+        },
+        "type": [
+          {
+            "TypeName": "string",
+            "code": "string"
+          }
+        ],
+        "Item3": "123456",
+        "isSummary": true,
+        "mapping": [
+          {
+            "identity": "v2",
+            "map": "CX.1 / EI.1"
+          },
+          {
+            "identity": "rim",
+            "map": "II.extension or II.root if system indicates OID or GUID (Or Role.id.extension or root)"
+          },
+          {
+            "identity": "servd",
+            "map": "./Value"
+          }
+        ]
+      },
+      {
         "path": "Appointment.identifier.period",
         "short": "Time period when id is/was valid for use",
         "definition": "Time period during which identifier is/was valid for use.",
         "min": 0,
         "max": "0",
+        "base": {
+          "path": "Appointment.identifier.period",
+          "min": 0,
+          "max": "0"
+        },
         "type": [
           {
             "TypeName": "Period",
@@ -183,6 +330,11 @@
         "comments": "The reference may be just a text description of the assigner.",
         "min": 0,
         "max": "0",
+        "base": {
+          "path": "Appointment.identifier.assigner",
+          "min": 0,
+          "max": "0"
+        },
         "type": [
           {
             "TypeName": "Reference",
@@ -216,6 +368,11 @@
         "requirements": "This has been identified as a clinical safety criterium - that this exact system/code pair was chosen explicitly, rather than inferred by the system based on some rules or language processing.",
         "min": 0,
         "max": "0",
+        "base": {
+          "path": "Appointment.type.coding.userSelected",
+          "min": 0,
+          "max": "0"
+        },
         "type": [
           {
             "TypeName": "boolean",
@@ -244,6 +401,11 @@
         "definition": "The slot that this appointment is filling. If provided then the schedule will not be provided as slots are not recursive, and the start/end values MUST be the same as from the slot.",
         "min": 0,
         "max": "*",
+        "base": {
+          "path": "Appointment.slot",
+          "min": 0,
+          "max": "*"
+        },
         "type": [
           {
             "TypeName": "Reference",
@@ -267,6 +429,11 @@
         "comments": "This is generally not the same as the Resource.text of the referenced resource.  The purpose is to identify what's being referenced, not to fully describe it.",
         "min": 0,
         "max": "0",
+        "base": {
+          "path": "Appointment.slot.display",
+          "min": 0,
+          "max": "0"
+        },
         "type": [
           {
             "TypeName": "string",
@@ -288,6 +455,11 @@
         "comments": "Where the terminology does not clearly define what string should be used to identify code system versions, the recommendation is to use the date (expressed in FHIR date format) on which that version was officially published as the version date.",
         "min": 0,
         "max": "0",
+        "base": {
+          "path": "Appointment.participant.type.coding.version",
+          "min": 0,
+          "max": "0"
+        },
         "type": [
           {
             "TypeName": "string",
@@ -318,6 +490,11 @@
         "requirements": "This has been identified as a clinical safety criterium - that this exact system/code pair was chosen explicitly, rather than inferred by the system based on some rules or language processing.",
         "min": 0,
         "max": "0",
+        "base": {
+          "path": "Appointment.participant.type.coding.userSelected",
+          "min": 0,
+          "max": "0"
+        },
         "type": [
           {
             "TypeName": "boolean",
@@ -346,6 +523,11 @@
         "definition": "A Person, Location/HealthcareService or Device that is participating in the appointment.",
         "min": 0,
         "max": "1",
+        "base": {
+          "path": "Appointment.participant.actor",
+          "min": 0,
+          "max": "1"
+        },
         "type": [
           {
             "TypeName": "Reference",

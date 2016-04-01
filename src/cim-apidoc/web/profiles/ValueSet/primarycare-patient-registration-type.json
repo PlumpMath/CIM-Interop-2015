@@ -1,0 +1,65 @@
+﻿{
+  "id": "primarycare-patient-registration-type",
+  "meta": {
+    "lastUpdated": "2015-10-27T00:00:00+00:00",
+    "profile": [
+      "http://hl7.org/fhir/StructureDefinition/valueset-shareable-definition"
+    ]
+  },
+  "extension": [
+    {
+      "Item": 1,
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm"
+    }
+  ],
+  "url": "http://endeavourhealth.org/fhir/ValueSet/primarycare-patient-registration-type",
+  "version": "1.0.0",
+  "name": "PrimaryCare-PatientRegistrationType",
+  "status": "draft",
+  "publisher": "Endeavour Health Charitable Trust",
+  "contact": [
+    {
+      "telecom": [
+        {
+          "system": 4,
+          "value": "http://www.endeavourhealth.org"
+        }
+      ]
+    }
+  ],
+  "date": "2015-10-27T00:00:00+00:00",
+  "description": "Identifies the type of registration for a patient at their GP Practice.",
+  "codeSystem": {
+    "system": "http://endeavourhealth.org/fhir/ValueSet/primarycare-patient-registration-type",
+    "concept": [
+      {
+        "code": "E",
+        "display": "Emergency"
+      },
+      {
+        "code": "IN",
+        "display": "Immediately Necessary"
+      },
+      {
+        "code": "R",
+        "display": "Regular/GMS"
+      },
+      {
+        "code": "T",
+        "display": "Temporary"
+      },
+      {
+        "code": "P",
+        "display": "Private"
+      },
+      {
+        "code": "O",
+        "display": "Other"
+      },
+      {
+        "code": "D",
+        "display": "Dummy/Synthetic"
+      }
+    ]
+  }
+}

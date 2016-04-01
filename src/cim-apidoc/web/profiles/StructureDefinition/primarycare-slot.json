@@ -1,7 +1,7 @@
 ﻿{
   "id": "primarycare-slot",
   "meta": {
-    "lastUpdated": "2015-09-22T11:02:49.724+01:00"
+    "lastUpdated": "2016-03-21T23:53:45.523+00:00"
   },
   "extension": [
     {
@@ -29,6 +29,11 @@
         "definition": "A slot of time on a schedule that may be available for booking appointments.",
         "min": 0,
         "max": "*",
+        "base": {
+          "path": "Slot",
+          "min": 0,
+          "max": "*"
+        },
         "type": [
           {
             "TypeName": "Slot",
@@ -47,6 +52,55 @@
         ]
       },
       {
+        "path": "Slot.id",
+        "short": "Logical id of this artifact - must be a globally unique identifier",
+        "definition": "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes.",
+        "comments": "The only time that a resource does not have an id is when it is being submitted to the server using a create operation. Bundles always have an id, though it is usually a generated UUID.",
+        "min": 1,
+        "max": "1",
+        "base": {
+          "path": "Resource.id",
+          "min": 0,
+          "max": "1"
+        },
+        "type": [
+          {
+            "TypeName": "id",
+            "code": "id"
+          }
+        ],
+        "isSummary": true
+      },
+      {
+        "path": "Slot.identifier",
+        "short": "May be used to carry supplier specific business identifiers, or non-globally unique identifiers",
+        "definition": "External Ids for this item.",
+        "min": 0,
+        "max": "*",
+        "base": {
+          "path": "Slot.identifier",
+          "min": 0,
+          "max": "*"
+        },
+        "type": [
+          {
+            "TypeName": "Identifier",
+            "code": "Identifier"
+          }
+        ],
+        "isSummary": true,
+        "mapping": [
+          {
+            "identity": "rim",
+            "map": ".id"
+          },
+          {
+            "identity": "w5",
+            "map": "id"
+          }
+        ]
+      },
+      {
         "path": "Slot.identifier.use",
         "short": "usual | official | temp | secondary (If known)",
         "definition": "The purpose of this identifier.",
@@ -54,6 +108,11 @@
         "requirements": "Allows the appropriate identifier for a particular context of use to be selected from among a set of identifiers.",
         "min": 0,
         "max": "0",
+        "base": {
+          "path": "Slot.identifier.use",
+          "min": 0,
+          "max": "0"
+        },
         "type": [
           {
             "TypeName": "code",
@@ -88,6 +147,11 @@
         "requirements": "Allows users to make use of identifiers when the identifier system is not known.",
         "min": 0,
         "max": "0",
+        "base": {
+          "path": "Slot.identifier.type",
+          "min": 0,
+          "max": "0"
+        },
         "type": [
           {
             "TypeName": "CodeableConcept",
@@ -114,11 +178,86 @@
         ]
       },
       {
+        "path": "Slot.identifier.system",
+        "short": "The namespace for the identifier",
+        "definition": "Establishes the namespace in which set of possible id values is unique.",
+        "requirements": "There are many sequences of identifiers.  To perform matching, we need to know what sequence we're dealing with. The system identifies a particular sequence or set of unique identifiers.",
+        "min": 1,
+        "max": "1",
+        "base": {
+          "path": "Identifier.system",
+          "min": 0,
+          "max": "1"
+        },
+        "type": [
+          {
+            "TypeName": "uri",
+            "code": "uri"
+          }
+        ],
+        "Item3": "http://www.acme.com/identifiers/patient or urn:ietf:rfc:3986 if the Identifier.value itself is a full uri",
+        "isSummary": true,
+        "mapping": [
+          {
+            "identity": "v2",
+            "map": "CX.4 / EI-2-4"
+          },
+          {
+            "identity": "rim",
+            "map": "II.root or Role.id.root"
+          },
+          {
+            "identity": "servd",
+            "map": "./IdentifierType"
+          }
+        ]
+      },
+      {
+        "path": "Slot.identifier.value",
+        "short": "Value must be unique within the above system",
+        "definition": "The portion of the identifier typically displayed to the user and which is unique within the context of the system.",
+        "comments": "If the value is a full URI, then the system SHALL be urn:ietf:rfc:3986.",
+        "min": 1,
+        "max": "1",
+        "base": {
+          "path": "Identifier.value",
+          "min": 0,
+          "max": "1"
+        },
+        "type": [
+          {
+            "TypeName": "string",
+            "code": "string"
+          }
+        ],
+        "Item3": "123456",
+        "isSummary": true,
+        "mapping": [
+          {
+            "identity": "v2",
+            "map": "CX.1 / EI.1"
+          },
+          {
+            "identity": "rim",
+            "map": "II.extension or II.root if system indicates OID or GUID (Or Role.id.extension or root)"
+          },
+          {
+            "identity": "servd",
+            "map": "./Value"
+          }
+        ]
+      },
+      {
         "path": "Slot.identifier.period",
         "short": "Time period when id is/was valid for use",
         "definition": "Time period during which identifier is/was valid for use.",
         "min": 0,
         "max": "0",
+        "base": {
+          "path": "Slot.identifier.period",
+          "min": 0,
+          "max": "0"
+        },
         "type": [
           {
             "TypeName": "Period",
@@ -148,6 +287,11 @@
         "comments": "The reference may be just a text description of the assigner.",
         "min": 0,
         "max": "0",
+        "base": {
+          "path": "Slot.identifier.assigner",
+          "min": 0,
+          "max": "0"
+        },
         "type": [
           {
             "TypeName": "Reference",
@@ -181,6 +325,11 @@
         "requirements": "This has been identified as a clinical safety criterium - that this exact system/code pair was chosen explicitly, rather than inferred by the system based on some rules or language processing.",
         "min": 0,
         "max": "0",
+        "base": {
+          "path": "Slot.type.coding.userSelected",
+          "min": 0,
+          "max": "0"
+        },
         "type": [
           {
             "TypeName": "boolean",
@@ -209,6 +358,11 @@
         "definition": "The schedule resource that this slot defines an interval of status information.",
         "min": 1,
         "max": "1",
+        "base": {
+          "path": "Slot.schedule",
+          "min": 1,
+          "max": "1"
+        },
         "type": [
           {
             "TypeName": "Reference",
@@ -227,6 +381,11 @@
         "comments": "This is generally not the same as the Resource.text of the referenced resource.  The purpose is to identify what's being referenced, not to fully describe it.",
         "min": 0,
         "max": "0",
+        "base": {
+          "path": "Slot.schedule.display",
+          "min": 0,
+          "max": "0"
+        },
         "type": [
           {
             "TypeName": "string",

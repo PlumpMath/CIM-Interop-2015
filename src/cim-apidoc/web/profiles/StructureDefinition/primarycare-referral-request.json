@@ -206,7 +206,7 @@
             "code": "uri"
           }
         ],
-        "Item1": "http://endeavourhealth.org/fhir/identifier/ubrn",
+        "Item1": "http://endeavourhealth.org/fhir/Identifier/ubrn",
         "Item3": "http://www.acme.com/identifiers/patient or urn:ietf:rfc:3986 if the Identifier.value itself is a full uri",
         "isSummary": true,
         "mapping": [

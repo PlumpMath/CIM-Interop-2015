@@ -1,7 +1,7 @@
 ﻿{
   "id": "primarycare-diagnostic-order",
   "meta": {
-    "lastUpdated": "2015-09-22T11:02:49.724+01:00"
+    "lastUpdated": "2016-04-01T13:58:17.369+01:00"
   },
   "extension": [
     {
@@ -39,6 +39,11 @@
         "definition": "A record of a request for a diagnostic investigation service to be performed.",
         "min": 0,
         "max": "*",
+        "base": {
+          "path": "DiagnosticOrder",
+          "min": 0,
+          "max": "*"
+        },
         "type": [
           {
             "TypeName": "DiagnosticOrder",
@@ -62,6 +67,11 @@
         "definition": "Who or what the investigation is to be performed on. This is usually a human patient, but diagnostic tests can also be requested on animals, groups of humans or animals, devices such as dialysis machines, or even locations (typically for environmental scans).",
         "min": 1,
         "max": "1",
+        "base": {
+          "path": "DiagnosticOrder.subject",
+          "min": 1,
+          "max": "1"
+        },
         "type": [
           {
             "TypeName": "Reference",
@@ -89,6 +99,11 @@
         "definition": "The practitioner that holds legal responsibility for ordering the investigation.",
         "min": 0,
         "max": "1",
+        "base": {
+          "path": "DiagnosticOrder.orderer",
+          "min": 0,
+          "max": "1"
+        },
         "type": [
           {
             "TypeName": "Reference",
@@ -119,6 +134,11 @@
         "definition": "unique id for the element within a resource (for internal references).",
         "min": 0,
         "max": "0",
+        "base": {
+          "path": "DiagnosticOrder.identifier.id",
+          "min": 0,
+          "max": "0"
+        },
         "type": [
           {
             "TypeName": "id",
@@ -140,6 +160,11 @@
         "requirements": "Allows the appropriate identifier for a particular context of use to be selected from among a set of identifiers.",
         "min": 0,
         "max": "0",
+        "base": {
+          "path": "DiagnosticOrder.identifier.use",
+          "min": 0,
+          "max": "0"
+        },
         "type": [
           {
             "TypeName": "code",
@@ -174,6 +199,11 @@
         "requirements": "Allows users to make use of identifiers when the identifier system is not known.",
         "min": 0,
         "max": "0",
+        "base": {
+          "path": "DiagnosticOrder.identifier.type",
+          "min": 0,
+          "max": "0"
+        },
         "type": [
           {
             "TypeName": "CodeableConcept",
@@ -206,6 +236,11 @@
         "comments": "If the value is a full URI, then the system SHALL be urn:ietf:rfc:3986.",
         "min": 0,
         "max": "0",
+        "base": {
+          "path": "DiagnosticOrder.identifier.value",
+          "min": 0,
+          "max": "0"
+        },
         "type": [
           {
             "TypeName": "string",
@@ -235,6 +270,11 @@
         "definition": "Time period during which identifier is/was valid for use.",
         "min": 0,
         "max": "0",
+        "base": {
+          "path": "DiagnosticOrder.identifier.period",
+          "min": 0,
+          "max": "0"
+        },
         "type": [
           {
             "TypeName": "Period",
@@ -264,6 +304,11 @@
         "comments": "The reference may be just a text description of the assigner.",
         "min": 0,
         "max": "0",
+        "base": {
+          "path": "DiagnosticOrder.identifier.assigner",
+          "min": 0,
+          "max": "0"
+        },
         "type": [
           {
             "TypeName": "Reference",
@@ -295,6 +340,11 @@
         "definition": "An encounter that provides additional information about the healthcare context in which this request is made.",
         "min": 0,
         "max": "1",
+        "base": {
+          "path": "DiagnosticOrder.encounter",
+          "min": 0,
+          "max": "1"
+        },
         "type": [
           {
             "TypeName": "Reference",
@@ -327,7 +377,19 @@
         ],
         "min": 0,
         "max": "*",
+        "base": {
+          "path": "DiagnosticOrder.supportingInformation",
+          "min": 0,
+          "max": "*"
+        },
         "type": [
+          {
+            "TypeName": "Reference",
+            "code": "Reference",
+            "profile": [
+              "http://hl7.org/fhir/StructureDefinition/DocumentReference"
+            ]
+          },
           {
             "TypeName": "Reference",
             "code": "Reference",
@@ -340,13 +402,6 @@
             "code": "Reference",
             "profile": [
               "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-condition"
-            ]
-          },
-          {
-            "TypeName": "Reference",
-            "code": "Reference",
-            "profile": [
-              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-document-reference"
             ]
           }
         ],
@@ -368,6 +423,11 @@
         "comments": "Many investigation requests will create a need for specimens, but the request itself is not actually about the specimens. This is provided for when the diagnostic investigation is requested on already existing specimens.",
         "min": 0,
         "max": "*",
+        "base": {
+          "path": "DiagnosticOrder.specimen",
+          "min": 0,
+          "max": "*"
+        },
         "type": [
           {
             "TypeName": "Reference",
@@ -390,19 +450,24 @@
         "definition": "The person responsible for performing or recording the action.",
         "min": 0,
         "max": "1",
+        "base": {
+          "path": "DiagnosticOrder.event.actor",
+          "min": 0,
+          "max": "1"
+        },
         "type": [
           {
             "TypeName": "Reference",
             "code": "Reference",
             "profile": [
-              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-practitioner"
+              "http://hl7.org/fhir/StructureDefinition/Device"
             ]
           },
           {
             "TypeName": "Reference",
             "code": "Reference",
             "profile": [
-              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-device"
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-practitioner"
             ]
           }
         ],
@@ -420,6 +485,11 @@
         "comments": "Many laboratory tests and radiology tests embed the specimen/organ system in the test name, for example,  serum or serum/plasma glucose, or a chest xray. The specimen may not be recorded separately from the test code.",
         "min": 1,
         "max": "1",
+        "base": {
+          "path": "DiagnosticOrder.item.code",
+          "min": 1,
+          "max": "1"
+        },
         "type": [
           {
             "TypeName": "CodeableConcept",
@@ -452,6 +522,11 @@
         "comments": "A single specimen should not appear in both DiagnosticOrder.specimen and DiagnosticOrder.item.specimen.",
         "min": 0,
         "max": "*",
+        "base": {
+          "path": "DiagnosticOrder.item.specimen",
+          "min": 0,
+          "max": "*"
+        },
         "type": [
           {
             "TypeName": "Reference",
@@ -474,6 +549,11 @@
         "definition": "The individual responsible for making the annotation.",
         "min": 0,
         "max": "0",
+        "base": {
+          "path": "DiagnosticOrder.note.author[x]",
+          "min": 0,
+          "max": "0"
+        },
         "type": [
           {
             "TypeName": "Reference",
@@ -519,6 +599,11 @@
         "definition": "Indicates when this particular annotation was made.",
         "min": 0,
         "max": "0",
+        "base": {
+          "path": "DiagnosticOrder.note.time",
+          "min": 0,
+          "max": "0"
+        },
         "type": [
           {
             "TypeName": "dateTime",

@@ -1,7 +1,7 @@
 ﻿{
   "id": "primarycare-organization",
   "meta": {
-    "lastUpdated": "2015-11-01T10:00:00+00:00"
+    "lastUpdated": "2016-03-31T20:54:12.944+01:00"
   },
   "extension": [
     {
@@ -25,7 +25,7 @@
     }
   ],
   "date": "2015-11-01",
-  "description": "Primary Care organization",
+  "description": "One or more people or organisations with a common purpose of function (e.g. a General Practice). This includes public, private or voluntary sector organisations whose activities encompass the funding or provision of health care and support services.",
   "fhirVersion": "1.0.2",
   "kind": 1,
   "constrainedType": "Organization",
@@ -39,6 +39,11 @@
         "definition": "One or more people with a common purpose of function (e.g. a General Practice). This includes public, private or voluntary sector organizations whose activities encompass the funding or provision of health care and support services.",
         "min": 0,
         "max": "*",
+        "base": {
+          "path": "Organization",
+          "min": 0,
+          "max": "*"
+        },
         "type": [
           {
             "TypeName": "Organization",
@@ -80,6 +85,11 @@
         "definition": "Optional Extensions Element - found in all resources.",
         "min": 0,
         "max": "1",
+        "base": {
+          "path": "Organization.extension",
+          "min": 0,
+          "max": "1"
+        },
         "type": [
           {
             "TypeName": "Extension",
@@ -89,6 +99,26 @@
             ]
           }
         ]
+      },
+      {
+        "path": "Organization.id",
+        "short": "Logical id of this artifact.  Must be populated with a globally unique identifier, except where resource is being sent to the server for creation when it must NOT be populated",
+        "definition": "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes.",
+        "comments": "The only time that a resource does not have an id is when it is being submitted to the server using a create operation. Bundles always have an id, though it is usually a generated UUID.",
+        "min": 0,
+        "max": "1",
+        "base": {
+          "path": "Resource.id",
+          "min": 0,
+          "max": "1"
+        },
+        "type": [
+          {
+            "TypeName": "id",
+            "code": "id"
+          }
+        ],
+        "isSummary": true
       },
       {
         "path": "Organization.identifier",
@@ -103,16 +133,26 @@
         "requirements": "Organizations are known by a variety of ids. Some institutions maintain several, and most collect identifiers for exchange with other organizations concerning the organization.",
         "min": 0,
         "max": "*",
+        "base": {
+          "path": "Organization.identifier",
+          "min": 0,
+          "max": "*"
+        },
         "isSummary": true
       },
       {
         "path": "Organization.identifier",
         "name": "odsCode",
-        "short": "Identifies this organization  across multiple systems",
+        "short": "Organisation Data Service code",
         "definition": "Identifier for the organization that is used to identify the organization across multiple disparate systems.",
         "requirements": "Organizations are known by a variety of ids. Some institutions maintain several, and most collect identifiers for exchange with other organizations concerning the organization.",
         "min": 0,
         "max": "1",
+        "base": {
+          "path": "Organization.identifier",
+          "min": 0,
+          "max": "1"
+        },
         "type": [
           {
             "TypeName": "Identifier",
@@ -143,6 +183,33 @@
         ]
       },
       {
+        "path": "Organization.identifier.id",
+        "representation": [
+          0
+        ],
+        "short": "xml:id (or equivalent in JSON)",
+        "definition": "unique id for the element within a resource (for internal references).",
+        "min": 0,
+        "max": "0",
+        "base": {
+          "path": "Element.id",
+          "min": 0,
+          "max": "1"
+        },
+        "type": [
+          {
+            "TypeName": "id",
+            "code": "id"
+          }
+        ],
+        "mapping": [
+          {
+            "identity": "rim",
+            "map": "n/a"
+          }
+        ]
+      },
+      {
         "path": "Organization.identifier.use",
         "short": "usual | official | temp | secondary (If known)",
         "definition": "The purpose of this identifier.",
@@ -150,6 +217,11 @@
         "requirements": "Allows the appropriate identifier for a particular context of use to be selected from among a set of identifiers.",
         "min": 0,
         "max": "0",
+        "base": {
+          "path": "Organization.identifier.use",
+          "min": 0,
+          "max": "0"
+        },
         "type": [
           {
             "TypeName": "code",
@@ -184,6 +256,11 @@
         "requirements": "Allows users to make use of identifiers when the identifier system is not known.",
         "min": 0,
         "max": "0",
+        "base": {
+          "path": "Organization.identifier.type",
+          "min": 0,
+          "max": "0"
+        },
         "type": [
           {
             "TypeName": "CodeableConcept",
@@ -216,13 +293,18 @@
         "requirements": "There are many sequences of identifiers.  To perform matching, we need to know what sequence we're dealing with. The system identifies a particular sequence or set of unique identifiers.",
         "min": 1,
         "max": "1",
+        "base": {
+          "path": "Organization.identifier.system",
+          "min": 1,
+          "max": "1"
+        },
         "type": [
           {
             "TypeName": "uri",
             "code": "uri"
           }
         ],
-        "Item1": "http://endeavourhealth.org/fhir/identifier#odscode",
+        "Item1": "http://fhir.nhs.net/Id/ods-organization-code",
         "Item3": "http://www.acme.com/identifiers/patient or urn:ietf:rfc:3986 if the Identifier.value itself is a full uri",
         "isSummary": true,
         "mapping": [
@@ -242,11 +324,16 @@
       },
       {
         "path": "Organization.identifier.value",
-        "short": "The value that is unique",
+        "short": "ODS code value",
         "definition": "The portion of the identifier typically displayed to the user and which is unique within the context of the system.",
         "comments": "If the value is a full URI, then the system SHALL be urn:ietf:rfc:3986.",
         "min": 1,
         "max": "1",
+        "base": {
+          "path": "Organization.identifier.value",
+          "min": 1,
+          "max": "1"
+        },
         "type": [
           {
             "TypeName": "string",
@@ -276,6 +363,11 @@
         "definition": "Time period during which identifier is/was valid for use.",
         "min": 0,
         "max": "0",
+        "base": {
+          "path": "Organization.identifier.period",
+          "min": 0,
+          "max": "0"
+        },
         "type": [
           {
             "TypeName": "Period",
@@ -305,6 +397,11 @@
         "comments": "The reference may be just a text description of the assigner.",
         "min": 0,
         "max": "0",
+        "base": {
+          "path": "Organization.identifier.assigner",
+          "min": 0,
+          "max": "0"
+        },
         "type": [
           {
             "TypeName": "Reference",
@@ -332,12 +429,17 @@
       },
       {
         "path": "Organization.identifier",
-        "name": "systemSupplierIdentifier",
-        "short": "Identifies this organization  across multiple systems",
+        "name": "localIdentifier",
+        "short": "Business identifier issued locally or by system supplier",
         "definition": "Identifier for the organization that is used to identify the organization across multiple disparate systems.",
         "requirements": "Organizations are known by a variety of ids. Some institutions maintain several, and most collect identifiers for exchange with other organizations concerning the organization.",
         "min": 0,
         "max": "*",
+        "base": {
+          "path": "Organization.identifier",
+          "min": 0,
+          "max": "*"
+        },
         "type": [
           {
             "TypeName": "Identifier",
@@ -368,6 +470,33 @@
         ]
       },
       {
+        "path": "Organization.identifier.id",
+        "representation": [
+          0
+        ],
+        "short": "xml:id (or equivalent in JSON)",
+        "definition": "unique id for the element within a resource (for internal references).",
+        "min": 0,
+        "max": "0",
+        "base": {
+          "path": "Element.id",
+          "min": 0,
+          "max": "1"
+        },
+        "type": [
+          {
+            "TypeName": "id",
+            "code": "id"
+          }
+        ],
+        "mapping": [
+          {
+            "identity": "rim",
+            "map": "n/a"
+          }
+        ]
+      },
+      {
         "path": "Organization.identifier.use",
         "short": "usual | official | temp | secondary (If known)",
         "definition": "The purpose of this identifier.",
@@ -375,6 +504,11 @@
         "requirements": "Allows the appropriate identifier for a particular context of use to be selected from among a set of identifiers.",
         "min": 0,
         "max": "0",
+        "base": {
+          "path": "Organization.identifier.use",
+          "min": 0,
+          "max": "0"
+        },
         "type": [
           {
             "TypeName": "code",
@@ -409,6 +543,11 @@
         "requirements": "Allows users to make use of identifiers when the identifier system is not known.",
         "min": 0,
         "max": "0",
+        "base": {
+          "path": "Organization.identifier.type",
+          "min": 0,
+          "max": "0"
+        },
         "type": [
           {
             "TypeName": "CodeableConcept",
@@ -436,11 +575,16 @@
       },
       {
         "path": "Organization.identifier.system",
-        "short": "The system suppliers identifier namespace, e.g. http://supplier.co.uk/identifier",
+        "short": "The local or system suppliers identifier namespace, e.g. http://supplier.co.uk/identifier",
         "definition": "Establishes the namespace in which set of possible id values is unique.",
         "requirements": "There are many sequences of identifiers.  To perform matching, we need to know what sequence we're dealing with. The system identifies a particular sequence or set of unique identifiers.",
         "min": 1,
         "max": "1",
+        "base": {
+          "path": "Organization.identifier.system",
+          "min": 1,
+          "max": "1"
+        },
         "type": [
           {
             "TypeName": "uri",
@@ -466,11 +610,16 @@
       },
       {
         "path": "Organization.identifier.value",
-        "short": "The value that is unique",
+        "short": "Local or system supplier identifier value",
         "definition": "The portion of the identifier typically displayed to the user and which is unique within the context of the system.",
         "comments": "If the value is a full URI, then the system SHALL be urn:ietf:rfc:3986.",
         "min": 1,
         "max": "1",
+        "base": {
+          "path": "Organization.identifier.value",
+          "min": 1,
+          "max": "1"
+        },
         "type": [
           {
             "TypeName": "string",
@@ -500,6 +649,11 @@
         "definition": "Time period during which identifier is/was valid for use.",
         "min": 0,
         "max": "0",
+        "base": {
+          "path": "Organization.identifier.period",
+          "min": 0,
+          "max": "0"
+        },
         "type": [
           {
             "TypeName": "Period",
@@ -533,7 +687,8 @@
       },
       {
         "path": "Organization.active.extension",
-        "name": "openDate",
+        "name": "activePeriod",
+        "short": "Date the organization became active, and if inactive, date the organization became inactive",
         "definition": "Optional Extensions Element - found in all resources.",
         "min": 0,
         "max": "1",
@@ -542,23 +697,7 @@
             "TypeName": "Extension",
             "code": "Extension",
             "profile": [
-              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-date-extension"
-            ]
-          }
-        ]
-      },
-      {
-        "path": "Organization.active.extension",
-        "name": "closeDate",
-        "definition": "Optional Extensions Element - found in all resources.",
-        "min": 0,
-        "max": "1",
-        "type": [
-          {
-            "TypeName": "Extension",
-            "code": "Extension",
-            "profile": [
-              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-date-extension"
+              "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-activeperiod-extension"
             ]
           }
         ]
@@ -571,6 +710,11 @@
         "requirements": "Need to be able to track the kind of organization that this is - different organization types have different uses.",
         "min": 1,
         "max": "1",
+        "base": {
+          "path": "Organization.type",
+          "min": 1,
+          "max": "1"
+        },
         "type": [
           {
             "TypeName": "CodeableConcept",
@@ -612,6 +756,11 @@
         "requirements": "Allows for translations and alternate encodings within a code system.  Also supports communication of the same instance to systems requiring different encodings.",
         "min": 0,
         "max": "1",
+        "base": {
+          "path": "Organization.type.coding",
+          "min": 0,
+          "max": "1"
+        },
         "type": [
           {
             "TypeName": "Coding",
@@ -642,6 +791,11 @@
         "requirements": "Need to be unambiguous about the source of the definition of the symbol.",
         "min": 1,
         "max": "1",
+        "base": {
+          "path": "Organization.type.coding.system",
+          "min": 1,
+          "max": "1"
+        },
         "type": [
           {
             "TypeName": "uri",
@@ -672,6 +826,11 @@
         "comments": "Where the terminology does not clearly define what string should be used to identify code system versions, the recommendation is to use the date (expressed in FHIR date format) on which that version was officially published as the version date.",
         "min": 0,
         "max": "0",
+        "base": {
+          "path": "Organization.type.coding.version",
+          "min": 0,
+          "max": "0"
+        },
         "type": [
           {
             "TypeName": "string",
@@ -701,6 +860,11 @@
         "requirements": "Need to refer to a particular code in the system.",
         "min": 1,
         "max": "1",
+        "base": {
+          "path": "Organization.type.coding.code",
+          "min": 1,
+          "max": "1"
+        },
         "type": [
           {
             "TypeName": "code",
@@ -730,6 +894,11 @@
         "requirements": "Need to be able to carry a human-readable meaning of the code for readers that do not know  the system.",
         "min": 1,
         "max": "1",
+        "base": {
+          "path": "Organization.type.coding.display",
+          "min": 1,
+          "max": "1"
+        },
         "type": [
           {
             "TypeName": "string",
@@ -760,6 +929,11 @@
         "requirements": "This has been identified as a clinical safety criterium - that this exact system/code pair was chosen explicitly, rather than inferred by the system based on some rules or language processing.",
         "min": 0,
         "max": "0",
+        "base": {
+          "path": "Organization.type.coding.userSelected",
+          "min": 0,
+          "max": "0"
+        },
         "type": [
           {
             "TypeName": "boolean",
@@ -789,6 +963,11 @@
         "requirements": "Need to use the name as the label of the organization.",
         "min": 1,
         "max": "1",
+        "base": {
+          "path": "Organization.name",
+          "min": 1,
+          "max": "1"
+        },
         "type": [
           {
             "TypeName": "string",
@@ -822,6 +1001,11 @@
         "requirements": "Human contact for the organization.",
         "min": 0,
         "max": "0",
+        "base": {
+          "path": "Organization.telecom",
+          "min": 0,
+          "max": "0"
+        },
         "type": [
           {
             "TypeName": "ContactPoint",
@@ -852,6 +1036,11 @@
         "definition": "Telecommunications form for contact point - what communications system is required to make use of the contact.",
         "min": 1,
         "max": "1",
+        "base": {
+          "path": "Organization.telecom.system",
+          "min": 1,
+          "max": "1"
+        },
         "type": [
           {
             "TypeName": "code",
@@ -892,6 +1081,11 @@
         "requirements": "Need to support legacy numbers that are not in a tightly controlled format.",
         "min": 1,
         "max": "1",
+        "base": {
+          "path": "Organization.telecom.value",
+          "min": 1,
+          "max": "1"
+        },
         "type": [
           {
             "TypeName": "string",
@@ -922,6 +1116,11 @@
         "requirements": "Need to track the way a person uses this contact, so a user can choose which is appropriate for their purpose.",
         "min": 0,
         "max": "0",
+        "base": {
+          "path": "Organization.telecom.use",
+          "min": 0,
+          "max": "0"
+        },
         "type": [
           {
             "TypeName": "code",
@@ -958,6 +1157,11 @@
         "definition": "Time period when the contact point was/is in use.",
         "min": 0,
         "max": "0",
+        "base": {
+          "path": "Organization.telecom.period",
+          "min": 0,
+          "max": "0"
+        },
         "type": [
           {
             "TypeName": "Period",
@@ -988,6 +1192,11 @@
         "requirements": "May need to keep track of the organization's addresses for contacting, billing or reporting requirements.",
         "min": 0,
         "max": "0",
+        "base": {
+          "path": "Organization.address",
+          "min": 0,
+          "max": "0"
+        },
         "type": [
           {
             "TypeName": "Address",
@@ -1020,6 +1229,11 @@
         "requirements": "Allows an appropriate address to be chosen from a list of many.",
         "min": 0,
         "max": "0",
+        "base": {
+          "path": "Organization.address.use",
+          "min": 0,
+          "max": "0"
+        },
         "type": [
           {
             "TypeName": "code",
@@ -1061,6 +1275,11 @@
         ],
         "min": 0,
         "max": "0",
+        "base": {
+          "path": "Organization.address.state",
+          "min": 0,
+          "max": "0"
+        },
         "type": [
           {
             "TypeName": "string",
@@ -1094,6 +1313,11 @@
         "requirements": "Allows addresses to be placed in historical context.",
         "min": 0,
         "max": "0",
+        "base": {
+          "path": "Organization.address.period",
+          "min": 0,
+          "max": "0"
+        },
         "type": [
           {
             "TypeName": "Period",
@@ -1127,6 +1351,11 @@
         "requirements": "Need to be able to track the hierarchy of organizations within an organization.",
         "min": 0,
         "max": "1",
+        "base": {
+          "path": "Organization.partOf",
+          "min": 0,
+          "max": "1"
+        },
         "type": [
           {
             "TypeName": "Reference",
@@ -1160,6 +1389,11 @@
         "requirements": "Need to keep track of assigned contact points within bigger organization.",
         "min": 0,
         "max": "0",
+        "base": {
+          "path": "Organization.contact",
+          "min": 0,
+          "max": "0"
+        },
         "type": [
           {
             "TypeName": "BackboneElement",
@@ -1180,6 +1414,11 @@
         "comments": "Where the terminology does not clearly define what string should be used to identify code system versions, the recommendation is to use the date (expressed in FHIR date format) on which that version was officially published as the version date.",
         "min": 0,
         "max": "0",
+        "base": {
+          "path": "Organization.contact.purpose.coding.version",
+          "min": 0,
+          "max": "0"
+        },
         "type": [
           {
             "TypeName": "string",
@@ -1210,6 +1449,11 @@
         "requirements": "This has been identified as a clinical safety criterium - that this exact system/code pair was chosen explicitly, rather than inferred by the system based on some rules or language processing.",
         "min": 0,
         "max": "0",
+        "base": {
+          "path": "Organization.contact.purpose.coding.userSelected",
+          "min": 0,
+          "max": "0"
+        },
         "type": [
           {
             "TypeName": "boolean",
@@ -1240,6 +1484,11 @@
         "requirements": "Allows the appropriate name for a particular context of use to be selected from among a set of names.",
         "min": 0,
         "max": "0",
+        "base": {
+          "path": "Organization.contact.name.use",
+          "min": 0,
+          "max": "0"
+        },
         "type": [
           {
             "TypeName": "code",
@@ -1280,6 +1529,11 @@
         ],
         "min": 1,
         "max": "1",
+        "base": {
+          "path": "Organization.contact.name.family",
+          "min": 1,
+          "max": "1"
+        },
         "type": [
           {
             "TypeName": "string",
@@ -1308,6 +1562,11 @@
         "definition": "Part of the name that is acquired as a title due to academic, legal, employment or nobility status, etc. and that appears at the start of the name.",
         "min": 0,
         "max": "1",
+        "base": {
+          "path": "Organization.contact.name.prefix",
+          "min": 0,
+          "max": "1"
+        },
         "type": [
           {
             "TypeName": "string",
@@ -1336,6 +1595,11 @@
         "definition": "Part of the name that is acquired as a title due to academic, legal, employment or nobility status, etc. and that appears at the end of the name.",
         "min": 0,
         "max": "0",
+        "base": {
+          "path": "Organization.contact.name.suffix",
+          "min": 0,
+          "max": "0"
+        },
         "type": [
           {
             "TypeName": "string",
@@ -1361,6 +1625,11 @@
         "requirements": "Allows names to be placed in historical context.",
         "min": 0,
         "max": "0",
+        "base": {
+          "path": "Organization.contact.name.period",
+          "min": 0,
+          "max": "0"
+        },
         "type": [
           {
             "TypeName": "Period",
@@ -1389,6 +1658,11 @@
         "definition": "Telecommunications form for contact point - what communications system is required to make use of the contact.",
         "min": 1,
         "max": "1",
+        "base": {
+          "path": "Organization.contact.telecom.system",
+          "min": 1,
+          "max": "1"
+        },
         "type": [
           {
             "TypeName": "code",
@@ -1429,6 +1703,11 @@
         "requirements": "Need to support legacy numbers that are not in a tightly controlled format.",
         "min": 1,
         "max": "1",
+        "base": {
+          "path": "Organization.contact.telecom.value",
+          "min": 1,
+          "max": "1"
+        },
         "type": [
           {
             "TypeName": "string",
@@ -1459,6 +1738,11 @@
         "requirements": "Need to track the way a person uses this contact, so a user can choose which is appropriate for their purpose.",
         "min": 0,
         "max": "0",
+        "base": {
+          "path": "Organization.contact.telecom.use",
+          "min": 0,
+          "max": "0"
+        },
         "type": [
           {
             "TypeName": "code",
@@ -1495,6 +1779,11 @@
         "definition": "Time period when the contact point was/is in use.",
         "min": 0,
         "max": "0",
+        "base": {
+          "path": "Organization.contact.telecom.period",
+          "min": 0,
+          "max": "0"
+        },
         "type": [
           {
             "TypeName": "Period",
@@ -1525,6 +1814,11 @@
         "requirements": "Allows an appropriate address to be chosen from a list of many.",
         "min": 0,
         "max": "0",
+        "base": {
+          "path": "Organization.contact.address.use",
+          "min": 0,
+          "max": "0"
+        },
         "type": [
           {
             "TypeName": "code",
@@ -1566,6 +1860,11 @@
         ],
         "min": 0,
         "max": "0",
+        "base": {
+          "path": "Organization.contact.address.state",
+          "min": 0,
+          "max": "0"
+        },
         "type": [
           {
             "TypeName": "string",
@@ -1599,6 +1898,11 @@
         "requirements": "Allows addresses to be placed in historical context.",
         "min": 0,
         "max": "0",
+        "base": {
+          "path": "Organization.contact.address.period",
+          "min": 0,
+          "max": "0"
+        },
         "type": [
           {
             "TypeName": "Period",
