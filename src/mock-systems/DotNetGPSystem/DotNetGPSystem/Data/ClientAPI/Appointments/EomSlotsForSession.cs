@@ -99,6 +99,9 @@ public partial class PatientStruct {
     public int RefID;
     
     /// <remarks/>
+    public string GUID;
+    
+    /// <remarks/>
     public string Title;
     
     /// <remarks/>

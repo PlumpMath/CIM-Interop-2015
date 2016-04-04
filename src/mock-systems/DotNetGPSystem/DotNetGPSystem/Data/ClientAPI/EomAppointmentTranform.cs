@@ -25,7 +25,9 @@ namespace DotNetGPSystem
                 Date = slot.Session.Date.ToShortDateString(),
                 Duration = slot.Length.ToString(),
                 SessionDBID = slot.Session.SessionId,
+                SessionGUID = slot.Session.SessionGuid.ToString(),
                 SlotID = slot.SlotId,
+                SlotGUID = slot.SlotGuid.ToString(),
                 StartTime = slot.FormattedTime,
                 Status = slot.Status,
                 SiteID = slot.Session.Organisation.OrganisationId,
@@ -43,7 +45,8 @@ namespace DotNetGPSystem
                 Title = user.Person.title,
                 FirstNames = user.Person.forenames,
                 LastName = user.Person.surname,
-                DBID = user.OpenHRUserId
+                DBID = user.OpenHRUserId,
+                GUID = user.User.id
             };
         }
 
@@ -69,6 +72,7 @@ namespace DotNetGPSystem
                     {
                         DBID = slot.Patient.PatientId,
                         RefID = slot.Patient.PatientId,
+                        GUID = slot.Patient.Patient.id,
                         FirstNames = slot.Patient.Person.forenames,
                         Surname = slot.Patient.Person.surname,
                         Title = slot.Patient.Person.title,
@@ -155,9 +159,9 @@ namespace DotNetGPSystem
                 LastName = user.Person.surname,
                 Title = user.Person.title,
                 DBID = user.OpenHRUserId,
-                RefID = user.OpenHRUserId
+                RefID = user.OpenHRUserId,
+                GUID = user.User.id
             };
         }
-
     }
 }

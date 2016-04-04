@@ -117,6 +117,9 @@ public partial class HolderStruct {
     public int RefID;
     
     /// <remarks/>
+    public string GUID;
+    
+    /// <remarks/>
     public string Title;
     
     /// <remarks/>
@@ -136,6 +139,9 @@ public partial class SiteStruct {
     
     /// <remarks/>
     public int DBID;
+    
+    /// <remarks/>
+    public string GUID;
     
     /// <remarks/>
     public string Name;

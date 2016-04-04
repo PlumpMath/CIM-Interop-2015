@@ -29,6 +29,7 @@
 		<xs:sequence>
 			<xs:element name="DBID" type="xs:int"/>
 			<xs:element name="RefID" type="xs:int"/>
+			<xs:element name="GUID" type="xs:string"/>
 			<xs:element name="Title" type="xs:string"/>
 			<xs:element name="FirstNames" type="xs:string"/>
 			<xs:element name="Surname" type="xs:string"/>
