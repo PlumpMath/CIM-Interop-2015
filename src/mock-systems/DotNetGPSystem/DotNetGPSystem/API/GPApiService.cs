@@ -189,42 +189,29 @@ namespace DotNetGPSystem
             return Utilities.Serialize<EomGetPatientAppointments.PatientAppointmentList>(appointmentList);
         }
 
-        public string GetUserByID(string odsCode, int userInRoleId)
+        public string GetUser(string odsCode, Guid userGuid)
         {
             OpenHRUser user = DataStore
                 .Users
                 .FirstOrDefault(t => t.Organisation.nationalPracticeCode == odsCode
-                                    && t.OpenHRUserId == userInRoleId);
+                                    && new Guid(t.User.id) == userGuid);
 
-            string result = string.Empty;
+            if (user == null)
+                return string.Empty;
 
-            if (user != null)
+            OpenHR001OpenHealthRecord openHR = new OpenHR001OpenHealthRecord()
             {
-                EomUserDetails37.UserDetails userDetails = EomUsersTransform.ToEomUserDetails(user);
+                adminDomain = new OpenHR001AdminDomain()
+                {
+                    user = new OpenHR001User[] { user.User },
+                    userInRole = new OpenHR001UserInRole[] { user.UserInRole },
+                    person = new OpenHR001Person[] { user.Person },
+                    role = new OpenHR001Role[] { user.Role },
+                    organisation = new OpenHR001Organisation[] { user.Organisation }
+                }
+            };
 
-                result = Utilities.Serialize<EomUserDetails37.UserDetails>(userDetails);
-            }
-
-            return result;
-        }
-
-        public string GetUserByUserInRoleGuid(string odsCode, Guid userInRoleGuid)
-        {
-            OpenHRUser user = DataStore
-                .Users
-                .FirstOrDefault(t => t.Organisation.nationalPracticeCode == odsCode
-                                    && userInRoleGuid.Equals(new Guid(t.UserInRole.id)));
-
-            string result = string.Empty;
-
-            if (user != null)
-            {
-                EomUserDetails37.UserDetails userDetails = EomUsersTransform.ToEomUserDetails(user);
-
-                result = Utilities.Serialize<EomUserDetails37.UserDetails>(userDetails);
-            }
-
-            return result;
+            return Utilities.Serialize(openHR);
         }
 
         public string BookAppointment(string odsCode, int slotId, Guid patientGuid, string reason)

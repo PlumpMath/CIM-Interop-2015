@@ -147,7 +147,6 @@
     <Compile Include="Data\ClientAPI\Users\EomUserDetails37.cs">
       <DependentUpon>EomUserDetails37.xsd</DependentUpon>
     </Compile>
-    <Compile Include="Data\ClientAPI\EomUserTransform.cs" />
     <Compile Include="Data\DataStore.cs" />
     <Compile Include="Data\OpenHR\OpenHRLocation.cs" />
     <Compile Include="Data\OpenHR\OpenHROrganisation.cs" />
