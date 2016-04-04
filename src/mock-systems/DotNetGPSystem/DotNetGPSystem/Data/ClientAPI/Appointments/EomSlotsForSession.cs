@@ -47,6 +47,9 @@ public partial class SlotStruct {
     public string GUID;
     
     /// <remarks/>
+    public string SessionGUID;
+    
+    /// <remarks/>
     public string Date;
     
     /// <remarks/>

@@ -62,11 +62,19 @@ namespace DotNetGPSystem
 
         private static EomSlotsForSession.SlotStruct ToEomSlot(Slot slot)
         {
-            EomSlotsForSession.PatientListStruct patient = null;
-            
-            if (slot.Patient != null)
+            return new EomSlotsForSession.SlotStruct()
             {
-                patient = new EomSlotsForSession.PatientListStruct()
+                DBID = slot.SlotId,
+                RefID = slot.SlotId,
+                GUID = slot.SlotGuid.ToString(),
+                SessionGUID = slot.Session.SessionGuid.ToString(),
+                Status = slot.Status,
+                Date = slot.Session.Date.ToShortDateString(),
+                StartTime = slot.FormattedTime,
+                SlotLength = slot.Length.ToString(),
+                Reason = string.Empty,
+                Notes = string.Empty,
+                PatientList = slot.Patient.WhenNotNull(t => new EomSlotsForSession.PatientListStruct()
                 {
                     Patient = new EomSlotsForSession.PatientStruct()
                     {
@@ -78,21 +86,7 @@ namespace DotNetGPSystem
                         Title = slot.Patient.Person.title,
                         FullName = slot.Patient.Person.GetCuiDisplayName()
                     }
-                };
-            }
-
-            return new EomSlotsForSession.SlotStruct()
-            {
-                DBID = slot.SlotId,
-                RefID = slot.SlotId,
-                GUID = slot.SlotGuid.ToString(),
-                Status = slot.Status,
-                Date = slot.Session.Date.ToShortDateString(),
-                StartTime = slot.FormattedTime,
-                SlotLength = slot.Length.ToString(),
-                Reason = string.Empty,
-                Notes = string.Empty,
-                PatientList =  patient
+                })
             };
         }
         

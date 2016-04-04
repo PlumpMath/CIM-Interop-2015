@@ -408,6 +408,18 @@ namespace DotNetGPSystem
             return session.Slots;
         }
 
+        public static Slot[] GetSlots(string odsCode, Guid sessionGuid)
+        {
+            Session session = AppointmentSessions
+                .FirstOrDefault(t => t.SessionGuid == sessionGuid
+                                    && t.Organisation.Organisation.nationalPracticeCode == odsCode);
+
+            if (session == null)
+                return null;
+
+            return session.Slots;
+        }
+
         public static Slot GetSlot(string odsCode, int slotId)
         {
             return AppointmentSessions
