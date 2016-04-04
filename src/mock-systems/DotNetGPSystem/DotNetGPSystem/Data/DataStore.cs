@@ -128,6 +128,7 @@ namespace DotNetGPSystem
                     {
                         Session session = new Session(
                             sessionId: sessionId++,
+                            sessionGuid: Guid.NewGuid(),
                             date: date,
                             user: user,
                             organisation: organisation);
@@ -293,9 +294,12 @@ namespace DotNetGPSystem
                 ExternalAppointmentBookChangeMade(null, new EventArgs());
         }
 
-        public static AppointmentOperationStatus BookAppointment(string odsCode, int slotId, Guid patientGuid)
+        public static AppointmentOperationStatus BookAppointment(string odsCode, Guid slotGuid, Guid patientGuid)
         {
-            Slot slot = DataStore.GetSlot(odsCode, slotId);
+            if (slotGuid == Guid.Empty)
+                return AppointmentOperationStatus.SlotNotFound;
+
+            Slot slot = DataStore.GetSlot(odsCode, slotGuid);
 
             if (slot == null)
                 return AppointmentOperationStatus.SlotNotFound;
@@ -319,9 +323,12 @@ namespace DotNetGPSystem
             return AppointmentOperationStatus.Successful;
         }
 
-        public static AppointmentOperationStatus CancelAppointment(string odsCode, int slotId, Guid patientGuid)
+        public static AppointmentOperationStatus CancelAppointment(string odsCode, Guid slotGuid, Guid patientGuid)
         {
-            Slot slot = DataStore.GetSlot(odsCode, slotId);
+            if (slotGuid == Guid.Empty)
+                return AppointmentOperationStatus.SlotNotFound;
+
+            Slot slot = DataStore.GetSlot(odsCode, slotGuid);
 
             if (slot == null)
                 return AppointmentOperationStatus.SlotNotFound;
@@ -407,7 +414,14 @@ namespace DotNetGPSystem
                 .Where(t => t.Organisation.Organisation.nationalPracticeCode == odsCode)
                 .SelectMany(t => t.Slots)
                 .FirstOrDefault(t => t.SlotId == slotId);
-                
+        }
+
+        public static Slot GetSlot(string odsCode, Guid slotGuid)
+        {
+            return AppointmentSessions
+                .Where(t => t.Organisation.Organisation.nationalPracticeCode == odsCode)
+                .SelectMany(t => t.Slots)
+                .FirstOrDefault(t => t.SlotGuid == slotGuid);
         }
 
         public static Slot[] GetSlotsForPatient(string odsCode, Guid patientGuid, DateTime fromDate, DateTime toDate)

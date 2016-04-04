@@ -81,6 +81,7 @@ namespace DotNetGPSystem
             {
                 DBID = slot.SlotId,
                 RefID = slot.SlotId,
+                GUID = slot.SlotGuid.ToString(),
                 Status = slot.Status,
                 Date = slot.Session.Date.ToShortDateString(),
                 StartTime = slot.FormattedTime,
@@ -107,6 +108,7 @@ namespace DotNetGPSystem
             {
                 Date = session.Date.ToShortDateString(),
                 DBID = session.SessionId,
+                GUID = session.SessionGuid.ToString(),
                 
                 StartTime = session
                     .Slots

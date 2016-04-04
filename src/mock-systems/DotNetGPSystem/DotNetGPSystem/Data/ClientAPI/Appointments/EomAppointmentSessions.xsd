@@ -13,6 +13,7 @@
 	<xs:complexType name="AppointmentSessionStruct">
 		<xs:sequence>
 			<xs:element name="DBID" type="xs:int"/>
+			<xs:element name="GUID" type="xs:string"/>
 			<xs:element name="Name" type="xs:string"/>
 			<xs:element name="Date" type="xs:string"/>
 			<xs:element name="StartTime" type="xs:string"/>
