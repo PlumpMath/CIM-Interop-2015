@@ -13,6 +13,7 @@
 	<xs:complexType name="AppointmentSessionStruct">
 		<xs:sequence>
 			<xs:element name="DBID" type="xs:int"/>
+			<xs:element name="GUID" type="xs:string"/>
 			<xs:element name="Name" type="xs:string"/>
 			<xs:element name="Date" type="xs:string"/>
 			<xs:element name="StartTime" type="xs:string"/>
@@ -27,6 +28,7 @@
 		<xs:sequence>
 			<xs:element name="DBID" type="xs:int"/>
 			<xs:element name="RefID" type="xs:int"/>
+			<xs:element name="GUID" type="xs:string"/>
 			<xs:element name="Title" type="xs:string"/>
 			<xs:element name="FirstNames" type="xs:string"/>
 			<xs:element name="LastName" type="xs:string"/>
@@ -35,6 +37,7 @@
 	<xs:complexType name="SiteStruct">
 		<xs:sequence>
 			<xs:element name="DBID" type="xs:int"/>
+			<xs:element name="GUID" type="xs:string"/>
 			<xs:element name="Name" type="xs:string"/>
 		</xs:sequence>
 	</xs:complexType>

@@ -9,7 +9,6 @@ import org.endeavourhealth.cim.transform.common.BundleHelper;
 import org.endeavourhealth.cim.transform.common.BundleProperties;
 import org.endeavourhealth.cim.camel.exceptions.NotFoundException;
 import org.endeavourhealth.cim.repository.utils.TextUtils;
-import org.endeavourhealth.cim.dataManager.IDataManager;
 import org.endeavourhealth.cim.camel.helpers.FhirFilterHelper;
 import org.endeavourhealth.cim.transform.common.ReferenceHelper;
 import org.hl7.fhir.instance.formats.JsonParser;
@@ -19,35 +18,37 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 @SuppressWarnings("unused")
-public class EmisDataManager implements IDataManager {
-
+public class DataManager
+{
 	protected EmisDataAdapter _emisDataAdapter = new EmisDataAdapter();
 	private final EmisOpenTransformer _emisOpenTransformer = new EmisOpenTransformer();
 	private final OpenHRTransformer _openHRTransformer = new OpenHRTransformer();
 
 	/* administrative */
 
-	@Override
-	public String getSchedules(String odsCode, Date dateFrom, Date dateTo, String practitionerId) throws Exception {
-
-		UUID practitionerUuid = null;
-		if (practitionerId != null)
-			try {
-				practitionerUuid = UUID.fromString(practitionerId);
-			} catch (IllegalArgumentException e) {
-				throw new InvalidInternalIdentifier("Practitioner Id");
-			}
-
+	public String getSchedules(String odsCode, Date dateFrom, Date dateTo, UUID practitionerId) throws Exception
+	{
 		String schedulesXml = _emisDataAdapter.getSchedules(odsCode, dateFrom, dateTo);
-		String organisationXml = _emisDataAdapter.getOrganisationInformation(odsCode);
-		BundleProperties bundleProperties = getBundleProperties(odsCode);
+		List<Schedule> schedules = _emisOpenTransformer.toFhirSchedules(schedulesXml);
 
-		Bundle bundle = _emisOpenTransformer.toFhirScheduleBundle(bundleProperties, schedulesXml, organisationXml);
-		bundle = FhirFilterHelper.filterScheduleByPractitioner(bundle, practitionerUuid);
+		Bundle bundle = BundleHelper.createBundle(getBundleProperties(odsCode), schedules);
+
+		bundle = FhirFilterHelper.filterScheduleByPractitioner(bundle, practitionerId);
+
 		return new JsonParser().composeString(bundle);
 	}
 
-	@Override
+	public String searchSlots(String odsCode, Date dateFrom, Date dateTo, UUID practitionerId) throws Exception
+	{
+		String schedulesXml = _emisDataAdapter.getSchedules(odsCode, dateFrom, dateTo);
+
+		List<Schedule> schedules = _emisOpenTransformer.toFhirSchedules(schedulesXml);
+
+		Bundle bundle = BundleHelper.createBundle(getBundleProperties(odsCode), schedules);
+
+		return new JsonParser().composeString(bundle);
+	}
+
 	public String getSlots(String odsCode, String scheduleId) throws Exception {
 
 		String slotsXml = _emisDataAdapter.getSlots(odsCode, scheduleId);
@@ -57,7 +58,6 @@ public class EmisDataManager implements IDataManager {
 		return new JsonParser().composeString(bundle);
 	}
 
-	@Override
 	public String getAppointmentsForPatient(String odsCode, String patientId, Date dateFrom, Date dateTo) throws Exception {
 		UUID patientUuid;
 		try {
@@ -74,7 +74,6 @@ public class EmisDataManager implements IDataManager {
 		return new JsonParser().composeString(bundle);
 	}
 
-	@Override
 	public String bookSlot(String odsCode, String slotId, String patientId) throws Exception {
 		UUID patientUuid;
 		try {
@@ -97,7 +96,6 @@ public class EmisDataManager implements IDataManager {
 		return _emisDataAdapter.cancelSlot(odsCode, slotId, patientUuid);
 	}
 
-	@Override
 	public String getUser(String odsCode, String userId) throws Exception {
 		UUID userUuid;
 		try {
@@ -112,7 +110,6 @@ public class EmisDataManager implements IDataManager {
 		return new JsonParser().composeString(person);
 	}
 
-	@Override
 	public String searchForOrganisationByOdsCode(String odsCode) throws Exception {
 		String openHRXml = _emisDataAdapter.getOrganisationByOdsCode(odsCode);
 
@@ -144,7 +141,6 @@ public class EmisDataManager implements IDataManager {
 		return new JsonParser().composeString(organisation);
 	}
 
-	@Override
 	public String getLocation(String odsCode, String locationId) throws Exception {
 		UUID locationUuid;
 		try {
@@ -163,7 +159,6 @@ public class EmisDataManager implements IDataManager {
 		return new JsonParser().composeString(location);
 	}
 
-	@Override
 	public String getTask(String odsCode, String taskId) throws Exception {
 		UUID taskUuid;
 		try {
@@ -178,7 +173,6 @@ public class EmisDataManager implements IDataManager {
 		return new JsonParser().composeString(task);
 	}
 
-	@Override
 	public void addTask(String odsCode, String fhirRequest) throws Exception {
 		Order task = (Order)new JsonParser().parse(fhirRequest);
 		String request = _openHRTransformer.fromFhirTask(task);
@@ -186,7 +180,6 @@ public class EmisDataManager implements IDataManager {
 		_emisDataAdapter.addTask(odsCode, request);
 	}
 
-	@Override
 	public String getUserTasks(String odsCode, String userId) throws Exception {
 		UUID userUuid;
 		try {
@@ -201,7 +194,6 @@ public class EmisDataManager implements IDataManager {
 		return new JsonParser().composeString(tasks);
 	}
 
-	@Override
 	public String getOrganisationTasks(String odsCode) throws Exception{
 		List<String> openHRXml = _emisDataAdapter.getTasksByOrganisation(odsCode);
 		Bundle tasks = _openHRTransformer.toFhirTaskBundle(openHRXml);
@@ -209,7 +201,6 @@ public class EmisDataManager implements IDataManager {
 		return new JsonParser().composeString(tasks);
 	}
 
-	@Override
 	public String getPatientTasks(String odsCode, String patientId) throws Exception {
 		UUID patientUuid;
 		try {
@@ -226,7 +217,6 @@ public class EmisDataManager implements IDataManager {
 
 	/* clinical */
 
-	@Override
 	public String getFullRecord(String odsCode, String patientId) throws Exception {
 		Bundle bundle = getPatientRecordAsBundle(odsCode, patientId);
 
@@ -252,7 +242,6 @@ public class EmisDataManager implements IDataManager {
 		return _openHRTransformer.toFhirBundle(getBundleProperties(odsCode), openHRXml);
 	}
 
-	@Override
 	public String getConditions(String odsCode, String patientId) throws Exception {
 		Bundle bundle = getPatientRecordAsBundle(odsCode, patientId);
 
@@ -263,7 +252,6 @@ public class EmisDataManager implements IDataManager {
 		return new JsonParser().composeString(bundle);
 	}
 
-	@Override
 	public String addCondition(String odsCode, String patientId, String fhirRequest) throws Exception {
 
 		UUID patientUuid;
@@ -302,7 +290,6 @@ public class EmisDataManager implements IDataManager {
 		return fhirResponse;
 	}
 
-	@Override
 	public String getAllergyIntolerances(String odsCode, String patientId) throws Exception {
 		Bundle bundle = getPatientRecordAsBundle(odsCode, patientId);
 
@@ -313,7 +300,6 @@ public class EmisDataManager implements IDataManager {
 		return new JsonParser().composeString(bundle);
 	}
 
-	@Override
 	public String getImmunizations(String odsCode, String patientId) throws Exception {
 		Bundle bundle = getPatientRecordAsBundle(odsCode, patientId);
 
@@ -324,7 +310,6 @@ public class EmisDataManager implements IDataManager {
 		return new JsonParser().composeString(bundle);
 	}
 
-	@Override
 	public String getMedicationPrescriptions(String odsCode, String patientId, MedicationOrder.MedicationOrderStatus medicationOrderStatus) throws Exception {
 
 		Bundle bundle = getPatientRecordAsBundle(odsCode, patientId);
@@ -340,7 +325,6 @@ public class EmisDataManager implements IDataManager {
 
 	/* demographic */
 
-	@Override
 	public String getPatientDemographics(String odsCode, String patientId) throws Exception {
 		UUID patientUuid;
 		try {
@@ -358,7 +342,6 @@ public class EmisDataManager implements IDataManager {
 		return new JsonParser().composeString(patient);
 	}
 
-	@Override
 	public String getPatientDemographicsByNhsNumber(String odsCode, String nhsNumber) throws Exception {
 
 		String openHRXml = _emisDataAdapter.getPatientDemographicsByNHSNumber(odsCode, nhsNumber);
@@ -370,7 +353,6 @@ public class EmisDataManager implements IDataManager {
 		return new JsonParser().composeString(patient);
 	}
 
-	@Override
 	public String tracePersonByDemographics(String surname, Date dateOfBirth, String gender, String forename, String postcode) throws Exception {
 
 		List<String> openHRXml = _emisDataAdapter.tracePatientByDemographics(surname, dateOfBirth, gender, forename, postcode);
@@ -379,7 +361,6 @@ public class EmisDataManager implements IDataManager {
 		return new JsonParser().composeString(bundle);
 	}
 
-	@Override
 	public String tracePersonByNhsNumber(String nhsNumber) throws Exception {
 
 		List<String> openHRXml = _emisDataAdapter.tracePatientByNhsNumber(nhsNumber);
@@ -388,7 +369,6 @@ public class EmisDataManager implements IDataManager {
 		return new JsonParser().composeString(bundle);
 	}
 
-	@Override
 	public List<String> getChangedPatientIds(String odsCode, Date date) throws Exception {
 		List<UUID> patientUuids = _emisDataAdapter.getChangedPatientIds(odsCode, date);
 
@@ -398,7 +378,6 @@ public class EmisDataManager implements IDataManager {
 				.collect(Collectors.toList());
 	}
 
-	@Override
 	public String getChangedPatients(String odsCode, Date date) throws Exception {
 		List<String> openHRXml = _emisDataAdapter.getChangedPatients(odsCode, date);
 

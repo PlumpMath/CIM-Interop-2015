@@ -18,7 +18,9 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
  *         &lt;element name="SlotID" type="{http://www.w3.org/2001/XMLSchema}int"/>
+ *         &lt;element name="SlotGUID" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         &lt;element name="SiteID" type="{http://www.w3.org/2001/XMLSchema}int"/>
+ *         &lt;element name="SiteGUID" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         &lt;element name="Date" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         &lt;element name="StartTime" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         &lt;element name="Duration" type="{http://www.w3.org/2001/XMLSchema}string"/>
@@ -26,6 +28,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="Reason" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         &lt;element name="SessionName" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         &lt;element name="SessionDBID" type="{http://www.w3.org/2001/XMLSchema}int"/>
+ *         &lt;element name="SessionGUID" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         &lt;element name="HolderList" type="{http://www.e-mis.com/emisopen/MedicalRecord}HolderList" minOccurs="0"/>
  *         &lt;element name="Status" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       &lt;/sequence>
@@ -39,7 +42,9 @@ import javax.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "AppointmentStruct", namespace = "http://www.e-mis.com/emisopen/MedicalRecord", propOrder = {
     "slotID",
+    "slotGUID",
     "siteID",
+    "siteGUID",
     "date",
     "startTime",
     "duration",
@@ -47,6 +52,7 @@ import javax.xml.bind.annotation.XmlType;
     "reason",
     "sessionName",
     "sessionDBID",
+    "sessionGUID",
     "holderList",
     "status"
 })
@@ -54,8 +60,12 @@ public class AppointmentStruct {
 
     @XmlElement(name = "SlotID", namespace = "http://www.e-mis.com/emisopen/MedicalRecord")
     protected int slotID;
+    @XmlElement(name = "SlotGUID", namespace = "http://www.e-mis.com/emisopen/MedicalRecord", required = true)
+    protected String slotGUID;
     @XmlElement(name = "SiteID", namespace = "http://www.e-mis.com/emisopen/MedicalRecord")
     protected int siteID;
+    @XmlElement(name = "SiteGUID", namespace = "http://www.e-mis.com/emisopen/MedicalRecord", required = true)
+    protected String siteGUID;
     @XmlElement(name = "Date", namespace = "http://www.e-mis.com/emisopen/MedicalRecord", required = true)
     protected String date;
     @XmlElement(name = "StartTime", namespace = "http://www.e-mis.com/emisopen/MedicalRecord", required = true)
@@ -70,6 +80,8 @@ public class AppointmentStruct {
     protected String sessionName;
     @XmlElement(name = "SessionDBID", namespace = "http://www.e-mis.com/emisopen/MedicalRecord")
     protected int sessionDBID;
+    @XmlElement(name = "SessionGUID", namespace = "http://www.e-mis.com/emisopen/MedicalRecord", required = true)
+    protected String sessionGUID;
     @XmlElement(name = "HolderList", namespace = "http://www.e-mis.com/emisopen/MedicalRecord")
     protected HolderList holderList;
     @XmlElement(name = "Status", namespace = "http://www.e-mis.com/emisopen/MedicalRecord")
@@ -92,6 +104,30 @@ public class AppointmentStruct {
     }
 
     /**
+     * Gets the value of the slotGUID property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getSlotGUID() {
+        return slotGUID;
+    }
+
+    /**
+     * Sets the value of the slotGUID property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setSlotGUID(String value) {
+        this.slotGUID = value;
+    }
+
+    /**
      * Gets the value of the siteID property.
      * 
      */
@@ -105,6 +141,30 @@ public class AppointmentStruct {
      */
     public void setSiteID(int value) {
         this.siteID = value;
+    }
+
+    /**
+     * Gets the value of the siteGUID property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getSiteGUID() {
+        return siteGUID;
+    }
+
+    /**
+     * Sets the value of the siteGUID property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setSiteGUID(String value) {
+        this.siteGUID = value;
     }
 
     /**
@@ -265,6 +325,30 @@ public class AppointmentStruct {
      */
     public void setSessionDBID(int value) {
         this.sessionDBID = value;
+    }
+
+    /**
+     * Gets the value of the sessionGUID property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getSessionGUID() {
+        return sessionGUID;
+    }
+
+    /**
+     * Sets the value of the sessionGUID property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setSessionGUID(String value) {
+        this.sessionGUID = value;
     }
 
     /**

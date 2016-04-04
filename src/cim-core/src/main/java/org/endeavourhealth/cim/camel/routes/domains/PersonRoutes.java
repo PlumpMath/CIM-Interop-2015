@@ -7,7 +7,6 @@ import org.endeavourhealth.cim.camel.processors.demographics.TracePersonResultPr
 import org.endeavourhealth.cim.camel.routes.common.CimCore;
 import org.endeavourhealth.cim.camel.helpers.HttpVerb;
 import org.endeavourhealth.cim.camel.helpers.BaseRouteBuilder;
-import org.endeavourhealth.cim.dataManager.DataManagerFactory;
 
 @SuppressWarnings({"WeakerAccess", "unused"})
 public class PersonRoutes extends BaseRouteBuilder {
@@ -31,7 +30,7 @@ public class PersonRoutes extends BaseRouteBuilder {
 
         // routes
         buildWrappedRoute(CimCore.ROUTE_NAME, TRACE_PERSON_ROUTE)
-                .setBody(constant(DataManagerFactory.getAllDataAdapters()))
+                .setBody(constant(""))
                 .setHeader(CIMHeaderKey.AdapterCount, simple("${body.size}"))
                 .split(body(), new ArrayListAggregationStrategy())
                 .parallelProcessing()

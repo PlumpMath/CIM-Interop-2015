@@ -2,11 +2,11 @@ package org.endeavourhealth.cim.camel.processors.demographics;
 
 import org.endeavourhealth.cim.camel.helpers.CIMHeaderKey;
 import org.endeavourhealth.cim.camel.helpers.NhsNumberValidator;
-import org.endeavourhealth.cim.dataManager.IDataManager;
 import org.apache.camel.Exchange;
 import org.endeavourhealth.cim.camel.helpers.ExchangeHelper;
 import org.endeavourhealth.cim.camel.exceptions.InvalidParamException;
 import org.endeavourhealth.cim.camel.helpers.TokenSearchParameter;
+import org.endeavourhealth.cim.dataManager.emis.DataManager;
 import org.endeavourhealth.cim.repository.utils.TextUtils;
 import org.endeavourhealth.cim.transform.common.FhirUris;
 
@@ -21,7 +21,7 @@ public class TracePersonProcessor implements org.apache.camel.Processor {
 		String name = ExchangeHelper.getInHeaderString(exchange, CIMHeaderKey.Name);
 		Date dateOfBirth = ExchangeHelper.getInHeaderDate(exchange, CIMHeaderKey.BirthDate);
 		String gender = ExchangeHelper.getInHeaderString(exchange, CIMHeaderKey.Gender);
-		IDataManager dataManager = (IDataManager)ExchangeHelper.getInBodyObject(exchange);
+		DataManager dataManager = new DataManager();
 
 		String responseBody;
 
