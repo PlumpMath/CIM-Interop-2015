@@ -161,10 +161,15 @@ namespace DotNetGPSystem
 
             return Utilities.Serialize<EomAppointmentSessions.AppointmentSessionList>(session);
         }
-        
+
         public string GetSlotsForSession(string odsCode, int sessionId)
         {
-            Slot[] slots = DataStore.GetSlots(odsCode, sessionId);
+            return GetSlotsForSessions(odsCode, new int[] { sessionId });
+        }
+
+        public string GetSlotsForSessions(string odsCode, int[] sessionIds)
+        {
+            Slot[] slots = (sessionIds ?? new int[] { }).SelectMany(t => DataStore.GetSlots(odsCode, t)).ToArray();
 
             EomSlotsForSession.SlotListStruct slot = EomAppointmentTranform.ToEomSlotList(slots);
 
