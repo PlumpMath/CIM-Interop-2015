@@ -4,7 +4,8 @@ import org.endeavourhealth.cim.camel.helpers.CIMHeaderKey;
 import org.apache.camel.Exchange;
 import org.apache.camel.Processor;
 import org.endeavourhealth.cim.camel.helpers.ExchangeHelper;
-import org.endeavourhealth.cim.dataManager.emis.DataManager;
+import org.endeavourhealth.cim.dataManager.DataManagerFactory;
+import org.endeavourhealth.cim.dataManager.IDataManager;
 
 public class GetLocationProcessor implements Processor {
 
@@ -13,7 +14,7 @@ public class GetLocationProcessor implements Processor {
 		String odsCode = ExchangeHelper.getInHeaderString(exchange, CIMHeaderKey.DestinationOdsCode, true);
 		String locationId = ExchangeHelper.getInHeaderString(exchange, CIMHeaderKey.Id, true);
 
-		DataManager dataManager = new DataManager();
+		IDataManager dataManager = DataManagerFactory.getDataManagerForService(odsCode);
 		String responseBody = dataManager.getLocation(odsCode, locationId);
 
 		ExchangeHelper.setInBodyString(exchange, responseBody);

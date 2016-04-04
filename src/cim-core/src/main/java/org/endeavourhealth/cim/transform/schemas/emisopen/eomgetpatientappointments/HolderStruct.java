@@ -19,7 +19,6 @@ import javax.xml.bind.annotation.XmlType;
  *       &lt;sequence>
  *         &lt;element name="DBID" type="{http://www.w3.org/2001/XMLSchema}int"/>
  *         &lt;element name="RefID" type="{http://www.w3.org/2001/XMLSchema}int"/>
- *         &lt;element name="GUID" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         &lt;element name="Title" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         &lt;element name="FirstNames" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         &lt;element name="LastName" type="{http://www.w3.org/2001/XMLSchema}string"/>
@@ -35,7 +34,6 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "HolderStruct", namespace = "http://www.e-mis.com/emisopen/MedicalRecord", propOrder = {
     "dbid",
     "refID",
-    "guid",
     "title",
     "firstNames",
     "lastName"
@@ -46,8 +44,6 @@ public class HolderStruct {
     protected int dbid;
     @XmlElement(name = "RefID", namespace = "http://www.e-mis.com/emisopen/MedicalRecord")
     protected int refID;
-    @XmlElement(name = "GUID", namespace = "http://www.e-mis.com/emisopen/MedicalRecord", required = true)
-    protected String guid;
     @XmlElement(name = "Title", namespace = "http://www.e-mis.com/emisopen/MedicalRecord", required = true)
     protected String title;
     @XmlElement(name = "FirstNames", namespace = "http://www.e-mis.com/emisopen/MedicalRecord", required = true)
@@ -85,30 +81,6 @@ public class HolderStruct {
      */
     public void setRefID(int value) {
         this.refID = value;
-    }
-
-    /**
-     * Gets the value of the guid property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getGUID() {
-        return guid;
-    }
-
-    /**
-     * Sets the value of the guid property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setGUID(String value) {
-        this.guid = value;
     }
 
     /**

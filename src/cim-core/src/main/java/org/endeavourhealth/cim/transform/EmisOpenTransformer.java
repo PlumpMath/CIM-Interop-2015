@@ -16,17 +16,19 @@ import org.endeavourhealth.cim.transform.schemas.emisopen.eomorganisationinforma
 import org.hl7.fhir.instance.model.Bundle;
 import org.hl7.fhir.instance.model.Person;
 import org.hl7.fhir.instance.model.Resource;
-import org.hl7.fhir.instance.model.Schedule;
 
 import java.util.List;
 
 public class EmisOpenTransformer
 {
-    public List<Schedule> toFhirSchedules(String eopenSchedulesXml) throws TransformException
+    public Bundle toFhirScheduleBundle(BundleProperties bundleProperties, String eopenSchedulesXml, String eopenOrganisationXml) throws TransformException
     {
-        AppointmentSessionList appointmentSessionList = TransformHelper.unmarshall(eopenSchedulesXml, AppointmentSessionList.class);
 
-        return ScheduleTransformer.transform(appointmentSessionList);
+        AppointmentSessionList appointmentSessionList = TransformHelper.unmarshall(eopenSchedulesXml, AppointmentSessionList.class);
+        OrganisationInformation organisationInformation = TransformHelper.unmarshall(eopenOrganisationXml, OrganisationInformation.class);
+
+        List<Resource> resources = ScheduleTransformer.transformToScheduleResources(appointmentSessionList, organisationInformation);
+        return BundleHelper.createBundle(bundleProperties, resources);
     }
 
     public Bundle toFhirSlotBundle(BundleProperties bundleProperties, String scheduleId, String eopenSlotsXml) throws TransformException
@@ -44,6 +46,7 @@ public class EmisOpenTransformer
 
         List<Resource> resources = AppointmentTransformer.transformToAppointmentResources(patientId, patientAppointmentList, organisationInformation);
         return BundleHelper.createBundle(bundleProperties, resources);
+
     }
 
 	public Person toFhirPerson(String eopenMedicalRecordXml) throws TransformException

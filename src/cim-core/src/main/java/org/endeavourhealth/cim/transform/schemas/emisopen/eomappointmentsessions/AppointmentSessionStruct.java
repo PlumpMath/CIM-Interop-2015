@@ -18,7 +18,6 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
  *         &lt;element name="DBID" type="{http://www.w3.org/2001/XMLSchema}int"/>
- *         &lt;element name="GUID" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         &lt;element name="Name" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         &lt;element name="Date" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         &lt;element name="StartTime" type="{http://www.w3.org/2001/XMLSchema}string"/>
@@ -38,7 +37,6 @@ import javax.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "AppointmentSessionStruct", namespace = "http://www.e-mis.com/emisopen/MedicalRecord", propOrder = {
     "dbid",
-    "guid",
     "name",
     "date",
     "startTime",
@@ -52,8 +50,6 @@ public class AppointmentSessionStruct {
 
     @XmlElement(name = "DBID", namespace = "http://www.e-mis.com/emisopen/MedicalRecord")
     protected int dbid;
-    @XmlElement(name = "GUID", namespace = "http://www.e-mis.com/emisopen/MedicalRecord", required = true)
-    protected String guid;
     @XmlElement(name = "Name", namespace = "http://www.e-mis.com/emisopen/MedicalRecord", required = true)
     protected String name;
     @XmlElement(name = "Date", namespace = "http://www.e-mis.com/emisopen/MedicalRecord", required = true)
@@ -85,30 +81,6 @@ public class AppointmentSessionStruct {
      */
     public void setDBID(int value) {
         this.dbid = value;
-    }
-
-    /**
-     * Gets the value of the guid property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getGUID() {
-        return guid;
-    }
-
-    /**
-     * Sets the value of the guid property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setGUID(String value) {
-        this.guid = value;
     }
 
     /**

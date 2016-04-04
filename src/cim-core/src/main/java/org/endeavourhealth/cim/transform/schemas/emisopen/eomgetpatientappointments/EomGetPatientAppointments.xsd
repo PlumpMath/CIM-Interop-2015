@@ -3,9 +3,7 @@
 	<xs:complexType name="AppointmentStruct">
 		<xs:sequence>
 			<xs:element name="SlotID" type="xs:int"/>
-			<xs:element name="SlotGUID" type="xs:string"/>
 			<xs:element name="SiteID" type="xs:int"/>
-			<xs:element name="SiteGUID" type="xs:string"/>
 			<xs:element name="Date" type="xs:string"/>
 			<xs:element name="StartTime" type="xs:string"/>
 			<xs:element name="Duration" type="xs:string"/>
@@ -13,7 +11,6 @@
 			<xs:element name="Reason" type="xs:string"/>
 			<xs:element name="SessionName" type="xs:string"/>
 			<xs:element name="SessionDBID" type="xs:int"/>
-			<xs:element name="SessionGUID" type="xs:string"/>
 			<xs:element name="HolderList" type="HolderList" minOccurs="0"/>
 			<xs:element name="Status" type="xs:string" minOccurs="0"/>
 		</xs:sequence>
@@ -27,7 +24,6 @@
 		<xs:sequence>
 			<xs:element name="DBID" type="xs:int"/>
 			<xs:element name="RefID" type="xs:int"/>
-			<xs:element name="GUID" type="xs:string"/>
 			<xs:element name="Title" type="xs:string"/>
 			<xs:element name="FirstNames" type="xs:string"/>
 			<xs:element name="LastName" type="xs:string"/>

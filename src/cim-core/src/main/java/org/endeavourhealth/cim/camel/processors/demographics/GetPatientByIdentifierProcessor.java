@@ -1,9 +1,10 @@
 package org.endeavourhealth.cim.camel.processors.demographics;
 
 import org.endeavourhealth.cim.camel.helpers.CIMHeaderKey;
+import org.endeavourhealth.cim.dataManager.DataManagerFactory;
 import org.apache.camel.Exchange;
 import org.endeavourhealth.cim.camel.helpers.ExchangeHelper;
-import org.endeavourhealth.cim.dataManager.emis.DataManager;
+import org.endeavourhealth.cim.dataManager.IDataManager;
 
 public class GetPatientByIdentifierProcessor implements org.apache.camel.Processor {
 
@@ -14,7 +15,7 @@ public class GetPatientByIdentifierProcessor implements org.apache.camel.Process
 
         String nhsNumber = identifier.substring(identifier.indexOf('|')+1);
 
-        DataManager dataManager = new DataManager();
+        IDataManager dataManager = DataManagerFactory.getDataManagerForService(odsCode);
         String requestBody = dataManager.getPatientDemographicsByNhsNumber(odsCode, nhsNumber);
 
         ExchangeHelper.setInBodyString(exchange, requestBody);
