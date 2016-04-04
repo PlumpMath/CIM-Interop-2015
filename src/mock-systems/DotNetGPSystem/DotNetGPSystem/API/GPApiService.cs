@@ -189,12 +189,12 @@ namespace DotNetGPSystem
             return Utilities.Serialize<EomGetPatientAppointments.PatientAppointmentList>(appointmentList);
         }
 
-        public string GetUser(string odsCode, Guid userGuid)
+        public string GetUser(string odsCode, Guid userInRoleGuid)
         {
             OpenHRUser user = DataStore
                 .Users
                 .FirstOrDefault(t => t.Organisation.nationalPracticeCode == odsCode
-                                    && new Guid(t.User.id) == userGuid);
+                                    && new Guid(t.UserInRole.id) == userInRoleGuid);
 
             if (user == null)
                 return string.Empty;

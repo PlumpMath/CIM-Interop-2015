@@ -69,7 +69,7 @@ namespace DotNetGPSystem
         string CancelAppointment2(string odsCode, Guid slotGuid, Guid patientGuid);
 
         [OperationContract]
-        string GetUser(string odsCode, Guid userGuid);
+        string GetUser(string odsCode, Guid userInRoleGuid);
 
         [OperationContract]
         string GetOrganisationByOdsCode(string odsCode);
