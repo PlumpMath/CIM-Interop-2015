@@ -1,12 +1,13 @@
 package org.endeavourhealth.cim.camel.processors.appointments;
 
+import org.endeavourhealth.cim.dataManager.IDataManager;
 import org.apache.camel.Exchange;
 import org.apache.camel.Processor;
 import org.endeavourhealth.cim.camel.helpers.ExchangeHelper;
 import org.endeavourhealth.cim.camel.helpers.CIMHeaderKey;
 import org.endeavourhealth.cim.camel.helpers.ParametersHelper;
 import org.endeavourhealth.cim.camel.exceptions.*;
-import org.endeavourhealth.cim.dataManager.emis.DataManager;
+import org.endeavourhealth.cim.dataManager.DataManagerFactory;
 import org.hl7.fhir.instance.model.Parameters;
 
 public class BookSlotProcessor implements Processor {
@@ -25,7 +26,7 @@ public class BookSlotProcessor implements Processor {
             throw new InvalidParamException(e);
         }
 
-        DataManager dataManager = new DataManager();
+        IDataManager dataManager = DataManagerFactory.getDataManagerForService(odsCode);
         String bookSlotResponse = dataManager.bookSlot(odsCode, slotId, patientId);
 
         if (bookSlotResponse.equals("SlotNotFound"))

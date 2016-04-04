@@ -1,9 +1,10 @@
 package org.endeavourhealth.cim.camel.processors.demographics;
 
 import org.endeavourhealth.cim.camel.helpers.CIMHeaderKey;
+import org.endeavourhealth.cim.dataManager.DataManagerFactory;
+import org.endeavourhealth.cim.dataManager.IDataManager;
 import org.apache.camel.Exchange;
 import org.endeavourhealth.cim.camel.helpers.ExchangeHelper;
-import org.endeavourhealth.cim.dataManager.emis.DataManager;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -11,14 +12,14 @@ import java.util.Date;
 import java.util.List;
 
 public class GetChangedPatientsProcessor implements org.apache.camel.Processor {
-    private final DataManager _dataManager;
+    private final IDataManager _dataManager;
     private Date _lastPoll = null;
 
     public GetChangedPatientsProcessor(String odsCode) throws Exception {
-        _dataManager = new DataManager();
+        _dataManager = DataManagerFactory.getDataManagerForService(odsCode);
     }
 
-    public GetChangedPatientsProcessor(DataManager dataManager) {
+    public GetChangedPatientsProcessor(IDataManager dataManager) {
         _dataManager = dataManager;
     }
 
