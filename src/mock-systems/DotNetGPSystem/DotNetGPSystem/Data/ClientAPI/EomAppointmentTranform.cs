@@ -113,20 +113,21 @@ namespace DotNetGPSystem
                 Date = session.Date.ToShortDateString(),
                 DBID = session.SessionId,
                 GUID = session.SessionGuid.ToString(),
-                
+
                 StartTime = session
                     .Slots
                     .Min(t => t.FormattedTime),
-                
+
                 EndTime = session
                     .Slots
                     .Max(t => t.FormattedTime),
 
-                Site = new EomAppointmentSessions.SiteStruct()
+                Site = session.Organisation.MainLocation.WhenNotNull(t => new EomAppointmentSessions.SiteStruct()
                 {
-                    Name = session.Organisation.Organisation.name,
-                    DBID = session.Organisation.OrganisationId
-                },
+                    Name = t.Location.name,
+                    DBID = t.LocationId,
+                    GUID = t.Location.id
+                }),
 
                 SlotLength = "60",
 

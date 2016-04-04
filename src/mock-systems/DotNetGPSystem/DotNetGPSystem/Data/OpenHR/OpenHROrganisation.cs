@@ -20,5 +20,16 @@ namespace DotNetGPSystem
         public OpenHR001Organisation Organisation { get; private set; }
         public OpenHRLocation[] Locations { get; private set; }
         public OpenHRUser[] Users { get; private set; }
+
+        public OpenHRLocation MainLocation
+        {
+            get
+            {
+                if (string.IsNullOrEmpty(Organisation.mainLocation))
+                    return null;
+
+                return Locations.FirstOrDefault(t => new Guid(t.Location.id) == new Guid(Organisation.mainLocation));
+            }
+        }
     }
 }
