@@ -19,6 +19,7 @@ import javax.xml.bind.annotation.XmlType;
  *       &lt;sequence>
  *         &lt;element name="DBID" type="{http://www.w3.org/2001/XMLSchema}int"/>
  *         &lt;element name="RefID" type="{http://www.w3.org/2001/XMLSchema}int"/>
+ *         &lt;element name="GUID" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         &lt;element name="Title" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         &lt;element name="FirstNames" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         &lt;element name="Surname" type="{http://www.w3.org/2001/XMLSchema}string"/>
@@ -35,6 +36,7 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "PatientStruct", propOrder = {
     "dbid",
     "refID",
+    "guid",
     "title",
     "firstNames",
     "surname",
@@ -46,6 +48,8 @@ public class PatientStruct {
     protected int dbid;
     @XmlElement(name = "RefID")
     protected int refID;
+    @XmlElement(name = "GUID", required = true)
+    protected String guid;
     @XmlElement(name = "Title", required = true)
     protected String title;
     @XmlElement(name = "FirstNames", required = true)
@@ -85,6 +89,30 @@ public class PatientStruct {
      */
     public void setRefID(int value) {
         this.refID = value;
+    }
+
+    /**
+     * Gets the value of the guid property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getGUID() {
+        return guid;
+    }
+
+    /**
+     * Sets the value of the guid property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setGUID(String value) {
+        this.guid = value;
     }
 
     /**

@@ -19,6 +19,7 @@ import javax.xml.bind.annotation.XmlType;
  *       &lt;sequence>
  *         &lt;element name="DBID" type="{http://www.w3.org/2001/XMLSchema}int"/>
  *         &lt;element name="RefID" type="{http://www.w3.org/2001/XMLSchema}int"/>
+ *         &lt;element name="GUID" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         &lt;element name="Date" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         &lt;element name="StartTime" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         &lt;element name="SlotLength" type="{http://www.w3.org/2001/XMLSchema}string"/>
@@ -39,6 +40,7 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "SlotStruct", propOrder = {
     "dbid",
     "refID",
+    "guid",
     "date",
     "startTime",
     "slotLength",
@@ -54,6 +56,8 @@ public class SlotStruct {
     protected int dbid;
     @XmlElement(name = "RefID")
     protected int refID;
+    @XmlElement(name = "GUID", required = true)
+    protected String guid;
     @XmlElement(name = "Date", required = true)
     protected String date;
     @XmlElement(name = "StartTime", required = true)
@@ -104,12 +108,36 @@ public class SlotStruct {
     }
 
     /**
-     * Gets the value of the date property.
-     *
+     * Gets the value of the guid property.
+     * 
      * @return
      *     possible object is
      *     {@link String }
-     *
+     *     
+     */
+    public String getGUID() {
+        return guid;
+    }
+
+    /**
+     * Sets the value of the guid property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setGUID(String value) {
+        this.guid = value;
+    }
+
+    /**
+     * Gets the value of the date property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
      */
     public String getDate() {
         return date;
@@ -117,11 +145,11 @@ public class SlotStruct {
 
     /**
      * Sets the value of the date property.
-     *
+     * 
      * @param value
      *     allowed object is
      *     {@link String }
-     *
+     *     
      */
     public void setDate(String value) {
         this.date = value;

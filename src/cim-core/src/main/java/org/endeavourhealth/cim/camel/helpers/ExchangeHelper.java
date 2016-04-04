@@ -12,6 +12,7 @@ import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.UUID;
 
 public class ExchangeHelper {
 
@@ -45,18 +46,22 @@ public class ExchangeHelper {
         return exchange.getIn().getHeaders().containsKey(headerKey);
     }
 
-//    public static UUID getInHeaderUUID(Exchange exchange, String headerKey, Boolean required) throws InvalidParamException, MissingParamException {
-//        String value = getInHeaderString(exchange, headerKey, required);
-//
-//        if (value == null)
-//            return null;
-//
-//        try {
-//            return UUID.fromString(value);
-//        } catch (Exception e) {
-//            throw new InvalidParamException(e);
-//        }
-//    }
+    public static UUID getInHeaderUUID(Exchange exchange, String headerKey, Boolean required) throws InvalidParamException, MissingParamException
+    {
+        String value = getInHeaderString(exchange, headerKey, required);
+
+        if (value == null)
+            return null;
+
+        try
+        {
+            return UUID.fromString(value);
+        }
+        catch (Exception e)
+        {
+            throw new InvalidParamException(e);
+        }
+    }
 
     @SuppressWarnings("unchecked")
     public static ArrayList getInHeaderArray(Exchange exchange, String headerKey) {

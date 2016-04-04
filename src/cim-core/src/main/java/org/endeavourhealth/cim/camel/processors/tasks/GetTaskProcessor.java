@@ -1,10 +1,9 @@
 package org.endeavourhealth.cim.camel.processors.tasks;
 
 import org.endeavourhealth.cim.camel.helpers.CIMHeaderKey;
-import org.endeavourhealth.cim.dataManager.DataManagerFactory;
-import org.endeavourhealth.cim.dataManager.IDataManager;
 import org.apache.camel.Exchange;
 import org.endeavourhealth.cim.camel.helpers.ExchangeHelper;
+import org.endeavourhealth.cim.dataManager.emis.DataManager;
 
 public class GetTaskProcessor implements org.apache.camel.Processor {
 	@Override
@@ -12,7 +11,7 @@ public class GetTaskProcessor implements org.apache.camel.Processor {
 		String odsCode = ExchangeHelper.getInHeaderString(exchange, CIMHeaderKey.DestinationOdsCode, true);
 		String taskId = ExchangeHelper.getInHeaderString(exchange, CIMHeaderKey.Id, true);
 
-		IDataManager dataManager = DataManagerFactory.getDataManagerForService(odsCode);
+		DataManager dataManager = new DataManager();
 		String responseBody = dataManager.getTask(odsCode, taskId);
 
 		ExchangeHelper.setInBodyString(exchange, responseBody);

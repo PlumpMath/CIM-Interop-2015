@@ -1,15 +1,14 @@
 package org.endeavourhealth.cim.camel.processors.appointments;
 
 import org.endeavourhealth.cim.camel.helpers.CIMHeaderKey;
-import org.endeavourhealth.cim.dataManager.DataManagerFactory;
 import org.endeavourhealth.cim.camel.helpers.DateSearchParameter;
-import org.endeavourhealth.cim.dataManager.IDataManager;
 import org.apache.camel.Exchange;
 import org.apache.camel.Processor;
 import org.endeavourhealth.cim.camel.helpers.ExchangeHelper;
 import org.endeavourhealth.cim.camel.exceptions.BaseException;
 import org.endeavourhealth.cim.camel.exceptions.InvalidParamException;
 import org.endeavourhealth.cim.camel.helpers.DateUtils;
+import org.endeavourhealth.cim.dataManager.emis.DataManager;
 
 import java.util.Date;
 
@@ -42,7 +41,7 @@ public class GetAppointmentsProcessor implements Processor {
 			throw new InvalidParamException("Error parsing parameters.", e);
 		}
 
-		IDataManager dataManager = DataManagerFactory.getDataManagerForService(odsCode);
+		DataManager dataManager = new DataManager();
 		String responseBody = dataManager.getAppointmentsForPatient(odsCode, patientId, fromDate, toDate);
 
 		ExchangeHelper.setInBodyString(exchange, responseBody);

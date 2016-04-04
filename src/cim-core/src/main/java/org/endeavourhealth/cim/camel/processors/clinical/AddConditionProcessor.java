@@ -2,15 +2,13 @@ package org.endeavourhealth.cim.camel.processors.clinical;
 
 import org.apache.http.HttpStatus;
 import org.endeavourhealth.cim.camel.exceptions.BusinessRuleConflictException;
-import org.endeavourhealth.cim.camel.exceptions.BusinessRuleException;
 import org.endeavourhealth.cim.camel.exceptions.NotFoundException;
 import org.endeavourhealth.cim.camel.exceptions.UnexpectedException;
 import org.endeavourhealth.cim.camel.helpers.CIMHeaderKey;
-import org.endeavourhealth.cim.dataManager.DataManagerFactory;
-import org.endeavourhealth.cim.dataManager.IDataManager;
 import org.apache.camel.Exchange;
 import org.apache.camel.Processor;
 import org.endeavourhealth.cim.camel.helpers.ExchangeHelper;
+import org.endeavourhealth.cim.dataManager.emis.DataManager;
 
 public class AddConditionProcessor implements Processor {
 
@@ -20,7 +18,7 @@ public class AddConditionProcessor implements Processor {
         String patientId = ExchangeHelper.getInHeaderString(exchange, CIMHeaderKey.Id, true);
         String requestBody = ExchangeHelper.getInBodyString(exchange);
 
-        IDataManager dataManager = DataManagerFactory.getDataManagerForService(odsCode);
+        DataManager dataManager = new DataManager();
         String responseBody = dataManager.addCondition(odsCode, patientId, requestBody);
 
         if (responseBody.equals("PatientNotFound"))
