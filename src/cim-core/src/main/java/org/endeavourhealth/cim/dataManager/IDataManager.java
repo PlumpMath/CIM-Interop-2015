@@ -4,12 +4,12 @@ import org.hl7.fhir.instance.model.MedicationOrder;
 
 import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 public interface IDataManager {
 
     // administrative
-    String getSchedules(String odsCode, Date dateFrom, Date dateTo, String practitionerId) throws Exception;
-    String getSlots(String odsCode, String scheduleId) throws Exception;
+    String searchSlots(String odsCode, Date dateFrom, Date dateTo, UUID practitionerId) throws Exception;
     String getAppointmentsForPatient(String odsCode, String patientId, Date dateFrom, Date dateTo) throws Exception;
     String bookSlot(String odsCode, String slotId, String patientId) throws Exception;
     String cancelSlot(String odsCode, String slotId, String patientId) throws Exception;

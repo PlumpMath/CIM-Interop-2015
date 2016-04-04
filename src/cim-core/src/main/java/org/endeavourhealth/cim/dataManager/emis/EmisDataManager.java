@@ -28,32 +28,13 @@ public class EmisDataManager implements IDataManager {
 	/* administrative */
 
 	@Override
-	public String getSchedules(String odsCode, Date dateFrom, Date dateTo, String practitionerId) throws Exception {
-
-		UUID practitionerUuid = null;
-		if (practitionerId != null)
-			try {
-				practitionerUuid = UUID.fromString(practitionerId);
-			} catch (IllegalArgumentException e) {
-				throw new InvalidInternalIdentifier("Practitioner Id");
-			}
+	public String searchSlots(String odsCode, Date dateFrom, Date dateTo, UUID practitionerId) throws Exception {
 
 		String schedulesXml = _emisDataAdapter.getSchedules(odsCode, dateFrom, dateTo);
-		String organisationXml = _emisDataAdapter.getOrganisationInformation(odsCode);
-		BundleProperties bundleProperties = getBundleProperties(odsCode);
+		List<Schedule> schedules = _emisOpenTransformer.toFhirSchedules(schedulesXml);
 
-		Bundle bundle = _emisOpenTransformer.toFhirScheduleBundle(bundleProperties, schedulesXml, organisationXml);
-		bundle = FhirFilterHelper.filterScheduleByPractitioner(bundle, practitionerUuid);
-		return new JsonParser().composeString(bundle);
-	}
-
-	@Override
-	public String getSlots(String odsCode, String scheduleId) throws Exception {
-
-		String slotsXml = _emisDataAdapter.getSlots(odsCode, scheduleId);
-		BundleProperties bundleProperties = getBundleProperties(odsCode);
-
-		Bundle bundle = _emisOpenTransformer.toFhirSlotBundle(bundleProperties, scheduleId, slotsXml);
+		Bundle bundle = BundleHelper.createBundle(getBundleProperties(odsCode), schedules);
+		bundle = FhirFilterHelper.filterScheduleByPractitioner(bundle, practitionerId);
 		return new JsonParser().composeString(bundle);
 	}
 

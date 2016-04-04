@@ -9,7 +9,8 @@ import org.endeavourhealth.cim.camel.helpers.DateUtils;
 import org.apache.camel.Exchange;
 import org.apache.camel.Processor;
 import org.endeavourhealth.cim.camel.helpers.ExchangeHelper;
-import org.endeavourhealth.cim.dataManager.emis.DataManager;
+import org.endeavourhealth.cim.dataManager.DataManagerFactory;
+import org.endeavourhealth.cim.dataManager.IDataManager;
 
 import java.util.Date;
 import java.util.UUID;
@@ -50,7 +51,7 @@ public class SearchSlotsProcessor implements Processor
 			throw new InvalidParamException("Error parsing parameters.", e);
 		}
 
-		DataManager dataManager = new DataManager();
+		IDataManager dataManager = DataManagerFactory.getDataManagerForService(odsCode);
 		String responseBody = dataManager.searchSlots(odsCode, fromDate, toDate, practitioner);
 
 		ExchangeHelper.setInBodyString(exchange, responseBody);
