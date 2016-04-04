@@ -65,6 +65,12 @@ public class OpenHRTransformer
 		return LocationTransformer.transform(openHR, null);
 	}
 
+    public List<Practitioner> toFhirPractitioners(String openHRXml) throws TransformException
+    {
+        OpenHR001OpenHealthRecord openHR = TransformHelper.unmarshall(openHRXml, OpenHR001OpenHealthRecord.class);
+        return PractitionerTransformer.transform(openHR.getAdminDomain());
+    }
+
 	public Order toFhirTask(String openHRPatientTaskXml) throws TransformException
     {
 		OpenHR001PatientTask openHR = TransformHelper.unmarshall(openHRPatientTaskXml, OpenHR001PatientTask.class);

@@ -7,12 +7,15 @@ import org.endeavourhealth.cim.camel.helpers.ExchangeHelper;
 import org.endeavourhealth.cim.dataManager.DataManagerFactory;
 import org.endeavourhealth.cim.dataManager.IDataManager;
 
-public class GetLocationProcessor implements Processor {
+import java.util.UUID;
 
+public class GetLocationProcessor implements Processor
+{
 	@SuppressWarnings("unchecked")
-	public void process(Exchange exchange) throws Exception {
+	public void process(Exchange exchange) throws Exception
+	{
 		String odsCode = ExchangeHelper.getInHeaderString(exchange, CIMHeaderKey.DestinationOdsCode, true);
-		String locationId = ExchangeHelper.getInHeaderString(exchange, CIMHeaderKey.Id, true);
+		UUID locationId = ExchangeHelper.getInHeaderUUID(exchange, CIMHeaderKey.Id, true);
 
 		IDataManager dataManager = DataManagerFactory.getDataManagerForService(odsCode);
 		String responseBody = dataManager.getLocation(odsCode, locationId);

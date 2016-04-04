@@ -1,5 +1,6 @@
 package org.endeavourhealth.cim.transform.openhr.tofhir.admin;
 
+import org.endeavourhealth.cim.transform.common.FhirUris;
 import org.endeavourhealth.cim.transform.common.ReferenceHelper;
 import org.endeavourhealth.cim.transform.common.StreamExtension;
 import org.endeavourhealth.cim.transform.common.exceptions.SourceDocumentInvalidException;
@@ -12,7 +13,7 @@ import org.hl7.fhir.instance.model.*;
 import java.util.ArrayList;
 import java.util.List;
 
-class PractitionerTransformer
+public class PractitionerTransformer
 {
     public static List<Practitioner> transform(OpenHR001AdminDomain adminDomain) throws TransformException
     {
@@ -26,17 +27,16 @@ class PractitionerTransformer
 
     private static Practitioner createPractitioner(OpenHR001AdminDomain adminDomain, OpenHR001UserInRole userInRole) throws TransformException
     {
+        OpenHRHelper.ensureDboNotDelete(userInRole);
+
         OpenHR001User user = getUser(adminDomain.getUser(), userInRole.getUser());
         OpenHR001Role role = getRole(adminDomain.getRole(), userInRole.getRole());
         OpenHR001Person person = getPerson(adminDomain.getPerson(), user.getUserPerson());
 
-        OpenHRHelper.ensureDboNotDelete(userInRole);
-        OpenHRHelper.ensureDboNotDelete(user);
-        OpenHRHelper.ensureDboNotDelete(role);
-        OpenHRHelper.ensureDboNotDelete(person);
-
         Practitioner practitioner = new Practitioner();
+        
         practitioner.setId(userInRole.getId());
+        practitioner.setMeta(new Meta().addProfile(FhirUris.PROFILE_URI_PRACTITIONER));
 
         List<Identifier> identifiers = convertIdentifiers(userInRole.getUserIdentifier());
 
@@ -78,10 +78,10 @@ class PractitionerTransformer
                 .filter(u -> u.getId().equals(userId))
                 .collect(StreamExtension.singleOrNullCollector());
 
-        //if the user is there multiple times, then it will just throw a general exception.
-
         if (user == null)
             throw new SourceDocumentInvalidException("User not found: " + userId);
+
+        OpenHRHelper.ensureDboNotDelete(user);
 
         return user;
     }
@@ -99,6 +99,8 @@ class PractitionerTransformer
         if (role == null)
             throw new SourceDocumentInvalidException("Role not found: " + roleId);
 
+        OpenHRHelper.ensureDboNotDelete(role);
+
         return role;
     }
 
@@ -115,6 +117,8 @@ class PractitionerTransformer
 
         if (person == null)
             throw new SourceDocumentInvalidException("Person not found: " + personId);
+
+        OpenHRHelper.ensureDboNotDelete(person);
 
         return person;
     }

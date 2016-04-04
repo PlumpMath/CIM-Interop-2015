@@ -1,22 +1,21 @@
-package org.endeavourhealth.cim.camel.processors.administrative;
+package org.endeavourhealth.cim.camel.processors.tasks;
 
 import org.endeavourhealth.cim.camel.helpers.CIMHeaderKey;
 import org.endeavourhealth.cim.dataManager.DataManagerFactory;
 import org.endeavourhealth.cim.dataManager.IDataManager;
 import org.apache.camel.Exchange;
-import org.apache.camel.Processor;
 import org.endeavourhealth.cim.camel.helpers.ExchangeHelper;
 
-public class GetUserProcessor implements Processor {
-
-	@SuppressWarnings("unchecked")
-	public void process(Exchange exchange) throws Exception {
-
+public class GetPractitionerTasksProcessor implements org.apache.camel.Processor
+{
+	@Override
+	public void process(Exchange exchange) throws Exception
+	{
 		String odsCode = ExchangeHelper.getInHeaderString(exchange, CIMHeaderKey.DestinationOdsCode, true);
-		String userId = ExchangeHelper.getInHeaderString(exchange, CIMHeaderKey.Id, true);
+		String practitionerId = ExchangeHelper.getInHeaderString(exchange, CIMHeaderKey.Id, true);
 
 		IDataManager dataManager = DataManagerFactory.getDataManagerForService(odsCode);
-		String responseBody = dataManager.getUser(odsCode, userId);
+		String responseBody = dataManager.getUserTasks(odsCode, practitionerId);
 
 		ExchangeHelper.setInBodyString(exchange, responseBody);
 	}

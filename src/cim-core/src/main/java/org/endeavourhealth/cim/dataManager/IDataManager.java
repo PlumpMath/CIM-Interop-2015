@@ -6,18 +6,22 @@ import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
-public interface IDataManager {
+public interface IDataManager
+{
+    // appointments
+    String searchSlots(String odsCode, Date dateFrom, Date dateTo, UUID locationId) throws Exception;
+    String bookSlot(String odsCode, UUID slotId, UUID patientId) throws Exception;
+    String cancelSlot(String odsCode, UUID slotId, UUID patientId) throws Exception;
+    String getAppointmentsForPatient(String odsCode, UUID patientId, Date dateFrom, Date dateTo) throws Exception;
 
     // administrative
-    String searchSlots(String odsCode, Date dateFrom, Date dateTo, UUID practitionerId) throws Exception;
-    String getAppointmentsForPatient(String odsCode, String patientId, Date dateFrom, Date dateTo) throws Exception;
-    String bookSlot(String odsCode, String slotId, String patientId) throws Exception;
-    String cancelSlot(String odsCode, String slotId, String patientId) throws Exception;
-	String getUser(String odsCode, String userId) throws Exception;
+	String getPractitioner(String odsCode, UUID practitionerId) throws Exception;
 	String searchForOrganisationByOdsCode(String odsCode) throws Exception;
     String getOrganisationById(String organisationId) throws Exception;
-	String getLocation(String odsCode, String locationId) throws Exception;
-	String getTask(String odsCode, String taskId) throws Exception;
+    String getLocation(String odsCode, UUID locationId) throws Exception;
+
+    // tasks
+    String getTask(String odsCode, String taskId) throws Exception;
 	void addTask(String odsCode, String taskData) throws Exception;
 	String getUserTasks(String odsCode, String userId) throws Exception;
 	String getOrganisationTasks(String odsCode) throws Exception;

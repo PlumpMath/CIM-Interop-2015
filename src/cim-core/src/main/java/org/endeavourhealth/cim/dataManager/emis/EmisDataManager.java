@@ -10,92 +10,117 @@ import org.endeavourhealth.cim.transform.common.BundleProperties;
 import org.endeavourhealth.cim.camel.exceptions.NotFoundException;
 import org.endeavourhealth.cim.repository.utils.TextUtils;
 import org.endeavourhealth.cim.dataManager.IDataManager;
-import org.endeavourhealth.cim.camel.helpers.FhirFilterHelper;
 import org.endeavourhealth.cim.transform.common.ReferenceHelper;
 import org.hl7.fhir.instance.formats.JsonParser;
 import org.hl7.fhir.instance.model.*;
+import org.omg.CosNaming.NamingContextPackage.NotFound;
 
 import java.util.*;
 import java.util.stream.Collectors;
 
 @SuppressWarnings("unused")
-public class EmisDataManager implements IDataManager {
-
-	protected EmisDataAdapter _emisDataAdapter = new EmisDataAdapter();
+public class EmisDataManager implements IDataManager
+{
+	protected EmisSoapClient _emisSoapClient = new EmisSoapClient();
 	private final EmisOpenTransformer _emisOpenTransformer = new EmisOpenTransformer();
 	private final OpenHRTransformer _openHRTransformer = new OpenHRTransformer();
 
 	/* administrative */
 
 	@Override
-	public String searchSlots(String odsCode, Date dateFrom, Date dateTo, UUID practitionerId) throws Exception {
-
-		String schedulesXml = _emisDataAdapter.getSchedules(odsCode, dateFrom, dateTo);
+	public String searchSlots(String odsCode, Date dateFrom, Date dateTo, UUID locationId) throws Exception
+	{
+		// get schedules
+		String schedulesXml = _emisSoapClient.getSessions(odsCode, dateFrom, dateTo);
 		List<Schedule> schedules = _emisOpenTransformer.toFhirSchedules(schedulesXml);
 
-		Bundle bundle = BundleHelper.createBundle(getBundleProperties(odsCode), schedules);
-		bundle = FhirFilterHelper.filterScheduleByPractitioner(bundle, practitionerId);
+		// if location is specified, filter by location
+		if (locationId != null)
+			schedules = FhirFilterHelper.filterScheduleByLocation(schedules, locationId);
+
+		// get slots
+		List<UUID> scheduleIds = FhirFilterHelper.getScheduleIds(schedules);
+
+		String slotsXml = _emisSoapClient.getSlotsForSessions(odsCode, scheduleIds.toArray(new UUID[scheduleIds.size()]));
+		List<Slot> slots = _emisOpenTransformer.toFhirSlots(slotsXml);
+
+		// remove busy slots
+		slots = FhirFilterHelper.removeBusySlots(slots);
+
+		// remove schedules with no slots
+		schedules = FhirFilterHelper.removeSchedulesWithNoSlots(schedules, slots);
+
+		// get practitioners
+		List<UUID> practitionerIds = FhirFilterHelper.getPractitionerIds(schedules);
+		List<Practitioner> practitioners = new ArrayList<>();
+
+		for (UUID practitionerId : practitionerIds)
+		{
+			String practitionerXml = _emisSoapClient.getUser(odsCode, practitionerId);
+			practitioners.addAll(_openHRTransformer.toFhirPractitioners(practitionerXml));
+		}
+
+		// get locations
+		List<UUID> locationIds = FhirFilterHelper.getLocationIds(schedules);
+		List<Location> locations = new ArrayList<>();
+
+		for (UUID locationId2 : locationIds)
+		{
+			String locationXml = _emisSoapClient.getLocation(odsCode, locationId2);
+			locations.add(_openHRTransformer.toFhirLocation(locationXml));
+		}
+
+		// create combined bundle
+		List<Resource> resources = new ArrayList<>();
+		resources.addAll(schedules);
+		resources.addAll(slots);
+		resources.addAll(practitioners);
+		resources.addAll(locations);
+
+		Bundle bundle = BundleHelper.createBundle(getBundleProperties(odsCode), resources);
+
 		return new JsonParser().composeString(bundle);
 	}
 
 	@Override
-	public String getAppointmentsForPatient(String odsCode, String patientId, Date dateFrom, Date dateTo) throws Exception {
-		UUID patientUuid;
-		try {
-			patientUuid = UUID.fromString(patientId);
-		} catch (IllegalArgumentException e) {
-			throw new InvalidInternalIdentifier("Patient Id");
-		}
+	public String bookSlot(String odsCode, UUID slotId, UUID patientId) throws Exception
+	{
+		return _emisSoapClient.bookSlot(odsCode, slotId, patientId, "");
+	}
 
-		String appointmentDataInNativeFormat = _emisDataAdapter.getAppointmentsForPatient(odsCode, patientUuid, dateFrom, dateTo);
-		String organisationXml = _emisDataAdapter.getOrganisationInformation(odsCode);
+	@Override
+	public String cancelSlot(String odsCode, UUID slotId, UUID patientId) throws Exception
+	{
+		return _emisSoapClient.cancelSlot(odsCode, slotId, patientId);
+	}
+
+	@Override
+	public String getAppointmentsForPatient(String odsCode, UUID patientId, Date dateFrom, Date dateTo) throws Exception
+	{
+		String appointmentDataInNativeFormat = _emisSoapClient.getAppointmentsForPatient(odsCode, patientId, dateFrom, dateTo);
+		String organisationXml = _emisSoapClient.getOrganisationInformation(odsCode);
 		BundleProperties bundleProperties = getBundleProperties(odsCode);
 
-		Bundle bundle = _emisOpenTransformer.toFhirAppointmentForPatientBundle(bundleProperties, patientUuid.toString(), appointmentDataInNativeFormat, organisationXml);
+		Bundle bundle = _emisOpenTransformer.toFhirAppointmentForPatientBundle(bundleProperties, patientId.toString(), appointmentDataInNativeFormat, organisationXml);
 		return new JsonParser().composeString(bundle);
 	}
 
 	@Override
-	public String bookSlot(String odsCode, String slotId, String patientId) throws Exception {
-		UUID patientUuid;
-		try {
-			patientUuid = UUID.fromString(patientId);
-		} catch (IllegalArgumentException e) {
-			throw new InvalidInternalIdentifier("Patient Id");
-		}
+	public String getPractitioner(String odsCode, UUID practitionerId) throws Exception
+	{
+		String openHRXml = _emisSoapClient.getUser(odsCode, practitionerId);
 
-		return _emisDataAdapter.bookSlot(odsCode, slotId, patientUuid, "");
-	}
+		if (TextUtils.isNullOrTrimmedEmpty(openHRXml))
+			throw new NotFoundException();
 
-	public String cancelSlot(String odsCode, String slotId, String patientId) throws Exception {
-		UUID patientUuid;
-		try {
-			patientUuid = UUID.fromString(patientId);
-		} catch (IllegalArgumentException e) {
-			throw new InvalidInternalIdentifier("Patient Id");
-		}
+		List<Practitioner> practitioners = _openHRTransformer.toFhirPractitioners(openHRXml);
 
-		return _emisDataAdapter.cancelSlot(odsCode, slotId, patientUuid);
-	}
-
-	@Override
-	public String getUser(String odsCode, String userId) throws Exception {
-		UUID userUuid;
-		try {
-			userUuid = UUID.fromString(userId);
-		} catch (IllegalArgumentException e) {
-			throw new InvalidInternalIdentifier("User Id");
-		}
-
-		String openHRXml = _emisDataAdapter.getUserById(odsCode, userUuid);
-		Person person = _emisOpenTransformer.toFhirPerson(openHRXml);
-
-		return new JsonParser().composeString(person);
+		return new JsonParser().composeString(practitioners.get(0));
 	}
 
 	@Override
 	public String searchForOrganisationByOdsCode(String odsCode) throws Exception {
-		String openHRXml = _emisDataAdapter.getOrganisationByOdsCode(odsCode);
+		String openHRXml = _emisSoapClient.getOrganisationByOdsCode(odsCode);
 
 		ArrayList<Organization> organisations = new ArrayList<>();
 
@@ -115,7 +140,7 @@ public class EmisDataManager implements IDataManager {
 			throw new InvalidInternalIdentifier("Organization Id");
 		}
 
-		String openHRXml = _emisDataAdapter.getOrganisationById(organisationUuid);
+		String openHRXml = _emisSoapClient.getOrganisationById(organisationUuid);
 
 		if (TextUtils.isNullOrTrimmedEmpty(openHRXml))
 			throw new NotFoundException("");
@@ -126,15 +151,9 @@ public class EmisDataManager implements IDataManager {
 	}
 
 	@Override
-	public String getLocation(String odsCode, String locationId) throws Exception {
-		UUID locationUuid;
-		try {
-			locationUuid = UUID.fromString(locationId);
-		} catch (IllegalArgumentException e) {
-			throw new InvalidInternalIdentifier("Location Id");
-		}
-
-		String openHRXml = _emisDataAdapter.getLocationById(odsCode, locationUuid);
+	public String getLocation(String odsCode, UUID locationId) throws Exception
+	{
+		String openHRXml = _emisSoapClient.getLocation(odsCode, locationId);
 
 		if (TextUtils.isNullOrTrimmedEmpty(openHRXml))
 			throw new NotFoundException("");
@@ -153,7 +172,7 @@ public class EmisDataManager implements IDataManager {
 			throw new InvalidInternalIdentifier("Task Id");
 		}
 
-		String openHRXml = _emisDataAdapter.getTaskById(odsCode, taskUuid);
+		String openHRXml = _emisSoapClient.getTaskById(odsCode, taskUuid);
 		Order task = _openHRTransformer.toFhirTask(openHRXml);
 
 		return new JsonParser().composeString(task);
@@ -164,7 +183,7 @@ public class EmisDataManager implements IDataManager {
 		Order task = (Order)new JsonParser().parse(fhirRequest);
 		String request = _openHRTransformer.fromFhirTask(task);
 
-		_emisDataAdapter.addTask(odsCode, request);
+		_emisSoapClient.addTask(odsCode, request);
 	}
 
 	@Override
@@ -176,7 +195,7 @@ public class EmisDataManager implements IDataManager {
 			throw new InvalidInternalIdentifier("User Id");
 		}
 
-		List<String> openHRXml = _emisDataAdapter.getTasksByUser(odsCode, userUuid);
+		List<String> openHRXml = _emisSoapClient.getTasksByUser(odsCode, userUuid);
 		Bundle tasks = _openHRTransformer.toFhirTaskBundle(openHRXml);
 
 		return new JsonParser().composeString(tasks);
@@ -184,7 +203,7 @@ public class EmisDataManager implements IDataManager {
 
 	@Override
 	public String getOrganisationTasks(String odsCode) throws Exception{
-		List<String> openHRXml = _emisDataAdapter.getTasksByOrganisation(odsCode);
+		List<String> openHRXml = _emisSoapClient.getTasksByOrganisation(odsCode);
 		Bundle tasks = _openHRTransformer.toFhirTaskBundle(openHRXml);
 
 		return new JsonParser().composeString(tasks);
@@ -199,7 +218,7 @@ public class EmisDataManager implements IDataManager {
 			throw new InvalidInternalIdentifier("Patient Id");
 		}
 
-		List<String> openHRXml = _emisDataAdapter.getTasksByPatient(odsCode, patientUuid);
+		List<String> openHRXml = _emisSoapClient.getTasksByPatient(odsCode, patientUuid);
 		Bundle tasks = _openHRTransformer.toFhirTaskBundle(openHRXml);
 
 		return new JsonParser().composeString(tasks);
@@ -225,7 +244,7 @@ public class EmisDataManager implements IDataManager {
 			throw new InvalidInternalIdentifier("Patient Id");
 		}
 
-		String openHRXml = _emisDataAdapter.getPatientRecordByPatientId(odsCode, patientUuid);
+		String openHRXml = _emisSoapClient.getPatientRecordByPatientId(odsCode, patientUuid);
 
 		if (TextUtils.isNullOrTrimmedEmpty(openHRXml))
 			return null;
@@ -277,7 +296,7 @@ public class EmisDataManager implements IDataManager {
 			throw new InvalidParamException("condition", e2);
 		}
 
-		String response = _emisDataAdapter.createCondition(odsCode, request);
+		String response = _emisSoapClient.createCondition(odsCode, request);
 		String fhirResponse = response; // _openHrTransformer.toFHIRCondition(response));
 
 		return fhirResponse;
@@ -330,7 +349,7 @@ public class EmisDataManager implements IDataManager {
 			throw new InvalidInternalIdentifier("Patient Id");
 		}
 
-		String openHRXml = _emisDataAdapter.getPatientDemographicsByPatientId(odsCode, patientUuid);
+		String openHRXml = _emisSoapClient.getPatientDemographicsByPatientId(odsCode, patientUuid);
 
 		if (TextUtils.isNullOrTrimmedEmpty(openHRXml))
 			return null;
@@ -342,7 +361,7 @@ public class EmisDataManager implements IDataManager {
 	@Override
 	public String getPatientDemographicsByNhsNumber(String odsCode, String nhsNumber) throws Exception {
 
-		String openHRXml = _emisDataAdapter.getPatientDemographicsByNHSNumber(odsCode, nhsNumber);
+		String openHRXml = _emisSoapClient.getPatientDemographicsByNHSNumber(odsCode, nhsNumber);
 
 		if (TextUtils.isNullOrTrimmedEmpty(openHRXml))
 			return null;
@@ -354,7 +373,7 @@ public class EmisDataManager implements IDataManager {
 	@Override
 	public String tracePersonByDemographics(String surname, Date dateOfBirth, String gender, String forename, String postcode) throws Exception {
 
-		List<String> openHRXml = _emisDataAdapter.tracePatientByDemographics(surname, dateOfBirth, gender, forename, postcode);
+		List<String> openHRXml = _emisSoapClient.tracePatientByDemographics(surname, dateOfBirth, gender, forename, postcode);
 
 		Bundle bundle = _openHRTransformer.toFhirPatientBundle(openHRXml, true);
 		return new JsonParser().composeString(bundle);
@@ -363,7 +382,7 @@ public class EmisDataManager implements IDataManager {
 	@Override
 	public String tracePersonByNhsNumber(String nhsNumber) throws Exception {
 
-		List<String> openHRXml = _emisDataAdapter.tracePatientByNhsNumber(nhsNumber);
+		List<String> openHRXml = _emisSoapClient.tracePatientByNhsNumber(nhsNumber);
 
 		Bundle bundle = _openHRTransformer.toFhirPatientBundle(openHRXml, true);
 		return new JsonParser().composeString(bundle);
@@ -371,7 +390,7 @@ public class EmisDataManager implements IDataManager {
 
 	@Override
 	public List<String> getChangedPatientIds(String odsCode, Date date) throws Exception {
-		List<UUID> patientUuids = _emisDataAdapter.getChangedPatientIds(odsCode, date);
+		List<UUID> patientUuids = _emisSoapClient.getChangedPatientIds(odsCode, date);
 
 		return patientUuids
 				.stream()
@@ -381,7 +400,7 @@ public class EmisDataManager implements IDataManager {
 
 	@Override
 	public String getChangedPatients(String odsCode, Date date) throws Exception {
-		List<String> openHRXml = _emisDataAdapter.getChangedPatients(odsCode, date);
+		List<String> openHRXml = _emisSoapClient.getChangedPatients(odsCode, date);
 
 		Bundle bundle = _openHRTransformer.toFhirPatientBundle(openHRXml, false);
 		return new JsonParser().composeString(bundle);

@@ -105,29 +105,24 @@
         }
       }
     },
-    "/{odsCode}/User/{id}": {
+    "/{odsCode}/Practitioner/{id}": {
       "get": {
         "tags": [ "Administration" ],
-        "summary": "Get user",
-        "description": "Get user by id.",
+        "summary": "Get practitioner",
+        "description": "Get practitioner by id.",
         "produces": [ "application/json" ],
         "parameters": [
           { "$ref": "#definitions/apiKeyParameter" },
           { "$ref": "#definitions/hashParameter" },
           { "$ref": "#definitions/odsCodeParameter" },
-          {
-            "name": "id",
-            "in": "path",
-            "description": "Internal user identifier",
-            "required": true,
-            "type": "string"
-          }
+          { "$ref": "#definitions/practitionerIdParameter" }
         ],
         "responses": {
-          "200": { "description": "OK | <a target='_blank' href='http://hl7.org/fhir/DSTU2/person.html'>Person</a> resource" },
+          "200": { "description": "OK | <a target='_blank' href='../profiles/primarycare-practitioner.html'>PrimaryCare-Practitioner</a> resource" },
           "400": { "$ref": "#definitions/400Response" },
           "401": { "$ref": "#definitions/401Response" },
           "403": { "$ref": "#definitions/403Response" },
+          "404": { "$ref": "#definitions/404PractitionerNotFoundResponse" },
           "500": { "$ref": "#definitions/500Response" },
           "502": { "$ref": "#definitions/502Response" },
           "504": { "$ref": "#definitions/504Response" }
@@ -148,15 +143,15 @@
             "name": "date",
             "in": "query",
             "description": "Free slots within the date(s) specified",
-            "required": false,
+            "required": true,
             "type": "array",
             "items": { "type": "string" },
             "collectionFormat": "multi"
           },
           {
-            "name": "actor:Practitioner",
+            "name": "location",
             "in": "query",
-            "description": "Free slots with the practitioner specified",
+            "description": "Free slots at the location specified",
             "required": false,
             "type": "string"
           }
@@ -186,13 +181,13 @@
           {
             "name": "body",
             "in": "body",
-            "description": "Patient id wrapped in <a target='_blank'  href='http://hl7.org/fhir/DSTU2/parameters.html'>Parameters</a> resource.",
+            "description": "Patient id wrapped in <a target='_blank'  href='http://hl7.org/fhir/DSTU2/parameters.html'>Parameters</a>",
             "required": true,
             "schema": { "$ref": "#/definitions/parametersResource" }
           }
         ],
         "responses": {
-          "200": { "description": "OK | TBD" },
+          "200": { "description": "OK | (empty)" },
           "400": { "$ref": "#definitions/400Response" },
           "401": { "$ref": "#definitions/401Response" },
           "403": { "$ref": "#definitions/403Response" },
@@ -218,7 +213,7 @@
           {
             "name": "body",
             "in": "body",
-            "description": "Patient id wrapped in <a target='_blank'  href='http://hl7.org/fhir/DSTU2/parameters.html'>Parameters</a> Resource.",
+            "description": "Patient id wrapped in <a target='_blank'  href='http://hl7.org/fhir/DSTU2/parameters.html'>Parameters</a>",
             "required": true,
             "schema": {
               "$ref": "#/definitions/parametersResource"
@@ -226,7 +221,7 @@
           }
         ],
         "responses": {
-          "200": { "description": "OK | TBD" },
+          "200": { "description": "OK | (empty)" },
           "400": { "$ref": "#definitions/400Response" },
           "401": { "$ref": "#definitions/401Response" },
           "403": { "$ref": "#definitions/403Response" },
@@ -1145,7 +1140,7 @@
     "slotIdParameter": {
       "name": "id",
       "in": "path",
-      "description": "Slot ID",
+      "description": "Slot id",
       "required": true,
       "type": "string"
     },
@@ -1160,6 +1155,13 @@
       "name": "id",
       "in": "path",
       "description": "Location id",
+      "required": true,
+      "type": "string"
+    },
+    "practitionerIdParameter": {
+      "name": "id",
+      "in": "path",
+      "description": "Practitioner id",
       "required": true,
       "type": "string"
     },
@@ -1184,6 +1186,9 @@
     },
     "404OrganizationNotFoundResponse": {
       "description": "Organization not found | <a target='_blank' href='http://hl7.org/fhir/DSTU2/operationoutcome.html'>OperationOutcome</a> with <a href='http://hl7.org/fhir/DSTU2/valueset-issue-type.html'>IssueType</a> of Not found"
+    },
+    "404PractitionerNotFoundResponse": {
+      "description": "Practitioner not found | <a target='_blank' href='http://hl7.org/fhir/DSTU2/operationoutcome.html'>OperationOutcome</a> with <a href='http://hl7.org/fhir/DSTU2/valueset-issue-type.html'>IssueType</a> of Not found"
     },
     "404LocationNotFoundResponse": {
       "description": "Location not found | <a target='_blank' href='http://hl7.org/fhir/DSTU2/operationoutcome.html'>OperationOutcome</a> with <a href='http://hl7.org/fhir/DSTU2/valueset-issue-type.html'>IssueType</a> of Not found"

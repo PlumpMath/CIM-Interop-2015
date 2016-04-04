@@ -1,31 +1,31 @@
 package org.endeavourhealth.cim.dataManager.emis;
 
-import org.endeavourhealth.cim.dataManager.Registry;
 import org.endeavourhealth.cim.camel.helpers.DateUtils;
-import org.endeavourhealth.cim.camel.helpers.CIMHeaderKey;
-import org.endeavourhealth.cim.camel.exceptions.PrincipalSystemException;
-import org.w3c.dom.Node;
 
 import javax.xml.soap.SOAPMessage;
-import javax.xml.soap.SOAPConnection;
-import javax.xml.soap.SOAPConnectionFactory;
-import javax.xml.soap.SOAPElement;
-import javax.xml.soap.MessageFactory;
-import javax.xml.soap.MimeHeaders;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
-public class EmisDataAdapter {
+public class EmisSoapClient extends DotNetSoapClient
+{
+    @Override
+    protected String getActionUri()
+    {
+        return "http://tempuri.org/IGPApiService";
+    }
 
-    private static final String _soapMethodUri = "http://tempuri.org/";
-    private static final String _actionUri = "http://tempuri.org/IGPApiService";
+    @Override
+    protected String getSoapMethodUri()
+    {
+        return "http://tempuri.org/";
+    }
 
     // Demographics
     public String getPatientRecordByPatientId(String odsCode, UUID patientId) throws Exception {
 
         final String soapMethod = "GetPatient";
 
-        Map<String, String> parameters = createParameterMap();
+        Map<String, Object> parameters = createParameterMap();
         parameters.put("odsCode", odsCode);
         parameters.put("patientGuid", patientId.toString());
 
@@ -38,7 +38,7 @@ public class EmisDataAdapter {
 
         final String soapMethod = "GetPatientDemographicsByNhsNumber";
 
-        Map<String, String> parameters = createParameterMap();
+        Map<String, Object> parameters = createParameterMap();
         parameters.put("odsCode", odsCode);
         parameters.put("nhsNumber", nhsNumber);
 
@@ -51,7 +51,7 @@ public class EmisDataAdapter {
 
         final String soapMethod = "GetPatientDemographics";
 
-        Map<String, String> parameters = createParameterMap();
+        Map<String, Object> parameters = createParameterMap();
         parameters.put("odsCode", odsCode);
         parameters.put("patientGuid", patientId.toString());
 
@@ -64,7 +64,7 @@ public class EmisDataAdapter {
 
         final String soapMethod = "TracePatientByDemographics";
 
-        Map<String, String> parameters = createParameterMap();
+        Map<String, Object> parameters = createParameterMap();
         parameters.put("surname", surname);
         parameters.put("sex", gender.substring(0, 1).toUpperCase());
         parameters.put("dateOfBirth", new SimpleDateFormat("yyyy-MM-dd").format(dateOfBirth));
@@ -80,7 +80,7 @@ public class EmisDataAdapter {
 
         final String soapMethod = "TracePatientByNhsNumber";
 
-        Map<String, String> parameters = createParameterMap();
+        Map<String, Object> parameters = createParameterMap();
         parameters.put("nhsNumber", nhsNumber);
 
         SOAPMessage responseMessage = performSOAPCall(soapMethod, parameters);
@@ -92,7 +92,7 @@ public class EmisDataAdapter {
 
         final String soapMethod = "GetChangedPatientIds";
 
-        Map<String, String> parameters = createParameterMap();
+        Map<String, Object> parameters = createParameterMap();
         parameters.put("odsCode", odsCode);
         parameters.put("sinceDateTime", (date != null) ? DateUtils.formatDateAsISO8601(date) : null);
 
@@ -105,7 +105,7 @@ public class EmisDataAdapter {
 
         final String soapMethod = "GetChangedPatients";
 
-        Map<String, String> parameters = createParameterMap();
+        Map<String, Object> parameters = createParameterMap();
         parameters.put("odsCode", odsCode);
 
         if (date != null)
@@ -121,7 +121,7 @@ public class EmisDataAdapter {
 
         final String soapMethod = "UpdatePatient";
 
-        Map<String, String> parameters = createParameterMap();
+        Map<String, Object> parameters = createParameterMap();
         parameters.put("odsCode", odsCode);
         parameters.put("openHRXml", openHRXml);
 
@@ -135,7 +135,7 @@ public class EmisDataAdapter {
 
         final String soapMethod = "GetPatientAppointments";
 
-        Map<String, String> parameters = createParameterMap();
+        Map<String, Object> parameters = createParameterMap();
         parameters.put("odsCode", odsCode);
         parameters.put("patientGuid", patientId.toString());
         parameters.put("fromDate", DateUtils.formatDateAsISO8601(dateFrom));
@@ -146,13 +146,13 @@ public class EmisDataAdapter {
         return getSOAPResultAsString(responseMessage, soapMethod);
     }
 
-    public String bookSlot(String odsCode, String slotId, UUID patientId, String reason) throws Exception {
+    public String bookSlot(String odsCode, UUID slotId, UUID patientId, String reason) throws Exception {
 
-        final String soapMethod = "BookAppointment";
+        final String soapMethod = "BookAppointment2";
 
-        Map<String, String> parameters = createParameterMap();
+        Map<String, Object> parameters = createParameterMap();
         parameters.put("odsCode", odsCode);
-        parameters.put("slotId", slotId);
+        parameters.put("slotGuid", slotId.toString());
         parameters.put("patientGuid", patientId.toString());
         parameters.put("reason", reason);
 
@@ -161,13 +161,13 @@ public class EmisDataAdapter {
         return getSOAPResultAsString(responseMessage, soapMethod);
     }
 
-    public String cancelSlot(String odsCode, String slotId, UUID patientId) throws Exception {
+    public String cancelSlot(String odsCode, UUID slotId, UUID patientId) throws Exception {
 
-        final String soapMethod = "CancelAppointment";
+        final String soapMethod = "CancelAppointment2";
 
-        Map<String, String> parameters = createParameterMap();
+        Map<String, Object> parameters = createParameterMap();
         parameters.put("odsCode", odsCode);
-        parameters.put("slotId", slotId);
+        parameters.put("slotGuid", slotId.toString());
         parameters.put("patientGuid", patientId.toString());
 
         SOAPMessage responseMessage = performSOAPCall(soapMethod, parameters);
@@ -175,11 +175,11 @@ public class EmisDataAdapter {
         return getSOAPResultAsString(responseMessage, soapMethod);
     }
 
-    public String getSchedules(String odsCode, Date dateFrom, Date dateTo) throws Exception {
+    public String getSessions(String odsCode, Date dateFrom, Date dateTo) throws Exception {
 
         final String soapMethod = "GetAppointmentSessions";
 
-        Map<String, String> parameters = createParameterMap();
+        Map<String, Object> parameters = createParameterMap();
         parameters.put("odsCode", odsCode);
         parameters.put("fromDate", DateUtils.formatDateAsISO8601(dateFrom));
         parameters.put("toDate", DateUtils.formatDateAsISO8601(dateTo));
@@ -189,13 +189,13 @@ public class EmisDataAdapter {
         return getSOAPResultAsString(responseMessage, soapMethod);
     }
 
-    public String getSlots(String odsCode, String scheduleId) throws Exception {
+    public String getSlotsForSessions(String odsCode, UUID[] sessionIds) throws Exception {
 
-        final String soapMethod = "GetSlotsForSession";
+        final String soapMethod = "GetSlotsForSessions";
 
-        Map<String, String> parameters = createParameterMap();
+        Map<String, Object> parameters = createParameterMap();
         parameters.put("odsCode", odsCode);
-        parameters.put("sessionId", scheduleId);
+        parameters.put("sessionIds", sessionIds);
 
         SOAPMessage responseMessage = performSOAPCall(soapMethod, parameters);
 
@@ -206,7 +206,7 @@ public class EmisDataAdapter {
 
         final String soapMethod = "GetOrganisationInformation";
 
-        Map<String, String> parameters = createParameterMap();
+        Map<String, Object> parameters = createParameterMap();
         parameters.put("odsCode", odsCode);
 
         SOAPMessage responseMessage = performSOAPCall(soapMethod, parameters);
@@ -215,12 +215,13 @@ public class EmisDataAdapter {
     }
 
 	// Admin
-	public String getUserById(String odsCode, UUID userInRoleId) throws Exception {
-		final String soapMethod = "GetUserByUserInRoleGuid";
+	public String getUser(String odsCode, UUID userId) throws Exception
+    {
+		final String soapMethod = "GetUser";
 
-		Map<String, String> parameters = createParameterMap();
+		Map<String, Object> parameters = createParameterMap();
 		parameters.put("odsCode", odsCode);
-		parameters.put("userInRoleGuid", userInRoleId.toString());
+		parameters.put("userInRoleGuid", userId.toString());
 
 		SOAPMessage responseMessage = performSOAPCall(soapMethod, parameters);
 
@@ -230,7 +231,7 @@ public class EmisDataAdapter {
 	public String getOrganisationByOdsCode(String odsCode) throws Exception {
 		final String soapMethod = "GetOrganisationByOdsCode";
 
-		Map<String, String> parameters = createParameterMap();
+		Map<String, Object> parameters = createParameterMap();
 		parameters.put("odsCode", odsCode);
 
 		SOAPMessage responseMessage = performSOAPCall(soapMethod, parameters);
@@ -241,7 +242,7 @@ public class EmisDataAdapter {
     public String getOrganisationById(UUID organisationGuid) throws Exception {
         final String soapMethod = "GetOrganisationById";
 
-        Map<String, String> parameters = createParameterMap();
+        Map<String, Object> parameters = createParameterMap();
         parameters.put("organisationGuid", organisationGuid.toString());
 
         SOAPMessage responseMessage = performSOAPCall(soapMethod, parameters);
@@ -249,12 +250,13 @@ public class EmisDataAdapter {
         return getSOAPResultAsString(responseMessage, soapMethod);
     }
 
-	public String getLocationById(String odsCode, UUID locationId) throws Exception {
+	public String getLocation(String odsCode, UUID locationGuid) throws Exception
+    {
 		final String soapMethod = "GetLocation";
 
-		Map<String, String> parameters = createParameterMap();
+		Map<String, Object> parameters = createParameterMap();
 		parameters.put("odsCode", odsCode);
-		parameters.put("locationGuid", locationId.toString());
+		parameters.put("locationGuid", locationGuid.toString());
 
 		SOAPMessage responseMessage = performSOAPCall(soapMethod, parameters);
 
@@ -264,7 +266,7 @@ public class EmisDataAdapter {
 	public String getTaskById(String odsCode, UUID taskId) throws Exception {
 		final String soapMethod = "GetTask";
 
-		Map<String, String> parameters = createParameterMap();
+		Map<String, Object> parameters = createParameterMap();
 		parameters.put("odsCode", odsCode);
 		parameters.put("taskGuid", taskId.toString());
 
@@ -276,7 +278,7 @@ public class EmisDataAdapter {
 	public void addTask(String odsCode, String task) throws Exception {
 		final String soapMethod = "AddTask";
 
-		Map<String, String> parameters = createParameterMap();
+		Map<String, Object> parameters = createParameterMap();
 		parameters.put("odsCode", odsCode);
 		parameters.put("openHRXml", task);
 
@@ -288,7 +290,7 @@ public class EmisDataAdapter {
 	public List<String> getTasksByUser(String odsCode, UUID userId) throws Exception {
 		final String soapMethod = "GetTasksByUserInRoleGuid";
 
-		Map<String, String> parameters = createParameterMap();
+		Map<String, Object> parameters = createParameterMap();
 		parameters.put("odsCode", odsCode);
 		parameters.put("userInRoleGuid", userId.toString());
 
@@ -300,7 +302,7 @@ public class EmisDataAdapter {
 	public List<String> getTasksByOrganisation(String odsCode) throws Exception {
 		final String soapMethod = "GetTasksByOrganisation";
 
-		Map<String, String> parameters = createParameterMap();
+		Map<String, Object> parameters = createParameterMap();
 		parameters.put("odsCode", odsCode);
 
 		SOAPMessage responseMessage = performSOAPCall(soapMethod, parameters);
@@ -311,113 +313,11 @@ public class EmisDataAdapter {
 	public List<String> getTasksByPatient(String odsCode, UUID patientUuid) throws Exception {
 		final String soapMethod = "GetTasksByPatientGuid";
 
-		Map<String, String> parameters = createParameterMap();
+		Map<String, Object> parameters = createParameterMap();
 		parameters.put("odsCode", odsCode);
 		parameters.put("patientGuid", patientUuid.toString());
 
 		SOAPMessage responseMessage = performSOAPCall(soapMethod, parameters);
 
 		return getSOAPResultAsStringArray(responseMessage, soapMethod);	}
-
-	// Utility methods
-    private static Map<String, String> createParameterMap() {
-        return new LinkedHashMap<>();
-    }
-
-    private static SOAPMessage createSOAPMessage(String soapMethod, Map<String, String> parameters) throws Exception {
-
-        MessageFactory messageFactory = MessageFactory.newInstance();
-        SOAPMessage soapMessage = messageFactory.createMessage();
-        MimeHeaders headers = soapMessage.getMimeHeaders();
-        headers.addHeader(CIMHeaderKey.SOAPAction, _actionUri + "/" + soapMethod);
-
-        SOAPElement soapMethodElement = soapMessage.getSOAPBody().addChildElement(soapMethod, "", _soapMethodUri);
-
-        for (String key : parameters.keySet()) {
-            SOAPElement childElement = soapMethodElement.addChildElement(key);
-
-            if (parameters.get(key) != null)
-                childElement.addTextNode(parameters.get(key));
-        }
-
-        soapMessage.saveChanges();
-
-        return soapMessage;
-    }
-
-    private static SOAPMessage performSOAPCall(String soapMethod, Map<String, String> parameters) throws Exception {
-
-        SOAPConnection soapConnection = null;
-        try {
-            SOAPMessage requestMessage = createSOAPMessage(soapMethod, parameters);
-
-            SOAPConnectionFactory soapConnectionFactory = SOAPConnectionFactory.newInstance();
-            soapConnection = soapConnectionFactory.createConnection();
-
-            return soapConnection.call(requestMessage, Registry.Instance().getEmisSoapUri() + "/" + soapMethod);
-        } finally {
-            if (soapConnection != null)
-                soapConnection.close();
-        }
-    }
-
-    private static List<String> getSOAPResultAsStringArray(SOAPMessage soapResponse, String soapMethod) throws Exception {
-
-        return getSOAPResultAsArray(soapResponse, soapMethod, "string");
-    }
-
-    private static List<UUID> getSOAPResultAsUUIDArray(SOAPMessage soapResponse, String soapMethod) throws Exception {
-
-        List<String> uuidsAsString = getSOAPResultAsArray(soapResponse, soapMethod, "guid");
-
-        List<UUID> uuids = new ArrayList<>();
-
-        for (String uuidString : uuidsAsString) {
-            try {
-                uuids.add(UUID.fromString(uuidString));
-            } catch (Exception e) {
-                throw new PrincipalSystemException("Unexpected result from principal system.", e);
-            }
-        }
-
-        return uuids;
-    }
-
-    private static List<String> getSOAPResultAsArray(SOAPMessage soapResponse, String soapMethod, String typeName) throws Exception {
-
-        Node soapResult = getSOAPResultAsElement(soapResponse, soapMethod);
-
-        List<String> result = new ArrayList<>();
-
-        for (int i = 0; i < soapResult.getChildNodes().getLength(); i++) {
-
-            Node node = soapResult.getChildNodes().item(i);
-
-            if (!node.getLocalName().equals(typeName))
-                throw new PrincipalSystemException("Unexpected result from principal system.");
-
-            result.add(node.getTextContent());
-        }
-
-        return result;
-    }
-
-    private static Node getSOAPResultAsElement(SOAPMessage soapResponse, String soapMethod) throws Exception {
-
-        if (soapResponse.getSOAPBody().hasFault())
-            throw new PrincipalSystemException("SOAP fault received from principal system.\r\n\r\n" + soapResponse.getSOAPBody().getFault().getFaultString());
-
-        return soapResponse.getSOAPBody().getElementsByTagName(soapMethod + "Result").item(0);
-    }
-
-    private static String getSOAPResultAsString(SOAPMessage soapResponse, String soapMethod) throws Exception {
-
-        Node n = getSOAPResultAsElement(soapResponse, soapMethod);
-
-        if (n != null)
-            return n.getTextContent();
-
-        return "";
-    }
-
 }

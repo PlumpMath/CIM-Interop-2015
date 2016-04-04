@@ -10,19 +10,24 @@ import org.endeavourhealth.cim.camel.exceptions.*;
 import org.endeavourhealth.cim.dataManager.DataManagerFactory;
 import org.hl7.fhir.instance.model.Parameters;
 
+import java.util.UUID;
+
 public class BookSlotProcessor implements Processor {
 
     public void process(Exchange exchange) throws Exception {
 
         String odsCode = ExchangeHelper.getInHeaderString(exchange, CIMHeaderKey.DestinationOdsCode, true);
-        String slotId = ExchangeHelper.getInHeaderString(exchange, CIMHeaderKey.Id, true);
+        UUID slotId = ExchangeHelper.getInHeaderUUID(exchange, CIMHeaderKey.Id, true);
         Parameters parameters = ExchangeHelper.getInBodyResource(exchange, Parameters.class, true);
 
-        String patientId = null;
+        UUID patientId = null;
 
-        try {
-            patientId = ParametersHelper.getStringParameter(parameters, "patient");
-        } catch (Exception e) {
+        try
+        {
+            patientId = ParametersHelper.getUUIDParameter(parameters, "patient");
+        }
+        catch (Exception e)
+        {
             throw new InvalidParamException(e);
         }
 

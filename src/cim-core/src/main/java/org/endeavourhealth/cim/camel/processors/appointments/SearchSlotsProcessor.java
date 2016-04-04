@@ -11,9 +11,11 @@ import org.apache.camel.Processor;
 import org.endeavourhealth.cim.camel.helpers.ExchangeHelper;
 import org.endeavourhealth.cim.dataManager.DataManagerFactory;
 import org.endeavourhealth.cim.dataManager.IDataManager;
+import org.omg.CORBA.DynAnyPackage.Invalid;
 
 import java.util.Date;
 import java.util.UUID;
+import java.util.concurrent.TimeUnit;
 
 public class SearchSlotsProcessor implements Processor
 {
@@ -21,26 +23,17 @@ public class SearchSlotsProcessor implements Processor
 	public void process(Exchange exchange) throws Exception
 	{
 		String odsCode = null;
-		Date fromDate = null;
-		Date toDate = null;
-		UUID practitioner = null;
+		DateSearchParameter date = null;
+		UUID location = null;
 
 		try
 		{
 			odsCode = ExchangeHelper.getInHeaderString(exchange, CIMHeaderKey.DestinationOdsCode, true);
-			DateSearchParameter date = null;
+			date = DateSearchParameter.Parse(ExchangeHelper.getInHeaderArray(exchange, CIMHeaderKey.Date, true));
+			location = ExchangeHelper.getInHeaderUUID(exchange, CIMHeaderKey.Location, false);
 
-			if (ExchangeHelper.hasInHeader(exchange, CIMHeaderKey.ActorPractitioner))
-				practitioner = ExchangeHelper.getInHeaderUUID(exchange, CIMHeaderKey.ActorPractitioner, false);
-
-			if (ExchangeHelper.hasInHeader(exchange, CIMHeaderKey.Date))
-				date = DateSearchParameter.Parse(ExchangeHelper.getInHeaderArray(exchange, CIMHeaderKey.Date));
-
-			if (practitioner == null && date == null)
-				throw new MissingParamException("Either actor or date, or both must be supplied.");
-
-			fromDate = (date != null) ? date.getIntervalStart() : DateUtils.DOTNET_MINIMUM_DATE;
-			toDate = (date != null) ? date.getIntervalEnd() : DateUtils.DOTNET_MAXIMUM_DATE;
+			if (TimeUnit.DAYS.convert(date.getIntervalEnd().getTime() - date.getIntervalStart().getTime(), TimeUnit.MILLISECONDS) > 14)
+				throw new InvalidParamException("Time range must be less than 14 days");
 		}
 		catch (BaseException e)
 		{
@@ -52,7 +45,7 @@ public class SearchSlotsProcessor implements Processor
 		}
 
 		IDataManager dataManager = DataManagerFactory.getDataManagerForService(odsCode);
-		String responseBody = dataManager.searchSlots(odsCode, fromDate, toDate, practitioner);
+		String responseBody = dataManager.searchSlots(odsCode, date.getIntervalStart(), date.getIntervalEnd(), location);
 
 		ExchangeHelper.setInBodyString(exchange, responseBody);
 	}

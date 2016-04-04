@@ -1,6 +1,7 @@
 package org.endeavourhealth.cim.transform.emisopen;
 
-import org.endeavourhealth.cim.transform.common.exceptions.SerializationException;
+import org.endeavourhealth.cim.transform.common.FhirUris;
+import org.endeavourhealth.cim.transform.common.exceptions.TransformException;
 import org.endeavourhealth.cim.transform.schemas.emisopen.eomslotsforsession.SlotListStruct;
 import org.endeavourhealth.cim.transform.common.ReferenceHelper;
 import org.endeavourhealth.cim.repository.utils.TextUtils;
@@ -11,21 +12,33 @@ import org.hl7.fhir.instance.model.*;
 import java.sql.Time;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
-public class SlotTransformer {
-
-    public static ArrayList<Resource> transformToSlotResources(String scheduleId, SlotListStruct appointmentSlotList) throws SerializationException, TransformFeatureNotSupportedException {
-        ArrayList<Resource> resources = new ArrayList<Resource>();
+public class SlotTransformer
+{
+    public static List<Slot> transform(SlotListStruct appointmentSlotList) throws TransformException
+    {
+        ArrayList<Slot> fhirSlots = new ArrayList<>();
 
         for (SlotStruct appointmentSlot : appointmentSlotList.getSlot())
-            resources.add(transformToSlot(appointmentSlot, scheduleId));
+            fhirSlots.add(transform(appointmentSlot));
 
-        return resources;
+        return fhirSlots;
     }
 
-    private static Slot transformToSlot(SlotStruct appointmentSlot, String scheduleId) throws SerializationException, TransformFeatureNotSupportedException {
+    private static Slot transform(SlotStruct appointmentSlot) throws TransformException
+    {
         Slot slot = new Slot();
-        slot.setId(Integer.toString(appointmentSlot.getDBID()));
+
+        slot.setId(appointmentSlot.getGUID());
+        slot.setMeta(new Meta().addProfile(FhirUris.PROFILE_URI_SLOT));
+
+        slot.setSchedule(ReferenceHelper.createReference(ResourceType.Schedule, appointmentSlot.getSessionGUID()));
+
+        String slotStatus = appointmentSlot.getStatus();
+
+        if (!TextUtils.isNullOrTrimmedEmpty(slotStatus))
+            slot.setFreeBusyType(getSlotStatus(slotStatus));
 
         Time startTime = EmisOpenCommon.getTime(appointmentSlot.getStartTime());
         Time endTime = EmisOpenCommon.addMinutesToTime(startTime, Integer.parseInt(appointmentSlot.getSlotLength()));
@@ -36,18 +49,13 @@ public class SlotTransformer {
         slot.setStart(startDate);
         slot.setEnd(endDate);
 
-        String slotStatus = appointmentSlot.getStatus();
-
-        if (!TextUtils.isNullOrTrimmedEmpty(slotStatus))
-            slot.setFreeBusyType(getSlotStatus(slotStatus));
-
-        slot.setSchedule(ReferenceHelper.createReference(ResourceType.Schedule, scheduleId));
-
         return slot;
     }
 
-    private static Slot.SlotStatus getSlotStatus(String slotStatus) throws TransformFeatureNotSupportedException {
-        switch (slotStatus) {
+    private static Slot.SlotStatus getSlotStatus(String slotStatus) throws TransformException
+    {
+        switch (slotStatus)
+        {
             case "Slot Available":
                 return Slot.SlotStatus.FREE;
             case "Arrived":

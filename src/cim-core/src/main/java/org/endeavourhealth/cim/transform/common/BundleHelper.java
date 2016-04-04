@@ -4,6 +4,7 @@ import org.hl7.fhir.instance.model.Bundle;
 import org.hl7.fhir.instance.model.Meta;
 import org.hl7.fhir.instance.model.Resource;
 import org.endeavourhealth.cim.repository.utils.TextUtils;
+import org.hl7.fhir.instance.model.ResourceType;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -51,4 +52,16 @@ public class BundleHelper {
                 .map(t -> (T)t.getResource())
                 .collect(Collectors.toCollection(ArrayList<T>::new));
     }
+
+    public static Bundle getResourcesOfType(Bundle bundle, ResourceType resourceType)
+    {
+		List<Resource> resources = new ArrayList<>();
+
+		for(Bundle.BundleEntryComponent component : bundle.getEntry())
+			if (component.getResource().getResourceType() == resourceType)
+				resources.add(component.getResource());
+
+		return BundleHelper.createBundle(bundle.getType(), bundle.getId(), resources);
+	}
+
 }

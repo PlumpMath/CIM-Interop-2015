@@ -63,6 +63,16 @@ public class ExchangeHelper {
         }
     }
 
+    public static ArrayList getInHeaderArray(Exchange exchange, String headerKey, Boolean required) throws MissingParamException
+    {
+        ArrayList result = getInHeaderArray(exchange, headerKey);
+
+        if (result == null)
+            throw new MissingParamException(headerKey);
+
+        return result;
+    }
+
     @SuppressWarnings("unchecked")
     public static ArrayList getInHeaderArray(Exchange exchange, String headerKey) {
         Object object = getInHeader(exchange, headerKey);

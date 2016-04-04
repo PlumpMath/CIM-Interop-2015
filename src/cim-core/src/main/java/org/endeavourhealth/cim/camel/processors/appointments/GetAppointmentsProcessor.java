@@ -12,6 +12,7 @@ import org.endeavourhealth.cim.camel.exceptions.InvalidParamException;
 import org.endeavourhealth.cim.camel.helpers.DateUtils;
 
 import java.util.Date;
+import java.util.UUID;
 
 public class GetAppointmentsProcessor implements Processor {
 
@@ -19,13 +20,14 @@ public class GetAppointmentsProcessor implements Processor {
 	public void process(Exchange exchange) throws Exception {
 
 		String odsCode;
-		String patientId;
+		UUID patientId;
 		Date fromDate;
 		Date toDate;
 
-		try {
+		try
+		{
 			odsCode = ExchangeHelper.getInHeaderString(exchange, CIMHeaderKey.DestinationOdsCode, true);
-			patientId = ExchangeHelper.getInHeaderString(exchange, CIMHeaderKey.Patient, true);
+			patientId = ExchangeHelper.getInHeaderUUID(exchange, CIMHeaderKey.Patient, true);
 
 			DateSearchParameter date = null;
 

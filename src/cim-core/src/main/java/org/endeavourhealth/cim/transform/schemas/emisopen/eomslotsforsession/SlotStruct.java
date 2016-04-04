@@ -20,6 +20,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="DBID" type="{http://www.w3.org/2001/XMLSchema}int"/>
  *         &lt;element name="RefID" type="{http://www.w3.org/2001/XMLSchema}int"/>
  *         &lt;element name="GUID" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         &lt;element name="SessionGUID" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         &lt;element name="Date" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         &lt;element name="StartTime" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         &lt;element name="SlotLength" type="{http://www.w3.org/2001/XMLSchema}string"/>
@@ -41,6 +42,7 @@ import javax.xml.bind.annotation.XmlType;
     "dbid",
     "refID",
     "guid",
+    "sessionGUID",
     "date",
     "startTime",
     "slotLength",
@@ -58,6 +60,8 @@ public class SlotStruct {
     protected int refID;
     @XmlElement(name = "GUID", required = true)
     protected String guid;
+    @XmlElement(name = "SessionGUID", required = true)
+    protected String sessionGUID;
     @XmlElement(name = "Date", required = true)
     protected String date;
     @XmlElement(name = "StartTime", required = true)
@@ -129,6 +133,30 @@ public class SlotStruct {
      */
     public void setGUID(String value) {
         this.guid = value;
+    }
+
+    /**
+     * Gets the value of the sessionGUID property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getSessionGUID() {
+        return sessionGUID;
+    }
+
+    /**
+     * Sets the value of the sessionGUID property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setSessionGUID(String value) {
+        this.sessionGUID = value;
     }
 
     /**

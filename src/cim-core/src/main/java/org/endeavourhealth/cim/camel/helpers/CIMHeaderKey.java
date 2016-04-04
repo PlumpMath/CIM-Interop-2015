@@ -14,7 +14,7 @@ public class CIMHeaderKey {
 	public static final String Gender = "gender";
 	public static final String Forename = "forename";
 	public static final String PostCode = "postcode";
-	public static final String ActorPractitioner = "actor:Practitioner";
+	public static final String Location = "location";
 	public static final String Schedule = "schedule";
 	public static final String Start = "start";
 	public static final String Active = "active";
