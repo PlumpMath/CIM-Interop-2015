@@ -9,12 +9,14 @@ import org.endeavourhealth.cim.camel.helpers.ExchangeHelper;
 import org.endeavourhealth.cim.camel.exceptions.NotFoundException;
 import org.endeavourhealth.cim.repository.utils.TextUtils;
 
-public class GetAllergyIntolerancesProcessor implements Processor {
+import java.util.UUID;
 
-	public void process(Exchange exchange) throws Exception {
-
+public class GetAllergiesProcessor implements Processor
+{
+	public void process(Exchange exchange) throws Exception
+	{
 		String odsCode = ExchangeHelper.getInHeaderString(exchange, CIMHeaderKey.DestinationOdsCode, true);
-		String patientId = ExchangeHelper.getInHeaderString(exchange, CIMHeaderKey.Id, true);
+		UUID patientId = ExchangeHelper.getInHeaderUUID(exchange, CIMHeaderKey.Id, true);
 
 		IDataManager dataManager = DataManagerFactory.getDataManagerForService(odsCode);
 		String responseBody = dataManager.getAllergyIntolerances(odsCode, patientId);

@@ -181,22 +181,17 @@ public class EmisDataManager implements IDataManager
 	}
 
 	@Override
-	public String getTask(String odsCode, String taskId) throws Exception {
-		UUID taskUuid;
-		try {
-			taskUuid = UUID.fromString(taskId);
-		} catch (IllegalArgumentException e) {
-			throw new InvalidInternalIdentifier("Task Id");
-		}
-
-		String openHRXml = _emisSoapClient.getTaskById(odsCode, taskUuid);
+	public String getTask(String odsCode, UUID taskId) throws Exception
+	{
+		String openHRXml = _emisSoapClient.getTaskById(odsCode, taskId);
 		Order task = _openHRTransformer.toFhirTask(openHRXml);
 
 		return new JsonParser().composeString(task);
 	}
 
 	@Override
-	public void addTask(String odsCode, String fhirRequest) throws Exception {
+	public void addTask(String odsCode, String fhirRequest) throws Exception
+	{
 		Order task = (Order)new JsonParser().parse(fhirRequest);
 		String request = _openHRTransformer.fromFhirTask(task);
 
@@ -204,22 +199,17 @@ public class EmisDataManager implements IDataManager
 	}
 
 	@Override
-	public String getUserTasks(String odsCode, String userId) throws Exception {
-		UUID userUuid;
-		try {
-			userUuid = UUID.fromString(userId);
-		} catch (IllegalArgumentException e) {
-			throw new InvalidInternalIdentifier("User Id");
-		}
-
-		List<String> openHRXml = _emisSoapClient.getTasksByUser(odsCode, userUuid);
+	public String getUserTasks(String odsCode, UUID userId) throws Exception
+	{
+		List<String> openHRXml = _emisSoapClient.getTasksByUser(odsCode, userId);
 		Bundle tasks = _openHRTransformer.toFhirTaskBundle(openHRXml);
 
 		return new JsonParser().composeString(tasks);
 	}
 
 	@Override
-	public String getOrganisationTasks(String odsCode) throws Exception{
+	public String getOrganisationTasks(String odsCode) throws Exception
+	{
 		List<String> openHRXml = _emisSoapClient.getTasksByOrganisation(odsCode);
 		Bundle tasks = _openHRTransformer.toFhirTaskBundle(openHRXml);
 
@@ -227,15 +217,9 @@ public class EmisDataManager implements IDataManager
 	}
 
 	@Override
-	public String getPatientTasks(String odsCode, String patientId) throws Exception {
-		UUID patientUuid;
-		try {
-			patientUuid = UUID.fromString(patientId);
-		} catch (IllegalArgumentException e) {
-			throw new InvalidInternalIdentifier("Patient Id");
-		}
-
-		List<String> openHRXml = _emisSoapClient.getTasksByPatient(odsCode, patientUuid);
+	public String getPatientTasks(String odsCode, UUID patientId) throws Exception
+	{
+		List<String> openHRXml = _emisSoapClient.getTasksByPatient(odsCode, patientId);
 		Bundle tasks = _openHRTransformer.toFhirTaskBundle(openHRXml);
 
 		return new JsonParser().composeString(tasks);
@@ -244,7 +228,8 @@ public class EmisDataManager implements IDataManager
 	/* clinical */
 
 	@Override
-	public String getFullRecord(String odsCode, String patientId) throws Exception {
+	public String getFullRecord(String odsCode, UUID patientId) throws Exception
+	{
 		Bundle bundle = getPatientRecordAsBundle(odsCode, patientId);
 
 		if (bundle == null)
@@ -253,15 +238,9 @@ public class EmisDataManager implements IDataManager
 		return new JsonParser().composeString(bundle);
 	}
 
-	private Bundle getPatientRecordAsBundle(String odsCode, String patientId) throws Exception {
-		UUID patientUuid;
-		try {
-			patientUuid = UUID.fromString(patientId);
-		} catch (IllegalArgumentException e) {
-			throw new InvalidInternalIdentifier("Patient Id");
-		}
-
-		String openHRXml = _emisSoapClient.getPatientRecordByPatientId(odsCode, patientUuid);
+	private Bundle getPatientRecordAsBundle(String odsCode, UUID patientId) throws Exception
+	{
+		String openHRXml = _emisSoapClient.getPatientRecordByPatientId(odsCode, patientId);
 
 		if (TextUtils.isNullOrTrimmedEmpty(openHRXml))
 			return null;
@@ -270,7 +249,8 @@ public class EmisDataManager implements IDataManager
 	}
 
 	@Override
-	public String getConditions(String odsCode, String patientId) throws Exception {
+	public String getConditions(String odsCode, UUID patientId) throws Exception
+	{
 		Bundle bundle = getPatientRecordAsBundle(odsCode, patientId);
 
 		if (bundle == null)
@@ -281,23 +261,15 @@ public class EmisDataManager implements IDataManager
 	}
 
 	@Override
-	public String addCondition(String odsCode, String patientId, String fhirRequest) throws Exception {
-
-		UUID patientUuid;
+	public String addCondition(String odsCode, UUID patientId, String fhirRequest) throws Exception
+	{
 		String request;
 		try
 		{
-			try {
-				patientUuid = UUID.fromString(patientId);
-			}
-			catch (Exception e){
-				throw new InvalidParamException("patientId", e);
-			}
-
 			Condition condition = (Condition)new JsonParser().parse(fhirRequest);
 
 			if ((condition.getPatient() == null) || (TextUtils.isNullOrTrimmedEmpty(condition.getPatient().getReference())))
-				condition.setPatient(ReferenceHelper.createReference(ResourceType.Patient, patientId));
+				condition.setPatient(ReferenceHelper.createReference(ResourceType.Patient, patientId.toString()));
 
 			if (!patientId.equals(ReferenceHelper.getReferenceId(condition.getPatient(), ResourceType.Patient)))
 				throw new InvalidParamException("patientId");
@@ -320,7 +292,8 @@ public class EmisDataManager implements IDataManager
 	}
 
 	@Override
-	public String getAllergyIntolerances(String odsCode, String patientId) throws Exception {
+	public String getAllergyIntolerances(String odsCode, UUID patientId) throws Exception
+	{
 		Bundle bundle = getPatientRecordAsBundle(odsCode, patientId);
 
 		if (bundle == null)
@@ -331,7 +304,8 @@ public class EmisDataManager implements IDataManager
 	}
 
 	@Override
-	public String getImmunizations(String odsCode, String patientId) throws Exception {
+	public String getImmunizations(String odsCode, UUID patientId) throws Exception
+	{
 		Bundle bundle = getPatientRecordAsBundle(odsCode, patientId);
 
 		if (bundle == null)
@@ -342,8 +316,8 @@ public class EmisDataManager implements IDataManager
 	}
 
 	@Override
-	public String getMedicationPrescriptions(String odsCode, String patientId, MedicationOrder.MedicationOrderStatus medicationOrderStatus) throws Exception {
-
+	public String getMedicationPrescriptions(String odsCode, UUID patientId, MedicationOrder.MedicationOrderStatus medicationOrderStatus) throws Exception
+	{
 		Bundle bundle = getPatientRecordAsBundle(odsCode, patientId);
 
 		if (bundle == null)
@@ -358,15 +332,9 @@ public class EmisDataManager implements IDataManager
 	/* demographic */
 
 	@Override
-	public String getPatientDemographics(String odsCode, String patientId) throws Exception {
-		UUID patientUuid;
-		try {
-			patientUuid = UUID.fromString(patientId);
-		} catch (IllegalArgumentException e) {
-			throw new InvalidInternalIdentifier("Patient Id");
-		}
-
-		String openHRXml = _emisSoapClient.getPatientDemographicsByPatientId(odsCode, patientUuid);
+	public String getPatientDemographics(String odsCode, UUID patientId) throws Exception
+	{
+		String openHRXml = _emisSoapClient.getPatientDemographicsByPatientId(odsCode, patientId);
 
 		if (TextUtils.isNullOrTrimmedEmpty(openHRXml))
 			return null;
@@ -376,8 +344,8 @@ public class EmisDataManager implements IDataManager
 	}
 
 	@Override
-	public String getPatientDemographicsByNhsNumber(String odsCode, String nhsNumber) throws Exception {
-
+	public String getPatientDemographicsByNhsNumber(String odsCode, String nhsNumber) throws Exception
+	{
 		String openHRXml = _emisSoapClient.getPatientDemographicsByNHSNumber(odsCode, nhsNumber);
 
 		if (TextUtils.isNullOrTrimmedEmpty(openHRXml))

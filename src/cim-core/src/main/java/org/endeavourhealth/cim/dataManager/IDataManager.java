@@ -23,22 +23,22 @@ public interface IDataManager
     String getLocation(String odsCode, UUID locationId) throws Exception;
 
     // tasks
-    String getTask(String odsCode, String taskId) throws Exception;
+    String getTask(String odsCode, UUID taskId) throws Exception;
 	void addTask(String odsCode, String taskData) throws Exception;
-	String getUserTasks(String odsCode, String userId) throws Exception;
+	String getUserTasks(String odsCode, UUID userId) throws Exception;
 	String getOrganisationTasks(String odsCode) throws Exception;
-	String getPatientTasks(String odsCode, String patientId) throws Exception;
+	String getPatientTasks(String odsCode, UUID patientId) throws Exception;
 
     // clinical
-    String getFullRecord(String odsCode, String patientId) throws Exception;
-    String getConditions(String odsCode, String patientId) throws Exception;
-    String getAllergyIntolerances(String odsCode, String patientId) throws Exception;
-    String getImmunizations(String odsCode, String patientId) throws Exception;
-    String getMedicationPrescriptions(String odsCode, String patientId, MedicationOrder.MedicationOrderStatus medicationOrderStatus) throws Exception;
-    String addCondition(String odsCode, String patientId, String request) throws Exception;
+    String getFullRecord(String odsCode, UUID patientId) throws Exception;
+    String getConditions(String odsCode, UUID patientId) throws Exception;
+    String getAllergyIntolerances(String odsCode, UUID patientId) throws Exception;
+    String getImmunizations(String odsCode, UUID patientId) throws Exception;
+    String getMedicationPrescriptions(String odsCode, UUID patientId, MedicationOrder.MedicationOrderStatus medicationOrderStatus) throws Exception;
+    String addCondition(String odsCode, UUID patientId, String request) throws Exception;
 
     // demographic
-    String getPatientDemographics(String odsCode, String patientId) throws Exception;
+    String getPatientDemographics(String odsCode, UUID patientId) throws Exception;
     String getPatientDemographicsByNhsNumber(String odsCode, String nhsNumber) throws Exception;
     String tracePersonByDemographics(String surname, Date dateOfBirth, String gender, String forename, String postcode) throws Exception;
     String tracePersonByNhsNumber(String nhsNumber) throws Exception;

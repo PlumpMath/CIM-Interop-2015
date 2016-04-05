@@ -12,12 +12,14 @@ import org.apache.camel.Exchange;
 import org.apache.camel.Processor;
 import org.endeavourhealth.cim.camel.helpers.ExchangeHelper;
 
+import java.util.UUID;
+
 public class AddConditionProcessor implements Processor {
 
     public void process(Exchange exchange) throws Exception {
 
         String odsCode = ExchangeHelper.getInHeaderString(exchange, CIMHeaderKey.DestinationOdsCode, true);
-        String patientId = ExchangeHelper.getInHeaderString(exchange, CIMHeaderKey.Id, true);
+        UUID patientId = ExchangeHelper.getInHeaderUUID(exchange, CIMHeaderKey.Id, true);
         String requestBody = ExchangeHelper.getInBodyString(exchange);
 
         IDataManager dataManager = DataManagerFactory.getDataManagerForService(odsCode);

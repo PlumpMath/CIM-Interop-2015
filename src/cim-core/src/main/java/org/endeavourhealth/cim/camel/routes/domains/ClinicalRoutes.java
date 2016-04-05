@@ -75,7 +75,7 @@ public class ClinicalRoutes extends BaseRouteBuilder
 
 		// routes
 		buildWrappedRoute(CimCore.ROUTE_NAME, GET_ALLERGY_INTOLERANCES_ROUTE)
-				.process(new GetAllergyIntolerancesProcessor());
+				.process(new GetAllergiesProcessor());
 
 		buildWrappedRoute(CimCore.ROUTE_NAME, GET_FULL_RECORD_ROUTE)
 				.process(new GetFullRecordProcessor());
