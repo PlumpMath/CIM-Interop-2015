@@ -14,7 +14,7 @@ import org.hl7.fhir.instance.model.*;
 
 import java.util.Date;
 
-class MedicationTransformer implements ClinicalResourceTransformer
+public class MedicationTransformer implements ClinicalResourceTransformer
 {
     public MedicationOrder transform(OpenHR001HealthDomain healthDomain, FhirContainer container, EventEncounterMap eventEncounterMap, OpenHR001HealthDomain.Event source) throws TransformException
     {

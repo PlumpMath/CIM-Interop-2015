@@ -15,7 +15,7 @@ import org.hl7.fhir.instance.model.*;
 
 import java.util.List;
 
-class ConditionTransformer implements ClinicalResourceTransformer
+public class ConditionTransformer implements ClinicalResourceTransformer
 {
     private final static String CONDITION_LINK_EXTENSION = "urn:fhir.nhs.uk:extension/ConditionLink";
     private final static String CONDITION_LINK_TYPE_SYSTEM = "urn:fhir.nhs.uk:vs/ConditionLinkType";

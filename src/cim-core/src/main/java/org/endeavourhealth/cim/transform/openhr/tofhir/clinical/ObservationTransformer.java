@@ -16,7 +16,7 @@ import org.hl7.fhir.instance.model.*;
 
 import java.util.List;
 
-class ObservationTransformer implements ClinicalResourceTransformer {
+public class ObservationTransformer implements ClinicalResourceTransformer {
     private final static String CERTAINTY_QUALIFIER_NAME = "Certainty";
     private final static String UNCERTAIN_QUALIFIER_VALUE = "Uncertain";
 

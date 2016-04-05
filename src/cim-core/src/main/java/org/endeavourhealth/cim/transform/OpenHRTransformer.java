@@ -5,7 +5,7 @@ import org.endeavourhealth.cim.transform.common.exceptions.TransformException;
 import org.endeavourhealth.cim.transform.openhr.fromfhir.FromFhirTransformer;
 import org.endeavourhealth.cim.transform.openhr.tofhir.FhirContainer;
 import org.endeavourhealth.cim.transform.openhr.tofhir.admin.*;
-import org.endeavourhealth.cim.transform.openhr.tofhir.clinical.HealthDomainTransformer;
+import org.endeavourhealth.cim.transform.openhr.tofhir.HealthDomainTransformer;
 import org.endeavourhealth.cim.transform.schemas.openhr.*;
 import org.hl7.fhir.instance.model.*;
 

@@ -13,7 +13,7 @@ import org.endeavourhealth.cim.transform.schemas.openhr.OpenHR001Encounter;
 import org.endeavourhealth.cim.transform.schemas.openhr.OpenHR001HealthDomain;
 import org.hl7.fhir.instance.model.*;
 
-class ImmunisationTransformer implements ClinicalResourceTransformer
+public class ImmunisationTransformer implements ClinicalResourceTransformer
 {
     public Immunization transform(OpenHR001HealthDomain healthDomain, FhirContainer container, EventEncounterMap eventEncounterMap, OpenHR001HealthDomain.Event source) throws TransformException
     {

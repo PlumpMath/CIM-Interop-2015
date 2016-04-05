@@ -189,4 +189,40 @@ public class OpenHRHelper
             default: throw new TransformFeatureNotSupportedException("VocPatientIdentifierType not supported: " + openHRType.toString());
         }
     }
+
+    public static boolean isCondition(List<OpenHR001Problem> problemList, OpenHR001HealthDomain.Event event) throws SourceDocumentInvalidException
+    {
+        // The condition resource specifically excludes AllergyIntolerance as those are handled with their own resource
+        return event.getEventType() != VocEventType.ALL
+                && problemList != null
+                && problemList.stream().anyMatch(p -> p.getId().equals(event.getId()));
+    }
+
+    public static boolean isProcedure(OpenHR001HealthDomain.Event event) throws SourceDocumentInvalidException
+    {
+        //TODO: This method needs to be replaced with SNOMED hierarchy lookup using CREs
+
+        if (event.getCode() != null)
+        {
+            if (isProcedureCode(event.getCode()))
+                return true;
+
+            if (event.getCode().getTranslation() != null)
+            {
+                return (event
+                        .getCode()
+                        .getTranslation()
+                        .stream()
+                        .anyMatch(t -> isProcedureCode(t)));
+            }
+        }
+
+        return false;
+    }
+
+    public static boolean isProcedureCode(DtCodeQualified code)
+    {
+        // check for codes in the READ2 code system that fall in the Procedure (7) hierarchy
+        return code != null && code.getCodeSystem().equals("2.16.840.1.113883.2.1.6.2") && code.getCode().startsWith("7");
+    }
 }

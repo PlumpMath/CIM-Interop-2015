@@ -17,7 +17,7 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
-class EncounterTransformer {
+public class EncounterTransformer {
     private final static String PROBLEM_HEADING_TERM = "Problem";
 
     //TODO: This concept has been deprecated. There is no alternative to this code

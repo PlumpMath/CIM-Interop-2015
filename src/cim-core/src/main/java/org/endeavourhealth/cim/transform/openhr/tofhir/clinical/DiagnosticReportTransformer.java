@@ -6,7 +6,7 @@ import org.endeavourhealth.cim.transform.openhr.tofhir.FhirContainer;
 import org.endeavourhealth.cim.transform.schemas.openhr.OpenHR001HealthDomain;
 import org.hl7.fhir.instance.model.DiagnosticReport;
 
-class DiagnosticReportTransformer implements ClinicalResourceTransformer
+public class DiagnosticReportTransformer implements ClinicalResourceTransformer
 {
     public DiagnosticReport transform(OpenHR001HealthDomain healthDomain, FhirContainer container, EventEncounterMap eventEncounterMap, OpenHR001HealthDomain.Event source) throws TransformException
     {
