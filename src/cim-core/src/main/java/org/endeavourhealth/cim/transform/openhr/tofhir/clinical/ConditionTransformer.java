@@ -4,6 +4,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.endeavourhealth.cim.transform.common.ReferenceHelper;
 import org.endeavourhealth.cim.transform.common.exceptions.TransformException;
 import org.endeavourhealth.cim.transform.common.OpenHRHelper;
+import org.endeavourhealth.cim.transform.openhr.tofhir.EventEncounterMap;
 import org.endeavourhealth.cim.transform.openhr.tofhir.common.CodeHelper;
 import org.endeavourhealth.cim.transform.schemas.openhr.*;
 import org.endeavourhealth.cim.transform.common.StreamExtension;
@@ -14,7 +15,8 @@ import org.hl7.fhir.instance.model.*;
 
 import java.util.List;
 
-class ConditionTransformer implements ClinicalResourceTransformer {
+class ConditionTransformer implements ClinicalResourceTransformer
+{
     private final static String CONDITION_LINK_EXTENSION = "urn:fhir.nhs.uk:extension/ConditionLink";
     private final static String CONDITION_LINK_TYPE_SYSTEM = "urn:fhir.nhs.uk:vs/ConditionLinkType";
     private final static String CONDITION_LINK_TYPE_EPISODE_CODE = "is-episode";
@@ -22,14 +24,14 @@ class ConditionTransformer implements ClinicalResourceTransformer {
     private final static String CONDITION_LINK_TYPE_ASSOCIATION_CODE = "has-association";
     private final static String CONDITION_LINK_TYPE_ASSOCIATION_DISPLAY = "Has association";
 
-    public Condition transform(OpenHR001HealthDomain healthDomain, FhirContainer container, OpenHR001HealthDomain.Event source) throws TransformException
+    public Condition transform(OpenHR001HealthDomain healthDomain, FhirContainer container, EventEncounterMap eventEncounterMap, OpenHR001HealthDomain.Event source) throws TransformException
     {
         OpenHR001Problem problem = getProblem(healthDomain.getProblem(), convertId(source.getId()));
 
         Condition target = new Condition();
         target.setId(convertId(source.getId()));
         target.setPatient(convertPatient(source.getPatient()));
-        target.setEncounter(getEncounter(container, source.getId()));
+        target.setEncounter(eventEncounterMap.getEncounterReference(source.getId()));
 
         if (source.getAuthorisingUserInRole() != null)
             target.setAsserter(convertUserInRole(source.getAuthorisingUserInRole()));
@@ -67,14 +69,6 @@ class ConditionTransformer implements ClinicalResourceTransformer {
         if (StringUtils.isBlank(sourcePatientId))
             throw new SourceDocumentInvalidException("Invalid Patient Id");
         return ReferenceHelper.createReference(ResourceType.Patient, sourcePatientId);
-    }
-
-    private Reference getEncounter(FhirContainer container, String eventId) {
-        OpenHR001Encounter encounter = container.getEncounterFromEventId(eventId);
-        if (encounter == null)
-            return null;
-
-        return ReferenceHelper.createReference(ResourceType.Encounter, encounter.getId());
     }
 
     private Reference convertUserInRole(String userInRoleId) throws SourceDocumentInvalidException {

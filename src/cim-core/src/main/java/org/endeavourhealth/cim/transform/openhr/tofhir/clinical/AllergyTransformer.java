@@ -4,6 +4,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.endeavourhealth.cim.transform.common.ReferenceHelper;
 import org.endeavourhealth.cim.transform.common.exceptions.SourceDocumentInvalidException;
 import org.endeavourhealth.cim.transform.common.exceptions.TransformException;
+import org.endeavourhealth.cim.transform.openhr.tofhir.EventEncounterMap;
 import org.endeavourhealth.cim.transform.openhr.tofhir.FhirContainer;
 import org.endeavourhealth.cim.transform.common.OpenHRHelper;
 import org.endeavourhealth.cim.transform.openhr.tofhir.common.CodeHelper;
@@ -14,7 +15,7 @@ import org.hl7.fhir.instance.model.*;
 
 class AllergyTransformer implements ClinicalResourceTransformer
 {
-    public AllergyIntolerance transform(OpenHR001HealthDomain healthDomain, FhirContainer container, OpenHR001HealthDomain.Event source) throws TransformException
+    public AllergyIntolerance transform(OpenHR001HealthDomain healthDomain, FhirContainer container, EventEncounterMap eventEncounterMap, OpenHR001HealthDomain.Event source) throws TransformException
     {
         AllergyIntolerance target = new AllergyIntolerance();
         target.setId(source.getId());
@@ -47,14 +48,5 @@ class AllergyTransformer implements ClinicalResourceTransformer
             throw new SourceDocumentInvalidException("UserInRoleId not found");
 
         return ReferenceHelper.createReference(ResourceType.Practitioner, userInRoleId);
-    }
-
-    private Reference getEncounter(FhirContainer container, String eventId)
-    {
-        OpenHR001Encounter encounter = container.getEncounterFromEventId(eventId);
-        if (encounter == null)
-            return null;
-
-        return ReferenceHelper.createReference(ResourceType.Encounter, encounter.getId());
     }
 }

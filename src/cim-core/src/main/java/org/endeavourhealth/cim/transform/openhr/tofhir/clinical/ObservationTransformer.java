@@ -5,6 +5,7 @@ import org.endeavourhealth.cim.repository.utils.TextUtils;
 import org.endeavourhealth.cim.transform.common.ReferenceHelper;
 import org.endeavourhealth.cim.transform.common.exceptions.TransformException;
 import org.endeavourhealth.cim.transform.common.OpenHRHelper;
+import org.endeavourhealth.cim.transform.openhr.tofhir.EventEncounterMap;
 import org.endeavourhealth.cim.transform.openhr.tofhir.common.CodeHelper;
 import org.endeavourhealth.cim.transform.schemas.openhr.*;
 import org.endeavourhealth.cim.transform.common.exceptions.SourceDocumentInvalidException;
@@ -23,7 +24,7 @@ class ObservationTransformer implements ClinicalResourceTransformer {
     private final static String EPISODICITY_SYSTEM = "urn:fhir.nhs.uk:vs/Episodicity";
 
 
-    public Resource transform(OpenHR001HealthDomain healthDomain, FhirContainer container, OpenHR001HealthDomain.Event source) throws TransformException
+    public Resource transform(OpenHR001HealthDomain healthDomain, FhirContainer container, EventEncounterMap eventEncounterMap, OpenHR001HealthDomain.Event source) throws TransformException
     {
         Observation target = new Observation();
         target.setId(source.getId());
@@ -36,7 +37,7 @@ class ObservationTransformer implements ClinicalResourceTransformer {
         if (!TextUtils.isNullOrTrimmedEmpty(source.getAuthorisingUserInRole()))
             target.addPerformer(convertUserInRole(source.getAuthorisingUserInRole()));
 
-        target.setEncounter(getEncounter(container, source.getId()));
+        target.setEncounter(eventEncounterMap.getEncounterReference(source.getId()));
 
         convertAssociatedText(source, target);
 
@@ -71,14 +72,6 @@ class ObservationTransformer implements ClinicalResourceTransformer {
             throw new SourceDocumentInvalidException("UserInRoleId not found");
 
         return ReferenceHelper.createReference(ResourceType.Practitioner, userInRoleId);
-    }
-
-    private Reference getEncounter(FhirContainer container, String eventId) {
-        OpenHR001Encounter encounter = container.getEncounterFromEventId(eventId);
-        if (encounter == null)
-            return null;
-
-        return ReferenceHelper.createReference(ResourceType.Encounter, encounter.getId());
     }
 
     private void convertAssociatedText(OpenHR001Event source, Observation target) throws SourceDocumentInvalidException {

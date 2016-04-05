@@ -18,6 +18,21 @@ public class FhirUris
     public final static String PROFILE_URI_SCHEDULE = "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-schedule";
     public final static String PROFILE_URI_SLOT = "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-slot";
     public final static String PROFILE_URI_APPOINTMENT = "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-appointment";
+    public final static String PROFILE_URI_ALLERGY_INTOLERANCE = "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-allergy-intolerance";
+    public final static String PROFILE_URI_CONDITION = "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-condition";
+    public final static String PROFILE_URI_DIAGNOSTIC_ORDER = "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-diagnostic-order";
+    public final static String PROFILE_URI_DIAGNOSTIC_REPORT = "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-diagnostic-report";
+    public final static String PROFILE_URI_FAMILY_MEMBER_HISTORY = "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-family-member-history";
+    public final static String PROFILE_URI_IMMUNIZATION = "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-immunization";
+    public final static String PROFILE_URI_MEDICATION = "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-medication";
+    public final static String PROFILE_URI_MEDICATION_AUTHORISATION = "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-medication-authorisation";
+    public final static String PROFILE_URI_MEDICATION_ORDER = "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-medication-order";
+    public final static String PROFILE_URI_OBSERVATION = "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-observation";
+    public final static String PROFILE_URI_PROBLEM = "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-problem";
+    public final static String PROFILE_URI_PROCEDURE = "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-procedure";
+    public final static String PROFILE_URI_PROCEDURE_REQUEST = "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-procedure-request";
+    public final static String PROFILE_URI_REFERRAL_REQUEST = "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-referral-request";
+    public final static String PROFILE_URI_SPECIMIN = "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-specimen";
 
     public final static String EXTENSION_URI_ACTIVEPERIOD = "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-activeperiod-extension";
     public final static String EXTENSION_URI_MAINLOCATION = "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-mainlocation-extension";

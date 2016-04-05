@@ -10,41 +10,36 @@ import org.endeavourhealth.cim.transform.schemas.openhr.VocEventType;
 
 import java.util.List;
 
-class ClinicalResourceTransformerFactory {
+class ClinicalResourceTransformerFactory
+{
     public static ClinicalResourceTransformer getTransformerForEvent(OpenHR001HealthDomain healthDomain, OpenHR001HealthDomain.Event event) throws TransformException
     {
-
         if (isCondition(healthDomain.getProblem(), event))
             return new ConditionTransformer();
 
-        switch (event.getEventType()) {
-            case OBS: // Observation
+        switch (event.getEventType())
+        {
+            case OBS:                                            // Observation
+            {
                 if (isProcedure(event))
                     return new ProcedureTransformer();
                 else
                     return new ObservationTransformer();
+            }
             case VAL: // Value
             case INV: // Investigation
             case ATT: // Attachment
-            case DRY: // Diary
-                return new ObservationTransformer();
-            case ISS: // Medication Issue
-            case MED: // Medication
-                return new MedicationTransformer();
-            case TR: // Test Request
-                return new DiagnosticOrderTransformer();
-            case REF: // Referral
-                return new ReferralTransformer();
-            case ALT: // Alert
-                return new AlertTransformer();
-            case ALL: // Allergy
-                return new AllergyTransformer();
-            case FH: // Family history
-                return new FamilyHistoryTransformer();
-            case IMM: // Immunisation
-                return new ImmunisationTransformer();
-            case REP: // Report
-                return new DiagnosticReportTransformer();
+            case DRY: return new ObservationTransformer();       // Diary
+            case ISS:                                            // Medication Issue
+            case MED: return new MedicationTransformer();        // Medication
+            case TR:  return new DiagnosticOrderTransformer();   // Test Request
+            case REF: return new ReferralTransformer();          // Referral
+            case ALT: return new AlertTransformer();             // Alert
+            case ALL: return new AllergyTransformer();           // Allergy
+            case FH:  return new FamilyHistoryTransformer();     // Family history
+            case IMM: return new ImmunisationTransformer();      // Immunisation
+            case REP: return new DiagnosticReportTransformer();  // Report
+
             default:
                 throw new TransformFeatureNotSupportedException("Event Type not supported: " + event.getEventType().toString());
         }

@@ -4,6 +4,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.endeavourhealth.cim.transform.common.ReferenceHelper;
 import org.endeavourhealth.cim.transform.common.exceptions.SourceDocumentInvalidException;
 import org.endeavourhealth.cim.transform.common.exceptions.TransformException;
+import org.endeavourhealth.cim.transform.openhr.tofhir.EventEncounterMap;
 import org.endeavourhealth.cim.transform.openhr.tofhir.FhirContainer;
 import org.endeavourhealth.cim.transform.common.OpenHRHelper;
 import org.endeavourhealth.cim.transform.openhr.tofhir.common.CodeHelper;
@@ -12,8 +13,9 @@ import org.endeavourhealth.cim.transform.schemas.openhr.OpenHR001Encounter;
 import org.endeavourhealth.cim.transform.schemas.openhr.OpenHR001HealthDomain;
 import org.hl7.fhir.instance.model.*;
 
-class ImmunisationTransformer implements ClinicalResourceTransformer {
-    public Immunization transform(OpenHR001HealthDomain healthDomain, FhirContainer container, OpenHR001HealthDomain.Event source) throws TransformException
+class ImmunisationTransformer implements ClinicalResourceTransformer
+{
+    public Immunization transform(OpenHR001HealthDomain healthDomain, FhirContainer container, EventEncounterMap eventEncounterMap, OpenHR001HealthDomain.Event source) throws TransformException
     {
         Immunization target = new Immunization();
         target.setId(source.getId());
@@ -21,7 +23,7 @@ class ImmunisationTransformer implements ClinicalResourceTransformer {
         target.setDateElement(convertEffectiveDateTime(source.getEffectiveTime()));
         target.setPatient(convertPatient(source.getPatient()));
         target.setPerformer(convertUserInRole(source.getAuthorisingUserInRole()));
-        target.setEncounter(getEncounter(container, source.getId()));
+        target.setEncounter(eventEncounterMap.getEncounterReference(source.getId()));
         target.setVaccineCode(CodeHelper.convertCode(source.getCode(), source.getDisplayTerm()));
         return target;
     }
@@ -45,13 +47,4 @@ class ImmunisationTransformer implements ClinicalResourceTransformer {
 
         return ReferenceHelper.createReference(ResourceType.Practitioner, userInRoleId);
     }
-
-    private Reference getEncounter(FhirContainer container, String eventId) {
-        OpenHR001Encounter encounter = container.getEncounterFromEventId(eventId);
-        if (encounter == null)
-            return null;
-
-        return ReferenceHelper.createReference(ResourceType.Encounter, encounter.getId());
-    }
-
 }

@@ -763,19 +763,7 @@
           { "$ref": "#definitions/apiKeyParameter" },
           { "$ref": "#definitions/hashParameter" },
           { "$ref": "#definitions/odsCodeParameter" },
-          { "$ref": "#definitions/patientIdParameter" },
-          {
-            "name": "criticality",
-            "in": "query",
-            "description": "Estimated potential clinical harm",
-            "required": false,
-            "type": "string",
-            "enum": [
-              "low",
-              "high",
-              "unassessible"
-            ]
-          }
+          { "$ref": "#definitions/patientIdParameter" }
         ],
         "responses": {
           "200": { "description": "OK | <a target='_blank' href='http://hl7.org/fhir/DSTU2/bundle.html'>Bundle</a> containing zero or more <a target='_blank' href='../profiles/primarycare-allergy-intolerance.html'>PrimaryCare-AllergyIntolerance</a> resources" },

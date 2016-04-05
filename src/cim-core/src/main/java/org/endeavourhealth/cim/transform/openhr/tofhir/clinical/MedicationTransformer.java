@@ -4,6 +4,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.endeavourhealth.cim.transform.common.ReferenceHelper;
 import org.endeavourhealth.cim.transform.common.exceptions.SourceDocumentInvalidException;
 import org.endeavourhealth.cim.transform.common.exceptions.TransformException;
+import org.endeavourhealth.cim.transform.openhr.tofhir.EventEncounterMap;
 import org.endeavourhealth.cim.transform.openhr.tofhir.common.CodeHelper;
 import org.endeavourhealth.cim.transform.schemas.openhr.*;
 import org.endeavourhealth.cim.transform.common.exceptions.TransformFeatureNotSupportedException;
@@ -13,8 +14,9 @@ import org.hl7.fhir.instance.model.*;
 
 import java.util.Date;
 
-class MedicationTransformer implements ClinicalResourceTransformer {
-    public MedicationOrder transform(OpenHR001HealthDomain healthDomain, FhirContainer container, OpenHR001HealthDomain.Event source) throws TransformException
+class MedicationTransformer implements ClinicalResourceTransformer
+{
+    public MedicationOrder transform(OpenHR001HealthDomain healthDomain, FhirContainer container, EventEncounterMap eventEncounterMap, OpenHR001HealthDomain.Event source) throws TransformException
     {
         MedicationOrder target = new MedicationOrder();
 
@@ -22,10 +24,11 @@ class MedicationTransformer implements ClinicalResourceTransformer {
         target.setDateWritten(convertEffectiveDateTime(source.getEffectiveTime()));
         target.setPatient(convertPatient(source.getPatient()));
         target.setPrescriber(convertUserInRole(source.getAuthorisingUserInRole()));
-        target.setEncounter(getEncounter(container, source.getId()));
+        target.setEncounter(eventEncounterMap.getEncounterReference(source.getId()));
         target.setMedication(createMedication(source, target));
 
-        switch (source.getEventType()) {
+        switch (source.getEventType())
+        {
             case ISS: // Medication Issue
                 convertMedicationIssue(source.getMedicationIssue(), target);
                 break;
@@ -67,14 +70,6 @@ class MedicationTransformer implements ClinicalResourceTransformer {
             throw new SourceDocumentInvalidException("UserInRoleId not found");
 
         return ReferenceHelper.createReference(ResourceType.Practitioner, userInRoleId);
-    }
-
-    private Reference getEncounter(FhirContainer container, String eventId) {
-        OpenHR001Encounter encounter = container.getEncounterFromEventId(eventId);
-        if (encounter == null)
-            return null;
-
-        return ReferenceHelper.createReference(ResourceType.Encounter, encounter.getId());
     }
 
     private Reference createMedication(OpenHR001HealthDomain.Event source, MedicationOrder target) throws TransformFeatureNotSupportedException {

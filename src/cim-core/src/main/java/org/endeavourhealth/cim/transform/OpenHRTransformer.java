@@ -10,7 +10,6 @@ import org.endeavourhealth.cim.transform.schemas.openhr.*;
 import org.hl7.fhir.instance.model.*;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class OpenHRTransformer
@@ -20,10 +19,20 @@ public class OpenHRTransformer
         OpenHR001OpenHealthRecord openHR = TransformHelper.unmarshall(openHRXml, OpenHR001OpenHealthRecord.class);
 
         FhirContainer container = new FhirContainer();
-        container.addResources(AdminDomainTransformer.transform(openHR));
-        HealthDomainTransformer.transform(container, openHR);
 
-        Date creationDate = TransformHelper.toDate(openHR.getCreationTime());
+        if (openHR.getAdminDomain() != null)
+        {
+            container.addResources(OrganisationTransformer.transform(openHR.getAdminDomain().getOrganisation()));
+            container.addResources(LocationTransformer.transform(openHR.getAdminDomain()));
+            container.addResources(PractitionerTransformer.transform(openHR.getAdminDomain()));
+            container.addResource(PatientTransformer.transform(openHR.getAdminDomain()));
+        }
+
+        if (openHR.getHealthDomain() != null)
+        {
+            HealthDomainTransformer.transform(container, openHR);
+        }
+
         return container.getResources();
     }
 
