@@ -103,7 +103,10 @@ form#api_selector {
 }
 
 form#api_selector div.input {
-	/*padding-top: 15px;*/
+	display: inline;
+}
+
+form#api_selector div.input_apiKeyAndPassword {
 	display: inline;
 	float: right;
 }

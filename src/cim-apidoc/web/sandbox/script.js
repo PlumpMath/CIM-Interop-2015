@@ -118,16 +118,3 @@ function buildQuery(path, table) {
 
     return path + query;
 }
-
-function visualizeJson(classId)
-{
-    var jsonString = $('#'+classId).find('code').text();
-    var json = JSON.parse(jsonString);
-
-    popupWin = window.open('swagger-custom/jsonVisualizer.html');
-    popupWin.focus();
-
-    popupWin.addEventListener('load', function(){
-        popupWin.visualize(json);
-    }, true);
-}
