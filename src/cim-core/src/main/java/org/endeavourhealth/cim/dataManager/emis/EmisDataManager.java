@@ -202,30 +202,48 @@ public class EmisDataManager implements IDataManager
 	public String getUserTasks(String odsCode, UUID userId) throws Exception
 	{
 		List<String> openHRXml = _emisSoapClient.getTasksByUser(odsCode, userId);
-		Bundle tasks = _openHRTransformer.toFhirTaskBundle(openHRXml);
+		List<Order> tasks = _openHRTransformer.toFhirTasks(openHRXml);
 
-		return new JsonParser().composeString(tasks);
+		Bundle bundle = BundleHelper.createBundle(getBundleProperties(odsCode), tasks);
+
+		return new JsonParser().composeString(bundle);
 	}
 
 	@Override
 	public String getOrganisationTasks(String odsCode) throws Exception
 	{
 		List<String> openHRXml = _emisSoapClient.getTasksByOrganisation(odsCode);
-		Bundle tasks = _openHRTransformer.toFhirTaskBundle(openHRXml);
+		List<Order> tasks = _openHRTransformer.toFhirTasks(openHRXml);
 
-		return new JsonParser().composeString(tasks);
+		Bundle bundle = BundleHelper.createBundle(getBundleProperties(odsCode), tasks);
+
+		return new JsonParser().composeString(bundle);
 	}
 
 	@Override
 	public String getPatientTasks(String odsCode, UUID patientId) throws Exception
 	{
 		List<String> openHRXml = _emisSoapClient.getTasksByPatient(odsCode, patientId);
-		Bundle tasks = _openHRTransformer.toFhirTaskBundle(openHRXml);
+		List<Order> tasks = _openHRTransformer.toFhirTasks(openHRXml);
 
-		return new JsonParser().composeString(tasks);
+		Bundle bundle = BundleHelper.createBundle(getBundleProperties(odsCode), tasks);
+
+		return new JsonParser().composeString(bundle);
 	}
 
 	/* clinical */
+
+	@Override
+	public String getAllergyIntolerances(String odsCode, UUID patientId) throws Exception
+	{
+		Bundle bundle = getPatientRecordAsBundle(odsCode, patientId);
+
+		if (bundle == null)
+			return null;
+
+		bundle = FhirFilterHelper.getAllergyIntolerances(bundle);
+		return new JsonParser().composeString(bundle);
+	}
 
 	@Override
 	public String getFullRecord(String odsCode, UUID patientId) throws Exception
@@ -245,7 +263,9 @@ public class EmisDataManager implements IDataManager
 		if (TextUtils.isNullOrTrimmedEmpty(openHRXml))
 			return null;
 
-		return _openHRTransformer.toFhirBundle(getBundleProperties(odsCode), openHRXml);
+		List<Resource> resources = _openHRTransformer.toFhirFullRecord(openHRXml);
+
+		return BundleHelper.createBundle(getBundleProperties(odsCode), resources);
 	}
 
 	@Override
@@ -289,18 +309,6 @@ public class EmisDataManager implements IDataManager
 		String fhirResponse = response; // _openHrTransformer.toFHIRCondition(response));
 
 		return fhirResponse;
-	}
-
-	@Override
-	public String getAllergyIntolerances(String odsCode, UUID patientId) throws Exception
-	{
-		Bundle bundle = getPatientRecordAsBundle(odsCode, patientId);
-
-		if (bundle == null)
-			return null;
-
-		bundle = FhirFilterHelper.getAllergyIntolerances(bundle);
-		return new JsonParser().composeString(bundle);
 	}
 
 	@Override
@@ -359,22 +367,26 @@ public class EmisDataManager implements IDataManager
 	public String tracePersonByDemographics(String surname, Date dateOfBirth, String gender, String forename, String postcode) throws Exception {
 
 		List<String> openHRXml = _emisSoapClient.tracePatientByDemographics(surname, dateOfBirth, gender, forename, postcode);
+		List<Resource> patients = _openHRTransformer.toFhirPatients(openHRXml, true);
 
-		Bundle bundle = _openHRTransformer.toFhirPatientBundle(openHRXml, true);
+		Bundle bundle = BundleHelper.createBundle(getBundleProperties(""), patients);
+
 		return new JsonParser().composeString(bundle);
 	}
 
 	@Override
-	public String tracePersonByNhsNumber(String nhsNumber) throws Exception {
-
+	public String tracePersonByNhsNumber(String nhsNumber) throws Exception
+	{
 		List<String> openHRXml = _emisSoapClient.tracePatientByNhsNumber(nhsNumber);
+		List<Resource> patients = _openHRTransformer.toFhirPatients(openHRXml, true);
 
-		Bundle bundle = _openHRTransformer.toFhirPatientBundle(openHRXml, true);
+		Bundle bundle = BundleHelper.createBundle(getBundleProperties(""), patients);
 		return new JsonParser().composeString(bundle);
 	}
 
 	@Override
-	public List<String> getChangedPatientIds(String odsCode, Date date) throws Exception {
+	public List<String> getChangedPatientIds(String odsCode, Date date) throws Exception
+	{
 		List<UUID> patientUuids = _emisSoapClient.getChangedPatientIds(odsCode, date);
 
 		return patientUuids
@@ -384,10 +396,13 @@ public class EmisDataManager implements IDataManager
 	}
 
 	@Override
-	public String getChangedPatients(String odsCode, Date date) throws Exception {
+	public String getChangedPatients(String odsCode, Date date) throws Exception
+	{
 		List<String> openHRXml = _emisSoapClient.getChangedPatients(odsCode, date);
 
-		Bundle bundle = _openHRTransformer.toFhirPatientBundle(openHRXml, false);
+		List<Resource> patients = _openHRTransformer.toFhirPatients(openHRXml, false);
+
+		Bundle bundle = BundleHelper.createBundle(getBundleProperties(""), patients);
 		return new JsonParser().composeString(bundle);
 	}
 

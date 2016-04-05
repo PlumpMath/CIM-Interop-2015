@@ -1,6 +1,5 @@
 package org.endeavourhealth.cim.transform;
 
-import org.endeavourhealth.cim.transform.common.BundleProperties;
 import org.endeavourhealth.cim.transform.common.TransformHelper;
 import org.endeavourhealth.cim.transform.common.exceptions.TransformException;
 import org.endeavourhealth.cim.transform.openhr.fromfhir.FromFhirTransformer;
@@ -8,17 +7,15 @@ import org.endeavourhealth.cim.transform.openhr.tofhir.FhirContainer;
 import org.endeavourhealth.cim.transform.openhr.tofhir.admin.*;
 import org.endeavourhealth.cim.transform.openhr.tofhir.clinical.HealthDomainTransformer;
 import org.endeavourhealth.cim.transform.schemas.openhr.*;
-import org.endeavourhealth.cim.transform.common.BundleHelper;
 import org.hl7.fhir.instance.model.*;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.UUID;
 
 public class OpenHRTransformer
 {
-    public Bundle toFhirBundle(BundleProperties bundleProperties, String openHRXml) throws TransformException
+    public List<Resource> toFhirFullRecord(String openHRXml) throws TransformException
     {
         OpenHR001OpenHealthRecord openHR = TransformHelper.unmarshall(openHRXml, OpenHR001OpenHealthRecord.class);
 
@@ -27,7 +24,7 @@ public class OpenHRTransformer
         HealthDomainTransformer.transform(container, openHR);
 
         Date creationDate = TransformHelper.toDate(openHR.getCreationTime());
-        return BundleHelper.createBundle(Bundle.BundleType.SEARCHSET, openHR.getId(), creationDate, container.getResources());
+        return container.getResources();
     }
 
     public Patient toFhirPatient(String openHRXml) throws TransformException
@@ -36,7 +33,7 @@ public class OpenHRTransformer
         return PatientTransformer.transform(openHR.getAdminDomain());
     }
 
-    public Bundle toFhirPatientBundle(List<String> openHRXmlList, Boolean includePersons) throws TransformException
+    public List<Resource> toFhirPatients(List<String> openHRXmlList, Boolean includePersons) throws TransformException
     {
         List<Resource> result = new ArrayList<>();
 
@@ -50,7 +47,7 @@ public class OpenHRTransformer
             result.add(PatientTransformer.transform(openHR.getAdminDomain()));
         }
 
-        return BundleHelper.createBundle(Bundle.BundleType.SEARCHSET, UUID.randomUUID().toString(), result);
+        return result;
     }
 
 	public Organization toFhirOrganisation(String openHROrganisationXml) throws TransformException
@@ -77,9 +74,9 @@ public class OpenHRTransformer
         return TaskTransformer.transform(openHR);
 	}
 
-    public Bundle toFhirTaskBundle(List<String> openHRPatientTaskXmlList) throws TransformException
+    public List<Order> toFhirTasks(List<String> openHRPatientTaskXmlList) throws TransformException
     {
-        List<Resource> tasks = new ArrayList<>();
+        List<Order> tasks = new ArrayList<>();
 
         for (String openHRPatientTaskXml : openHRPatientTaskXmlList)
         {
@@ -87,7 +84,7 @@ public class OpenHRTransformer
             tasks.add(TaskTransformer.transform(task));
         }
 
-        return BundleHelper.createBundle(Bundle.BundleType.SEARCHSET, UUID.randomUUID().toString(), tasks);
+        return tasks;
     }
 
     public String fromFhirTask(Order fhirTask) throws TransformException

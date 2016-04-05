@@ -1,4 +1,4 @@
-package org.endeavourhealth.cim.transform.openhr.tofhir.clinical;
+package org.endeavourhealth.cim.transform.openhr.tofhir.common;
 
 import org.apache.commons.lang3.StringUtils;
 import org.endeavourhealth.cim.transform.common.FhirUris;
@@ -7,13 +7,15 @@ import org.endeavourhealth.cim.transform.schemas.openhr.DtCodeQualified;
 import org.hl7.fhir.instance.model.CodeableConcept;
 import org.hl7.fhir.instance.model.Coding;
 
-class CodeHelper {
+public class CodeHelper
+{
     public static CodeableConcept convertCode(DtCodeQualified sourceCode) throws TransformFeatureNotSupportedException
     {
         return convertCode(sourceCode, null);
     }
 
-    public static CodeableConcept convertCode(DtCodeQualified sourceCode, String sourceTerm) throws TransformFeatureNotSupportedException {
+    public static CodeableConcept convertCode(DtCodeQualified sourceCode, String sourceTerm) throws TransformFeatureNotSupportedException
+    {
         CodeableConcept result = new CodeableConcept();
 
         if (StringUtils.isNotBlank(sourceTerm))
@@ -25,7 +27,8 @@ class CodeHelper {
         return result;
     }
 
-    private static void addCode(CodeableConcept codeableConcept, DtCodeQualified sourceCode) throws TransformFeatureNotSupportedException {
+    private static void addCode(CodeableConcept codeableConcept, DtCodeQualified sourceCode) throws TransformFeatureNotSupportedException
+    {
         codeableConcept.addCoding(new Coding()
                 .setCode(sourceCode.getCode())
                 .setDisplay(sourceCode.getDisplayName())
@@ -37,7 +40,8 @@ class CodeHelper {
         }
     }
 
-    private static String convertCodeSystem(String sourceCodeSystem) throws TransformFeatureNotSupportedException {
+    private static String convertCodeSystem(String sourceCodeSystem) throws TransformFeatureNotSupportedException
+    {
         switch (sourceCodeSystem) {
             case "2.16.840.1.113883.2.1.6.2":
                 return FhirUris.CODE_SYSTEM_READ2;
@@ -52,7 +56,8 @@ class CodeHelper {
         }
     }
 
-    public static boolean hasQualifier(DtCodeQualified code, String name, String value) {
+    public static boolean hasQualifier(DtCodeQualified code, String name, String value)
+    {
         if (code == null)
             return false;
 
