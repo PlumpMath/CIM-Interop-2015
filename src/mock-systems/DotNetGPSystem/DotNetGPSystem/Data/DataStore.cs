@@ -176,8 +176,21 @@ namespace DotNetGPSystem
                     .Where(t => new Guid(t.OpenHealthRecord.author.organisation) == new Guid(organisation.id))
                     .ToArray();
 
-                OpenHR001User[] users = openHRAtOrganisation
+                OpenHR001Role[] rolesAtOrganisation = openHRAtOrganisation
+                    .SelectMany(t => t.OpenHealthRecord.adminDomain.role)
+                    .Where(t => new Guid(t.organisation) == new Guid(organisation.id))
+                    .DistinctBy(t => new Guid(t.id))
+                    .ToArray();
+
+                OpenHR001UserInRole[] userInRolesAtOrganisation = openHRAtOrganisation
+                    .SelectMany(t => t.OpenHealthRecord.adminDomain.userInRole)
+                    .Where(t => rolesAtOrganisation.Select(s => new Guid(s.id)).Contains(new Guid(t.role)))
+                    .DistinctBy(t => new Guid(t.id))
+                    .ToArray();
+
+                OpenHR001User[] usersAtOrganisation = openHRAtOrganisation
                     .SelectMany(t => t.OpenHealthRecord.adminDomain.user)
+                    .Where(t => userInRolesAtOrganisation.Select(s => new Guid(s.user)).Contains(new Guid(t.id)))
                     .DistinctBy(t => new Guid(t.id))
                     .ToArray();
 
@@ -185,13 +198,13 @@ namespace DotNetGPSystem
 
                 int organisationUserCount = 1;
 
-                foreach (OpenHR001User user in users)
+                foreach (OpenHR001User user in usersAtOrganisation)
                 {
                     OpenHRUser structuredUser = new OpenHRUser();
                     structuredUser.OpenHRUserId = userId++;
                     structuredUser.User = user;
-                    structuredUser.UserInRole = openHRAtOrganisation.SelectMany(t => t.OpenHealthRecord.adminDomain.userInRole).FirstOrDefault(t => new Guid(t.user) == new Guid(user.id));
-                    structuredUser.Role = openHRAtOrganisation.SelectMany(t => t.OpenHealthRecord.adminDomain.role).FirstOrDefault(t => new Guid(t.id) == new Guid(structuredUser.UserInRole.role));
+                    structuredUser.UserInRole = userInRolesAtOrganisation.FirstOrDefault(t => new Guid(t.user) == new Guid(user.id));
+                    structuredUser.Role = rolesAtOrganisation.FirstOrDefault(t => new Guid(t.id) == new Guid(structuredUser.UserInRole.role));
                     structuredUser.Person = openHRAtOrganisation.SelectMany(t => t.OpenHealthRecord.adminDomain.person).FirstOrDefault(t => new Guid(t.id) == new Guid(structuredUser.User.userPerson));
                     structuredUser.Organisation = organisation;
                     

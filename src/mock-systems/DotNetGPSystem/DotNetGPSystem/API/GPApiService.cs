@@ -199,19 +199,17 @@ namespace DotNetGPSystem
             if (user == null)
                 return string.Empty;
 
-            OpenHR001OpenHealthRecord openHR = new OpenHR001OpenHealthRecord()
-            {
-                adminDomain = new OpenHR001AdminDomain()
-                {
-                    user = new OpenHR001User[] { user.User },
-                    userInRole = new OpenHR001UserInRole[] { user.UserInRole },
-                    person = new OpenHR001Person[] { user.Person },
-                    role = new OpenHR001Role[] { user.Role },
-                    organisation = new OpenHR001Organisation[] { user.Organisation }
-                }
-            };
+            return Utilities.Serialize(user.CreateOpenHRDocument());
+        }
 
-            return Utilities.Serialize(openHR);
+        public string GetAllUsers(string odsCode)
+        {
+            OpenHRUser[] users = DataStore
+                .Users
+                .Where(t => t.Organisation.nationalPracticeCode == odsCode)
+                .ToArray();
+
+            return Utilities.Serialize(OpenHRUser.CreateOpenHRDocument(users));
         }
 
         public string BookAppointment(string odsCode, int slotId, Guid patientGuid, string reason)

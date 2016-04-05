@@ -144,9 +144,6 @@
     <Compile Include="Data\ClientAPI\Organisations\EomOrganisationInformation37.cs">
       <DependentUpon>EomOrganisationInformation37.xsd</DependentUpon>
     </Compile>
-    <Compile Include="Data\ClientAPI\Users\EomUserDetails37.cs">
-      <DependentUpon>EomUserDetails37.xsd</DependentUpon>
-    </Compile>
     <Compile Include="Data\DataStore.cs" />
     <Compile Include="Data\OpenHR\OpenHRLocation.cs" />
     <Compile Include="Data\OpenHR\OpenHROrganisation.cs" />
@@ -218,12 +215,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\Tasks\TasksControl.resx">
       <DependentUpon>TasksControl.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Data\ClientAPI\Users\EomMedicalRecord35.xsd">
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Data\ClientAPI\Users\EomUserDetails37.xsd">
-      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="GPSystemForm.resx">
       <DependentUpon>GPSystemForm.cs</DependentUpon>
