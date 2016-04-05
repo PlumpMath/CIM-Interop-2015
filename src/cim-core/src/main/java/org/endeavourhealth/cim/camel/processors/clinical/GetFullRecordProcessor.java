@@ -8,10 +8,10 @@ import org.apache.camel.Processor;
 import org.endeavourhealth.cim.camel.helpers.ExchangeHelper;
 import org.endeavourhealth.cim.camel.exceptions.NotFoundException;
 
-public class GetFullPatientRecordProcessor implements Processor {
-
-    public void process(Exchange exchange) throws Exception {
-
+public class GetFullRecordProcessor implements Processor
+{
+    public void process(Exchange exchange) throws Exception
+    {
         String odsCode = ExchangeHelper.getInHeaderString(exchange, CIMHeaderKey.DestinationOdsCode, true);
         String patientId = ExchangeHelper.getInHeaderString(exchange, CIMHeaderKey.Id, true);
 
