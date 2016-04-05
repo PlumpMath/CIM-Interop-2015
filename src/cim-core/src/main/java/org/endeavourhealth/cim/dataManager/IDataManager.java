@@ -1,5 +1,6 @@
 package org.endeavourhealth.cim.dataManager;
 
+import org.hl7.fhir.instance.model.Appointment;
 import org.hl7.fhir.instance.model.MedicationOrder;
 
 import java.util.Date;
@@ -12,7 +13,7 @@ public interface IDataManager
     String searchSlots(String odsCode, Date dateFrom, Date dateTo, UUID locationId) throws Exception;
     String bookSlot(String odsCode, UUID slotId, UUID patientId) throws Exception;
     String cancelSlot(String odsCode, UUID slotId, UUID patientId) throws Exception;
-    String getAppointmentsForPatient(String odsCode, UUID patientId, Date dateFrom, Date dateTo) throws Exception;
+    String getPatientAppointments(String odsCode, UUID patientId, Appointment.AppointmentStatus status) throws Exception;
 
     // administrative
 	String getPractitioner(String odsCode, UUID practitionerId) throws Exception;

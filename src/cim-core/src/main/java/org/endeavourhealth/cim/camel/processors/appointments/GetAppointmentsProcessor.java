@@ -10,42 +10,34 @@ import org.endeavourhealth.cim.camel.helpers.ExchangeHelper;
 import org.endeavourhealth.cim.camel.exceptions.BaseException;
 import org.endeavourhealth.cim.camel.exceptions.InvalidParamException;
 import org.endeavourhealth.cim.camel.helpers.DateUtils;
+import org.endeavourhealth.cim.repository.utils.TextUtils;
+import org.hl7.fhir.instance.model.Appointment;
 
 import java.util.Date;
 import java.util.UUID;
 
-public class GetAppointmentsProcessor implements Processor {
-
+public class GetAppointmentsProcessor implements Processor
+{
 	@SuppressWarnings("unchecked")
-	public void process(Exchange exchange) throws Exception {
-
-		String odsCode;
-		UUID patientId;
-		Date fromDate;
-		Date toDate;
+	public void process(Exchange exchange) throws Exception
+	{
+		String odsCode = ExchangeHelper.getInHeaderString(exchange, CIMHeaderKey.DestinationOdsCode, true);
+		UUID patientId = ExchangeHelper.getInHeaderUUID(exchange, CIMHeaderKey.Patient, true);
+		String statusString = ExchangeHelper.getInHeaderString(exchange, CIMHeaderKey.Status, false);
+		Appointment.AppointmentStatus status = null;
 
 		try
 		{
-			odsCode = ExchangeHelper.getInHeaderString(exchange, CIMHeaderKey.DestinationOdsCode, true);
-			patientId = ExchangeHelper.getInHeaderUUID(exchange, CIMHeaderKey.Patient, true);
-
-			DateSearchParameter date = null;
-
-			if (ExchangeHelper.hasInHeader(exchange, CIMHeaderKey.Date))
-				date = DateSearchParameter.Parse(ExchangeHelper.getInHeaderArray(exchange, CIMHeaderKey.Date));
-
-			fromDate = (date != null) ? date.getIntervalStart() : DateUtils.DOTNET_MINIMUM_DATE;
-			toDate = (date != null) ? date.getIntervalEnd() : DateUtils.DOTNET_MAXIMUM_DATE;
+			if (!TextUtils.isNullOrTrimmedEmpty(statusString))
+				status = Appointment.AppointmentStatus.fromCode(statusString);
 		}
-		catch (BaseException e) {
-			throw e;
-		}
-		catch (Exception e) {
-			throw new InvalidParamException("Error parsing parameters.", e);
+		catch (Exception e)
+		{
+			throw new InvalidParamException(e);
 		}
 
 		IDataManager dataManager = DataManagerFactory.getDataManagerForService(odsCode);
-		String responseBody = dataManager.getAppointmentsForPatient(odsCode, patientId, fromDate, toDate);
+		String responseBody = dataManager.getPatientAppointments(odsCode, patientId, status);
 
 		ExchangeHelper.setInBodyString(exchange, responseBody);
 	}

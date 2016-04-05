@@ -95,13 +95,15 @@ public class EmisDataManager implements IDataManager
 	}
 
 	@Override
-	public String getAppointmentsForPatient(String odsCode, UUID patientId, Date dateFrom, Date dateTo) throws Exception
+	public String getPatientAppointments(String odsCode, UUID patientId, Appointment.AppointmentStatus status) throws Exception
 	{
-		String appointmentDataInNativeFormat = _emisSoapClient.getAppointmentsForPatient(odsCode, patientId, dateFrom, dateTo);
-		String organisationXml = _emisSoapClient.getOrganisationInformation(odsCode);
-		BundleProperties bundleProperties = getBundleProperties(odsCode);
+		String emisOpenAppointmentsXml = _emisSoapClient.getPatientAppointments(odsCode, patientId);
+		List<Appointment> appointments = _emisOpenTransformer.toFhirAppointments(patientId.toString(), emisOpenAppointmentsXml);
 
-		Bundle bundle = _emisOpenTransformer.toFhirAppointmentForPatientBundle(bundleProperties, patientId.toString(), appointmentDataInNativeFormat, organisationXml);
+		if (status != null)
+			appointments = FhirFilterHelper.filterAppointmentsByStatus(appointments, status);
+
+		Bundle bundle = BundleHelper.createBundle(getBundleProperties(odsCode), appointments);
 		return new JsonParser().composeString(bundle);
 	}
 

@@ -257,65 +257,46 @@
     },
     "/{odsCode}/Appointment": {
       "get": {
-        "tags": [
-          "Appointments"
-        ],
-        "summary": "Get appointments by patient",
-        "description": "Get appointments by patient ID.",
-        "produces": [
-          "application/json"
-        ],
+        "tags": [ "Appointments" ],
+        "summary": "Get patient appointments",
+        "description": "Get patient appointments.",
+        "produces": [ "application/json" ],
         "parameters": [
-          {
-            "$ref": "#definitions/apiKeyParameter"
-          },
-          {
-            "$ref": "#definitions/hashParameter"
-          },
-          {
-            "$ref": "#definitions/odsCodeParameter"
-          },
+          { "$ref": "#definitions/apiKeyParameter" },
+          { "$ref": "#definitions/hashParameter" },
+          { "$ref": "#definitions/odsCodeParameter" },
           {
             "name": "patient",
             "in": "query",
-            "description": "Search for appointments with the patient ID specified",
+            "description": "Patient id",
             "required": true,
             "type": "string"
           },
           {
-            "name": "date",
+            "name": "status",
             "in": "query",
-            "description": "Search for appointments within the date(s) specified",
+            "description": "Status",
             "required": false,
-            "type": "array",
-            "items": {
-              "type": "string"
-            },
-            "collectionFormat": "multi"
+            "type": "string",
+            "enum": [
+              "proposed",
+              "pending",
+              "booked",
+              "arrived",
+              "fulfilled",
+              "cancelled",
+              "noshow"
+            ]
           }
         ],
         "responses": {
-          "200": {
-            "description": "OK | <a target='_blank' href='http://hl7.org/fhir/DSTU2/bundle.html'>Bundle</a> containing zero or more <a target='_blank' href='../profiles/primarycare-appointment.html'>PrimaryCare-Appointment</a> resources"
-          },
-          "400": {
-            "$ref": "#definitions/400Response"
-          },
-          "401": {
-            "$ref": "#definitions/401Response"
-          },
-          "403": {
-            "$ref": "#definitions/403Response"
-          },
-          "500": {
-            "$ref": "#definitions/500Response"
-          },
-          "502": {
-            "$ref": "#definitions/502Response"
-          },
-          "504": {
-            "$ref": "#definitions/504Response"
-          }
+          "200": { "description": "OK | <a target='_blank' href='http://hl7.org/fhir/DSTU2/bundle.html'>Bundle</a> containing zero or more <a target='_blank' href='../profiles/primarycare-appointment.html'>PrimaryCare-Appointment</a> resources" },
+          "400": { "$ref": "#definitions/400Response" },
+          "401": { "$ref": "#definitions/401Response" },
+          "403": { "$ref": "#definitions/403Response" },
+          "500": { "$ref": "#definitions/500Response" },
+          "502": { "$ref": "#definitions/502Response" },
+          "504": { "$ref": "#definitions/504Response" }
         }
       }
     },

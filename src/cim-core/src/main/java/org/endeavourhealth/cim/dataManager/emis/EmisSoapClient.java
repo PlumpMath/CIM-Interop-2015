@@ -131,15 +131,15 @@ public class EmisSoapClient extends DotNetSoapClient
     }
 
     // Appointments
-    public String getAppointmentsForPatient(String odsCode, UUID patientId, Date dateFrom, Date dateTo) throws Exception {
-
+    public String getPatientAppointments(String odsCode, UUID patientId) throws Exception
+    {
         final String soapMethod = "GetPatientAppointments";
 
         Map<String, Object> parameters = createParameterMap();
         parameters.put("odsCode", odsCode);
         parameters.put("patientGuid", patientId.toString());
-        parameters.put("fromDate", DateUtils.formatDateAsISO8601(dateFrom));
-        parameters.put("toDate", DateUtils.formatDateAsISO8601(dateTo));
+        parameters.put("fromDate", DateUtils.formatDateAsISO8601(DateUtils.DOTNET_MINIMUM_DATE));
+        parameters.put("toDate", DateUtils.formatDateAsISO8601(DateUtils.DOTNET_MAXIMUM_DATE));
 
         SOAPMessage responseMessage = performSOAPCall(soapMethod, parameters);
 

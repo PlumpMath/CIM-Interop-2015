@@ -14,7 +14,7 @@ public class AppointmentsRoutes extends BaseRouteBuilder {
         final String GET_APPOINTMENTS_ROUTE = "GetPatientAppointments";
 
         final String BASE_PATH = "/{odsCode}/Appointment";
-        final String APPOINTMENTS_URI = "?patient={patient}&date={date}";
+        final String APPOINTMENTS_URI = "?patient={patient}&status={status}";
 
         // endpoints
         rest(BASE_PATH)

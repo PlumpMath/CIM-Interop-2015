@@ -138,4 +138,13 @@ public class FhirFilterHelper
 				.distinct()
 				.collect(Collectors.toList());
 	}
+
+	public static List<Appointment> filterAppointmentsByStatus(List<Appointment> appointments, Appointment.AppointmentStatus appointmentStatus)
+	{
+		return appointments
+				.stream()
+				.filter(t -> t.getStatus() == appointmentStatus)
+				.collect(Collectors.toList());
+
+	}
 }

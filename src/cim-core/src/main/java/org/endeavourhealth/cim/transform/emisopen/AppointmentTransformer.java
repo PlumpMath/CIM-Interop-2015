@@ -1,7 +1,9 @@
 package org.endeavourhealth.cim.transform.emisopen;
 
+import org.endeavourhealth.cim.transform.common.FhirUris;
 import org.endeavourhealth.cim.transform.common.ReferenceHelper;
 import org.endeavourhealth.cim.transform.common.exceptions.SerializationException;
+import org.endeavourhealth.cim.transform.common.exceptions.TransformException;
 import org.endeavourhealth.cim.transform.common.exceptions.TransformFeatureNotSupportedException;
 import org.endeavourhealth.cim.transform.schemas.emisopen.eomgetpatientappointments.AppointmentStruct;
 import org.endeavourhealth.cim.transform.schemas.emisopen.eomgetpatientappointments.PatientAppointmentList;
@@ -12,30 +14,32 @@ import org.hl7.fhir.instance.model.*;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Map;
 
-public class AppointmentTransformer {
-
-    public static ArrayList<Resource> transformToAppointmentResources(String patientGuid, PatientAppointmentList patientAppointmentList, OrganisationInformation organisationInformation) throws TransformFeatureNotSupportedException, SerializationException
+public class AppointmentTransformer
+{
+    public static List<Appointment> transform(String patientGuid, PatientAppointmentList patientAppointmentList) throws TransformException
     {
-        ArrayList<Appointment> appointments = new ArrayList<Appointment>();
+        List<Appointment> appointments = new ArrayList<Appointment>();
 
-        for (AppointmentStruct appointment : patientAppointmentList.getAppointment()) {
+        for (AppointmentStruct appointment : patientAppointmentList.getAppointment())
             appointments.add(transformToAppointment(patientGuid, appointment));
-        }
 
-        updateAppointmentParticipantIds(appointments, organisationInformation);
-
-        return new ArrayList<>(appointments);
+        return appointments;
     }
 
-    public static Appointment transformToAppointment(String patientGuid, AppointmentStruct appointmentStruct) throws SerializationException {
+    public static Appointment transformToAppointment(String patientGuid, AppointmentStruct appointmentStruct) throws TransformException
+    {
         Appointment appointment = new Appointment();
 
-        appointment.setId(Integer.toString(appointmentStruct.getSlotID()));
+        appointment.setId(appointmentStruct.getSlotGUID());
+        appointment.setMeta(new Meta().addProfile(FhirUris.PROFILE_URI_APPOINTMENT));
+
         appointment.setStatus(getAppointmentStatus(appointmentStruct.getStatus()));
 
-        if (!TextUtils.isNullOrTrimmedEmpty(appointmentStruct.getReason())) {
+        if (!TextUtils.isNullOrTrimmedEmpty(appointmentStruct.getReason()))
+        {
             CodeableConcept codeableConcept = new CodeableConcept();
             codeableConcept.setText(appointmentStruct.getReason());
 
@@ -48,8 +52,7 @@ public class AppointmentTransformer {
         Date endTime = EmisOpenCommon.addMinutesToTime(startTime, Integer.parseInt(appointmentStruct.getDuration()));
         appointment.setEnd(endTime);
 
-        Reference reference = ReferenceHelper.createReference(ResourceType.Slot, Integer.toString(appointmentStruct.getSlotID()));
-        appointment.addSlot(reference);
+        appointment.addSlot(ReferenceHelper.createReference(ResourceType.Slot, appointmentStruct.getSlotGUID()));
 
         Appointment.ParticipantRequired requiredStatus = Appointment.ParticipantRequired.REQUIRED;
         Appointment.ParticipationStatus participationstatus = Appointment.ParticipationStatus.ACCEPTED;
@@ -57,21 +60,23 @@ public class AppointmentTransformer {
         appointment.addParticipant(createParticipant(ResourceType.Patient, patientGuid, requiredStatus, participationstatus));
 
         for (HolderStruct holder : appointmentStruct.getHolderList().getHolder())
-            appointment.addParticipant(createParticipant(ResourceType.Practitioner, Integer.toString(holder.getDBID()), requiredStatus, participationstatus));
+            appointment.addParticipant(createParticipant(ResourceType.Practitioner, holder.getGUID(), requiredStatus, participationstatus));
 
-        appointment.addParticipant(createParticipant(ResourceType.Location, Integer.toString(appointmentStruct.getSiteID()), requiredStatus, participationstatus));
+        appointment.addParticipant(createParticipant(ResourceType.Location, appointmentStruct.getSiteGUID(), requiredStatus, participationstatus));
 
         return appointment;
     }
 
-    private static Appointment.AppointmentParticipantComponent createParticipant(ResourceType resourceType, String id, Appointment.ParticipantRequired required, Appointment.ParticipationStatus status) {
+    private static Appointment.AppointmentParticipantComponent createParticipant(ResourceType resourceType, String id, Appointment.ParticipantRequired required, Appointment.ParticipationStatus status)
+    {
         return new Appointment.AppointmentParticipantComponent()
                 .setActor(ReferenceHelper.createReference(resourceType, id))
                 .setRequired(required)
                 .setStatus(status);
     }
 
-    private static Appointment.AppointmentStatus getAppointmentStatus(String status) {
+    private static Appointment.AppointmentStatus getAppointmentStatus(String status)
+    {
         switch (status) {
             case "Slot Available":
             case "Booked": return Appointment.AppointmentStatus.BOOKED;
@@ -93,26 +98,6 @@ public class AppointmentTransformer {
 
             case "Unknown":
             default: return Appointment.AppointmentStatus.NULL;
-        }
-    }
-
-    public static void updateAppointmentParticipantIds(ArrayList<Appointment> appointments, OrganisationInformation organisationInformation) {
-        Map<String, String> userIdGuidMap = EmisOpenCommon.buildUserIdGuidMap(organisationInformation);
-        updateAppointmentParticipantIds(appointments, ResourceType.Practitioner, userIdGuidMap);
-
-        Map<String, String> locationIdGuidMap = EmisOpenCommon.buildLocationIdGuidMap(organisationInformation);
-        updateAppointmentParticipantIds(appointments, ResourceType.Location, locationIdGuidMap);
-    }
-
-    private static void updateAppointmentParticipantIds(ArrayList<Appointment> appointments, ResourceType participantResourceType, Map<String, String> idGuidMap) {
-        for (Appointment appointment : appointments) {
-            for (Appointment.AppointmentParticipantComponent appointmentParticipantComponent : appointment.getParticipant()) {
-                String id = ReferenceHelper.getReferenceId(appointmentParticipantComponent.getActor(), participantResourceType);
-
-                if (!TextUtils.isNullOrTrimmedEmpty(id))
-                    if (idGuidMap.containsKey(id))
-                        appointmentParticipantComponent.setActor(ReferenceHelper.createReference(participantResourceType, idGuidMap.get(id)));
-            }
         }
     }
 }

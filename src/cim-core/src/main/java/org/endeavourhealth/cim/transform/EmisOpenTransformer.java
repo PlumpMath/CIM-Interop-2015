@@ -29,12 +29,9 @@ public class EmisOpenTransformer
         return SlotTransformer.transform(slotListStruct);
     }
 
-    public Bundle toFhirAppointmentForPatientBundle(BundleProperties bundleProperties, String patientId, String eopenAppointmentsXml, String organisationXml) throws TransformException
+    public List<Appointment> toFhirAppointments(String patientId, String eopenAppointmentsXml) throws TransformException
     {
         PatientAppointmentList patientAppointmentList = TransformHelper.unmarshall(eopenAppointmentsXml, PatientAppointmentList.class);
-        OrganisationInformation organisationInformation = TransformHelper.unmarshall(organisationXml, OrganisationInformation.class);
-
-        List<Resource> resources = AppointmentTransformer.transformToAppointmentResources(patientId, patientAppointmentList, organisationInformation);
-        return BundleHelper.createBundle(bundleProperties, resources);
+        return AppointmentTransformer.transform(patientId, patientAppointmentList);
     }
 }
