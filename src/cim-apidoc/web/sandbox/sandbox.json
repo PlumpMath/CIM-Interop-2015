@@ -105,6 +105,28 @@
         }
       }
     },
+    "/{odsCode}/Practitioner": {
+      "get": {
+        "tags": [ "Administration" ],
+        "summary": "Get all practitioners",
+        "description": "Get all practitioners.",
+        "produces": [ "application/json" ],
+        "parameters": [
+          { "$ref": "#definitions/apiKeyParameter" },
+          { "$ref": "#definitions/hashParameter" },
+          { "$ref": "#definitions/odsCodeParameter" }
+        ],
+        "responses": {
+          "200": { "description": "OK | <a target='_blank' href='http://hl7.org/fhir/DSTU2/bundle.html'>Bundle</a> containing zero or more <a target='_blank' href='../profiles/primarycare-practitioner.html'>PrimaryCare-Practitioner</a> resources" },
+          "400": { "$ref": "#definitions/400Response" },
+          "401": { "$ref": "#definitions/401Response" },
+          "403": { "$ref": "#definitions/403Response" },
+          "500": { "$ref": "#definitions/500Response" },
+          "502": { "$ref": "#definitions/502Response" },
+          "504": { "$ref": "#definitions/504Response" }
+        }
+      }
+    },
     "/{odsCode}/Practitioner/{id}": {
       "get": {
         "tags": [ "Administration" ],

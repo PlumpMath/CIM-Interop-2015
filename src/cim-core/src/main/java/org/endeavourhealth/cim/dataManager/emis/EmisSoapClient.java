@@ -228,6 +228,18 @@ public class EmisSoapClient extends DotNetSoapClient
 		return getSOAPResultAsString(responseMessage, soapMethod);
 	}
 
+    public String getAllUsers(String odsCode) throws Exception
+    {
+        final String soapMethod = "GetAllUsers";
+
+        Map<String, Object> parameters = createParameterMap();
+        parameters.put("odsCode", odsCode);
+
+        SOAPMessage responseMessage = performSOAPCall(soapMethod, parameters);
+
+        return getSOAPResultAsString(responseMessage, soapMethod);
+    }
+
 	public String getOrganisationByOdsCode(String odsCode) throws Exception {
 		final String soapMethod = "GetOrganisationByOdsCode";
 

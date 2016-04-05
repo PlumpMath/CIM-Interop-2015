@@ -16,6 +16,7 @@ public interface IDataManager
 
     // administrative
 	String getPractitioner(String odsCode, UUID practitionerId) throws Exception;
+    String getAllPractitioners(String odsCode) throws Exception;
 	String searchForOrganisationByOdsCode(String odsCode) throws Exception;
     String getOrganisationById(String organisationId) throws Exception;
     String getLocation(String odsCode, UUID locationId) throws Exception;

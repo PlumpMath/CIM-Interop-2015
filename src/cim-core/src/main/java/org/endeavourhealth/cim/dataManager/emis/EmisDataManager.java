@@ -119,6 +119,21 @@ public class EmisDataManager implements IDataManager
 	}
 
 	@Override
+	public String getAllPractitioners(String odsCode) throws Exception
+	{
+		String openHRXml = _emisSoapClient.getAllUsers(odsCode);
+
+		if (TextUtils.isNullOrTrimmedEmpty(openHRXml))
+			throw new NotFoundException();
+
+		List<Practitioner> practitioners = _openHRTransformer.toFhirPractitioners(openHRXml);
+
+		Bundle bundle = BundleHelper.createBundle(getBundleProperties(odsCode), practitioners);
+
+		return new JsonParser().composeString(bundle);
+	}
+
+	@Override
 	public String searchForOrganisationByOdsCode(String odsCode) throws Exception {
 		String openHRXml = _emisSoapClient.getOrganisationByOdsCode(odsCode);
 
