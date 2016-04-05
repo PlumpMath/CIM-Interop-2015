@@ -2,12 +2,9 @@ package org.endeavourhealth.cim.transform.emisopen;
 
 import org.endeavourhealth.cim.transform.common.FhirUris;
 import org.endeavourhealth.cim.transform.common.ReferenceHelper;
-import org.endeavourhealth.cim.transform.common.exceptions.SerializationException;
 import org.endeavourhealth.cim.transform.common.exceptions.TransformException;
-import org.endeavourhealth.cim.transform.common.exceptions.TransformFeatureNotSupportedException;
 import org.endeavourhealth.cim.transform.schemas.emisopen.eomgetpatientappointments.AppointmentStruct;
 import org.endeavourhealth.cim.transform.schemas.emisopen.eomgetpatientappointments.PatientAppointmentList;
-import org.endeavourhealth.cim.transform.schemas.emisopen.eomorganisationinformation.OrganisationInformation;
 import org.endeavourhealth.cim.repository.utils.TextUtils;
 import org.endeavourhealth.cim.transform.schemas.emisopen.eomgetpatientappointments.HolderStruct;
 import org.hl7.fhir.instance.model.*;
@@ -15,7 +12,6 @@ import org.hl7.fhir.instance.model.*;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.Map;
 
 public class AppointmentTransformer
 {

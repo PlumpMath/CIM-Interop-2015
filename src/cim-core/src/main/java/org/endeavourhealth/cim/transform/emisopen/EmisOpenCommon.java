@@ -1,7 +1,6 @@
 package org.endeavourhealth.cim.transform.emisopen;
 
 import org.endeavourhealth.cim.transform.common.exceptions.SerializationException;
-import org.endeavourhealth.cim.transform.schemas.emisopen.eomorganisationinformation.OrganisationInformation;
 
 import java.sql.Time;
 import java.text.ParseException;
@@ -44,29 +43,5 @@ public class EmisOpenCommon {
         cal.setTime(date);
         cal.add(Calendar.MINUTE, minutes);
         return new Time(cal.getTime().getTime());
-    }
-
-    public static Map<String, String> buildUserIdGuidMap(OrganisationInformation organisationInformation) {
-        HashMap<String, String> userIdGuidMap = new HashMap<>();
-
-        organisationInformation
-                .getUserList()
-                .getUser()
-                .forEach(t ->
-                        userIdGuidMap.put(t.getDBID().toString(), t.getGUID()));
-
-        return userIdGuidMap;
-    }
-
-    public static Map<String, String> buildLocationIdGuidMap(OrganisationInformation organisationInformation) {
-        HashMap<String, String> locationIdGuidMap = new HashMap<>();
-
-        organisationInformation
-                .getLocationTypeList()
-                .getLocationType()
-                .forEach(t ->
-                        locationIdGuidMap.put(t.getDBID().toString(), t.getGUID()));
-
-        return locationIdGuidMap;
     }
 }

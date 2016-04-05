@@ -6,11 +6,8 @@ import org.endeavourhealth.cim.transform.emisopen.ScheduleTransformer;
 import org.endeavourhealth.cim.transform.emisopen.SlotTransformer;
 import org.endeavourhealth.cim.transform.schemas.emisopen.eomappointmentsessions.AppointmentSessionList;
 import org.endeavourhealth.cim.transform.schemas.emisopen.eomslotsforsession.SlotListStruct;
-import org.endeavourhealth.cim.transform.common.BundleHelper;
-import org.endeavourhealth.cim.transform.common.BundleProperties;
 import org.endeavourhealth.cim.transform.common.TransformHelper;
 import org.endeavourhealth.cim.transform.schemas.emisopen.eomgetpatientappointments.PatientAppointmentList;
-import org.endeavourhealth.cim.transform.schemas.emisopen.eomorganisationinformation.OrganisationInformation;
 import org.hl7.fhir.instance.model.*;
 
 import java.util.List;

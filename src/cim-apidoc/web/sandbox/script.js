@@ -2,7 +2,6 @@ function customScriptInitialize(){
 
     removeCurl();
     disableHash();
-    injectVisualizer();
     injectHashGeneration();
     customizeResponseModelTable();
 
@@ -19,14 +18,6 @@ function customScriptInitialize(){
         $('input[name=api_key]').attr("disabled", "disabled");
     }
 
-    function injectVisualizer() {
-        $('.response').each(function(){
-            var responseBodyHeader = $($(this).find("h4")[3]);
-            var contentClassId = responseBodyHeader.parents('.content').attr('id');
-            responseBodyHeader.wrapInner('<a href="javascript:visualizeJson(\''+ contentClassId + '\');" target="_blank"/>');
-        });
-    }
-
     function injectHashGeneration() {
         $("form.sandbox").each(function() {
             var form = this;
@@ -37,7 +28,6 @@ function customScriptInitialize(){
             });
         });
     }
-
 
     function customizeResponseModelTable() {
         // locate Response Messages table
