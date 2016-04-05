@@ -1,4 +1,4 @@
-package org.endeavourhealth.cim.transform.openhr.tofhir.admin;
+package org.endeavourhealth.cim.transform.openhr.tofhir.common;
 
 import org.apache.commons.lang3.StringUtils;
 import org.endeavourhealth.cim.transform.common.OpenHRHelper;
@@ -11,7 +11,7 @@ import org.hl7.fhir.instance.model.Address;
 import java.util.ArrayList;
 import java.util.List;
 
-class AddressConverter
+public class AddressConverter
 {
     public static List<Address> convert(List<DtAddress> addressList) throws TransformFeatureNotSupportedException
     {

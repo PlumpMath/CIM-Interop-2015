@@ -7,6 +7,9 @@ import org.endeavourhealth.cim.transform.common.exceptions.SourceDocumentInvalid
 import org.endeavourhealth.cim.transform.common.exceptions.TransformException;
 import org.endeavourhealth.cim.transform.common.exceptions.TransformFeatureNotSupportedException;
 import org.endeavourhealth.cim.transform.common.OpenHRHelper;
+import org.endeavourhealth.cim.transform.openhr.tofhir.common.ContactPointConverter;
+import org.endeavourhealth.cim.transform.openhr.tofhir.common.NameConverter;
+import org.endeavourhealth.cim.transform.openhr.tofhir.common.SexConverter;
 import org.endeavourhealth.cim.transform.schemas.openhr.*;
 import org.hl7.fhir.instance.model.*;
 
@@ -48,6 +51,9 @@ public class PractitionerTransformer
                 person.getSurname(),
                 person.getTitle()));
 
+        if (person.getSex() != null)
+            practitioner.setGender(SexConverter.convertSex(person.getSex()));
+
         List<ContactPoint> telecoms = ContactPointConverter.convert(person.getContact());
 
         if (telecoms != null)
@@ -58,13 +64,7 @@ public class PractitionerTransformer
 
         DtCode userCategory = role.getUserCategory();
 
-        practitionerRole.setRole(new CodeableConcept()
-                .setText(role.getName())
-                .addCoding(new Coding()
-                                .setSystem("Role")
-                                .setCode(userCategory.getCode())
-                                .setDisplay(userCategory.getDisplayName())
-                ));
+        practitionerRole.setRole(new CodeableConcept().setText(role.getName() + ". " + userCategory.getDisplayName()));
 
         return practitioner;
     }
@@ -144,14 +144,10 @@ public class PractitionerTransformer
     {
         switch (openHRType)
         {
-            case GP:
-                return "GmcCode";
-            case NAT:
-                return "NationalCode";
-            case PRES:
-                return "PrescriptionCode";
-            default:
-                throw new TransformFeatureNotSupportedException("VocUserIdentifierType not supported: " + openHRType.toString());
+            case GP: return FhirUris.IDENTIFIER_SYSTEM_GMC_NUMBER;
+            case NAT: return FhirUris.IDENTIFIER_SYSTEM_DOCTOR_INDEX_NUMBER;
+            case PRES: return FhirUris.IDENTIFIER_SYSTEM_GMP_PPD_CODE;
+            default: throw new TransformFeatureNotSupportedException("VocUserIdentifierType not supported: " + openHRType.toString());
         }
     }
 }

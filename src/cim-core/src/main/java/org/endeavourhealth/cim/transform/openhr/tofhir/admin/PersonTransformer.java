@@ -3,6 +3,7 @@ package org.endeavourhealth.cim.transform.openhr.tofhir.admin;
 import org.endeavourhealth.cim.transform.common.ReferenceHelper;
 import org.endeavourhealth.cim.transform.common.exceptions.TransformException;
 import org.endeavourhealth.cim.transform.common.OpenHRHelper;
+import org.endeavourhealth.cim.transform.openhr.tofhir.common.SexConverter;
 import org.endeavourhealth.cim.transform.schemas.openhr.VocSex;
 import org.endeavourhealth.cim.transform.common.TransformHelper;
 import org.endeavourhealth.cim.transform.common.exceptions.TransformFeatureNotSupportedException;
@@ -13,8 +14,8 @@ import org.hl7.fhir.instance.model.*;
 
 import java.util.List;
 
-public class PersonTransformer {
-
+public class PersonTransformer
+{
     public static Person transform(OpenHR001AdminDomain adminDomain) throws TransformException
     {
 
@@ -36,27 +37,12 @@ public class PersonTransformer {
         for (HumanName name : names)
             targetPerson.addName(name);
 
-        targetPerson.setGender(convertSex(sourcePerson.getSex()));
+        targetPerson.setGender(SexConverter.convertSex(sourcePerson.getSex()));
         targetPerson.setBirthDate(TransformHelper.toDate(sourcePerson.getBirthDate()));
 
         Person.PersonLinkComponent link = targetPerson.addLink();
         link.setTarget(ReferenceHelper.createReference(ResourceType.Patient, sourcePatient.getId()));
 
         return targetPerson;
-    }
-
-    private static Enumerations.AdministrativeGender convertSex(VocSex sex) throws TransformFeatureNotSupportedException {
-        switch (sex) {
-            case U:
-                return Enumerations.AdministrativeGender.UNKNOWN;
-            case M:
-                return Enumerations.AdministrativeGender.MALE;
-            case F:
-                return Enumerations.AdministrativeGender.FEMALE;
-            case I:
-                return Enumerations.AdministrativeGender.OTHER;
-            default:
-                throw new TransformFeatureNotSupportedException("Sex vocabulary of " + sex.toString());
-        }
     }
 }

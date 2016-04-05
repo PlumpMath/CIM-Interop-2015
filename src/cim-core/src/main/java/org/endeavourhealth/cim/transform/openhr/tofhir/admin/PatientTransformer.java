@@ -5,6 +5,8 @@ import org.endeavourhealth.cim.transform.common.TransformHelper;
 import org.endeavourhealth.cim.transform.common.exceptions.TransformException;
 import org.endeavourhealth.cim.transform.common.exceptions.TransformFeatureNotSupportedException;
 import org.endeavourhealth.cim.transform.common.OpenHRHelper;
+import org.endeavourhealth.cim.transform.openhr.tofhir.common.AddressConverter;
+import org.endeavourhealth.cim.transform.openhr.tofhir.common.ContactPointConverter;
 import org.hl7.fhir.instance.model.*;
 import org.hl7.fhir.instance.model.Enumerations.AdministrativeGender;
 import org.endeavourhealth.cim.transform.schemas.openhr.OpenHR001AdminDomain;

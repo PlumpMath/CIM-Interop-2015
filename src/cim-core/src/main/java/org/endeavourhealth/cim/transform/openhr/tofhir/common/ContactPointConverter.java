@@ -1,4 +1,4 @@
-package org.endeavourhealth.cim.transform.openhr.tofhir.admin;
+package org.endeavourhealth.cim.transform.openhr.tofhir.common;
 
 import org.apache.commons.lang3.StringUtils;
 import org.endeavourhealth.cim.transform.common.exceptions.TransformFeatureNotSupportedException;
@@ -10,7 +10,7 @@ import org.hl7.fhir.instance.model.ContactPoint;
 import java.util.ArrayList;
 import java.util.List;
 
-class ContactPointConverter
+public class ContactPointConverter
 {
     public static List<ContactPoint> convert(List<DtContact> sourceList) throws TransformFeatureNotSupportedException
     {

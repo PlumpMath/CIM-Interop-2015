@@ -1,4 +1,4 @@
-package org.endeavourhealth.cim.transform.openhr.tofhir.admin;
+package org.endeavourhealth.cim.transform.openhr.tofhir.common;
 
 import org.apache.commons.lang3.StringUtils;
 import org.hl7.fhir.instance.model.HumanName;
