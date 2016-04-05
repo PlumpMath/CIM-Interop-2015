@@ -30,7 +30,8 @@ namespace DotNetGPSystem
                 SlotGUID = slot.SlotGuid.ToString(),
                 StartTime = slot.FormattedTime,
                 Status = slot.Status,
-                SiteID = slot.Session.Organisation.OrganisationId,
+                SiteID = slot.Session.Organisation.MainLocation.WhenNotNull(t => t.LocationId),
+                SiteGUID = slot.Session.Organisation.MainLocation.WhenNotNull(t => t.Location.id),
                 HolderList = new EomGetPatientAppointments.HolderStruct[]
                 {
                     ToEomHolder2(slot.Session.User)
