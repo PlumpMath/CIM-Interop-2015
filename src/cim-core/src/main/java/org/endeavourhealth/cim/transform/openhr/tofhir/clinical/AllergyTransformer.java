@@ -1,6 +1,7 @@
 package org.endeavourhealth.cim.transform.openhr.tofhir.clinical;
 
 import org.apache.commons.lang3.StringUtils;
+import org.endeavourhealth.cim.transform.common.FhirUris;
 import org.endeavourhealth.cim.transform.common.ReferenceHelper;
 import org.endeavourhealth.cim.transform.common.exceptions.SourceDocumentInvalidException;
 import org.endeavourhealth.cim.transform.common.exceptions.TransformException;
@@ -17,6 +18,8 @@ public class AllergyTransformer implements ClinicalResourceTransformer
     {
         AllergyIntolerance target = new AllergyIntolerance();
         target.setId(source.getId());
+        target.setMeta(new Meta().addProfile(FhirUris.PROFILE_URI_ALLERGY_INTOLERANCE));
+
         target.setStatus(AllergyIntolerance.AllergyIntoleranceStatus.ACTIVE);
         target.setOnsetElement(OpenHRHelper.convertPartialDateTimeToDateTimeType(source.getEffectiveTime()));
         target.setPatient(ReferenceHelper.createReference(ResourceType.Patient, source.getPatient()));

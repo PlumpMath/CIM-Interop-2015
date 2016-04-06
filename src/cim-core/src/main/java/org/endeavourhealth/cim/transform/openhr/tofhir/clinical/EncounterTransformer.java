@@ -84,6 +84,8 @@ public class EncounterTransformer
 
         Encounter target = new Encounter();
         target.setId(source.getId());
+        target.setMeta(new Meta().addProfile(FhirUris.PROFILE_URI_ENCOUNTER));
+
         target.setStatus(convertStatus(source.isComplete()));
         target.setClass_(Encounter.EncounterClass.AMBULATORY);
         target.addType(convertType(source.getLocationType()));

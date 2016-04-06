@@ -1,6 +1,7 @@
 package org.endeavourhealth.cim.transform.openhr.tofhir.clinical;
 
 import org.apache.commons.lang3.StringUtils;
+import org.endeavourhealth.cim.transform.common.FhirUris;
 import org.endeavourhealth.cim.transform.common.ReferenceHelper;
 import org.endeavourhealth.cim.transform.common.exceptions.SourceDocumentInvalidException;
 import org.endeavourhealth.cim.transform.common.exceptions.TransformException;
@@ -17,6 +18,8 @@ public class ImmunisationTransformer implements ClinicalResourceTransformer
     {
         Immunization target = new Immunization();
         target.setId(source.getId());
+        target.setMeta(new Meta().addProfile(FhirUris.PROFILE_URI_IMMUNIZATION));
+
         target.setStatus(MedicationAdministration.MedicationAdministrationStatus.COMPLETED.toCode());
         target.setDateElement(OpenHRHelper.convertPartialDateTimeToDateTimeType(source.getEffectiveTime()));
         target.setPatient(ReferenceHelper.createReference(ResourceType.Patient, source.getPatient()));

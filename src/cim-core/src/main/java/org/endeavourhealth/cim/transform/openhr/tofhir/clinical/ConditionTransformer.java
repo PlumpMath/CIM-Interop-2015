@@ -33,6 +33,7 @@ public class ConditionTransformer implements ClinicalResourceTransformer
 
         target.setId(source.getId());
         target.setMeta(new Meta().addProfile(FhirUris.PROFILE_URI_CONDITION));
+
         target.setPatient(ReferenceHelper.createReference(ResourceType.Patient, source.getPatient()));
         target.setEncounter(eventEncounterMap.getEncounterReference(source.getId()));
 

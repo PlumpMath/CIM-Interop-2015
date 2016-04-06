@@ -33,6 +33,7 @@ public class FhirUris
     public final static String PROFILE_URI_PROCEDURE_REQUEST = "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-procedure-request";
     public final static String PROFILE_URI_REFERRAL_REQUEST = "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-referral-request";
     public final static String PROFILE_URI_SPECIMIN = "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-specimen";
+    public final static String PROFILE_URI_ENCOUNTER = "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-encounter";
 
     public final static String EXTENSION_URI_ACTIVEPERIOD = "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-activeperiod-extension";
     public final static String EXTENSION_URI_MAINLOCATION = "http://endeavourhealth.org/fhir/StructureDefinition/primarycare-mainlocation-extension";

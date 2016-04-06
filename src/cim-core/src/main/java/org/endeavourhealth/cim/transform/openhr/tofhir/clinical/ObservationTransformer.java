@@ -2,6 +2,7 @@ package org.endeavourhealth.cim.transform.openhr.tofhir.clinical;
 
 import org.apache.commons.lang3.StringUtils;
 import org.endeavourhealth.cim.repository.utils.TextUtils;
+import org.endeavourhealth.cim.transform.common.FhirUris;
 import org.endeavourhealth.cim.transform.common.ReferenceHelper;
 import org.endeavourhealth.cim.transform.common.exceptions.TransformException;
 import org.endeavourhealth.cim.transform.common.OpenHRHelper;
@@ -27,6 +28,8 @@ public class ObservationTransformer implements ClinicalResourceTransformer {
     {
         Observation target = new Observation();
         target.setId(source.getId());
+        target.setMeta(new Meta().addProfile(FhirUris.PROFILE_URI_OBSERVATION));
+
         target.setCode(CodeHelper.convertCode(source.getCode(), source.getDisplayTerm()));
         target.setEffective(OpenHRHelper.convertPartialDateTimeToDateTimeType(source.getEffectiveTime()));
         target.setIssued(TransformHelper.toDate(source.getAvailabilityTimeStamp()));

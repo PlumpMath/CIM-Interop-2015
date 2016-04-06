@@ -1,6 +1,7 @@
 package org.endeavourhealth.cim.transform.openhr.tofhir.clinical;
 
 import org.apache.commons.lang3.StringUtils;
+import org.endeavourhealth.cim.transform.common.FhirUris;
 import org.endeavourhealth.cim.transform.common.ReferenceHelper;
 import org.endeavourhealth.cim.transform.common.exceptions.SourceDocumentInvalidException;
 import org.endeavourhealth.cim.transform.common.exceptions.TransformException;
@@ -20,6 +21,8 @@ public class MedicationTransformer implements ClinicalResourceTransformer
         MedicationOrder target = new MedicationOrder();
 
         target.setId(source.getId());
+        target.setMeta(new Meta().addProfile(FhirUris.PROFILE_URI_MEDICATION));
+
         target.setDateWritten(convertEffectiveDateTime(source.getEffectiveTime()));
         target.setPatient(ReferenceHelper.createReference(ResourceType.Patient, source.getPatient()));
         target.setPrescriber(ReferenceHelper.createReference(ResourceType.Practitioner, source.getAuthorisingUserInRole()));
