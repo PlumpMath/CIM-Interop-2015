@@ -3,9 +3,8 @@ package org.endeavourhealth.cim.transform;
 import org.endeavourhealth.cim.transform.common.TransformHelper;
 import org.endeavourhealth.cim.transform.common.exceptions.TransformException;
 import org.endeavourhealth.cim.transform.openhr.fromfhir.FromFhirTransformer;
-import org.endeavourhealth.cim.transform.openhr.tofhir.FhirContainer;
 import org.endeavourhealth.cim.transform.openhr.tofhir.admin.*;
-import org.endeavourhealth.cim.transform.openhr.tofhir.HealthDomainTransformer;
+import org.endeavourhealth.cim.transform.openhr.tofhir.clinical.HealthDomainTransformer;
 import org.endeavourhealth.cim.transform.schemas.openhr.*;
 import org.hl7.fhir.instance.model.*;
 
@@ -18,22 +17,22 @@ public class OpenHRTransformer
     {
         OpenHR001OpenHealthRecord openHR = TransformHelper.unmarshall(openHRXml, OpenHR001OpenHealthRecord.class);
 
-        FhirContainer container = new FhirContainer();
+        List<Resource> result = new ArrayList<>();
 
         if (openHR.getAdminDomain() != null)
         {
-            container.addResources(OrganisationTransformer.transform(openHR.getAdminDomain().getOrganisation()));
-            container.addResources(LocationTransformer.transform(openHR.getAdminDomain()));
-            container.addResources(PractitionerTransformer.transform(openHR.getAdminDomain()));
-            container.addResource(PatientTransformer.transform(openHR.getAdminDomain()));
+            result.addAll(OrganisationTransformer.transform(openHR.getAdminDomain().getOrganisation()));
+            result.addAll(LocationTransformer.transform(openHR.getAdminDomain()));
+            result.addAll(PractitionerTransformer.transform(openHR.getAdminDomain()));
+            result.add(PatientTransformer.transform(openHR.getAdminDomain()));
         }
 
         if (openHR.getHealthDomain() != null)
         {
-            HealthDomainTransformer.transform(container, openHR);
+            result.addAll(HealthDomainTransformer.transform(openHR.getHealthDomain()));
         }
 
-        return container.getResources();
+        return result;
     }
 
     public Patient toFhirPatient(String openHRXml) throws TransformException

@@ -1,49 +1,46 @@
-package org.endeavourhealth.cim.transform.openhr.tofhir;
+package org.endeavourhealth.cim.transform.openhr.tofhir.clinical;
 
 import org.endeavourhealth.cim.transform.common.exceptions.TransformException;
-import org.endeavourhealth.cim.transform.openhr.tofhir.EventEncounterMap;
-import org.endeavourhealth.cim.transform.openhr.tofhir.clinical.*;
-import org.endeavourhealth.cim.transform.schemas.openhr.OpenHR001Component;
+import org.endeavourhealth.cim.transform.openhr.tofhir.common.EventEncounterMap;
 import org.endeavourhealth.cim.transform.common.exceptions.TransformFeatureNotSupportedException;
-import org.endeavourhealth.cim.transform.openhr.tofhir.FhirContainer;
 import org.endeavourhealth.cim.transform.common.OpenHRHelper;
-import org.endeavourhealth.cim.transform.schemas.openhr.OpenHR001Encounter;
 import org.endeavourhealth.cim.transform.schemas.openhr.OpenHR001HealthDomain;
 import org.endeavourhealth.cim.transform.schemas.openhr.OpenHR001OpenHealthRecord;
 import org.hl7.fhir.instance.model.Condition;
+import org.hl7.fhir.instance.model.Resource;
 
-import java.util.HashMap;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
+import java.util.stream.Collectors;
 
 public class HealthDomainTransformer
 {
-    public static void transform(FhirContainer container, OpenHR001OpenHealthRecord openHR) throws TransformException
+    public static List<Resource> transform(OpenHR001HealthDomain openHRHealthDomain) throws TransformException
     {
-        OpenHR001HealthDomain healthDomain = openHR.getHealthDomain();
+        List<Resource> resources = transformEvents(openHRHealthDomain);
 
-        EventEncounterMap eventEncounterMap = EventEncounterMap.Create(healthDomain);
+        ConditionTransformer.buildConditionLinks(resources, openHRHealthDomain.getProblem());
 
-        transformEvents(container, eventEncounterMap, healthDomain);
+        resources.addAll(EncounterTransformer.transform(openHRHealthDomain, resources));
 
-        // encounter transform must come after event transform as there is a dependency on a populated container
-        EncounterTransformer.transform(container, healthDomain);
+        return resources;
     }
 
-    private static void transformEvents(FhirContainer container, EventEncounterMap eventEncounterMap, OpenHR001HealthDomain healthDomain) throws TransformException
+    private static List<Resource> transformEvents(OpenHR001HealthDomain healthDomain) throws TransformException
     {
+        EventEncounterMap eventEncounterMap = EventEncounterMap.Create(healthDomain);
+
+        List<Resource> result = new ArrayList<>();
+
         for (OpenHR001HealthDomain.Event event : healthDomain.getEvent())
         {
             OpenHRHelper.ensureDboNotDelete(event);
 
             ClinicalResourceTransformer transformer = getTransformerForEvent(healthDomain, event);
-            container.addResource(transformer.transform(healthDomain, container, eventEncounterMap, event));
+            result.add(transformer.transform(healthDomain, eventEncounterMap, event));
         }
 
-        List<Condition> conditions = container.getResourcesOfType(Condition.class);
-
-        if (!conditions.isEmpty())
-            ConditionTransformer.buildConditionLinks(conditions, healthDomain.getProblem(), container);
+        return result;
     }
 
     private static ClinicalResourceTransformer getTransformerForEvent(OpenHR001HealthDomain healthDomain, OpenHR001HealthDomain.Event event) throws TransformException

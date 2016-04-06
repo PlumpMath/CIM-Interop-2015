@@ -8,7 +8,6 @@ import org.endeavourhealth.cim.transform.common.TransformHelper;
 import org.endeavourhealth.cim.transform.common.exceptions.SourceDocumentInvalidException;
 import org.endeavourhealth.cim.transform.common.exceptions.TransformException;
 import org.endeavourhealth.cim.transform.common.exceptions.TransformFeatureNotSupportedException;
-import org.endeavourhealth.cim.transform.openhr.tofhir.FhirContainer;
 import org.endeavourhealth.cim.transform.common.OpenHRHelper;
 import org.endeavourhealth.cim.transform.schemas.openhr.*;
 import org.hl7.fhir.instance.model.*;
@@ -17,7 +16,8 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
-public class EncounterTransformer {
+public class EncounterTransformer
+{
     private final static String PROBLEM_HEADING_TERM = "Problem";
 
     //TODO: This concept has been deprecated. There is no alternative to this code
@@ -68,13 +68,18 @@ public class EncounterTransformer {
         }
     }
 
-    public static void transform(FhirContainer container, OpenHR001HealthDomain healthDomain) throws TransformException {
-        for (OpenHR001Encounter source: healthDomain.getEncounter()) {
-            container.addResource(createEncounter(healthDomain, container, source));
-        }
+    public static List<Resource> transform(OpenHR001HealthDomain healthDomain, List<Resource> resources) throws TransformException
+    {
+        List<Resource> result = new ArrayList<>();
+
+        for (OpenHR001Encounter source: healthDomain.getEncounter())
+            result.add(createEncounter(healthDomain, resources, source));
+
+        return result;
     }
 
-    private static Encounter createEncounter(OpenHR001HealthDomain healthDomain, FhirContainer container, OpenHR001Encounter source) throws TransformException {
+    private static Encounter createEncounter(OpenHR001HealthDomain healthDomain, List<Resource> resources, OpenHR001Encounter source) throws TransformException
+    {
         OpenHRHelper.ensureDboNotDelete(source);
 
         Encounter target = new Encounter();
@@ -91,7 +96,7 @@ public class EncounterTransformer {
 
         addAccompanyingHCPsAsAttenderParticipants(source.getAccompanyingHCP(), target);
 
-        addComposition(source, target, container);
+        addComposition(source, target, resources);
 
         return target;
     }
@@ -188,13 +193,16 @@ public class EncounterTransformer {
         }
     }
 
-    private static void addComposition(OpenHR001Encounter source, Encounter target, FhirContainer container) throws TransformFeatureNotSupportedException, SourceDocumentInvalidException {
-        Composition composition = createComposition(source, container);
+    private static void addComposition(OpenHR001Encounter source, Encounter target, List<Resource> resources) throws TransformFeatureNotSupportedException, SourceDocumentInvalidException
+    {
+        Composition composition = createComposition(source, resources);
+
         if (composition != null)
             target.getContained().add(composition);
     }
 
-    private static Composition createComposition(OpenHR001Encounter source, FhirContainer container) throws SourceDocumentInvalidException, TransformFeatureNotSupportedException {
+    private static Composition createComposition(OpenHR001Encounter source, List<Resource> resources) throws SourceDocumentInvalidException, TransformFeatureNotSupportedException
+    {
         if (source.getComponent() == null || source.getComponent().isEmpty())
             return null;
 
@@ -213,7 +221,7 @@ public class EncounterTransformer {
 
         for (EncounterPage page: pages) {
             Composition.SectionComponent topicSection = new Composition.SectionComponent()
-                    .setCode(getTopicCodeFromEncounterPage(page, container));
+                    .setCode(getTopicCodeFromEncounterPage(page, resources));
 
             for (EncounterSection sourceSection: page.getSections()) {
                 Composition.SectionComponent categorySection = new Composition.SectionComponent()
@@ -230,7 +238,7 @@ public class EncounterTransformer {
                                 .setCode("user")));
 
                 for (String eventId: sourceSection.getEvents()) {
-                    categorySection.getEntry().add(createResourceReferenceFromEvent(container, eventId));
+                    categorySection.getEntry().add(createResourceReferenceFromEvent(resources, eventId));
                 }
 
                 topicSection.addSection(categorySection);
@@ -267,15 +275,27 @@ public class EncounterTransformer {
         return pages;
     }
 
-    private static CodeableConcept getTopicCodeFromEncounterPage(EncounterPage page, FhirContainer container) {
+    private static CodeableConcept getTopicCodeFromEncounterPage(EncounterPage page, List<Resource> resources)
+    {
         CodeableConcept topicCode = null;
-        for (EncounterSection section: page.getSections()) {
-            if (section.getHeading().getDisplayName().equals(PROBLEM_HEADING_TERM)) {
+
+        for (EncounterSection section: page.getSections())
+        {
+            if (section.getHeading().getDisplayName().equals(PROBLEM_HEADING_TERM))
+            {
                 // Problem sections should only have a single event
                 String eventId = section.events.stream()
                         .collect(StreamExtension.singleOrNullCollector());
-                if (StringUtils.isNotBlank(eventId)) {
-                    topicCode = getCodeFromResource(container.getResourceById(eventId));
+
+                if (StringUtils.isNotBlank(eventId))
+                {
+                    // find event resource in container
+                    Resource resource = resources
+                            .stream()
+                            .filter(t -> eventId.equals(t.getId()))
+                            .collect(StreamExtension.singleCollector());
+
+                    topicCode = getCodeFromResource(resource);
                 }
 
                 break;
@@ -283,7 +303,8 @@ public class EncounterTransformer {
         }
 
         // if topic (problem) code not found add default
-        if (topicCode == null) {
+        if (topicCode == null)
+        {
             topicCode = new CodeableConcept()
                     .addCoding(new Coding()
                             .setSystem(FhirUris.CODE_SYSTEM_SNOMED_CT)
@@ -398,9 +419,14 @@ public class EncounterTransformer {
         }
     }
 
-    private static Reference createResourceReferenceFromEvent(FhirContainer container, String eventId) throws SourceDocumentInvalidException {
+    private static Reference createResourceReferenceFromEvent(List<Resource> resources, String eventId) throws SourceDocumentInvalidException {
         // find event resource in container
-        Resource resource = container.getResourceById(eventId);
+        // find event resource in container
+        Resource resource = resources
+                .stream()
+                .filter(t -> eventId.equals(t.getId()))
+                .collect(StreamExtension.singleOrNullCollector());
+
         if (resource == null)
             throw new SourceDocumentInvalidException("Encounter component event resource not found in container. EventId:" + eventId);
 

@@ -1,4 +1,4 @@
-package org.endeavourhealth.cim.transform.openhr.tofhir;
+package org.endeavourhealth.cim.transform.openhr.tofhir.common;
 
 import org.endeavourhealth.cim.transform.common.OpenHRHelper;
 import org.endeavourhealth.cim.transform.common.ReferenceHelper;
