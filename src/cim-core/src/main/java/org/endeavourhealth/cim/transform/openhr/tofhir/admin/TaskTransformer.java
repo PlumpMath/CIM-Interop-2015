@@ -3,6 +3,7 @@ package org.endeavourhealth.cim.transform.openhr.tofhir.admin;
 import org.endeavourhealth.cim.transform.common.FhirUris;
 import org.endeavourhealth.cim.transform.common.ReferenceHelper;
 import org.endeavourhealth.cim.transform.common.TransformHelper;
+import org.endeavourhealth.cim.transform.common.exceptions.TransformException;
 import org.endeavourhealth.cim.transform.common.valueSets.TaskStatusCode;
 import org.endeavourhealth.cim.transform.common.valueSets.TaskTypeCode;
 import org.endeavourhealth.cim.transform.common.exceptions.SourceDocumentInvalidException;
@@ -18,7 +19,7 @@ import org.hl7.fhir.instance.model.*;
 
 public class TaskTransformer
 {
-	public static Order transform(OpenHR001PatientTask source) throws SourceDocumentInvalidException, TransformFeatureNotSupportedException
+	public static Order transform(OpenHR001PatientTask source) throws TransformException
 	{
 		OpenHRHelper.ensureDboNotDelete(source);
 

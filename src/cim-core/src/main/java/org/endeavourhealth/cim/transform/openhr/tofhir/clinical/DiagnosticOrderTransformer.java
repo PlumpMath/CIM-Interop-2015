@@ -7,7 +7,7 @@ import org.hl7.fhir.instance.model.DiagnosticOrder;
 
 public class DiagnosticOrderTransformer implements ClinicalResourceTransformer
 {
-    public DiagnosticOrder transform(OpenHR001HealthDomain healthDomain, EventEncounterMap eventEncounterMap, OpenHR001HealthDomain.Event source) throws TransformException {
+    public DiagnosticOrder transform(OpenHR001HealthDomain.Event source, OpenHR001HealthDomain healthDomain, EventEncounterMap eventEncounterMap) throws TransformException {
         DiagnosticOrder target = new DiagnosticOrder();
         target.setId(source.getId());
 

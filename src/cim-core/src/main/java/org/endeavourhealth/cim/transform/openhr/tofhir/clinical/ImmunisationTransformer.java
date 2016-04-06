@@ -13,14 +13,14 @@ import org.hl7.fhir.instance.model.*;
 
 public class ImmunisationTransformer implements ClinicalResourceTransformer
 {
-    public Immunization transform(OpenHR001HealthDomain healthDomain, EventEncounterMap eventEncounterMap, OpenHR001HealthDomain.Event source) throws TransformException
+    public Immunization transform(OpenHR001HealthDomain.Event source, OpenHR001HealthDomain healthDomain, EventEncounterMap eventEncounterMap) throws TransformException
     {
         Immunization target = new Immunization();
         target.setId(source.getId());
         target.setStatus(MedicationAdministration.MedicationAdministrationStatus.COMPLETED.toCode());
         target.setDateElement(convertEffectiveDateTime(source.getEffectiveTime()));
-        target.setPatient(convertPatient(source.getPatient()));
-        target.setPerformer(convertUserInRole(source.getAuthorisingUserInRole()));
+        target.setPatient(ReferenceHelper.createReference(ResourceType.Patient, source.getPatient()));
+        target.setPerformer(ReferenceHelper.createReference(ResourceType.Practitioner, source.getAuthorisingUserInRole()));
         target.setEncounter(eventEncounterMap.getEncounterReference(source.getId()));
         target.setVaccineCode(CodeHelper.convertCode(source.getCode(), source.getDisplayTerm()));
         return target;
@@ -31,18 +31,5 @@ public class ImmunisationTransformer implements ClinicalResourceTransformer
             throw new SourceDocumentInvalidException("Invalid DateTime");
 
         return OpenHRHelper.convertPartialDateTimeToDateTimeType(source);
-    }
-
-    private Reference convertPatient(String sourcePatientId) throws SourceDocumentInvalidException {
-        if (StringUtils.isBlank(sourcePatientId))
-            throw new SourceDocumentInvalidException("Invalid Patient Id");
-        return ReferenceHelper.createReference(ResourceType.Patient, sourcePatientId);
-    }
-
-    private Reference convertUserInRole(String userInRoleId) throws SourceDocumentInvalidException {
-        if (StringUtils.isBlank(userInRoleId))
-            throw new SourceDocumentInvalidException("UserInRoleId not found");
-
-        return ReferenceHelper.createReference(ResourceType.Practitioner, userInRoleId);
     }
 }

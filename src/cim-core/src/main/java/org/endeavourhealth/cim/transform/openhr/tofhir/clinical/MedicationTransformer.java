@@ -15,14 +15,14 @@ import java.util.Date;
 
 public class MedicationTransformer implements ClinicalResourceTransformer
 {
-    public MedicationOrder transform(OpenHR001HealthDomain healthDomain, EventEncounterMap eventEncounterMap, OpenHR001HealthDomain.Event source) throws TransformException
+    public MedicationOrder transform(OpenHR001HealthDomain.Event source, OpenHR001HealthDomain healthDomain, EventEncounterMap eventEncounterMap) throws TransformException
     {
         MedicationOrder target = new MedicationOrder();
 
         target.setId(source.getId());
         target.setDateWritten(convertEffectiveDateTime(source.getEffectiveTime()));
-        target.setPatient(convertPatient(source.getPatient()));
-        target.setPrescriber(convertUserInRole(source.getAuthorisingUserInRole()));
+        target.setPatient(ReferenceHelper.createReference(ResourceType.Patient, source.getPatient()));
+        target.setPrescriber(ReferenceHelper.createReference(ResourceType.Practitioner, source.getAuthorisingUserInRole()));
         target.setEncounter(eventEncounterMap.getEncounterReference(source.getId()));
         target.setMedication(createMedication(source, target));
 
@@ -57,18 +57,6 @@ public class MedicationTransformer implements ClinicalResourceTransformer
             throw new SourceDocumentInvalidException("Invalid DateTime");
 
         return TransformHelper.toDate(source.getValue());
-    }
-
-    private Reference convertPatient(String sourcePatientId) throws SourceDocumentInvalidException {
-        if (StringUtils.isBlank(sourcePatientId))
-            throw new SourceDocumentInvalidException("Invalid Patient Id");
-        return ReferenceHelper.createReference(ResourceType.Patient, sourcePatientId);
-    }
-    private Reference convertUserInRole(String userInRoleId) throws SourceDocumentInvalidException {
-        if (StringUtils.isBlank(userInRoleId))
-            throw new SourceDocumentInvalidException("UserInRoleId not found");
-
-        return ReferenceHelper.createReference(ResourceType.Practitioner, userInRoleId);
     }
 
     private Reference createMedication(OpenHR001HealthDomain.Event source, MedicationOrder target) throws TransformFeatureNotSupportedException {

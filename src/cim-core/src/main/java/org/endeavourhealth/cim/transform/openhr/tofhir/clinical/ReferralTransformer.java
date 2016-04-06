@@ -7,7 +7,7 @@ import org.hl7.fhir.instance.model.ReferralRequest;
 
 public class ReferralTransformer implements ClinicalResourceTransformer
 {
-    public ReferralRequest transform(OpenHR001HealthDomain healthDomain, EventEncounterMap eventEncounterMap, OpenHR001HealthDomain.Event source) throws TransformException
+    public ReferralRequest transform(OpenHR001HealthDomain.Event source, OpenHR001HealthDomain healthDomain, EventEncounterMap eventEncounterMap) throws TransformException
     {
         ReferralRequest target = new ReferralRequest();
         target.setId(source.getId());

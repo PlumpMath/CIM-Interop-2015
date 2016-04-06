@@ -1,5 +1,7 @@
 package org.endeavourhealth.cim.transform.common;
 
+import org.apache.commons.lang3.StringUtils;
+import org.endeavourhealth.cim.transform.common.exceptions.TransformException;
 import org.hl7.fhir.instance.model.Reference;
 import org.hl7.fhir.instance.model.ResourceType;
 import org.endeavourhealth.cim.repository.utils.TextUtils;
@@ -9,7 +11,11 @@ public class ReferenceHelper {
         return resourceType.toString() + "/" + id;
     }
 
-    public static Reference createReference(ResourceType resourceType, String id) {
+    public static Reference createReference(ResourceType resourceType, String id) throws TransformException
+    {
+        if (StringUtils.isBlank(id))
+            throw new TransformException("Blank id when creating reference for " + resourceType.toString());
+
         return new Reference().setReference(createResourceReference(resourceType, id));
     }
 

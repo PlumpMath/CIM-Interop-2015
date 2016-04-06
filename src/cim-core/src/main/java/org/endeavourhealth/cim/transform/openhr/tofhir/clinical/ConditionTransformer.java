@@ -1,6 +1,7 @@
 package org.endeavourhealth.cim.transform.openhr.tofhir.clinical;
 
 import org.apache.commons.lang3.StringUtils;
+import org.endeavourhealth.cim.transform.common.FhirUris;
 import org.endeavourhealth.cim.transform.common.ReferenceHelper;
 import org.endeavourhealth.cim.transform.common.exceptions.TransformException;
 import org.endeavourhealth.cim.transform.common.OpenHRHelper;
@@ -24,17 +25,19 @@ public class ConditionTransformer implements ClinicalResourceTransformer
     private final static String CONDITION_LINK_TYPE_ASSOCIATION_CODE = "has-association";
     private final static String CONDITION_LINK_TYPE_ASSOCIATION_DISPLAY = "Has association";
 
-    public Condition transform(OpenHR001HealthDomain healthDomain, EventEncounterMap eventEncounterMap, OpenHR001HealthDomain.Event source) throws TransformException
+    public Condition transform(OpenHR001HealthDomain.Event source, OpenHR001HealthDomain healthDomain, EventEncounterMap eventEncounterMap) throws TransformException
     {
-        OpenHR001Problem problem = getProblem(healthDomain.getProblem(), convertId(source.getId()));
+        OpenHR001Problem problem = getProblem(healthDomain.getProblem(), source.getId());
 
         Condition target = new Condition();
-        target.setId(convertId(source.getId()));
-        target.setPatient(convertPatient(source.getPatient()));
+
+        target.setId(source.getId());
+        target.setMeta(new Meta().addProfile(FhirUris.PROFILE_URI_CONDITION));
+        target.setPatient(ReferenceHelper.createReference(ResourceType.Patient, source.getPatient()));
         target.setEncounter(eventEncounterMap.getEncounterReference(source.getId()));
 
         if (source.getAuthorisingUserInRole() != null)
-            target.setAsserter(convertUserInRole(source.getAuthorisingUserInRole()));
+            target.setAsserter(ReferenceHelper.createReference(ResourceType.Practitioner, source.getAuthorisingUserInRole()));
 
         target.setDateRecordedElement(convertEffectiveDateTime(source.getEffectiveTime()));
         target.setCode(CodeHelper.convertCode(source.getCode(), source.getDisplayTerm()));
@@ -46,7 +49,7 @@ public class ConditionTransformer implements ClinicalResourceTransformer
         return target;
     }
 
-    private OpenHR001Problem getProblem(List<OpenHR001Problem> problemList, String eventId) throws SourceDocumentInvalidException {
+    private OpenHR001Problem getProblem(List<OpenHR001Problem> problemList, String eventId) throws TransformException {
         if (problemList == null)
             return null;
 
@@ -57,25 +60,6 @@ public class ConditionTransformer implements ClinicalResourceTransformer
         //if the problem is there multiple times, then it will just throw a general exception.
 
         return problem;
-    }
-
-    private String convertId(String sourceId) throws SourceDocumentInvalidException {
-        if (StringUtils.isBlank(sourceId))
-            throw new SourceDocumentInvalidException("Invalid Event Id");
-        return sourceId;
-    }
-
-    private Reference convertPatient(String sourcePatientId) throws SourceDocumentInvalidException {
-        if (StringUtils.isBlank(sourcePatientId))
-            throw new SourceDocumentInvalidException("Invalid Patient Id");
-        return ReferenceHelper.createReference(ResourceType.Patient, sourcePatientId);
-    }
-
-    private Reference convertUserInRole(String userInRoleId) throws SourceDocumentInvalidException {
-        if (StringUtils.isBlank(userInRoleId))
-            throw new SourceDocumentInvalidException("UserInRoleId not found");
-
-        return ReferenceHelper.createReference(ResourceType.Practitioner, userInRoleId);
     }
 
     private DateType convertEffectiveDateTime(DtDatePart source) throws TransformException {
@@ -94,7 +78,7 @@ public class ConditionTransformer implements ClinicalResourceTransformer
                 );
     }
 
-    private CodeableConcept convertSeverity(VocProblemSignificance sourceSignificance) throws TransformFeatureNotSupportedException {
+    private CodeableConcept convertSeverity(VocProblemSignificance sourceSignificance) throws TransformException {
         Coding coding = new Coding();
         coding.setSystem("http://hl7.org/fhir/vs/condition-severity");
 
@@ -114,7 +98,7 @@ public class ConditionTransformer implements ClinicalResourceTransformer
         return new CodeableConcept().addCoding(coding);
     }
 
-    private void convertAssociatedText(OpenHR001Event source, Condition target) throws SourceDocumentInvalidException {
+    private void convertAssociatedText(OpenHR001Event source, Condition target) throws TransformException {
 
         List<OpenHR001Event.AssociatedText> associatedTextList = source.getAssociatedText();
 
@@ -164,7 +148,7 @@ public class ConditionTransformer implements ClinicalResourceTransformer
         }
     }
 
-    private static void addEventLinks(Condition target, OpenHR001Problem problem, List<Resource> resources) throws SourceDocumentInvalidException
+    private static void addEventLinks(Condition target, OpenHR001Problem problem, List<Resource> resources) throws TransformException
     {
         if (problem.getEventLink().isEmpty())
             return;
@@ -177,7 +161,7 @@ public class ConditionTransformer implements ClinicalResourceTransformer
             .setValue(ReferenceHelper.createInternalReference(conditionLinkList.getId())));
     }
 
-    private static List_ createConditionLinkList(List<OpenHR001ProblemEventLink> eventLinks, List<Resource> resources) throws SourceDocumentInvalidException
+    private static List_ createConditionLinkList(List<OpenHR001ProblemEventLink> eventLinks, List<Resource> resources) throws TransformException
     {
         List_ conditionLinkList = new List_();
         conditionLinkList.setId("condition-links");
@@ -202,7 +186,7 @@ public class ConditionTransformer implements ClinicalResourceTransformer
         return conditionLinkList;
     }
 
-    private static Reference createResourceReferenceFromEvent(List<Resource> resources, String eventId) throws SourceDocumentInvalidException
+    private static Reference createResourceReferenceFromEvent(List<Resource> resources, String eventId) throws TransformException
     {
         // find event resource in container
         Resource resource = resources

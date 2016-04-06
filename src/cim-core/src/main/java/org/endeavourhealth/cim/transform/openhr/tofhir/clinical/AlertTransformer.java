@@ -7,7 +7,7 @@ import org.hl7.fhir.instance.model.Flag;
 
 public class AlertTransformer implements ClinicalResourceTransformer
 {
-    public Flag transform(OpenHR001HealthDomain healthDomain, EventEncounterMap eventEncounterMap, OpenHR001HealthDomain.Event source) throws TransformException
+    public Flag transform(OpenHR001HealthDomain.Event source, OpenHR001HealthDomain healthDomain, EventEncounterMap eventEncounterMap) throws TransformException
     {
         Flag target = new Flag();
         target.setId(source.getId());

@@ -2,6 +2,7 @@ package org.endeavourhealth.cim.transform.openhr.tofhir.common;
 
 import org.endeavourhealth.cim.transform.common.OpenHRHelper;
 import org.endeavourhealth.cim.transform.common.ReferenceHelper;
+import org.endeavourhealth.cim.transform.common.exceptions.TransformException;
 import org.endeavourhealth.cim.transform.common.exceptions.TransformFeatureNotSupportedException;
 import org.endeavourhealth.cim.transform.schemas.openhr.OpenHR001Component;
 import org.endeavourhealth.cim.transform.schemas.openhr.OpenHR001Encounter;
@@ -43,7 +44,7 @@ public class EventEncounterMap extends HashMap<String, OpenHR001Encounter>
         return get(eventId);
     }
 
-    public Reference getEncounterReference(String eventId)
+    public Reference getEncounterReference(String eventId) throws TransformException
     {
         OpenHR001Encounter encounter = getEncounterFromEventId(eventId);
 

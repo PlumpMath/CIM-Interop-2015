@@ -7,7 +7,7 @@ import org.hl7.fhir.instance.model.FamilyMemberHistory;
 
 public class FamilyHistoryTransformer implements ClinicalResourceTransformer
 {
-    public FamilyMemberHistory transform(OpenHR001HealthDomain healthDomain, EventEncounterMap eventEncounterMap, OpenHR001HealthDomain.Event source) throws TransformException
+    public FamilyMemberHistory transform(OpenHR001HealthDomain.Event source, OpenHR001HealthDomain healthDomain, EventEncounterMap eventEncounterMap) throws TransformException
     {
         FamilyMemberHistory target = new FamilyMemberHistory();
         target.setId(source.getId());

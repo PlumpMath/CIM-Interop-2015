@@ -87,7 +87,7 @@ public class EncounterTransformer
         target.setStatus(convertStatus(source.isComplete()));
         target.setClass_(Encounter.EncounterClass.AMBULATORY);
         target.addType(convertType(source.getLocationType()));
-        target.setPatient(createPatientReference(source.getPatient()));
+        target.setPatient(ReferenceHelper.createReference(ResourceType.Patient, source.getPatient()));
         target.addParticipant(createParticipantFromAuthorisingUser(source.getAuthorisingUserInRole()));
         target.setPeriod(convertEffectiveDateTime(source.getEffectiveTime()));
         target.setServiceProvider(createOrganisationReference(source.getOrganisation()));
@@ -116,13 +116,6 @@ public class EncounterTransformer
                 );
     }
 
-    private static Reference createPatientReference(String sourcePatientId) throws SourceDocumentInvalidException {
-        if (StringUtils.isBlank(sourcePatientId))
-            throw new SourceDocumentInvalidException("Invalid Patient Id");
-
-        return ReferenceHelper.createReference(ResourceType.Patient, sourcePatientId);
-    }
-
     private static Period convertEffectiveDateTime(DtDatePart source) throws TransformException {
         if (source == null)
             throw new SourceDocumentInvalidException("Invalid DateTime");
@@ -130,7 +123,8 @@ public class EncounterTransformer
         return new Period().setEndElement(OpenHRHelper.convertPartialDateTimeToDateTimeType(source));
     }
 
-    private static Reference createOrganisationReference(List<String> sourceOrganisations) throws SourceDocumentInvalidException {
+    private static Reference createOrganisationReference(List<String> sourceOrganisations) throws TransformException
+    {
         if (sourceOrganisations == null)
             return null;
 
@@ -157,7 +151,8 @@ public class EncounterTransformer
         return target;
     }
 
-    private static Encounter.EncounterParticipantComponent createParticipantFromAuthorisingUser(String userInRoleId) throws SourceDocumentInvalidException {
+    private static Encounter.EncounterParticipantComponent createParticipantFromAuthorisingUser(String userInRoleId) throws TransformException
+    {
         if (StringUtils.isBlank(userInRoleId))
             throw new SourceDocumentInvalidException("UserInRoleId not found");
 
@@ -170,7 +165,8 @@ public class EncounterTransformer
                 .setIndividual(ReferenceHelper.createReference(ResourceType.Practitioner, userInRoleId));
     }
 
-    private static Encounter.EncounterLocationComponent convertLocation(String locationId) {
+    private static Encounter.EncounterLocationComponent convertLocation(String locationId) throws TransformException
+    {
         if (StringUtils.isBlank(locationId))
             return null;
 
@@ -178,7 +174,7 @@ public class EncounterTransformer
             .setLocation(ReferenceHelper.createReference(ResourceType.Location, locationId));
     }
 
-    private static void addAccompanyingHCPsAsAttenderParticipants(List<String> userInRoleIds, Encounter target) throws SourceDocumentInvalidException {
+    private static void addAccompanyingHCPsAsAttenderParticipants(List<String> userInRoleIds, Encounter target) throws TransformException {
         if (userInRoleIds == null)
             return;
 
@@ -193,7 +189,7 @@ public class EncounterTransformer
         }
     }
 
-    private static void addComposition(OpenHR001Encounter source, Encounter target, List<Resource> resources) throws TransformFeatureNotSupportedException, SourceDocumentInvalidException
+    private static void addComposition(OpenHR001Encounter source, Encounter target, List<Resource> resources) throws TransformException
     {
         Composition composition = createComposition(source, resources);
 
@@ -201,7 +197,7 @@ public class EncounterTransformer
             target.getContained().add(composition);
     }
 
-    private static Composition createComposition(OpenHR001Encounter source, List<Resource> resources) throws SourceDocumentInvalidException, TransformFeatureNotSupportedException
+    private static Composition createComposition(OpenHR001Encounter source, List<Resource> resources) throws TransformException
     {
         if (source.getComponent() == null || source.getComponent().isEmpty())
             return null;
@@ -213,7 +209,7 @@ public class EncounterTransformer
                 .setText(source.getLocationType().getDisplayName())
                 .addCoding(convertCompositionType(source.getLocationType())));
         composition.setStatus(Composition.CompositionStatus.FINAL);
-        composition.setSubject(createPatientReference(source.getPatient()));
+        composition.setSubject(ReferenceHelper.createReference(ResourceType.Patient, source.getPatient()));
         composition.addAuthor(ReferenceHelper.createReference(ResourceType.Practitioner, source.getAuthorisingUserInRole()));
         composition.setEncounter(ReferenceHelper.createReference(ResourceType.Encounter, source.getId()));
 
@@ -419,7 +415,8 @@ public class EncounterTransformer
         }
     }
 
-    private static Reference createResourceReferenceFromEvent(List<Resource> resources, String eventId) throws SourceDocumentInvalidException {
+    private static Reference createResourceReferenceFromEvent(List<Resource> resources, String eventId) throws TransformException
+    {
         // find event resource in container
         // find event resource in container
         Resource resource = resources

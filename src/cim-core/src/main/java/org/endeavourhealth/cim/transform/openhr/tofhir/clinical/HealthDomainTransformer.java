@@ -5,13 +5,10 @@ import org.endeavourhealth.cim.transform.openhr.tofhir.common.EventEncounterMap;
 import org.endeavourhealth.cim.transform.common.exceptions.TransformFeatureNotSupportedException;
 import org.endeavourhealth.cim.transform.common.OpenHRHelper;
 import org.endeavourhealth.cim.transform.schemas.openhr.OpenHR001HealthDomain;
-import org.endeavourhealth.cim.transform.schemas.openhr.OpenHR001OpenHealthRecord;
-import org.hl7.fhir.instance.model.Condition;
 import org.hl7.fhir.instance.model.Resource;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class HealthDomainTransformer
 {
@@ -37,7 +34,7 @@ public class HealthDomainTransformer
             OpenHRHelper.ensureDboNotDelete(event);
 
             ClinicalResourceTransformer transformer = getTransformerForEvent(healthDomain, event);
-            result.add(transformer.transform(healthDomain, eventEncounterMap, event));
+            result.add(transformer.transform(event, healthDomain, eventEncounterMap));
         }
 
         return result;

@@ -23,7 +23,7 @@ public class ObservationTransformer implements ClinicalResourceTransformer {
     private final static String EPISODICITY_SYSTEM = "urn:fhir.nhs.uk:vs/Episodicity";
 
 
-    public Resource transform(OpenHR001HealthDomain healthDomain, EventEncounterMap eventEncounterMap, OpenHR001HealthDomain.Event source) throws TransformException
+    public Resource transform(OpenHR001HealthDomain.Event source, OpenHR001HealthDomain healthDomain, EventEncounterMap eventEncounterMap) throws TransformException
     {
         Observation target = new Observation();
         target.setId(source.getId());
@@ -31,10 +31,10 @@ public class ObservationTransformer implements ClinicalResourceTransformer {
         target.setEffective(convertEffectiveDateTime(source.getEffectiveTime()));
         target.setIssued(TransformHelper.toDate(source.getAvailabilityTimeStamp()));
         target.setStatus(Observation.ObservationStatus.FINAL);
-        target.setSubject(convertPatient(source.getPatient()));
+        target.setSubject(ReferenceHelper.createReference(ResourceType.Patient, source.getPatient()));
 
         if (!TextUtils.isNullOrTrimmedEmpty(source.getAuthorisingUserInRole()))
-            target.addPerformer(convertUserInRole(source.getAuthorisingUserInRole()));
+            target.addPerformer(ReferenceHelper.createReference(ResourceType.Practitioner, source.getAuthorisingUserInRole()));
 
         target.setEncounter(eventEncounterMap.getEncounterReference(source.getId()));
 
@@ -58,19 +58,6 @@ public class ObservationTransformer implements ClinicalResourceTransformer {
             throw new SourceDocumentInvalidException("Invalid DateTime");
 
         return OpenHRHelper.convertPartialDateTimeToDateTimeType(source);
-    }
-
-    private Reference convertPatient(String sourcePatientId) throws SourceDocumentInvalidException {
-        if (StringUtils.isBlank(sourcePatientId))
-            throw new SourceDocumentInvalidException("Invalid Patient Id");
-        return ReferenceHelper.createReference(ResourceType.Patient, sourcePatientId);
-    }
-
-    private Reference convertUserInRole(String userInRoleId) throws SourceDocumentInvalidException {
-        if (StringUtils.isBlank(userInRoleId))
-            throw new SourceDocumentInvalidException("UserInRoleId not found");
-
-        return ReferenceHelper.createReference(ResourceType.Practitioner, userInRoleId);
     }
 
     private void convertAssociatedText(OpenHR001Event source, Observation target) throws SourceDocumentInvalidException {
@@ -225,7 +212,8 @@ public class ObservationTransformer implements ClinicalResourceTransformer {
         return quantity;
     }
 
-    private void addRelatedObservations(OpenHR001ComplexObservation complexObservation, DtCodeQualified sourceCode, Observation target) {
+    private void addRelatedObservations(OpenHR001ComplexObservation complexObservation, DtCodeQualified sourceCode, Observation target) throws TransformException
+    {
         if (complexObservation == null)
             return;
 

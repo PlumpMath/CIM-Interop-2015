@@ -8,7 +8,7 @@ import org.hl7.fhir.instance.model.Resource;
 
 public class ProcedureTransformer implements ClinicalResourceTransformer
 {
-    public Resource transform(OpenHR001HealthDomain healthDomain, EventEncounterMap eventEncounterMap, OpenHR001HealthDomain.Event source) throws TransformException {
+    public Resource transform(OpenHR001HealthDomain.Event source, OpenHR001HealthDomain healthDomain, EventEncounterMap eventEncounterMap) throws TransformException {
 
         Procedure target = new Procedure();
         target.setId(source.getId());

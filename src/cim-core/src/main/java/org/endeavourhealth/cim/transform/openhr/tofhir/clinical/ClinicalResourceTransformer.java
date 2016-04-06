@@ -7,5 +7,5 @@ import org.hl7.fhir.instance.model.Resource;
 
 public interface ClinicalResourceTransformer
 {
-    Resource transform(OpenHR001HealthDomain healthDomain, EventEncounterMap eventEncounterMap, OpenHR001HealthDomain.Event source) throws TransformException;
+    Resource transform(OpenHR001HealthDomain.Event source, OpenHR001HealthDomain healthDomain, EventEncounterMap eventEncounterMap) throws TransformException;
 }

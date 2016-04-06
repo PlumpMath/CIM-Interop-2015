@@ -63,7 +63,7 @@ public class AppointmentTransformer
         return appointment;
     }
 
-    private static Appointment.AppointmentParticipantComponent createParticipant(ResourceType resourceType, String id, Appointment.ParticipantRequired required, Appointment.ParticipationStatus status)
+    private static Appointment.AppointmentParticipantComponent createParticipant(ResourceType resourceType, String id, Appointment.ParticipantRequired required, Appointment.ParticipationStatus status) throws TransformException
     {
         return new Appointment.AppointmentParticipantComponent()
                 .setActor(ReferenceHelper.createReference(resourceType, id))
