@@ -1,6 +1,7 @@
 package org.endeavourhealth.cim.transform.common;
 
 import org.apache.commons.lang3.StringUtils;
+import org.endeavourhealth.cim.transform.common.exceptions.TransformException;
 import org.endeavourhealth.cim.transform.schemas.openhr.*;
 import org.endeavourhealth.cim.transform.common.exceptions.SourceDocumentInvalidException;
 import org.endeavourhealth.cim.transform.common.exceptions.TransformFeatureNotSupportedException;
@@ -24,10 +25,10 @@ public class OpenHRHelper
             throw new TransformFeatureNotSupportedException("DBO type of Delete not supported");
     }
 
-    public static DateTimeType convertPartialDateTimeToDateTimeType(DtDatePart source) throws TransformFeatureNotSupportedException
+    public static DateTimeType convertPartialDateTimeToDateTimeType(DtDatePart source) throws TransformException
     {
         if (source == null)
-            return null;
+            throw new SourceDocumentInvalidException("Invalid DateTime");
 
         if (source.getDatepart() == VocDatePart.U)
             return null;
@@ -42,10 +43,10 @@ public class OpenHRHelper
         }
     }
 
-    public static DateType convertPartialDateTimeToDateType(DtDatePart source) throws TransformFeatureNotSupportedException
+    public static DateType convertPartialDateTimeToDateType(DtDatePart source) throws TransformException
     {
         if (source == null)
-            return null;
+            throw new SourceDocumentInvalidException("Invalid DateTime");
 
         if (source.getDatepart() == VocDatePart.U)
             return null;

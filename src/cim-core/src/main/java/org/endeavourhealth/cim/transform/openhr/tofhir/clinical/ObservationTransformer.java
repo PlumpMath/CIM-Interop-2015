@@ -28,7 +28,7 @@ public class ObservationTransformer implements ClinicalResourceTransformer {
         Observation target = new Observation();
         target.setId(source.getId());
         target.setCode(CodeHelper.convertCode(source.getCode(), source.getDisplayTerm()));
-        target.setEffective(convertEffectiveDateTime(source.getEffectiveTime()));
+        target.setEffective(OpenHRHelper.convertPartialDateTimeToDateTimeType(source.getEffectiveTime()));
         target.setIssued(TransformHelper.toDate(source.getAvailabilityTimeStamp()));
         target.setStatus(Observation.ObservationStatus.FINAL);
         target.setSubject(ReferenceHelper.createReference(ResourceType.Patient, source.getPatient()));
@@ -51,13 +51,6 @@ public class ObservationTransformer implements ClinicalResourceTransformer {
         }
 
         return target;
-    }
-
-    private DateTimeType convertEffectiveDateTime(DtDatePart source) throws TransformException {
-        if (source == null)
-            throw new SourceDocumentInvalidException("Invalid DateTime");
-
-        return OpenHRHelper.convertPartialDateTimeToDateTimeType(source);
     }
 
     private void convertAssociatedText(OpenHR001Event source, Observation target) throws SourceDocumentInvalidException {

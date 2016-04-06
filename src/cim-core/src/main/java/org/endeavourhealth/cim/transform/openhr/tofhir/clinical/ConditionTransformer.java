@@ -39,7 +39,7 @@ public class ConditionTransformer implements ClinicalResourceTransformer
         if (source.getAuthorisingUserInRole() != null)
             target.setAsserter(ReferenceHelper.createReference(ResourceType.Practitioner, source.getAuthorisingUserInRole()));
 
-        target.setDateRecordedElement(convertEffectiveDateTime(source.getEffectiveTime()));
+        target.setDateRecordedElement(OpenHRHelper.convertPartialDateTimeToDateType(source.getEffectiveTime()));
         target.setCode(CodeHelper.convertCode(source.getCode(), source.getDisplayTerm()));
         target.setCategory(convertCategory());
         target.setSeverity(convertSeverity(problem.getSignificance()));
@@ -60,13 +60,6 @@ public class ConditionTransformer implements ClinicalResourceTransformer
         //if the problem is there multiple times, then it will just throw a general exception.
 
         return problem;
-    }
-
-    private DateType convertEffectiveDateTime(DtDatePart source) throws TransformException {
-        if (source == null)
-            throw new SourceDocumentInvalidException("Invalid DateTime");
-
-        return OpenHRHelper.convertPartialDateTimeToDateType(source);
     }
 
     private CodeableConcept convertCategory() throws TransformFeatureNotSupportedException {

@@ -18,18 +18,10 @@ public class AllergyTransformer implements ClinicalResourceTransformer
         AllergyIntolerance target = new AllergyIntolerance();
         target.setId(source.getId());
         target.setStatus(AllergyIntolerance.AllergyIntoleranceStatus.ACTIVE);
-        target.setOnsetElement(convertEffectiveDateTime(source.getEffectiveTime()));
+        target.setOnsetElement(OpenHRHelper.convertPartialDateTimeToDateTimeType(source.getEffectiveTime()));
         target.setPatient(ReferenceHelper.createReference(ResourceType.Patient, source.getPatient()));
         target.setRecorder(ReferenceHelper.createReference(ResourceType.Practitioner, source.getAuthorisingUserInRole()));
         target.setSubstance(CodeHelper.convertCode(source.getCode(), source.getDisplayTerm()));
         return target;
-    }
-
-    private DateTimeType convertEffectiveDateTime(DtDatePart source) throws TransformException
-    {
-        if (source == null)
-            throw new SourceDocumentInvalidException("Invalid DateTime");
-
-        return OpenHRHelper.convertPartialDateTimeToDateTimeType(source);
     }
 }

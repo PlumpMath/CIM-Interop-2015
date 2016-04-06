@@ -89,7 +89,7 @@ public class EncounterTransformer
         target.addType(convertType(source.getLocationType()));
         target.setPatient(ReferenceHelper.createReference(ResourceType.Patient, source.getPatient()));
         target.addParticipant(createParticipantFromAuthorisingUser(source.getAuthorisingUserInRole()));
-        target.setPeriod(convertEffectiveDateTime(source.getEffectiveTime()));
+        target.setPeriod(new Period().setEndElement(OpenHRHelper.convertPartialDateTimeToDateTimeType(source.getEffectiveTime())));
         target.setServiceProvider(createOrganisationReference(source.getOrganisation()));
         target.addLocation(convertLocation(source.getLocation()));
         target.setLength(convertDuration(source.getDuration()));
@@ -114,13 +114,6 @@ public class EncounterTransformer
                                 .setCode(sourceLocationType.getCode())
                                 .setDisplay(sourceLocationType.getDisplayName())
                 );
-    }
-
-    private static Period convertEffectiveDateTime(DtDatePart source) throws TransformException {
-        if (source == null)
-            throw new SourceDocumentInvalidException("Invalid DateTime");
-
-        return new Period().setEndElement(OpenHRHelper.convertPartialDateTimeToDateTimeType(source));
     }
 
     private static Reference createOrganisationReference(List<String> sourceOrganisations) throws TransformException

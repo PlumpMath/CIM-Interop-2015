@@ -18,18 +18,11 @@ public class ImmunisationTransformer implements ClinicalResourceTransformer
         Immunization target = new Immunization();
         target.setId(source.getId());
         target.setStatus(MedicationAdministration.MedicationAdministrationStatus.COMPLETED.toCode());
-        target.setDateElement(convertEffectiveDateTime(source.getEffectiveTime()));
+        target.setDateElement(OpenHRHelper.convertPartialDateTimeToDateTimeType(source.getEffectiveTime()));
         target.setPatient(ReferenceHelper.createReference(ResourceType.Patient, source.getPatient()));
         target.setPerformer(ReferenceHelper.createReference(ResourceType.Practitioner, source.getAuthorisingUserInRole()));
         target.setEncounter(eventEncounterMap.getEncounterReference(source.getId()));
         target.setVaccineCode(CodeHelper.convertCode(source.getCode(), source.getDisplayTerm()));
         return target;
-    }
-
-    private DateTimeType convertEffectiveDateTime(DtDatePart source) throws TransformException {
-        if (source == null)
-            throw new SourceDocumentInvalidException("Invalid DateTime");
-
-        return OpenHRHelper.convertPartialDateTimeToDateTimeType(source);
     }
 }
