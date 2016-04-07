@@ -42,8 +42,8 @@ public class HealthDomainTransformer
 
     private static ClinicalResourceTransformer getTransformerForEvent(OpenHR001HealthDomain healthDomain, OpenHR001HealthDomain.Event event) throws TransformException
     {
-        if (OpenHRHelper.isCondition(healthDomain.getProblem(), event))
-            return new ConditionTransformer();
+        if (OpenHRHelper.isProblem(healthDomain.getProblem(), event))
+            return new ProblemTransformer();
 
         switch (event.getEventType())
         {
@@ -51,15 +51,17 @@ public class HealthDomainTransformer
             {
                 if (OpenHRHelper.isProcedure(event))
                     return new ProcedureTransformer();
-                else
-                    return new ObservationTransformer();
+                else // if condition
+                    return new ConditionTransformer();
+                //else
+                //    return new ObservationTransformer();
             }
-            case VAL: // Value
-            case INV: // Investigation
-            case ATT: // Attachment
-            case DRY: return new ObservationTransformer();       // Diary
-            case ISS:                                            // Medication Issue
-            case MED: return new MedicationTransformer();        // Medication
+            case VAL:                                            // Value
+            case INV:                                            // Investigation
+            case ATT: return new ObservationTransformer();       // Attachment
+            case DRY: return new ProcedureRequestTransformer();  // Diary
+            case ISS: return new MedicationOrderTransformer();   // Medication Issue
+            case MED: return new MedicationStatementTransformer();        // Medication
             case TR:  return new DiagnosticOrderTransformer();   // Test Request
             case REF: return new ReferralTransformer();          // Referral
             case ALT: return new AlertTransformer();             // Alert
@@ -68,8 +70,7 @@ public class HealthDomainTransformer
             case IMM: return new ImmunisationTransformer();      // Immunisation
             case REP: return new DiagnosticReportTransformer();  // Report
 
-            default:
-                throw new TransformFeatureNotSupportedException("Event Type not supported: " + event.getEventType().toString());
+            default: throw new TransformFeatureNotSupportedException("Event Type not supported: " + event.getEventType().toString());
         }
     }
 

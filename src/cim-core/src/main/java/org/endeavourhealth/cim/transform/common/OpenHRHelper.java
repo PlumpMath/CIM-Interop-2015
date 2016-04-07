@@ -191,7 +191,7 @@ public class OpenHRHelper
         }
     }
 
-    public static boolean isCondition(List<OpenHR001Problem> problemList, OpenHR001HealthDomain.Event event) throws SourceDocumentInvalidException
+    public static boolean isProblem(List<OpenHR001Problem> problemList, OpenHR001HealthDomain.Event event) throws SourceDocumentInvalidException
     {
         // The condition resource specifically excludes AllergyIntolerance as those are handled with their own resource
         return event.getEventType() != VocEventType.ALL

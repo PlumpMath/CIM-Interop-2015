@@ -7,7 +7,7 @@ import org.endeavourhealth.cim.transform.common.ReferenceHelper;
 import org.endeavourhealth.cim.transform.common.exceptions.TransformException;
 import org.endeavourhealth.cim.transform.common.OpenHRHelper;
 import org.endeavourhealth.cim.transform.openhr.tofhir.common.EventEncounterMap;
-import org.endeavourhealth.cim.transform.openhr.tofhir.common.CodeHelper;
+import org.endeavourhealth.cim.transform.common.CodeHelper;
 import org.endeavourhealth.cim.transform.schemas.openhr.*;
 import org.endeavourhealth.cim.transform.common.exceptions.SourceDocumentInvalidException;
 import org.endeavourhealth.cim.transform.common.exceptions.TransformFeatureNotSupportedException;
@@ -16,7 +16,8 @@ import org.hl7.fhir.instance.model.*;
 
 import java.util.List;
 
-public class ObservationTransformer implements ClinicalResourceTransformer {
+public class ObservationTransformer implements ClinicalResourceTransformer
+{
     private final static String CERTAINTY_QUALIFIER_NAME = "Certainty";
     private final static String UNCERTAIN_QUALIFIER_VALUE = "Uncertain";
 
@@ -56,8 +57,8 @@ public class ObservationTransformer implements ClinicalResourceTransformer {
         return target;
     }
 
-    private void convertAssociatedText(OpenHR001Event source, Observation target) throws SourceDocumentInvalidException {
-
+    private void convertAssociatedText(OpenHR001Event source, Observation target) throws SourceDocumentInvalidException
+    {
         List<OpenHR001Event.AssociatedText> associatedTextList = source.getAssociatedText();
 
         if (associatedTextList == null)
