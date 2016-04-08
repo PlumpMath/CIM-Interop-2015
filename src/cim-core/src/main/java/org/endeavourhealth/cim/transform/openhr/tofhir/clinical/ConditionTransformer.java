@@ -43,7 +43,9 @@ public class ConditionTransformer implements ClinicalResourceTransformer
         target.setDateRecordedElement(OpenHRHelper.convertPartialDateTimeToDateType(source.getEffectiveTime()));
         target.setCode(CodeHelper.convertCode(source.getCode(), source.getDisplayTerm()));
         target.setCategory(convertCategory());
-        target.setSeverity(convertSeverity(problem.getSignificance()));
+
+        if (problem != null)
+            target.setSeverity(convertSeverity(problem.getSignificance()));
 
         convertAssociatedText(source, target);
 
@@ -133,12 +135,13 @@ public class ConditionTransformer implements ClinicalResourceTransformer
 
         for (Condition targetCondition: conditions)
         {
-            OpenHR001Problem sourceProblems = problems
+            OpenHR001Problem sourceProblem = problems
                     .stream()
                     .filter(p -> p.getId().equals(targetCondition.getId()))
-                    .collect(StreamExtension.singleCollector());
+                    .collect(StreamExtension.singleOrNullCollector());
 
-            addEventLinks(targetCondition, sourceProblems, resources);
+            if (sourceProblem != null)
+                addEventLinks(targetCondition, sourceProblem, resources);
         }
     }
 

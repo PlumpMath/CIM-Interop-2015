@@ -23,10 +23,14 @@ public class GetMedicationOrdersProcessor implements Processor
 
 		MedicationOrder.MedicationOrderStatus medicationOrderStatus = null;
 
-		if (!TextUtils.isNullOrTrimmedEmpty(status)) {
-			try	{
+		if (!TextUtils.isNullOrTrimmedEmpty(status))
+		{
+			try
+			{
 				medicationOrderStatus = MedicationOrder.MedicationOrderStatus.fromCode(status);
-			} catch (Exception e) {
+			}
+			catch (Exception e)
+			{
 				throw new InvalidParamException("status", e);
 			}
 		}
