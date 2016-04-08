@@ -2768,7 +2768,7 @@
       <enteredByUserInRole>725b79bc-36b1-408c-ae56-771b6b5d079e</enteredByUserInRole>
       <displayTerm />
       <associatedText associatedTextType="POST">
-        <value> Ciprofloxacin Tablets 250 mg 1 bd 10 tablet(s)</value>
+        <value>This is text for the purposes of testing</value>
       </associatedText>
       <organisation>f1555082-5dcd-409b-9038-e11d0de3ddef</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -2962,7 +2962,7 @@
       <enteredByUserInRole>725b79bc-36b1-408c-ae56-771b6b5d079e</enteredByUserInRole>
       <displayTerm />
       <associatedText associatedTextType="POST">
-        <value>Metformin Hydrochloride  Tablets  850 mg 168 tablet 1TDS</value>
+        <value>Anonymised text</value>
       </associatedText>
       <organisation>f1555082-5dcd-409b-9038-e11d0de3ddef</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -2999,7 +2999,7 @@
       <enteredByUserInRole>725b79bc-36b1-408c-ae56-771b6b5d079e</enteredByUserInRole>
       <displayTerm />
       <associatedText associatedTextType="POST">
-        <value>FBC, U and E, Glucose, LFTs, HbA1C</value>
+        <value>No clinical information can be inferred from this text</value>
       </associatedText>
       <organisation>f1555082-5dcd-409b-9038-e11d0de3ddef</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -3123,7 +3123,7 @@
       <enteredByUserInRole>31ce31ad-00a8-4573-a35c-11e467606d6d</enteredByUserInRole>
       <displayTerm />
       <associatedText associatedTextType="POST">
-        <value> Pneumovax 11 Injection  25 mcg 0.5 ml 1 vial(s)</value>
+        <value>This narrative has no real meaning</value>
       </associatedText>
       <organisation>f1555082-5dcd-409b-9038-e11d0de3ddef</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -3172,7 +3172,7 @@
       </code>
       <displayTerm>Urea and electrolytes</displayTerm>
       <associatedText associatedTextType="UC">
-        <value>Normal - No Action</value>
+        <value>This is text for the purposes of testing</value>
       </associatedText>
       <organisation>f1555082-5dcd-409b-9038-e11d0de3ddef</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -3530,7 +3530,7 @@
       <enteredByUserInRole>65be06f8-b7af-4df6-b356-746098e3687f</enteredByUserInRole>
       <displayTerm />
       <associatedText associatedTextType="POST">
-        <value> Frusemide Tablets 40 mg od 28 tablets</value>
+        <value>Anonymised text</value>
       </associatedText>
       <organisation>f1555082-5dcd-409b-9038-e11d0de3ddef</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -3562,7 +3562,7 @@
       <enteredByUserInRole>725b79bc-36b1-408c-ae56-771b6b5d079e</enteredByUserInRole>
       <displayTerm />
       <associatedText associatedTextType="POST">
-        <value>Atorvastatin  Tablets  10 mg 56 tablet(s) TAKE ONE DAILY</value>
+        <value>No clinical information can be inferred from this text</value>
       </associatedText>
       <organisation>f1555082-5dcd-409b-9038-e11d0de3ddef</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -3604,7 +3604,7 @@
       </code>
       <displayTerm>Urine creatinine</displayTerm>
       <associatedText associatedTextType="POST">
-        <value> Diarrhoea on and off for 3 weeks with abdo cramps.No blood and no recent travel</value>
+        <value>This narrative has no real meaning</value>
       </associatedText>
       <organisation>f1555082-5dcd-409b-9038-e11d0de3ddef</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -3652,7 +3652,7 @@
       </code>
       <displayTerm>GFR calculated abbreviated MDRD</displayTerm>
       <associatedText associatedTextType="UC">
-        <value>Normal - No Action</value>
+        <value>This is text for the purposes of testing</value>
       </associatedText>
       <organisation>f1555082-5dcd-409b-9038-e11d0de3ddef</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -3897,7 +3897,7 @@
       </code>
       <displayTerm>Liver function test</displayTerm>
       <associatedText associatedTextType="UC">
-        <value>Normal - No Action</value>
+        <value>Anonymised text</value>
       </associatedText>
       <organisation>f1555082-5dcd-409b-9038-e11d0de3ddef</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -3985,7 +3985,7 @@
       </code>
       <displayTerm>Aspirin prophylaxis contra-indicated</displayTerm>
       <associatedText associatedTextType="POST">
-        <value> Continue to improve</value>
+        <value>No clinical information can be inferred from this text</value>
       </associatedText>
       <organisation>f1555082-5dcd-409b-9038-e11d0de3ddef</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -4004,7 +4004,7 @@
       </code>
       <displayTerm>GFR calculated abbreviated MDRD</displayTerm>
       <associatedText associatedTextType="UC">
-        <value>repeat 12m</value>
+        <value>This narrative has no real meaning</value>
       </associatedText>
       <organisation>f1555082-5dcd-409b-9038-e11d0de3ddef</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -4054,7 +4054,7 @@
       <enteredByUserInRole>725b79bc-36b1-408c-ae56-771b6b5d079e</enteredByUserInRole>
       <displayTerm />
       <associatedText associatedTextType="POST">
-        <value>Mebeverine Hydrochloride  M/R capsules  200 mg 30 capsule(s) ONE TO BE TAKEN TWICE DAILY</value>
+        <value>This is text for the purposes of testing</value>
       </associatedText>
       <organisation>f1555082-5dcd-409b-9038-e11d0de3ddef</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -4523,7 +4523,7 @@
       </code>
       <displayTerm>COPD recall letter</displayTerm>
       <associatedText associatedTextType="POST">
-        <value> Betamethasone Valerate Cream 0.1 % apply tds 60</value>
+        <value>Anonymised text</value>
       </associatedText>
       <organisation>f1555082-5dcd-409b-9038-e11d0de3ddef</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -4649,7 +4649,7 @@
       </code>
       <displayTerm>Urea and electrolytes</displayTerm>
       <associatedText associatedTextType="UC">
-        <value>Normal - No Action</value>
+        <value>No clinical information can be inferred from this text</value>
       </associatedText>
       <organisation>f1555082-5dcd-409b-9038-e11d0de3ddef</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -4966,7 +4966,7 @@
       </code>
       <displayTerm>Urine albumin:creatinine ratio</displayTerm>
       <associatedText associatedTextType="POST">
-        <value> Erythrocyte sedimentation rate, No action</value>
+        <value>This narrative has no real meaning</value>
       </associatedText>
       <organisation>f1555082-5dcd-409b-9038-e11d0de3ddef</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -5012,7 +5012,7 @@
       <enteredByUserInRole>725b79bc-36b1-408c-ae56-771b6b5d079e</enteredByUserInRole>
       <displayTerm />
       <associatedText associatedTextType="POST">
-        <value> Combivent shaky and giddy</value>
+        <value>This is text for the purposes of testing</value>
       </associatedText>
       <organisation>f1555082-5dcd-409b-9038-e11d0de3ddef</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -5303,7 +5303,7 @@
       </code>
       <displayTerm>HbA1c level (DCCT aligned)</displayTerm>
       <associatedText associatedTextType="UC">
-        <value>make appointment with gp</value>
+        <value>Anonymised text</value>
       </associatedText>
       <organisation>f1555082-5dcd-409b-9038-e11d0de3ddef</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -5439,7 +5439,7 @@
       </code>
       <displayTerm>Plasma glucose level</displayTerm>
       <associatedText associatedTextType="UC">
-        <value>known diabetic</value>
+        <value>No clinical information can be inferred from this text</value>
       </associatedText>
       <organisation>f1555082-5dcd-409b-9038-e11d0de3ddef</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -5475,7 +5475,7 @@
       <enteredByUserInRole>725b79bc-36b1-408c-ae56-771b6b5d079e</enteredByUserInRole>
       <displayTerm />
       <associatedText associatedTextType="POST">
-        <value> Diarrhoea on and off for 3 weeks with abdo cramps.No blood and no recent travel</value>
+        <value>This narrative has no real meaning</value>
       </associatedText>
       <organisation>f1555082-5dcd-409b-9038-e11d0de3ddef</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -5651,7 +5651,7 @@
       </code>
       <displayTerm>Urea and electrolytes</displayTerm>
       <associatedText associatedTextType="UC">
-        <value>Normal - No Action</value>
+        <value>This is text for the purposes of testing</value>
       </associatedText>
       <organisation>f1555082-5dcd-409b-9038-e11d0de3ddef</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -5707,7 +5707,7 @@
       </code>
       <displayTerm>HbA1c level (DCCT aligned)</displayTerm>
       <associatedText associatedTextType="UC">
-        <value>make appointment with gp</value>
+        <value>Anonymised text</value>
       </associatedText>
       <organisation>f1555082-5dcd-409b-9038-e11d0de3ddef</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -5773,7 +5773,7 @@
       <enteredByUserInRole>725b79bc-36b1-408c-ae56-771b6b5d079e</enteredByUserInRole>
       <displayTerm />
       <associatedText associatedTextType="POST">
-        <value>FBC, ESR, U and E, Glucose, LFTs, Serum Lipids, TFTs</value>
+        <value>No clinical information can be inferred from this text</value>
       </associatedText>
       <organisation>f1555082-5dcd-409b-9038-e11d0de3ddef</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -5918,7 +5918,7 @@
       </code>
       <displayTerm>Thyroid function test</displayTerm>
       <associatedText associatedTextType="UC">
-        <value>Normal - No Action</value>
+        <value>This narrative has no real meaning</value>
       </associatedText>
       <organisation>f1555082-5dcd-409b-9038-e11d0de3ddef</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -6205,7 +6205,7 @@
       <enteredByUserInRole>31ce31ad-00a8-4573-a35c-11e467606d6d</enteredByUserInRole>
       <displayTerm />
       <associatedText associatedTextType="POST">
-        <value> Could do with ENT examination</value>
+        <value>This is text for the purposes of testing</value>
       </associatedText>
       <organisation>f1555082-5dcd-409b-9038-e11d0de3ddef</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -6328,7 +6328,7 @@
       </code>
       <displayTerm>TOTAL/HDL CHOL RATIO</displayTerm>
       <associatedText associatedTextType="POST">
-        <value> No extension and not much other movement</value>
+        <value>Anonymised text</value>
       </associatedText>
       <organisation>f1555082-5dcd-409b-9038-e11d0de3ddef</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -6353,7 +6353,7 @@
       </code>
       <displayTerm>Depression screening using questions</displayTerm>
       <associatedText associatedTextType="POST">
-        <value> Pneumovax 11 Injection  25 mcg 0.5 ml 1 vial(s)</value>
+        <value>No clinical information can be inferred from this text</value>
       </associatedText>
       <organisation>f1555082-5dcd-409b-9038-e11d0de3ddef</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -6708,7 +6708,7 @@
       </code>
       <displayTerm>Prescription not collected</displayTerm>
       <associatedText associatedTextType="POST">
-        <value> Better but still quite wheezy</value>
+        <value>This narrative has no real meaning</value>
       </associatedText>
       <organisation>f1555082-5dcd-409b-9038-e11d0de3ddef</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -6724,7 +6724,7 @@
       <enteredByUserInRole>725b79bc-36b1-408c-ae56-771b6b5d079e</enteredByUserInRole>
       <displayTerm />
       <associatedText associatedTextType="POST">
-        <value>Optium Plus  Blood Glucose Electrodes   50 strip AS DIRECTED</value>
+        <value>This is text for the purposes of testing</value>
       </associatedText>
       <organisation>f1555082-5dcd-409b-9038-e11d0de3ddef</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -6818,7 +6818,7 @@
       </code>
       <displayTerm>GFR calculated abbreviated MDRD</displayTerm>
       <associatedText associatedTextType="UC">
-        <value>Normal - No Action</value>
+        <value>Anonymised text</value>
       </associatedText>
       <organisation>f1555082-5dcd-409b-9038-e11d0de3ddef</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -6862,7 +6862,7 @@
       <enteredByUserInRole>725b79bc-36b1-408c-ae56-771b6b5d079e</enteredByUserInRole>
       <displayTerm />
       <associatedText associatedTextType="POST">
-        <value>Simvastatin  Tablets  40 mg 56 tablet TAKE ONE DAILY</value>
+        <value>No clinical information can be inferred from this text</value>
       </associatedText>
       <organisation>f1555082-5dcd-409b-9038-e11d0de3ddef</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -6881,7 +6881,7 @@
       </code>
       <displayTerm>Primary prevention</displayTerm>
       <associatedText associatedTextType="POST">
-        <value> Bad night last night, SOB, productive of white frowthy sputum, worse on lying flat</value>
+        <value>This narrative has no real meaning</value>
       </associatedText>
       <organisation>f1555082-5dcd-409b-9038-e11d0de3ddef</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -6902,7 +6902,7 @@
       </code>
       <displayTerm>Pneumococcal vaccination given</displayTerm>
       <associatedText associatedTextType="POST">
-        <value> Try 10 days oral steroids and see friday week</value>
+        <value>This is text for the purposes of testing</value>
       </associatedText>
       <organisation>f1555082-5dcd-409b-9038-e11d0de3ddef</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -7009,7 +7009,7 @@
       </code>
       <displayTerm>Full blood count - FBC</displayTerm>
       <associatedText associatedTextType="UC">
-        <value>Normal - No Action</value>
+        <value>Anonymised text</value>
       </associatedText>
       <organisation>f1555082-5dcd-409b-9038-e11d0de3ddef</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -7110,7 +7110,7 @@
       <enteredByUserInRole>65be06f8-b7af-4df6-b356-746098e3687f</enteredByUserInRole>
       <displayTerm />
       <associatedText associatedTextType="POST">
-        <value>Urine microalbumin</value>
+        <value>No clinical information can be inferred from this text</value>
       </associatedText>
       <organisation>f1555082-5dcd-409b-9038-e11d0de3ddef</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -7226,7 +7226,7 @@
       </code>
       <displayTerm>GFR calculated abbreviated MDRD</displayTerm>
       <associatedText associatedTextType="UC">
-        <value>Normal - No Action</value>
+        <value>This narrative has no real meaning</value>
       </associatedText>
       <organisation>f1555082-5dcd-409b-9038-e11d0de3ddef</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -7382,7 +7382,7 @@
       <enteredByUserInRole>725b79bc-36b1-408c-ae56-771b6b5d079e</enteredByUserInRole>
       <displayTerm />
       <associatedText associatedTextType="POST">
-        <value>Skin, FBC, Glucose, U and E, LFTs, Serum Lipids, HbA1C</value>
+        <value>This is text for the purposes of testing</value>
       </associatedText>
       <organisation>f1555082-5dcd-409b-9038-e11d0de3ddef</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -7675,7 +7675,7 @@
       <enteredByUserInRole>725b79bc-36b1-408c-ae56-771b6b5d079e</enteredByUserInRole>
       <displayTerm />
       <associatedText associatedTextType="POST">
-        <value> Food regurgitation discomfort</value>
+        <value>Anonymised text</value>
       </associatedText>
       <organisation>f1555082-5dcd-409b-9038-e11d0de3ddef</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -8120,7 +8120,7 @@
       </code>
       <displayTerm>Urine albumin:creatinine ratio</displayTerm>
       <associatedText associatedTextType="POST">
-        <value> Frusemide Tablets 40 mg od 28 tablets</value>
+        <value>No clinical information can be inferred from this text</value>
       </associatedText>
       <organisation>f1555082-5dcd-409b-9038-e11d0de3ddef</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -8411,7 +8411,7 @@
       <enteredByUserInRole>725b79bc-36b1-408c-ae56-771b6b5d079e</enteredByUserInRole>
       <displayTerm />
       <associatedText associatedTextType="POST">
-        <value>Aspirin  Dispersible tablets  75 mg 56 tablet(s) 1 DAILY</value>
+        <value>This narrative has no real meaning</value>
       </associatedText>
       <organisation>f1555082-5dcd-409b-9038-e11d0de3ddef</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -8459,7 +8459,7 @@
       </code>
       <displayTerm>HbA1c level (DCCT aligned)</displayTerm>
       <associatedText associatedTextType="UC">
-        <value>medication only recently been increased.</value>
+        <value>This is text for the purposes of testing</value>
       </associatedText>
       <organisation>f1555082-5dcd-409b-9038-e11d0de3ddef</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -8622,7 +8622,7 @@
       </code>
       <displayTerm>Blood glucose level</displayTerm>
       <associatedText associatedTextType="UC">
-        <value>known diabetic</value>
+        <value>Anonymised text</value>
       </associatedText>
       <organisation>f1555082-5dcd-409b-9038-e11d0de3ddef</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -8764,7 +8764,7 @@
       </code>
       <displayTerm>Full blood count - FBC</displayTerm>
       <associatedText associatedTextType="UC">
-        <value>Normal - No Action</value>
+        <value>No clinical information can be inferred from this text</value>
       </associatedText>
       <organisation>f1555082-5dcd-409b-9038-e11d0de3ddef</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -9031,7 +9031,7 @@
       </code>
       <displayTerm>Havrix reminder</displayTerm>
       <associatedText associatedTextType="POST">
-        <value> Refer to specialist</value>
+        <value>This narrative has no real meaning</value>
       </associatedText>
       <organisation>f1555082-5dcd-409b-9038-e11d0de3ddef</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -9137,7 +9137,7 @@
       </code>
       <displayTerm>Type 2 diabetes mellitus</displayTerm>
       <associatedText associatedTextType="POST">
-        <value> Going to pain clinic</value>
+        <value>This is text for the purposes of testing</value>
       </associatedText>
       <organisation>f1555082-5dcd-409b-9038-e11d0de3ddef</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -9302,7 +9302,7 @@
       </code>
       <displayTerm>Serum lipids</displayTerm>
       <associatedText associatedTextType="UC">
-        <value>Normal - No Action</value>
+        <value>Anonymised text</value>
       </associatedText>
       <organisation>f1555082-5dcd-409b-9038-e11d0de3ddef</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -9346,7 +9346,7 @@
       </code>
       <displayTerm>Letter encounter</displayTerm>
       <associatedText associatedTextType="POST">
-        <value> Please repeat ENT exam in view of blood</value>
+        <value>No clinical information can be inferred from this text</value>
       </associatedText>
       <organisation>f1555082-5dcd-409b-9038-e11d0de3ddef</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -9551,7 +9551,7 @@
       </code>
       <displayTerm>Liver function test</displayTerm>
       <associatedText associatedTextType="UC">
-        <value>known diabetic</value>
+        <value>This narrative has no real meaning</value>
       </associatedText>
       <organisation>f1555082-5dcd-409b-9038-e11d0de3ddef</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -9723,7 +9723,7 @@
       </code>
       <displayTerm>Thyroid function test</displayTerm>
       <associatedText associatedTextType="UC">
-        <value>Normal - No Action</value>
+        <value>This is text for the purposes of testing</value>
       </associatedText>
       <organisation>f1555082-5dcd-409b-9038-e11d0de3ddef</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -9981,7 +9981,7 @@
       </code>
       <displayTerm>Suprathreshold Program</displayTerm>
       <associatedText associatedTextType="POST">
-        <value> Reversibility with Salamol EB 200mcgs</value>
+        <value>Anonymised text</value>
       </associatedText>
       <organisation>f1555082-5dcd-409b-9038-e11d0de3ddef</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -10106,7 +10106,7 @@
       <enteredByUserInRole>31ce31ad-00a8-4573-a35c-11e467606d6d</enteredByUserInRole>
       <displayTerm />
       <associatedText associatedTextType="POST">
-        <value> Generally OK, remains SOB</value>
+        <value>No clinical information can be inferred from this text</value>
       </associatedText>
       <organisation>f1555082-5dcd-409b-9038-e11d0de3ddef</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -10568,7 +10568,7 @@
       </code>
       <displayTerm>Plasma fasting glucose level</displayTerm>
       <associatedText associatedTextType="UC">
-        <value>known diabetic wait for hba1c</value>
+        <value>This narrative has no real meaning</value>
       </associatedText>
       <organisation>f1555082-5dcd-409b-9038-e11d0de3ddef</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -10621,7 +10621,7 @@
       </code>
       <displayTerm>Serum lipids</displayTerm>
       <associatedText associatedTextType="UC">
-        <value>Normal - No Action</value>
+        <value>This is text for the purposes of testing</value>
       </associatedText>
       <organisation>f1555082-5dcd-409b-9038-e11d0de3ddef</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -10894,7 +10894,7 @@
       </code>
       <displayTerm>Thyroid function test</displayTerm>
       <associatedText associatedTextType="UC">
-        <value>Normal - No Action</value>
+        <value>Anonymised text</value>
       </associatedText>
       <organisation>f1555082-5dcd-409b-9038-e11d0de3ddef</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -10950,7 +10950,7 @@
       </code>
       <displayTerm>Serum lipids</displayTerm>
       <associatedText associatedTextType="UC">
-        <value>Normal - No Action</value>
+        <value>No clinical information can be inferred from this text</value>
       </associatedText>
       <organisation>f1555082-5dcd-409b-9038-e11d0de3ddef</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -11079,7 +11079,7 @@
       </code>
       <displayTerm>Urine albumin:creatinine ratio</displayTerm>
       <associatedText associatedTextType="UC">
-        <value>Normal - No Action</value>
+        <value>This narrative has no real meaning</value>
       </associatedText>
       <organisation>f1555082-5dcd-409b-9038-e11d0de3ddef</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -11158,7 +11158,7 @@
       </code>
       <displayTerm>Urine albumin:creatinine ratio</displayTerm>
       <associatedText associatedTextType="UC">
-        <value>Normal - No Action</value>
+        <value>This is text for the purposes of testing</value>
       </associatedText>
       <organisation>f1555082-5dcd-409b-9038-e11d0de3ddef</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -11348,7 +11348,7 @@
       </code>
       <displayTerm>Urine microalbumin</displayTerm>
       <associatedText associatedTextType="POST">
-        <value> Betamethasone Valerate Cream 0.1 % apply tds 60</value>
+        <value>Anonymised text</value>
       </associatedText>
       <organisation>f1555082-5dcd-409b-9038-e11d0de3ddef</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -11364,7 +11364,7 @@
       <enteredByUserInRole>725b79bc-36b1-408c-ae56-771b6b5d079e</enteredByUserInRole>
       <displayTerm />
       <associatedText associatedTextType="POST">
-        <value> Follow up Medication Review</value>
+        <value>No clinical information can be inferred from this text</value>
       </associatedText>
       <organisation>f1555082-5dcd-409b-9038-e11d0de3ddef</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -11845,7 +11845,7 @@
       </code>
       <displayTerm>Full blood count - FBC</displayTerm>
       <associatedText associatedTextType="UC">
-        <value>Normal - No Action</value>
+        <value>This narrative has no real meaning</value>
       </associatedText>
       <organisation>f1555082-5dcd-409b-9038-e11d0de3ddef</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -12399,7 +12399,7 @@
       </code>
       <displayTerm>GFR calculated abbreviated MDRD</displayTerm>
       <associatedText associatedTextType="UC">
-        <value>stage 2 kidney disease  no action</value>
+        <value>This is text for the purposes of testing</value>
       </associatedText>
       <organisation>f1555082-5dcd-409b-9038-e11d0de3ddef</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -12421,7 +12421,7 @@
       <enteredByUserInRole>725b79bc-36b1-408c-ae56-771b6b5d079e</enteredByUserInRole>
       <displayTerm />
       <associatedText associatedTextType="POST">
-        <value> Diarrhoea on and off for 3 weeks with abdo cramps.No blood and no recent travel</value>
+        <value>Anonymised text</value>
       </associatedText>
       <organisation>f1555082-5dcd-409b-9038-e11d0de3ddef</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -12495,7 +12495,7 @@
       <enteredByUserInRole>725b79bc-36b1-408c-ae56-771b6b5d079e</enteredByUserInRole>
       <displayTerm />
       <associatedText associatedTextType="POST">
-        <value> Check U&amp;amp;E today please</value>
+        <value>No clinical information can be inferred from this text</value>
       </associatedText>
       <organisation>f1555082-5dcd-409b-9038-e11d0de3ddef</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -12537,7 +12537,7 @@
       </code>
       <displayTerm>Referral Letter</displayTerm>
       <associatedText associatedTextType="POST">
-        <value> Check U&amp;amp;E today please</value>
+        <value>This narrative has no real meaning</value>
       </associatedText>
       <organisation>f1555082-5dcd-409b-9038-e11d0de3ddef</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -12768,7 +12768,7 @@
       <enteredByUserInRole>3aea0b00-c8c7-44e8-85ec-15df38bdcee9</enteredByUserInRole>
       <displayTerm />
       <associatedText associatedTextType="POST">
-        <value> Gradually improving, still some blood (ENT exam next week)</value>
+        <value>This is text for the purposes of testing</value>
       </associatedText>
       <organisation>f1555082-5dcd-409b-9038-e11d0de3ddef</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -12837,7 +12837,7 @@
       <enteredByUserInRole>3aea0b00-c8c7-44e8-85ec-15df38bdcee9</enteredByUserInRole>
       <displayTerm />
       <associatedText associatedTextType="POST">
-        <value>Medisense Optium Plus  Blood Glucose Electrodes   50 test strip(s) USE AS DIRECTED</value>
+        <value>Anonymised text</value>
       </associatedText>
       <organisation>f1555082-5dcd-409b-9038-e11d0de3ddef</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -12896,7 +12896,7 @@
       </code>
       <displayTerm>Lipoprotein electrophoresis</displayTerm>
       <associatedText associatedTextType="UC">
-        <value>REPEAT 12M</value>
+        <value>No clinical information can be inferred from this text</value>
       </associatedText>
       <organisation>f1555082-5dcd-409b-9038-e11d0de3ddef</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -12974,7 +12974,7 @@
       <enteredByUserInRole>725b79bc-36b1-408c-ae56-771b6b5d079e</enteredByUserInRole>
       <displayTerm />
       <associatedText associatedTextType="POST">
-        <value> Try 10 days oral steroids and see friday week</value>
+        <value>This narrative has no real meaning</value>
       </associatedText>
       <organisation>f1555082-5dcd-409b-9038-e11d0de3ddef</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -13114,7 +13114,7 @@
       </code>
       <displayTerm>General Letter</displayTerm>
       <associatedText associatedTextType="POST">
-        <value> Chest OK. Pretty good at the moment</value>
+        <value>This is text for the purposes of testing</value>
       </associatedText>
       <organisation>f1555082-5dcd-409b-9038-e11d0de3ddef</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -13132,7 +13132,7 @@
       <enteredByUserInRole>3aea0b00-c8c7-44e8-85ec-15df38bdcee9</enteredByUserInRole>
       <displayTerm />
       <associatedText associatedTextType="POST">
-        <value>Medisense Thin  Lancets  type a, 0.36 mm/28 gauge 200 lancet(s) USE AS DIRECTED</value>
+        <value>Anonymised text</value>
       </associatedText>
       <organisation>f1555082-5dcd-409b-9038-e11d0de3ddef</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -13148,7 +13148,7 @@
       <enteredByUserInRole>3aea0b00-c8c7-44e8-85ec-15df38bdcee9</enteredByUserInRole>
       <displayTerm />
       <associatedText associatedTextType="POST">
-        <value>Pneumovax 11  Injection  25 micrograms/0.5 ml vial 1 vial(s) 1</value>
+        <value>No clinical information can be inferred from this text</value>
       </associatedText>
       <organisation>f1555082-5dcd-409b-9038-e11d0de3ddef</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -13199,7 +13199,7 @@
       </code>
       <displayTerm>Urea and electrolytes</displayTerm>
       <associatedText associatedTextType="UC">
-        <value>Normal - No Action</value>
+        <value>This narrative has no real meaning</value>
       </associatedText>
       <organisation>f1555082-5dcd-409b-9038-e11d0de3ddef</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -13268,7 +13268,7 @@
       <enteredByUserInRole>725b79bc-36b1-408c-ae56-771b6b5d079e</enteredByUserInRole>
       <displayTerm />
       <associatedText associatedTextType="POST">
-        <value>FBC, U and E, Glucose, LFTs, Serum Lipids, Bone Profile, TFTs</value>
+        <value>This is text for the purposes of testing</value>
       </associatedText>
       <organisation>f1555082-5dcd-409b-9038-e11d0de3ddef</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -13841,7 +13841,7 @@
       </code>
       <displayTerm>Liver function test</displayTerm>
       <associatedText associatedTextType="UC">
-        <value>Normal - No Action</value>
+        <value>Anonymised text</value>
       </associatedText>
       <organisation>f1555082-5dcd-409b-9038-e11d0de3ddef</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -13899,7 +13899,7 @@
       </code>
       <displayTerm>Type 2 diabetes mellitus</displayTerm>
       <associatedText associatedTextType="POST">
-        <value> Diarrhoea on and off for 3 weeks with abdo cramps.No blood and no recent travel</value>
+        <value>No clinical information can be inferred from this text</value>
       </associatedText>
       <organisation>f1555082-5dcd-409b-9038-e11d0de3ddef</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -14241,7 +14241,7 @@
       </code>
       <displayTerm>Diabetes monitoring 1st letter</displayTerm>
       <associatedText associatedTextType="POST">
-        <value> To come in 1 week time</value>
+        <value>This narrative has no real meaning</value>
       </associatedText>
       <organisation>f1555082-5dcd-409b-9038-e11d0de3ddef</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -14312,7 +14312,7 @@
       </code>
       <displayTerm>Type 2 diabetes mellitus</displayTerm>
       <associatedText associatedTextType="POST">
-        <value> Going to pain clinic</value>
+        <value>This is text for the purposes of testing</value>
       </associatedText>
       <organisation>f1555082-5dcd-409b-9038-e11d0de3ddef</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -14511,7 +14511,7 @@
       </code>
       <displayTerm>Liver function test</displayTerm>
       <associatedText associatedTextType="UC">
-        <value>Normal - No Action</value>
+        <value>Anonymised text</value>
       </associatedText>
       <organisation>f1555082-5dcd-409b-9038-e11d0de3ddef</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -14639,7 +14639,7 @@
       </code>
       <displayTerm>Thyroid function test</displayTerm>
       <associatedText associatedTextType="UC">
-        <value>Normal - No Action</value>
+        <value>No clinical information can be inferred from this text</value>
       </associatedText>
       <organisation>f1555082-5dcd-409b-9038-e11d0de3ddef</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -14894,7 +14894,7 @@
       <enteredByUserInRole>725b79bc-36b1-408c-ae56-771b6b5d079e</enteredByUserInRole>
       <displayTerm />
       <associatedText associatedTextType="POST">
-        <value>Thin  Lancets  type a, 0.36 mm/28 gauge 200 lancet AS DIRECTED</value>
+        <value>This narrative has no real meaning</value>
       </associatedText>
       <organisation>f1555082-5dcd-409b-9038-e11d0de3ddef</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -14913,7 +14913,7 @@
       </code>
       <displayTerm>Reassurance given</displayTerm>
       <associatedText associatedTextType="POST">
-        <value> Please repeat ENT exam in view of blood</value>
+        <value>This is text for the purposes of testing</value>
       </associatedText>
       <organisation>f1555082-5dcd-409b-9038-e11d0de3ddef</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -14993,7 +14993,7 @@
       </code>
       <displayTerm>Liver function test</displayTerm>
       <associatedText associatedTextType="UC">
-        <value>Normal - No Action</value>
+        <value>Anonymised text</value>
       </associatedText>
       <organisation>f1555082-5dcd-409b-9038-e11d0de3ddef</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -15205,7 +15205,7 @@
       </code>
       <displayTerm>Patient feels well</displayTerm>
       <associatedText associatedTextType="POST">
-        <value> Still feels like thick mucous from chest - causing choking</value>
+        <value>No clinical information can be inferred from this text</value>
       </associatedText>
       <organisation>f1555082-5dcd-409b-9038-e11d0de3ddef</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -15545,7 +15545,7 @@
       <enteredByUserInRole>3aea0b00-c8c7-44e8-85ec-15df38bdcee9</enteredByUserInRole>
       <displayTerm />
       <associatedText associatedTextType="POST">
-        <value> BT taken</value>
+        <value>This narrative has no real meaning</value>
       </associatedText>
       <organisation>f1555082-5dcd-409b-9038-e11d0de3ddef</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -15702,7 +15702,7 @@
       <enteredByUserInRole>725b79bc-36b1-408c-ae56-771b6b5d079e</enteredByUserInRole>
       <displayTerm />
       <associatedText associatedTextType="POST">
-        <value>Tears Naturale  Eye drops   15 ml 2DROPS TDS</value>
+        <value>This is text for the purposes of testing</value>
       </associatedText>
       <organisation>f1555082-5dcd-409b-9038-e11d0de3ddef</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -15911,7 +15911,7 @@
       <enteredByUserInRole>725b79bc-36b1-408c-ae56-771b6b5d079e</enteredByUserInRole>
       <displayTerm />
       <associatedText associatedTextType="POST">
-        <value>Trimethoprim  Tablets  200 mg 14 tablet(s) 1BD</value>
+        <value>Anonymised text</value>
       </associatedText>
       <organisation>f1555082-5dcd-409b-9038-e11d0de3ddef</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -16013,7 +16013,7 @@
       <enteredByUserInRole>725b79bc-36b1-408c-ae56-771b6b5d079e</enteredByUserInRole>
       <displayTerm />
       <associatedText associatedTextType="POST">
-        <value>FBC, U and E, Glucose, LFTs, Serum Lipids, HbA1C</value>
+        <value>No clinical information can be inferred from this text</value>
       </associatedText>
       <organisation>f1555082-5dcd-409b-9038-e11d0de3ddef</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -16032,7 +16032,7 @@
       </code>
       <displayTerm>Under care of ophthalmologist</displayTerm>
       <associatedText associatedTextType="POST">
-        <value> Still creps but much less now</value>
+        <value>This narrative has no real meaning</value>
       </associatedText>
       <organisation>f1555082-5dcd-409b-9038-e11d0de3ddef</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -16051,7 +16051,7 @@
       </code>
       <displayTerm>Type 2 diabetes mellitus</displayTerm>
       <associatedText associatedTextType="POST">
-        <value> Combivent shaky and giddy</value>
+        <value>This is text for the purposes of testing</value>
       </associatedText>
       <organisation>f1555082-5dcd-409b-9038-e11d0de3ddef</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -16072,7 +16072,7 @@
       </code>
       <displayTerm>Bone profile</displayTerm>
       <associatedText associatedTextType="UC">
-        <value>Normal - No Action</value>
+        <value>Anonymised text</value>
       </associatedText>
       <organisation>f1555082-5dcd-409b-9038-e11d0de3ddef</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -16224,7 +16224,7 @@
       <enteredByUserInRole>725b79bc-36b1-408c-ae56-771b6b5d079e</enteredByUserInRole>
       <displayTerm />
       <associatedText associatedTextType="POST">
-        <value> Reversibility with Salamol EB 200mcgs</value>
+        <value>No clinical information can be inferred from this text</value>
       </associatedText>
       <organisation>f1555082-5dcd-409b-9038-e11d0de3ddef</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -16340,7 +16340,7 @@
       </code>
       <displayTerm>Letter encounter</displayTerm>
       <associatedText associatedTextType="POST">
-        <value> Erythrocyte sedimentation rate, No action</value>
+        <value>This narrative has no real meaning</value>
       </associatedText>
       <organisation>f1555082-5dcd-409b-9038-e11d0de3ddef</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -16458,7 +16458,7 @@
       </code>
       <displayTerm>Full blood count - FBC</displayTerm>
       <associatedText associatedTextType="UC">
-        <value>Normal - No Action</value>
+        <value>This is text for the purposes of testing</value>
       </associatedText>
       <organisation>f1555082-5dcd-409b-9038-e11d0de3ddef</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -16698,7 +16698,7 @@
       </code>
       <displayTerm>HbA1c level (DCCT aligned)</displayTerm>
       <associatedText associatedTextType="UC">
-        <value>Normal - No Action</value>
+        <value>Anonymised text</value>
       </associatedText>
       <organisation>f1555082-5dcd-409b-9038-e11d0de3ddef</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -16975,7 +16975,7 @@
       </code>
       <displayTerm>Urine microalbumin</displayTerm>
       <associatedText associatedTextType="POST">
-        <value> Still creps but much less now</value>
+        <value>No clinical information can be inferred from this text</value>
       </associatedText>
       <organisation>f1555082-5dcd-409b-9038-e11d0de3ddef</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -17208,7 +17208,7 @@
       <enteredByUserInRole>31ce31ad-00a8-4573-a35c-11e467606d6d</enteredByUserInRole>
       <displayTerm />
       <associatedText associatedTextType="POST">
-        <value>Clotrimazole  Cream  1 % 50 gram AS DIRECTED</value>
+        <value>This narrative has no real meaning</value>
       </associatedText>
       <organisation>f1555082-5dcd-409b-9038-e11d0de3ddef</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -17344,7 +17344,7 @@
       </code>
       <displayTerm>Urine albumin:creatinine ratio</displayTerm>
       <associatedText associatedTextType="UC">
-        <value>Repeat</value>
+        <value>This is text for the purposes of testing</value>
       </associatedText>
       <organisation>f1555082-5dcd-409b-9038-e11d0de3ddef</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -17369,7 +17369,7 @@
       </code>
       <displayTerm>Liver function test</displayTerm>
       <associatedText associatedTextType="UC">
-        <value>Normal - No Action</value>
+        <value>Anonymised text</value>
       </associatedText>
       <organisation>f1555082-5dcd-409b-9038-e11d0de3ddef</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -17442,7 +17442,7 @@
       </code>
       <displayTerm>Plasma fasting glucose level</displayTerm>
       <associatedText associatedTextType="UC">
-        <value>known diabetic WAIT FOR HBA1C</value>
+        <value>No clinical information can be inferred from this text</value>
       </associatedText>
       <organisation>f1555082-5dcd-409b-9038-e11d0de3ddef</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -17462,7 +17462,7 @@
       <enteredByUserInRole>725b79bc-36b1-408c-ae56-771b6b5d079e</enteredByUserInRole>
       <displayTerm />
       <associatedText associatedTextType="POST">
-        <value>Pioglitazone And Metformin  Tablets  15 mg + 850 mg 112 tablet 1BD</value>
+        <value>This narrative has no real meaning</value>
       </associatedText>
       <organisation>f1555082-5dcd-409b-9038-e11d0de3ddef</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -17673,7 +17673,7 @@
       </code>
       <displayTerm>Urea and electrolytes</displayTerm>
       <associatedText associatedTextType="UC">
-        <value>Normal - No Action</value>
+        <value>This is text for the purposes of testing</value>
       </associatedText>
       <organisation>f1555082-5dcd-409b-9038-e11d0de3ddef</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -17827,7 +17827,7 @@
       </code>
       <displayTerm>HbA1c level (DCCT aligned)</displayTerm>
       <associatedText associatedTextType="UC">
-        <value>make appointment with gp</value>
+        <value>Anonymised text</value>
       </associatedText>
       <organisation>f1555082-5dcd-409b-9038-e11d0de3ddef</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -17995,7 +17995,7 @@
       </code>
       <displayTerm>Urea and electrolytes</displayTerm>
       <associatedText associatedTextType="UC">
-        <value>Normal - No Action</value>
+        <value>No clinical information can be inferred from this text</value>
       </associatedText>
       <organisation>f1555082-5dcd-409b-9038-e11d0de3ddef</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -18234,7 +18234,7 @@
       <enteredByUserInRole>725b79bc-36b1-408c-ae56-771b6b5d079e</enteredByUserInRole>
       <displayTerm />
       <associatedText associatedTextType="POST">
-        <value> Frusemide Tablets 40 mg od 28 tablets</value>
+        <value>This narrative has no real meaning</value>
       </associatedText>
       <organisation>f1555082-5dcd-409b-9038-e11d0de3ddef</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>

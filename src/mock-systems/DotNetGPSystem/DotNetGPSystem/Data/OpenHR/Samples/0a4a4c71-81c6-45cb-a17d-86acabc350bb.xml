@@ -685,7 +685,7 @@
       </code>
       <displayTerm>2nd hepatitis B vaccination</displayTerm>
       <associatedText associatedTextType="POST">
-        <value> Awaiting MRI scan to look at anatomy</value>
+        <value>This is text for the purposes of testing</value>
       </associatedText>
       <organisation>a8063fdf-dfa6-406d-a296-dfb9730c801f</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -704,7 +704,7 @@
       </code>
       <displayTerm>1st hepatitis B vaccination</displayTerm>
       <associatedText associatedTextType="POST">
-        <value> Refer to specialist</value>
+        <value>Anonymised text</value>
       </associatedText>
       <organisation>a8063fdf-dfa6-406d-a296-dfb9730c801f</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -720,7 +720,7 @@
       <enteredByUserInRole>3aea0b00-c8c7-44e8-85ec-15df38bdcee9</enteredByUserInRole>
       <displayTerm />
       <associatedText associatedTextType="POST">
-        <value>Hepatitis B Surface Antigen  Prefilled syringe  20 micrograms/1 ml 1 pre-filled syrg(s) 1</value>
+        <value>No clinical information can be inferred from this text</value>
       </associatedText>
       <organisation>a8063fdf-dfa6-406d-a296-dfb9730c801f</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -739,7 +739,7 @@
       </code>
       <displayTerm>3rd hepatitis B vaccination</displayTerm>
       <associatedText associatedTextType="POST">
-        <value> Diarrhoea on and off for 3 weeks with abdo cramps.No blood and no recent travel</value>
+        <value>This narrative has no real meaning</value>
       </associatedText>
       <organisation>a8063fdf-dfa6-406d-a296-dfb9730c801f</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -758,7 +758,7 @@
       </code>
       <displayTerm>HBsAg antibody level</displayTerm>
       <associatedText associatedTextType="UC">
-        <value>Normal - No Action</value>
+        <value>This is text for the purposes of testing</value>
       </associatedText>
       <organisation>a8063fdf-dfa6-406d-a296-dfb9730c801f</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -835,7 +835,7 @@
       </code>
       <displayTerm>Appointment Cancellation</displayTerm>
       <associatedText associatedTextType="POST">
-        <value> To come in 1 week time</value>
+        <value>Anonymised text</value>
       </associatedText>
       <organisation>a8063fdf-dfa6-406d-a296-dfb9730c801f</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -911,7 +911,7 @@
       </code>
       <displayTerm>Seen in hospital casualty</displayTerm>
       <associatedText associatedTextType="POST">
-        <value> Physio for a while</value>
+        <value>No clinical information can be inferred from this text</value>
       </associatedText>
       <organisation>a8063fdf-dfa6-406d-a296-dfb9730c801f</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -930,7 +930,7 @@
       </code>
       <displayTerm>Healthy Lifestyle letter sent to patient</displayTerm>
       <associatedText associatedTextType="POST">
-        <value> Needs bloods etc</value>
+        <value>This narrative has no real meaning</value>
       </associatedText>
       <organisation>a8063fdf-dfa6-406d-a296-dfb9730c801f</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -999,7 +999,7 @@
       </code>
       <displayTerm>No known allergies</displayTerm>
       <associatedText associatedTextType="POST">
-        <value> Refer to specialist</value>
+        <value>This is text for the purposes of testing</value>
       </associatedText>
       <organisation>a8063fdf-dfa6-406d-a296-dfb9730c801f</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -1057,7 +1057,7 @@
       </code>
       <displayTerm>Radiology Report</displayTerm>
       <associatedText associatedTextType="POST">
-        <value> Generally OK, remains SOB</value>
+        <value>Anonymised text</value>
       </associatedText>
       <organisation>a8063fdf-dfa6-406d-a296-dfb9730c801f</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -1126,7 +1126,7 @@
       <enteredByUserInRole>3aea0b00-c8c7-44e8-85ec-15df38bdcee9</enteredByUserInRole>
       <displayTerm />
       <associatedText associatedTextType="POST">
-        <value> Diarrhoea disappeared</value>
+        <value>No clinical information can be inferred from this text</value>
       </associatedText>
       <organisation>a8063fdf-dfa6-406d-a296-dfb9730c801f</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -1182,7 +1182,7 @@
       </code>
       <displayTerm>Home visit admin</displayTerm>
       <associatedText associatedTextType="POST">
-        <value> Betamethasone Valerate Cream 0.1 % apply tds 60</value>
+        <value>This narrative has no real meaning</value>
       </associatedText>
       <organisation>a8063fdf-dfa6-406d-a296-dfb9730c801f</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -1198,7 +1198,7 @@
       <enteredByUserInRole>3aea0b00-c8c7-44e8-85ec-15df38bdcee9</enteredByUserInRole>
       <displayTerm />
       <associatedText associatedTextType="POST">
-        <value> Frusemide Tablets 40 mg od 28 tablets</value>
+        <value>This is text for the purposes of testing</value>
       </associatedText>
       <organisation>a8063fdf-dfa6-406d-a296-dfb9730c801f</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -1217,7 +1217,7 @@
       </code>
       <displayTerm>Spirometry</displayTerm>
       <associatedText associatedTextType="POST">
-        <value> Physio for a while</value>
+        <value>Anonymised text</value>
       </associatedText>
       <organisation>a8063fdf-dfa6-406d-a296-dfb9730c801f</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -1235,7 +1235,7 @@
       <enteredByUserInRole>3aea0b00-c8c7-44e8-85ec-15df38bdcee9</enteredByUserInRole>
       <displayTerm />
       <associatedText associatedTextType="POST">
-        <value> Still feels like thick mucous from chest - causing choking</value>
+        <value>No clinical information can be inferred from this text</value>
       </associatedText>
       <organisation>a8063fdf-dfa6-406d-a296-dfb9730c801f</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -1254,7 +1254,7 @@
       </code>
       <displayTerm>24hour BP</displayTerm>
       <associatedText associatedTextType="POST">
-        <value> Generalised non-specific abdominal tenderness</value>
+        <value>This narrative has no real meaning</value>
       </associatedText>
       <organisation>a8063fdf-dfa6-406d-a296-dfb9730c801f</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -1272,7 +1272,7 @@
       <enteredByUserInRole>3aea0b00-c8c7-44e8-85ec-15df38bdcee9</enteredByUserInRole>
       <displayTerm />
       <associatedText associatedTextType="POST">
-        <value>Hepatitis B Surface Antigen  Prefilled syringe  20 micrograms/1 ml 1 pre-filled syrg(s) 1</value>
+        <value>This is text for the purposes of testing</value>
       </associatedText>
       <organisation>a8063fdf-dfa6-406d-a296-dfb9730c801f</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -1291,7 +1291,7 @@
       </code>
       <displayTerm>Patient feels well</displayTerm>
       <associatedText associatedTextType="POST">
-        <value> Please repeat ENT exam in view of blood</value>
+        <value>Anonymised text</value>
       </associatedText>
       <organisation>a8063fdf-dfa6-406d-a296-dfb9730c801f</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -1365,7 +1365,7 @@
       </code>
       <displayTerm>Multidisciplary Discharge Summary</displayTerm>
       <associatedText associatedTextType="POST">
-        <value> Feeling weak</value>
+        <value>No clinical information can be inferred from this text</value>
       </associatedText>
       <organisation>a8063fdf-dfa6-406d-a296-dfb9730c801f</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>

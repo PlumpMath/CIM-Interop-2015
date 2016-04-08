@@ -937,7 +937,7 @@
       </code>
       <displayTerm>Cerv.smear: borderline changes</displayTerm>
       <associatedText associatedTextType="POST">
-        <value> To come in 1 week time</value>
+        <value>This is text for the purposes of testing</value>
       </associatedText>
       <organisation>f1555082-5dcd-409b-9038-e11d0de3ddef</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -1003,7 +1003,7 @@
       <enteredByUserInRole>3aea0b00-c8c7-44e8-85ec-15df38bdcee9</enteredByUserInRole>
       <displayTerm />
       <associatedText associatedTextType="POST">
-        <value> Review 10 days with results or see sooner if pains worse</value>
+        <value>Anonymised text</value>
       </associatedText>
       <organisation>f1555082-5dcd-409b-9038-e11d0de3ddef</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -1242,7 +1242,7 @@
       <enteredByUserInRole>725b79bc-36b1-408c-ae56-771b6b5d079e</enteredByUserInRole>
       <displayTerm />
       <associatedText associatedTextType="POST">
-        <value>Pseudoephedrine Hydrochloride  Elixir  30 mg /5 ml 200 ml 10MLS TDS</value>
+        <value>No clinical information can be inferred from this text</value>
       </associatedText>
       <organisation>f1555082-5dcd-409b-9038-e11d0de3ddef</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -1377,7 +1377,7 @@
       <enteredByUserInRole>3aea0b00-c8c7-44e8-85ec-15df38bdcee9</enteredByUserInRole>
       <displayTerm />
       <associatedText associatedTextType="POST">
-        <value> Chest clear</value>
+        <value>This narrative has no real meaning</value>
       </associatedText>
       <organisation>f1555082-5dcd-409b-9038-e11d0de3ddef</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -1425,7 +1425,7 @@
       <enteredByUserInRole>725b79bc-36b1-408c-ae56-771b6b5d079e</enteredByUserInRole>
       <displayTerm />
       <associatedText associatedTextType="POST">
-        <value>Co-Codamol 8/500  Tablets   50 tablet TWO TO BE TAKEN THREE TIMES A DAY</value>
+        <value>This is text for the purposes of testing</value>
       </associatedText>
       <organisation>f1555082-5dcd-409b-9038-e11d0de3ddef</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -1476,7 +1476,7 @@
       </code>
       <displayTerm>Cervical smear - 3rd call</displayTerm>
       <associatedText associatedTextType="POST">
-        <value> Chest OK. Pretty good at the moment</value>
+        <value>Anonymised text</value>
       </associatedText>
       <organisation>f1555082-5dcd-409b-9038-e11d0de3ddef</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -1495,7 +1495,7 @@
       </code>
       <displayTerm>Cancel appts</displayTerm>
       <associatedText associatedTextType="POST">
-        <value> Oral symptoms are unchanged - unable to eat etc</value>
+        <value>No clinical information can be inferred from this text</value>
       </associatedText>
       <organisation>f1555082-5dcd-409b-9038-e11d0de3ddef</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -1642,7 +1642,7 @@
       </code>
       <displayTerm>Legal &amp;amp; General GPR</displayTerm>
       <associatedText associatedTextType="POST">
-        <value> Frusemide Tablets 40 mg od 28 tablets</value>
+        <value>This narrative has no real meaning</value>
       </associatedText>
       <organisation>f1555082-5dcd-409b-9038-e11d0de3ddef</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -1663,7 +1663,7 @@
       </code>
       <displayTerm>Felt faint</displayTerm>
       <associatedText associatedTextType="POST">
-        <value> Indigestion still very bothersome</value>
+        <value>This is text for the purposes of testing</value>
       </associatedText>
       <organisation>f1555082-5dcd-409b-9038-e11d0de3ddef</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -1698,7 +1698,7 @@
       </code>
       <displayTerm>H/O: asthma</displayTerm>
       <associatedText associatedTextType="POST">
-        <value> Generalised non-specific abdominal tenderness</value>
+        <value>Anonymised text</value>
       </associatedText>
       <organisation>f1555082-5dcd-409b-9038-e11d0de3ddef</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -1815,7 +1815,7 @@
       </code>
       <displayTerm>Telephone encounter</displayTerm>
       <associatedText associatedTextType="POST">
-        <value> Slime and diarrhoea continue</value>
+        <value>No clinical information can be inferred from this text</value>
       </associatedText>
       <organisation>f1555082-5dcd-409b-9038-e11d0de3ddef</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -1934,7 +1934,7 @@
       </code>
       <displayTerm>Contraception not needed NOS</displayTerm>
       <associatedText associatedTextType="POST">
-        <value> Chest clear</value>
+        <value>This narrative has no real meaning</value>
       </associatedText>
       <organisation>f1555082-5dcd-409b-9038-e11d0de3ddef</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>

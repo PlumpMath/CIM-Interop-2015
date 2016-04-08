@@ -768,7 +768,7 @@
       </code>
       <displayTerm>Alert</displayTerm>
       <associatedText associatedTextType="POST">
-        <value> See 18 days and review</value>
+        <value>This is text for the purposes of testing</value>
       </associatedText>
       <organisation>b146b106-b85c-4343-9032-82b924e2ee7f</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -809,7 +809,7 @@
       </code>
       <displayTerm>Notes summary on computer</displayTerm>
       <associatedText associatedTextType="POST">
-        <value> Still creps but much less now</value>
+        <value>Anonymised text</value>
       </associatedText>
       <organisation>b146b106-b85c-4343-9032-82b924e2ee7f</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -1043,7 +1043,7 @@
       </code>
       <displayTerm>Letter sent to patient</displayTerm>
       <associatedText associatedTextType="POST">
-        <value> Check U&amp;amp;E today please</value>
+        <value>No clinical information can be inferred from this text</value>
       </associatedText>
       <organisation>b146b106-b85c-4343-9032-82b924e2ee7f</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -1091,7 +1091,7 @@
       </code>
       <displayTerm>Failed encounter</displayTerm>
       <associatedText associatedTextType="POST">
-        <value> GTT taken</value>
+        <value>This narrative has no real meaning</value>
       </associatedText>
       <organisation>b146b106-b85c-4343-9032-82b924e2ee7f</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -1300,7 +1300,7 @@
       </code>
       <displayTerm>Pill check</displayTerm>
       <associatedText associatedTextType="POST">
-        <value> Try 10 days oral steroids and see friday week</value>
+        <value>This is text for the purposes of testing</value>
       </associatedText>
       <organisation>b146b106-b85c-4343-9032-82b924e2ee7f</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -1355,7 +1355,7 @@
       <enteredByUserInRole>725b79bc-36b1-408c-ae56-771b6b5d079e</enteredByUserInRole>
       <displayTerm />
       <associatedText associatedTextType="POST">
-        <value> Scanty coase creps</value>
+        <value>Anonymised text</value>
       </associatedText>
       <organisation>b146b106-b85c-4343-9032-82b924e2ee7f</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -1374,7 +1374,7 @@
       </code>
       <displayTerm>Oral contraceptive</displayTerm>
       <associatedText associatedTextType="POST">
-        <value> Reversibility with Salamol EB 200mcgs</value>
+        <value>No clinical information can be inferred from this text</value>
       </associatedText>
       <organisation>b146b106-b85c-4343-9032-82b924e2ee7f</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -1390,7 +1390,7 @@
       <enteredByUserInRole>725b79bc-36b1-408c-ae56-771b6b5d079e</enteredByUserInRole>
       <displayTerm />
       <associatedText associatedTextType="POST">
-        <value> SOB in the morning, somewhat lightheaded</value>
+        <value>This narrative has no real meaning</value>
       </associatedText>
       <organisation>b146b106-b85c-4343-9032-82b924e2ee7f</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -1510,7 +1510,7 @@
       <enteredByUserInRole>725b79bc-36b1-408c-ae56-771b6b5d079e</enteredByUserInRole>
       <displayTerm />
       <associatedText associatedTextType="POST">
-        <value>Cefalexin  Capsules  250 mg 28 capsule ONE FOUR TIMES A DAY</value>
+        <value>This is text for the purposes of testing</value>
       </associatedText>
       <organisation>b146b106-b85c-4343-9032-82b924e2ee7f</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -1624,7 +1624,7 @@
       </code>
       <displayTerm>Drinks occasionally</displayTerm>
       <associatedText associatedTextType="POST">
-        <value> Combivent shaky and giddy</value>
+        <value>Anonymised text</value>
       </associatedText>
       <organisation>b146b106-b85c-4343-9032-82b924e2ee7f</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -1659,7 +1659,7 @@
       </code>
       <displayTerm>Irritable bowel syndrome</displayTerm>
       <associatedText associatedTextType="POST">
-        <value> Awaiting MRI scan to look at anatomy</value>
+        <value>No clinical information can be inferred from this text</value>
       </associatedText>
       <organisation>b146b106-b85c-4343-9032-82b924e2ee7f</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -1675,7 +1675,7 @@
       <enteredByUserInRole>6f7a4cd6-5ef1-4c41-96f4-eea5a5db578f</enteredByUserInRole>
       <displayTerm />
       <associatedText associatedTextType="POST">
-        <value> GTT taken</value>
+        <value>This narrative has no real meaning</value>
       </associatedText>
       <organisation>b146b106-b85c-4343-9032-82b924e2ee7f</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -1951,7 +1951,7 @@
       <enteredByUserInRole>725b79bc-36b1-408c-ae56-771b6b5d079e</enteredByUserInRole>
       <displayTerm />
       <associatedText associatedTextType="POST">
-        <value>Yasmin  Tablets   63 tablet(s) AS DIRECTED</value>
+        <value>This is text for the purposes of testing</value>
       </associatedText>
       <organisation>b146b106-b85c-4343-9032-82b924e2ee7f</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -1970,7 +1970,7 @@
       </code>
       <displayTerm>Blood test due</displayTerm>
       <associatedText associatedTextType="POST">
-        <value> Chest clear</value>
+        <value>Anonymised text</value>
       </associatedText>
       <organisation>b146b106-b85c-4343-9032-82b924e2ee7f</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -1989,7 +1989,7 @@
       </code>
       <displayTerm>Failed encounter</displayTerm>
       <associatedText associatedTextType="POST">
-        <value> See 18 days and review</value>
+        <value>No clinical information can be inferred from this text</value>
       </associatedText>
       <organisation>b146b106-b85c-4343-9032-82b924e2ee7f</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>

@@ -557,7 +557,7 @@
       <enteredByUserInRole>6f7a4cd6-5ef1-4c41-96f4-eea5a5db578f</enteredByUserInRole>
       <displayTerm />
       <associatedText associatedTextType="POST">
-        <value> No extension and not much other movement</value>
+        <value>This is text for the purposes of testing</value>
       </associatedText>
       <organisation>50807780-a7e6-43b3-8455-baf23ed4c1cb</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -589,7 +589,7 @@
       <enteredByUserInRole>6f7a4cd6-5ef1-4c41-96f4-eea5a5db578f</enteredByUserInRole>
       <displayTerm />
       <associatedText associatedTextType="POST">
-        <value> Chest clear</value>
+        <value>Anonymised text</value>
       </associatedText>
       <organisation>50807780-a7e6-43b3-8455-baf23ed4c1cb</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -665,7 +665,7 @@
       </code>
       <displayTerm>Legal &amp;amp; General GPR</displayTerm>
       <associatedText associatedTextType="POST">
-        <value> Food regurgitation discomfort</value>
+        <value>No clinical information can be inferred from this text</value>
       </associatedText>
       <organisation>50807780-a7e6-43b3-8455-baf23ed4c1cb</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -722,7 +722,7 @@
       <enteredByUserInRole>6f7a4cd6-5ef1-4c41-96f4-eea5a5db578f</enteredByUserInRole>
       <displayTerm />
       <associatedText associatedTextType="POST">
-        <value> Slime and diarrhoea continue</value>
+        <value>This narrative has no real meaning</value>
       </associatedText>
       <organisation>50807780-a7e6-43b3-8455-baf23ed4c1cb</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -764,7 +764,7 @@
       </code>
       <displayTerm>Dietician Letter - Group Session</displayTerm>
       <associatedText associatedTextType="POST">
-        <value> Feeling weak</value>
+        <value>This is text for the purposes of testing</value>
       </associatedText>
       <organisation>50807780-a7e6-43b3-8455-baf23ed4c1cb</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -869,7 +869,7 @@
       </code>
       <displayTerm>Letter from Miss Gilvarry</displayTerm>
       <associatedText associatedTextType="POST">
-        <value> Slime and diarrhoea continue</value>
+        <value>Anonymised text</value>
       </associatedText>
       <organisation>50807780-a7e6-43b3-8455-baf23ed4c1cb</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -922,7 +922,7 @@
       </code>
       <displayTerm>Asthma Clinic Appts</displayTerm>
       <associatedText associatedTextType="POST">
-        <value> Please repeat ENT exam in view of blood</value>
+        <value>No clinical information can be inferred from this text</value>
       </associatedText>
       <organisation>50807780-a7e6-43b3-8455-baf23ed4c1cb</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -943,7 +943,7 @@
       </code>
       <displayTerm>Ophthalmological referral</displayTerm>
       <associatedText associatedTextType="POST">
-        <value> SOB in the morning, somewhat lightheaded</value>
+        <value>This narrative has no real meaning</value>
       </associatedText>
       <organisation>50807780-a7e6-43b3-8455-baf23ed4c1cb</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -978,7 +978,7 @@
       </code>
       <displayTerm>Domiciliary Physio</displayTerm>
       <associatedText associatedTextType="POST">
-        <value> GUTS test given and explained</value>
+        <value>This is text for the purposes of testing</value>
       </associatedText>
       <organisation>50807780-a7e6-43b3-8455-baf23ed4c1cb</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -999,7 +999,7 @@
       </code>
       <displayTerm>Choose and Book electronic referral letter sent</displayTerm>
       <associatedText associatedTextType="POST">
-        <value> In pain</value>
+        <value>Anonymised text</value>
       </associatedText>
       <organisation>50807780-a7e6-43b3-8455-baf23ed4c1cb</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>

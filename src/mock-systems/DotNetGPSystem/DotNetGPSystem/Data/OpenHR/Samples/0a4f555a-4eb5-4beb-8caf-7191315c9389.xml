@@ -1819,7 +1819,7 @@
       <enteredByUserInRole>6f7a4cd6-5ef1-4c41-96f4-eea5a5db578f</enteredByUserInRole>
       <displayTerm />
       <associatedText associatedTextType="POST">
-        <value> Combivent shaky and giddy</value>
+        <value>This is text for the purposes of testing</value>
       </associatedText>
       <organisation>a8063fdf-dfa6-406d-a296-dfb9730c801f</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -2053,7 +2053,7 @@
       <enteredByUserInRole>725b79bc-36b1-408c-ae56-771b6b5d079e</enteredByUserInRole>
       <displayTerm />
       <associatedText associatedTextType="POST">
-        <value>Selenium Sulphide  Shampoo  2.5 % 150 ml AS DIRECTED</value>
+        <value>Anonymised text</value>
       </associatedText>
       <organisation>a8063fdf-dfa6-406d-a296-dfb9730c801f</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -2206,7 +2206,7 @@
       <enteredByUserInRole>725b79bc-36b1-408c-ae56-771b6b5d079e</enteredByUserInRole>
       <displayTerm />
       <associatedText associatedTextType="POST">
-        <value> Awaiting MRI scan to look at anatomy</value>
+        <value>No clinical information can be inferred from this text</value>
       </associatedText>
       <organisation>a8063fdf-dfa6-406d-a296-dfb9730c801f</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -2225,7 +2225,7 @@
       </code>
       <displayTerm>Chest infection</displayTerm>
       <associatedText associatedTextType="POST">
-        <value> Feeling weak</value>
+        <value>This narrative has no real meaning</value>
       </associatedText>
       <organisation>a8063fdf-dfa6-406d-a296-dfb9730c801f</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -2246,7 +2246,7 @@
       </code>
       <displayTerm>RTA injury examination</displayTerm>
       <associatedText associatedTextType="POST">
-        <value> Gradually improving, still some blood (ENT exam next week)</value>
+        <value>This is text for the purposes of testing</value>
       </associatedText>
       <organisation>a8063fdf-dfa6-406d-a296-dfb9730c801f</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -2285,7 +2285,7 @@
       <enteredByUserInRole>725b79bc-36b1-408c-ae56-771b6b5d079e</enteredByUserInRole>
       <displayTerm />
       <associatedText associatedTextType="POST">
-        <value> BT taken</value>
+        <value>Anonymised text</value>
       </associatedText>
       <organisation>a8063fdf-dfa6-406d-a296-dfb9730c801f</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -2584,7 +2584,7 @@
       <enteredByUserInRole>725b79bc-36b1-408c-ae56-771b6b5d079e</enteredByUserInRole>
       <displayTerm />
       <associatedText associatedTextType="POST">
-        <value>Ibuprofen  Tablets  400 mg 24 tablet 1TDSPC</value>
+        <value>No clinical information can be inferred from this text</value>
       </associatedText>
       <organisation>a8063fdf-dfa6-406d-a296-dfb9730c801f</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -2695,7 +2695,7 @@
       <enteredByUserInRole>725b79bc-36b1-408c-ae56-771b6b5d079e</enteredByUserInRole>
       <displayTerm />
       <associatedText associatedTextType="POST">
-        <value>Co-Phenotrope 2.5/0.025  Tablets   40 tablet(s) TWO TO BE TAKEN FOUR TIMES A DAY</value>
+        <value>This narrative has no real meaning</value>
       </associatedText>
       <organisation>a8063fdf-dfa6-406d-a296-dfb9730c801f</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -2711,7 +2711,7 @@
       <enteredByUserInRole>725b79bc-36b1-408c-ae56-771b6b5d079e</enteredByUserInRole>
       <displayTerm />
       <associatedText associatedTextType="POST">
-        <value>Galpseud Plus  Linctus   250 ml 10MLS TDS</value>
+        <value>This is text for the purposes of testing</value>
       </associatedText>
       <organisation>a8063fdf-dfa6-406d-a296-dfb9730c801f</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -2762,7 +2762,7 @@
       </code>
       <displayTerm>Chest infection</displayTerm>
       <associatedText associatedTextType="POST">
-        <value> Check U&amp;amp;E today please</value>
+        <value>Anonymised text</value>
       </associatedText>
       <organisation>a8063fdf-dfa6-406d-a296-dfb9730c801f</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -2873,7 +2873,7 @@
       </code>
       <displayTerm>Physiotherapy referral</displayTerm>
       <associatedText associatedTextType="POST">
-        <value> Slime and diarrhoea continue</value>
+        <value>No clinical information can be inferred from this text</value>
       </associatedText>
       <organisation>a8063fdf-dfa6-406d-a296-dfb9730c801f</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -2952,7 +2952,7 @@
       </code>
       <displayTerm>Influenza vaccination</displayTerm>
       <associatedText associatedTextType="POST">
-        <value> Review 10 days with results or see sooner if pains worse</value>
+        <value>This narrative has no real meaning</value>
       </associatedText>
       <organisation>a8063fdf-dfa6-406d-a296-dfb9730c801f</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -2968,7 +2968,7 @@
       <enteredByUserInRole>725b79bc-36b1-408c-ae56-771b6b5d079e</enteredByUserInRole>
       <displayTerm />
       <associatedText associatedTextType="POST">
-        <value>Prochlorperazine Maleate  Tablets  5 mg 84 tablet 1TDS</value>
+        <value>This is text for the purposes of testing</value>
       </associatedText>
       <organisation>a8063fdf-dfa6-406d-a296-dfb9730c801f</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -3162,7 +3162,7 @@
       </code>
       <displayTerm>Influenza vaccination</displayTerm>
       <associatedText associatedTextType="POST">
-        <value> Please repeat ENT exam in view of blood</value>
+        <value>Anonymised text</value>
       </associatedText>
       <organisation>a8063fdf-dfa6-406d-a296-dfb9730c801f</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -3236,7 +3236,7 @@
       <enteredByUserInRole>6f7a4cd6-5ef1-4c41-96f4-eea5a5db578f</enteredByUserInRole>
       <displayTerm />
       <associatedText associatedTextType="POST">
-        <value> Generalised non-specific abdominal tenderness</value>
+        <value>No clinical information can be inferred from this text</value>
       </associatedText>
       <organisation>a8063fdf-dfa6-406d-a296-dfb9730c801f</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -3311,7 +3311,7 @@
       </code>
       <displayTerm>General Letter</displayTerm>
       <associatedText associatedTextType="POST">
-        <value> Follow up Medication Review</value>
+        <value>This narrative has no real meaning</value>
       </associatedText>
       <organisation>a8063fdf-dfa6-406d-a296-dfb9730c801f</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -3377,7 +3377,7 @@
       </code>
       <displayTerm>Upper respiratory tract infection NOS</displayTerm>
       <associatedText associatedTextType="POST">
-        <value> Going to pain clinic</value>
+        <value>This is text for the purposes of testing</value>
       </associatedText>
       <organisation>a8063fdf-dfa6-406d-a296-dfb9730c801f</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -3454,7 +3454,7 @@
       <enteredByUserInRole>725b79bc-36b1-408c-ae56-771b6b5d079e</enteredByUserInRole>
       <displayTerm />
       <associatedText associatedTextType="POST">
-        <value>Baclofen  Tablets  10 mg 84 tablet 5MG TDS</value>
+        <value>Anonymised text</value>
       </associatedText>
       <organisation>a8063fdf-dfa6-406d-a296-dfb9730c801f</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -3528,7 +3528,7 @@
       <enteredByUserInRole>725b79bc-36b1-408c-ae56-771b6b5d079e</enteredByUserInRole>
       <displayTerm />
       <associatedText associatedTextType="POST">
-        <value> Erythroped A Tablets 500 mg 1 qds 28 tablets</value>
+        <value>No clinical information can be inferred from this text</value>
       </associatedText>
       <organisation>a8063fdf-dfa6-406d-a296-dfb9730c801f</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -3621,7 +3621,7 @@
       <enteredByUserInRole>725b79bc-36b1-408c-ae56-771b6b5d079e</enteredByUserInRole>
       <displayTerm />
       <associatedText associatedTextType="POST">
-        <value>Amoxicillin  Capsules  500 mg 15 capsule(s) ONE TO BE TAKEN THREE TIMES A DAY</value>
+        <value>This narrative has no real meaning</value>
       </associatedText>
       <organisation>a8063fdf-dfa6-406d-a296-dfb9730c801f</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -3673,7 +3673,7 @@
       </code>
       <displayTerm>Influenza vaccination</displayTerm>
       <associatedText associatedTextType="POST">
-        <value> Diarrhoea disappeared</value>
+        <value>This is text for the purposes of testing</value>
       </associatedText>
       <organisation>a8063fdf-dfa6-406d-a296-dfb9730c801f</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -3814,7 +3814,7 @@
       </code>
       <displayTerm>Healthy Lifestyle letter sent to patient</displayTerm>
       <associatedText associatedTextType="POST">
-        <value> Review 10 days with results or see sooner if pains worse</value>
+        <value>Anonymised text</value>
       </associatedText>
       <organisation>a8063fdf-dfa6-406d-a296-dfb9730c801f</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -3983,7 +3983,7 @@
       <enteredByUserInRole>6f7a4cd6-5ef1-4c41-96f4-eea5a5db578f</enteredByUserInRole>
       <displayTerm />
       <associatedText associatedTextType="POST">
-        <value> Generalised non-specific abdominal tenderness</value>
+        <value>No clinical information can be inferred from this text</value>
       </associatedText>
       <organisation>a8063fdf-dfa6-406d-a296-dfb9730c801f</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -4028,7 +4028,7 @@
       <enteredByUserInRole>725b79bc-36b1-408c-ae56-771b6b5d079e</enteredByUserInRole>
       <displayTerm />
       <associatedText associatedTextType="POST">
-        <value>Betamethasone Valerate  Cream  0.1 % 30 gram APPLY TWICE DAILY</value>
+        <value>This narrative has no real meaning</value>
       </associatedText>
       <organisation>a8063fdf-dfa6-406d-a296-dfb9730c801f</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -4289,7 +4289,7 @@
       </code>
       <displayTerm>Medication given</displayTerm>
       <associatedText associatedTextType="POST">
-        <value> To come in 1 week time</value>
+        <value>This is text for the purposes of testing</value>
       </associatedText>
       <organisation>a8063fdf-dfa6-406d-a296-dfb9730c801f</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -4476,7 +4476,7 @@
       <enteredByUserInRole>725b79bc-36b1-408c-ae56-771b6b5d079e</enteredByUserInRole>
       <displayTerm />
       <associatedText associatedTextType="POST">
-        <value> Scanty coase creps</value>
+        <value>Anonymised text</value>
       </associatedText>
       <organisation>a8063fdf-dfa6-406d-a296-dfb9730c801f</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -4594,7 +4594,7 @@
       </code>
       <displayTerm>Influenza vaccination</displayTerm>
       <associatedText associatedTextType="POST">
-        <value> Reversibility with Salamol EB 200mcgs</value>
+        <value>No clinical information can be inferred from this text</value>
       </associatedText>
       <organisation>a8063fdf-dfa6-406d-a296-dfb9730c801f</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -4613,7 +4613,7 @@
       </code>
       <displayTerm>Telephone encounter</displayTerm>
       <associatedText associatedTextType="POST">
-        <value> Still creps but much less now</value>
+        <value>This narrative has no real meaning</value>
       </associatedText>
       <organisation>a8063fdf-dfa6-406d-a296-dfb9730c801f</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -4658,7 +4658,7 @@
       <enteredByUserInRole>6f7a4cd6-5ef1-4c41-96f4-eea5a5db578f</enteredByUserInRole>
       <displayTerm />
       <associatedText associatedTextType="POST">
-        <value> No extension and not much other movement</value>
+        <value>This is text for the purposes of testing</value>
       </associatedText>
       <organisation>a8063fdf-dfa6-406d-a296-dfb9730c801f</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -4826,7 +4826,7 @@
       </code>
       <displayTerm>Ambulance request for patient</displayTerm>
       <associatedText associatedTextType="POST">
-        <value> Chest clear</value>
+        <value>Anonymised text</value>
       </associatedText>
       <organisation>a8063fdf-dfa6-406d-a296-dfb9730c801f</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -4929,7 +4929,7 @@
       <enteredByUserInRole>725b79bc-36b1-408c-ae56-771b6b5d079e</enteredByUserInRole>
       <displayTerm />
       <associatedText associatedTextType="POST">
-        <value> Still creps but much less now</value>
+        <value>No clinical information can be inferred from this text</value>
       </associatedText>
       <organisation>a8063fdf-dfa6-406d-a296-dfb9730c801f</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -5164,7 +5164,7 @@
       </code>
       <displayTerm>Dietician Letter - Group Session</displayTerm>
       <associatedText associatedTextType="POST">
-        <value> Combivent shaky and giddy</value>
+        <value>This narrative has no real meaning</value>
       </associatedText>
       <organisation>a8063fdf-dfa6-406d-a296-dfb9730c801f</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -5405,7 +5405,7 @@
       </code>
       <displayTerm>Letter from Miss Gilvarry</displayTerm>
       <associatedText associatedTextType="POST">
-        <value> Could do with ENT examination</value>
+        <value>This is text for the purposes of testing</value>
       </associatedText>
       <organisation>a8063fdf-dfa6-406d-a296-dfb9730c801f</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -5519,7 +5519,7 @@
       </code>
       <displayTerm>Multidisciplary Discharge Summary</displayTerm>
       <associatedText associatedTextType="POST">
-        <value> Chest clear</value>
+        <value>Anonymised text</value>
       </associatedText>
       <organisation>a8063fdf-dfa6-406d-a296-dfb9730c801f</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -5569,7 +5569,7 @@
       </code>
       <displayTerm>Heartburn</displayTerm>
       <associatedText associatedTextType="POST">
-        <value> Pale - prob mildly anaemic. Pale and unwell</value>
+        <value>No clinical information can be inferred from this text</value>
       </associatedText>
       <organisation>a8063fdf-dfa6-406d-a296-dfb9730c801f</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -5617,7 +5617,7 @@
       </code>
       <displayTerm>Letter encounter</displayTerm>
       <associatedText associatedTextType="POST">
-        <value> Feeling weak</value>
+        <value>This narrative has no real meaning</value>
       </associatedText>
       <organisation>a8063fdf-dfa6-406d-a296-dfb9730c801f</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -5662,7 +5662,7 @@
       <enteredByUserInRole>6f7a4cd6-5ef1-4c41-96f4-eea5a5db578f</enteredByUserInRole>
       <displayTerm />
       <associatedText associatedTextType="POST">
-        <value> Could do with ENT examination</value>
+        <value>This is text for the purposes of testing</value>
       </associatedText>
       <organisation>a8063fdf-dfa6-406d-a296-dfb9730c801f</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -5851,7 +5851,7 @@
       <enteredByUserInRole>725b79bc-36b1-408c-ae56-771b6b5d079e</enteredByUserInRole>
       <displayTerm />
       <associatedText associatedTextType="POST">
-        <value>Ibuprofen  Tablets  400 mg 50 tablets 1TDSPC</value>
+        <value>Anonymised text</value>
       </associatedText>
       <organisation>a8063fdf-dfa6-406d-a296-dfb9730c801f</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -6033,7 +6033,7 @@
       </code>
       <displayTerm>Diarrhoea symptoms</displayTerm>
       <associatedText associatedTextType="POST">
-        <value> Erythrocyte sedimentation rate, No action</value>
+        <value>No clinical information can be inferred from this text</value>
       </associatedText>
       <organisation>a8063fdf-dfa6-406d-a296-dfb9730c801f</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -6081,7 +6081,7 @@
       </code>
       <displayTerm>DNA hospital appointment</displayTerm>
       <associatedText associatedTextType="POST">
-        <value> Ciprofloxacin Tablets 250 mg 1 bd 10 tablet(s)</value>
+        <value>This narrative has no real meaning</value>
       </associatedText>
       <organisation>a8063fdf-dfa6-406d-a296-dfb9730c801f</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -6097,7 +6097,7 @@
       <enteredByUserInRole>725b79bc-36b1-408c-ae56-771b6b5d079e</enteredByUserInRole>
       <displayTerm />
       <associatedText associatedTextType="POST">
-        <value>Betamethasone Valerate  Cream  0.1 % 30 gram APPLY TWICE DAILY</value>
+        <value>This is text for the purposes of testing</value>
       </associatedText>
       <organisation>a8063fdf-dfa6-406d-a296-dfb9730c801f</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -6113,7 +6113,7 @@
       <enteredByUserInRole>725b79bc-36b1-408c-ae56-771b6b5d079e</enteredByUserInRole>
       <displayTerm />
       <associatedText associatedTextType="POST">
-        <value>Co-Phenotrope 2.5/0.025  Tablets   30 tablet(s) TWO TO BE TAKEN THREE TIMES A DAY</value>
+        <value>Anonymised text</value>
       </associatedText>
       <organisation>a8063fdf-dfa6-406d-a296-dfb9730c801f</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -6148,7 +6148,7 @@
       </code>
       <displayTerm>Psychiatric Liaison Nurse</displayTerm>
       <associatedText associatedTextType="POST">
-        <value> Chest OK. Pretty good at the moment</value>
+        <value>No clinical information can be inferred from this text</value>
       </associatedText>
       <organisation>a8063fdf-dfa6-406d-a296-dfb9730c801f</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -6362,7 +6362,7 @@
       <enteredByUserInRole>725b79bc-36b1-408c-ae56-771b6b5d079e</enteredByUserInRole>
       <displayTerm />
       <associatedText associatedTextType="POST">
-        <value> Tired generally. Needs to have bloods etc</value>
+        <value>This narrative has no real meaning</value>
       </associatedText>
       <organisation>a8063fdf-dfa6-406d-a296-dfb9730c801f</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -6401,7 +6401,7 @@
       <enteredByUserInRole>725b79bc-36b1-408c-ae56-771b6b5d079e</enteredByUserInRole>
       <displayTerm />
       <associatedText associatedTextType="POST">
-        <value>Tolterodine Tartrate  M/R capsules  4 mg 28 capsule(s) TAKE ONE DAILY</value>
+        <value>This is text for the purposes of testing</value>
       </associatedText>
       <organisation>a8063fdf-dfa6-406d-a296-dfb9730c801f</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -6504,7 +6504,7 @@
       <enteredByUserInRole>725b79bc-36b1-408c-ae56-771b6b5d079e</enteredByUserInRole>
       <displayTerm />
       <associatedText associatedTextType="POST">
-        <value> Tired generally. Needs to have bloods etc</value>
+        <value>Anonymised text</value>
       </associatedText>
       <organisation>a8063fdf-dfa6-406d-a296-dfb9730c801f</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -6520,7 +6520,7 @@
       <enteredByUserInRole>725b79bc-36b1-408c-ae56-771b6b5d079e</enteredByUserInRole>
       <displayTerm />
       <associatedText associatedTextType="POST">
-        <value>Betamethasone Valerate  Ointment  0.1 % 30 gram APPLY TWICE A DAY</value>
+        <value>No clinical information can be inferred from this text</value>
       </associatedText>
       <organisation>a8063fdf-dfa6-406d-a296-dfb9730c801f</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -6615,7 +6615,7 @@
       <enteredByUserInRole>725b79bc-36b1-408c-ae56-771b6b5d079e</enteredByUserInRole>
       <displayTerm />
       <associatedText associatedTextType="POST">
-        <value>Codeine Phosphate  Linctus  15 mg/5 ml 300 ml 10MLS TDS</value>
+        <value>This narrative has no real meaning</value>
       </associatedText>
       <organisation>a8063fdf-dfa6-406d-a296-dfb9730c801f</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -6663,7 +6663,7 @@
       </code>
       <displayTerm>Haemorrhoids</displayTerm>
       <associatedText associatedTextType="POST">
-        <value> Bad night last night, SOB, productive of white frowthy sputum, worse on lying flat</value>
+        <value>This is text for the purposes of testing</value>
       </associatedText>
       <organisation>a8063fdf-dfa6-406d-a296-dfb9730c801f</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -6786,7 +6786,7 @@
       <enteredByUserInRole>725b79bc-36b1-408c-ae56-771b6b5d079e</enteredByUserInRole>
       <displayTerm />
       <associatedText associatedTextType="POST">
-        <value>Codeine Phosphate  Linctus  15 mg/5 ml 250 ml 5MLS TDS</value>
+        <value>Anonymised text</value>
       </associatedText>
       <organisation>a8063fdf-dfa6-406d-a296-dfb9730c801f</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -6864,7 +6864,7 @@
       <enteredByUserInRole>725b79bc-36b1-408c-ae56-771b6b5d079e</enteredByUserInRole>
       <displayTerm />
       <associatedText associatedTextType="POST">
-        <value>Galpseud Plus  Linctus 250 ml 10MLS TDS</value>
+        <value>No clinical information can be inferred from this text</value>
       </associatedText>
       <organisation>a8063fdf-dfa6-406d-a296-dfb9730c801f</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -6896,7 +6896,7 @@
       <enteredByUserInRole>725b79bc-36b1-408c-ae56-771b6b5d079e</enteredByUserInRole>
       <displayTerm />
       <associatedText associatedTextType="POST">
-        <value> Needs bloods etc</value>
+        <value>This narrative has no real meaning</value>
       </associatedText>
       <organisation>a8063fdf-dfa6-406d-a296-dfb9730c801f</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -6933,7 +6933,7 @@
       </code>
       <displayTerm>Minor surgery done - excision</displayTerm>
       <associatedText associatedTextType="POST">
-        <value> Pale - prob mildly anaemic. Pale and unwell</value>
+        <value>This is text for the purposes of testing</value>
       </associatedText>
       <organisation>a8063fdf-dfa6-406d-a296-dfb9730c801f</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -7100,7 +7100,7 @@
       </code>
       <displayTerm>Influenza vaccination</displayTerm>
       <associatedText associatedTextType="POST">
-        <value> Erythrocyte sedimentation rate, No action</value>
+        <value>Anonymised text</value>
       </associatedText>
       <organisation>a8063fdf-dfa6-406d-a296-dfb9730c801f</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -7145,7 +7145,7 @@
       <enteredByUserInRole>725b79bc-36b1-408c-ae56-771b6b5d079e</enteredByUserInRole>
       <displayTerm />
       <associatedText associatedTextType="POST">
-        <value>Co-Codamol 8/500  Tablets   60 tablet(s) TWO TO BE TAKEN THREE TIMES A DAY</value>
+        <value>No clinical information can be inferred from this text</value>
       </associatedText>
       <organisation>a8063fdf-dfa6-406d-a296-dfb9730c801f</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -7161,7 +7161,7 @@
       <enteredByUserInRole>725b79bc-36b1-408c-ae56-771b6b5d079e</enteredByUserInRole>
       <displayTerm />
       <associatedText associatedTextType="POST">
-        <value>Oxytetracycline  Tablets  250 mg 20 tablet(s) ONE TO BE TAKEN FOUR TIMES A DAY</value>
+        <value>This narrative has no real meaning</value>
       </associatedText>
       <organisation>a8063fdf-dfa6-406d-a296-dfb9730c801f</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -7251,7 +7251,7 @@
       <enteredByUserInRole>725b79bc-36b1-408c-ae56-771b6b5d079e</enteredByUserInRole>
       <displayTerm />
       <associatedText associatedTextType="POST">
-        <value>Prochlorperazine Maleate  Tablets  5 mg 28 tablet 1TDS</value>
+        <value>This is text for the purposes of testing</value>
       </associatedText>
       <organisation>a8063fdf-dfa6-406d-a296-dfb9730c801f</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -7299,7 +7299,7 @@
       </code>
       <displayTerm>Letter from Miss Gilvarry</displayTerm>
       <associatedText associatedTextType="POST">
-        <value> Please repeat ENT exam in view of blood</value>
+        <value>Anonymised text</value>
       </associatedText>
       <organisation>a8063fdf-dfa6-406d-a296-dfb9730c801f</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -7317,7 +7317,7 @@
       <enteredByUserInRole>725b79bc-36b1-408c-ae56-771b6b5d079e</enteredByUserInRole>
       <displayTerm />
       <associatedText associatedTextType="POST">
-        <value>Co-Phenotrope 2.5/0.025  Tablets   20 tablet(s) TWO TO BE TAKEN FOUR TIMES A DAY</value>
+        <value>No clinical information can be inferred from this text</value>
       </associatedText>
       <organisation>a8063fdf-dfa6-406d-a296-dfb9730c801f</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -7513,7 +7513,7 @@
       </code>
       <displayTerm>ECG Report</displayTerm>
       <associatedText associatedTextType="POST">
-        <value> Betamethasone Valerate Cream 0.1 % apply tds 60</value>
+        <value>This narrative has no real meaning</value>
       </associatedText>
       <organisation>a8063fdf-dfa6-406d-a296-dfb9730c801f</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -7534,7 +7534,7 @@
       </code>
       <displayTerm>Influenza vaccination</displayTerm>
       <associatedText associatedTextType="POST">
-        <value> Bad night last night, SOB, productive of white frowthy sputum, worse on lying flat</value>
+        <value>This is text for the purposes of testing</value>
       </associatedText>
       <organisation>a8063fdf-dfa6-406d-a296-dfb9730c801f</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -7553,7 +7553,7 @@
       </code>
       <displayTerm>Temperature symptoms</displayTerm>
       <associatedText associatedTextType="POST">
-        <value> Continue to improve</value>
+        <value>Anonymised text</value>
       </associatedText>
       <organisation>a8063fdf-dfa6-406d-a296-dfb9730c801f</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -7704,7 +7704,7 @@
       </code>
       <displayTerm>Letter to Patient</displayTerm>
       <associatedText associatedTextType="POST">
-        <value> Food regurgitation discomfort</value>
+        <value>No clinical information can be inferred from this text</value>
       </associatedText>
       <organisation>a8063fdf-dfa6-406d-a296-dfb9730c801f</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -7791,7 +7791,7 @@
       </code>
       <displayTerm>Computerised tomograph scan</displayTerm>
       <associatedText associatedTextType="POST">
-        <value> Diarrhoea disappeared</value>
+        <value>This narrative has no real meaning</value>
       </associatedText>
       <organisation>a8063fdf-dfa6-406d-a296-dfb9730c801f</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -7810,7 +7810,7 @@
       </code>
       <displayTerm>Influenza vaccination</displayTerm>
       <associatedText associatedTextType="POST">
-        <value> Erythrocyte sedimentation rate, No action</value>
+        <value>This is text for the purposes of testing</value>
       </associatedText>
       <organisation>a8063fdf-dfa6-406d-a296-dfb9730c801f</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -7902,7 +7902,7 @@
       <enteredByUserInRole>725b79bc-36b1-408c-ae56-771b6b5d079e</enteredByUserInRole>
       <displayTerm />
       <associatedText associatedTextType="POST">
-        <value>Hydrocortisone And Miconazole  Cream  1 % + 2 % 30 gram APPLY TWICE DAILY</value>
+        <value>Anonymised text</value>
       </associatedText>
       <organisation>a8063fdf-dfa6-406d-a296-dfb9730c801f</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -7936,7 +7936,7 @@
       <enteredByUserInRole>725b79bc-36b1-408c-ae56-771b6b5d079e</enteredByUserInRole>
       <displayTerm />
       <associatedText associatedTextType="POST">
-        <value>Galpseud Plus  Linctus 300 ml 10MLS TDS</value>
+        <value>No clinical information can be inferred from this text</value>
       </associatedText>
       <organisation>a8063fdf-dfa6-406d-a296-dfb9730c801f</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -8215,7 +8215,7 @@
       </code>
       <displayTerm>Status epilepticus</displayTerm>
       <associatedText associatedTextType="POST">
-        <value> Slime and diarrhoea continue</value>
+        <value>This narrative has no real meaning</value>
       </associatedText>
       <organisation>a8063fdf-dfa6-406d-a296-dfb9730c801f</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -8571,7 +8571,7 @@
       </code>
       <displayTerm>Diarrhoea &amp; vomiting, symptom</displayTerm>
       <associatedText associatedTextType="POST">
-        <value> Tired generally. Needs to have bloods etc</value>
+        <value>This is text for the purposes of testing</value>
       </associatedText>
       <organisation>a8063fdf-dfa6-406d-a296-dfb9730c801f</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -8587,7 +8587,7 @@
       <enteredByUserInRole>725b79bc-36b1-408c-ae56-771b6b5d079e</enteredByUserInRole>
       <displayTerm />
       <associatedText associatedTextType="POST">
-        <value> GTT taken</value>
+        <value>Anonymised text</value>
       </associatedText>
       <organisation>a8063fdf-dfa6-406d-a296-dfb9730c801f</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -8603,7 +8603,7 @@
       <enteredByUserInRole>725b79bc-36b1-408c-ae56-771b6b5d079e</enteredByUserInRole>
       <displayTerm />
       <associatedText associatedTextType="POST">
-        <value> Refer to specialist</value>
+        <value>No clinical information can be inferred from this text</value>
       </associatedText>
       <organisation>a8063fdf-dfa6-406d-a296-dfb9730c801f</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -8839,7 +8839,7 @@
       </code>
       <displayTerm>Appointment made by telephone</displayTerm>
       <associatedText associatedTextType="POST">
-        <value> Feeling weak</value>
+        <value>This narrative has no real meaning</value>
       </associatedText>
       <organisation>a8063fdf-dfa6-406d-a296-dfb9730c801f</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -8858,7 +8858,7 @@
       </code>
       <displayTerm>ECG Report</displayTerm>
       <associatedText associatedTextType="POST">
-        <value> Follow up Medication Review</value>
+        <value>This is text for the purposes of testing</value>
       </associatedText>
       <organisation>a8063fdf-dfa6-406d-a296-dfb9730c801f</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -8876,7 +8876,7 @@
       <enteredByUserInRole>725b79bc-36b1-408c-ae56-771b6b5d079e</enteredByUserInRole>
       <displayTerm />
       <associatedText associatedTextType="POST">
-        <value>Tramacet  Tablets   60 tablet(s) ONE TO BE TAKEN FOUR TIMES A DAY</value>
+        <value>Anonymised text</value>
       </associatedText>
       <organisation>a8063fdf-dfa6-406d-a296-dfb9730c801f</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -9080,7 +9080,7 @@
       </code>
       <displayTerm>Copy of letter</displayTerm>
       <associatedText associatedTextType="POST">
-        <value> Going to pain clinic</value>
+        <value>No clinical information can be inferred from this text</value>
       </associatedText>
       <organisation>a8063fdf-dfa6-406d-a296-dfb9730c801f</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -9098,7 +9098,7 @@
       <enteredByUserInRole>725b79bc-36b1-408c-ae56-771b6b5d079e</enteredByUserInRole>
       <displayTerm />
       <associatedText associatedTextType="POST">
-        <value> Indigestion still very bothersome</value>
+        <value>This narrative has no real meaning</value>
       </associatedText>
       <organisation>a8063fdf-dfa6-406d-a296-dfb9730c801f</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -9246,7 +9246,7 @@
       </code>
       <displayTerm>Pathology Report</displayTerm>
       <associatedText associatedTextType="POST">
-        <value> Still feels like thick mucous from chest - causing choking</value>
+        <value>This is text for the purposes of testing</value>
       </associatedText>
       <organisation>a8063fdf-dfa6-406d-a296-dfb9730c801f</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -9545,7 +9545,7 @@
       </code>
       <displayTerm>Chesty cough</displayTerm>
       <associatedText associatedTextType="POST">
-        <value> Generally OK, remains SOB</value>
+        <value>Anonymised text</value>
       </associatedText>
       <organisation>a8063fdf-dfa6-406d-a296-dfb9730c801f</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -9848,7 +9848,7 @@
       <enteredByUserInRole>725b79bc-36b1-408c-ae56-771b6b5d079e</enteredByUserInRole>
       <displayTerm />
       <associatedText associatedTextType="POST">
-        <value>Ranitidine  Tablets  150 mg 60 tablet 1BD</value>
+        <value>No clinical information can be inferred from this text</value>
       </associatedText>
       <organisation>a8063fdf-dfa6-406d-a296-dfb9730c801f</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -9972,7 +9972,7 @@
       </code>
       <displayTerm>Chest infection</displayTerm>
       <associatedText associatedTextType="POST">
-        <value> Please repeat ENT exam in view of blood</value>
+        <value>This narrative has no real meaning</value>
       </associatedText>
       <organisation>a8063fdf-dfa6-406d-a296-dfb9730c801f</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -10125,7 +10125,7 @@
       <enteredByUserInRole>725b79bc-36b1-408c-ae56-771b6b5d079e</enteredByUserInRole>
       <displayTerm />
       <associatedText associatedTextType="POST">
-        <value>Hydrocortisone And Miconazole  Cream  1 % + 2 % 30 gram APPLY TWICE DAILY</value>
+        <value>This is text for the purposes of testing</value>
       </associatedText>
       <organisation>a8063fdf-dfa6-406d-a296-dfb9730c801f</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -10220,7 +10220,7 @@
       </code>
       <displayTerm>Did not attend - no reason</displayTerm>
       <associatedText associatedTextType="POST">
-        <value> Refer to specialist</value>
+        <value>Anonymised text</value>
       </associatedText>
       <organisation>a8063fdf-dfa6-406d-a296-dfb9730c801f</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -10297,7 +10297,7 @@
       </code>
       <displayTerm>Telephone encounter</displayTerm>
       <associatedText associatedTextType="POST">
-        <value> Carbocisteine Syrup 250 mg/5 ml sls - 10 ml, tds 2*300 ml</value>
+        <value>No clinical information can be inferred from this text</value>
       </associatedText>
       <organisation>a8063fdf-dfa6-406d-a296-dfb9730c801f</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -10374,7 +10374,7 @@
       <enteredByUserInRole>725b79bc-36b1-408c-ae56-771b6b5d079e</enteredByUserInRole>
       <displayTerm />
       <associatedText associatedTextType="POST">
-        <value>Paracetamol  Tablets  500 mg 100 tablet(s) TWO TO BE TAKEN FOUR TIMES A DAY</value>
+        <value>This narrative has no real meaning</value>
       </associatedText>
       <organisation>a8063fdf-dfa6-406d-a296-dfb9730c801f</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>

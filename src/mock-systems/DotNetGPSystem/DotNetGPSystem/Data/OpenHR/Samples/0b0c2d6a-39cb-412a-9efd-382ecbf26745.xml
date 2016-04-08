@@ -549,7 +549,7 @@
       </code>
       <displayTerm>1st hepatitis A vaccination</displayTerm>
       <associatedText associatedTextType="POST">
-        <value> Indigestion still very bothersome</value>
+        <value>This is text for the purposes of testing</value>
       </associatedText>
       <organisation>b146b106-b85c-4343-9032-82b924e2ee7f</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -590,7 +590,7 @@
       </code>
       <displayTerm>H/O: penicillin allergy</displayTerm>
       <associatedText associatedTextType="POST">
-        <value> Please repeat ENT exam in view of blood</value>
+        <value>Anonymised text</value>
       </associatedText>
       <organisation>b146b106-b85c-4343-9032-82b924e2ee7f</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -609,7 +609,7 @@
       </code>
       <displayTerm>Motor vehicle traffic accidents (MVTA)</displayTerm>
       <associatedText associatedTextType="POST">
-        <value> Food regurgitation discomfort</value>
+        <value>No clinical information can be inferred from this text</value>
       </associatedText>
       <organisation>b146b106-b85c-4343-9032-82b924e2ee7f</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -769,7 +769,7 @@
       </code>
       <displayTerm>Had a discussion with patient</displayTerm>
       <associatedText associatedTextType="POST">
-        <value> Food regurgitation discomfort</value>
+        <value>This narrative has no real meaning</value>
       </associatedText>
       <organisation>b146b106-b85c-4343-9032-82b924e2ee7f</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -788,7 +788,7 @@
       </code>
       <displayTerm>[X]Injuries to the wrist and hand</displayTerm>
       <associatedText associatedTextType="POST">
-        <value> In pain</value>
+        <value>This is text for the purposes of testing</value>
       </associatedText>
       <organisation>b146b106-b85c-4343-9032-82b924e2ee7f</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -804,7 +804,7 @@
       <enteredByUserInRole>3aea0b00-c8c7-44e8-85ec-15df38bdcee9</enteredByUserInRole>
       <displayTerm />
       <associatedText associatedTextType="POST">
-        <value> Pale - prob mildly anaemic. Pale and unwell</value>
+        <value>Anonymised text</value>
       </associatedText>
       <organisation>b146b106-b85c-4343-9032-82b924e2ee7f</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -945,7 +945,7 @@
       <enteredByUserInRole>3aea0b00-c8c7-44e8-85ec-15df38bdcee9</enteredByUserInRole>
       <displayTerm />
       <associatedText associatedTextType="POST">
-        <value>Havrix Monodose  Vaccine  1440 units/1 ml pre-filled syringe 1 pre-filled syrg(s) 1</value>
+        <value>No clinical information can be inferred from this text</value>
       </associatedText>
       <organisation>b146b106-b85c-4343-9032-82b924e2ee7f</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -1001,7 +1001,7 @@
       </code>
       <displayTerm>Full consent for immunisation</displayTerm>
       <associatedText associatedTextType="POST">
-        <value> Scanty coase creps</value>
+        <value>This narrative has no real meaning</value>
       </associatedText>
       <organisation>b146b106-b85c-4343-9032-82b924e2ee7f</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -1113,7 +1113,7 @@
       </code>
       <displayTerm>Family history</displayTerm>
       <associatedText associatedTextType="POST">
-        <value> Tired generally. Needs to have bloods etc</value>
+        <value>This is text for the purposes of testing</value>
       </associatedText>
       <organisation>b146b106-b85c-4343-9032-82b924e2ee7f</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -1164,7 +1164,7 @@
       </code>
       <displayTerm>First typhoid vaccination</displayTerm>
       <associatedText associatedTextType="POST">
-        <value> Scanty coase creps</value>
+        <value>Anonymised text</value>
       </associatedText>
       <organisation>b146b106-b85c-4343-9032-82b924e2ee7f</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -1199,7 +1199,7 @@
       </code>
       <displayTerm>Patient feels well</displayTerm>
       <associatedText associatedTextType="POST">
-        <value> Combivent shaky and giddy</value>
+        <value>No clinical information can be inferred from this text</value>
       </associatedText>
       <organisation>b146b106-b85c-4343-9032-82b924e2ee7f</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -1231,7 +1231,7 @@
       <enteredByUserInRole>3aea0b00-c8c7-44e8-85ec-15df38bdcee9</enteredByUserInRole>
       <displayTerm />
       <associatedText associatedTextType="POST">
-        <value>Typhoid Vaccine, Vi Capsular Polysaccaride  Vaccine  25 micrograms/0.5 ml pre-filled syringe 1 pre-filled syringe(s) 1</value>
+        <value>This narrative has no real meaning</value>
       </associatedText>
       <organisation>b146b106-b85c-4343-9032-82b924e2ee7f</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -1305,7 +1305,7 @@
       </code>
       <displayTerm>Motor vehicle traffic accidents (MVTA)</displayTerm>
       <associatedText associatedTextType="POST">
-        <value> See 18 days and review</value>
+        <value>This is text for the purposes of testing</value>
       </associatedText>
       <organisation>b146b106-b85c-4343-9032-82b924e2ee7f</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
@@ -1324,7 +1324,7 @@
       </code>
       <displayTerm>English - ethnic category 2001 census</displayTerm>
       <associatedText associatedTextType="POST">
-        <value> Erythrocyte sedimentation rate, No action</value>
+        <value>Anonymised text</value>
       </associatedText>
       <organisation>b146b106-b85c-4343-9032-82b924e2ee7f</organisation>
       <confidentialityPolicy>c3e9519b-65d4-443a-8bba-0329a9554fab</confidentialityPolicy>
