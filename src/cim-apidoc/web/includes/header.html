@@ -1,3 +1,5 @@
+<%@ page import="java.util.LinkedHashMap" %>
+
 <div id="segment-header" class="segment">
     <div class="container">
         <a id="logo" href="/">
@@ -13,11 +15,34 @@
 </div>
 <div id="segment-navbar" class="segment">
     <div class="container">
-        <a href="/overview.html">Overview</a>
-        <a href="/profiles.html">Profiles</a>
-        <a href="/api.html">API definition</a>
-        <a href="/sandbox">Sandbox</a>
-        <a href="/faq.html">FAQ</a>
-        <a href="/forum.html">Forum</a>
+
+
+        <%
+
+        LinkedHashMap headerTabs = new LinkedHashMap();
+
+        headerTabs.put("overview.html", "Overview");
+        headerTabs.put("scenarios.html", "Scenarios");
+        headerTabs.put("profiles.html", "Data model");
+        headerTabs.put("api.html", "API definition");
+        headerTabs.put("sandbox", "Sandbox");
+        headerTabs.put("forum.html", "Discuss");
+
+        String headerPageName = this.getClass().getSimpleName().replaceAll("_", ".").replaceAll(".002d", "-");
+
+        String sandboxUrl = "/sandbox/index.html";
+        String servletPath = request.getServletPath();
+
+        for (Object key : headerTabs.keySet())
+        {
+            String active = "";
+
+            if ((key.equals(headerPageName)) || (sandboxUrl.equals(servletPath) && key.equals("sandbox")))
+                active = " class=\"menu-item-active\"";
+
+            out.println("<a " + active + "href=\"/" + key + "\">" + (String)headerTabs.get(key) + "</a>");
+        }
+        %>
+
     </div>
 </div>

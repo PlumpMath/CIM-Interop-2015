@@ -99,6 +99,12 @@ a
 	text-decoration: none;
 }
 
+#segment-navbar .container .menu-item-active
+{
+    border-bottom: 1px solid white;
+    text-decoration: none;
+}
+
 .table-fixed
 {
     table-layout: fixed;
@@ -196,6 +202,28 @@ a
 #profile-nav-menu .active
 {
     font-weight: bold;
+}
+
+/***********************************************
+* header
+***********************************************/
+
+.guidance-list
+{
+    font-size: 16px;
+    padding-top: 5px;
+}
+
+.guidance-list li
+{
+    padding-bottom: 5px;
+}
+
+i.fa
+{
+    color: #2C7798;
+    font-size: 85%;
+    padding-right: 3px;
 }
 
 /***********************************************
