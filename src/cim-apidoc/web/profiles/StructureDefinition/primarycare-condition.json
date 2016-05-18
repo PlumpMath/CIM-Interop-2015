@@ -1,7 +1,7 @@
 ﻿{
   "id": "primarycare-condition",
   "meta": {
-    "lastUpdated": "2015-09-22T11:02:49.724+01:00"
+    "lastUpdated": "2016-04-05T17:46:42.368+01:00"
   },
   "extension": [
     {
@@ -38,6 +38,11 @@
         "definition": "Use to record detailed information about conditions, problems or diagnoses recognized by a clinician. There are many uses including: recording a diagnosis during an encounter; populating a problem list or a summary statement, such as a discharge summary.",
         "min": 0,
         "max": "*",
+        "base": {
+          "path": "Condition",
+          "min": 0,
+          "max": "*"
+        },
         "type": [
           {
             "TypeName": "Condition",
@@ -76,6 +81,11 @@
         "definition": "A problem episode of which this condition is part of. The episodicity type (Review, Flare, End) indicates the type of relationship that exists between this follow-on condition and the target problem episode.",
         "min": 0,
         "max": "1",
+        "base": {
+          "path": "Condition.extension",
+          "min": 0,
+          "max": "1"
+        },
         "type": [
           {
             "TypeName": "Extension",
@@ -87,6 +97,26 @@
         ]
       },
       {
+        "path": "Condition.id",
+        "short": "Logical id of this artifact.  Must be populated with a globally unique identifier, except where resource is being sent to the server for creation when it must NOT be populated",
+        "definition": "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes.",
+        "comments": "The only time that a resource does not have an id is when it is being submitted to the server using a create operation. Bundles always have an id, though it is usually a generated UUID.",
+        "min": 0,
+        "max": "1",
+        "base": {
+          "path": "Resource.id",
+          "min": 0,
+          "max": "1"
+        },
+        "type": [
+          {
+            "TypeName": "id",
+            "code": "id"
+          }
+        ],
+        "isSummary": true
+      },
+      {
         "path": "Condition.identifier.id",
         "representation": [
           0
@@ -95,6 +125,11 @@
         "definition": "unique id for the element within a resource (for internal references).",
         "min": 0,
         "max": "0",
+        "base": {
+          "path": "Condition.identifier.id",
+          "min": 0,
+          "max": "0"
+        },
         "type": [
           {
             "TypeName": "id",
@@ -116,6 +151,11 @@
         "requirements": "Allows the appropriate identifier for a particular context of use to be selected from among a set of identifiers.",
         "min": 0,
         "max": "0",
+        "base": {
+          "path": "Condition.identifier.use",
+          "min": 0,
+          "max": "0"
+        },
         "type": [
           {
             "TypeName": "code",
@@ -150,6 +190,11 @@
         "requirements": "Allows users to make use of identifiers when the identifier system is not known.",
         "min": 0,
         "max": "0",
+        "base": {
+          "path": "Condition.identifier.type",
+          "min": 0,
+          "max": "0"
+        },
         "type": [
           {
             "TypeName": "CodeableConcept",
@@ -181,6 +226,11 @@
         "definition": "Time period during which identifier is/was valid for use.",
         "min": 0,
         "max": "0",
+        "base": {
+          "path": "Condition.identifier.period",
+          "min": 0,
+          "max": "0"
+        },
         "type": [
           {
             "TypeName": "Period",
@@ -210,6 +260,11 @@
         "comments": "The reference may be just a text description of the assigner.",
         "min": 0,
         "max": "0",
+        "base": {
+          "path": "Condition.identifier.assigner",
+          "min": 0,
+          "max": "0"
+        },
         "type": [
           {
             "TypeName": "Reference",
@@ -241,6 +296,11 @@
         "definition": "Indicates the patient who the condition record is associated with.",
         "min": 1,
         "max": "1",
+        "base": {
+          "path": "Condition.patient",
+          "min": 1,
+          "max": "1"
+        },
         "type": [
           {
             "TypeName": "Reference",
@@ -273,6 +333,11 @@
         "comments": "This record indicates the encounter this particular record is associated with.  In the case of a \"new\" diagnosis reflecting ongoing/revised information about the condition, this might be distinct from the first encounter in which the underlying condition was first \"known\".",
         "min": 0,
         "max": "1",
+        "base": {
+          "path": "Condition.encounter",
+          "min": 0,
+          "max": "1"
+        },
         "type": [
           {
             "TypeName": "Reference",
@@ -302,8 +367,13 @@
         "path": "Condition.asserter",
         "short": "Person who asserts this condition",
         "definition": "Individual who is making the condition statement.",
-        "min": 1,
+        "min": 0,
         "max": "1",
+        "base": {
+          "path": "Condition.asserter",
+          "min": 0,
+          "max": "1"
+        },
         "type": [
           {
             "TypeName": "Reference",
@@ -352,6 +422,11 @@
         "definition": "Used to qualify or indicate extra information about a coded value e.g. Laterality, Severity, etc.",
         "min": 0,
         "max": "*",
+        "base": {
+          "path": "Condition.code.coding.extension",
+          "min": 0,
+          "max": "*"
+        },
         "type": [
           {
             "TypeName": "Extension",
@@ -368,6 +443,11 @@
         "definition": "The clinical status of the condition.",
         "min": 1,
         "max": "1",
+        "base": {
+          "path": "Condition.clinicalStatus",
+          "min": 1,
+          "max": "1"
+        },
         "type": [
           {
             "TypeName": "code",
@@ -401,6 +481,11 @@
         "comments": "Age is generally used when the patient reports an age at which the Condition began to occur.",
         "min": 0,
         "max": "1",
+        "base": {
+          "path": "Condition.onset[x]",
+          "min": 0,
+          "max": "1"
+        },
         "type": [
           {
             "TypeName": "dateTime",
@@ -437,6 +522,11 @@
         "comments": "There is no explicit distinction between resolution and remission because in many cases the distinction is not clear. Age is generally used when the patient reports an age at which the Condition abated.  If there is no abatement element, it is unknown whether the condition has resolved or entered remission; applications and users should generally assume that the condition is still valid.",
         "min": 0,
         "max": "1",
+        "base": {
+          "path": "Condition.abatement[x]",
+          "min": 0,
+          "max": "1"
+        },
         "type": [
           {
             "TypeName": "dateTime",
@@ -472,6 +562,11 @@
         "definition": "Clinical stage or grade of a condition. May include formal severity assessments.",
         "min": 0,
         "max": "0",
+        "base": {
+          "path": "Condition.stage",
+          "min": 0,
+          "max": "0"
+        },
         "type": [
           {
             "TypeName": "BackboneElement",
@@ -492,6 +587,11 @@
         "definition": "Reference to a formal record of the evidence on which the staging assessment is based.",
         "min": 0,
         "max": "*",
+        "base": {
+          "path": "Condition.stage.assessment",
+          "min": 0,
+          "max": "*"
+        },
         "type": [
           {
             "TypeName": "Reference",
@@ -533,6 +633,11 @@
         "comments": "The evidence may be a simple list of coded symptoms/manifestations, or references to observations or formal assessments, or both.",
         "min": 0,
         "max": "0",
+        "base": {
+          "path": "Condition.evidence",
+          "min": 0,
+          "max": "0"
+        },
         "type": [
           {
             "TypeName": "BackboneElement",

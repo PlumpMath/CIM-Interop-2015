@@ -1,7 +1,7 @@
 ﻿{
   "id": "primarycare-allergy-intolerance",
   "meta": {
-    "lastUpdated": "2015-09-22T11:02:49.724+01:00"
+    "lastUpdated": "2016-04-05T17:46:46.862+01:00"
   },
   "extension": [
     {
@@ -46,6 +46,11 @@
         ],
         "min": 0,
         "max": "*",
+        "base": {
+          "path": "AllergyIntolerance",
+          "min": 0,
+          "max": "*"
+        },
         "type": [
           {
             "TypeName": "AllergyIntolerance",
@@ -76,6 +81,11 @@
         "comments": "This record indicates the encounter this particular record is associated with.",
         "min": 0,
         "max": "1",
+        "base": {
+          "path": "AllergyIntolerance.extension",
+          "min": 0,
+          "max": "1"
+        },
         "type": [
           {
             "TypeName": "Extension",
@@ -87,6 +97,26 @@
         ]
       },
       {
+        "path": "AllergyIntolerance.id",
+        "short": "Logical id of this artifact.  Must be populated with a globally unique identifier, except where resource is being sent to the server for creation when it must NOT be populated",
+        "definition": "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes.",
+        "comments": "The only time that a resource does not have an id is when it is being submitted to the server using a create operation. Bundles always have an id, though it is usually a generated UUID.",
+        "min": 0,
+        "max": "1",
+        "base": {
+          "path": "Resource.id",
+          "min": 0,
+          "max": "1"
+        },
+        "type": [
+          {
+            "TypeName": "id",
+            "code": "id"
+          }
+        ],
+        "isSummary": true
+      },
+      {
         "path": "AllergyIntolerance.identifier.id",
         "representation": [
           0
@@ -95,6 +125,11 @@
         "definition": "unique id for the element within a resource (for internal references).",
         "min": 0,
         "max": "0",
+        "base": {
+          "path": "AllergyIntolerance.identifier.id",
+          "min": 0,
+          "max": "0"
+        },
         "type": [
           {
             "TypeName": "id",
@@ -116,6 +151,11 @@
         "requirements": "Allows the appropriate identifier for a particular context of use to be selected from among a set of identifiers.",
         "min": 0,
         "max": "0",
+        "base": {
+          "path": "AllergyIntolerance.identifier.use",
+          "min": 0,
+          "max": "0"
+        },
         "type": [
           {
             "TypeName": "code",
@@ -150,6 +190,11 @@
         "requirements": "Allows users to make use of identifiers when the identifier system is not known.",
         "min": 0,
         "max": "0",
+        "base": {
+          "path": "AllergyIntolerance.identifier.type",
+          "min": 0,
+          "max": "0"
+        },
         "type": [
           {
             "TypeName": "CodeableConcept",
@@ -181,6 +226,11 @@
         "definition": "Time period during which identifier is/was valid for use.",
         "min": 0,
         "max": "0",
+        "base": {
+          "path": "AllergyIntolerance.identifier.period",
+          "min": 0,
+          "max": "0"
+        },
         "type": [
           {
             "TypeName": "Period",
@@ -210,6 +260,11 @@
         "comments": "The reference may be just a text description of the assigner.",
         "min": 0,
         "max": "0",
+        "base": {
+          "path": "AllergyIntolerance.identifier.assigner",
+          "min": 0,
+          "max": "0"
+        },
         "type": [
           {
             "TypeName": "Reference",
@@ -242,8 +297,13 @@
         "alias": [
           "Author"
         ],
-        "min": 1,
+        "min": 0,
         "max": "1",
+        "base": {
+          "path": "AllergyIntolerance.recorder",
+          "min": 0,
+          "max": "1"
+        },
         "type": [
           {
             "TypeName": "Reference",
@@ -281,6 +341,11 @@
         ],
         "min": 1,
         "max": "1",
+        "base": {
+          "path": "AllergyIntolerance.patient",
+          "min": 1,
+          "max": "1"
+        },
         "type": [
           {
             "TypeName": "Reference",
@@ -317,6 +382,11 @@
         ],
         "min": 0,
         "max": "0",
+        "base": {
+          "path": "AllergyIntolerance.reporter",
+          "min": 0,
+          "max": "0"
+        },
         "type": [
           {
             "TypeName": "Reference",
@@ -362,6 +432,11 @@
         ],
         "min": 1,
         "max": "1",
+        "base": {
+          "path": "AllergyIntolerance.substance",
+          "min": 1,
+          "max": "1"
+        },
         "type": [
           {
             "TypeName": "CodeableConcept",
@@ -403,6 +478,11 @@
         "definition": "Used to qualify or indicate extra information about a coded value.",
         "min": 0,
         "max": "*",
+        "base": {
+          "path": "AllergyIntolerance.substance.coding.extension",
+          "min": 0,
+          "max": "*"
+        },
         "type": [
           {
             "TypeName": "Extension",
@@ -419,6 +499,11 @@
         "definition": "The individual responsible for making the annotation.",
         "min": 0,
         "max": "0",
+        "base": {
+          "path": "AllergyIntolerance.note.author[x]",
+          "min": 0,
+          "max": "0"
+        },
         "type": [
           {
             "TypeName": "Reference",
@@ -464,6 +549,11 @@
         "definition": "Indicates when this particular annotation was made.",
         "min": 0,
         "max": "0",
+        "base": {
+          "path": "AllergyIntolerance.note.time",
+          "min": 0,
+          "max": "0"
+        },
         "type": [
           {
             "TypeName": "dateTime",
@@ -488,6 +578,11 @@
         "definition": "The text of the annotation.",
         "min": 1,
         "max": "1",
+        "base": {
+          "path": "AllergyIntolerance.note.text",
+          "min": 1,
+          "max": "1"
+        },
         "type": [
           {
             "TypeName": "string",
@@ -522,6 +617,11 @@
         "definition": "Used to qualify or indicate extra information about a coded value.",
         "min": 0,
         "max": "*",
+        "base": {
+          "path": "AllergyIntolerance.reaction.manifestation.coding.extension",
+          "min": 0,
+          "max": "*"
+        },
         "type": [
           {
             "TypeName": "Extension",
@@ -538,6 +638,11 @@
         "definition": "The individual responsible for making the annotation.",
         "min": 0,
         "max": "0",
+        "base": {
+          "path": "AllergyIntolerance.reaction.note.author[x]",
+          "min": 0,
+          "max": "0"
+        },
         "type": [
           {
             "TypeName": "Reference",
@@ -583,6 +688,11 @@
         "definition": "Indicates when this particular annotation was made.",
         "min": 0,
         "max": "0",
+        "base": {
+          "path": "AllergyIntolerance.reaction.note.time",
+          "min": 0,
+          "max": "0"
+        },
         "type": [
           {
             "TypeName": "dateTime",

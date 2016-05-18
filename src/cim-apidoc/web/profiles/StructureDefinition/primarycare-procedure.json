@@ -1,7 +1,7 @@
 ﻿{
   "id": "primarycare-procedure",
   "meta": {
-    "lastUpdated": "2015-09-22T11:02:49.724+01:00"
+    "lastUpdated": "2016-04-05T17:46:50.886+01:00"
   },
   "extension": [
     {
@@ -43,6 +43,11 @@
         "definition": "An action that is or was performed on a patient. This can be a physical intervention like an operation, or less invasive like counseling or hypnotherapy.",
         "min": 0,
         "max": "*",
+        "base": {
+          "path": "Procedure",
+          "min": 0,
+          "max": "*"
+        },
         "type": [
           {
             "TypeName": "Procedure",
@@ -76,6 +81,11 @@
         "definition": "A date, when the statement was documented.",
         "min": 0,
         "max": "1",
+        "base": {
+          "path": "Procedure.extension",
+          "min": 0,
+          "max": "1"
+        },
         "type": [
           {
             "TypeName": "Extension",
@@ -87,6 +97,26 @@
         ]
       },
       {
+        "path": "Procedure.id",
+        "short": "Logical id of this artifact.  Must be populated with a globally unique identifier, except where resource is being sent to the server for creation when it must NOT be populated",
+        "definition": "The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes.",
+        "comments": "The only time that a resource does not have an id is when it is being submitted to the server using a create operation. Bundles always have an id, though it is usually a generated UUID.",
+        "min": 0,
+        "max": "1",
+        "base": {
+          "path": "Resource.id",
+          "min": 0,
+          "max": "1"
+        },
+        "type": [
+          {
+            "TypeName": "id",
+            "code": "id"
+          }
+        ],
+        "isSummary": true
+      },
+      {
         "path": "Procedure.identifier.id",
         "representation": [
           0
@@ -95,6 +125,11 @@
         "definition": "unique id for the element within a resource (for internal references).",
         "min": 0,
         "max": "0",
+        "base": {
+          "path": "Procedure.identifier.id",
+          "min": 0,
+          "max": "0"
+        },
         "type": [
           {
             "TypeName": "id",
@@ -116,6 +151,11 @@
         "requirements": "Allows the appropriate identifier for a particular context of use to be selected from among a set of identifiers.",
         "min": 0,
         "max": "0",
+        "base": {
+          "path": "Procedure.identifier.use",
+          "min": 0,
+          "max": "0"
+        },
         "type": [
           {
             "TypeName": "code",
@@ -150,6 +190,11 @@
         "requirements": "Allows users to make use of identifiers when the identifier system is not known.",
         "min": 0,
         "max": "0",
+        "base": {
+          "path": "Procedure.identifier.type",
+          "min": 0,
+          "max": "0"
+        },
         "type": [
           {
             "TypeName": "CodeableConcept",
@@ -181,6 +226,11 @@
         "definition": "Time period during which identifier is/was valid for use.",
         "min": 0,
         "max": "0",
+        "base": {
+          "path": "Procedure.identifier.period",
+          "min": 0,
+          "max": "0"
+        },
         "type": [
           {
             "TypeName": "Period",
@@ -210,6 +260,11 @@
         "comments": "The reference may be just a text description of the assigner.",
         "min": 0,
         "max": "0",
+        "base": {
+          "path": "Procedure.identifier.assigner",
+          "min": 0,
+          "max": "0"
+        },
         "type": [
           {
             "TypeName": "Reference",
@@ -241,6 +296,11 @@
         "definition": "The person on which the procedure was performed.",
         "min": 1,
         "max": "1",
+        "base": {
+          "path": "Procedure.subject",
+          "min": 1,
+          "max": "1"
+        },
         "type": [
           {
             "TypeName": "Reference",
@@ -267,33 +327,6 @@
         ]
       },
       {
-        "path": "Procedure.category",
-        "short": "Classification of the procedure",
-        "definition": "A code that classifies the procedure for searching, sorting and display purposes (e.g. \"Surgical Procedure\").",
-        "min": 0,
-        "max": "1",
-        "type": [
-          {
-            "TypeName": "CodeableConcept",
-            "code": "CodeableConcept"
-          }
-        ],
-        "isSummary": true,
-        "binding": {
-          "strength": 3,
-          "description": "A code that classifies a procedure for searching, sorting and display purposes.",
-          "Item": {
-            "reference": "http://hl7.org/fhir/ValueSet/procedure-category"
-          }
-        },
-        "mapping": [
-          {
-            "identity": "rim",
-            "map": ".outboundRelationship[typeCode=\"COMP].target[classCode=\"LIST\", moodCode=\"EVN\"].code"
-          }
-        ]
-      },
-      {
         "path": "Procedure.code.coding.extension",
         "slicing": {
           "discriminator": [
@@ -309,6 +342,11 @@
         "definition": "Used to qualify or indicate extra clinical information about a coded value e.g. Laterality, Severity, etc.",
         "min": 0,
         "max": "*",
+        "base": {
+          "path": "Procedure.code.coding.extension",
+          "min": 0,
+          "max": "*"
+        },
         "type": [
           {
             "TypeName": "Extension",
@@ -325,6 +363,11 @@
         "definition": "Set this to true if the record is saying that the procedure was NOT performed.",
         "min": 0,
         "max": "0",
+        "base": {
+          "path": "Procedure.notPerformed",
+          "min": 0,
+          "max": "0"
+        },
         "type": [
           {
             "TypeName": "boolean",
@@ -346,6 +389,11 @@
         "definition": "A code indicating why the procedure was not performed.",
         "min": 0,
         "max": "0",
+        "base": {
+          "path": "Procedure.reasonNotPerformed",
+          "min": 0,
+          "max": "0"
+        },
         "type": [
           {
             "TypeName": "CodeableConcept",
@@ -370,43 +418,17 @@
         ]
       },
       {
-        "path": "Procedure.bodySite",
-        "short": "Target body sites",
-        "definition": "Detailed and structured anatomical location information. Multiple locations are allowed - e.g. multiple punch biopsies of a lesion.",
-        "min": 0,
-        "max": "*",
-        "type": [
-          {
-            "TypeName": "CodeableConcept",
-            "code": "CodeableConcept"
-          }
-        ],
-        "isSummary": true,
-        "binding": {
-          "strength": 3,
-          "description": "Codes describing anatomical locations. May include laterality.",
-          "Item": {
-            "reference": "http://hl7.org/fhir/ValueSet/body-site"
-          }
-        },
-        "mapping": [
-          {
-            "identity": "v2",
-            "map": "OBX-20"
-          },
-          {
-            "identity": "rim",
-            "map": ".targetSiteCode"
-          }
-        ]
-      },
-      {
         "path": "Procedure.reason[x]",
         "short": "Reason procedure performed",
         "definition": "The reason why the procedure was performed. This may be due to a Condition, may be coded entity of some type, or may simply be present as text.",
         "comments": "e.g. endoscopy for dilatation and biopsy, combination diagnosis and therapeutic.",
         "min": 0,
         "max": "0",
+        "base": {
+          "path": "Procedure.reason[x]",
+          "min": 0,
+          "max": "0"
+        },
         "type": [
           {
             "TypeName": "CodeableConcept",
@@ -439,8 +461,13 @@
         "path": "Procedure.performer",
         "short": "The people who performed the procedure",
         "definition": "Limited to 'real' people rather than equipment.",
-        "min": 1,
+        "min": 0,
         "max": "*",
+        "base": {
+          "path": "Procedure.performer",
+          "min": 0,
+          "max": "*"
+        },
         "type": [
           {
             "TypeName": "BackboneElement",
@@ -461,6 +488,11 @@
         "definition": "The practitioner who was involved in the procedure.",
         "min": 1,
         "max": "1",
+        "base": {
+          "path": "Procedure.performer.actor",
+          "min": 1,
+          "max": "1"
+        },
         "type": [
           {
             "TypeName": "Reference",
@@ -508,11 +540,16 @@
         ]
       },
       {
-        "path": "Procedure.performed[x]",
+        "path": "Procedure.performedDateTime",
         "short": "Date the procedure was performed",
         "definition": "The date(time)/period over which the procedure was performed.",
         "min": 0,
         "max": "1",
+        "base": {
+          "path": "Procedure.performed[x]",
+          "min": 0,
+          "max": "1"
+        },
         "type": [
           {
             "TypeName": "dateTime",
@@ -541,6 +578,11 @@
         "definition": "The encounter during which the procedure was performed.",
         "min": 0,
         "max": "1",
+        "base": {
+          "path": "Procedure.encounter",
+          "min": 0,
+          "max": "1"
+        },
         "type": [
           {
             "TypeName": "Reference",
@@ -573,6 +615,11 @@
         "requirements": "Ties a procedure to where the records are likely kept.",
         "min": 0,
         "max": "1",
+        "base": {
+          "path": "Procedure.location",
+          "min": 0,
+          "max": "1"
+        },
         "type": [
           {
             "TypeName": "Reference",
@@ -597,6 +644,11 @@
         "comments": "If outcome contains narrative text only, it can be captured using the CodeableConcept.text.",
         "min": 0,
         "max": "0",
+        "base": {
+          "path": "Procedure.outcome",
+          "min": 0,
+          "max": "0"
+        },
         "type": [
           {
             "TypeName": "CodeableConcept",
@@ -625,6 +677,11 @@
         "comments": "There could potentially be multiple reports - e.g. if this was a procedure which took multiple biopsies resulting in a number of anatomical pathology reports.",
         "min": 0,
         "max": "0",
+        "base": {
+          "path": "Procedure.report",
+          "min": 0,
+          "max": "0"
+        },
         "type": [
           {
             "TypeName": "Reference",
@@ -648,6 +705,11 @@
         "comments": "If complications are only expressed by the narrative text, they can be captured using the CodeableConcept.text.",
         "min": 0,
         "max": "0",
+        "base": {
+          "path": "Procedure.complication",
+          "min": 0,
+          "max": "0"
+        },
         "type": [
           {
             "TypeName": "CodeableConcept",
@@ -674,6 +736,11 @@
         "definition": "If the procedure required specific follow up - e.g. removal of sutures. The followup may be represented as a simple note, or could potentially be more complex in which case the CarePlan resource can be used.",
         "min": 0,
         "max": "0",
+        "base": {
+          "path": "Procedure.followUp",
+          "min": 0,
+          "max": "0"
+        },
         "type": [
           {
             "TypeName": "CodeableConcept",
@@ -700,6 +767,11 @@
         "definition": "A reference to a resource that contains details of the request for this procedure.",
         "min": 0,
         "max": "0",
+        "base": {
+          "path": "Procedure.request",
+          "min": 0,
+          "max": "0"
+        },
         "type": [
           {
             "TypeName": "Reference",
@@ -737,6 +809,11 @@
         "definition": "The individual responsible for making the annotation.",
         "min": 0,
         "max": "0",
+        "base": {
+          "path": "Procedure.notes.author[x]",
+          "min": 0,
+          "max": "0"
+        },
         "type": [
           {
             "TypeName": "Reference",
@@ -782,6 +859,11 @@
         "definition": "Indicates when this particular annotation was made.",
         "min": 0,
         "max": "0",
+        "base": {
+          "path": "Procedure.notes.time",
+          "min": 0,
+          "max": "0"
+        },
         "type": [
           {
             "TypeName": "dateTime",
@@ -806,6 +888,11 @@
         "definition": "A device that is implanted, removed or otherwise manipulated (calibration, battery replacement, fitting a prosthesis, attaching a wound-vac, etc.) as a focal portion of the Procedure.",
         "min": 0,
         "max": "0",
+        "base": {
+          "path": "Procedure.focalDevice",
+          "min": 0,
+          "max": "0"
+        },
         "type": [
           {
             "TypeName": "BackboneElement",
@@ -819,6 +906,11 @@
         "definition": "The device that was manipulated (changed) during the procedure.",
         "min": 1,
         "max": "1",
+        "base": {
+          "path": "Procedure.focalDevice.manipulated",
+          "min": 1,
+          "max": "1"
+        },
         "type": [
           {
             "TypeName": "Reference",
@@ -837,6 +929,11 @@
         "requirements": "Used for tracking contamination, etc.",
         "min": 0,
         "max": "0",
+        "base": {
+          "path": "Procedure.used",
+          "min": 0,
+          "max": "0"
+        },
         "type": [
           {
             "TypeName": "Reference",
