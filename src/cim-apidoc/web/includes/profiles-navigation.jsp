@@ -1,5 +1,7 @@
 <%@ page import="java.util.LinkedHashMap" %>
 
+<%@ include file="profiles-warning.html" %>
+
 <ul id="profile-nav-menu" class="nav nav-tabs">
 
     <%
