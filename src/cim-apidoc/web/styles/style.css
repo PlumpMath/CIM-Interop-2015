@@ -470,3 +470,19 @@ ul.star-list li:before
     width: 20px;
     height: 20px;
 }
+
+/***********************************************
+* external resources links
+***********************************************/
+
+.external-resources-links
+{
+    padding-left: 20px;
+    font-size: 16px;
+    padding-top: 10px;
+}
+
+.external-resources-links li
+{
+    padding-bottom: 3px;
+}
